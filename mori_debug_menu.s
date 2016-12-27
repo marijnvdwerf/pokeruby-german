@@ -9,17 +9,17 @@
 	thumb_func_start unref_sub_8083CF0
 unref_sub_8083CF0: @ 8084144
 	push {r4-r7,lr}
-	ldr r0, _0808418C
+	ldr r0, _0808418C @ =0x04000128
 	ldr r4, [r0]
 	lsls r4, 26
 	lsrs r4, 30
-	ldr r0, _08084190
+	ldr r0, _08084190 @ =gUnknown_03004DA0
 	movs r1, 0xFF
 	strb r1, [r0]
-	ldr r1, _08084194
+	ldr r1, _08084194 @ =gUnknown_0839B24A
 	bl StringAppend
 	movs r5, 0
-	ldr r0, _08084198
+	ldr r0, _08084198 @ =word_3002910
 	movs r6, 0x1
 	eors r4, r6
 	lsls r4, 1
@@ -31,9 +31,9 @@ _08084168:
 	ands r0, r6
 	cmp r0, 0
 	beq _0808417C
-	ldr r1, _0808419C
+	ldr r1, _0808419C @ =gUnknown_0839B22C
 	adds r1, r4, r1
-	ldr r0, _08084190
+	ldr r0, _08084190 @ =gUnknown_03004DA0
 	bl StringAppend
 _0808417C:
 	adds r4, 0x3
@@ -54,7 +54,7 @@ _0808419C: .4byte gUnknown_0839B22C
 	thumb_func_start sub_8083D4C
 sub_8083D4C: @ 80841A0
 	push {lr}
-	ldr r0, _080841B4
+	ldr r0, _080841B4 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -76,7 +76,7 @@ _080841BE:
 MoriDebugMenu_SearchChild: @ 80841C4
 	push {r4-r6,lr}
 	sub sp, 0x34
-	ldr r0, _08084238
+	ldr r0, _08084238 @ =gPlayerParty
 	movs r1, 0xB
 	bl GetMonData
 	adds r4, r0, 0
@@ -90,11 +90,11 @@ MoriDebugMenu_SearchChild: @ 80841C4
 	movs r6, 0xB
 	adds r1, r4, 0
 	muls r1, r6
-	ldr r4, _0808423C
+	ldr r4, _0808423C @ =gSpeciesNames
 	adds r1, r4
 	mov r0, sp
 	bl StringCopy
-	ldr r1, _08084240
+	ldr r1, _08084240 @ =gUnknown_0839B24D
 	mov r0, sp
 	bl StringAppend
 	adds r1, r5, 0
@@ -102,7 +102,7 @@ MoriDebugMenu_SearchChild: @ 80841C4
 	adds r1, r4
 	mov r0, sp
 	bl StringAppend
-	ldr r1, _08084244
+	ldr r1, _08084244 @ =gUnknown_0839B255
 	mov r0, sp
 	bl StringAppend
 	bl MenuZeroFillScreen
@@ -115,8 +115,8 @@ MoriDebugMenu_SearchChild: @ 80841C4
 	movs r1, 0x1
 	movs r2, 0xF
 	bl MenuPrint
-	ldr r1, _08084248
-	ldr r0, _0808424C
+	ldr r1, _08084248 @ =gCallback_03004AE8
+	ldr r0, _0808424C @ =sub_8083D4C
 	str r0, [r1]
 	movs r0, 0
 	add sp, 0x34
@@ -135,7 +135,7 @@ _0808424C: .4byte sub_8083D4C
 	thumb_func_start MoriDebugMenu_Egg
 MoriDebugMenu_Egg: @ 8084250
 	push {lr}
-	ldr r0, _08084278
+	ldr r0, _08084278 @ =0x020286d0
 	bl daycare_count_pokemon
 	lsls r0, 24
 	lsrs r0, 24
@@ -158,7 +158,7 @@ _08084278: .4byte 0x020286d0
 	thumb_func_start MoriDebugMenu_MaleEgg
 MoriDebugMenu_MaleEgg: @ 808427C
 	push {lr}
-	ldr r0, _080842A4
+	ldr r0, _080842A4 @ =0x020286d0
 	bl daycare_count_pokemon
 	lsls r0, 24
 	lsrs r0, 24
@@ -193,7 +193,7 @@ MoriDebugMenu_1000Steps: @ 80842A8
 	thumb_func_start MoriDebugMenu_10000Steps
 MoriDebugMenu_10000Steps: @ 80842BC
 	push {lr}
-	ldr r0, _080842D0
+	ldr r0, _080842D0 @ =0x00002710
 	bl sub_8041790
 	bl sub_8071C20
 	movs r0, 0x1
@@ -223,7 +223,7 @@ _080842EC:
 	movs r0, 0x64
 	adds r1, r5, 0
 	muls r1, r0
-	ldr r0, _08084334
+	ldr r0, _08084334 @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0x2D
@@ -242,8 +242,8 @@ _08084310:
 	lsrs r5, r0, 24
 	cmp r5, 0x5
 	bls _080842EC
-	ldr r0, _08084338
-	ldr r1, _0808433C
+	ldr r0, _08084338 @ =gSaveBlock1
+	ldr r1, _0808433C @ =0x000030b6
 	adds r0, r1
 	movs r1, 0xFD
 	strb r1, [r0]
@@ -262,8 +262,8 @@ _0808433C: .4byte 0x000030b6
 	thumb_func_start MoriDebugMenu_LongName
 MoriDebugMenu_LongName: @ 8084340
 	push {lr}
-	ldr r0, _08084358
-	ldr r2, _0808435C
+	ldr r0, _08084358 @ =gPlayerParty
+	ldr r2, _0808435C @ =gUnknown_0839B257
 	movs r1, 0x2
 	bl SetMonData
 	bl sub_8071C20
@@ -306,8 +306,8 @@ MoriDebugMenuProcessInput: @ 8084380
 	adds r0, 0x1
 	cmp r1, r0
 	beq _080843B4
-	ldr r2, _080843AC
-	ldr r0, _080843B0
+	ldr r2, _080843AC @ =gCallback_03004AE8
+	ldr r0, _080843B0 @ =gMoriDebugMenuActions
 	lsls r1, 3
 	adds r0, 0x4
 	adds r1, r0
@@ -337,7 +337,7 @@ InitMoriDebugMenu: @ 80843C0
 	movs r2, 0xA
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r3, _08084404
+	ldr r3, _08084404 @ =gMoriDebugMenuActions
 	movs r0, 0x1
 	movs r1, 0x1
 	movs r2, 0x9
@@ -351,8 +351,8 @@ InitMoriDebugMenu: @ 80843C0
 	movs r2, 0x1
 	movs r3, 0x9
 	bl InitMenu
-	ldr r1, _08084408
-	ldr r0, _0808440C
+	ldr r1, _08084408 @ =gCallback_03004AE8
+	ldr r0, _0808440C @ =MoriDebugMenuProcessInput
 	str r0, [r1]
 	movs r0, 0
 	add sp, 0x8

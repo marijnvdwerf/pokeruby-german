@@ -9,7 +9,7 @@
 	thumb_func_start BuildStartMenuActions
 BuildStartMenuActions: @ 80712D0
 	push {lr}
-	ldr r0, _080712E8
+	ldr r0, _080712E8 @ =0x0202e8fd
 	movs r1, 0
 	strb r1, [r0]
 	bl is_c1_link_related_active
@@ -38,8 +38,8 @@ AddStartMenuAction: @ 8071304
 	adds r2, r0, 0
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r0, _08071318
-	ldr r1, _0807131C
+	ldr r0, _08071318 @ =0x0202e8fe
+	ldr r1, _0807131C @ =0x0202e8fd
 	bl AppendToList
 	pop {r0}
 	bx r0
@@ -51,7 +51,7 @@ _0807131C: .4byte 0x0202e8fd
 	thumb_func_start BuildStartMenuActions_Normal
 BuildStartMenuActions_Normal: @ 8071320
 	push {lr}
-	ldr r0, _08071384
+	ldr r0, _08071384 @ =0x00000801
 	bl FlagGet
 	lsls r0, 24
 	lsrs r0, 24
@@ -72,7 +72,7 @@ _08071336:
 _0807134C:
 	movs r0, 0x2
 	bl AddStartMenuAction
-	ldr r0, _08071388
+	ldr r0, _08071388 @ =0x00000802
 	bl FlagGet
 	lsls r0, 24
 	lsrs r0, 24
@@ -124,7 +124,7 @@ BuildStartMenuActions_Link: @ 80713BC
 	bl AddStartMenuAction
 	movs r0, 0x2
 	bl AddStartMenuAction
-	ldr r0, _080713F4
+	ldr r0, _080713F4 @ =0x00000802
 	bl FlagGet
 	lsls r0, 24
 	lsrs r0, 24
@@ -148,8 +148,8 @@ _080713F4: .4byte 0x00000802
 	thumb_func_start DisplaySafariBallsWindow
 DisplaySafariBallsWindow: @ 80713F8
 	push {lr}
-	ldr r0, _08071424
-	ldr r1, _08071428
+	ldr r0, _08071424 @ =gStringVar1
+	ldr r1, _08071428 @ =gNumSafariBalls
 	ldrb r1, [r1]
 	movs r2, 0xC
 	movs r3, 0x1
@@ -159,7 +159,7 @@ DisplaySafariBallsWindow: @ 80713F8
 	movs r2, 0xA
 	movs r3, 0x5
 	bl MenuDrawTextWindow
-	ldr r0, _0807142C
+	ldr r0, _0807142C @ =gOtherText_SafariStock
 	movs r1, 0x1
 	movs r2, 0x1
 	bl MenuPrint
@@ -180,14 +180,14 @@ PrintStartMenuItemsMultistep: @ 8071430
 	adds r6, r1, 0
 	movs r0, 0
 	ldrsh r4, [r7, r0]
-	ldr r1, _0807147C
+	ldr r1, _0807147C @ =gStartMenuItems
 	mov r8, r1
 	lsls r0, r4, 25
 	movs r1, 0x80
 	lsls r1, 18
 	adds r5, r0, r1
 _0807144A:
-	ldr r0, _08071480
+	ldr r0, _08071480 @ =0x0202e8fe
 	adds r0, r4, r0
 	ldrb r0, [r0]
 	lsls r0, 3
@@ -200,7 +200,7 @@ _0807144A:
 	lsls r0, 18
 	adds r5, r0
 	adds r4, 0x1
-	ldr r0, _08071484
+	ldr r0, _08071484 @ =0x0202e8fd
 	ldrb r0, [r0]
 	cmp r4, r0
 	bge _08071488
@@ -236,7 +236,7 @@ InitStartMenuMultistep: @ 8071498
 	cmp r0, 0x5
 	bhi _08071540
 	lsls r0, 2
-	ldr r1, _080714B4
+	ldr r1, _080714B4 @ =_080714B8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -254,7 +254,7 @@ _080714D0:
 	bl BuildStartMenuActions
 	b _08071512
 _080714D6:
-	ldr r0, _080714F4
+	ldr r0, _080714F4 @ =0x0202e8fd
 	ldrb r3, [r0]
 	lsls r3, 25
 	movs r0, 0xC0
@@ -288,9 +288,9 @@ _08071512:
 	strh r0, [r4]
 	b _08071540
 _0807151A:
-	ldr r0, _08071538
+	ldr r0, _08071538 @ =0x0202e8fd
 	ldrb r3, [r0]
-	ldr r4, _0807153C
+	ldr r4, _0807153C @ =0x0202e8fc
 	ldrb r0, [r4]
 	str r0, [sp]
 	movs r0, 0x6
@@ -344,7 +344,7 @@ Task_StartMenu: @ 8071570
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _0807159C
+	ldr r1, _0807159C @ =0x03004b38
 	adds r4, r0, r1
 	adds r1, r4, 0x2
 	adds r0, r4, 0
@@ -367,9 +367,9 @@ _0807159C: .4byte 0x03004b38
 CreateStartMenuTask: @ 80715A0
 	push {r4,r5,lr}
 	adds r5, r0, 0
-	ldr r0, _080715C8
+	ldr r0, _080715C8 @ =gWindowConfig_81E6CE4
 	bl InitMenuWindow
-	ldr r4, _080715CC
+	ldr r4, _080715CC @ =Task_StartMenu
 	adds r0, r4, 0
 	movs r1, 0x50
 	bl CreateTask
@@ -394,7 +394,7 @@ sub_80712B4: @ 80715D0
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _080715F0
+	ldr r1, _080715F0 @ =gTasks
 	adds r2, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r2, r1]
@@ -406,8 +406,8 @@ sub_80712B4: @ 80715D0
 	.align 2, 0
 _080715F0: .4byte gTasks
 _080715F4:
-	ldr r1, _08071604
-	ldr r0, _08071608
+	ldr r1, _08071604 @ =gCallback_03004AE8
+	ldr r0, _08071608 @ =StartMenu_InputProcessCallback
 	str r0, [r1]
 	ldrh r0, [r2, 0x8]
 	adds r0, 0x1
@@ -417,7 +417,7 @@ _080715F4:
 _08071604: .4byte gCallback_03004AE8
 _08071608: .4byte StartMenu_InputProcessCallback
 _0807160C:
-	ldr r0, _08071628
+	ldr r0, _08071628 @ =gCallback_03004AE8
 	ldr r0, [r0]
 	bl _call_via_r0
 	lsls r0, 24
@@ -444,7 +444,7 @@ sub_8071310: @ 807162C
 	bl sub_80594C0
 	bl sub_80597F4
 _08071642:
-	ldr r0, _08071650
+	ldr r0, _08071650 @ =sub_80712B4
 	bl CreateStartMenuTask
 	bl ScriptContext2_Enable
 	pop {r0}
@@ -456,7 +456,7 @@ _08071650: .4byte sub_80712B4
 	thumb_func_start StartMenu_InputProcessCallback
 StartMenu_InputProcessCallback: @ 8071654
 	push {r4,lr}
-	ldr r4, _080716F8
+	ldr r4, _080716F8 @ =gMain
 	ldrh r1, [r4, 0x2E]
 	movs r0, 0x40
 	ands r0, r1
@@ -467,7 +467,7 @@ StartMenu_InputProcessCallback: @ 8071654
 	movs r0, 0x1
 	negs r0, r0
 	bl MoveMenuCursor
-	ldr r1, _080716FC
+	ldr r1, _080716FC @ =0x0202e8fc
 	strb r0, [r1]
 _08071674:
 	ldrh r1, [r4, 0x2E]
@@ -479,7 +479,7 @@ _08071674:
 	bl PlaySE
 	movs r0, 0x1
 	bl MoveMenuCursor
-	ldr r1, _080716FC
+	ldr r1, _080716FC @ =0x0202e8fc
 	strb r0, [r1]
 _0807168E:
 	ldrh r1, [r4, 0x2E]
@@ -489,9 +489,9 @@ _0807168E:
 	beq _0807171C
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _08071700
-	ldr r2, _08071704
-	ldr r0, _080716FC
+	ldr r1, _08071700 @ =gStartMenuItems
+	ldr r2, _08071704 @ =0x0202e8fe
+	ldr r0, _080716FC @ =0x0202e8fc
 	ldrb r0, [r0]
 	adds r0, r2
 	ldrb r0, [r0]
@@ -499,7 +499,7 @@ _0807168E:
 	adds r1, 0x4
 	adds r0, r1
 	ldr r1, [r0]
-	ldr r0, _08071708
+	ldr r0, _08071708 @ =StartMenu_PokedexCallback
 	cmp r1, r0
 	bne _080716C4
 	movs r0, 0
@@ -508,10 +508,10 @@ _0807168E:
 	cmp r0, 0
 	beq _08071724
 _080716C4:
-	ldr r3, _0807170C
-	ldr r1, _08071700
-	ldr r2, _08071704
-	ldr r0, _080716FC
+	ldr r3, _0807170C @ =gCallback_03004AE8
+	ldr r1, _08071700 @ =gStartMenuItems
+	ldr r2, _08071704 @ =0x0202e8fe
+	ldr r0, _080716FC @ =0x0202e8fc
 	ldrb r0, [r0]
 	adds r0, r2
 	ldrb r0, [r0]
@@ -520,13 +520,13 @@ _080716C4:
 	adds r0, r1
 	ldr r1, [r0]
 	str r1, [r3]
-	ldr r0, _08071710
+	ldr r0, _08071710 @ =StartMenu_SaveCallback
 	cmp r1, r0
 	beq _08071724
-	ldr r0, _08071714
+	ldr r0, _08071714 @ =StartMenu_ExitCallback
 	cmp r1, r0
 	beq _08071724
-	ldr r0, _08071718
+	ldr r0, _08071718 @ =StartMenu_RetireCallback
 	cmp r1, r0
 	beq _08071724
 	movs r0, 0x1
@@ -563,7 +563,7 @@ _0807172E:
 	thumb_func_start StartMenu_PokedexCallback
 StartMenu_PokedexCallback: @ 8071734
 	push {lr}
-	ldr r0, _08071748
+	ldr r0, _08071748 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -577,7 +577,7 @@ _0807174C:
 	movs r0, 0x29
 	bl sav12_xor_increment
 	bl PlayRainSoundEffect
-	ldr r0, _08071764
+	ldr r0, _08071764 @ =CB2_InitPokedex
 	bl SetMainCallback2
 	movs r0, 0x1
 _0807175E:
@@ -590,7 +590,7 @@ _08071764: .4byte CB2_InitPokedex
 	thumb_func_start StartMenu_PokemonCallback
 StartMenu_PokemonCallback: @ 8071768
 	push {lr}
-	ldr r0, _0807177C
+	ldr r0, _0807177C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -602,7 +602,7 @@ StartMenu_PokemonCallback: @ 8071768
 _0807177C: .4byte gPaletteFade
 _08071780:
 	bl PlayRainSoundEffect
-	ldr r0, _08071790
+	ldr r0, _08071790 @ =sub_8089A70
 	bl SetMainCallback2
 	movs r0, 0x1
 _0807178C:
@@ -615,7 +615,7 @@ _08071790: .4byte sub_8089A70
 	thumb_func_start StartMenu_BagCallback
 StartMenu_BagCallback: @ 8071794
 	push {lr}
-	ldr r0, _080717A8
+	ldr r0, _080717A8 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -627,7 +627,7 @@ StartMenu_BagCallback: @ 8071794
 _080717A8: .4byte gPaletteFade
 _080717AC:
 	bl PlayRainSoundEffect
-	ldr r0, _080717BC
+	ldr r0, _080717BC @ =sub_80A53F8
 	bl SetMainCallback2
 	movs r0, 0x1
 _080717B8:
@@ -640,7 +640,7 @@ _080717BC: .4byte sub_80A53F8
 	thumb_func_start StartMenu_PokenavCallback
 StartMenu_PokenavCallback: @ 80717C0
 	push {lr}
-	ldr r0, _080717D4
+	ldr r0, _080717D4 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -652,7 +652,7 @@ StartMenu_PokenavCallback: @ 80717C0
 _080717D4: .4byte gPaletteFade
 _080717D8:
 	bl PlayRainSoundEffect
-	ldr r0, _080717E8
+	ldr r0, _080717E8 @ =sub_80EBA5C
 	bl SetMainCallback2
 	movs r0, 0x1
 _080717E4:
@@ -665,7 +665,7 @@ _080717E8: .4byte sub_80EBA5C
 	thumb_func_start StartMenu_PlayerCallback
 StartMenu_PlayerCallback: @ 80717EC
 	push {lr}
-	ldr r0, _08071800
+	ldr r0, _08071800 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -677,7 +677,7 @@ StartMenu_PlayerCallback: @ 80717EC
 _08071800: .4byte gPaletteFade
 _08071804:
 	bl PlayRainSoundEffect
-	ldr r0, _08071814
+	ldr r0, _08071814 @ =sub_805469C
 	bl sub_8093110
 	movs r0, 0x1
 _08071810:
@@ -691,8 +691,8 @@ _08071814: .4byte sub_805469C
 StartMenu_SaveCallback: @ 8071818
 	push {lr}
 	bl sub_8072DEC
-	ldr r1, _0807182C
-	ldr r0, _08071830
+	ldr r1, _0807182C @ =gCallback_03004AE8
+	ldr r0, _08071830 @ =SaveCallback1
 	str r0, [r1]
 	movs r0, 0
 	pop {r1}
@@ -705,7 +705,7 @@ _08071830: .4byte SaveCallback1
 	thumb_func_start StartMenu_OptionCallback
 StartMenu_OptionCallback: @ 8071834
 	push {lr}
-	ldr r0, _08071848
+	ldr r0, _08071848 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -717,10 +717,10 @@ StartMenu_OptionCallback: @ 8071834
 _08071848: .4byte gPaletteFade
 _0807184C:
 	bl PlayRainSoundEffect
-	ldr r0, _08071864
+	ldr r0, _08071864 @ =CB2_InitOptionMenu
 	bl SetMainCallback2
-	ldr r1, _08071868
-	ldr r0, _0807186C
+	ldr r1, _08071868 @ =gMain
+	ldr r0, _0807186C @ =sub_805469C
 	str r0, [r1, 0x8]
 	movs r0, 0x1
 _0807185E:
@@ -754,7 +754,7 @@ StartMenu_RetireCallback: @ 807187C
 	thumb_func_start StartMenu_PlayerLinkCallback
 StartMenu_PlayerLinkCallback: @ 807188C
 	push {lr}
-	ldr r0, _080718A0
+	ldr r0, _080718A0 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -766,9 +766,9 @@ StartMenu_PlayerLinkCallback: @ 807188C
 _080718A0: .4byte gPaletteFade
 _080718A4:
 	bl PlayRainSoundEffect
-	ldr r0, _080718B8
+	ldr r0, _080718B8 @ =gUnknown_03004860
 	ldrb r0, [r0]
-	ldr r1, _080718BC
+	ldr r1, _080718BC @ =sub_805469C
 	bl sub_8093130
 	movs r0, 0x1
 _080718B4:
@@ -783,8 +783,8 @@ _080718BC: .4byte sub_805469C
 SaveCallback1: @ 80718C0
 	push {lr}
 	bl sub_807160C
-	ldr r1, _080718D4
-	ldr r0, _080718D8
+	ldr r1, _080718D4 @ =gCallback_03004AE8
+	ldr r0, _080718D8 @ =SaveCallback2
 	str r0, [r1]
 	movs r0, 0
 	pop {r1}
@@ -812,8 +812,8 @@ SaveCallback2: @ 80718DC
 _080718F8:
 	bl MenuZeroFillScreen
 	bl InitStartMenu
-	ldr r1, _08071908
-	ldr r0, _0807190C
+	ldr r1, _08071908 @ =gCallback_03004AE8
+	ldr r0, _0807190C @ =StartMenu_InputProcessCallback
 	str r0, [r1]
 	b _08071920
 	.align 2, 0
@@ -836,10 +836,10 @@ _08071922:
 sub_807160C: @ 8071928
 	push {lr}
 	bl save_serialize_map
-	ldr r1, _08071940
-	ldr r0, _08071944
+	ldr r1, _08071940 @ =0x030006a8
+	ldr r0, _08071944 @ =SaveDialogCB_DisplayConfirmMessage
 	str r0, [r1]
-	ldr r1, _08071948
+	ldr r1, _08071948 @ =0x030006ad
 	movs r0, 0
 	strb r0, [r1]
 	pop {r0}
@@ -853,7 +853,7 @@ _08071948: .4byte 0x030006ad
 	thumb_func_start RunSaveDialogCallback
 RunSaveDialogCallback: @ 807194C
 	push {lr}
-	ldr r0, _08071964
+	ldr r0, _08071964 @ =0x030006ad
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _08071968
@@ -866,10 +866,10 @@ RunSaveDialogCallback: @ 807194C
 	.align 2, 0
 _08071964: .4byte 0x030006ad
 _08071968:
-	ldr r1, _08071980
+	ldr r1, _08071980 @ =0x030006ad
 	movs r0, 0
 	strb r0, [r1]
-	ldr r0, _08071984
+	ldr r0, _08071984 @ =0x030006a8
 	ldr r0, [r0]
 	bl _call_via_r0
 	lsls r0, 24
@@ -886,7 +886,7 @@ _08071984: .4byte 0x030006a8
 InitSaveDialog: @ 8071988
 	push {lr}
 	bl sub_807160C
-	ldr r0, _0807199C
+	ldr r0, _0807199C @ =Task_SaveDialog
 	movs r1, 0x50
 	bl CreateTask
 	pop {r0}
@@ -900,17 +900,17 @@ DisplaySaveMessageWithCallback: @ 80719A0
 	push {r4,r5,lr}
 	adds r2, r0, 0
 	adds r5, r1, 0
-	ldr r4, _080719CC
+	ldr r4, _080719CC @ =gStringVar4
 	adds r0, r4, 0
 	adds r1, r2, 0
 	bl StringExpandPlaceholders
 	bl MenuDisplayMessageBox
 	adds r0, r4, 0
 	bl sub_8072044
-	ldr r1, _080719D0
+	ldr r1, _080719D0 @ =0x030006ad
 	movs r0, 0x1
 	strb r0, [r1]
-	ldr r0, _080719D4
+	ldr r0, _080719D4 @ =0x030006a8
 	str r5, [r0]
 	pop {r4,r5}
 	pop {r0}
@@ -939,14 +939,14 @@ Task_SaveDialog: @ 80719D8
 _080719F4:
 	cmp r1, 0x3
 	bgt _08071A08
-	ldr r1, _08071A00
+	ldr r1, _08071A00 @ =gScriptResult
 	movs r0, 0
 	strh r0, [r1]
 	b _08071A08
 	.align 2, 0
 _08071A00: .4byte gScriptResult
 _08071A04:
-	ldr r0, _08071A18
+	ldr r0, _08071A18 @ =gScriptResult
 	strh r1, [r0]
 _08071A08:
 	adds r0, r4, 0
@@ -984,7 +984,7 @@ HideSaveDialog: @ 8071A2C
 
 	thumb_func_start SaveDialogStartTimeout
 SaveDialogStartTimeout: @ 8071A40
-	ldr r1, _08071A48
+	ldr r1, _08071A48 @ =0x030006ac
 	movs r0, 0x3C
 	strb r0, [r1]
 	bx lr
@@ -995,11 +995,11 @@ _08071A48: .4byte 0x030006ac
 	thumb_func_start SaveDialogCheckForTimeoutOrKeypress
 SaveDialogCheckForTimeoutOrKeypress: @ 8071A4C
 	push {lr}
-	ldr r1, _08071A6C
+	ldr r1, _08071A6C @ =0x030006ac
 	ldrb r0, [r1]
 	subs r2, r0, 0x1
 	strb r2, [r1]
-	ldr r0, _08071A70
+	ldr r0, _08071A70 @ =gMain
 	ldrh r1, [r0, 0x2C]
 	movs r0, 0x1
 	ands r0, r1
@@ -1026,11 +1026,11 @@ _08071A7C:
 	thumb_func_start SaveDialogCheckForTimeoutAndKeypress
 SaveDialogCheckForTimeoutAndKeypress: @ 8071A80
 	push {lr}
-	ldr r1, _08071A9C
+	ldr r1, _08071A9C @ =0x030006ac
 	ldrb r0, [r1]
 	cmp r0, 0
 	bne _08071AA4
-	ldr r0, _08071AA0
+	ldr r0, _08071AA0 @ =gMain
 	ldrh r1, [r0, 0x2C]
 	movs r0, 0x1
 	ands r0, r1
@@ -1058,8 +1058,8 @@ SaveDialogCB_DisplayConfirmMessage: @ 8071AB0
 	movs r0, 0
 	movs r1, 0
 	bl HandleDrawSaveWindowInfo
-	ldr r0, _08071ACC
-	ldr r1, _08071AD0
+	ldr r0, _08071ACC @ =gSaveText_WouldYouLikeToSave
+	ldr r1, _08071AD0 @ =SaveDialogCB_DisplayConfirmYesNoMenu
 	bl DisplaySaveMessageWithCallback
 	movs r0, 0
 	pop {r1}
@@ -1076,8 +1076,8 @@ SaveDialogCB_DisplayConfirmYesNoMenu: @ 8071AD4
 	movs r1, 0x8
 	movs r2, 0x1
 	bl DisplayYesNoMenu
-	ldr r1, _08071AEC
-	ldr r0, _08071AF0
+	ldr r1, _08071AEC @ =0x030006a8
+	ldr r0, _08071AF0 @ =SaveDialogCB_ProcessConfirmYesNoMenu
 	str r0, [r1]
 	movs r0, 0
 	pop {r1}
@@ -1108,20 +1108,20 @@ _08071B10:
 	b _08071B64
 _08071B16:
 	bl HideSaveDialog
-	ldr r0, _08071B38
+	ldr r0, _08071B38 @ =gSaveFileStatus
 	ldrh r0, [r0]
 	cmp r0, 0
 	beq _08071B26
 	cmp r0, 0x2
 	bne _08071B2E
 _08071B26:
-	ldr r0, _08071B3C
+	ldr r0, _08071B3C @ =gUnknown_020297EC
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08071B48
 _08071B2E:
-	ldr r1, _08071B40
-	ldr r0, _08071B44
+	ldr r1, _08071B40 @ =0x030006a8
+	ldr r0, _08071B44 @ =SaveDialogCB_SaveFileExists
 	str r0, [r1]
 	b _08071B64
 	.align 2, 0
@@ -1130,8 +1130,8 @@ _08071B3C: .4byte gUnknown_020297EC
 _08071B40: .4byte 0x030006a8
 _08071B44: .4byte SaveDialogCB_SaveFileExists
 _08071B48:
-	ldr r1, _08071B50
-	ldr r0, _08071B54
+	ldr r1, _08071B50 @ =0x030006a8
+	ldr r0, _08071B54 @ =SaveDialogCB_DisplaySavingMessage
 	str r0, [r1]
 	b _08071B64
 	.align 2, 0
@@ -1152,14 +1152,14 @@ _08071B66:
 	thumb_func_start SaveDialogCB_SaveFileExists
 SaveDialogCB_SaveFileExists: @ 8071B6C
 	push {lr}
-	ldr r0, _08071B88
+	ldr r0, _08071B88 @ =gUnknown_020297EC
 	ldrb r0, [r0]
-	ldr r2, _08071B8C
+	ldr r2, _08071B8C @ =gSaveText_ThereIsAlreadyAFile
 	cmp r0, 0x1
 	bne _08071B7A
-	ldr r2, _08071B90
+	ldr r2, _08071B90 @ =gSaveText_ThereIsADifferentFile
 _08071B7A:
-	ldr r1, _08071B94
+	ldr r1, _08071B94 @ =SaveDialogCB_DisplayOverwriteYesNoMenu
 	adds r0, r2, 0
 	bl DisplaySaveMessageWithCallback
 	movs r0, 0
@@ -1179,8 +1179,8 @@ SaveDialogCB_DisplayOverwriteYesNoMenu: @ 8071B98
 	movs r1, 0x8
 	movs r2, 0x1
 	bl DisplayYesNoMenu
-	ldr r1, _08071BB0
-	ldr r0, _08071BB4
+	ldr r1, _08071BB0 @ =0x030006a8
+	ldr r0, _08071BB4 @ =SaveDialogCB_ProcessOverwriteYesNoMenu
 	str r0, [r1]
 	movs r0, 0
 	pop {r1}
@@ -1211,8 +1211,8 @@ _08071BD4:
 	b _08071BFC
 _08071BDA:
 	bl HideSaveDialog
-	ldr r1, _08071BE8
-	ldr r0, _08071BEC
+	ldr r1, _08071BE8 @ =0x030006a8
+	ldr r0, _08071BEC @ =SaveDialogCB_DisplaySavingMessage
 	str r0, [r1]
 	b _08071BFC
 	.align 2, 0
@@ -1233,8 +1233,8 @@ _08071BFE:
 	thumb_func_start SaveDialogCB_DisplaySavingMessage
 SaveDialogCB_DisplaySavingMessage: @ 8071C04
 	push {lr}
-	ldr r0, _08071C14
-	ldr r1, _08071C18
+	ldr r0, _08071C14 @ =BattleTower_BattleRoom_Text_1C6CE1
+	ldr r1, _08071C18 @ =SaveDialogCB_DoSave
 	bl DisplaySaveMessageWithCallback
 	movs r0, 0
 	pop {r1}
@@ -1249,7 +1249,7 @@ SaveDialogCB_DoSave: @ 8071C1C
 	push {r4,lr}
 	movs r0, 0
 	bl sav12_xor_increment
-	ldr r4, _08071C3C
+	ldr r4, _08071C3C @ =gUnknown_020297EC
 	ldrb r0, [r4]
 	cmp r0, 0x1
 	bne _08071C40
@@ -1270,16 +1270,16 @@ _08071C40:
 _08071C4A:
 	cmp r1, 0x1
 	bne _08071C60
-	ldr r0, _08071C58
-	ldr r1, _08071C5C
+	ldr r0, _08071C58 @ =BattleTower_BattleRoom_Text_1C6D05
+	ldr r1, _08071C5C @ =SaveDialogCB_SaveSuccess
 	bl DisplaySaveMessageWithCallback
 	b _08071C68
 	.align 2, 0
 _08071C58: .4byte BattleTower_BattleRoom_Text_1C6D05
 _08071C5C: .4byte SaveDialogCB_SaveSuccess
 _08071C60:
-	ldr r0, _08071C74
-	ldr r1, _08071C78
+	ldr r0, _08071C74 @ =gSystemText_SaveErrorExchangeBackup
+	ldr r1, _08071C78 @ =SaveDialogCB_SaveError
 	bl DisplaySaveMessageWithCallback
 _08071C68:
 	bl SaveDialogStartTimeout
@@ -1301,8 +1301,8 @@ SaveDialogCB_SaveSuccess: @ 8071C7C
 	beq _08071C94
 	movs r0, 0x37
 	bl PlaySE
-	ldr r1, _08071C9C
-	ldr r0, _08071CA0
+	ldr r1, _08071C9C @ =0x030006a8
+	ldr r0, _08071CA0 @ =SaveDialogCB_ReturnSuccess
 	str r0, [r1]
 _08071C94:
 	movs r0, 0
@@ -1343,8 +1343,8 @@ SaveDialogCB_SaveError: @ 8071CC8
 	beq _08071CE0
 	movs r0, 0x16
 	bl PlaySE
-	ldr r1, _08071CE8
-	ldr r0, _08071CEC
+	ldr r1, _08071CE8 @ =0x030006a8
+	ldr r0, _08071CEC @ =SaveDialogCB_ReturnError
 	str r0, [r1]
 _08071CE0:
 	movs r0, 0
@@ -1393,7 +1393,7 @@ sub_80719FC: @ 8071D18
 	b _08071E2C
 _08071D2A:
 	lsls r0, 2
-	ldr r1, _08071D34
+	ldr r1, _08071D34 @ =_08071D38
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1418,10 +1418,10 @@ _08071D4C:
 	lsls r2, 19
 	mov r0, sp
 	strh r4, [r0]
-	ldr r1, _08071DB4
+	ldr r1, _08071DB4 @ =0x040000d4
 	str r0, [r1]
 	str r2, [r1, 0x4]
-	ldr r0, _08071DB8
+	ldr r0, _08071DB8 @ =0x81000200
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	movs r2, 0xC0
@@ -1432,7 +1432,7 @@ _08071D4C:
 	movs r6, 0
 	movs r5, 0x80
 	lsls r5, 5
-	ldr r7, _08071DBC
+	ldr r7, _08071DBC @ =0x81000800
 	movs r0, 0x81
 	lsls r0, 24
 	mov r12, r0
@@ -1468,7 +1468,7 @@ _08071DC0:
 	bl dp12_8087EA4
 	b _08071E2C
 _08071DD2:
-	ldr r4, _08071DF0
+	ldr r4, _08071DF0 @ =gWindowConfig_81E6CE4
 	adds r0, r4, 0
 	bl SetUpWindowConfig
 	adds r0, r4, 0
@@ -1488,13 +1488,13 @@ _08071DF4:
 	movs r1, 0x10
 	movs r2, 0
 	bl BlendPalettes
-	ldr r0, _08071E1C
+	ldr r0, _08071E1C @ =sub_80719F0
 	bl SetVBlankCallback
-	ldr r3, _08071E20
+	ldr r3, _08071E20 @ =0x04000208
 	ldrh r2, [r3]
 	movs r0, 0
 	strh r0, [r3]
-	ldr r4, _08071E24
+	ldr r4, _08071E24 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
@@ -1526,14 +1526,14 @@ _08071E36:
 	thumb_func_start sub_8071B28
 sub_8071B28: @ 8071E44
 	push {lr}
-	ldr r0, _08071E64
+	ldr r0, _08071E64 @ =0x03001bac
 	bl sub_80719FC
 	cmp r0, 0
 	beq _08071E5E
-	ldr r0, _08071E68
+	ldr r0, _08071E68 @ =Task_8071B64
 	movs r1, 0x50
 	bl CreateTask
-	ldr r0, _08071E6C
+	ldr r0, _08071E6C @ =sub_8071B54
 	bl SetMainCallback2
 _08071E5E:
 	pop {r0}
@@ -1562,9 +1562,9 @@ Task_8071B64: @ 8071E80
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08071EB0
+	ldr r1, _08071EB0 @ =0x03004b38
 	adds r4, r0, r1
-	ldr r0, _08071EB4
+	ldr r0, _08071EB4 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -1575,7 +1575,7 @@ Task_8071B64: @ 8071E80
 	cmp r0, 0x4
 	bhi _08071F30
 	lsls r0, 2
-	ldr r1, _08071EB8
+	ldr r1, _08071EB8 @ =_08071EBC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1592,7 +1592,7 @@ _08071EBC:
 	.4byte _08071F22
 _08071ED0:
 	bl MenuDisplayMessageBox
-	ldr r0, _08071EEC
+	ldr r0, _08071EEC @ =gSystemText_Saving
 	movs r1, 0x2
 	movs r2, 0xF
 	bl MenuPrint
@@ -1631,7 +1631,7 @@ _08071F1A:
 	strh r0, [r4]
 	b _08071F30
 _08071F22:
-	ldr r0, _08071F38
+	ldr r0, _08071F38 @ =gMain
 	ldr r0, [r0, 0x8]
 	bl SetMainCallback2
 	adds r0, r5, 0

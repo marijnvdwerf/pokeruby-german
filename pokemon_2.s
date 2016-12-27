@@ -26,10 +26,10 @@ _0803C534:
 	b _0803C5F2
 _0803C53A:
 	movs r5, 0
-	ldr r0, _0803C564
+	ldr r0, _0803C564 @ =gUnknown_02024A60
 	ldrb r3, [r0]
-	ldr r4, _0803C568
-	ldr r2, _0803C56C
+	ldr r4, _0803C568 @ =gUnknown_02024C0C
+	ldr r2, _0803C56C @ =gBitTable
 _0803C544:
 	cmp r5, r3
 	beq _0803C558
@@ -58,16 +58,16 @@ _0803C572:
 	lsrs r0, 24
 	bl battle_side_get_owner
 	adds r4, r0, 0
-	ldr r0, _0803C5AC
+	ldr r0, _0803C5AC @ =gUnknown_02024C07
 	ldrb r0, [r0]
 	bl battle_side_get_owner
 	lsls r4, 24
 	lsls r0, 24
 	cmp r4, r0
 	bne _0803C5A4
-	ldr r0, _0803C5B0
+	ldr r0, _0803C5B0 @ =gUnknown_02024C0C
 	ldrb r1, [r0]
-	ldr r2, _0803C5B4
+	ldr r2, _0803C5B4 @ =gBitTable
 	lsls r0, r5, 2
 	adds r0, r2
 	ldr r0, [r0]
@@ -93,16 +93,16 @@ _0803C5BA:
 	lsrs r0, 24
 	bl battle_side_get_owner
 	adds r4, r0, 0
-	ldr r0, _0803C5FC
+	ldr r0, _0803C5FC @ =gUnknown_02024C08
 	ldrb r0, [r0]
 	bl battle_side_get_owner
 	lsls r4, 24
 	lsls r0, 24
 	cmp r4, r0
 	bne _0803C5EC
-	ldr r0, _0803C600
+	ldr r0, _0803C600 @ =gUnknown_02024C0C
 	ldrb r1, [r0]
-	ldr r2, _0803C604
+	ldr r2, _0803C604 @ =gBitTable
 	lsls r0, r5, 2
 	adds r0, r2
 	ldr r0, [r0]
@@ -139,7 +139,7 @@ sub_803C434: @ 803C608
 	ands r4, r0
 	eors r4, r1
 	adds r5, r4, 0
-	ldr r0, _0803C630
+	ldr r0, _0803C630 @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	adds r0, r6, 0
 	ands r0, r1
@@ -168,9 +168,9 @@ _0803C654:
 	adds r0, r4, 0
 	b _0803C67E
 _0803C658:
-	ldr r0, _0803C670
+	ldr r0, _0803C670 @ =gUnknown_02024C0C
 	ldrb r1, [r0]
-	ldr r2, _0803C674
+	ldr r2, _0803C674 @ =gBitTable
 	lsls r0, r4, 2
 	adds r0, r2
 	ldr r0, [r0]
@@ -219,7 +219,7 @@ GetBoxMonGender: @ 803C69C
 	movs r2, 0
 	bl GetBoxMonData
 	adds r2, r0, 0
-	ldr r1, _0803C6EC
+	ldr r1, _0803C6EC @ =gBaseStats
 	lsls r0, r5, 3
 	subs r0, r5
 	lsls r0, 2
@@ -234,7 +234,7 @@ GetBoxMonGender: @ 803C69C
 	cmp r0, 0xFE
 	bge _0803C6F2
 _0803C6D4:
-	ldr r1, _0803C6EC
+	ldr r1, _0803C6EC @ =gBaseStats
 	lsls r0, r5, 3
 	subs r0, r5
 	lsls r0, 2
@@ -262,7 +262,7 @@ GetGenderFromSpeciesAndPersonality: @ 803C6F8
 	adds r3, r1, 0
 	lsls r0, 16
 	lsrs r2, r0, 16
-	ldr r1, _0803C734
+	ldr r1, _0803C734 @ =gBaseStats
 	lsls r0, r2, 3
 	subs r0, r2
 	lsls r0, 2
@@ -302,8 +302,8 @@ GetMonSpriteTemplate_803C56C: @ 803C740
 	push {r4-r6,lr}
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r3, _0803C768
-	ldr r4, _0803C76C
+	ldr r3, _0803C768 @ =gUnknown_02024E8C
+	ldr r4, _0803C76C @ =gSpriteTemplate_8208288
 	lsls r2, r1, 1
 	adds r2, r1
 	lsls r2, 3
@@ -314,7 +314,7 @@ GetMonSpriteTemplate_803C56C: @ 803C740
 	ldm r2!, {r4-r6}
 	stm r1!, {r4-r6}
 	strh r0, [r3, 0x2]
-	ldr r0, _0803C770
+	ldr r0, _0803C770 @ =gSpriteAnimTable_81E7C64
 	str r0, [r3, 0x8]
 	pop {r4-r6}
 	pop {r0}
@@ -332,8 +332,8 @@ GetMonSpriteTemplate_803C5A0: @ 803C774
 	lsrs r4, r0, 16
 	lsls r1, 24
 	lsrs r3, r1, 24
-	ldr r5, _0803C7A4
-	ldr r2, _0803C7A8
+	ldr r5, _0803C7A4 @ =gUnknown_02024E8C
+	ldr r2, _0803C7A8 @ =gSpriteTemplate_8208288
 	lsls r0, r3, 1
 	adds r0, r3
 	lsls r0, 3
@@ -349,14 +349,14 @@ GetMonSpriteTemplate_803C5A0: @ 803C774
 	cmp r3, 0x2
 	bne _0803C7B0
 _0803C79E:
-	ldr r0, _0803C7AC
+	ldr r0, _0803C7AC @ =gUnknown_081ECACC
 	b _0803C7B2
 	.align 2, 0
 _0803C7A4: .4byte gUnknown_02024E8C
 _0803C7A8: .4byte gSpriteTemplate_8208288
 _0803C7AC: .4byte gUnknown_081ECACC
 _0803C7B0:
-	ldr r0, _0803C7C0
+	ldr r0, _0803C7C0 @ =gUnknown_081EC2A4
 _0803C7B2:
 	lsls r1, r4, 2
 	adds r1, r0
@@ -463,7 +463,7 @@ GetSubstruct: @ 803C80C
 	b _0803CD22
 _0803C866:
 	lsls r0, 2
-	ldr r1, _0803C870
+	ldr r1, _0803C870 @ =_0803C874
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1211,7 +1211,7 @@ GetMonData: @ 803CD34
 	cmp r0, 0x9
 	bhi _0803CDC4
 	lsls r0, 2
-	ldr r1, _0803CD4C
+	ldr r1, _0803CD4C @ =_0803CD50
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1351,7 +1351,7 @@ _0803CE4E:
 	b _0803D3B0
 _0803CE56:
 	lsls r0, 2
-	ldr r1, _0803CE60
+	ldr r1, _0803CE60 @ =_0803CE64
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1457,7 +1457,7 @@ _0803CFBC:
 	ands r0, r1
 	cmp r0, 0
 	beq _0803CFD8
-	ldr r1, _0803CFD4
+	ldr r1, _0803CFD4 @ =gBadEggNickname
 	adds r0, r7, 0
 	bl StringCopy
 	b _0803D024
@@ -1468,7 +1468,7 @@ _0803CFD8:
 	ands r0, r1
 	cmp r0, 0
 	beq _0803CFF0
-	ldr r1, _0803CFEC
+	ldr r1, _0803CFEC @ =gEggNickname
 	adds r0, r7, 0
 	bl StringCopy
 	b _0803D024
@@ -1853,7 +1853,7 @@ _0803D244:
 	b _0803D3B0
 _0803D24E:
 	ldrh r0, [r7]
-	ldr r1, _0803D28C
+	ldr r1, _0803D28C @ =0x00000163
 	cmp r0, r1
 	bne _0803D258
 	b _0803D3B0
@@ -1862,7 +1862,7 @@ _0803D258:
 	ldrh r5, [r2]
 	adds r6, r1, 0
 	adds r2, r7, 0
-	ldr r1, _0803D290
+	ldr r1, _0803D290 @ =gBitTable
 _0803D262:
 	ldrh r3, [r2]
 	cmp r5, r3
@@ -2063,7 +2063,7 @@ SetMonData: @ 803D3D0
 	cmp r0, 0xA
 	bhi _0803D4B4
 	lsls r0, 2
-	ldr r1, _0803D3E8
+	ldr r1, _0803D3E8 @ =_0803D3EC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -2244,7 +2244,7 @@ _0803D540:
 	b _0803DAB6
 _0803D548:
 	lsls r0, 2
-	ldr r1, _0803D554
+	ldr r1, _0803D554 @ =_0803D558
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -2576,7 +2576,7 @@ _0803D82C:
 	ands r1, r0
 	lsls r1, 7
 	ldrh r2, [r5, 0x2]
-	ldr r0, _0803D840
+	ldr r0, _0803D840 @ =0xfffff87f
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r5, 0x2]
@@ -2621,7 +2621,7 @@ _0803D87E:
 	ands r1, r0
 	lsls r1, 5
 	ldrh r2, [r5, 0x4]
-	ldr r0, _0803D894
+	ldr r0, _0803D894 @ =0xfffffc1f
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r5, 0x4]
@@ -2646,7 +2646,7 @@ _0803D8AE:
 	ands r2, r0
 	lsls r2, 15
 	ldr r0, [r5, 0x4]
-	ldr r1, _0803D8C4
+	ldr r1, _0803D8C4 @ =0xfff07fff
 	ands r0, r1
 	orrs r0, r2
 	str r0, [r5, 0x4]
@@ -2659,7 +2659,7 @@ _0803D8C8:
 	ands r1, r0
 	lsls r1, 4
 	ldrh r2, [r5, 0x6]
-	ldr r0, _0803D8DC
+	ldr r0, _0803D8DC @ =0xfffffe0f
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r5, 0x6]
@@ -2741,7 +2741,7 @@ _0803D958:
 	ands r1, r0
 	lsls r1, 6
 	ldrh r2, [r5, 0x8]
-	ldr r0, _0803D96C
+	ldr r0, _0803D96C @ =0xfffffe3f
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r5, 0x8]
@@ -2908,7 +2908,7 @@ _0803DA6E:
 	ands r1, r4
 	lsls r1, 5
 	ldrh r2, [r5, 0x4]
-	ldr r0, _0803DAD8
+	ldr r0, _0803DAD8 @ =0xfffffc1f
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r5, 0x4]
@@ -2918,11 +2918,11 @@ _0803DA6E:
 	ands r0, r1
 	strb r0, [r5, 0x5]
 	ldr r0, [r5, 0x4]
-	ldr r1, _0803DADC
+	ldr r1, _0803DADC @ =0xfff07fff
 	ands r0, r1
 	str r0, [r5, 0x4]
 	ldrh r1, [r5, 0x6]
-	ldr r0, _0803DAE0
+	ldr r0, _0803DAE0 @ =0xfffffe0f
 	ands r0, r1
 	strh r0, [r5, 0x6]
 	ldrb r1, [r5, 0x7]
@@ -2966,7 +2966,7 @@ CopyMon: @ 803DAE4
 GiveMonToPlayer: @ 803DAF0
 	push {r4-r6,lr}
 	adds r6, r0, 0
-	ldr r4, _0803DB1C
+	ldr r4, _0803DB1C @ =gSaveBlock2
 	movs r1, 0x7
 	adds r2, r4, 0
 	bl SetMonData
@@ -2992,7 +2992,7 @@ _0803DB22:
 	movs r0, 0x64
 	adds r1, r5, 0
 	muls r1, r0
-	ldr r0, _0803DB54
+	ldr r0, _0803DB54 @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0xB
@@ -3004,7 +3004,7 @@ _0803DB22:
 	adds r1, r6, 0
 	movs r2, 0x64
 	bl CopyMon
-	ldr r1, _0803DB58
+	ldr r1, _0803DB58 @ =gPlayerPartyCount
 	adds r0, r5, 0x1
 	strb r0, [r1]
 	movs r0, 0
@@ -3031,7 +3031,7 @@ SendMonToPC: @ 803DB6C
 	push {r6,r7}
 	sub sp, 0x4
 	mov r9, r0
-	ldr r0, _0803DBBC
+	ldr r0, _0803DBBC @ =gPokemonStorage
 	ldrb r5, [r0]
 _0803DB7C:
 	movs r7, 0
@@ -3043,7 +3043,7 @@ _0803DB7C:
 	mov r8, r0
 	movs r6, 0
 _0803DB8C:
-	ldr r3, _0803DBC0
+	ldr r3, _0803DBC0 @ =gUnknown_020300A4
 	adds r0, r6, r3
 	mov r1, r8
 	adds r4, r1, r0
@@ -3094,7 +3094,7 @@ _0803DBDE:
 	thumb_func_start CalculatePlayerPartyCount
 CalculatePlayerPartyCount: @ 803DBEC
 	push {r4,lr}
-	ldr r0, _0803DBF8
+	ldr r0, _0803DBF8 @ =gPlayerPartyCount
 	movs r1, 0
 	strb r1, [r0]
 	b _0803DC04
@@ -3113,7 +3113,7 @@ _0803DC04:
 	adds r1, r0, 0
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _0803DC2C
+	ldr r1, _0803DC2C @ =gPlayerParty
 	adds r0, r1
 	movs r1, 0xB
 	movs r2, 0
@@ -3132,7 +3132,7 @@ _0803DC2C: .4byte gPlayerParty
 	thumb_func_start CalculateEnemyPartyCount
 CalculateEnemyPartyCount: @ 803DC30
 	push {r4,lr}
-	ldr r0, _0803DC3C
+	ldr r0, _0803DC3C @ =gEnemyPartyCount
 	movs r1, 0
 	strb r1, [r0]
 	b _0803DC48
@@ -3151,7 +3151,7 @@ _0803DC48:
 	adds r1, r0, 0
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _0803DC70
+	ldr r1, _0803DC70 @ =gEnemyParty
 	adds r0, r1
 	movs r1, 0xB
 	movs r2, 0
@@ -3172,7 +3172,7 @@ sub_803DAA0: @ 803DC74
 	push {r4-r6,lr}
 	movs r6, 0
 	bl CalculatePlayerPartyCount
-	ldr r1, _0803DCE0
+	ldr r1, _0803DCE0 @ =gPlayerPartyCount
 	ldrb r0, [r1]
 	cmp r0, 0x1
 	beq _0803DCD8
@@ -3184,7 +3184,7 @@ _0803DC8C:
 	movs r0, 0x64
 	adds r1, r5, 0
 	muls r1, r0
-	ldr r0, _0803DCE4
+	ldr r0, _0803DCE4 @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0x39
@@ -3209,7 +3209,7 @@ _0803DC8C:
 	adds r6, 0x1
 _0803DCC6:
 	adds r5, 0x1
-	ldr r0, _0803DCE0
+	ldr r0, _0803DCE0 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r5, r0
 	blt _0803DC8C
@@ -3235,8 +3235,8 @@ GetAbilityBySpecies: @ 803DCE8
 	lsls r1, 24
 	cmp r1, 0
 	beq _0803DD0C
-	ldr r2, _0803DD04
-	ldr r1, _0803DD08
+	ldr r2, _0803DD04 @ =byte_2024C06
+	ldr r1, _0803DD08 @ =gBaseStats
 	lsls r0, r3, 3
 	subs r0, r3
 	lsls r0, 2
@@ -3247,8 +3247,8 @@ GetAbilityBySpecies: @ 803DCE8
 _0803DD04: .4byte byte_2024C06
 _0803DD08: .4byte gBaseStats
 _0803DD0C:
-	ldr r2, _0803DD24
-	ldr r1, _0803DD28
+	ldr r2, _0803DD24 @ =byte_2024C06
+	ldr r1, _0803DD28 @ =gBaseStats
 	lsls r0, r3, 3
 	subs r0, r3
 	lsls r0, 2
@@ -3300,7 +3300,7 @@ CreateSecretBaseEnemyParty: @ 803DD60
 	sub sp, 0x18
 	adds r4, r0, 0
 	bl ZeroEnemyPartyMons
-	ldr r5, _0803DE60
+	ldr r5, _0803DE60 @ =0x02017000
 	adds r0, r5, 0
 	adds r1, r4, 0
 	movs r2, 0xA0
@@ -3309,7 +3309,7 @@ CreateSecretBaseEnemyParty: @ 803DD60
 _0803DD80:
 	lsls r0, r7, 1
 	mov r9, r0
-	ldr r2, _0803DE60
+	ldr r2, _0803DE60 @ =0x02017000
 	adds r2, 0x7C
 	mov r10, r2
 	mov r1, r9
@@ -3322,18 +3322,18 @@ _0803DD80:
 	movs r0, 0x64
 	adds r6, r7, 0
 	muls r6, r0
-	ldr r2, _0803DE64
+	ldr r2, _0803DE64 @ =gEnemyParty
 	mov r8, r2
 	adds r5, r6, r2
 	ldrh r1, [r1]
-	ldr r0, _0803DE60
+	ldr r0, _0803DE60 @ =0x02017000
 	adds r0, 0x94
 	adds r0, r7, r0
 	ldrb r2, [r0]
 	movs r0, 0x1
 	str r0, [sp]
 	lsls r4, r7, 2
-	ldr r0, _0803DE60
+	ldr r0, _0803DE60 @ =0x02017000
 	adds r0, 0x34
 	adds r0, r4, r0
 	ldr r0, [r0]
@@ -3345,7 +3345,7 @@ _0803DD80:
 	adds r0, r5, 0
 	movs r3, 0xF
 	bl CreateMon
-	ldr r2, _0803DE68
+	ldr r2, _0803DE68 @ =0x02017088
 	add r2, r9
 	adds r0, r5, 0
 	movs r1, 0xC
@@ -3370,14 +3370,14 @@ _0803DDE4:
 	movs r0, 0x64
 	adds r1, r7, 0
 	muls r1, r0
-	ldr r0, _0803DE64
+	ldr r0, _0803DE64 @ =gEnemyParty
 	adds r7, r1, r0
 	mov r2, r9
 	lsls r6, r2, 1
 _0803DE0A:
 	adds r1, r5, 0
 	adds r1, 0xD
-	ldr r4, _0803DE6C
+	ldr r4, _0803DE6C @ =0x0201704c
 	adds r4, r6, r4
 	adds r0, r7, 0
 	adds r2, r4, 0
@@ -3388,7 +3388,7 @@ _0803DE0A:
 	lsls r2, r0, 1
 	adds r2, r0
 	lsls r2, 2
-	ldr r0, _0803DE70
+	ldr r0, _0803DE70 @ =0x08208100
 	adds r2, r0
 	adds r0, r7, 0
 	bl SetMonData
@@ -3400,10 +3400,10 @@ _0803DE38:
 	ldr r7, [sp, 0x10]
 	cmp r7, 0x5
 	ble _0803DD80
-	ldr r1, _0803DE74
+	ldr r1, _0803DE74 @ =gUnknown_020239F8
 	movs r0, 0x8
 	strh r0, [r1]
-	ldr r1, _0803DE78
+	ldr r1, _0803DE78 @ =gTrainerBattleOpponent
 	movs r2, 0x80
 	lsls r2, 3
 	adds r0, r2, 0
@@ -3429,8 +3429,8 @@ _0803DE78: .4byte gTrainerBattleOpponent
 	thumb_func_start GetSecretBaseTrainerPicIndex
 GetSecretBaseTrainerPicIndex: @ 803DE7C
 	push {r4,r5,lr}
-	ldr r5, _0803DEAC
-	ldr r4, _0803DEB0
+	ldr r5, _0803DEAC @ =gSecretBaseTrainerClasses
+	ldr r4, _0803DEB0 @ =0x02017000
 	ldrb r0, [r4, 0x9]
 	movs r1, 0x5
 	bl __umodsi3
@@ -3444,7 +3444,7 @@ GetSecretBaseTrainerPicIndex: @ 803DE7C
 	adds r0, r1
 	adds r0, r5
 	ldrb r0, [r0]
-	ldr r1, _0803DEB4
+	ldr r1, _0803DEB4 @ =gTrainerClassToPicIndex
 	adds r0, r1
 	ldrb r0, [r0]
 	pop {r4,r5}
@@ -3459,8 +3459,8 @@ _0803DEB4: .4byte gTrainerClassToPicIndex
 	thumb_func_start GetSecretBaseTrainerNameIndex
 GetSecretBaseTrainerNameIndex: @ 803DEB8
 	push {r4,r5,lr}
-	ldr r5, _0803DEE8
-	ldr r4, _0803DEEC
+	ldr r5, _0803DEE8 @ =gSecretBaseTrainerClasses
+	ldr r4, _0803DEEC @ =0x02017000
 	ldrb r0, [r4, 0x9]
 	movs r1, 0x5
 	bl __umodsi3
@@ -3474,7 +3474,7 @@ GetSecretBaseTrainerNameIndex: @ 803DEB8
 	adds r0, r1
 	adds r0, r5
 	ldrb r0, [r0]
-	ldr r1, _0803DEF0
+	ldr r1, _0803DEF0 @ =gTrainerClassToNameIndex
 	adds r0, r1
 	ldrb r0, [r0]
 	pop {r4,r5}
@@ -3493,7 +3493,7 @@ PlayerPartyAndPokemonStorageFull: @ 803DEF4
 _0803DEF8:
 	movs r0, 0x64
 	muls r0, r4
-	ldr r1, _0803DF10
+	ldr r1, _0803DF10 @ =gPlayerParty
 	adds r0, r1
 	movs r1, 0xB
 	movs r2, 0
@@ -3528,7 +3528,7 @@ _0803DF30:
 	adds r6, r7, 0
 	movs r4, 0
 _0803DF36:
-	ldr r0, _0803DF50
+	ldr r0, _0803DF50 @ =gUnknown_020300A4
 	adds r0, r4, r0
 	adds r0, r6, r0
 	movs r1, 0xB
@@ -3571,7 +3571,7 @@ GetSpeciesName: @ 803DF74
 	movs r0, 0xCE
 	lsls r0, 1
 	mov r12, r0
-	ldr r7, _0803DF90
+	ldr r7, _0803DF90 @ =gSpeciesNames
 	movs r0, 0xB
 	muls r0, r5
 	adds r3, r0, r7
@@ -3614,13 +3614,13 @@ CalculatePPWithBonus: @ 803DFC0
 	lsrs r0, 16
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r4, _0803E000
+	ldr r4, _0803E000 @ =gBattleMoves
 	lsls r3, r0, 1
 	adds r3, r0
 	lsls r3, 2
 	adds r3, r4
 	ldrb r4, [r3, 0x4]
-	ldr r0, _0803E004
+	ldr r0, _0803E004 @ =gUnknown_08208238
 	adds r0, r2, r0
 	ldrb r3, [r0]
 	ands r3, r1
@@ -3658,7 +3658,7 @@ RemoveMonPPBonus: @ 803E008
 	lsrs r0, 24
 	mov r1, sp
 	strb r0, [r1]
-	ldr r1, _0803E040
+	ldr r1, _0803E040 @ =gUnknown_0820823C
 	adds r4, r1
 	ldrb r1, [r4]
 	ands r1, r0
@@ -3681,7 +3681,7 @@ RemoveBattleMonPPBonus: @ 803E044
 	lsls r1, 24
 	lsrs r1, 24
 	adds r0, 0x3B
-	ldr r2, _0803E058
+	ldr r2, _0803E058 @ =gUnknown_0820823C
 	adds r1, r2
 	ldrb r2, [r0]
 	ldrb r1, [r1]
@@ -3709,13 +3709,13 @@ CopyPlayerPartyMonToBattleData: @ 803E05C
 	movs r0, 0x64
 	mov r5, r9
 	muls r5, r0
-	ldr r0, _0803E344
+	ldr r0, _0803E344 @ =gPlayerParty
 	adds r5, r0
 	adds r0, r5, 0
 	movs r1, 0xB
 	movs r2, 0
 	bl GetMonData
-	ldr r1, _0803E348
+	ldr r1, _0803E348 @ =gBattleMons
 	mov r8, r1
 	movs r1, 0x58
 	ldr r2, [sp, 0x14]
@@ -3758,7 +3758,7 @@ _0803E0AE:
 	movs r0, 0x64
 	mov r4, r9
 	muls r4, r0
-	ldr r0, _0803E344
+	ldr r0, _0803E344 @ =gPlayerParty
 	adds r4, r0
 	adds r0, r4, 0
 	movs r1, 0x15
@@ -3813,7 +3813,7 @@ _0803E0AE:
 	ands r0, r2
 	lsls r0, 5
 	ldrh r2, [r7, 0x14]
-	ldr r1, _0803E34C
+	ldr r1, _0803E34C @ =0xfffffc1f
 	ands r1, r2
 	orrs r1, r0
 	strh r1, [r7, 0x14]
@@ -3837,7 +3837,7 @@ _0803E0AE:
 	ands r1, r0
 	lsls r1, 15
 	ldr r0, [r7, 0x14]
-	ldr r2, _0803E350
+	ldr r2, _0803E350 @ =0xfff07fff
 	ands r0, r2
 	orrs r0, r1
 	str r0, [r7, 0x14]
@@ -3849,7 +3849,7 @@ _0803E0AE:
 	ands r0, r3
 	lsls r0, 4
 	ldrh r2, [r7, 0x16]
-	ldr r1, _0803E354
+	ldr r1, _0803E354 @ =0xfffffe0f
 	ands r1, r2
 	orrs r1, r0
 	strh r1, [r7, 0x16]
@@ -3954,7 +3954,7 @@ _0803E0AE:
 	adds r1, 0x48
 	adds r1, r5, r1
 	str r0, [r1]
-	ldr r2, _0803E358
+	ldr r2, _0803E358 @ =gBaseStats
 	ldrh r1, [r7]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -3999,7 +3999,7 @@ _0803E0AE:
 	bl battle_side_get_owner
 	lsls r0, 24
 	lsrs r0, 23
-	ldr r1, _0803E35C
+	ldr r1, _0803E35C @ =0x020160bc
 	adds r0, r1
 	ldrh r1, [r7, 0x28]
 	strh r1, [r0]

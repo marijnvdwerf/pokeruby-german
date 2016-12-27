@@ -12,7 +12,7 @@ AreMovesContestCombo: @ 80B7EB8
 	sub sp, 0x4
 	lsls r0, 16
 	lsls r1, 16
-	ldr r2, _080B7F0C
+	ldr r2, _080B7F0C @ =gContestMoves
 	lsrs r0, 13
 	adds r0, r2
 	ldrb r4, [r0, 0x2]
@@ -46,7 +46,7 @@ AreMovesContestCombo: @ 80B7EB8
 	cmp r4, r1
 	bne _080B7F14
 _080B7F02:
-	ldr r0, _080B7F10
+	ldr r0, _080B7F10 @ =gComboStarterLookupTable
 	adds r0, r4, r0
 	ldrb r0, [r0]
 	b _080B7F16
@@ -70,7 +70,7 @@ ContestEffect_00: @ 80B7F20
 	thumb_func_start ContestEffect_01
 ContestEffect_01: @ 80B7F24
 	push {lr}
-	ldr r3, _080B7F4C
+	ldr r3, _080B7F4C @ =0x020192d0
 	ldrb r1, [r3, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -94,7 +94,7 @@ _080B7F4C: .4byte 0x020192d0
 	thumb_func_start ContestEffect_02
 ContestEffect_02: @ 80B7F50
 	push {lr}
-	ldr r3, _080B7F78
+	ldr r3, _080B7F78 @ =0x020192d0
 	ldrb r1, [r3, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -118,7 +118,7 @@ _080B7F78: .4byte 0x020192d0
 	thumb_func_start ContestEffect_03
 ContestEffect_03: @ 80B7F7C
 	push {r4,lr}
-	ldr r3, _080B7FC4
+	ldr r3, _080B7FC4 @ =0x020192d0
 	ldrb r1, [r3, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -160,7 +160,7 @@ _080B7FC4: .4byte 0x020192d0
 	thumb_func_start ContestEffect_04
 ContestEffect_04: @ 80B7FC8
 	push {lr}
-	ldr r2, _080B7FEC
+	ldr r2, _080B7FEC @ =0x020192d0
 	ldrb r1, [r2, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -182,7 +182,7 @@ _080B7FEC: .4byte 0x020192d0
 	thumb_func_start ContestEffect_05
 ContestEffect_05: @ 80B7FF0
 	push {lr}
-	ldr r3, _080B8018
+	ldr r3, _080B8018 @ =0x020192d0
 	ldrb r1, [r3, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -206,7 +206,7 @@ _080B8018: .4byte 0x020192d0
 	thumb_func_start ContestEffect_06
 ContestEffect_06: @ 80B801C
 	push {lr}
-	ldr r2, _080B8040
+	ldr r2, _080B8040 @ =0x020192d0
 	ldrb r1, [r2, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -228,7 +228,7 @@ _080B8040: .4byte 0x020192d0
 	thumb_func_start ContestEffect_07
 ContestEffect_07: @ 80B8044
 	push {lr}
-	ldr r3, _080B806C
+	ldr r3, _080B806C @ =0x020192d0
 	ldrb r1, [r3, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -253,7 +253,7 @@ _080B806C: .4byte 0x020192d0
 ContestEffect_08: @ 80B8070
 	push {r4,lr}
 	movs r2, 0
-	ldr r3, _080B80CC
+	ldr r3, _080B80CC @ =0x020192d0
 	ldrb r0, [r3, 0x11]
 	adds r1, r0, r3
 	ldrb r0, [r1]
@@ -276,7 +276,7 @@ _080B808C:
 	cmp r0, r1
 	bne _080B808C
 _080B809E:
-	ldr r1, _080B80CC
+	ldr r1, _080B80CC @ =0x020192d0
 	strb r2, [r1, 0x8]
 	movs r0, 0xFF
 	strb r0, [r1, 0x9]
@@ -286,12 +286,12 @@ _080B809E:
 _080B80AE:
 	cmp r2, 0
 	bne _080B80BC
-	ldr r0, _080B80CC
+	ldr r0, _080B80CC @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x36
 	bl sub_80B1404
 _080B80BC:
-	ldr r0, _080B80CC
+	ldr r0, _080B80CC @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x30
 	bl sub_80B13EC
@@ -306,7 +306,7 @@ _080B80CC: .4byte 0x020192d0
 ContestEffect_09: @ 80B80D0
 	push {r4-r6,lr}
 	movs r2, 0
-	ldr r1, _080B8130
+	ldr r1, _080B8130 @ =0x020192d0
 	ldrb r0, [r1, 0x11]
 	adds r4, r0, r1
 	ldrb r0, [r4]
@@ -329,7 +329,7 @@ _080B80F8:
 	adds r2, 0x1
 	cmp r2, 0x3
 	ble _080B80E8
-	ldr r0, _080B8130
+	ldr r0, _080B8130 @ =0x020192d0
 	adds r0, 0x8
 	adds r0, r3, r0
 	movs r1, 0xFF
@@ -340,12 +340,12 @@ _080B80F8:
 _080B8110:
 	cmp r2, 0
 	bne _080B811E
-	ldr r0, _080B8130
+	ldr r0, _080B8130 @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x36
 	bl sub_80B1404
 _080B811E:
-	ldr r0, _080B8130
+	ldr r0, _080B8130 @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x30
 	bl sub_80B13EC
@@ -374,7 +374,7 @@ ContestEffect_14: @ 80B8134
 	bhi _080B8156
 	movs r1, 0x28
 _080B8156:
-	ldr r0, _080B8164
+	ldr r0, _080B8164 @ =0x020192d0
 	strh r1, [r0, 0x4]
 	bl ContestEffect_08
 	pop {r0}
@@ -389,7 +389,7 @@ ContestEffect_15: @ 80B8168
 	mov r7, r8
 	push {r7}
 	movs r7, 0
-	ldr r0, _080B8200
+	ldr r0, _080B8200 @ =0x020192d0
 	ldrb r6, [r0, 0x11]
 	adds r1, r6, r0
 	ldrb r1, [r1]
@@ -474,7 +474,7 @@ ContestEffect_16: @ 80B8204
 	push {r5-r7}
 	movs r0, 0
 	mov r9, r0
-	ldr r0, _080B829C
+	ldr r0, _080B829C @ =0x020192d0
 	ldrb r7, [r0, 0x11]
 	adds r1, r7, r0
 	ldrb r1, [r1]
@@ -555,7 +555,7 @@ ContestEffect_17: @ 80B82A0
 	push {r6,r7}
 	movs r0, 0
 	mov r9, r0
-	ldr r0, _080B82E4
+	ldr r0, _080B82E4 @ =0x020192d0
 	ldrb r1, [r0, 0x11]
 	mov r8, r1
 	adds r1, r0
@@ -605,7 +605,7 @@ _080B82EA:
 _080B8306:
 	adds r7, 0x1C
 	adds r5, 0x1
-	ldr r6, _080B8334
+	ldr r6, _080B8334 @ =0x020192d0
 	cmp r5, 0x3
 	ble _080B82C2
 _080B8310:
@@ -632,7 +632,7 @@ _080B8334: .4byte 0x020192d0
 	thumb_func_start ContestEffect_18
 ContestEffect_18: @ 80B8338
 	push {r4,lr}
-	ldr r4, _080B8364
+	ldr r4, _080B8364 @ =0x020192d0
 	ldrb r1, [r4, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -658,7 +658,7 @@ _080B8364: .4byte 0x020192d0
 	thumb_func_start ContestEffect_19
 ContestEffect_19: @ 80B8368
 	push {r4,lr}
-	ldr r4, _080B839C
+	ldr r4, _080B839C @ =0x020192d0
 	ldrb r1, [r4, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -667,7 +667,7 @@ ContestEffect_19: @ 80B8368
 	subs r1, 0x70
 	adds r0, r1
 	ldrh r0, [r0, 0x6]
-	ldr r1, _080B83A0
+	ldr r1, _080B83A0 @ =gContestMoves
 	lsls r0, 3
 	adds r0, r1
 	ldrb r0, [r0, 0x1]
@@ -690,7 +690,7 @@ ContestEffect_20: @ 80B83A4
 	push {lr}
 	movs r0, 0
 	bl sub_80B9038
-	ldr r0, _080B83BC
+	ldr r0, _080B83BC @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x30
 	bl sub_80B13EC
@@ -705,7 +705,7 @@ ContestEffect_21: @ 80B83C0
 	push {lr}
 	movs r0, 0x1
 	bl sub_80B9038
-	ldr r0, _080B83D8
+	ldr r0, _080B83D8 @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x30
 	bl sub_80B13EC
@@ -720,7 +720,7 @@ ContestEffect_22: @ 80B83DC
 	push {lr}
 	movs r0, 0x2
 	bl sub_80B9038
-	ldr r0, _080B83F4
+	ldr r0, _080B83F4 @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x30
 	bl sub_80B13EC
@@ -735,7 +735,7 @@ ContestEffect_23: @ 80B83F8
 	push {lr}
 	movs r0, 0x3
 	bl sub_80B9038
-	ldr r0, _080B8410
+	ldr r0, _080B8410 @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x30
 	bl sub_80B13EC
@@ -750,7 +750,7 @@ ContestEffect_24: @ 80B8414
 	push {lr}
 	movs r0, 0x4
 	bl sub_80B9038
-	ldr r0, _080B842C
+	ldr r0, _080B842C @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x30
 	bl sub_80B13EC
@@ -764,7 +764,7 @@ _080B842C: .4byte 0x020192d0
 ContestEffect_25: @ 80B8430
 	push {r4-r7,lr}
 	movs r4, 0
-	ldr r0, _080B8474
+	ldr r0, _080B8474 @ =0x020192d0
 	ldrb r1, [r0, 0x11]
 	adds r1, r0
 	ldrb r1, [r1]
@@ -843,7 +843,7 @@ ContestEffect_26: @ 80B84A4
 	mov r8, r2
 	add r3, sp, 0x8
 	mov r10, r3
-	ldr r5, _080B8518
+	ldr r5, _080B8518 @ =0x020192d0
 	adds r7, r5, 0
 	subs r7, 0x70
 _080B84D4:
@@ -914,7 +914,7 @@ _080B854A:
 	movs r7, 0
 	mov r4, r10
 _080B8550:
-	ldr r0, _080B8584
+	ldr r0, _080B8584 @ =0x02019260
 	adds r5, r7, r0
 	ldrb r1, [r5, 0x15]
 	movs r0, 0x10
@@ -927,12 +927,12 @@ _080B8550:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080B8590
-	ldr r1, _080B8588
+	ldr r1, _080B8588 @ =gContestMoves
 	ldrh r0, [r5, 0x8]
 	lsls r0, 3
 	adds r0, r1
 	ldrb r0, [r0, 0x2]
-	ldr r1, _080B858C
+	ldr r1, _080B858C @ =gComboStarterLookupTable
 	adds r0, r1
 	ldrb r1, [r0]
 	lsls r0, r1, 2
@@ -947,7 +947,7 @@ _080B8590:
 	movs r0, 0
 _080B8592:
 	strh r0, [r4]
-	ldr r5, _080B8628
+	ldr r5, _080B8628 @ =0x02019260
 	adds r0, r7, r5
 	ldrb r0, [r0, 0xD]
 	lsls r0, 24
@@ -1046,7 +1046,7 @@ _080B864C:
 	cmp r0, 0xFF
 	bne _080B85D6
 _080B865E:
-	ldr r4, _080B8688
+	ldr r4, _080B8688 @ =0x020192d0
 	ldrb r0, [r4, 0x11]
 	movs r1, 0xB
 	bl sub_80B13EC
@@ -1077,7 +1077,7 @@ ContestEffect_27: @ 80B868C
 	movs r0, 0
 	mov r8, r0
 	movs r6, 0
-	ldr r7, _080B8714
+	ldr r7, _080B8714 @ =0x020192d0
 	adds r5, r7, 0
 	subs r5, 0x63
 _080B869E:
@@ -1122,7 +1122,7 @@ _080B86EA:
 	adds r6, 0x1
 	cmp r6, 0x3
 	ble _080B869E
-	ldr r4, _080B8714
+	ldr r4, _080B8714 @ =0x020192d0
 	ldrb r0, [r4, 0x11]
 	movs r1, 0xC
 	bl sub_80B13EC
@@ -1147,7 +1147,7 @@ ContestEffect_28: @ 80B8718
 	push {r4-r7,lr}
 	movs r7, 0
 	movs r5, 0
-	ldr r4, _080B8744
+	ldr r4, _080B8744 @ =0x020192d0
 	movs r6, 0
 _080B8722:
 	ldrb r0, [r4, 0x11]
@@ -1188,7 +1188,7 @@ _080B8762:
 	adds r5, 0x1
 	cmp r5, 0x3
 	ble _080B8722
-	ldr r4, _080B8788
+	ldr r4, _080B8788 @ =0x020192d0
 	ldrb r0, [r4, 0x11]
 	movs r1, 0xE
 	bl sub_80B13EC
@@ -1208,8 +1208,8 @@ _080B8788: .4byte 0x020192d0
 	thumb_func_start ContestEffect_29
 ContestEffect_29: @ 80B878C
 	push {r4,lr}
-	ldr r0, _080B87D0
-	ldr r4, _080B87D4
+	ldr r0, _080B87D0 @ =gUnknown_02038696
+	ldr r4, _080B87D4 @ =0x020192d0
 	ldrb r2, [r4, 0x11]
 	adds r0, r2, r0
 	ldrb r0, [r0]
@@ -1222,8 +1222,8 @@ ContestEffect_29: @ 80B878C
 	subs r0, 0x70
 	adds r1, r0
 	ldrh r0, [r1, 0x6]
-	ldr r3, _080B87D8
-	ldr r2, _080B87DC
+	ldr r3, _080B87D8 @ =gContestEffects
+	ldr r2, _080B87DC @ =gContestMoves
 	lsls r0, 3
 	adds r0, r2
 	ldrb r0, [r0]
@@ -1251,8 +1251,8 @@ _080B87DC: .4byte gContestMoves
 	thumb_func_start ContestEffect_30
 ContestEffect_30: @ 80B87E0
 	push {r4,lr}
-	ldr r0, _080B8824
-	ldr r4, _080B8828
+	ldr r0, _080B8824 @ =gUnknown_02038696
+	ldr r4, _080B8828 @ =0x020192d0
 	ldrb r2, [r4, 0x11]
 	adds r0, r2, r0
 	ldrb r0, [r0]
@@ -1265,8 +1265,8 @@ ContestEffect_30: @ 80B87E0
 	subs r0, 0x70
 	adds r1, r0
 	ldrh r0, [r1, 0x6]
-	ldr r3, _080B882C
-	ldr r2, _080B8830
+	ldr r3, _080B882C @ =gContestEffects
+	ldr r2, _080B8830 @ =gContestMoves
 	lsls r0, 3
 	adds r0, r2
 	ldrb r0, [r0]
@@ -1296,7 +1296,7 @@ ContestEffect_31: @ 80B8834
 	push {r4-r7,lr}
 	movs r1, 0
 	movs r3, 0
-	ldr r4, _080B8880
+	ldr r4, _080B8880 @ =0x020192d0
 	ldrb r0, [r4, 0x11]
 	adds r0, r4
 	ldrb r5, [r0]
@@ -1321,7 +1321,7 @@ _080B8858:
 	bge _080B8866
 	movs r3, 0
 _080B8866:
-	ldr r4, _080B8880
+	ldr r4, _080B8880 @ =0x020192d0
 	ldrb r2, [r4, 0x11]
 	adds r0, r2, r4
 	ldrb r0, [r0]
@@ -1353,7 +1353,7 @@ _080B8884:
 	movs r1, 0x11
 	bl sub_80B13EC
 _080B88A4:
-	ldr r4, _080B88D0
+	ldr r4, _080B88D0 @ =0x020192d0
 	ldrb r1, [r4, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -1381,7 +1381,7 @@ _080B88D0: .4byte 0x020192d0
 ContestEffect_32: @ 80B88D4
 	push {r4-r7,lr}
 	movs r6, 0
-	ldr r0, _080B8928
+	ldr r0, _080B8928 @ =0x020192d0
 	ldrb r1, [r0, 0x11]
 	adds r3, r1, r0
 	ldrb r1, [r3]
@@ -1446,7 +1446,7 @@ _080B8946:
 	thumb_func_start ContestEffect_33
 ContestEffect_33: @ 80B894C
 	push {lr}
-	ldr r0, _080B896C
+	ldr r0, _080B896C @ =0x020192d0
 	ldrb r2, [r0, 0x11]
 	adds r1, r2, r0
 	ldrb r3, [r1]
@@ -1522,7 +1522,7 @@ ContestEffect_34: @ 80B89C4
 	cmp r0, 0x2
 	bhi _080B89F0
 	movs r4, 0xA
-	ldr r0, _080B89EC
+	ldr r0, _080B89EC @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x1A
 	bl sub_80B13EC
@@ -1533,7 +1533,7 @@ _080B89F0:
 	cmp r0, 0x5
 	bhi _080B8A08
 	movs r4, 0x14
-	ldr r0, _080B8A04
+	ldr r0, _080B8A04 @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x1B
 	bl sub_80B13EC
@@ -1544,7 +1544,7 @@ _080B8A08:
 	cmp r0, 0x7
 	bhi _080B8A20
 	movs r4, 0x28
-	ldr r0, _080B8A1C
+	ldr r0, _080B8A1C @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x1C
 	bl sub_80B13EC
@@ -1555,7 +1555,7 @@ _080B8A20:
 	cmp r1, 0x8
 	bhi _080B8A38
 	movs r4, 0x3C
-	ldr r0, _080B8A34
+	ldr r0, _080B8A34 @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x1D
 	bl sub_80B13EC
@@ -1564,12 +1564,12 @@ _080B8A20:
 _080B8A34: .4byte 0x020192d0
 _080B8A38:
 	movs r4, 0x50
-	ldr r0, _080B8A5C
+	ldr r0, _080B8A5C @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x1E
 	bl sub_80B13EC
 _080B8A44:
-	ldr r0, _080B8A5C
+	ldr r0, _080B8A5C @ =0x020192d0
 	ldrb r2, [r0, 0x11]
 	lsls r1, r2, 3
 	subs r1, r2
@@ -1587,7 +1587,7 @@ _080B8A5C: .4byte 0x020192d0
 	thumb_func_start ContestEffect_35
 ContestEffect_35: @ 80B8A60
 	push {r4-r7,lr}
-	ldr r1, _080B8AD4
+	ldr r1, _080B8AD4 @ =0x020192d0
 	ldrb r0, [r1, 0x11]
 	adds r0, r1
 	movs r2, 0
@@ -1608,7 +1608,7 @@ _080B8A7E:
 	adds r4, r0, 0
 	cmp r5, r1
 	beq _080B8AA4
-	ldr r3, _080B8AD4
+	ldr r3, _080B8AD4 @ =0x020192d0
 _080B8A8C:
 	lsls r0, r2, 24
 	movs r2, 0x80
@@ -1660,7 +1660,7 @@ _080B8AD8:
 	subs r3, 0x70
 	adds r5, r0, r3
 	ldrh r0, [r5, 0x6]
-	ldr r4, _080B8B30
+	ldr r4, _080B8B30 @ =gContestMoves
 	lsls r0, 3
 	adds r6, r0, r4
 	ldrb r2, [r6, 0x1]
@@ -1677,7 +1677,7 @@ _080B8AD8:
 	lsls r0, 29
 	cmp r2, r0
 	bne _080B8B28
-	ldr r1, _080B8B34
+	ldr r1, _080B8B34 @ =gContestEffects
 	ldrb r0, [r6]
 	lsls r0, 2
 	adds r0, r1
@@ -1705,7 +1705,7 @@ ContestEffect_36: @ 80B8B38
 	mov r7, r9
 	mov r6, r8
 	push {r6,r7}
-	ldr r0, _080B8BBC
+	ldr r0, _080B8BBC @ =0x020192d0
 	ldrb r2, [r0, 0x11]
 	adds r1, r2, r0
 	ldrb r1, [r1]
@@ -1722,7 +1722,7 @@ ContestEffect_36: @ 80B8B38
 	mov r9, r0
 	movs r4, 0
 	mov r6, r8
-	ldr r0, _080B8BC0
+	ldr r0, _080B8BC0 @ =gContestMoves
 	mov r12, r0
 	movs r7, 0
 _080B8B68:
@@ -1754,7 +1754,7 @@ _080B8B68:
 	subs r1, r2
 	lsls r1, 2
 	adds r1, r5
-	ldr r2, _080B8BC4
+	ldr r2, _080B8BC4 @ =gContestEffects
 	ldrb r0, [r3]
 	lsls r0, 2
 	adds r0, r2
@@ -1788,7 +1788,7 @@ _080B8BD0:
 	thumb_func_start ContestEffect_37
 ContestEffect_37: @ 80B8BDC
 	push {r4-r7,lr}
-	ldr r1, _080B8C28
+	ldr r1, _080B8C28 @ =0x020192d0
 	ldrb r0, [r1, 0x11]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -1849,7 +1849,7 @@ _080B8C44:
 	thumb_func_start ContestEffect_38
 ContestEffect_38: @ 80B8C4C
 	push {r4,r5,lr}
-	ldr r4, _080B8C90
+	ldr r4, _080B8C90 @ =0x020192d0
 	ldrb r2, [r4, 0x11]
 	lsls r0, r2, 3
 	subs r0, r2
@@ -1896,7 +1896,7 @@ _080B8C9C:
 	thumb_func_start ContestEffect_39
 ContestEffect_39: @ 80B8CA4
 	push {r4,lr}
-	ldr r3, _080B8CDC
+	ldr r3, _080B8CDC @ =0x020192d0
 	ldrb r1, [r3, 0x11]
 	lsls r0, r1, 3
 	subs r0, r1
@@ -1940,7 +1940,7 @@ ContestEffect_40: @ 80B8CF0
 	mov r7, r8
 	push {r7}
 	sub sp, 0x4
-	ldr r1, _080B8D78
+	ldr r1, _080B8D78 @ =0x02019204
 	ldrb r0, [r1, 0x1]
 	cmp r0, 0x4
 	bne _080B8D02
@@ -2099,7 +2099,7 @@ ContestEffect_41: @ 80B8E18
 	mov r6, r8
 	push {r6,r7}
 	sub sp, 0x4
-	ldr r1, _080B8EA8
+	ldr r1, _080B8EA8 @ =0x02019204
 	ldrb r0, [r1, 0x1]
 	cmp r0, 0x4
 	bne _080B8E2C
@@ -2264,7 +2264,7 @@ ContestEffect_42: @ 80B8F48
 ContestEffect_43: @ 80B8F4C
 	push {r4-r7,lr}
 	sub sp, 0x8
-	ldr r1, _080B8FC4
+	ldr r1, _080B8FC4 @ =0x02019204
 	ldrb r0, [r1, 0x1]
 	cmp r0, 0x4
 	beq _080B9042
@@ -2346,7 +2346,7 @@ _080B8FDC:
 	cmp r0, 0x3
 	ble _080B8F8A
 	movs r6, 0
-	ldr r4, _080B904C
+	ldr r4, _080B904C @ =0x020192d0
 	adds r7, r4, 0
 	subs r7, 0x70
 	movs r3, 0x3F
@@ -2400,8 +2400,8 @@ _080B904C: .4byte 0x020192d0
 	thumb_func_start ContestEffect_44
 ContestEffect_44: @ 80B9050
 	push {lr}
-	ldr r3, _080B9084
-	ldr r1, _080B9088
+	ldr r3, _080B9084 @ =gContestMoves
+	ldr r1, _080B9088 @ =0x020192d0
 	ldrb r2, [r1, 0x11]
 	lsls r0, r2, 3
 	subs r0, r2
@@ -2413,7 +2413,7 @@ ContestEffect_44: @ 80B9050
 	adds r0, r3
 	ldrb r0, [r0, 0x1]
 	lsls r0, 29
-	ldr r1, _080B908C
+	ldr r1, _080B908C @ =gScriptContestCategory
 	lsrs r0, 29
 	ldrh r1, [r1]
 	cmp r0, r1
@@ -2436,7 +2436,7 @@ ContestEffect_45: @ 80B9090
 	push {r4-r7,lr}
 	movs r7, 0
 	movs r5, 0
-	ldr r4, _080B90C8
+	ldr r4, _080B90C8 @ =0x020192d0
 	movs r6, 0
 _080B909A:
 	ldrb r0, [r4, 0x11]
@@ -2484,12 +2484,12 @@ _080B90E6:
 	ble _080B909A
 	cmp r7, 0
 	bne _080B90FC
-	ldr r0, _080B910C
+	ldr r0, _080B910C @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x36
 	bl sub_80B1404
 _080B90FC:
-	ldr r0, _080B910C
+	ldr r0, _080B910C @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x30
 	bl sub_80B13EC
@@ -2503,7 +2503,7 @@ _080B910C: .4byte 0x020192d0
 	thumb_func_start ContestEffect_46
 ContestEffect_46: @ 80B9110
 	push {r4,lr}
-	ldr r0, _080B912C
+	ldr r0, _080B912C @ =0x02019204
 	movs r1, 0x13
 	ldrsb r1, [r0, r1]
 	cmp r1, 0
@@ -2550,7 +2550,7 @@ _080B9166:
 	movs r1, 0x1E
 	bl sub_80B13EC
 _080B9172:
-	ldr r0, _080B9188
+	ldr r0, _080B9188 @ =0x020192d0
 	ldrb r2, [r0, 0x11]
 	lsls r1, r2, 3
 	subs r1, r2
@@ -2568,7 +2568,7 @@ _080B9188: .4byte 0x020192d0
 	thumb_func_start ContestEffect_47
 ContestEffect_47: @ 80B918C
 	push {lr}
-	ldr r3, _080B91C8
+	ldr r3, _080B91C8 @ =0x02019328
 	ldrb r2, [r3, 0x1]
 	movs r0, 0x1
 	ands r0, r2
@@ -2611,8 +2611,8 @@ sub_80B9038: @ 80B91CC
 	mov r8, r0
 	movs r7, 0
 	movs r5, 0
-	ldr r4, _080B9210
-	ldr r0, _080B9214
+	ldr r4, _080B9210 @ =0x020192d0
+	ldr r0, _080B9214 @ =gContestMoves
 	mov r9, r0
 	movs r6, 0
 _080B91E6:
@@ -2658,7 +2658,7 @@ _080B922E:
 	ble _080B91E6
 	cmp r7, 0
 	bne _080B9244
-	ldr r0, _080B9250
+	ldr r0, _080B9250 @ =0x020192d0
 	ldrb r0, [r0, 0x11]
 	movs r1, 0x36
 	bl sub_80B1404
@@ -2678,7 +2678,7 @@ sub_80B90C0: @ 80B9254
 	push {lr}
 	lsls r0, 24
 	lsrs r3, r0, 24
-	ldr r2, _080B9280
+	ldr r2, _080B9280 @ =0x020192d0
 	adds r0, r2, 0
 	adds r0, 0xD
 	adds r0, r3, r0
@@ -2738,7 +2738,7 @@ sub_80B9120: @ 80B92B4
 	movs r2, 0x8
 	bl memset
 	movs r7, 0
-	ldr r1, _080B9320
+	ldr r1, _080B9320 @ =0x020192d0
 	ldrb r0, [r1, 0x8]
 	cmp r0, 0xFF
 	beq _080B936C
@@ -2815,7 +2815,7 @@ _080B9340:
 	strh r0, [r1]
 _080B935C:
 	adds r7, 0x1
-	ldr r1, _080B937C
+	ldr r1, _080B937C @ =0x020192d0
 	adds r0, r1, 0
 	adds r0, 0x8
 	adds r0, r7, r0
@@ -2856,7 +2856,7 @@ sub_80B9200: @ 80B9394
 	lsls r2, r0, 3
 	subs r2, r0
 	lsls r2, 2
-	ldr r0, _080B93B4
+	ldr r0, _080B93B4 @ =0x02019260
 	adds r2, r0
 	ldrh r0, [r2, 0x2]
 	subs r0, r1

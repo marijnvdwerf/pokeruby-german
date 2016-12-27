@@ -78,12 +78,12 @@ InitMainMenu: @ 80098D4
 	strh r1, [r0]
 	add r0, sp, 0x4
 	strh r1, [r0]
-	ldr r1, _08009988
+	ldr r1, _08009988 @ =0x040000d4
 	str r0, [r1]
 	movs r0, 0xC0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _0800998C
+	ldr r0, _0800998C @ =0x8100c000
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	movs r5, 0
@@ -93,19 +93,19 @@ InitMainMenu: @ 80098D4
 	movs r0, 0xE0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _08009990
+	ldr r0, _08009990 @ =0x85000100
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	add r0, sp, 0x4
 	strh r5, [r0]
 	str r0, [r1]
-	ldr r0, _08009994
+	ldr r0, _08009994 @ =0x05000002
 	str r0, [r1, 0x4]
-	ldr r0, _08009998
+	ldr r0, _08009998 @ =0x810001ff
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	bl ResetPaletteFade
-	ldr r0, _0800999C
+	ldr r0, _0800999C @ =gMainMenuPalette
 	movs r1, 0
 	movs r2, 0x20
 	bl LoadPalette
@@ -113,9 +113,9 @@ InitMainMenu: @ 80098D4
 	bl ResetTasks
 	bl ResetSpriteData
 	bl FreeAllSpritePalettes
-	ldr r0, _080099A0
+	ldr r0, _080099A0 @ =gWindowConfig_81E6C3C
 	bl SetUpWindowConfig
-	ldr r0, _080099A4
+	ldr r0, _080099A4 @ =gWindowConfig_81E6CE4
 	bl InitMenuWindow
 	cmp r4, 0
 	beq _080099A8
@@ -139,14 +139,14 @@ _080099A4: .4byte gWindowConfig_81E6CE4
 _080099A8:
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _08009A24
+	ldr r1, _08009A24 @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
 _080099BA:
-	ldr r0, _08009A28
+	ldr r0, _08009A28 @ =0x04000040
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
@@ -161,18 +161,18 @@ _080099BA:
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
-	ldr r3, _08009A2C
+	ldr r3, _08009A2C @ =0x04000208
 	ldrh r2, [r3]
 	strh r1, [r3]
-	ldr r4, _08009A30
+	ldr r4, _08009A30 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r0, _08009A34
+	ldr r0, _08009A34 @ =VBlankCB_MainMenu
 	bl SetVBlankCallback
-	ldr r0, _08009A38
+	ldr r0, _08009A38 @ =CB2_MainMenu
 	bl SetMainCallback2
 	movs r1, 0x80
 	lsls r1, 19
@@ -180,12 +180,12 @@ _080099BA:
 	lsls r2, 6
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _08009A3C
+	ldr r0, _08009A3C @ =Task_MainMenuCheckSave
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08009A40
+	ldr r2, _08009A40 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -214,7 +214,7 @@ Task_MainMenuCheckSave: @ 8009A44
 	push {r7}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r0, _08009AA0
+	ldr r0, _08009AA0 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -224,13 +224,13 @@ Task_MainMenuCheckSave: @ 8009A44
 	beq _08009A60
 	b _08009BC8
 _08009A60:
-	ldr r7, _08009AA4
+	ldr r7, _08009AA4 @ =0x04000040
 	strh r6, [r7]
-	ldr r0, _08009AA8
+	ldr r0, _08009AA8 @ =0x04000044
 	mov r8, r0
 	strh r6, [r0]
-	ldr r1, _08009AAC
-	ldr r2, _08009AB0
+	ldr r1, _08009AAC @ =0x04000048
+	ldr r2, _08009AB0 @ =0x00001111
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
@@ -239,12 +239,12 @@ _08009A60:
 	adds r1, 0x6
 	movs r0, 0xF1
 	strh r0, [r1]
-	ldr r0, _08009AB4
+	ldr r0, _08009AB4 @ =0x04000052
 	strh r6, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
 	strh r0, [r1]
-	ldr r0, _08009AB8
+	ldr r0, _08009AB8 @ =gSaveFileStatus
 	ldrh r4, [r0]
 	cmp r4, 0x2
 	beq _08009B08
@@ -273,7 +273,7 @@ _08009AC6:
 	bl IsMysteryGiftAvailable
 	cmp r0, 0x1
 	bne _08009AE8
-	ldr r2, _08009AE4
+	ldr r2, _08009AE4 @ =gTasks
 	lsls r3, r5, 2
 	adds r0, r3, r5
 	lsls r0, 3
@@ -286,7 +286,7 @@ _08009AC6:
 	.align 2, 0
 _08009AE4: .4byte gTasks
 _08009AE8:
-	ldr r0, _08009B00
+	ldr r0, _08009B00 @ =gTasks
 	lsls r2, r5, 2
 	adds r1, r2, r5
 	lsls r1, 3
@@ -297,7 +297,7 @@ _08009AF6:
 	adds r0, r2, r5
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08009B04
+	ldr r1, _08009B04 @ =Task_MainMenuCheckRtc
 	b _08009BC6
 	.align 2, 0
 _08009B00: .4byte gTasks
@@ -308,7 +308,7 @@ _08009B08:
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _08009B18
+	ldr r0, _08009B18 @ =gSaveFileDeletedMessage
 	b _08009BA2
 	.align 2, 0
 _08009B18: .4byte gSaveFileDeletedMessage
@@ -318,25 +318,25 @@ _08009B1C:
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _08009B60
+	ldr r0, _08009B60 @ =gSaveFileCorruptMessage
 	movs r1, 0x3
 	movs r2, 0xF
 	bl MenuPrintMessage
-	ldr r2, _08009B64
+	ldr r2, _08009B64 @ =0x000011df
 	adds r0, r2, 0
 	strh r0, [r7]
-	ldr r1, _08009B68
+	ldr r1, _08009B68 @ =0x0000719f
 	adds r0, r1, 0
 	mov r2, r8
 	strh r0, [r2]
-	ldr r1, _08009B6C
+	ldr r1, _08009B6C @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r4, r0, r1
 	movs r5, 0x1
 	strh r5, [r4, 0x8]
-	ldr r0, _08009B70
+	ldr r0, _08009B70 @ =Task_MainMenuWaitForSaveErrorAck
 	str r0, [r4]
 	bl IsMysteryGiftAvailable
 	cmp r0, 0x1
@@ -354,14 +354,14 @@ _08009B74:
 	strh r5, [r4, 0x8]
 	b _08009BC8
 _08009B78:
-	ldr r1, _08009B8C
+	ldr r1, _08009B8C @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
 	movs r1, 0
 	strh r1, [r0, 0x8]
-	ldr r1, _08009B90
+	ldr r1, _08009B90 @ =Task_MainMenuCheckRtc
 	b _08009BC6
 	.align 2, 0
 _08009B8C: .4byte gTasks
@@ -372,25 +372,25 @@ _08009B94:
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _08009BD4
+	ldr r0, _08009BD4 @ =gBoardNotInstalledMessage
 _08009BA2:
 	movs r1, 0x3
 	movs r2, 0xF
 	bl MenuPrintMessage
-	ldr r1, _08009BD8
+	ldr r1, _08009BD8 @ =0x000011df
 	adds r0, r1, 0
 	strh r0, [r7]
-	ldr r2, _08009BDC
+	ldr r2, _08009BDC @ =0x0000719f
 	adds r0, r2, 0
 	mov r1, r8
 	strh r0, [r1]
-	ldr r1, _08009BE0
+	ldr r1, _08009BE0 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
 	strh r6, [r0, 0x8]
-	ldr r1, _08009BE4
+	ldr r1, _08009BE4 @ =Task_MainMenuWaitForSaveErrorAck
 _08009BC6:
 	str r1, [r0]
 _08009BC8:
@@ -416,7 +416,7 @@ Task_MainMenuWaitForSaveErrorAck: @ 8009BE8
 	lsls r0, 24
 	cmp r0, 0
 	beq _08009C1E
-	ldr r0, _08009C24
+	ldr r0, _08009C24 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -427,12 +427,12 @@ Task_MainMenuWaitForSaveErrorAck: @ 8009BE8
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuZeroFillWindowRect
-	ldr r0, _08009C28
+	ldr r0, _08009C28 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08009C2C
+	ldr r0, _08009C2C @ =Task_MainMenuCheckRtc
 	str r0, [r1]
 _08009C1E:
 	pop {r4}
@@ -450,7 +450,7 @@ Task_MainMenuCheckRtc: @ 8009C30
 	lsls r0, 24
 	lsrs r4, r0, 24
 	adds r5, r4, 0
-	ldr r0, _08009C8C
+	ldr r0, _08009C8C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -458,12 +458,12 @@ Task_MainMenuCheckRtc: @ 8009C30
 	lsrs r2, r0, 24
 	cmp r2, 0
 	bne _08009CDC
-	ldr r6, _08009C90
+	ldr r6, _08009C90 @ =0x04000040
 	strh r2, [r6]
-	ldr r7, _08009C94
+	ldr r7, _08009C94 @ =0x04000044
 	strh r2, [r7]
-	ldr r1, _08009C98
-	ldr r3, _08009C9C
+	ldr r1, _08009C98 @ =0x04000048
+	ldr r3, _08009C9C @ =0x00001111
 	adds r0, r3, 0
 	strh r0, [r1]
 	adds r1, 0x2
@@ -472,7 +472,7 @@ Task_MainMenuCheckRtc: @ 8009C30
 	adds r1, 0x6
 	movs r0, 0xF1
 	strh r0, [r1]
-	ldr r0, _08009CA0
+	ldr r0, _08009CA0 @ =0x04000052
 	strh r2, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
@@ -483,12 +483,12 @@ Task_MainMenuCheckRtc: @ 8009C30
 	ands r1, r0
 	cmp r1, 0
 	bne _08009CAC
-	ldr r0, _08009CA4
+	ldr r0, _08009CA4 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08009CA8
+	ldr r0, _08009CA8 @ =Task_MainMenuDraw
 	str r0, [r1]
 	b _08009CDC
 	.align 2, 0
@@ -506,22 +506,22 @@ _08009CAC:
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _08009CE4
+	ldr r0, _08009CE4 @ =gBatteryDryMessage
 	movs r1, 0x3
 	movs r2, 0xF
 	bl MenuPrintMessage
-	ldr r1, _08009CE8
+	ldr r1, _08009CE8 @ =0x000011df
 	adds r0, r1, 0
 	strh r0, [r6]
-	ldr r3, _08009CEC
+	ldr r3, _08009CEC @ =0x0000719f
 	adds r0, r3, 0
 	strh r0, [r7]
-	ldr r1, _08009CF0
+	ldr r1, _08009CF0 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08009CF4
+	ldr r1, _08009CF4 @ =Task_MainMenuWaitForRtcErrorAck
 	str r1, [r0]
 _08009CDC:
 	pop {r4-r7}
@@ -544,7 +544,7 @@ Task_MainMenuWaitForRtcErrorAck: @ 8009CF8
 	lsls r0, 24
 	cmp r0, 0
 	beq _08009D2E
-	ldr r0, _08009D34
+	ldr r0, _08009D34 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -555,12 +555,12 @@ Task_MainMenuWaitForRtcErrorAck: @ 8009CF8
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuZeroFillWindowRect
-	ldr r0, _08009D38
+	ldr r0, _08009D38 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08009D3C
+	ldr r0, _08009D3C @ =Task_MainMenuDraw
 	str r0, [r1]
 _08009D2E:
 	pop {r4}
@@ -578,7 +578,7 @@ Task_MainMenuDraw: @ 8009D40
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _08009DA8
+	ldr r0, _08009DA8 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -588,12 +588,12 @@ Task_MainMenuDraw: @ 8009D40
 	beq _08009D5A
 	b _08009EEC
 _08009D5A:
-	ldr r0, _08009DAC
+	ldr r0, _08009DAC @ =0x04000040
 	strh r2, [r0]
 	adds r0, 0x4
 	strh r2, [r0]
-	ldr r1, _08009DB0
-	ldr r3, _08009DB4
+	ldr r1, _08009DB0 @ =0x04000048
+	ldr r3, _08009DB4 @ =0x00001111
 	adds r0, r3, 0
 	strh r0, [r1]
 	adds r1, 0x2
@@ -602,7 +602,7 @@ _08009D5A:
 	adds r1, 0x6
 	movs r0, 0xF1
 	strh r0, [r1]
-	ldr r0, _08009DB8
+	ldr r0, _08009DB8 @ =0x04000052
 	strh r2, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
@@ -612,12 +612,12 @@ _08009D5A:
 	movs r1, 0xFE
 	movs r2, 0x2
 	bl LoadPalette
-	ldr r0, _08009DBC
+	ldr r0, _08009DBC @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
 	cmp r0, 0
 	bne _08009DC4
 	mov r1, sp
-	ldr r2, _08009DC0
+	ldr r2, _08009DC0 @ =0x00007e04
 	adds r0, r2, 0
 	strh r0, [r1]
 	mov r0, sp
@@ -635,7 +635,7 @@ _08009DBC: .4byte gSaveBlock2
 _08009DC0: .4byte 0x00007e04
 _08009DC4:
 	mov r1, sp
-	ldr r3, _08009E20
+	ldr r3, _08009E20 @ =0x0000547f
 	adds r0, r3, 0
 	strh r0, [r1]
 	mov r0, sp
@@ -643,7 +643,7 @@ _08009DC4:
 	movs r2, 0x2
 	bl LoadPalette
 _08009DD6:
-	ldr r2, _08009E24
+	ldr r2, _08009E24 @ =gTasks
 	lsls r1, r4, 2
 	adds r0, r1, r4
 	lsls r0, 3
@@ -663,7 +663,7 @@ _08009DF2:
 	movs r2, 0x1C
 	movs r3, 0x3
 	bl MenuDrawTextWindow
-	ldr r0, _08009E28
+	ldr r0, _08009E28 @ =gMainMenuString_NewGame
 	movs r1, 0x2
 	movs r2, 0x1
 	bl PrintMainMenuItem
@@ -672,7 +672,7 @@ _08009DF2:
 	movs r2, 0x1C
 	movs r3, 0x7
 	bl MenuDrawTextWindow
-	ldr r0, _08009E2C
+	ldr r0, _08009E2C @ =gMainMenuString_Option
 	movs r1, 0x2
 	movs r2, 0x5
 	bl PrintMainMenuItem
@@ -688,7 +688,7 @@ _08009E30:
 	movs r2, 0x1C
 	movs r3, 0x7
 	bl MenuDrawTextWindow
-	ldr r0, _08009E78
+	ldr r0, _08009E78 @ =gMainMenuString_Continue
 	movs r1, 0x2
 	movs r2, 0x1
 	bl PrintMainMenuItem
@@ -697,7 +697,7 @@ _08009E30:
 	movs r2, 0x1C
 	movs r3, 0xB
 	bl MenuDrawTextWindow
-	ldr r0, _08009E7C
+	ldr r0, _08009E7C @ =gMainMenuString_NewGame
 	movs r1, 0x2
 	movs r2, 0x9
 	bl PrintMainMenuItem
@@ -706,7 +706,7 @@ _08009E30:
 	movs r2, 0x1C
 	movs r3, 0xF
 	bl MenuDrawTextWindow
-	ldr r0, _08009E80
+	ldr r0, _08009E80 @ =gMainMenuString_Option
 	movs r1, 0x2
 	movs r2, 0xD
 	bl PrintMainMenuItem
@@ -722,7 +722,7 @@ _08009E84:
 	movs r2, 0x1C
 	movs r3, 0x7
 	bl MenuDrawTextWindow
-	ldr r0, _08009EF4
+	ldr r0, _08009EF4 @ =gMainMenuString_Continue
 	movs r1, 0x2
 	movs r2, 0x1
 	bl PrintMainMenuItem
@@ -731,7 +731,7 @@ _08009E84:
 	movs r2, 0x1C
 	movs r3, 0xB
 	bl MenuDrawTextWindow
-	ldr r0, _08009EF8
+	ldr r0, _08009EF8 @ =gMainMenuString_NewGame
 	movs r1, 0x2
 	movs r2, 0x9
 	bl PrintMainMenuItem
@@ -740,7 +740,7 @@ _08009E84:
 	movs r2, 0x1C
 	movs r3, 0xF
 	bl MenuDrawTextWindow
-	ldr r0, _08009EFC
+	ldr r0, _08009EFC @ =gMainMenuString_MysteryEvents
 	movs r1, 0x2
 	movs r2, 0xD
 	bl PrintMainMenuItem
@@ -749,17 +749,17 @@ _08009E84:
 	movs r2, 0x1C
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _08009F00
+	ldr r0, _08009F00 @ =gMainMenuString_Option
 	movs r1, 0x2
 	movs r2, 0x11
 	bl PrintMainMenuItem
 	bl PrintSaveFileInfo
 _08009EE0:
-	ldr r0, _08009F04
+	ldr r0, _08009F04 @ =gTasks
 	adds r1, r5, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08009F08
+	ldr r0, _08009F08 @ =Task_MainMenuHighlight
 	str r0, [r1]
 _08009EEC:
 	add sp, 0x4
@@ -780,7 +780,7 @@ Task_MainMenuHighlight: @ 8009F0C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08009F30
+	ldr r1, _08009F30 @ =gTasks
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
@@ -788,7 +788,7 @@ Task_MainMenuHighlight: @ 8009F0C
 	ldrb r0, [r4, 0x8]
 	ldrb r1, [r4, 0xA]
 	bl HighlightCurrentMenuItem
-	ldr r0, _08009F34
+	ldr r0, _08009F34 @ =Task_MainMenuProcessKeyInput
 	str r0, [r4]
 	pop {r4}
 	pop {r0}
@@ -804,7 +804,7 @@ MainMenuProcessKeyInput: @ 8009F38
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08009F74
+	ldr r1, _08009F74 @ =gMain
 	ldrh r2, [r1, 0x2E]
 	movs r0, 0x1
 	ands r0, r2
@@ -820,12 +820,12 @@ MainMenuProcessKeyInput: @ 8009F38
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _08009F78
+	ldr r1, _08009F78 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08009F7C
+	ldr r1, _08009F7C @ =Task_MainMenuPressedA
 	str r1, [r0]
 	b _0800A040
 	.align 2, 0
@@ -841,24 +841,24 @@ _08009F80:
 	bl PlaySE
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _08009FBC
+	ldr r1, _08009FBC @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _08009FC0
+	ldr r1, _08009FC0 @ =0x04000040
 	movs r0, 0xF0
 	strh r0, [r1]
 	adds r1, 0x4
 	movs r0, 0xA0
 	strh r0, [r1]
-	ldr r1, _08009FC4
+	ldr r1, _08009FC4 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08009FC8
+	ldr r1, _08009FC8 @ =Task_MainMenuPressedB
 	str r1, [r0]
 	b _0800A040
 	.align 2, 0
@@ -867,7 +867,7 @@ _08009FC0: .4byte 0x04000040
 _08009FC4: .4byte gTasks
 _08009FC8: .4byte Task_MainMenuPressedB
 _08009FCC:
-	ldr r0, _08009FEC
+	ldr r0, _08009FEC @ =gTasks
 	lsls r2, r4, 2
 	adds r1, r2, r4
 	lsls r1, 3
@@ -949,12 +949,12 @@ Task_MainMenuProcessKeyInput: @ 800A04C
 	lsls r0, 24
 	cmp r0, 0
 	beq _0800A06C
-	ldr r0, _0800A074
+	ldr r0, _0800A074 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0800A078
+	ldr r0, _0800A078 @ =Task_MainMenuHighlight
 	str r0, [r1]
 _0800A06C:
 	pop {r4}
@@ -970,13 +970,13 @@ Task_MainMenuPressedA: @ 800A07C
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0800A0B8
+	ldr r0, _0800A0B8 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0800A170
-	ldr r0, _0800A0BC
+	ldr r0, _0800A0BC @ =gTasks
 	lsls r2, r4, 2
 	adds r1, r2, r4
 	lsls r1, 3
@@ -1043,15 +1043,15 @@ _0800A0F4:
 	cmp r0, 0x3
 	beq _0800A164
 _0800A104:
-	ldr r0, _0800A11C
+	ldr r0, _0800A11C @ =gPlttBufferUnfaded
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _0800A120
+	ldr r0, _0800A120 @ =gPlttBufferFaded
 	strh r1, [r0]
 	adds r0, r2, r4
 	lsls r0, 3
 	adds r0, r5
-	ldr r1, _0800A124
+	ldr r1, _0800A124 @ =Task_NewGameSpeech1
 	str r1, [r0]
 	b _0800A170
 	.align 2, 0
@@ -1059,22 +1059,22 @@ _0800A11C: .4byte gPlttBufferUnfaded
 _0800A120: .4byte gPlttBufferFaded
 _0800A124: .4byte Task_NewGameSpeech1
 _0800A128:
-	ldr r0, _0800A138
+	ldr r0, _0800A138 @ =gPlttBufferUnfaded
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _0800A13C
+	ldr r0, _0800A13C @ =gPlttBufferFaded
 	strh r1, [r0]
-	ldr r0, _0800A140
+	ldr r0, _0800A140 @ =CB2_ContinueSavedGame
 	b _0800A14C
 	.align 2, 0
 _0800A138: .4byte gPlttBufferUnfaded
 _0800A13C: .4byte gPlttBufferFaded
 _0800A140: .4byte CB2_ContinueSavedGame
 _0800A144:
-	ldr r0, _0800A158
-	ldr r1, _0800A15C
+	ldr r0, _0800A158 @ =gMain
+	ldr r1, _0800A15C @ =sub_80096FC
 	str r1, [r0, 0x8]
-	ldr r0, _0800A160
+	ldr r0, _0800A160 @ =CB2_InitOptionMenu
 _0800A14C:
 	bl SetMainCallback2
 	adds r0, r4, 0
@@ -1085,7 +1085,7 @@ _0800A158: .4byte gMain
 _0800A15C: .4byte sub_80096FC
 _0800A160: .4byte CB2_InitOptionMenu
 _0800A164:
-	ldr r0, _0800A178
+	ldr r0, _0800A178 @ =CB2_InitMysteryEventMenu
 	bl SetMainCallback2
 	adds r0, r4, 0
 	bl DestroyTask
@@ -1102,13 +1102,13 @@ Task_MainMenuPressedB: @ 800A17C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0800A1A0
+	ldr r0, _0800A1A0 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0800A19A
-	ldr r0, _0800A1A4
+	ldr r0, _0800A1A4 @ =CB2_InitTitleScreen
 	bl SetMainCallback2
 	adds r0, r4, 0
 	bl DestroyTask
@@ -1128,8 +1128,8 @@ HighlightCurrentMenuItem: @ 800A1A8
 	lsrs r3, r0, 24
 	lsls r1, 24
 	lsrs r2, r1, 24
-	ldr r1, _0800A1D4
-	ldr r4, _0800A1D8
+	ldr r1, _0800A1D4 @ =0x04000040
+	ldr r4, _0800A1D8 @ =0x000009e7
 	adds r0, r4, 0
 	strh r0, [r1]
 	cmp r3, 0x1
@@ -1144,8 +1144,8 @@ _0800A1C6:
 	cmp r2, 0x1
 	beq _0800A1E4
 _0800A1CE:
-	ldr r1, _0800A1DC
-	ldr r2, _0800A1E0
+	ldr r1, _0800A1DC @ =0x04000044
+	ldr r2, _0800A1E0 @ =0x0000011f
 	b _0800A274
 	.align 2, 0
 _0800A1D4: .4byte 0x04000040
@@ -1153,8 +1153,8 @@ _0800A1D8: .4byte 0x000009e7
 _0800A1DC: .4byte 0x04000044
 _0800A1E0: .4byte 0x0000011f
 _0800A1E4:
-	ldr r1, _0800A1EC
-	ldr r4, _0800A1F0
+	ldr r1, _0800A1EC @ =0x04000044
+	ldr r4, _0800A1F0 @ =0x0000213f
 	adds r0, r4, 0
 	b _0800A276
 	.align 2, 0
@@ -1168,23 +1168,23 @@ _0800A1F4:
 	cmp r2, 0x2
 	beq _0800A220
 _0800A200:
-	ldr r1, _0800A208
-	ldr r2, _0800A20C
+	ldr r1, _0800A208 @ =0x04000044
+	ldr r2, _0800A20C @ =0x0000013f
 	b _0800A274
 	.align 2, 0
 _0800A208: .4byte 0x04000044
 _0800A20C: .4byte 0x0000013f
 _0800A210:
-	ldr r1, _0800A218
-	ldr r4, _0800A21C
+	ldr r1, _0800A218 @ =0x04000044
+	ldr r4, _0800A21C @ =0x0000415f
 	adds r0, r4, 0
 	b _0800A276
 	.align 2, 0
 _0800A218: .4byte 0x04000044
 _0800A21C: .4byte 0x0000415f
 _0800A220:
-	ldr r1, _0800A228
-	ldr r2, _0800A22C
+	ldr r1, _0800A228 @ =0x04000044
+	ldr r2, _0800A22C @ =0x0000617f
 	b _0800A274
 	.align 2, 0
 _0800A228: .4byte 0x04000044
@@ -1199,31 +1199,31 @@ _0800A230:
 	cmp r2, 0x3
 	beq _0800A270
 _0800A240:
-	ldr r1, _0800A248
-	ldr r4, _0800A24C
+	ldr r1, _0800A248 @ =0x04000044
+	ldr r4, _0800A24C @ =0x0000013f
 	adds r0, r4, 0
 	b _0800A276
 	.align 2, 0
 _0800A248: .4byte 0x04000044
 _0800A24C: .4byte 0x0000013f
 _0800A250:
-	ldr r1, _0800A258
-	ldr r2, _0800A25C
+	ldr r1, _0800A258 @ =0x04000044
+	ldr r2, _0800A25C @ =0x0000415f
 	b _0800A274
 	.align 2, 0
 _0800A258: .4byte 0x04000044
 _0800A25C: .4byte 0x0000415f
 _0800A260:
-	ldr r1, _0800A268
-	ldr r4, _0800A26C
+	ldr r1, _0800A268 @ =0x04000044
+	ldr r4, _0800A26C @ =0x0000617f
 	adds r0, r4, 0
 	b _0800A276
 	.align 2, 0
 _0800A268: .4byte 0x04000044
 _0800A26C: .4byte 0x0000617f
 _0800A270:
-	ldr r1, _0800A280
-	ldr r2, _0800A284
+	ldr r1, _0800A280 @ =0x04000044
+	ldr r2, _0800A284 @ =0x0000819f
 _0800A274:
 	adds r0, r2, 0
 _0800A276:
@@ -1291,11 +1291,11 @@ PrintSaveFileInfo: @ 800A2D4
 	thumb_func_start PrintPlayerName
 PrintPlayerName: @ 800A2EC
 	push {lr}
-	ldr r0, _0800A308
+	ldr r0, _0800A308 @ =gMainMenuString_Player
 	movs r1, 0x2
 	movs r2, 0x3
 	bl MenuPrint
-	ldr r0, _0800A30C
+	ldr r0, _0800A30C @ =gSaveBlock2
 	movs r1, 0x9
 	movs r2, 0x3
 	bl MenuPrint
@@ -1310,12 +1310,12 @@ _0800A30C: .4byte gSaveBlock2
 PrintPlayTime: @ 800A310
 	push {r4,lr}
 	sub sp, 0x30
-	ldr r0, _0800A350
+	ldr r0, _0800A350 @ =gMainMenuString_Time
 	movs r1, 0x7C
 	movs r2, 0x18
 	movs r3, 0x1
 	bl MenuPrint_PixelCoords
-	ldr r0, _0800A354
+	ldr r0, _0800A354 @ =gSaveBlock2
 	ldrh r1, [r0, 0xE]
 	ldrb r2, [r0, 0x10]
 	mov r0, sp
@@ -1344,7 +1344,7 @@ _0800A354: .4byte gSaveBlock2
 PrintPokedexCount: @ 800A358
 	push {lr}
 	sub sp, 0x10
-	ldr r0, _0800A38C
+	ldr r0, _0800A38C @ =gMainMenuString_Pokedex
 	movs r1, 0x2
 	movs r2, 0x5
 	bl MenuPrint
@@ -1371,7 +1371,7 @@ _0800A38C: .4byte gMainMenuString_Pokedex
 PrintBadgeCount: @ 800A390
 	push {lr}
 	sub sp, 0x10
-	ldr r0, _0800A3C4
+	ldr r0, _0800A3C4 @ =gMainMenuString_Badges
 	movs r1, 0x7C
 	movs r2, 0x28
 	movs r3, 0x1
@@ -1401,11 +1401,11 @@ Task_NewGameSpeech1: @ 800A3C8
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _0800A484
+	ldr r0, _0800A484 @ =gWindowConfig_81E6C3C
 	bl SetUpWindowConfig
-	ldr r0, _0800A488
+	ldr r0, _0800A488 @ =gWindowConfig_81E6CE4
 	bl InitMenuWindow
-	ldr r0, _0800A48C
+	ldr r0, _0800A48C @ =0x04000040
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
@@ -1420,18 +1420,18 @@ Task_NewGameSpeech1: @ 800A3C8
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
-	ldr r0, _0800A490
+	ldr r0, _0800A490 @ =gUnknown_081E768C
 	movs r1, 0xC0
 	lsls r1, 19
 	bl LZ77UnCompVram
-	ldr r0, _0800A494
-	ldr r1, _0800A498
+	ldr r0, _0800A494 @ =gUnknown_081E7834
+	ldr r1, _0800A498 @ =0x06003800
 	bl LZ77UnCompVram
-	ldr r0, _0800A49C
+	ldr r0, _0800A49C @ =gUnknown_081E764C
 	movs r1, 0
 	movs r2, 0x40
 	bl LoadPalette
-	ldr r0, _0800A4A0
+	ldr r0, _0800A4A0 @ =gUnknown_081E796C
 	movs r1, 0x1
 	movs r2, 0x10
 	bl LoadPalette
@@ -1448,8 +1448,8 @@ Task_NewGameSpeech1: @ 800A3C8
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r1, _0800A4A4
-	ldr r2, _0800A4A8
+	ldr r1, _0800A4A4 @ =0x0400000a
+	ldr r2, _0800A4A8 @ =0x00000703
 	adds r0, r2, 0
 	strh r0, [r1]
 	subs r1, 0xA
@@ -1457,13 +1457,13 @@ Task_NewGameSpeech1: @ 800A3C8
 	lsls r2, 5
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r1, _0800A4AC
+	ldr r1, _0800A4AC @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
 	strh r5, [r0, 0x10]
-	ldr r1, _0800A4B0
+	ldr r1, _0800A4B0 @ =Task_NewGameSpeech2
 	str r1, [r0]
 	movs r1, 0xFF
 	strh r1, [r0, 0xC]
@@ -1497,7 +1497,7 @@ Task_NewGameSpeech2: @ 800A4B4
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _0800A4D4
+	ldr r1, _0800A4D4 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -1514,7 +1514,7 @@ Task_NewGameSpeech2: @ 800A4B4
 _0800A4D4: .4byte gTasks
 _0800A4D8:
 	ldrb r0, [r4, 0x18]
-	ldr r2, _0800A524
+	ldr r2, _0800A524 @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
@@ -1544,7 +1544,7 @@ _0800A4D8:
 	bl StartBackgroundFadeIn
 	movs r0, 0x50
 	strh r0, [r4, 0x16]
-	ldr r0, _0800A528
+	ldr r0, _0800A528 @ =Task_NewGameSpeech3
 	str r0, [r4]
 _0800A51E:
 	pop {r4,r5}
@@ -1560,7 +1560,7 @@ Task_NewGameSpeech3: @ 800A52C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800A56C
+	ldr r2, _0800A56C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1569,7 +1569,7 @@ Task_NewGameSpeech3: @ 800A52C
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
 	beq _0800A58E
-	ldr r2, _0800A570
+	ldr r2, _0800A570 @ =gSprites
 	movs r1, 0x18
 	ldrsh r0, [r4, r1]
 	lsls r1, r0, 4
@@ -1598,11 +1598,11 @@ _0800A574:
 	movs r2, 0x1B
 	movs r3, 0x12
 	bl MenuDrawTextWindow
-	ldr r0, _0800A594
+	ldr r0, _0800A594 @ =gBirchSpeech_Welcome
 	movs r1, 0x3
 	movs r2, 0xE
 	bl MenuPrintMessage
-	ldr r0, _0800A598
+	ldr r0, _0800A598 @ =Task_NewGameSpeech4
 	str r0, [r4]
 _0800A58E:
 	pop {r4}
@@ -1618,7 +1618,7 @@ Task_NewGameSpeech4: @ 800A59C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0800A5D8
+	ldr r0, _0800A5D8 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -1629,14 +1629,14 @@ Task_NewGameSpeech4: @ 800A59C
 	lsls r0, 24
 	cmp r0, 0
 	beq _0800A5D2
-	ldr r1, _0800A5DC
+	ldr r1, _0800A5DC @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0800A5E0
+	ldr r1, _0800A5E0 @ =Task_NewGameSpeech5
 	str r1, [r0]
-	ldr r0, _0800A5E4
+	ldr r0, _0800A5E4 @ =gBirchSpeech_ThisIsPokemon
 	movs r1, 0x3
 	movs r2, 0xE
 	bl MenuPrintMessage
@@ -1661,12 +1661,12 @@ Task_NewGameSpeech5: @ 800A5E8
 	lsls r0, 24
 	cmp r0, 0
 	beq _0800A608
-	ldr r0, _0800A610
+	ldr r0, _0800A610 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0800A614
+	ldr r0, _0800A614 @ =Task_NewGameSpeech6
 	str r0, [r1]
 _0800A608:
 	pop {r4}
@@ -1683,13 +1683,13 @@ Task_NewGameSpeech6: @ 800A618
 	sub sp, 0x10
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800A67C
+	ldr r1, _0800A67C @ =gTasks
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
 	adds r4, r1
 	ldrb r0, [r4, 0x1A]
-	ldr r1, _0800A680
+	ldr r1, _0800A680 @ =gSprites
 	lsls r2, r0, 4
 	adds r2, r0
 	lsls r2, 2
@@ -1715,12 +1715,12 @@ Task_NewGameSpeech6: @ 800A618
 	str r5, [sp, 0x4]
 	movs r2, 0x20
 	str r2, [sp, 0x8]
-	ldr r2, _0800A684
+	ldr r2, _0800A684 @ =0x0000ffff
 	str r2, [sp, 0xC]
 	movs r2, 0x70
 	movs r3, 0x3A
 	bl CreatePokeballSprite
-	ldr r0, _0800A688
+	ldr r0, _0800A688 @ =Task_NewGameSpeech7
 	str r0, [r4]
 	strh r5, [r4, 0x16]
 	add sp, 0x10
@@ -1743,7 +1743,7 @@ Task_NewGameSpeech7: @ 800A68C
 	lsls r0, 24
 	cmp r0, 0
 	beq _0800A6B8
-	ldr r0, _0800A6EC
+	ldr r0, _0800A6EC @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -1752,12 +1752,12 @@ Task_NewGameSpeech7: @ 800A68C
 	ldrsh r0, [r5, r1]
 	cmp r0, 0x5F
 	ble _0800A6B8
-	ldr r0, _0800A6F0
+	ldr r0, _0800A6F0 @ =gSystemText_NewPara
 	bl MenuSetText
-	ldr r0, _0800A6F4
+	ldr r0, _0800A6F4 @ =Task_NewGameSpeech8
 	str r0, [r5]
 _0800A6B8:
-	ldr r1, _0800A6EC
+	ldr r1, _0800A6EC @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1765,7 +1765,7 @@ _0800A6B8:
 	ldrh r3, [r2, 0x16]
 	movs r0, 0x16
 	ldrsh r1, [r2, r0]
-	ldr r0, _0800A6F8
+	ldr r0, _0800A6F8 @ =0x00003fff
 	cmp r1, r0
 	bgt _0800A6E4
 	adds r0, r3, 0x1
@@ -1799,16 +1799,16 @@ Task_NewGameSpeech8: @ 800A6FC
 	lsls r0, 24
 	cmp r0, 0
 	beq _0800A726
-	ldr r0, _0800A72C
+	ldr r0, _0800A72C @ =gBirchSpeech_WorldInhabitedByPokemon
 	movs r1, 0x3
 	movs r2, 0xE
 	bl MenuPrintMessage
-	ldr r1, _0800A730
+	ldr r1, _0800A730 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0800A734
+	ldr r1, _0800A734 @ =Task_NewGameSpeech9
 	str r1, [r0]
 _0800A726:
 	pop {r4}
@@ -1835,16 +1835,16 @@ Task_NewGameSpeech9: @ 800A738
 	movs r2, 0x1B
 	movs r3, 0x12
 	bl MenuDrawTextWindow
-	ldr r0, _0800A774
+	ldr r0, _0800A774 @ =gBirchSpeech_AndYouAre
 	movs r1, 0x3
 	movs r2, 0xE
 	bl MenuPrintMessage
-	ldr r1, _0800A778
+	ldr r1, _0800A778 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0800A77C
+	ldr r1, _0800A77C @ =Task_NewGameSpeech10
 	str r1, [r0]
 _0800A76E:
 	pop {r4}
@@ -1866,8 +1866,8 @@ Task_NewGameSpeech10: @ 800A780
 	lsls r0, 24
 	cmp r0, 0
 	beq _0800A7E6
-	ldr r5, _0800A7EC
-	ldr r0, _0800A7F0
+	ldr r5, _0800A7EC @ =gSprites
+	ldr r0, _0800A7F0 @ =gTasks
 	lsls r4, r6, 2
 	adds r4, r6
 	lsls r4, 3
@@ -1904,7 +1904,7 @@ Task_NewGameSpeech10: @ 800A780
 	bl StartBackgroundFadeOut
 	movs r0, 0x40
 	strh r0, [r4, 0x16]
-	ldr r0, _0800A7F4
+	ldr r0, _0800A7F4 @ =Task_NewGameSpeech11
 	str r0, [r4]
 _0800A7E6:
 	pop {r4-r6}
@@ -1921,7 +1921,7 @@ Task_NewGameSpeech11: @ 800A7F8
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800A820
+	ldr r2, _0800A820 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1935,16 +1935,16 @@ Task_NewGameSpeech11: @ 800A7F8
 	beq _0800A828
 	subs r1, r3, 0x2
 	strh r1, [r2, 0x10]
-	ldr r0, _0800A824
+	ldr r0, _0800A824 @ =0x04000014
 	strh r1, [r0]
 	b _0800A830
 	.align 2, 0
 _0800A820: .4byte gTasks
 _0800A824: .4byte 0x04000014
 _0800A828:
-	ldr r0, _0800A834
+	ldr r0, _0800A834 @ =0x0000ffc4
 	strh r0, [r2, 0x10]
-	ldr r0, _0800A838
+	ldr r0, _0800A838 @ =Task_NewGameSpeech12
 	str r0, [r2]
 _0800A830:
 	pop {r0}
@@ -1960,7 +1960,7 @@ Task_NewGameSpeech12: @ 800A83C
 	lsls r0, 24
 	lsrs r0, 24
 	adds r5, r0, 0
-	ldr r1, _0800A894
+	ldr r1, _0800A894 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -1969,7 +1969,7 @@ Task_NewGameSpeech12: @ 800A83C
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
 	beq _0800A8E2
-	ldr r2, _0800A898
+	ldr r2, _0800A898 @ =gSprites
 	movs r0, 0x18
 	ldrsh r1, [r4, r0]
 	lsls r0, r1, 4
@@ -2034,7 +2034,7 @@ _0800A89C:
 	adds r0, r5, 0
 	movs r1, 0x1
 	bl StartBackgroundFadeIn
-	ldr r0, _0800A8E8
+	ldr r0, _0800A8E8 @ =Task_NewGameSpeech13
 	str r0, [r4]
 _0800A8E2:
 	pop {r4-r7}
@@ -2049,7 +2049,7 @@ Task_NewGameSpeech13: @ 800A8EC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800A924
+	ldr r2, _0800A924 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2058,7 +2058,7 @@ Task_NewGameSpeech13: @ 800A8EC
 	ldrsh r0, [r3, r1]
 	cmp r0, 0
 	beq _0800A920
-	ldr r2, _0800A928
+	ldr r2, _0800A928 @ =gSprites
 	movs r1, 0xC
 	ldrsh r0, [r3, r1]
 	lsls r1, r0, 4
@@ -2070,7 +2070,7 @@ Task_NewGameSpeech13: @ 800A8EC
 	negs r0, r0
 	ands r0, r2
 	strb r0, [r1, 0x1]
-	ldr r0, _0800A92C
+	ldr r0, _0800A92C @ =Task_NewGameSpeech14
 	str r0, [r3]
 _0800A920:
 	pop {r0}
@@ -2092,16 +2092,16 @@ Task_NewGameSpeech14: @ 800A930
 	movs r2, 0x1B
 	movs r3, 0x12
 	bl MenuDrawTextWindow
-	ldr r0, _0800A964
+	ldr r0, _0800A964 @ =gBirchSpeech_AreYouBoyOrGirl
 	movs r1, 0x3
 	movs r2, 0xE
 	bl MenuPrintMessage
-	ldr r1, _0800A968
+	ldr r1, _0800A968 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0800A96C
+	ldr r1, _0800A96C @ =Task_NewGameSpeech15
 	str r1, [r0]
 	pop {r4}
 	pop {r0}
@@ -2125,12 +2125,12 @@ Task_NewGameSpeech15: @ 800A970
 	movs r0, 0x2
 	movs r1, 0x4
 	bl CreateGenderMenu
-	ldr r0, _0800A9A0
+	ldr r0, _0800A9A0 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0800A9A4
+	ldr r0, _0800A9A4 @ =Task_NewGameSpeech16
 	str r0, [r1]
 _0800A998:
 	pop {r4}
@@ -2159,26 +2159,26 @@ _0800A9C2:
 	bl sub_8072DEC
 	movs r0, 0x5
 	bl PlaySE
-	ldr r0, _0800AA34
+	ldr r0, _0800AA34 @ =gSaveBlock2
 	strb r4, [r0, 0x8]
 	movs r0, 0x2
 	movs r1, 0x4
 	movs r2, 0x8
 	movs r3, 0x9
 	bl MenuZeroFillWindowRect
-	ldr r1, _0800AA38
+	ldr r1, _0800AA38 @ =gTasks
 	lsls r2, r5, 2
 	adds r0, r2, r5
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0800AA3C
+	ldr r1, _0800AA3C @ =Task_NewGameSpeech19
 	str r1, [r0]
 	adds r4, r2, 0
 _0800A9EC:
 	bl GetMenuCursorPos
 	lsls r0, 24
 	lsrs r3, r0, 24
-	ldr r1, _0800AA38
+	ldr r1, _0800AA38 @ =gTasks
 	adds r0, r4, r5
 	lsls r0, 3
 	adds r4, r0, r1
@@ -2187,7 +2187,7 @@ _0800A9EC:
 	cmp r3, r0
 	beq _0800AA2E
 	strh r3, [r4, 0x14]
-	ldr r2, _0800AA40
+	ldr r2, _0800AA40 @ =gSprites
 	movs r0, 0xC
 	ldrsh r1, [r4, r0]
 	lsls r0, r1, 4
@@ -2204,7 +2204,7 @@ _0800A9EC:
 	adds r0, r5, 0
 	movs r1, 0
 	bl StartSpriteFadeOut
-	ldr r0, _0800AA44
+	ldr r0, _0800AA44 @ =Task_NewGameSpeech17
 	str r0, [r4]
 _0800AA2E:
 	pop {r4,r5}
@@ -2223,7 +2223,7 @@ Task_NewGameSpeech17: @ 800AA48
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r1, _0800AA78
+	ldr r1, _0800AA78 @ =gTasks
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
@@ -2234,7 +2234,7 @@ Task_NewGameSpeech17: @ 800AA48
 	adds r7, r1, 0
 	cmp r0, 0
 	bne _0800AA80
-	ldr r0, _0800AA7C
+	ldr r0, _0800AA7C @ =gSprites
 	lsls r1, r5, 4
 	adds r1, r5
 	lsls r1, 2
@@ -2247,7 +2247,7 @@ Task_NewGameSpeech17: @ 800AA48
 _0800AA78: .4byte gTasks
 _0800AA7C: .4byte gSprites
 _0800AA80:
-	ldr r3, _0800AAA0
+	ldr r3, _0800AAA0 @ =gSprites
 	lsls r0, r5, 4
 	adds r0, r5
 	lsls r0, 2
@@ -2297,7 +2297,7 @@ _0800AAA6:
 	adds r0, r6, 0
 	movs r1, 0
 	bl StartSpriteFadeIn
-	ldr r0, _0800AAEC
+	ldr r0, _0800AAEC @ =Task_NewGameSpeech18
 	str r0, [r4]
 _0800AAE6:
 	pop {r4-r7}
@@ -2312,13 +2312,13 @@ Task_NewGameSpeech18: @ 800AAF0
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800AB1C
+	ldr r2, _0800AB1C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r3, r1, r2
 	ldrb r1, [r3, 0xC]
-	ldr r2, _0800AB20
+	ldr r2, _0800AB20 @ =gSprites
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
@@ -2346,7 +2346,7 @@ _0800AB24:
 	negs r1, r1
 	ands r1, r0
 	strb r1, [r2, 0x1]
-	ldr r0, _0800AB44
+	ldr r0, _0800AB44 @ =Task_NewGameSpeech16
 	str r0, [r3]
 _0800AB3E:
 	pop {r4}
@@ -2367,16 +2367,16 @@ Task_NewGameSpeech19: @ 800AB48
 	movs r2, 0x1B
 	movs r3, 0x12
 	bl MenuDrawTextWindow
-	ldr r0, _0800AB7C
+	ldr r0, _0800AB7C @ =gBirchSpeech_WhatsYourName
 	movs r1, 0x3
 	movs r2, 0xE
 	bl MenuPrintMessage
-	ldr r1, _0800AB80
+	ldr r1, _0800AB80 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0800AB84
+	ldr r1, _0800AB84 @ =Task_NewGameSpeech20
 	str r1, [r0]
 	pop {r4}
 	pop {r0}
@@ -2400,12 +2400,12 @@ Task_NewGameSpeech20: @ 800AB88
 	movs r0, 0x2
 	movs r1, 0x1
 	bl CreateNameMenu
-	ldr r0, _0800ABB8
+	ldr r0, _0800ABB8 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0800ABBC
+	ldr r0, _0800ABBC @ =Task_NewGameSpeech21
 	str r0, [r1]
 _0800ABB0:
 	pop {r4}
@@ -2447,12 +2447,12 @@ _0800ABE2:
 	bl MenuZeroFillWindowRect
 	lsrs r0, r6, 24
 	bl SetPresetPlayerName
-	ldr r1, _0800AC14
+	ldr r1, _0800AC14 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0800AC18
+	ldr r1, _0800AC18 @ =Task_NewGameSpeech23
 	str r1, [r0]
 	b _0800AC70
 	.align 2, 0
@@ -2468,12 +2468,12 @@ _0800AC1C:
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _0800AC44
+	ldr r1, _0800AC44 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0800AC48
+	ldr r1, _0800AC48 @ =Task_NewGameSpeech22
 	str r1, [r0]
 	b _0800AC70
 	.align 2, 0
@@ -2488,12 +2488,12 @@ _0800AC4C:
 	movs r2, 0x16
 	movs r3, 0xC
 	bl MenuZeroFillWindowRect
-	ldr r0, _0800AC78
+	ldr r0, _0800AC78 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0800AC7C
+	ldr r0, _0800AC7C @ =Task_NewGameSpeech14
 	str r0, [r1]
 _0800AC70:
 	add sp, 0x4
@@ -2509,7 +2509,7 @@ _0800AC7C: .4byte Task_NewGameSpeech14
 Task_NewGameSpeech22: @ 800AC80
 	push {r4,lr}
 	sub sp, 0x8
-	ldr r0, _0800ACB4
+	ldr r0, _0800ACB4 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -2519,10 +2519,10 @@ Task_NewGameSpeech22: @ 800AC80
 	bne _0800ACAC
 	movs r0, 0x1
 	bl SetPresetPlayerName
-	ldr r1, _0800ACB8
+	ldr r1, _0800ACB8 @ =gSaveBlock2
 	ldrb r2, [r1, 0x8]
 	str r4, [sp]
-	ldr r0, _0800ACBC
+	ldr r0, _0800ACBC @ =CB_ContinueNewGameSpeechPart2
 	str r0, [sp, 0x4]
 	movs r0, 0
 	movs r3, 0
@@ -2549,20 +2549,20 @@ Task_NewGameSpeech23: @ 800ACC0
 	movs r2, 0x1B
 	movs r3, 0x12
 	bl MenuDrawTextWindow
-	ldr r5, _0800ACFC
-	ldr r1, _0800AD00
+	ldr r5, _0800ACFC @ =gStringVar4
+	ldr r1, _0800AD00 @ =gBirchSpeech_SoItsPlayer
 	adds r0, r5, 0
 	bl StringExpandPlaceholders
 	adds r0, r5, 0
 	movs r1, 0x3
 	movs r2, 0xE
 	bl MenuPrintMessage
-	ldr r1, _0800AD04
+	ldr r1, _0800AD04 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0800AD08
+	ldr r1, _0800AD08 @ =Task_NewGameSpeech24
 	str r1, [r0]
 	pop {r4,r5}
 	pop {r0}
@@ -2588,12 +2588,12 @@ Task_NewGameSpeech24: @ 800AD0C
 	movs r1, 0x1
 	movs r2, 0x1
 	bl DisplayYesNoMenu
-	ldr r0, _0800AD3C
+	ldr r0, _0800AD3C @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0800AD40
+	ldr r0, _0800AD40 @ =Task_NewGameSpeech25
 	str r0, [r1]
 _0800AD36:
 	pop {r4}
@@ -2633,8 +2633,8 @@ _0800AD6A:
 	movs r2, 0x8
 	movs r3, 0x7
 	bl MenuZeroFillWindowRect
-	ldr r2, _0800ADB8
-	ldr r0, _0800ADBC
+	ldr r2, _0800ADB8 @ =gSprites
+	ldr r0, _0800ADBC @ =gTasks
 	lsls r4, r5, 2
 	adds r4, r5
 	lsls r4, 3
@@ -2658,7 +2658,7 @@ _0800AD6A:
 	adds r0, r5, 0
 	movs r1, 0x1
 	bl StartBackgroundFadeOut
-	ldr r0, _0800ADC0
+	ldr r0, _0800ADC0 @ =Task_NewGameSpeech26
 	str r0, [r4]
 	b _0800ADE4
 	.align 2, 0
@@ -2673,12 +2673,12 @@ _0800ADC4:
 	movs r2, 0x8
 	movs r3, 0x7
 	bl MenuZeroFillWindowRect
-	ldr r0, _0800ADEC
+	ldr r0, _0800ADEC @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0800ADF0
+	ldr r0, _0800ADF0 @ =Task_NewGameSpeech14
 	str r0, [r1]
 _0800ADE4:
 	pop {r4,r5}
@@ -2694,7 +2694,7 @@ Task_NewGameSpeech26: @ 800ADF4
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800AE18
+	ldr r2, _0800AE18 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2706,14 +2706,14 @@ Task_NewGameSpeech26: @ 800ADF4
 	beq _0800AE20
 	adds r1, 0x2
 	strh r1, [r2, 0x10]
-	ldr r0, _0800AE1C
+	ldr r0, _0800AE1C @ =0x04000014
 	strh r1, [r0]
 	b _0800AE24
 	.align 2, 0
 _0800AE18: .4byte gTasks
 _0800AE1C: .4byte 0x04000014
 _0800AE20:
-	ldr r0, _0800AE28
+	ldr r0, _0800AE28 @ =Task_NewGameSpeech27
 	str r0, [r2]
 _0800AE24:
 	pop {r0}
@@ -2727,7 +2727,7 @@ Task_NewGameSpeech27: @ 800AE2C
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r1, _0800AF08
+	ldr r1, _0800AF08 @ =gTasks
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
@@ -2736,7 +2736,7 @@ Task_NewGameSpeech27: @ 800AE2C
 	ldrsh r0, [r7, r1]
 	cmp r0, 0
 	beq _0800AF00
-	ldr r5, _0800AF0C
+	ldr r5, _0800AF0C @ =gSprites
 	movs r2, 0x1C
 	ldrsh r1, [r7, r2]
 	lsls r0, r1, 4
@@ -2815,15 +2815,15 @@ Task_NewGameSpeech27: @ 800AE2C
 	movs r2, 0x1B
 	movs r3, 0x12
 	bl MenuDrawTextWindow
-	ldr r4, _0800AF10
-	ldr r1, _0800AF14
+	ldr r4, _0800AF10 @ =gStringVar4
+	ldr r1, _0800AF14 @ =gBirchSpeech_AhOkayYouArePlayer
 	adds r0, r4, 0
 	bl StringExpandPlaceholders
 	adds r0, r4, 0
 	movs r1, 0x3
 	movs r2, 0xE
 	bl MenuPrintMessage
-	ldr r0, _0800AF18
+	ldr r0, _0800AF18 @ =Task_NewGameSpeech28
 	str r0, [r7]
 _0800AF00:
 	pop {r4-r7}
@@ -2842,7 +2842,7 @@ Task_NewGameSpeech28: @ 800AF1C
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _0800AFBC
+	ldr r1, _0800AFBC @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -2851,7 +2851,7 @@ Task_NewGameSpeech28: @ 800AF1C
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
 	beq _0800AFB4
-	ldr r7, _0800AFC0
+	ldr r7, _0800AFC0 @ =gSprites
 	movs r1, 0x18
 	ldrsh r0, [r4, r1]
 	lsls r1, r0, 4
@@ -2910,7 +2910,7 @@ Task_NewGameSpeech28: @ 800AF1C
 	bl StartBackgroundFadeOut
 	movs r0, 0x40
 	strh r0, [r4, 0x16]
-	ldr r0, _0800AFC4
+	ldr r0, _0800AFC4 @ =Task_NewGameSpeech29
 	str r0, [r4]
 _0800AFB4:
 	pop {r4-r7}
@@ -2927,7 +2927,7 @@ Task_NewGameSpeech29: @ 800AFC8
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r1, _0800B020
+	ldr r1, _0800B020 @ =gTasks
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
@@ -2937,7 +2937,7 @@ Task_NewGameSpeech29: @ 800AFC8
 	adds r7, r1, 0
 	cmp r0, 0
 	beq _0800B098
-	ldr r2, _0800B024
+	ldr r2, _0800B024 @ =gSprites
 	movs r3, 0x18
 	ldrsh r1, [r4, r3]
 	lsls r0, r1, 4
@@ -2971,7 +2971,7 @@ Task_NewGameSpeech29: @ 800AFC8
 _0800B020: .4byte gTasks
 _0800B024: .4byte gSprites
 _0800B028:
-	ldr r0, _0800B034
+	ldr r0, _0800B034 @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
 	cmp r0, 0
 	beq _0800B038
@@ -3019,11 +3019,11 @@ _0800B03A:
 	movs r2, 0x1B
 	movs r3, 0x12
 	bl MenuDrawTextWindow
-	ldr r0, _0800B0A0
+	ldr r0, _0800B0A0 @ =gBirchSpeech_AreYouReady
 	movs r1, 0x3
 	movs r2, 0xE
 	bl MenuPrintMessage
-	ldr r0, _0800B0A4
+	ldr r0, _0800B0A4 @ =Task_NewGameSpeech30
 	str r0, [r4]
 _0800B098:
 	pop {r4-r7}
@@ -3040,7 +3040,7 @@ Task_NewGameSpeech30: @ 800B0A8
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800B140
+	ldr r2, _0800B140 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -3049,7 +3049,7 @@ Task_NewGameSpeech30: @ 800B0A8
 	ldrsh r0, [r6, r1]
 	cmp r0, 0
 	beq _0800B138
-	ldr r7, _0800B144
+	ldr r7, _0800B144 @ =gSprites
 	movs r1, 0xC
 	ldrsh r0, [r6, r1]
 	lsls r1, r0, 4
@@ -3081,7 +3081,7 @@ Task_NewGameSpeech30: @ 800B0A8
 	adds r0, r7, 0
 	adds r0, 0x10
 	adds r0, r4, r0
-	ldr r1, _0800B148
+	ldr r1, _0800B148 @ =gSpriteAffineAnimTable_81E79AC
 	str r1, [r0]
 	adds r0, r5, 0
 	bl InitSpriteAffineAnim
@@ -3091,9 +3091,9 @@ Task_NewGameSpeech30: @ 800B0A8
 	adds r0, r7, 0
 	adds r0, 0x1C
 	adds r4, r0
-	ldr r0, _0800B14C
+	ldr r0, _0800B14C @ =sub_800B240
 	str r0, [r4]
-	ldr r0, _0800B150
+	ldr r0, _0800B150 @ =0x0000ffff
 	movs r1, 0
 	str r1, [sp]
 	movs r2, 0
@@ -3101,7 +3101,7 @@ Task_NewGameSpeech30: @ 800B0A8
 	bl BeginNormalPaletteFade
 	movs r0, 0x4
 	bl FadeOutBGM
-	ldr r0, _0800B154
+	ldr r0, _0800B154 @ =Task_NewGameSpeech31
 	str r0, [r6]
 _0800B138:
 	add sp, 0x4
@@ -3122,13 +3122,13 @@ Task_NewGameSpeech31: @ 800B158
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800B188
+	ldr r2, _0800B188 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r3, r1, r2
 	ldrb r1, [r3, 0xC]
-	ldr r2, _0800B18C
+	ldr r2, _0800B18C @ =gSprites
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
@@ -3138,7 +3138,7 @@ Task_NewGameSpeech31: @ 800B158
 	lsls r0, 26
 	cmp r0, 0
 	bge _0800B182
-	ldr r0, _0800B190
+	ldr r0, _0800B190 @ =Task_NewGameSpeech32
 	str r0, [r3]
 _0800B182:
 	pop {r0}
@@ -3155,25 +3155,25 @@ Task_NewGameSpeech32: @ 800B194
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _0800B1EC
+	ldr r0, _0800B1EC @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0800B1E4
-	ldr r0, _0800B1F0
+	ldr r0, _0800B1F0 @ =gTasks
 	lsls r4, r2, 2
 	adds r4, r2
 	lsls r4, 3
 	adds r4, r0
 	ldrb r2, [r4, 0xC]
-	ldr r1, _0800B1F4
+	ldr r1, _0800B1F4 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
 	adds r1, 0x1C
 	adds r0, r1
-	ldr r1, _0800B1F8
+	ldr r1, _0800B1F8 @ =nullsub_34
 	str r1, [r0]
 	movs r1, 0x80
 	lsls r1, 19
@@ -3181,14 +3181,14 @@ Task_NewGameSpeech32: @ 800B194
 	lsls r2, 5
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _0800B1FC
-	ldr r1, _0800B200
+	ldr r0, _0800B1FC @ =0xffff0000
+	ldr r1, _0800B200 @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r0, _0800B204
+	ldr r0, _0800B204 @ =Task_NewGameSpeech33
 	str r0, [r4]
 _0800B1E4:
 	add sp, 0x4
@@ -3210,13 +3210,13 @@ Task_NewGameSpeech33: @ 800B208
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0800B22C
+	ldr r0, _0800B22C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0800B226
-	ldr r0, _0800B230
+	ldr r0, _0800B230 @ =CB2_NewGame
 	bl SetMainCallback2
 	adds r0, r4, 0
 	bl DestroyTask
@@ -3259,12 +3259,12 @@ CB_ContinueNewGameSpeechPart2: @ 800B234
 	strh r4, [r0]
 	add r0, sp, 0x4
 	strh r4, [r0]
-	ldr r1, _0800B310
+	ldr r1, _0800B310 @ =0x040000d4
 	str r0, [r1]
 	movs r4, 0xC0
 	lsls r4, 19
 	str r4, [r1, 0x4]
-	ldr r0, _0800B314
+	ldr r0, _0800B314 @ =0x8100c000
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	movs r2, 0
@@ -3274,7 +3274,7 @@ CB_ContinueNewGameSpeechPart2: @ 800B234
 	movs r0, 0xE0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _0800B318
+	ldr r0, _0800B318 @ =0x85000100
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	add r0, sp, 0x4
@@ -3283,43 +3283,43 @@ CB_ContinueNewGameSpeechPart2: @ 800B234
 	movs r0, 0xA0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _0800B31C
+	ldr r0, _0800B31C @ =0x81000200
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	bl ResetPaletteFade
-	ldr r0, _0800B320
+	ldr r0, _0800B320 @ =gUnknown_081E768C
 	adds r1, r4, 0
 	bl LZ77UnCompVram
-	ldr r0, _0800B324
-	ldr r1, _0800B328
+	ldr r0, _0800B324 @ =gUnknown_081E7834
+	ldr r1, _0800B328 @ =0x06003800
 	bl LZ77UnCompVram
-	ldr r0, _0800B32C
+	ldr r0, _0800B32C @ =gUnknown_081E764C
 	movs r1, 0
 	movs r2, 0x40
 	bl LoadPalette
 	bl ResetTasks
-	ldr r0, _0800B330
+	ldr r0, _0800B330 @ =Task_NewGameSpeech23
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _0800B334
+	ldr r1, _0800B334 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r4, r0, r1
-	ldr r0, _0800B338
+	ldr r0, _0800B338 @ =0x0000ffc4
 	strh r0, [r4, 0x10]
 	bl remove_some_task
 	bl ResetSpriteData
 	bl FreeAllSpritePalettes
 	adds r0, r5, 0
 	bl AddBirchSpeechObjects
-	ldr r0, _0800B33C
+	ldr r0, _0800B33C @ =gWindowConfig_81E6C3C
 	bl SetUpWindowConfig
-	ldr r0, _0800B340
+	ldr r0, _0800B340 @ =gWindowConfig_81E6CE4
 	bl InitMenuWindow
-	ldr r0, _0800B344
+	ldr r0, _0800B344 @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
 	cmp r0, 0
 	beq _0800B348
@@ -3346,7 +3346,7 @@ _0800B348:
 	strh r0, [r4, 0x14]
 	ldrb r3, [r4, 0x1C]
 _0800B34C:
-	ldr r0, _0800B3E4
+	ldr r0, _0800B3E4 @ =gSprites
 	lsls r1, r3, 4
 	adds r1, r3
 	lsls r1, 2
@@ -3361,14 +3361,14 @@ _0800B34C:
 	subs r0, 0x41
 	ands r0, r2
 	strb r0, [r1]
-	ldr r1, _0800B3E8
+	ldr r1, _0800B3E8 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
 	strh r3, [r0, 0xC]
-	ldr r1, _0800B3EC
-	ldr r2, _0800B3F0
+	ldr r1, _0800B3EC @ =0x04000014
+	ldr r2, _0800B3F0 @ =0x0000ffc4
 	adds r0, r2, 0
 	strh r0, [r1]
 	movs r0, 0x1
@@ -3378,7 +3378,7 @@ _0800B34C:
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r0, _0800B3F4
+	ldr r0, _0800B3F4 @ =0x04000040
 	strh r4, [r0]
 	adds r0, 0x4
 	strh r4, [r0]
@@ -3392,21 +3392,21 @@ _0800B34C:
 	strh r4, [r0]
 	adds r0, 0x2
 	strh r4, [r0]
-	ldr r3, _0800B3F8
+	ldr r3, _0800B3F8 @ =0x04000208
 	ldrh r2, [r3]
 	strh r4, [r3]
-	ldr r4, _0800B3FC
+	ldr r4, _0800B3FC @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r0, _0800B400
+	ldr r0, _0800B400 @ =VBlankCB_MainMenu
 	bl SetVBlankCallback
-	ldr r0, _0800B404
+	ldr r0, _0800B404 @ =CB2_MainMenu
 	bl SetMainCallback2
-	ldr r1, _0800B408
-	ldr r2, _0800B40C
+	ldr r1, _0800B408 @ =0x0400000a
+	ldr r2, _0800B40C @ =0x00000703
 	adds r0, r2, 0
 	strh r0, [r1]
 	subs r1, 0xA
@@ -3464,8 +3464,8 @@ CreateAzurillSprite: @ 800B430
 	lsrs r5, 24
 	lsls r6, 24
 	lsrs r6, 24
-	ldr r0, _0800B48C
-	ldr r2, _0800B490
+	ldr r0, _0800B48C @ =0x081f5dc0
+	ldr r2, _0800B490 @ =gMonFrontPicCoords
 	movs r3, 0xAF
 	lsls r3, 3
 	adds r1, r2, r3
@@ -3473,7 +3473,7 @@ CreateAzurillSprite: @ 800B430
 	adds r3, 0x1
 	adds r2, r3
 	ldrb r2, [r2]
-	ldr r4, _0800B494
+	ldr r4, _0800B494 @ =gUnknown_081FAF4C
 	ldr r3, [r4]
 	ldr r4, [r4, 0x4]
 	str r4, [sp]
@@ -3481,12 +3481,12 @@ CreateAzurillSprite: @ 800B430
 	lsls r4, 1
 	str r4, [sp, 0x4]
 	bl DecompressPicFromTable_2
-	ldr r0, _0800B498
+	ldr r0, _0800B498 @ =0x081f8020
 	bl LoadCompressedObjectPalette
 	adds r0, r4, 0
 	movs r1, 0x1
 	bl GetMonSpriteTemplate_803C56C
-	ldr r0, _0800B49C
+	ldr r0, _0800B49C @ =gUnknown_02024E8C
 	adds r1, r5, 0
 	adds r2, r6, 0
 	movs r3, 0
@@ -3522,7 +3522,7 @@ AddBirchSpeechObjects: @ 800B4A0
 	bl CreateBirchSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800B5B0
+	ldr r1, _0800B5B0 @ =gSprites
 	mov r9, r1
 	lsls r2, r0, 4
 	adds r2, r0
@@ -3531,7 +3531,7 @@ AddBirchSpeechObjects: @ 800B4A0
 	add r3, r9
 	mov r8, r3
 	adds r1, r2, r3
-	ldr r7, _0800B5B4
+	ldr r7, _0800B5B4 @ =nullsub_34
 	str r7, [r1]
 	add r2, r9
 	ldrb r3, [r2, 0x5]
@@ -3547,7 +3547,7 @@ AddBirchSpeechObjects: @ 800B4A0
 	mov r3, r10
 	orrs r1, r3
 	strb r1, [r2]
-	ldr r1, _0800B5B8
+	ldr r1, _0800B5B8 @ =gTasks
 	lsls r5, r4, 2
 	adds r5, r4
 	lsls r5, 3
@@ -3575,7 +3575,7 @@ AddBirchSpeechObjects: @ 800B4A0
 	orrs r1, r3
 	strb r1, [r2]
 	strh r0, [r5, 0x1A]
-	ldr r4, _0800B5BC
+	ldr r4, _0800B5BC @ =0x02000000
 	str r4, [sp]
 	movs r0, 0
 	movs r1, 0x78
@@ -3602,7 +3602,7 @@ AddBirchSpeechObjects: @ 800B4A0
 	ands r1, r3
 	strb r1, [r2, 0x5]
 	strh r0, [r5, 0x1C]
-	ldr r0, _0800B5BC
+	ldr r0, _0800B5BC @ =0x02000000
 	movs r1, 0x80
 	lsls r1, 4
 	adds r4, r0, r1
@@ -3651,7 +3651,7 @@ Task_SpriteFadeOut: @ 800B5C0
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r4, _0800B5F4
+	ldr r4, _0800B5F4 @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -3691,7 +3691,7 @@ _0800B608:
 	ldrh r0, [r3, 0xC]
 	adds r0, 0x1
 	strh r0, [r3, 0xC]
-	ldr r2, _0800B628
+	ldr r2, _0800B628 @ =0x04000052
 	movs r5, 0xC
 	ldrsh r0, [r3, r5]
 	lsls r0, 8
@@ -3716,7 +3716,7 @@ StartSpriteFadeOut: @ 800B62C
 	lsrs r4, 24
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r1, _0800B690
+	ldr r1, _0800B690 @ =0x04000050
 	movs r2, 0x94
 	lsls r2, 2
 	adds r0, r2, 0
@@ -3727,7 +3727,7 @@ StartSpriteFadeOut: @ 800B62C
 	adds r1, 0x2
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _0800B694
+	ldr r0, _0800B694 @ =gTasks
 	mov r8, r0
 	lsls r0, r4, 2
 	adds r0, r4
@@ -3735,7 +3735,7 @@ StartSpriteFadeOut: @ 800B62C
 	add r0, r8
 	movs r6, 0
 	strh r6, [r0, 0x12]
-	ldr r0, _0800B698
+	ldr r0, _0800B698 @ =Task_SpriteFadeOut
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
@@ -3766,7 +3766,7 @@ Task_SpriteFadeIn: @ 800B69C
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r4, _0800B6D0
+	ldr r4, _0800B6D0 @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -3806,7 +3806,7 @@ _0800B6E4:
 	ldrh r0, [r3, 0xC]
 	subs r0, 0x1
 	strh r0, [r3, 0xC]
-	ldr r2, _0800B704
+	ldr r2, _0800B704 @ =0x04000052
 	movs r5, 0xC
 	ldrsh r0, [r3, r5]
 	lsls r0, 8
@@ -3831,7 +3831,7 @@ StartSpriteFadeIn: @ 800B708
 	lsrs r4, 24
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r1, _0800B770
+	ldr r1, _0800B770 @ =0x04000050
 	movs r2, 0x94
 	lsls r2, 2
 	adds r0, r2, 0
@@ -3844,7 +3844,7 @@ StartSpriteFadeIn: @ 800B708
 	adds r1, 0x2
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _0800B774
+	ldr r0, _0800B774 @ =gTasks
 	mov r8, r0
 	lsls r0, r4, 2
 	adds r0, r4
@@ -3852,7 +3852,7 @@ StartSpriteFadeIn: @ 800B708
 	add r0, r8
 	movs r6, 0
 	strh r6, [r0, 0x12]
-	ldr r0, _0800B778
+	ldr r0, _0800B778 @ =Task_SpriteFadeIn
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
@@ -3883,7 +3883,7 @@ sub_800B5A8: @ 800B77C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _0800B79C
+	ldr r1, _0800B79C @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -3924,7 +3924,7 @@ _0800B7C2:
 	movs r2, 0xA
 	ldrsh r0, [r1, r2]
 	lsls r0, 1
-	ldr r1, _0800B7E4
+	ldr r1, _0800B7E4 @ =gUnknown_081E795C
 	adds r0, r1
 	movs r1, 0x1
 	movs r2, 0x10
@@ -3946,12 +3946,12 @@ StartBackgroundFadeOut: @ 800B7E8
 	lsrs r4, 24
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r0, _0800B820
+	ldr r0, _0800B820 @ =sub_800B5A8
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800B824
+	ldr r2, _0800B824 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -3976,7 +3976,7 @@ sub_800B654: @ 800B828
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _0800B848
+	ldr r1, _0800B848 @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -4017,7 +4017,7 @@ _0800B86E:
 	movs r2, 0xA
 	ldrsh r0, [r1, r2]
 	lsls r0, 1
-	ldr r1, _0800B890
+	ldr r1, _0800B890 @ =gUnknown_081E795C
 	adds r0, r1
 	movs r1, 0x1
 	movs r2, 0x10
@@ -4039,12 +4039,12 @@ StartBackgroundFadeIn: @ 800B894
 	lsrs r4, 24
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r0, _0800B8CC
+	ldr r0, _0800B8CC @ =sub_800B654
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800B8D0
+	ldr r2, _0800B8D0 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -4090,7 +4090,7 @@ CreateGenderMenu: @ 800B8D4
 	adds r4, 0x1
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r3, _0800B930
+	ldr r3, _0800B930 @ =gUnknown_081E79B0
 	adds r0, r5, 0
 	adds r1, r4, 0
 	movs r2, 0x2
@@ -4143,7 +4143,7 @@ CreateNameMenu: @ 800B944
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl MenuDrawTextWindow
-	ldr r0, _0800B98C
+	ldr r0, _0800B98C @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
 	cmp r0, 0
 	bne _0800B994
@@ -4153,7 +4153,7 @@ CreateNameMenu: @ 800B944
 	adds r4, 0x1
 	lsls r1, r4, 24
 	lsrs r1, 24
-	ldr r3, _0800B990
+	ldr r3, _0800B990 @ =gMalePresetNames
 	movs r2, 0x5
 	bl PrintMenuItems
 	b _0800B9A8
@@ -4167,7 +4167,7 @@ _0800B994:
 	adds r4, 0x1
 	lsls r1, r4, 24
 	lsrs r1, 24
-	ldr r3, _0800B9C8
+	ldr r3, _0800B9C8 @ =gFemalePresetNames
 	movs r2, 0x5
 	bl PrintMenuItems
 _0800B9A8:
@@ -4205,24 +4205,24 @@ SetPresetPlayerName: @ 800B9DC
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _0800B9F0
+	ldr r0, _0800B9F0 @ =gSaveBlock2
 	ldrb r1, [r0, 0x8]
 	adds r5, r0, 0
 	cmp r1, 0
 	bne _0800B9F8
-	ldr r1, _0800B9F4
+	ldr r1, _0800B9F4 @ =gMalePresetNames
 	b _0800B9FA
 	.align 2, 0
 _0800B9F0: .4byte gSaveBlock2
 _0800B9F4: .4byte gMalePresetNames
 _0800B9F8:
-	ldr r1, _0800BA24
+	ldr r1, _0800BA24 @ =gFemalePresetNames
 _0800B9FA:
 	lsls r0, r2, 3
 	adds r0, r1
 	ldr r3, [r0]
 	movs r2, 0
-	ldr r4, _0800BA28
+	ldr r4, _0800BA28 @ =gSaveBlock2
 _0800BA04:
 	adds r1, r2, r4
 	adds r0, r3, r2

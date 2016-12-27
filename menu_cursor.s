@@ -8,17 +8,17 @@
 
 	thumb_func_start sub_814A590
 sub_814A590: @ 814A95C
-	ldr r0, _0814A978
+	ldr r0, _0814A978 @ =gUnknown_0203A3D0
 	movs r1, 0x40
 	strb r1, [r0]
-	ldr r0, _0814A97C
+	ldr r0, _0814A97C @ =gUnknown_0203A3D1
 	strb r1, [r0]
-	ldr r0, _0814A980
+	ldr r0, _0814A980 @ =gUnknown_0203A3D2
 	strb r1, [r0]
-	ldr r0, _0814A984
+	ldr r0, _0814A984 @ =gUnknown_0203A3D3
 	movs r1, 0
 	strb r1, [r0]
-	ldr r0, _0814A988
+	ldr r0, _0814A988 @ =gUnknown_0203A3D4
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
@@ -48,11 +48,11 @@ sub_814A5C0: @ 814A98C
 	lsls r4, 24
 	lsrs r4, 24
 	mov r9, r4
-	ldr r0, _0814AA44
+	ldr r0, _0814AA44 @ =gUnknown_0203A3D0
 	ldrb r0, [r0]
 	cmp r0, 0x40
 	bne _0814A9BE
-	ldr r0, _0814AA48
+	ldr r0, _0814AA48 @ =gUnknown_0203A3D1
 	ldrb r0, [r0]
 	cmp r0, 0x40
 	beq _0814A9C2
@@ -60,41 +60,41 @@ _0814A9BE:
 	bl sub_814A7FC
 _0814A9C2:
 	movs r4, 0x1
-	ldr r0, _0814AA4C
+	ldr r0, _0814AA4C @ =0x0000ffff
 	cmp r6, r0
 	bne _0814A9E8
-	ldr r1, _0814AA50
+	ldr r1, _0814AA50 @ =gUnknown_0203A360
 	movs r0, 0xF
 	ands r0, r5
 	lsls r0, 1
 	adds r0, r1
 	strh r7, [r0]
-	ldr r0, _0814AA54
+	ldr r0, _0814AA54 @ =gUnknown_0842F240
 	bl LoadSpritePalette
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0xFF
 	beq _0814A9E8
-	ldr r6, _0814AA58
+	ldr r6, _0814AA58 @ =0x0000fff0
 	movs r4, 0
 _0814A9E8:
 	movs r7, 0xF
 	adds r0, r5, 0
 	ands r0, r7
 	lsls r0, 3
-	ldr r1, _0814AA5C
+	ldr r1, _0814AA5C @ =gUnknown_0842F140
 	adds r0, r1
 	bl LoadSpriteSheetDeferred
 	lsls r0, r4, 1
 	adds r0, r4
 	lsls r0, 3
-	ldr r4, _0814AA60
+	ldr r4, _0814AA60 @ =gSpriteTemplate_842F250
 	adds r0, r4
 	movs r1, 0
 	movs r2, 0xA0
 	mov r3, r8
 	bl CreateSprite
-	ldr r5, _0814AA44
+	ldr r5, _0814AA44 @ =gUnknown_0203A3D0
 	strb r0, [r5]
 	adds r4, 0x30
 	adds r0, r4, 0
@@ -102,7 +102,7 @@ _0814A9E8:
 	movs r2, 0xA0
 	mov r3, r8
 	bl CreateSprite
-	ldr r1, _0814AA48
+	ldr r1, _0814AA48 @ =gUnknown_0203A3D1
 	strb r0, [r1]
 	ldrb r0, [r5]
 	cmp r0, 0x40
@@ -111,9 +111,9 @@ _0814A9E8:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814AA64
+	ldr r1, _0814AA64 @ =gSprites
 	adds r4, r0, r1
-	ldr r0, _0814AA4C
+	ldr r0, _0814AA4C @ =0x0000ffff
 	cmp r6, r0
 	bne _0814AA68
 	ldrb r1, [r4, 0x5]
@@ -141,7 +141,7 @@ _0814AA68:
 	orrs r1, r0
 	strb r1, [r4, 0x5]
 _0814AA7A:
-	ldr r1, _0814AAA0
+	ldr r1, _0814AAA0 @ =gUnknown_0203A3D1
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814AAF8
@@ -149,9 +149,9 @@ _0814AA7A:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814AAA4
+	ldr r1, _0814AAA4 @ =gSprites
 	adds r4, r0, r1
-	ldr r0, _0814AAA8
+	ldr r0, _0814AAA8 @ =0x0000ffff
 	cmp r6, r0
 	bne _0814AAAC
 	ldrb r1, [r4, 0x5]
@@ -181,18 +181,18 @@ _0814AABE:
 	ands r0, r1
 	cmp r0, 0
 	bne _0814AAD8
-	ldr r0, _0814AB10
+	ldr r0, _0814AB10 @ =0x0400004a
 	ldrb r1, [r0]
 	movs r2, 0x1F
 	orrs r1, r2
 	strb r1, [r0]
 _0814AAD8:
-	ldr r1, _0814AB14
+	ldr r1, _0814AB14 @ =gUnknown_0203A3D3
 	ldrh r0, [r3]
 	lsrs r0, 15
 	strb r0, [r1]
-	ldr r1, _0814AB18
-	ldr r2, _0814AB1C
+	ldr r1, _0814AB18 @ =gUnknown_0203A3D4
+	ldr r2, _0814AB1C @ =0x0400004b
 	ldrb r0, [r2]
 	strb r0, [r1]
 	ldrh r0, [r3]
@@ -206,7 +206,7 @@ _0814AAD8:
 _0814AAF8:
 	mov r0, r9
 	bl sub_814A958
-	ldr r0, _0814AB20
+	ldr r0, _0814AB20 @ =gUnknown_0203A3D0
 	ldrb r0, [r0]
 	pop {r3,r4}
 	mov r8, r3
@@ -243,12 +243,12 @@ sub_814A758: @ 814AB24
 	adds r4, r0, 0
 	cmp r4, 0x40
 	beq _0814AB66
-	ldr r0, _0814AB70
+	ldr r0, _0814AB70 @ =gUnknown_0203A3D0
 	ldrb r0, [r0]
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _0814AB74
+	ldr r0, _0814AB74 @ =gSprites
 	adds r1, r0
 	lsls r3, r5, 4
 	ldrb r2, [r1, 0x5]
@@ -280,7 +280,7 @@ unref_sub_814A7AC: @ 814AB78
 	movs r3, 0
 	movs r2, 0xF
 	movs r1, 0
-	ldr r6, _0814ABC4
+	ldr r6, _0814ABC4 @ =gPlttBufferUnfaded
 	movs r5, 0xF
 _0814AB92:
 	lsls r0, r1, 1
@@ -315,23 +315,23 @@ _0814ABC4: .4byte gPlttBufferUnfaded
 	thumb_func_start sub_814A7FC
 sub_814A7FC: @ 814ABC8
 	push {r4,lr}
-	ldr r4, _0814AC2C
+	ldr r4, _0814AC2C @ =gUnknown_0203A3D0
 	ldrb r0, [r4]
 	cmp r0, 0x40
 	beq _0814ABEC
-	ldr r0, _0814AC30
+	ldr r0, _0814AC30 @ =gUnknown_0842F140
 	bl LoadTilesForSpriteSheet
 	ldrb r1, [r4]
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814AC34
+	ldr r1, _0814AC34 @ =gSprites
 	adds r0, r1
 	bl DestroySpriteAndFreeResources
 	movs r0, 0x40
 	strb r0, [r4]
 _0814ABEC:
-	ldr r4, _0814AC38
+	ldr r4, _0814AC38 @ =gUnknown_0203A3D1
 	ldrb r0, [r4]
 	cmp r0, 0x40
 	beq _0814AC24
@@ -339,24 +339,24 @@ _0814ABEC:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814AC34
+	ldr r1, _0814AC34 @ =gSprites
 	adds r0, r1
 	bl DestroySpriteAndFreeResources
 	movs r0, 0x40
 	strb r0, [r4]
-	ldr r0, _0814AC3C
+	ldr r0, _0814AC3C @ =gUnknown_0203A3D3
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _0814AC1C
 	movs r2, 0x80
 	lsls r2, 19
 	ldrh r1, [r2]
-	ldr r0, _0814AC40
+	ldr r0, _0814AC40 @ =0x00007fff
 	ands r0, r1
 	strh r0, [r2]
 _0814AC1C:
-	ldr r0, _0814AC44
-	ldr r1, _0814AC48
+	ldr r0, _0814AC44 @ =0x0400004b
+	ldr r1, _0814AC48 @ =gUnknown_0203A3D4
 	ldrb r1, [r1]
 	strb r1, [r0]
 _0814AC24:
@@ -383,7 +383,7 @@ sub_814A880: @ 814AC4C
 	lsls r1, 24
 	lsrs r4, r1, 24
 	adds r6, r4, 0
-	ldr r1, _0814ACC4
+	ldr r1, _0814ACC4 @ =gUnknown_0203A3D0
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814AC8C
@@ -391,7 +391,7 @@ sub_814A880: @ 814AC4C
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814ACC8
+	ldr r1, _0814ACC8 @ =gSprites
 	adds r2, r0, r1
 	adds r3, r2, 0
 	adds r3, 0x3E
@@ -409,7 +409,7 @@ sub_814A880: @ 814AC4C
 	strh r5, [r2, 0x20]
 	strh r4, [r2, 0x22]
 _0814AC8C:
-	ldr r1, _0814ACCC
+	ldr r1, _0814ACCC @ =gUnknown_0203A3D1
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814ACBE
@@ -417,7 +417,7 @@ _0814AC8C:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814ACC8
+	ldr r1, _0814ACC8 @ =gSprites
 	adds r2, r0, r1
 	adds r3, r2, 0
 	adds r3, 0x3E
@@ -447,7 +447,7 @@ _0814ACCC: .4byte gUnknown_0203A3D1
 	thumb_func_start sub_814A904
 sub_814A904: @ 814ACD0
 	push {lr}
-	ldr r1, _0814AD18
+	ldr r1, _0814AD18 @ =gUnknown_0203A3D0
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814ACF2
@@ -455,7 +455,7 @@ sub_814A904: @ 814ACD0
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814AD1C
+	ldr r1, _0814AD1C @ =gSprites
 	adds r0, r1
 	adds r2, r0, 0
 	adds r2, 0x3E
@@ -464,7 +464,7 @@ sub_814A904: @ 814ACD0
 	orrs r0, r1
 	strb r0, [r2]
 _0814ACF2:
-	ldr r1, _0814AD20
+	ldr r1, _0814AD20 @ =gUnknown_0203A3D1
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814AD12
@@ -472,7 +472,7 @@ _0814ACF2:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814AD1C
+	ldr r1, _0814AD1C @ =gSprites
 	adds r0, r1
 	adds r2, r0, 0
 	adds r2, 0x3E
@@ -498,11 +498,11 @@ sub_814A958: @ 814AD24
 	push {r5-r7}
 	sub sp, 0x4
 	lsls r0, 24
-	ldr r4, _0814AD90
-	ldr r2, _0814AD94
+	ldr r4, _0814AD90 @ =gMenuCursorSubsprites
+	ldr r2, _0814AD94 @ =0x0000ffff
 	lsrs r0, 24
 	str r0, [sp]
-	ldr r0, _0814AD98
+	ldr r0, _0814AD98 @ =gUnknown_0842F780
 	ldr r1, [r0, 0x4]
 	ldr r0, [r0]
 	str r0, [r4]
@@ -518,13 +518,13 @@ sub_814A958: @ 814AD24
 	asrs r0, 16
 	cmp r0, 0x7
 	ble _0814AE0A
-	ldr r0, _0814AD9C
+	ldr r0, _0814AD9C @ =gUnknown_0842F788
 	mov r12, r0
 	mov r8, r1
 	movs r1, 0x8
 	negs r1, r1
 	mov r10, r1
-	ldr r5, _0814ADA0
+	ldr r5, _0814ADA0 @ =gUnknown_0842F790
 	mov r9, r5
 _0814AD6A:
 	lsls r0, r3, 16
@@ -606,7 +606,7 @@ _0814ADF0:
 	cmp r1, 0x7
 	bgt _0814AD6A
 _0814AE0A:
-	ldr r5, _0814AE78
+	ldr r5, _0814AE78 @ =0x0843d6d8
 	ldr r0, [r5]
 	ldr r1, [r5, 0x4]
 	str r0, [r4]
@@ -621,7 +621,7 @@ _0814AE0A:
 	adds r0, r7, 0x1
 	lsls r0, 24
 	lsrs r7, r0, 24
-	ldr r6, _0814AE7C
+	ldr r6, _0814AE7C @ =gUnknown_0203A3D0
 	ldrb r0, [r6]
 	cmp r0, 0x40
 	beq _0814AE48
@@ -629,15 +629,15 @@ _0814AE0A:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814AE80
+	ldr r1, _0814AE80 @ =gSprites
 	adds r2, r0, r1
 	lsls r1, r7, 3
-	ldr r0, _0814AE84
+	ldr r0, _0814AE84 @ =gSubspriteTables_842F5C0
 	adds r1, r0
 	adds r0, r2, 0
 	bl SetSubspriteTables
 _0814AE48:
-	ldr r1, _0814AE88
+	ldr r1, _0814AE88 @ =gUnknown_0203A3D1
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814AE68
@@ -645,10 +645,10 @@ _0814AE48:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814AE80
+	ldr r1, _0814AE80 @ =gSprites
 	adds r2, r0, r1
 	lsls r1, r7, 3
-	ldr r0, _0814AE84
+	ldr r0, _0814AE84 @ =gSubspriteTables_842F5C0
 	adds r1, r0
 	adds r0, r2, 0
 	bl SetSubspriteTables
@@ -673,25 +673,25 @@ _0814AE88: .4byte gUnknown_0203A3D1
 sub_814AABC: @ 814AE8C
 	push {lr}
 	adds r2, r0, 0
-	ldr r1, _0814AEBC
+	ldr r1, _0814AEBC @ =gUnknown_0203A3D0
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814AEA4
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _0814AEC0
+	ldr r0, _0814AEC0 @ =gSprites
 	adds r1, r0
 	str r2, [r1, 0x1C]
 _0814AEA4:
-	ldr r1, _0814AEC4
+	ldr r1, _0814AEC4 @ =gUnknown_0203A3D1
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814AEB8
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _0814AEC0
+	ldr r0, _0814AEC0 @ =gSprites
 	adds r1, r0
 	str r2, [r1, 0x1C]
 _0814AEB8:
@@ -711,7 +711,7 @@ sub_814AAF8: @ 814AEC8
 	lsls r0, 16
 	lsrs r0, 16
 	mov r12, r0
-	ldr r1, _0814AF40
+	ldr r1, _0814AF40 @ =gUnknown_0203A3D0
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814AF36
@@ -719,20 +719,20 @@ sub_814AAF8: @ 814AEC8
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814AF44
+	ldr r1, _0814AF44 @ =gSprites
 	adds r4, r0, r1
 	ldr r0, [r4, 0x14]
 	ldrh r1, [r0, 0x2]
-	ldr r0, _0814AF48
+	ldr r0, _0814AF48 @ =0x0000ffff
 	cmp r1, r0
 	bne _0814AF36
 	movs r2, 0
 	movs r3, 0xF
 	movs r1, 0
 	ldrb r5, [r4, 0x5]
-	ldr r0, _0814AF4C
+	ldr r0, _0814AF4C @ =gUnknown_0842F140
 	mov r8, r0
-	ldr r7, _0814AF50
+	ldr r7, _0814AF50 @ =gPlttBufferUnfaded
 	movs r6, 0xF
 _0814AF02:
 	lsls r0, r1, 1
@@ -778,14 +778,14 @@ _0814AF50: .4byte gPlttBufferUnfaded
 	thumb_func_start sub_814AB84
 sub_814AB84: @ 814AF54
 	push {r4,r5,lr}
-	ldr r5, _0814AF9C
+	ldr r5, _0814AF9C @ =gUnknown_0203A3D1
 	ldrb r0, [r5]
 	cmp r0, 0x40
 	beq _0814AF94
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0814AFA0
+	ldr r0, _0814AFA0 @ =gSprites
 	adds r4, r0
 	adds r0, r4, 0
 	bl FreeSpriteOamMatrix
@@ -793,19 +793,19 @@ sub_814AB84: @ 814AF54
 	bl DestroySprite
 	movs r0, 0x40
 	strb r0, [r5]
-	ldr r0, _0814AFA4
+	ldr r0, _0814AFA4 @ =gUnknown_0203A3D3
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _0814AF8C
 	movs r2, 0x80
 	lsls r2, 19
 	ldrh r1, [r2]
-	ldr r0, _0814AFA8
+	ldr r0, _0814AFA8 @ =0x00007fff
 	ands r0, r1
 	strh r0, [r2]
 _0814AF8C:
-	ldr r0, _0814AFAC
-	ldr r1, _0814AFB0
+	ldr r0, _0814AFAC @ =0x0400004b
+	ldr r1, _0814AFB0 @ =gUnknown_0203A3D4
 	ldrb r1, [r1]
 	strb r1, [r0]
 _0814AF94:
@@ -825,14 +825,14 @@ _0814AFB0: .4byte gUnknown_0203A3D4
 unref_sub_814ABE4: @ 814AFB4
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r1, _0814B010
+	ldr r1, _0814B010 @ =gUnknown_0842F5BC
 	lsls r0, r4, 2
 	adds r0, r1
 	ldr r0, [r0]
-	ldr r1, _0814B014
+	ldr r1, _0814B014 @ =gMenuCursorSubsprites
 	movs r2, 0x28
 	bl CpuSet
-	ldr r1, _0814B018
+	ldr r1, _0814B018 @ =gUnknown_0203A3D0
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814AFE8
@@ -840,15 +840,15 @@ unref_sub_814ABE4: @ 814AFB4
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814B01C
+	ldr r1, _0814B01C @ =gSprites
 	adds r2, r0, r1
 	lsls r1, r4, 3
-	ldr r0, _0814B020
+	ldr r0, _0814B020 @ =gUnknown_0842F758
 	adds r1, r0
 	adds r0, r2, 0
 	bl SetSubspriteTables
 _0814AFE8:
-	ldr r1, _0814B024
+	ldr r1, _0814B024 @ =gUnknown_0203A3D1
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814B008
@@ -856,10 +856,10 @@ _0814AFE8:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814B01C
+	ldr r1, _0814B01C @ =gSprites
 	adds r2, r0, r1
 	lsls r1, r4, 3
-	ldr r0, _0814B020
+	ldr r0, _0814B020 @ =gUnknown_0842F758
 	adds r1, r0
 	adds r0, r2, 0
 	bl SetSubspriteTables
@@ -895,48 +895,48 @@ CreateBlendedOutlineCursor: @ 814B028
 	lsls r4, 24
 	lsrs r4, 24
 	mov r9, r4
-	ldr r0, _0814B0C8
+	ldr r0, _0814B0C8 @ =gUnknown_0203A3D2
 	ldrb r0, [r0]
 	cmp r0, 0x40
 	beq _0814B056
 	bl sub_814AD44
 _0814B056:
 	movs r4, 0x1
-	ldr r0, _0814B0CC
+	ldr r0, _0814B0CC @ =0x0000ffff
 	cmp r5, r0
 	bne _0814B07C
-	ldr r1, _0814B0D0
+	ldr r1, _0814B0D0 @ =gUnknown_0203A360
 	movs r0, 0xF
 	ands r0, r7
 	lsls r0, 1
 	adds r0, r1
 	strh r6, [r0]
-	ldr r0, _0814B0D4
+	ldr r0, _0814B0D4 @ =gUnknown_0842F248
 	bl LoadSpritePalette
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0xFF
 	beq _0814B07C
-	ldr r5, _0814B0D8
+	ldr r5, _0814B0D8 @ =0x0000fff1
 	movs r4, 0
 _0814B07C:
 	movs r6, 0xF
 	adds r0, r7, 0
 	ands r0, r6
 	lsls r0, 3
-	ldr r1, _0814B0DC
+	ldr r1, _0814B0DC @ =gUnknown_0842F1C0
 	adds r0, r1
 	bl LoadSpriteSheetDeferred
 	lsls r0, r4, 1
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _0814B0E0
+	ldr r1, _0814B0E0 @ =gSpriteTemplate_842F298
 	adds r0, r1
 	movs r1, 0
 	movs r2, 0xA1
 	mov r3, r8
 	bl CreateSprite
-	ldr r1, _0814B0C8
+	ldr r1, _0814B0C8 @ =gUnknown_0203A3D2
 	strb r0, [r1]
 	lsls r0, 24
 	lsrs r0, 24
@@ -946,9 +946,9 @@ _0814B07C:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814B0E4
+	ldr r1, _0814B0E4 @ =gSprites
 	adds r4, r0, r1
-	ldr r0, _0814B0CC
+	ldr r0, _0814B0CC @ =0x0000ffff
 	cmp r5, r0
 	bne _0814B0E8
 	ldrb r1, [r4, 0x5]
@@ -977,7 +977,7 @@ _0814B0E8:
 _0814B0FA:
 	mov r0, r9
 	bl sub_814ADF4
-	ldr r0, _0814B110
+	ldr r0, _0814B110 @ =gUnknown_0203A3D2
 	ldrb r0, [r0]
 	pop {r3,r4}
 	mov r8, r3
@@ -992,17 +992,17 @@ _0814B110: .4byte gUnknown_0203A3D2
 	thumb_func_start sub_814AD44
 sub_814AD44: @ 814B114
 	push {r4,lr}
-	ldr r4, _0814B140
+	ldr r4, _0814B140 @ =gUnknown_0203A3D2
 	ldrb r0, [r4]
 	cmp r0, 0x40
 	beq _0814B138
-	ldr r0, _0814B144
+	ldr r0, _0814B144 @ =gUnknown_0842F1C0
 	bl LoadTilesForSpriteSheet
 	ldrb r1, [r4]
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814B148
+	ldr r1, _0814B148 @ =gSprites
 	adds r0, r1
 	bl DestroySpriteAndFreeResources
 	movs r0, 0x40
@@ -1024,7 +1024,7 @@ sub_814AD7C: @ 814B14C
 	lsrs r5, r0, 24
 	lsls r1, 24
 	lsrs r4, r1, 24
-	ldr r1, _0814B190
+	ldr r1, _0814B190 @ =gUnknown_0203A3D2
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814B188
@@ -1032,7 +1032,7 @@ sub_814AD7C: @ 814B14C
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814B194
+	ldr r1, _0814B194 @ =gSprites
 	adds r2, r0, r1
 	adds r3, r2, 0
 	adds r3, 0x3E
@@ -1061,7 +1061,7 @@ _0814B194: .4byte gSprites
 	thumb_func_start sub_814ADC8
 sub_814ADC8: @ 814B198
 	push {lr}
-	ldr r1, _0814B1BC
+	ldr r1, _0814B1BC @ =gUnknown_0203A3D2
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814B1B8
@@ -1069,7 +1069,7 @@ sub_814ADC8: @ 814B198
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814B1C0
+	ldr r1, _0814B1C0 @ =gSprites
 	adds r0, r1
 	adds r0, 0x3E
 	ldrb r1, [r0]
@@ -1093,7 +1093,7 @@ sub_814ADF4: @ 814B1C4
 	bls _0814B1D0
 	movs r2, 0
 _0814B1D0:
-	ldr r1, _0814B1F4
+	ldr r1, _0814B1F4 @ =gUnknown_0203A3D2
 	ldrb r0, [r1]
 	cmp r0, 0x40
 	beq _0814B1EE
@@ -1101,10 +1101,10 @@ _0814B1D0:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0814B1F8
+	ldr r1, _0814B1F8 @ =gSprites
 	adds r0, r1
 	lsls r1, r2, 3
-	ldr r2, _0814B1FC
+	ldr r2, _0814B1FC @ =gUnknown_0842F6C0
 	adds r1, r2
 	bl SetSubspriteTables
 _0814B1EE:

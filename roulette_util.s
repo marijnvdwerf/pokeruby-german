@@ -141,7 +141,7 @@ sub_81249E4: @ 8124D64
 	b _08124F14
 _08124D7C:
 	movs r7, 0x1F
-	ldr r0, _08124DAC
+	ldr r0, _08124DAC @ =0xfffffc1f
 	mov r10, r0
 	movs r1, 0x7D
 	negs r1, r1
@@ -152,9 +152,9 @@ _08124D8C:
 	ldrh r0, [r5, 0x6]
 	add r0, r12
 	lsls r0, 1
-	ldr r1, _08124DB0
+	ldr r1, _08124DB0 @ =gPlttBufferFaded
 	adds r3, r0, r1
-	ldr r1, _08124DB4
+	ldr r1, _08124DB4 @ =gPlttBufferUnfaded
 	adds r6, r0, r1
 	ldrb r0, [r5]
 	lsls r0, 25
@@ -423,7 +423,7 @@ _08124F82:
 	ldrb r0, [r3, 0x8]
 	cmp r2, r0
 	bcs _08124FA2
-	ldr r4, _08124FAC
+	ldr r4, _08124FAC @ =gPlttBufferFaded
 _08124F8A:
 	ldrh r0, [r3, 0x6]
 	adds r0, r2
@@ -449,8 +449,8 @@ _08124FB0:
 	ldrb r0, [r3, 0x8]
 	cmp r2, r0
 	bcs _08124FD4
-	ldr r5, _08124FF4
-	ldr r4, _08124FF8
+	ldr r5, _08124FF4 @ =gPlttBufferFaded
+	ldr r4, _08124FF8 @ =gPlttBufferUnfaded
 _08124FBA:
 	ldrh r0, [r3, 0x6]
 	adds r0, r2
@@ -626,9 +626,9 @@ _081250CA:
 	beq _08125132
 	ldrh r1, [r4, 0xA]
 	lsls r1, 1
-	ldr r0, _08125128
+	ldr r0, _08125128 @ =gPlttBufferFaded
 	adds r0, r1, r0
-	ldr r2, _0812512C
+	ldr r2, _0812512C @ =gPlttBufferUnfaded
 	adds r1, r2
 	ldrb r2, [r4, 0xC]
 	lsls r2, 1
@@ -662,7 +662,7 @@ _08125132:
 	lsrs r5, r0, 24
 	cmp r5, 0xF
 	bls _081250CA
-	ldr r0, _08125148
+	ldr r0, _08125148 @ =0x0000ffff
 	cmp r7, r0
 	bne _0812514C
 	movs r0, 0

@@ -9,7 +9,7 @@
 	thumb_func_start walkrun_is_standing_still
 walkrun_is_standing_still: @ 8065000
 	push {lr}
-	ldr r0, _08065010
+	ldr r0, _08065010 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x3]
 	cmp r0, 0x1
 	beq _08065014
@@ -45,7 +45,7 @@ _08065036:
 	thumb_func_start sub_8064CFC
 sub_8064CFC: @ 806503C
 	push {lr}
-	ldr r0, _08065054
+	ldr r0, _08065054 @ =sub_8064CDC
 	bl FuncIsActiveTask
 	lsls r0, 24
 	cmp r0, 0
@@ -66,7 +66,7 @@ _0806505A:
 sub_8064D20: @ 8065060
 	push {lr}
 	bl player_bitmagic
-	ldr r0, _08065074
+	ldr r0, _08065074 @ =sub_8064CDC
 	movs r1, 0x50
 	bl CreateTask
 	pop {r0}
@@ -83,7 +83,7 @@ sub_8064D38: @ 8065078
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
-	ldr r1, _080650E8
+	ldr r1, _080650E8 @ =gTasks
 	adds r5, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r5, r1]
@@ -101,8 +101,8 @@ _080650A2:
 	ldrsh r0, [r5, r1]
 	cmp r0, 0
 	bne _080650CA
-	ldr r2, _080650EC
-	ldr r0, _080650F0
+	ldr r2, _080650EC @ =gMapObjects
+	ldr r0, _080650F0 @ =gSelectedMapObject
 	ldrb r1, [r0]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -140,7 +140,7 @@ _080650F0: .4byte gSelectedMapObject
 	thumb_func_start sub_8064DB4
 sub_8064DB4: @ 80650F4
 	push {lr}
-	ldr r0, _0806510C
+	ldr r0, _0806510C @ =sub_8064D38
 	bl FuncIsActiveTask
 	lsls r0, 24
 	cmp r0, 0
@@ -160,15 +160,15 @@ _08065112:
 	thumb_func_start sub_8064DD8
 sub_8064DD8: @ 8065118
 	push {r4,r5,lr}
-	ldr r4, _0806515C
+	ldr r4, _0806515C @ =gSelectedMapObject
 	ldrb r0, [r4]
 	bl sub_8064470
-	ldr r0, _08065160
+	ldr r0, _08065160 @ =sub_8064D38
 	movs r1, 0x50
 	bl CreateTask
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r2, _08065164
+	ldr r2, _08065164 @ =gMapObjects
 	ldrb r1, [r4]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -180,7 +180,7 @@ sub_8064DD8: @ 8065118
 	blt _08065156
 	adds r0, r1, 0
 	bl sub_80643A4
-	ldr r0, _08065168
+	ldr r0, _08065168 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
@@ -211,7 +211,7 @@ sub_8064E2C: @ 806516C
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08065198
+	ldr r1, _08065198 @ =gMapObjects
 	adds r0, r1
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	bl sub_80A2178
@@ -225,8 +225,8 @@ _08065198: .4byte gMapObjects
 	thumb_func_start unref_sub_8064E5C
 unref_sub_8064E5C: @ 806519C
 	push {r4,lr}
-	ldr r4, _080651E4
-	ldr r0, _080651E8
+	ldr r4, _080651E4 @ =gMapObjects
+	ldr r0, _080651E8 @ =gSelectedMapObject
 	ldrb r1, [r0]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -264,14 +264,14 @@ _080651E8: .4byte gSelectedMapObject
 	thumb_func_start sub_8064EAC
 sub_8064EAC: @ 80651EC
 	push {lr}
-	ldr r0, _08065208
+	ldr r0, _08065208 @ =gSelectedMapObject
 	ldrb r1, [r0]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0806520C
+	ldr r1, _0806520C @ =gMapObjects
 	adds r0, r1
-	ldr r1, _08065210
+	ldr r1, _08065210 @ =gScriptFacing
 	ldrb r1, [r1]
 	bl FieldObjectFaceOppositeDirection
 	pop {r0}
@@ -285,12 +285,12 @@ _08065210: .4byte gScriptFacing
 	thumb_func_start sub_8064ED4
 sub_8064ED4: @ 8065214
 	push {lr}
-	ldr r0, _0806522C
+	ldr r0, _0806522C @ =gSelectedMapObject
 	ldrb r1, [r0]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08065230
+	ldr r1, _08065230 @ =gMapObjects
 	adds r0, r1
 	bl FieldObjectClearAnimIfSpecialAnimActive
 	pop {r0}

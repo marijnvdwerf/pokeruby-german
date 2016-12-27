@@ -17,7 +17,7 @@ sub_8056DA0: @ 80570E0
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080570F8
+	ldr r1, _080570F8 @ =gUnknown_08308E2C
 	adds r0, r1
 	ldrb r1, [r0]
 	movs r0, 0x1
@@ -324,7 +324,7 @@ MetatileBehavior_IsSurfableWaterOrUnderwater: @ 8057278
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08057290
+	ldr r1, _08057290 @ =gUnknown_08308E2C
 	adds r0, r1
 	ldrb r1, [r0]
 	movs r0, 0x2

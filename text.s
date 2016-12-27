@@ -9,17 +9,17 @@
 	thumb_func_start UpdateBGRegs
 UpdateBGRegs: @ 8002AE0
 	ldrb r2, [r0]
-	ldr r1, _08002B10
+	ldr r1, _08002B10 @ =gBGHOffsetRegs
 	lsls r2, 2
 	adds r1, r2, r1
 	ldr r1, [r1]
 	movs r3, 0
 	strh r3, [r1]
-	ldr r1, _08002B14
+	ldr r1, _08002B14 @ =gBGVOffsetRegs
 	adds r1, r2, r1
 	ldr r1, [r1]
 	strh r3, [r1]
-	ldr r1, _08002B18
+	ldr r1, _08002B18 @ =gBGControlRegs
 	adds r2, r1
 	ldr r3, [r2]
 	ldrb r2, [r0, 0x3]
@@ -45,7 +45,7 @@ ClearBGMem: @ 8002B1C
 	movs r5, 0
 	str r5, [sp]
 	ldr r1, [r4, 0x10]
-	ldr r2, _08002B48
+	ldr r2, _08002B48 @ =0x01000008
 	mov r0, sp
 	bl CpuFastSet
 	ldr r1, [r4, 0x14]
@@ -53,7 +53,7 @@ ClearBGMem: @ 8002B1C
 	beq _08002B40
 	str r5, [sp, 0x4]
 	add r0, sp, 0x4
-	ldr r2, _08002B4C
+	ldr r2, _08002B4C @ =0x01000200
 	bl CpuFastSet
 _08002B40:
 	add sp, 0x8
@@ -68,7 +68,7 @@ _08002B4C: .4byte 0x01000200
 	thumb_func_start LoadFontDefaultPalette
 LoadFontDefaultPalette: @ 8002B50
 	push {lr}
-	ldr r2, _08002B64
+	ldr r2, _08002B64 @ =gFontDefaultPalette
 	ldrb r1, [r0, 0x4]
 	lsls r1, 4
 	adds r0, r2, 0
@@ -117,7 +117,7 @@ _08002BA6:
 	cmp r0, 0x6
 	bhi _08002C02
 	lsls r0, 2
-	ldr r1, _08002BB8
+	ldr r1, _08002BB8 @ =_08002BBC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -175,11 +175,11 @@ InitVariableWidthFontTileData: @ 8002C0C
 	ldr r5, [r4, 0x24]
 	adds r5, r0
 	str r2, [sp]
-	ldr r2, _08002C58
+	ldr r2, _08002C58 @ =0x01000008
 	mov r0, sp
 	adds r1, r5, 0
 	bl CpuFastSet
-	ldr r0, _08002C5C
+	ldr r0, _08002C5C @ =sBlankTile
 	adds r5, 0x20
 	ldr r1, [r4, 0x2C]
 	ldrb r2, [r1, 0x5]
@@ -240,7 +240,7 @@ LoadFixedWidthFont_Font1Latin: @ 8002C8C
 	movs r4, 0
 _08002C9A:
 	lsls r0, r4, 3
-	ldr r1, _08002CBC
+	ldr r1, _08002CBC @ =0x081f096c
 	adds r0, r1
 	ldrb r2, [r6, 0x3]
 	ldrb r3, [r6, 0x4]
@@ -271,7 +271,7 @@ LoadFixedWidthFont_Font4Latin: @ 8002CC0
 	movs r5, 0
 _08002CD0:
 	lsls r0, r5, 5
-	ldr r1, _08002CF8
+	ldr r1, _08002CF8 @ =gFont4LatinGlyphs
 	adds r0, r1
 	ldrb r2, [r4, 0x3]
 	ldrb r3, [r4, 0x5]
@@ -304,7 +304,7 @@ LoadFixedWidthFont_Braille: @ 8002CFC
 	movs r4, 0
 _08002D0A:
 	lsls r0, r4, 3
-	ldr r1, _08002D2C
+	ldr r1, _08002D2C @ =0x081f286c
 	adds r0, r1
 	ldrb r2, [r6, 0x3]
 	ldrb r3, [r6, 0x4]
@@ -329,12 +329,12 @@ MultistepInitWindowTileData: @ 8002D30
 	adds r2, r0, 0
 	lsls r1, 16
 	lsrs r4, r1, 16
-	ldr r0, _08002D64
+	ldr r0, _08002D64 @ =0x03000320
 	str r2, [r0]
-	ldr r1, _08002D68
+	ldr r1, _08002D68 @ =0x03000326
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _08002D6C
+	ldr r0, _08002D6C @ =0x03000324
 	strh r4, [r0]
 	strh r4, [r2, 0x1A]
 	movs r0, 0
@@ -374,13 +374,13 @@ _08002D80:
 MultistepLoadFont: @ 8002D88
 	push {r4,r5,lr}
 	movs r5, 0x1
-	ldr r0, _08002DA0
+	ldr r0, _08002DA0 @ =0x03000320
 	ldr r0, [r0]
 	ldr r0, [r0, 0x2C]
 	ldrb r0, [r0, 0x9]
 	cmp r0, 0x1
 	bne _08002DD6
-	ldr r0, _08002DA4
+	ldr r0, _08002DA4 @ =0x03000326
 	ldrh r4, [r0]
 	adds r0, r4, 0
 	b _08002DBE
@@ -388,21 +388,21 @@ MultistepLoadFont: @ 8002D88
 _08002DA0: .4byte 0x03000320
 _08002DA4: .4byte 0x03000326
 _08002DA8:
-	ldr r0, _08002DE0
+	ldr r0, _08002DE0 @ =0x03000320
 	ldr r0, [r0]
-	ldr r1, _08002DE4
+	ldr r1, _08002DE4 @ =0x03000324
 	ldrh r1, [r1]
 	lsls r2, r4, 24
 	lsrs r2, 24
 	bl MultistepLoadFont_LoadGlyph
 	adds r4, 0x1
-	ldr r0, _08002DE8
+	ldr r0, _08002DE8 @ =0x03000326
 	ldrh r0, [r0]
 _08002DBE:
 	adds r0, 0x10
 	cmp r4, r0
 	blt _08002DA8
-	ldr r1, _08002DE8
+	ldr r1, _08002DE8 @ =0x03000326
 	ldrh r0, [r1]
 	adds r0, 0x10
 	strh r0, [r1]
@@ -436,7 +436,7 @@ MultistepLoadFont_LoadGlyph: @ 8002DEC
 	cmp r0, 0x5
 	bhi _08002E78
 	lsls r0, 2
-	ldr r1, _08002E0C
+	ldr r1, _08002E0C @ =_08002E10
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -467,7 +467,7 @@ _08002E3E:
 	ldr r1, [r4, 0x24]
 	adds r5, r1, r0
 	lsls r0, r2, 3
-	ldr r1, _08002E58
+	ldr r1, _08002E58 @ =0x081f096c
 	adds r0, r1
 	ldrb r2, [r4, 0x3]
 	ldrb r3, [r4, 0x4]
@@ -482,7 +482,7 @@ _08002E5C:
 	ldr r1, [r4, 0x24]
 	adds r5, r1, r0
 	lsls r0, r2, 5
-	ldr r1, _08002E80
+	ldr r1, _08002E80 @ =gFont4LatinGlyphs
 	adds r0, r1
 	ldrb r2, [r4, 0x3]
 	ldrb r3, [r4, 0x5]
@@ -510,7 +510,7 @@ InitWindowFromConfig: @ 8002E88
 	adds r4, r0, 0
 	adds r5, r1, 0
 	adds r1, r4, 0
-	ldr r0, _08002EF0
+	ldr r0, _08002EF0 @ =0x081f3a20
 	ldm r0!, {r2,r3,r6}
 	stm r1!, {r2,r3,r6}
 	ldm r0!, {r2,r3,r6}
@@ -699,17 +699,17 @@ sub_8002EB0: @ 8002FE4
 	lsrs r3, 24
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r6, _08003064
+	ldr r6, _08003064 @ =gMain
 	movs r0, 0
 	mov r8, r0
 	movs r4, 0
 	movs r0, 0x3
 	strh r0, [r6, 0x36]
 	strh r4, [r6, 0x34]
-	ldr r0, _08003068
+	ldr r0, _08003068 @ =0x03000358
 	mov r4, r8
 	strb r4, [r0]
-	ldr r4, _0800306C
+	ldr r4, _0800306C @ =0x03000359
 	movs r0, 0x1A
 	strb r0, [r4]
 	str r5, [sp]
@@ -728,12 +728,12 @@ sub_8002EB0: @ 8002FE4
 	lsrs r0, 11
 	ldr r4, [r7, 0x24]
 	adds r4, r0
-	ldr r0, _08003070
+	ldr r0, _08003070 @ =sBlankTile
 	ldrb r3, [r7, 0x4]
 	adds r1, r4, 0
 	adds r2, r3, 0
 	bl ApplyColors_UnshadowedFont
-	ldr r0, _08003074
+	ldr r0, _08003074 @ =0x081f0cdc
 	adds r4, 0x20
 	ldrb r2, [r7, 0x3]
 	ldrb r3, [r7, 0x4]
@@ -858,7 +858,7 @@ InterpretText: @ 8003114
 	cmp r0, 0x5
 	bhi _08003196
 	lsls r0, 2
-	ldr r1, _0800313C
+	ldr r1, _0800313C @ =_08003140
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -906,7 +906,7 @@ _0800318A:
 	lsrs r0, 24
 	b _080031AA
 _08003196:
-	ldr r0, _080031B0
+	ldr r0, _080031B0 @ =0x081f39f8
 	ldrb r1, [r4]
 	lsls r1, 2
 	adds r1, r0
@@ -926,7 +926,7 @@ _080031B0: .4byte 0x081f39f8
 	thumb_func_start HandleExtCtrlCode
 HandleExtCtrlCode: @ 80031B4
 	push {lr}
-	ldr r3, _080031DC
+	ldr r3, _080031DC @ =0x081f3a50
 	ldrh r2, [r0, 0x1E]
 	adds r1, r2, 0x1
 	strh r1, [r0, 0x1E]
@@ -1161,7 +1161,7 @@ ExtCtrlCode_PlayBGM: @ 8003314
 	thumb_func_start ExtCtrlCode_Escape
 ExtCtrlCode_Escape: @ 8003344
 	push {lr}
-	ldr r1, _0800336C
+	ldr r1, _0800336C @ =0x081f39f8
 	ldrb r3, [r0]
 	lsls r3, 2
 	adds r3, r1
@@ -1265,7 +1265,7 @@ DrawSpace: @ 80033DC
 	cmp r0, 0x7
 	bhi _08003414
 _080033FA:
-	ldr r0, _08003410
+	ldr r0, _08003410 @ =0x081f39f8
 	ldrb r1, [r5]
 	lsls r1, 2
 	adds r1, r0
@@ -1277,7 +1277,7 @@ _080033FA:
 	.align 2, 0
 _08003410: .4byte 0x081f39f8
 _08003414:
-	ldr r0, _08003474
+	ldr r0, _08003474 @ =0x03000360
 	ldr r4, [r0, 0x40]
 	adds r0, r5, 0
 	movs r1, 0
@@ -1560,7 +1560,7 @@ sub_80034D4: @ 8003608
 	push {lr}
 	adds r3, r0, 0
 	adds r2, r1, 0
-	ldr r0, _0800361C
+	ldr r0, _0800361C @ =gWindowConfig_81E6C74
 	adds r1, r3, 0
 	bl sub_8004E3C
 	pop {r0}
@@ -1573,7 +1573,7 @@ _0800361C: .4byte gWindowConfig_81E6C74
 sub_80034EC: @ 8003620
 	push {lr}
 	adds r1, r0, 0
-	ldr r0, _08003634
+	ldr r0, _08003634 @ =gWindowConfig_81E6C74
 	bl GetStringWidthGivenWindowConfig
 	lsls r0, 24
 	lsrs r0, 24
@@ -1598,8 +1598,8 @@ sub_8003504: @ 8003638
 	lsrs r6, 24
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r5, _08003684
-	ldr r0, _08003688
+	ldr r5, _08003684 @ =0x03000328
+	ldr r0, _08003688 @ =gWindowConfig_81E6C74
 	str r0, [r5, 0x2C]
 	movs r0, 0
 	str r0, [sp]
@@ -1641,8 +1641,8 @@ sub_8003558: @ 800368C
 	lsrs r6, 24
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r5, _080036D8
-	ldr r0, _080036DC
+	ldr r5, _080036D8 @ =0x03000328
+	ldr r0, _080036DC @ =gWindowConfig_81E6C74
 	str r0, [r5, 0x2C]
 	movs r0, 0
 	str r0, [sp]
@@ -1671,7 +1671,7 @@ _080036DC: .4byte gWindowConfig_81E6C74
 	thumb_func_start sub_80035AC
 sub_80035AC: @ 80036E0
 	push {lr}
-	ldr r2, _080036F4
+	ldr r2, _080036F4 @ =0x03000358
 	movs r1, 0
 	strb r1, [r2]
 	bl UpdateWindowText
@@ -1693,7 +1693,7 @@ UpdateWindowText: @ 80036F8
 	b _0800380C
 _08003704:
 	lsls r0, 2
-	ldr r1, _08003710
+	ldr r1, _08003710 @ =_08003714
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1718,7 +1718,7 @@ _08003740:
 	lsls r0, 24
 	cmp r0, 0
 	beq _08003768
-	ldr r0, _08003764
+	ldr r0, _08003764 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x3
 	ands r0, r1
@@ -1749,7 +1749,7 @@ _0800377C:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080037A4
-	ldr r2, _080037A0
+	ldr r2, _080037A0 @ =gMain
 	ldrh r1, [r2, 0x2C]
 	movs r0, 0x3
 	ands r0, r1
@@ -1830,7 +1830,7 @@ _08003814:
 	cmp r0, 0xA
 	bhi _0800386C
 	lsls r0, 2
-	ldr r1, _0800382C
+	ldr r1, _0800382C @ =_08003830
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1875,10 +1875,10 @@ _0800387A:
 	thumb_func_start sub_800374C
 sub_800374C: @ 8003880
 	push {r4,r5,lr}
-	ldr r5, _080038A4
+	ldr r5, _080038A4 @ =0x03000358
 	movs r1, 0x1
 	strb r1, [r5]
-	ldr r4, _080038A8
+	ldr r4, _080038A8 @ =0x03000359
 	movs r1, 0x1B
 	strb r1, [r4]
 	bl UpdateWindowText
@@ -1899,10 +1899,10 @@ _080038A8: .4byte 0x03000359
 	thumb_func_start sub_8003778
 sub_8003778: @ 80038AC
 	push {r4,lr}
-	ldr r4, _080038CC
+	ldr r4, _080038CC @ =0x03000358
 	movs r1, 0x2
 	strb r1, [r4]
-	ldr r2, _080038D0
+	ldr r2, _080038D0 @ =0x03000359
 	movs r1, 0x1A
 	strb r1, [r2]
 	bl UpdateWindowText
@@ -1921,10 +1921,10 @@ _080038D0: .4byte 0x03000359
 	thumb_func_start sub_80037A0
 sub_80037A0: @ 80038D4
 	push {r4,lr}
-	ldr r2, _080038F4
+	ldr r2, _080038F4 @ =0x03000358
 	movs r1, 0x3
 	strb r1, [r2]
-	ldr r4, _080038F8
+	ldr r4, _080038F8 @ =0x03000359
 	movs r1, 0x11
 	strb r1, [r4]
 	bl UpdateWindowText
@@ -1943,10 +1943,10 @@ _080038F8: .4byte 0x03000359
 	thumb_func_start sub_80037C8
 sub_80037C8: @ 80038FC
 	push {r4,lr}
-	ldr r3, _0800391C
+	ldr r3, _0800391C @ =0x03000358
 	movs r2, 0
 	strb r2, [r3]
-	ldr r4, _08003920
+	ldr r4, _08003920 @ =0x03000359
 	strb r1, [r4]
 	bl UpdateWindowText
 	lsls r0, 24
@@ -2008,7 +2008,7 @@ DrawGlyph_TextMode0: @ 800394C
 PrintGlyph_TextMode1: @ 8003978
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r2, _08003998
+	ldr r2, _08003998 @ =0x081f3a04
 	ldrb r0, [r4, 0x1]
 	lsls r0, 2
 	adds r0, r2
@@ -2046,7 +2046,7 @@ WriteGlyphTilemap_Font0_Font3: @ 800399C
 WriteGlyphTilemap_Font1_Font4: @ 80039B8
 	push {r4,lr}
 	lsls r3, r1, 1
-	ldr r4, _080039E0
+	ldr r4, _080039E0 @ =0x081f2f6c
 	adds r1, r3, r4
 	ldrb r1, [r1]
 	ldrh r2, [r0, 0x1A]
@@ -2088,7 +2088,7 @@ WriteGlyphTilemap_Font2_Font5: @ 80039E4
 WriteGlyphTilemap_Font6: @ 8003A00
 	push {r4,lr}
 	lsls r3, r1, 1
-	ldr r4, _08003A28
+	ldr r4, _08003A28 @ =0x081f315a
 	adds r1, r3, r4
 	ldrb r1, [r1]
 	ldrh r2, [r0, 0x1A]
@@ -2175,7 +2175,7 @@ LoadFixedWidthGlyph: @ 8003A88
 	cmp r0, 0x6
 	bhi _08003B16
 	lsls r0, 2
-	ldr r1, _08003AB8
+	ldr r1, _08003AB8 @ =_08003ABC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -2276,13 +2276,13 @@ _08003B6C:
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _08003B88
+	ldr r0, _08003B88 @ =0x081f3aac
 	adds r3, r1, r0
 	ldr r0, [r3]
 	cmp r0, 0x4
 	bhi _08003C20
 	lsls r0, 2
-	ldr r1, _08003B8C
+	ldr r1, _08003B8C @ =_08003B90
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -2308,7 +2308,7 @@ _08003BA4:
 _08003BB4:
 	lsls r0, r4, 17
 	lsrs r4, r0, 16
-	ldr r2, _08003BBC
+	ldr r2, _08003BBC @ =0x081f2f6c
 	b _08003BDA
 	.align 2, 0
 _08003BBC: .4byte 0x081f2f6c
@@ -2326,7 +2326,7 @@ _08003BC0:
 _08003BD4:
 	lsls r0, r4, 17
 	lsrs r4, r0, 16
-	ldr r2, _08003BFC
+	ldr r2, _08003BFC @ =0x081f315a
 _08003BDA:
 	adds r0, r4, r2
 	ldrb r1, [r0]
@@ -2349,7 +2349,7 @@ _08003BF4:
 	.align 2, 0
 _08003BFC: .4byte 0x081f315a
 _08003C00:
-	ldr r0, _08003C28
+	ldr r0, _08003C28 @ =0x0000fff0
 	ands r0, r4
 	ldrh r2, [r3, 0x8]
 	muls r0, r2
@@ -2707,7 +2707,7 @@ _08003E7C:
 	bl DrawGlyphTiles
 	b _08003E9A
 _08003E88:
-	ldr r0, _08003EA0
+	ldr r0, _08003EA0 @ =0x081f3a04
 	ldrb r1, [r3, 0x1]
 	lsls r1, 2
 	adds r1, r0
@@ -2737,11 +2737,11 @@ ClipLeft: @ 8003EA4
 	lsls r0, r1, 1
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08003F78
+	ldr r1, _08003F78 @ =0x081f3958
 	adds r0, r1
 	ldr r1, [r0]
 	mvns r5, r1
-	ldr r0, _08003F7C
+	ldr r0, _08003F7C @ =0x03000360
 	ldr r4, [r0, 0x40]
 	ands r4, r1
 	adds r0, r6, 0
@@ -2855,11 +2855,11 @@ ClipRight: @ 8003F80
 	lsls r0, r2, 1
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _08004068
+	ldr r2, _08004068 @ =0x081f3658
 	adds r0, r2
 	adds r1, r0
 	ldr r5, [r1]
-	ldr r0, _0800406C
+	ldr r0, _0800406C @ =0x03000360
 	ldr r4, [r0, 0x40]
 	bics r4, r5
 	adds r0, r6, 0
@@ -2964,7 +2964,7 @@ InitColors: @ 8004070
 	movs r1, 0xF
 	strb r1, [r0, 0x3]
 	movs r1, 0
-	ldr r0, _08004090
+	ldr r0, _08004090 @ =0x03000360
 	adds r0, 0x44
 _08004084:
 	stm r0!, {r1}
@@ -2982,7 +2982,7 @@ SetBackgroundColor: @ 8004094
 	lsls r1, 24
 	lsrs r1, 24
 	strb r1, [r0, 0x4]
-	ldr r3, _080040B0
+	ldr r3, _080040B0 @ =0x03000360
 	str r1, [r3, 0x44]
 	lsls r2, r1, 4
 	orrs r2, r1
@@ -3001,7 +3001,7 @@ SetShadowColor: @ 80040B4
 	lsls r1, 24
 	lsrs r1, 24
 	strb r1, [r0, 0x5]
-	ldr r0, _080040C0
+	ldr r0, _080040C0 @ =0x03000360
 	str r1, [r0, 0x7C]
 	bx lr
 	.align 2, 0
@@ -3013,7 +3013,7 @@ SetForegroundColor: @ 80040C4
 	lsls r1, 24
 	lsrs r1, 24
 	strb r1, [r0, 0x3]
-	ldr r0, _080040D4
+	ldr r0, _080040D4 @ =0x03000360
 	adds r0, 0x80
 	str r1, [r0]
 	bx lr
@@ -3028,8 +3028,8 @@ GetTextDelay: @ 80040D8
 	lsls r0, 24
 	cmp r0, 0
 	beq _080040FC
-	ldr r1, _080040F4
-	ldr r0, _080040F8
+	ldr r1, _080040F4 @ =0x081f3b54
+	ldr r0, _080040F8 @ =gSaveBlock2
 	ldrb r0, [r0, 0x14]
 	lsls r0, 29
 	lsrs r0, 29
@@ -3050,7 +3050,7 @@ _080040FE:
 PlayerCanInterruptWait: @ 8004104
 	push {lr}
 	movs r1, 0x1
-	ldr r0, _0800411C
+	ldr r0, _0800411C @ =0x03000358
 	ldrb r0, [r0]
 	cmp r0, 0x2
 	beq _08004126
@@ -3070,7 +3070,7 @@ _08004126:
 	b _08004144
 _0800412A:
 	movs r1, 0
-	ldr r0, _08004138
+	ldr r0, _08004138 @ =gUnknown_0203869A
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08004144
@@ -3079,7 +3079,7 @@ _0800412A:
 	.align 2, 0
 _08004138: .4byte gUnknown_0203869A
 _0800413C:
-	ldr r0, _0800414C
+	ldr r0, _0800414C @ =gUnknown_020239F8
 	ldrh r0, [r0]
 	lsrs r0, 1
 	bics r1, r0
@@ -3126,7 +3126,7 @@ ScrollWindowTextLines_TextMode0: @ 800417C
 	ldrb r3, [r2, 0x11]
 	cmp r3, 0
 	bne _080041A0
-	ldr r0, _0800419C
+	ldr r0, _0800419C @ =0x03000359
 	ldrb r0, [r0]
 	lsls r0, 1
 	adds r0, 0x2
@@ -3147,7 +3147,7 @@ _080041A0:
 	adds r4, r1, 0
 	cmp r0, 0
 	beq _080041C0
-	ldr r1, _080041BC
+	ldr r1, _080041BC @ =0x03000359
 	ldrb r0, [r1]
 	lsls r0, 1
 	adds r0, 0x2
@@ -3158,7 +3158,7 @@ _080041A0:
 _080041BC: .4byte 0x03000359
 _080041C0:
 	strh r3, [r2, 0x1C]
-	ldr r3, _080041DC
+	ldr r3, _080041DC @ =0x03000359
 _080041C4:
 	movs r0, 0x2
 	eors r0, r4
@@ -3257,7 +3257,7 @@ _08004274:
 	movs r1, 0
 	strb r0, [r2, 0xC]
 	strb r1, [r2, 0x10]
-	ldr r0, _08004290
+	ldr r0, _08004290 @ =0x03000359
 	ldrb r1, [r0]
 	adds r0, r2, 0
 	bl DoScroll_TextMode1
@@ -3343,7 +3343,7 @@ _0800431C:
 	movs r1, 0
 	strb r0, [r2, 0xC]
 	strb r1, [r2, 0x10]
-	ldr r0, _08004338
+	ldr r0, _08004338 @ =0x03000359
 	ldrb r1, [r0]
 	adds r0, r2, 0
 	bl DoScroll_TextMode2
@@ -3388,7 +3388,7 @@ DoScroll_TextMode2: @ 800433C
 	mov r1, r8
 	mov r2, r9
 	bl CpuFastSet
-	ldr r1, _08004448
+	ldr r1, _08004448 @ =0x03000360
 	mov r10, r1
 	ldr r0, [r1, 0x40]
 	str r0, [sp, 0x8]
@@ -3505,7 +3505,7 @@ _08004460:
 	beq _0800448C
 	b _08004496
 _08004466:
-	ldr r0, _08004478
+	ldr r0, _08004478 @ =0x03000359
 	ldrb r1, [r0]
 	adds r0, r4, 0
 	bl ClearWindowTextLines_TextMode0_TextMode1
@@ -3515,7 +3515,7 @@ _08004466:
 	.align 2, 0
 _08004478: .4byte 0x03000359
 _0800447C:
-	ldr r0, _08004488
+	ldr r0, _08004488 @ =0x03000359
 	ldrb r1, [r0]
 	adds r0, r4, 0
 	bl ClearWindowTextLines_TextMode0_TextMode1
@@ -3523,7 +3523,7 @@ _0800447C:
 	.align 2, 0
 _08004488: .4byte 0x03000359
 _0800448C:
-	ldr r0, _0800449C
+	ldr r0, _0800449C @ =0x03000359
 	ldrb r1, [r0]
 	adds r0, r4, 0
 	bl ClearWindowTextLines_TextMode2
@@ -3604,7 +3604,7 @@ ClearWindowTextLines_TextMode2: @ 80044F8
 	lsrs r0, 11
 	ldr r4, [r6, 0x24]
 	adds r4, r0
-	ldr r0, _08004588
+	ldr r0, _08004588 @ =0x03000360
 	mov r8, r0
 	ldr r0, [r0, 0x40]
 	str r0, [sp]
@@ -3672,7 +3672,7 @@ _0800459E:
 	lsls r1, 4
 	ands r1, r0
 	lsrs r1, 2
-	ldr r0, _080045BC
+	ldr r0, _080045BC @ =0x081f2e6c
 	adds r7, r1, r0
 	ldrb r0, [r5]
 	cmp r0, 0x1
@@ -3765,7 +3765,7 @@ _08004616:
 	ldr r1, [r5, 0x24]
 	adds r1, r0
 	str r1, [sp, 0xC]
-	ldr r0, _080046E4
+	ldr r0, _080046E4 @ =0x030003a4
 	str r0, [sp, 0x10]
 	add r0, sp, 0x4
 	bl DrawGlyphTile_ShadowedFont
@@ -3796,7 +3796,7 @@ _0800468A:
 	ldr r1, [r5, 0x24]
 	adds r1, r0
 	str r1, [sp, 0xC]
-	ldr r0, _080046E4
+	ldr r0, _080046E4 @ =0x030003a4
 	str r0, [sp, 0x10]
 	add r0, sp, 0x4
 	bl DrawGlyphTile_ShadowedFont
@@ -3852,7 +3852,7 @@ WaitWithDownArrow: @ 80046F8
 	beq _08004728
 	b _08004734
 _08004716:
-	ldr r0, _08004730
+	ldr r0, _08004730 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x3
 	ands r0, r1
@@ -4246,7 +4246,7 @@ _080049C6:
 	cmp r0, 0x6
 	bhi _08004A02
 	lsls r0, 2
-	ldr r1, _080049D8
+	ldr r1, _080049D8 @ =_080049DC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -4304,7 +4304,7 @@ GetGlyphWidth: @ 8004A1C
 	cmp r0, 0x6
 	bhi _08004A98
 	lsls r0, 2
-	ldr r1, _08004A40
+	ldr r1, _08004A40 @ =_08004A44
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -4320,17 +4320,17 @@ _08004A44:
 	.4byte _08004A68
 	.4byte _08004A98
 _08004A60:
-	ldr r0, _08004A64
+	ldr r0, _08004A64 @ =0x081f3510
 	b _08004A72
 	.align 2, 0
 _08004A64: .4byte 0x081f3510
 _08004A68:
-	ldr r2, _08004A6C
+	ldr r2, _08004A6C @ =0x081f3336
 	b _08004A7E
 	.align 2, 0
 _08004A6C: .4byte 0x081f3336
 _08004A70:
-	ldr r0, _08004A78
+	ldr r0, _08004A78 @ =0x081f3412
 _08004A72:
 	adds r0, r3, r0
 	ldrb r1, [r0]
@@ -4338,9 +4338,9 @@ _08004A72:
 	.align 2, 0
 _08004A78: .4byte 0x081f3412
 _08004A7C:
-	ldr r2, _08004A90
+	ldr r2, _08004A90 @ =0x081f325a
 _08004A7E:
-	ldr r1, _08004A94
+	ldr r1, _08004A94 @ =0x081f2f6c
 	lsls r0, r3, 1
 	adds r0, 0x1
 	adds r0, r1
@@ -4367,7 +4367,7 @@ GetExtCtrlCodeLength: @ 8004AA0
 	movs r0, 0
 	cmp r1, 0x16
 	bhi _08004AB2
-	ldr r0, _08004AB8
+	ldr r0, _08004AB8 @ =0x081f3b57
 	adds r0, r1, r0
 	ldrb r0, [r0]
 _08004AB2:
@@ -4732,7 +4732,7 @@ _08004D56:
 	cmp r0, 0x10
 	bhi _08004DEC
 	lsls r0, 2
-	ldr r1, _08004D6C
+	ldr r1, _08004D6C @ =_08004D70
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -5005,7 +5005,7 @@ sub_8004E3C: @ 8004F70
 	sub sp, 0x4
 	adds r5, r1, 0
 	adds r1, r2, 0
-	ldr r4, _08004F9C
+	ldr r4, _08004F9C @ =0x03000328
 	str r0, [r4, 0x2C]
 	movs r0, 0
 	str r0, [sp]
@@ -5029,7 +5029,7 @@ GetStringWidthGivenWindowConfig: @ 8004FA0
 	push {r4,r5,lr}
 	sub sp, 0x4
 	adds r5, r1, 0
-	ldr r4, _08004FCC
+	ldr r4, _08004FCC @ =0x03000328
 	str r0, [r4, 0x2C]
 	movs r0, 0
 	str r0, [sp]
@@ -5253,7 +5253,7 @@ sub_8004FD0: @ 8005104
 	movs r7, 0
 	cmp r5, 0
 	bne _0800513C
-	ldr r5, _08005140
+	ldr r5, _08005140 @ =gStringVar4
 _0800513C:
 	str r5, [sp, 0x14]
 	b _0800518E
@@ -5347,7 +5347,7 @@ DrawGlyphTile_UnshadowedFont: @ 80051E0
 	push {r4-r7,lr}
 	sub sp, 0x8
 	adds r7, r0, 0
-	ldr r6, _08005278
+	ldr r6, _08005278 @ =0x03000360
 	ldr r5, [r7, 0x8]
 	ldrb r0, [r7, 0x2]
 	lsls r2, r0, 1
@@ -5357,7 +5357,7 @@ DrawGlyphTile_UnshadowedFont: @ 80051E0
 	lsls r0, r1, 1
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0800527C
+	ldr r1, _0800527C @ =0x081f3658
 	adds r0, r1
 	adds r2, r0
 	ldr r1, [r2]
@@ -5454,7 +5454,7 @@ _080052B0:
 	str r0, [sp]
 	ldr r0, [r1, 0x3C]
 	str r0, [sp, 0x4]
-	ldr r1, _08005334
+	ldr r1, _08005334 @ =0x081f3b70
 	ldrb r0, [r7, 0x2]
 	lsls r0, 2
 	adds r0, r1
@@ -5532,7 +5532,7 @@ ShiftGlyphTile_UnshadowedFont_Width1: @ 800533C
 	adds r6, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _08005384
+	ldr r0, _08005384 @ =0x081f39b8
 	adds r5, r3, r0
 	movs r4, 0
 _0800534E:
@@ -5577,7 +5577,7 @@ ShiftGlyphTile_UnshadowedFont_Width2: @ 8005388
 	adds r6, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _080053F0
+	ldr r0, _080053F0 @ =0x081f39b8
 	adds r5, r3, r0
 	movs r4, 0
 	movs r7, 0x1
@@ -5635,7 +5635,7 @@ ShiftGlyphTile_UnshadowedFont_Width3: @ 80053F4
 	adds r4, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _08005478
+	ldr r0, _08005478 @ =0x081f39b8
 	adds r7, r3, r0
 	movs r5, 0
 	movs r6, 0x1
@@ -5707,7 +5707,7 @@ ShiftGlyphTile_UnshadowedFont_Width4: @ 800547C
 	adds r4, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _08005500
+	ldr r0, _08005500 @ =0x081f39b8
 	adds r7, r3, r0
 	movs r5, 0
 	movs r6, 0x1
@@ -5779,7 +5779,7 @@ ShiftGlyphTile_UnshadowedFont_Width5: @ 8005504
 	adds r4, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _08005594
+	ldr r0, _08005594 @ =0x081f39b8
 	adds r7, r3, r0
 	movs r5, 0
 	movs r6, 0x1
@@ -5858,7 +5858,7 @@ ShiftGlyphTile_UnshadowedFont_Width6: @ 8005598
 	adds r4, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _08005638
+	ldr r0, _08005638 @ =0x081f39b8
 	adds r7, r3, r0
 	movs r6, 0
 	movs r5, 0x1
@@ -5944,7 +5944,7 @@ ShiftGlyphTile_UnshadowedFont_Width7: @ 800563C
 	adds r4, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _080056E8
+	ldr r0, _080056E8 @ =0x081f39b8
 	adds r7, r3, r0
 	movs r6, 0
 	movs r5, 0x1
@@ -6038,7 +6038,7 @@ ShiftGlyphTile_UnshadowedFont_Width8: @ 80056EC
 	adds r5, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _080057B0
+	ldr r0, _080057B0 @ =0x081f39b8
 	adds r3, r0
 	mov r12, r3
 	movs r7, 0
@@ -6136,7 +6136,7 @@ _080057B0: .4byte 0x081f39b8
 DrawGlyphTile_ShadowedFont: @ 80057B4
 	push {r4-r7,lr}
 	adds r7, r0, 0
-	ldr r6, _08005848
+	ldr r6, _08005848 @ =0x03000360
 	ldr r5, [r7, 0x8]
 	ldrb r0, [r7, 0x2]
 	lsls r2, r0, 1
@@ -6146,7 +6146,7 @@ DrawGlyphTile_ShadowedFont: @ 80057B4
 	lsls r0, r1, 1
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0800584C
+	ldr r1, _0800584C @ =0x081f3658
 	adds r0, r1
 	adds r2, r0
 	ldr r1, [r2]
@@ -6238,7 +6238,7 @@ _0800587C:
 	ands r0, r1
 	str r0, [r6, 0x3C]
 _08005880:
-	ldr r1, _080058F8
+	ldr r1, _080058F8 @ =0x081f3b94
 	ldrb r0, [r7, 0x2]
 	lsls r0, 2
 	adds r0, r1
@@ -6317,7 +6317,7 @@ ShiftGlyphTile_ShadowedFont_Width1: @ 8005900
 	adds r6, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _08005958
+	ldr r0, _08005958 @ =0x081f39b8
 	adds r5, r3, r0
 	movs r4, 0
 	movs r0, 0xF
@@ -6367,7 +6367,7 @@ ShiftGlyphTile_ShadowedFont_Width2: @ 800595C
 	adds r6, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _080059C0
+	ldr r0, _080059C0 @ =0x081f39b8
 	adds r5, r3, r0
 	movs r4, 0
 	movs r7, 0xF
@@ -6425,7 +6425,7 @@ ShiftGlyphTile_ShadowedFont_Width3: @ 80059C4
 	adds r6, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _08005A40
+	ldr r0, _08005A40 @ =0x081f39b8
 	adds r7, r3, r0
 	movs r5, 0
 	movs r0, 0xF
@@ -6494,7 +6494,7 @@ ShiftGlyphTile_ShadowedFont_Width4: @ 8005A44
 	adds r5, r2, 0
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r0, _08005AD0
+	ldr r0, _08005AD0 @ =0x081f39b8
 	adds r3, r0
 	mov r12, r3
 	movs r6, 0
@@ -6566,7 +6566,7 @@ ShiftGlyphTile_ShadowedFont_Width5: @ 8005AD4
 	push {r7}
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r4, _08005DE0
+	ldr r4, _08005DE0 @ =0x081f39b8
 	adds r3, r4
 	ldr r6, [r1]
 	movs r4, 0xF
@@ -6961,7 +6961,7 @@ ShiftGlyphTile_ShadowedFont_Width6: @ 8005DE4
 	push {r7}
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r4, _08006160
+	ldr r4, _08006160 @ =0x081f39b8
 	adds r3, r4
 	ldr r6, [r1]
 	movs r4, 0xF
@@ -7412,7 +7412,7 @@ ShiftGlyphTile_ShadowedFont_Width7: @ 8006164
 	push {r7}
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r4, _08006548
+	ldr r4, _08006548 @ =0x081f39b8
 	adds r3, r4
 	ldr r6, [r1]
 	movs r4, 0xF
@@ -7921,7 +7921,7 @@ ShiftGlyphTile_ShadowedFont_Width8: @ 8006558
 	push {r7}
 	lsls r3, 24
 	lsrs r3, 21
-	ldr r4, _0800694C
+	ldr r4, _0800694C @ =0x081f39b8
 	adds r3, r4
 	ldr r6, [r1]
 	movs r4, 0xF
@@ -8511,13 +8511,13 @@ DrawGlyphTiles: @ 80069A8
 	ldr r1, [r6, 0x24]
 	adds r1, r0
 	str r1, [sp, 0xC]
-	ldr r0, _08006A0C
+	ldr r0, _08006A0C @ =0x030003a4
 	str r0, [sp, 0x10]
 	ldrb r0, [r6, 0x1]
 	cmp r0, 0x6
 	bhi _08006A7C
 	lsls r0, 2
-	ldr r1, _08006A10
+	ldr r1, _08006A10 @ =_08006A14
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0

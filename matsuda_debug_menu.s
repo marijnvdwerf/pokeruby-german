@@ -13,7 +13,7 @@ sub_80AAC5C: @ 80AADAC
 	lsls r1, 24
 	cmp r1, 0
 	ble _080AADC8
-	ldr r1, _080AADC4
+	ldr r1, _080AADC4 @ =gScriptContestRank
 	ldrh r0, [r1]
 	adds r0, 0x1
 	strh r0, [r1]
@@ -22,7 +22,7 @@ sub_80AAC5C: @ 80AADAC
 	.align 2, 0
 _080AADC4: .4byte gScriptContestRank
 _080AADC8:
-	ldr r0, _080AAE0C
+	ldr r0, _080AAE0C @ =gScriptContestRank
 	ldrh r2, [r0]
 	adds r4, r0, 0
 	cmp r2, 0
@@ -39,7 +39,7 @@ _080AADD6:
 _080AADE2:
 	ldrb r0, [r4]
 	bl sub_80AA5E8
-	ldr r0, _080AAE10
+	ldr r0, _080AAE10 @ =gScriptContestCategory
 	ldrb r0, [r0]
 	ldrb r1, [r4]
 	bl sub_80AE398
@@ -63,24 +63,24 @@ _080AAE10: .4byte gScriptContestCategory
 sub_80AACC4: @ 80AAE14
 	push {lr}
 	bl UpdatePaletteFade
-	ldr r0, _080AAE48
+	ldr r0, _080AAE48 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _080AAE44
 	bl SetDebugMonForContest
-	ldr r0, _080AAE4C
+	ldr r0, _080AAE4C @ =gUnknown_0203869A
 	ldrb r1, [r0]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	bne _080AAE3E
-	ldr r0, _080AAE50
+	ldr r0, _080AAE50 @ =0x02000000
 	ldrb r0, [r0]
 	bl sub_80AE82C
 _080AAE3E:
-	ldr r0, _080AAE54
+	ldr r0, _080AAE54 @ =sub_80AB47C
 	bl SetMainCallback2
 _080AAE44:
 	pop {r0}
@@ -100,11 +100,11 @@ sub_80AAD08: @ 80AAE58
 	asrs r1, 24
 	cmp r1, 0x1
 	bne _080AAE82
-	ldr r1, _080AAE8C
+	ldr r1, _080AAE8C @ =0x02000000
 	ldrh r0, [r0, 0x34]
 	movs r4, 0
 	strb r0, [r1]
-	ldr r0, _080AAE90
+	ldr r0, _080AAE90 @ =sub_80AACC4
 	bl SetMainCallback2
 	movs r0, 0x1
 	negs r0, r0
@@ -132,11 +132,11 @@ sub_80AAD44: @ 80AAE94
 	bne _080AAEC2
 	bl SetDebugMonForContest
 	movs r4, 0
-	ldr r5, _080AAEC8
+	ldr r5, _080AAEC8 @ =gUnknown_02038670
 _080AAEA6:
 	lsls r0, r4, 24
 	lsrs r0, 24
-	ldr r1, _080AAECC
+	ldr r1, _080AAECC @ =gScriptContestCategory
 	ldrb r1, [r1]
 	bl sub_80AE770
 	strh r0, [r5]
@@ -144,7 +144,7 @@ _080AAEA6:
 	adds r4, 0x1
 	cmp r4, 0x3
 	ble _080AAEA6
-	ldr r0, _080AAED0
+	ldr r0, _080AAED0 @ =sub_805469C
 	bl SetMainCallback2
 _080AAEC2:
 	pop {r4,r5}
@@ -177,15 +177,15 @@ sub_80AAD84: @ 80AAED4
 	mov r5, r10
 	adds r5, 0x1
 	lsls r1, r5, 8
-	ldr r0, _080AB014
+	ldr r0, _080AB014 @ =0x06018000
 	subs r1, r0, r1
 	movs r0, 0
 	str r0, [sp, 0x44]
-	ldr r4, _080AB018
+	ldr r4, _080AB018 @ =0x040000d4
 	add r0, sp, 0x44
 	str r0, [r4]
 	str r1, [r4, 0x4]
-	ldr r0, _080AB01C
+	ldr r0, _080AB01C @ =0x85000040
 	str r0, [r4, 0x8]
 	ldr r0, [r4, 0x8]
 	mov r0, r9
@@ -209,7 +209,7 @@ _080AAF20:
 	add r5, sp, 0x40
 	add r0, sp, 0x20
 	mov r10, r0
-	ldr r2, _080AB014
+	ldr r2, _080AB014 @ =0x06018000
 _080AAF3C:
 	mov r1, r9
 	adds r0, r1, r6
@@ -228,7 +228,7 @@ _080AAF3C:
 	mov r1, r10
 	str r1, [r4]
 	str r0, [r4, 0x4]
-	ldr r0, _080AB020
+	ldr r0, _080AB020 @ =0x84000008
 	str r0, [r4, 0x8]
 	ldr r0, [r4, 0x8]
 	adds r2, 0x20
@@ -241,11 +241,11 @@ _080AAF6E:
 	subs r1, r2
 	lsls r1, 24
 	lsrs r7, r1, 24
-	ldr r0, _080AB024
+	ldr r0, _080AB024 @ =gMain
 	mov r9, r0
 	lsls r3, r7, 3
 	add r3, r9
-	ldr r0, _080AB028
+	ldr r0, _080AB028 @ =gUnknown_083C9400
 	ldr r1, [r0]
 	ldr r2, [r0, 0x4]
 	str r1, [sp, 0x50]
@@ -260,18 +260,18 @@ _080AAF6E:
 	subs r2, r0
 	adds r6, r3, 0
 	adds r6, 0x40
-	ldr r0, _080AB02C
+	ldr r0, _080AB02C @ =0x000003ff
 	mov r8, r0
 	mov r1, r8
 	ands r2, r1
 	ldrh r5, [r6]
-	ldr r4, _080AB030
+	ldr r4, _080AB030 @ =0xfffffc00
 	adds r0, r4, 0
 	ands r0, r5
 	orrs r0, r2
 	strh r0, [r6]
 	ldrh r5, [r3, 0x3E]
-	ldr r2, _080AB034
+	ldr r2, _080AB034 @ =0xfffffe00
 	adds r0, r2, 0
 	ands r0, r5
 	ldr r1, [sp, 0x48]
@@ -377,10 +377,10 @@ sub_80AAF30: @ 80AB080
 	mov r6, r8
 	push {r6,r7}
 	sub sp, 0x4
-	ldr r1, _080AB110
+	ldr r1, _080AB110 @ =gUnknown_0203856C
 	movs r0, 0x1
 	strb r0, [r1]
-	ldr r1, _080AB114
+	ldr r1, _080AB114 @ =gContestPlayerMonIndex
 	movs r0, 0x3
 	strb r0, [r1]
 	movs r0, 0
@@ -388,7 +388,7 @@ sub_80AAF30: @ 80AB080
 	movs r4, 0x3
 	movs r5, 0x1
 	negs r5, r5
-	ldr r3, _080AB118
+	ldr r3, _080AB118 @ =gUnknown_02038690
 	movs r2, 0x3
 _080AB0A6:
 	adds r1, r4, r3
@@ -399,17 +399,17 @@ _080AB0A6:
 	bgt _080AB0A6
 	movs r4, 0
 	movs r6, 0
-	ldr r7, _080AB11C
-	ldr r5, _080AB120
+	ldr r7, _080AB11C @ =gUnknown_02038670
+	ldr r5, _080AB120 @ =gContestMons
 	mov r9, r5
 _080AB0BC:
 	lsls r1, r4, 1
 	strh r6, [r7]
-	ldr r0, _080AB124
+	ldr r0, _080AB124 @ =gUnknown_02038680
 	mov r8, r0
 	adds r0, r1, r0
 	strh r6, [r0]
-	ldr r3, _080AB128
+	ldr r3, _080AB128 @ =gUnknown_02038678
 	adds r1, r3
 	strh r6, [r1]
 	adds r0, r5, 0
@@ -424,7 +424,7 @@ _080AB0BC:
 	ldr r3, [sp]
 	cmp r4, 0x2
 	ble _080AB0BC
-	ldr r0, _080AB11C
+	ldr r0, _080AB11C @ =gUnknown_02038670
 	movs r1, 0x96
 	lsls r1, 1
 	strh r1, [r0, 0x6]
@@ -465,13 +465,13 @@ MatsudaDebugMenu_SetHighScore: @ 80AB12C
 	thumb_func_start MatsudaDebugMenu_ResetHighScore
 MatsudaDebugMenu_ResetHighScore: @ 80AB13C
 	push {r4,lr}
-	ldr r1, _080AB16C
+	ldr r1, _080AB16C @ =gUnknown_0203856C
 	movs r0, 0
 	strb r0, [r1]
 	movs r4, 0
-	ldr r3, _080AB170
-	ldr r2, _080AB174
-	ldr r1, _080AB178
+	ldr r3, _080AB170 @ =gUnknown_02038678
+	ldr r2, _080AB174 @ =gUnknown_02038680
+	ldr r1, _080AB178 @ =gUnknown_02038670
 	movs r0, 0x3
 _080AB14E:
 	strh r4, [r1]
@@ -498,7 +498,7 @@ _080AB178: .4byte gUnknown_02038670
 	thumb_func_start MatsudaDebugMenu_SetArtMuseumItems
 MatsudaDebugMenu_SetArtMuseumItems: @ 80AB17C
 	push {r4,r5,lr}
-	ldr r1, _080AB1C8
+	ldr r1, _080AB1C8 @ =gContestPlayerMonIndex
 	movs r0, 0x3
 	strb r0, [r1]
 	movs r0, 0
@@ -506,7 +506,7 @@ MatsudaDebugMenu_SetArtMuseumItems: @ 80AB17C
 	movs r2, 0x3
 	movs r5, 0x1
 	negs r5, r5
-	ldr r4, _080AB1CC
+	ldr r4, _080AB1CC @ =gUnknown_02038690
 	movs r3, 0x3
 _080AB194:
 	adds r1, r2, r4
@@ -515,7 +515,7 @@ _080AB194:
 	subs r2, 0x1
 	cmp r2, r5
 	bgt _080AB194
-	ldr r1, _080AB1D0
+	ldr r1, _080AB1D0 @ =gScriptContestCategory
 	movs r0, 0
 	strh r0, [r1]
 	adds r4, r1, 0
@@ -547,7 +547,7 @@ unref_sub_80AB084: @ 80AB1D4
 	push {r7}
 	sub sp, 0x8
 	mov r8, r0
-	ldr r0, _080AB2B0
+	ldr r0, _080AB2B0 @ =0x04000010
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -578,31 +578,31 @@ unref_sub_80AB084: @ 80AB1D4
 	lsls r3, 5
 	adds r0, r3, 0
 	strh r0, [r2]
-	ldr r3, _080AB2B4
+	ldr r3, _080AB2B4 @ =0x04000208
 	ldrh r2, [r3]
 	strh r1, [r3]
-	ldr r4, _080AB2B8
+	ldr r4, _080AB2B8 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r1, _080AB2BC
+	ldr r1, _080AB2BC @ =0x04000004
 	movs r0, 0x8
 	strh r0, [r1]
 	bl ResetTasks
 	bl ResetSpriteData
-	ldr r0, _080AB2C0
+	ldr r0, _080AB2C0 @ =sub_80AB184
 	bl SetMainCallback2
 	movs r2, 0xC0
 	lsls r2, 19
 	movs r3, 0xC0
 	lsls r3, 9
 	movs r5, 0
-	ldr r1, _080AB2C4
+	ldr r1, _080AB2C4 @ =0x040000d4
 	movs r4, 0x80
 	lsls r4, 5
-	ldr r6, _080AB2C8
+	ldr r6, _080AB2C8 @ =0x85000400
 	movs r7, 0x85
 	lsls r7, 24
 _080AB258:
@@ -624,10 +624,10 @@ _080AB258:
 	orrs r0, r7
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
-	ldr r4, _080AB2CC
+	ldr r4, _080AB2CC @ =gWindowConfig_81E6FD8
 	adds r0, r4, 0
 	bl SetUpWindowConfig
-	ldr r5, _080AB2D0
+	ldr r5, _080AB2D0 @ =gUnknown_03004210
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl InitWindowFromConfig
@@ -660,7 +660,7 @@ _080AB2D0: .4byte gUnknown_03004210
 
 	thumb_func_start sub_80AB184
 sub_80AB184: @ 80AB2D4
-	ldr r0, _080AB2F8
+	ldr r0, _080AB2F8 @ =0x04000010
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2

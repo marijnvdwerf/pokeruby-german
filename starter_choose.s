@@ -15,7 +15,7 @@ GetStarterPokemon: @ 810A25C
 	bls _0810A268
 	movs r1, 0
 _0810A268:
-	ldr r0, _0810A274
+	ldr r0, _0810A274 @ =gStarterMons
 	lsls r1, 1
 	adds r1, r0
 	ldrh r0, [r1]
@@ -50,14 +50,14 @@ CB2_ChooseStarter: @ 810A28C
 	mov r10, r0
 	movs r1, 0
 	strh r1, [r0]
-	ldr r6, _0810A498
+	ldr r6, _0810A498 @ =0x0400000e
 	strh r1, [r6]
-	ldr r3, _0810A49C
+	ldr r3, _0810A49C @ =0x0400000c
 	mov r8, r3
 	strh r1, [r3]
 	adds r0, 0xA
 	strh r1, [r0]
-	ldr r5, _0810A4A0
+	ldr r5, _0810A4A0 @ =0x04000008
 	strh r1, [r5]
 	adds r0, 0x12
 	strh r1, [r0]
@@ -77,12 +77,12 @@ CB2_ChooseStarter: @ 810A28C
 	strh r1, [r0]
 	add r0, sp, 0x4
 	strh r1, [r0]
-	ldr r2, _0810A4A4
+	ldr r2, _0810A4A4 @ =0x040000d4
 	str r0, [r2]
 	movs r1, 0xC0
 	lsls r1, 19
 	str r1, [r2, 0x4]
-	ldr r0, _0810A4A8
+	ldr r0, _0810A4A8 @ =0x8100c000
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
 	movs r0, 0
@@ -93,7 +93,7 @@ CB2_ChooseStarter: @ 810A28C
 	movs r0, 0xE0
 	lsls r0, 19
 	str r0, [r2, 0x4]
-	ldr r0, _0810A4AC
+	ldr r0, _0810A4AC @ =0x85000100
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
 	add r0, sp, 0x4
@@ -103,35 +103,35 @@ CB2_ChooseStarter: @ 810A28C
 	movs r0, 0xA0
 	lsls r0, 19
 	str r0, [r2, 0x4]
-	ldr r0, _0810A4B0
+	ldr r0, _0810A4B0 @ =0x81000200
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
-	ldr r0, _0810A4B4
+	ldr r0, _0810A4B4 @ =gBirchHelpGfx
 	bl LZ77UnCompVram
-	ldr r0, _0810A4B8
-	ldr r1, _0810A4BC
+	ldr r0, _0810A4B8 @ =gBirchBagTilemap
+	ldr r1, _0810A4BC @ =0x06003000
 	bl LZ77UnCompVram
-	ldr r0, _0810A4C0
-	ldr r1, _0810A4C4
+	ldr r0, _0810A4C0 @ =gBirchGrassTilemap
+	ldr r1, _0810A4C4 @ =0x06003800
 	bl LZ77UnCompVram
 	bl remove_some_task
 	bl ResetTasks
 	bl ResetSpriteData
 	bl ResetPaletteFade
 	bl FreeAllSpritePalettes
-	ldr r0, _0810A4C8
+	ldr r0, _0810A4C8 @ =gBirchBagGrassPal
 	movs r1, 0
 	movs r2, 0x40
 	bl LoadPalette
-	ldr r0, _0810A4CC
+	ldr r0, _0810A4CC @ =gUnknown_083F7794
 	bl LoadCompressedObjectPic
-	ldr r0, _0810A4D0
+	ldr r0, _0810A4D0 @ =gUnknown_083F77A4
 	bl LoadCompressedObjectPic
-	ldr r0, _0810A4D4
+	ldr r0, _0810A4D4 @ =gUnknown_083F77B4
 	bl LoadSpritePalettes
-	ldr r0, _0810A4D8
+	ldr r0, _0810A4D8 @ =gWindowConfig_81E6C3C
 	bl SetUpWindowConfig
-	ldr r0, _0810A4DC
+	ldr r0, _0810A4DC @ =gWindowConfig_81E6CE4
 	bl InitMenuWindow
 	movs r0, 0x1
 	negs r0, r0
@@ -141,53 +141,53 @@ CB2_ChooseStarter: @ 810A28C
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r3, _0810A4E0
+	ldr r3, _0810A4E0 @ =0x04000208
 	ldrh r2, [r3]
 	mov r0, r9
 	strh r0, [r3]
-	ldr r4, _0810A4E4
+	ldr r4, _0810A4E4 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0810A4E8
+	ldr r2, _0810A4E8 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _0810A4EC
+	ldr r0, _0810A4EC @ =VblankCallback
 	bl SetVBlankCallback
-	ldr r0, _0810A4F0
+	ldr r0, _0810A4F0 @ =MainCallback2
 	bl SetMainCallback2
-	ldr r1, _0810A4F4
+	ldr r1, _0810A4F4 @ =0x04000048
 	movs r0, 0x3F
 	strh r0, [r1]
 	adds r1, 0x2
 	movs r0, 0x1F
 	strh r0, [r1]
-	ldr r0, _0810A4F8
+	ldr r0, _0810A4F8 @ =0x04000040
 	mov r1, r9
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
-	ldr r1, _0810A4FC
+	ldr r1, _0810A4FC @ =0x04000050
 	movs r0, 0xFE
 	strh r0, [r1]
-	ldr r0, _0810A500
+	ldr r0, _0810A500 @ =0x04000052
 	mov r3, r9
 	strh r3, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
 	strh r0, [r1]
-	ldr r1, _0810A504
+	ldr r1, _0810A504 @ =0x00000703
 	adds r0, r1, 0
 	strh r0, [r6]
-	ldr r3, _0810A508
+	ldr r3, _0810A508 @ =0x00000602
 	adds r0, r3, 0
 	mov r1, r8
 	strh r0, [r1]
-	ldr r3, _0810A50C
+	ldr r3, _0810A50C @ =0x00001f08
 	adds r0, r3, 0
 	strh r0, [r5]
 	movs r1, 0xF5
@@ -195,13 +195,13 @@ CB2_ChooseStarter: @ 810A28C
 	adds r0, r1, 0
 	mov r3, r10
 	strh r0, [r3]
-	ldr r0, _0810A510
+	ldr r0, _0810A510 @ =Task_StarterChoose1
 	movs r1, 0
 	bl CreateTask
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r1, _0810A514
+	ldr r1, _0810A514 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -210,22 +210,22 @@ CB2_ChooseStarter: @ 810A28C
 	mov r10, r1
 	mov r3, r10
 	strh r3, [r0, 0x8]
-	ldr r0, _0810A518
+	ldr r0, _0810A518 @ =gSpriteTemplate_83F77CC
 	movs r1, 0x78
 	movs r2, 0x38
 	movs r3, 0x2
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0810A51C
+	ldr r1, _0810A51C @ =gSprites
 	mov r8, r1
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
 	add r1, r8
 	strh r4, [r1, 0x2E]
-	ldr r6, _0810A520
-	ldr r5, _0810A524
+	ldr r6, _0810A520 @ =gSpriteTemplate_83F77E4
+	ldr r5, _0810A524 @ =gStarterChoose_PokeballCoords
 	ldrb r1, [r5]
 	ldrb r2, [r5, 0x1]
 	adds r0, r6, 0
@@ -331,7 +331,7 @@ Task_StarterChoose1: @ 810A540
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0810A578
+	ldr r1, _0810A578 @ =gTasks
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
@@ -344,11 +344,11 @@ Task_StarterChoose1: @ 810A540
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _0810A57C
+	ldr r0, _0810A57C @ =gOtherText_BirchInTrouble
 	movs r1, 0x3
 	movs r2, 0xF
 	bl MenuPrint
-	ldr r0, _0810A580
+	ldr r0, _0810A580 @ =Task_StarterChoose2
 	str r0, [r4]
 	pop {r4}
 	pop {r0}
@@ -364,20 +364,20 @@ Task_StarterChoose2: @ 810A584
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r2, _0810A624
+	ldr r2, _0810A624 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r6, r0, r2
 	ldrh r7, [r6, 0x8]
 	ldrb r4, [r6, 0x8]
-	ldr r1, _0810A628
+	ldr r1, _0810A628 @ =gMain
 	ldrh r3, [r1, 0x2E]
 	movs r0, 0x1
 	ands r0, r3
 	cmp r0, 0
 	beq _0810A64C
-	ldr r1, _0810A62C
+	ldr r1, _0810A62C @ =gStarterChoose_LabelCoords
 	lsls r4, 1
 	adds r0, r4, r1
 	ldrb r0, [r0]
@@ -392,13 +392,13 @@ Task_StarterChoose2: @ 810A584
 	lsls r3, 24
 	lsrs r3, 24
 	bl MenuZeroFillWindowRect
-	ldr r0, _0810A630
+	ldr r0, _0810A630 @ =0x04000040
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
-	ldr r0, _0810A634
-	ldr r1, _0810A638
+	ldr r0, _0810A634 @ =gSpriteTemplate_83F77FC
+	ldr r1, _0810A638 @ =gStarterChoose_PokeballCoords
 	adds r2, r4, r1
 	ldrb r5, [r2]
 	adds r1, 0x1
@@ -420,21 +420,21 @@ Task_StarterChoose2: @ 810A584
 	bl CreatePokemonFrontSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r4, _0810A63C
+	ldr r4, _0810A63C @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
 	adds r2, r4, 0
 	adds r2, 0x10
 	adds r2, r1, r2
-	ldr r3, _0810A640
+	ldr r3, _0810A640 @ =gUnknown_083F778C
 	str r3, [r2]
 	adds r4, 0x1C
 	adds r1, r4
-	ldr r2, _0810A644
+	ldr r2, _0810A644 @ =StarterPokemonSpriteAnimCallback
 	str r2, [r1]
 	strh r0, [r6, 0xA]
-	ldr r0, _0810A648
+	ldr r0, _0810A648 @ =Task_StarterChoose3
 	str r0, [r6]
 	b _0810A68E
 	.align 2, 0
@@ -492,8 +492,8 @@ Task_StarterChoose3: @ 810A694
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r3, _0810A6D8
-	ldr r2, _0810A6DC
+	ldr r3, _0810A6D8 @ =gSprites
+	ldr r2, _0810A6DC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -518,7 +518,7 @@ Task_StarterChoose3: @ 810A694
 	ldrsh r0, [r1, r3]
 	cmp r0, 0x40
 	bne _0810A6D2
-	ldr r0, _0810A6E0
+	ldr r0, _0810A6E0 @ =Task_StarterChoose4
 	str r0, [r2]
 _0810A6D2:
 	pop {r0}
@@ -534,7 +534,7 @@ Task_StarterChoose4: @ 810A6E4
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0810A730
+	ldr r1, _0810A730 @ =gTasks
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
@@ -550,7 +550,7 @@ Task_StarterChoose4: @ 810A6E4
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _0810A734
+	ldr r0, _0810A734 @ =gOtherText_DoYouChoosePoke
 	movs r1, 0x3
 	movs r2, 0xF
 	bl MenuPrint
@@ -558,7 +558,7 @@ Task_StarterChoose4: @ 810A6E4
 	movs r1, 0x7
 	movs r2, 0x1
 	bl DisplayYesNoMenu
-	ldr r0, _0810A738
+	ldr r0, _0810A738 @ =Task_StarterChoose5
 	str r0, [r4]
 	pop {r4}
 	pop {r0}
@@ -591,15 +591,15 @@ _0810A75C:
 	beq _0810A788
 	b _0810A7EE
 _0810A762:
-	ldr r2, _0810A77C
-	ldr r1, _0810A780
+	ldr r2, _0810A77C @ =gScriptResult
+	ldr r1, _0810A780 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
 	ldrh r0, [r0, 0x8]
 	strh r0, [r2]
-	ldr r0, _0810A784
+	ldr r0, _0810A784 @ =gMain
 	ldr r0, [r0, 0x8]
 	bl SetMainCallback2
 	b _0810A7EE
@@ -615,13 +615,13 @@ _0810A788:
 	movs r2, 0x1B
 	movs r3, 0xC
 	bl MenuZeroFillWindowRect
-	ldr r0, _0810A7F4
+	ldr r0, _0810A7F4 @ =gTasks
 	lsls r5, r4, 2
 	adds r5, r4
 	lsls r5, 3
 	adds r5, r0
 	ldrb r0, [r5, 0xA]
-	ldr r6, _0810A7F8
+	ldr r6, _0810A7F8 @ =gSprites
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
@@ -649,7 +649,7 @@ _0810A788:
 	bl FreeOamMatrix
 	adds r0, r4, 0
 	bl DestroySprite
-	ldr r0, _0810A7FC
+	ldr r0, _0810A7FC @ =Task_StarterChoose6
 	str r0, [r5]
 _0810A7EE:
 	pop {r4-r6}
@@ -665,12 +665,12 @@ _0810A7FC: .4byte Task_StarterChoose6
 Task_StarterChoose6: @ 810A800
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0810A814
+	ldr r2, _0810A814 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r0, _0810A818
+	ldr r0, _0810A818 @ =Task_StarterChoose1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -706,7 +706,7 @@ CreateStarterPokemonLabel: @ 810A838
 	lsrs r5, r1, 24
 	cmp r0, 0xFF
 	beq _0810A872
-	ldr r1, _0810A960
+	ldr r1, _0810A960 @ =gStarterChoose_LabelCoords
 	lsls r2, r0, 1
 	adds r0, r2, r1
 	ldrb r0, [r0]
@@ -721,7 +721,7 @@ CreateStarterPokemonLabel: @ 810A838
 	lsls r3, 24
 	lsrs r3, 24
 	bl MenuZeroFillWindowRect
-	ldr r0, _0810A964
+	ldr r0, _0810A964 @ =0x04000040
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
@@ -786,7 +786,7 @@ _0810A8CA:
 	subs r0, r1
 	asrs r0, 1
 	strb r0, [r2, 0x7]
-	ldr r0, _0810A960
+	ldr r0, _0810A960 @ =gStarterChoose_LabelCoords
 	adds r1, r5, r0
 	ldrb r4, [r1]
 	adds r0, 0x1
@@ -804,7 +804,7 @@ _0810A8CA:
 	movs r0, 0xB
 	adds r1, r6, 0
 	muls r1, r0
-	ldr r0, _0810A968
+	ldr r0, _0810A968 @ =gSpeciesNames
 	adds r1, r0
 	adds r0, r7, 0
 	movs r2, 0x70
@@ -828,11 +828,11 @@ _0810A8CA:
 	adds r5, 0x4
 	lsls r5, 27
 	lsrs r5, 24
-	ldr r2, _0810A964
+	ldr r2, _0810A964 @ =0x04000040
 	lsrs r0, 16
 	orrs r0, r4
 	strh r0, [r2]
-	ldr r0, _0810A96C
+	ldr r0, _0810A96C @ =0x04000044
 	lsrs r1, 16
 	orrs r1, r5
 	strh r1, [r0]
@@ -873,41 +873,41 @@ CreatePokemonFrontSprite: @ 810A974
 	lsrs r0, 24
 	mov r9, r0
 	lsls r6, r5, 3
-	ldr r0, _0810AA04
+	ldr r0, _0810AA04 @ =gMonFrontPicTable
 	adds r0, r6, r0
-	ldr r1, _0810AA08
+	ldr r1, _0810AA08 @ =gMonFrontPicCoords
 	lsls r2, r5, 2
 	adds r2, r1
 	ldrb r1, [r2]
 	ldrb r2, [r2, 0x1]
-	ldr r4, _0810AA0C
+	ldr r4, _0810AA0C @ =gUnknown_081FAF4C
 	ldr r3, [r4]
 	ldr r4, [r4, 0x4]
 	str r4, [sp]
 	str r5, [sp, 0x4]
 	bl DecompressPicFromTable_2
-	ldr r0, _0810AA10
+	ldr r0, _0810AA10 @ =gMonPaletteTable
 	adds r6, r0
 	adds r0, r6, 0
 	bl LoadCompressedObjectPalette
 	adds r0, r5, 0
 	movs r1, 0x1
 	bl GetMonSpriteTemplate_803C56C
-	ldr r0, _0810AA14
+	ldr r0, _0810AA14 @ =gUnknown_02024E8C
 	mov r1, r8
 	mov r2, r9
 	movs r3, 0
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r4, _0810AA18
+	ldr r4, _0810AA18 @ =gSprites
 	lsls r2, r0, 4
 	adds r2, r0
 	lsls r2, 2
 	adds r1, r4, 0
 	adds r1, 0x1C
 	adds r1, r2, r1
-	ldr r3, _0810AA1C
+	ldr r3, _0810AA1C @ =nullsub_72
 	str r3, [r1]
 	adds r2, r4
 	ldrb r3, [r2, 0x5]
@@ -936,8 +936,8 @@ _0810AA1C: .4byte nullsub_72
 sub_810A62C: @ 810AA20
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r2, _0810AA78
-	ldr r3, _0810AA7C
+	ldr r2, _0810AA78 @ =gUnknown_083F76E4
+	ldr r3, _0810AA7C @ =gTasks
 	movs r0, 0x2E
 	ldrsh r1, [r4, r0]
 	lsls r0, r1, 2
@@ -985,7 +985,7 @@ _0810AA7C: .4byte gTasks
 sub_810A68C: @ 810AA80
 	push {lr}
 	adds r3, r0, 0
-	ldr r2, _0810AAA8
+	ldr r2, _0810AAA8 @ =gTasks
 	movs r0, 0x2E
 	ldrsh r1, [r3, r0]
 	lsls r0, r1, 2

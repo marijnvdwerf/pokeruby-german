@@ -118,7 +118,7 @@ PrintCoins: @ 811AB8C
 	lsls r0, 19
 	ands r0, r1
 	lsrs r1, r0, 24
-	ldr r4, _0811AC18
+	ldr r4, _0811AC18 @ =gStringVar1
 	cmp r1, 0
 	beq _0811ABDE
 	movs r0, 0xFC
@@ -147,7 +147,7 @@ _0811ABDE:
 	adds r0, r4, 0
 	mov r1, sp
 	bl StringCopy
-	ldr r0, _0811AC1C
+	ldr r0, _0811AC1C @ =gOtherText_Coins2
 	adds r1, r6, 0
 	adds r2, r7, 0
 	bl MenuPrint
@@ -162,8 +162,8 @@ _0811AC1C: .4byte gOtherText_Coins2
 
 	thumb_func_start GetCoins
 GetCoins: @ 811AC20
-	ldr r0, _0811AC2C
-	ldr r1, _0811AC30
+	ldr r0, _0811AC2C @ =gSaveBlock1
+	ldr r1, _0811AC30 @ =0x00000494
 	adds r0, r1
 	ldrh r0, [r0]
 	bx lr
@@ -179,7 +179,7 @@ GiveCoins: @ 811AC34
 	lsrs r4, r0, 16
 	bl GetCoins
 	lsls r0, 16
-	ldr r1, _0811AC4C
+	ldr r1, _0811AC4C @ =0x270e0000
 	cmp r0, r1
 	bls _0811AC50
 	movs r0, 0
@@ -187,8 +187,8 @@ GiveCoins: @ 811AC34
 	.align 2, 0
 _0811AC4C: .4byte 0x270e0000
 _0811AC50:
-	ldr r0, _0811AC68
-	ldr r1, _0811AC6C
+	ldr r0, _0811AC68 @ =gSaveBlock1
+	ldr r1, _0811AC6C @ =0x00000494
 	adds r3, r0, r1
 	ldrh r1, [r3]
 	adds r2, r4, r1
@@ -196,7 +196,7 @@ _0811AC50:
 	lsrs r0, 16
 	cmp r1, r0
 	bls _0811AC74
-	ldr r0, _0811AC70
+	ldr r0, _0811AC70 @ =0x0000270f
 	strh r0, [r3]
 	b _0811AC7E
 	.align 2, 0
@@ -205,7 +205,7 @@ _0811AC6C: .4byte 0x00000494
 _0811AC70: .4byte 0x0000270f
 _0811AC74:
 	strh r2, [r3]
-	ldr r1, _0811AC88
+	ldr r1, _0811AC88 @ =0x0000270f
 	cmp r0, r1
 	bls _0811AC7E
 	strh r1, [r3]
@@ -232,8 +232,8 @@ TakeCoins: @ 811AC8C
 	movs r0, 0
 	b _0811ACB0
 _0811ACA2:
-	ldr r1, _0811ACB8
-	ldr r0, _0811ACBC
+	ldr r1, _0811ACB8 @ =gSaveBlock1
+	ldr r0, _0811ACBC @ =0x00000494
 	adds r1, r0
 	ldrh r0, [r1]
 	subs r0, r4

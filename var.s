@@ -12,7 +12,7 @@ GetVarPointer: @ 8069550
 	lsls r0, 16
 	lsrs r1, r0, 16
 	adds r2, r1, 0
-	ldr r0, _08069564
+	ldr r0, _08069564 @ =0x00003fff
 	cmp r1, r0
 	bhi _08069568
 	movs r0, 0
@@ -23,8 +23,8 @@ _08069568:
 	lsls r0, r1, 16
 	cmp r0, 0
 	bge _08069584
-	ldr r0, _0806957C
-	ldr r2, _08069580
+	ldr r0, _0806957C @ =gSpecialVars
+	ldr r2, _08069580 @ =0xffff8000
 	adds r1, r2
 	lsls r1, 2
 	adds r1, r0
@@ -35,7 +35,7 @@ _0806957C: .4byte gSpecialVars
 _08069580: .4byte 0xffff8000
 _08069584:
 	lsls r0, r2, 1
-	ldr r1, _08069590
+	ldr r1, _08069590 @ =0x0201ea74
 	adds r0, r1
 _0806958A:
 	pop {r1}
@@ -89,7 +89,7 @@ VarGetFieldObjectGraphicsId: @ 80695D0
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 8
-	ldr r1, _080695E8
+	ldr r1, _080695E8 @ =0x40100000
 	adds r0, r1
 	lsrs r0, 16
 	bl VarGet

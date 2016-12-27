@@ -225,7 +225,7 @@ _08063F20:
 	bl MapGridGetMetatileBehaviorAt
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08063F50
+	ldr r2, _08063F50 @ =gUnknown_08376040
 	lsls r1, r4, 2
 	adds r1, r2
 	ldr r1, [r1]
@@ -342,7 +342,7 @@ FieldObjectUpdateZCoordAndPriority: @ 8063FF8
 	blt _08064046
 	adds r0, r4, 0
 	bl FieldObjectUpdateZCoord
-	ldr r1, _0806404C
+	ldr r1, _0806404C @ =gFieldObjectPriorities_08376070
 	ldrb r2, [r4, 0xB]
 	lsls r2, 24
 	lsrs r0, r2, 28
@@ -358,7 +358,7 @@ FieldObjectUpdateZCoordAndPriority: @ 8063FF8
 	ands r0, r3
 	orrs r0, r1
 	strb r0, [r4]
-	ldr r0, _08064050
+	ldr r0, _08064050 @ =gFieldObjectPriorities_08376060
 	lsrs r2, 28
 	adds r2, r0
 	movs r0, 0x3
@@ -385,7 +385,7 @@ InitObjectPriorityByZCoord: @ 8064054
 	push {r4,lr}
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r2, _08064098
+	ldr r2, _08064098 @ =gFieldObjectPriorities_08376070
 	adds r2, r1, r2
 	ldrb r2, [r2]
 	movs r3, 0x42
@@ -401,7 +401,7 @@ InitObjectPriorityByZCoord: @ 8064054
 	orrs r2, r3
 	mov r3, r12
 	strb r2, [r3]
-	ldr r2, _0806409C
+	ldr r2, _0806409C @ =gFieldObjectPriorities_08376060
 	adds r1, r2
 	movs r3, 0x3
 	ldrb r2, [r1]
@@ -425,7 +425,7 @@ _0806409C: .4byte gFieldObjectPriorities_08376060
 ZCoordToPriority: @ 80640A0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080640AC
+	ldr r1, _080640AC @ =gFieldObjectPriorities_08376060
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -490,7 +490,7 @@ SetObjectSubpriorityByZCoord: @ 8064104
 	movs r5, 0
 	ldrsb r5, [r3, r5]
 	ldrh r4, [r1, 0x22]
-	ldr r3, _08064144
+	ldr r3, _08064144 @ =gSpriteCoordOffsetY
 	subs r4, r5
 	ldrh r3, [r3]
 	adds r4, r3
@@ -501,7 +501,7 @@ SetObjectSubpriorityByZCoord: @ 8064104
 	movs r3, 0x10
 	subs r3, r4
 	lsls r3, 17
-	ldr r4, _08064148
+	ldr r4, _08064148 @ =gUnknown_08376050
 	adds r0, r4
 	lsrs r3, 16
 	ldrb r0, [r0]
@@ -560,7 +560,7 @@ _08064184:
 	thumb_func_start GroundEffect_SpawnOnTallGrass
 GroundEffect_SpawnOnTallGrass: @ 8064188
 	push {lr}
-	ldr r3, _080641CC
+	ldr r3, _080641CC @ =gUnknown_0202FF84
 	movs r2, 0x10
 	ldrsh r1, [r0, r2]
 	str r1, [r3]
@@ -579,7 +579,7 @@ GroundEffect_SpawnOnTallGrass: @ 8064188
 	str r1, [r3, 0x10]
 	ldrb r0, [r0, 0xA]
 	str r0, [r3, 0x14]
-	ldr r1, _080641D0
+	ldr r1, _080641D0 @ =gSaveBlock1
 	ldrb r0, [r1, 0x5]
 	lsls r0, 8
 	ldrb r1, [r1, 0x4]
@@ -599,7 +599,7 @@ _080641D0: .4byte gSaveBlock1
 	thumb_func_start sub_8063E94
 sub_8063E94: @ 80641D4
 	push {lr}
-	ldr r3, _08064218
+	ldr r3, _08064218 @ =gUnknown_0202FF84
 	movs r2, 0x10
 	ldrsh r1, [r0, r2]
 	str r1, [r3]
@@ -618,7 +618,7 @@ sub_8063E94: @ 80641D4
 	str r1, [r3, 0x10]
 	ldrb r0, [r0, 0xA]
 	str r0, [r3, 0x14]
-	ldr r1, _0806421C
+	ldr r1, _0806421C @ =gSaveBlock1
 	ldrb r0, [r1, 0x5]
 	lsls r0, 8
 	ldrb r1, [r1, 0x4]
@@ -638,7 +638,7 @@ _0806421C: .4byte gSaveBlock1
 	thumb_func_start sub_8063EE0
 sub_8063EE0: @ 8064220
 	push {lr}
-	ldr r3, _08064264
+	ldr r3, _08064264 @ =gUnknown_0202FF84
 	movs r2, 0x10
 	ldrsh r1, [r0, r2]
 	str r1, [r3]
@@ -657,7 +657,7 @@ sub_8063EE0: @ 8064220
 	str r1, [r3, 0x10]
 	ldrb r0, [r0, 0xA]
 	str r0, [r3, 0x14]
-	ldr r1, _08064268
+	ldr r1, _08064268 @ =gSaveBlock1
 	ldrb r0, [r1, 0x5]
 	lsls r0, 8
 	ldrb r1, [r1, 0x4]
@@ -677,7 +677,7 @@ _08064268: .4byte gSaveBlock1
 	thumb_func_start sub_8063F2C
 sub_8063F2C: @ 806426C
 	push {lr}
-	ldr r3, _080642B0
+	ldr r3, _080642B0 @ =gUnknown_0202FF84
 	movs r2, 0x10
 	ldrsh r1, [r0, r2]
 	str r1, [r3]
@@ -696,7 +696,7 @@ sub_8063F2C: @ 806426C
 	str r1, [r3, 0x10]
 	ldrb r0, [r0, 0xA]
 	str r0, [r3, 0x14]
-	ldr r1, _080642B4
+	ldr r1, _080642B4 @ =gSaveBlock1
 	ldrb r0, [r1, 0x5]
 	lsls r0, 8
 	ldrb r1, [r1, 0x4]
@@ -748,7 +748,7 @@ sub_8063FA0: @ 80642E0
 	adds r5, r1, 0
 	ldrb r0, [r4, 0x5]
 	bl GetFieldObjectGraphicsInfo
-	ldr r1, _08064308
+	ldr r1, _08064308 @ =gUnknown_08376080
 	ldrb r0, [r0, 0xD]
 	lsls r0, 2
 	adds r0, r1
@@ -771,7 +771,7 @@ sub_8063FCC: @ 806430C
 	adds r5, r1, 0
 	ldrb r0, [r4, 0x5]
 	bl GetFieldObjectGraphicsInfo
-	ldr r1, _08064334
+	ldr r1, _08064334 @ =gUnknown_08376080
 	ldrb r0, [r0, 0xD]
 	lsls r0, 2
 	adds r0, r1
@@ -799,11 +799,11 @@ DoTracksGroundEffect_Footprints: @ 806433C
 	adds r5, r0, 0
 	lsls r4, r2, 24
 	lsrs r4, 24
-	ldr r1, _08064384
+	ldr r1, _08064384 @ =gSandFootprints_FieldEffectData
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
-	ldr r1, _08064388
+	ldr r1, _08064388 @ =gUnknown_0202FF84
 	movs r2, 0x14
 	ldrsh r0, [r5, r2]
 	str r0, [r1]
@@ -840,7 +840,7 @@ DoTracksGroundEffect_BikeTireTracks: @ 806438C
 	ldr r0, [r4, 0x14]
 	cmp r1, r0
 	beq _080643CE
-	ldr r2, _080643D4
+	ldr r2, _080643D4 @ =gUnknown_0202FF84
 	movs r1, 0x14
 	ldrsh r0, [r4, r1]
 	str r0, [r2]
@@ -851,7 +851,7 @@ DoTracksGroundEffect_BikeTireTracks: @ 806438C
 	str r0, [r2, 0x8]
 	movs r0, 0x2
 	str r0, [r2, 0xC]
-	ldr r3, _080643D8
+	ldr r3, _080643D8 @ =gBikeTireTracks_Transitions
 	ldrb r1, [r4, 0x18]
 	lsls r1, 28
 	lsrs r1, 28
@@ -909,7 +909,7 @@ GroundEffect_JumpOnTallGrass: @ 8064408
 	sub sp, 0x4
 	adds r5, r0, 0
 	adds r6, r1, 0
-	ldr r1, _0806445C
+	ldr r1, _0806445C @ =gUnknown_0202FF84
 	movs r2, 0x10
 	ldrsh r0, [r5, r2]
 	str r0, [r1]
@@ -951,7 +951,7 @@ _0806445C: .4byte gUnknown_0202FF84
 	thumb_func_start GroundEffect_JumpOnLongGrass
 GroundEffect_JumpOnLongGrass: @ 8064460
 	push {lr}
-	ldr r2, _08064484
+	ldr r2, _08064484 @ =gUnknown_0202FF84
 	movs r3, 0x10
 	ldrsh r1, [r0, r3]
 	str r1, [r2]
@@ -974,7 +974,7 @@ _08064484: .4byte gUnknown_0202FF84
 	thumb_func_start GroundEffect_JumpOnShallowWater
 GroundEffect_JumpOnShallowWater: @ 8064488
 	push {r4,lr}
-	ldr r3, _080644B4
+	ldr r3, _080644B4 @ =gUnknown_0202FF84
 	movs r4, 0x10
 	ldrsh r2, [r0, r4]
 	str r2, [r3]
@@ -1000,7 +1000,7 @@ _080644B4: .4byte gUnknown_0202FF84
 	thumb_func_start GroundEffect_JumpOnWater
 GroundEffect_JumpOnWater: @ 80644B8
 	push {r4,lr}
-	ldr r3, _080644E4
+	ldr r3, _080644E4 @ =gUnknown_0202FF84
 	movs r4, 0x10
 	ldrsh r2, [r0, r4]
 	str r2, [r3]
@@ -1026,7 +1026,7 @@ _080644E4: .4byte gUnknown_0202FF84
 	thumb_func_start GroundEffect_JumpLandingDust
 GroundEffect_JumpLandingDust: @ 80644E8
 	push {r4,lr}
-	ldr r3, _08064514
+	ldr r3, _08064514 @ =gUnknown_0202FF84
 	movs r4, 0x10
 	ldrsh r2, [r0, r4]
 	str r2, [r3]
@@ -1072,7 +1072,7 @@ GroundEffect_HotSprings: @ 8064528
 	thumb_func_start GroundEffect_Seaweed
 GroundEffect_Seaweed: @ 8064538
 	push {lr}
-	ldr r2, _08064554
+	ldr r2, _08064554 @ =gUnknown_0202FF84
 	movs r3, 0x10
 	ldrsh r1, [r0, r3]
 	str r1, [r2]
@@ -1096,7 +1096,7 @@ sub_8064218: @ 8064558
 	adds r6, r1, 0
 	adds r5, r2, 0
 	movs r4, 0
-	ldr r0, _08064598
+	ldr r0, _08064598 @ =gUnknown_083760A0
 	mov r8, r0
 _0806456A:
 	movs r0, 0x1
@@ -1147,7 +1147,7 @@ filters_out_some_ground_effects: @ 806459C
 	ands r0, r1
 	strb r0, [r2, 0x2]
 	ldr r0, [r3]
-	ldr r1, _080645D0
+	ldr r1, _080645D0 @ =0xfff9f7bd
 	ands r0, r1
 	str r0, [r3]
 _080645CA:
@@ -1166,7 +1166,7 @@ FilterOutStepOnPuddleGroundEffectIfJumping: @ 80645D4
 	cmp r0, 0
 	bge _080645E8
 	ldr r0, [r2]
-	ldr r1, _080645EC
+	ldr r1, _080645EC @ =0xfffffbff
 	ands r0, r1
 	str r0, [r2]
 _080645E8:

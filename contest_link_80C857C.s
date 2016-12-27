@@ -12,7 +12,7 @@ sub_80C857C: @ 80C8778
 	adds r2, r0, 0
 	lsls r4, r1, 16
 	lsrs r4, 16
-	ldr r5, _080C87A4
+	ldr r5, _080C87A4 @ =0x0201e000
 	adds r0, r5, 0
 	adds r1, r2, 0
 	adds r2, r4, 0
@@ -87,14 +87,14 @@ _080C87FA:
 sub_80C8604: @ 80C8800
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080C8818
+	ldr r2, _080C8818 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
 	movs r0, 0
 	strh r0, [r1, 0x8]
-	ldr r0, _080C881C
+	ldr r0, _080C881C @ =sub_80C8644
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -106,12 +106,12 @@ _080C881C: .4byte sub_80C8644
 sub_80C8644: @ 80C8820
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080C8834
+	ldr r2, _080C8834 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r0, _080C8838
+	ldr r0, _080C8838 @ =sub_80C8660
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -124,19 +124,19 @@ sub_80C8660: @ 80C883C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080C8870
+	ldr r0, _080C8870 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _080C886A
 	bl GetMultiplayerId
-	ldr r1, _080C8874
+	ldr r1, _080C8874 @ =gContestPlayerMonIndex
 	strb r0, [r1]
 	bl GetLinkPlayerCount
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x4
 	bne _080C886A
-	ldr r1, _080C8878
+	ldr r1, _080C8878 @ =gUnknown_0203869A
 	movs r0, 0x1
 	strb r0, [r1]
 	adds r0, r4, 0
@@ -243,7 +243,7 @@ sub_80C8734: @ 80C8910
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _080C893C
+	ldr r1, _080C893C @ =gTasks
 	lsls r4, r5, 2
 	adds r0, r4, r5
 	lsls r0, 3
@@ -278,7 +278,7 @@ _080C894C:
 	bne _080C8962
 	b _080C8ACA
 _080C8962:
-	ldr r0, _080C897C
+	ldr r0, _080C897C @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
@@ -293,11 +293,11 @@ _080C8962:
 	.align 2, 0
 _080C897C: .4byte gTasks
 _080C8980:
-	ldr r0, _080C89A4
-	ldr r1, _080C89A8
+	ldr r0, _080C89A4 @ =gBlockSendBuffer
+	ldr r1, _080C89A8 @ =gContestPlayerMonIndex
 	ldrb r1, [r1]
 	lsls r1, 6
-	ldr r2, _080C89AC
+	ldr r2, _080C89AC @ =gContestMons
 	adds r1, r2
 	movs r2, 0x40
 	bl memcpy
@@ -313,17 +313,17 @@ _080C89A4: .4byte gBlockSendBuffer
 _080C89A8: .4byte gContestPlayerMonIndex
 _080C89AC: .4byte gContestMons
 _080C89B0:
-	ldr r0, _080C89CC
-	ldr r1, _080C89D0
+	ldr r0, _080C89CC @ =gBlockSendBuffer
+	ldr r1, _080C89D0 @ =gContestPlayerMonIndex
 	ldrb r1, [r1]
 	lsls r1, 6
-	ldr r2, _080C89D4
+	ldr r2, _080C89D4 @ =gContestMons
 	adds r1, r2
 	movs r2, 0x40
 	bl memcpy
 	movs r0, 0
 	bl de_sub_80C9294
-	ldr r1, _080C89D8
+	ldr r1, _080C89D8 @ =gTasks
 	b _080C8ABC
 	.align 2, 0
 _080C89CC: .4byte gBlockSendBuffer
@@ -338,8 +338,8 @@ _080C89DC:
 	movs r2, 0
 	mov r8, r2
 	str r4, [sp]
-	ldr r0, _080C8A28
-	ldr r7, _080C8A2C
+	ldr r0, _080C8A28 @ =gContestMons
+	ldr r7, _080C8A2C @ =gLinkPlayers
 	movs r6, 0
 	mov r10, r0
 	movs r3, 0xFF
@@ -347,12 +347,12 @@ _080C89DC:
 _080C89F8:
 	mov r0, r8
 	lsls r1, r0, 8
-	ldr r0, _080C8A30
+	ldr r0, _080C8A30 @ =gBlockRecvBuffer
 	adds r1, r0
 	mov r0, r10
 	movs r2, 0x40
 	bl memcpy
-	ldr r1, _080C8A34
+	ldr r1, _080C8A34 @ =0x02038572
 	adds r4, r6, r1
 	ldrh r0, [r7, 0x1A]
 	cmp r0, 0x1
@@ -383,7 +383,7 @@ _080C8A48:
 	mov r2, r9
 	strb r2, [r4, 0xA]
 _080C8A4E:
-	ldr r0, _080C8A7C
+	ldr r0, _080C8A7C @ =gUnknown_0203857D
 	adds r4, r6, r0
 	ldrh r0, [r7, 0x1A]
 	cmp r0, 0x1
@@ -422,7 +422,7 @@ _080C8A88:
 	mov r3, r8
 	cmp r3, 0x3
 	ble _080C89F8
-	ldr r0, _080C8AAC
+	ldr r0, _080C8AAC @ =gTasks
 	ldr r2, [sp]
 	adds r1, r2, r5
 	lsls r1, 3
@@ -463,7 +463,7 @@ sub_80C88AC: @ 80C8ADC
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _080C8B04
+	ldr r1, _080C8B04 @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -490,7 +490,7 @@ _080C8B08:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8B54
-	ldr r0, _080C8B28
+	ldr r0, _080C8B28 @ =gRngValue
 	movs r1, 0x4
 	bl sub_80C857C
 	b _080C8B4E
@@ -502,12 +502,12 @@ _080C8B2C:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8B54
-	ldr r0, _080C8B5C
-	ldr r4, _080C8B60
+	ldr r0, _080C8B5C @ =gRngValue
+	ldr r4, _080C8B60 @ =gBlockRecvBuffer
 	adds r1, r4, 0
 	movs r2, 0x4
 	bl memcpy
-	ldr r0, _080C8B64
+	ldr r0, _080C8B64 @ =gUnknown_03005D28
 	adds r1, r4, 0
 	movs r2, 0x4
 	bl memcpy
@@ -532,7 +532,7 @@ sub_80C8938: @ 80C8B68
 	push {r7}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _080C8B90
+	ldr r1, _080C8B90 @ =gTasks
 	lsls r5, r4, 2
 	adds r0, r5, r4
 	lsls r6, r0, 3
@@ -555,7 +555,7 @@ _080C8B94:
 	cmp r0, 0x8
 	bne _080C8C3C
 _080C8B9C:
-	ldr r1, _080C8BD0
+	ldr r1, _080C8BD0 @ =gBlockSendBuffer
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -602,7 +602,7 @@ _080C8BF4:
 	beq _080C8C4A
 	movs r3, 0
 	adds r7, r5, 0
-	ldr r1, _080C8C2C
+	ldr r1, _080C8C2C @ =gBlockRecvBuffer
 	mov r0, r8
 	adds r0, 0xA
 	adds r2, r6, r0
@@ -652,7 +652,7 @@ sub_80C89DC: @ 80C8C54
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _080C8C7C
+	ldr r1, _080C8C7C @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -675,7 +675,7 @@ _080C8C80:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8CA8
-	ldr r0, _080C8C94
+	ldr r0, _080C8C94 @ =gContestPlayerMonIndex
 	movs r1, 0x1
 	bl sub_80C857C
 	b _080C8CA2
@@ -701,7 +701,7 @@ sub_80C8A38: @ 80C8CB0
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r7, _080C8CD8
+	ldr r7, _080C8CD8 @ =gTasks
 	lsls r6, r5, 2
 	adds r0, r6, r5
 	lsls r0, 3
@@ -724,12 +724,12 @@ _080C8CDC:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8D3A
-	ldr r0, _080C8D04
+	ldr r0, _080C8D04 @ =gContestPlayerMonIndex
 	ldrb r1, [r0]
 	lsls r0, r1, 3
 	subs r0, r1
 	lsls r0, 2
-	ldr r1, _080C8D08
+	ldr r1, _080C8D08 @ =0x02019266
 	adds r0, r1
 	movs r1, 0x2
 	bl sub_80C857C
@@ -745,8 +745,8 @@ _080C8D0C:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8D3A
-	ldr r1, _080C8D40
-	ldr r3, _080C8D44
+	ldr r1, _080C8D40 @ =gBlockRecvBuffer
+	ldr r3, _080C8D44 @ =0x02019266
 	movs r4, 0x80
 	lsls r4, 1
 	movs r2, 0x3
@@ -778,7 +778,7 @@ sub_80C8AD0: @ 80C8D48
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _080C8D70
+	ldr r1, _080C8D70 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -791,7 +791,7 @@ sub_80C8AD0: @ 80C8D48
 	b _080C8EE8
 _080C8D64:
 	lsls r0, 2
-	ldr r1, _080C8D74
+	ldr r1, _080C8D74 @ =_080C8D78
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -819,7 +819,7 @@ _080C8DA8:
 	bne _080C8DB4
 	b _080C8EF2
 _080C8DB4:
-	ldr r0, _080C8DC0
+	ldr r0, _080C8DC0 @ =gUnknown_02038678
 	movs r1, 0x8
 	bl sub_80C857C
 	b _080C8EC4
@@ -832,11 +832,11 @@ _080C8DC4:
 	bne _080C8DD0
 	b _080C8EF2
 _080C8DD0:
-	ldr r0, _080C8DE0
-	ldr r1, _080C8DE4
+	ldr r0, _080C8DE0 @ =gUnknown_02038678
+	ldr r1, _080C8DE4 @ =gUnknown_0203869B
 	ldrb r1, [r1]
 	lsls r1, 8
-	ldr r2, _080C8DE8
+	ldr r2, _080C8DE8 @ =gBlockRecvBuffer
 	adds r1, r2
 	movs r2, 0x8
 	b _080C8EC0
@@ -869,7 +869,7 @@ _080C8E10:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8EF2
-	ldr r0, _080C8E24
+	ldr r0, _080C8E24 @ =gUnknown_02038680
 	movs r1, 0x8
 	bl sub_80C857C
 	b _080C8EC4
@@ -880,11 +880,11 @@ _080C8E28:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8EF2
-	ldr r0, _080C8E44
-	ldr r1, _080C8E48
+	ldr r0, _080C8E44 @ =gUnknown_02038680
+	ldr r1, _080C8E48 @ =gUnknown_0203869B
 	ldrb r1, [r1]
 	lsls r1, 8
-	ldr r2, _080C8E4C
+	ldr r2, _080C8E4C @ =gBlockRecvBuffer
 	adds r1, r2
 	movs r2, 0x8
 	b _080C8EC0
@@ -897,7 +897,7 @@ _080C8E50:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8EF2
-	ldr r0, _080C8E64
+	ldr r0, _080C8E64 @ =gUnknown_02038688
 	movs r1, 0x8
 	bl sub_80C857C
 	b _080C8EC4
@@ -908,11 +908,11 @@ _080C8E68:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8EF2
-	ldr r0, _080C8E84
-	ldr r1, _080C8E88
+	ldr r0, _080C8E84 @ =gUnknown_02038688
+	ldr r1, _080C8E88 @ =gUnknown_0203869B
 	ldrb r1, [r1]
 	lsls r1, 8
-	ldr r2, _080C8E8C
+	ldr r2, _080C8E8C @ =gBlockRecvBuffer
 	adds r1, r2
 	movs r2, 0x8
 	b _080C8EC0
@@ -925,7 +925,7 @@ _080C8E90:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8EF2
-	ldr r0, _080C8EA4
+	ldr r0, _080C8EA4 @ =gUnknown_02038690
 	movs r1, 0x4
 	bl sub_80C857C
 	b _080C8EC4
@@ -936,17 +936,17 @@ _080C8EA8:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C8EF2
-	ldr r0, _080C8ED8
-	ldr r1, _080C8EDC
+	ldr r0, _080C8ED8 @ =gUnknown_02038690
+	ldr r1, _080C8EDC @ =gUnknown_0203869B
 	ldrb r1, [r1]
 	lsls r1, 8
-	ldr r2, _080C8EE0
+	ldr r2, _080C8EE0 @ =gBlockRecvBuffer
 	adds r1, r2
 	movs r2, 0x4
 _080C8EC0:
 	bl memcpy
 _080C8EC4:
-	ldr r1, _080C8EE4
+	ldr r1, _080C8EE4 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -976,7 +976,7 @@ sub_80C8C80: @ 80C8EF8
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _080C8F20
+	ldr r1, _080C8F20 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -989,7 +989,7 @@ sub_80C8C80: @ 80C8EF8
 	b _080C9084
 _080C8F14:
 	lsls r0, 2
-	ldr r1, _080C8F24
+	ldr r1, _080C8F24 @ =_080C8F28
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1017,7 +1017,7 @@ _080C8F58:
 	bne _080C8F64
 	b _080C908E
 _080C8F64:
-	ldr r0, _080C8F70
+	ldr r0, _080C8F70 @ =0x02019260
 	movs r1, 0x70
 	bl sub_80C857C
 	b _080C9060
@@ -1030,11 +1030,11 @@ _080C8F74:
 	bne _080C8F80
 	b _080C908E
 _080C8F80:
-	ldr r0, _080C8F90
-	ldr r1, _080C8F94
+	ldr r0, _080C8F90 @ =0x02019260
+	ldr r1, _080C8F94 @ =gUnknown_0203869B
 	ldrb r1, [r1]
 	lsls r1, 8
-	ldr r2, _080C8F98
+	ldr r2, _080C8F98 @ =gBlockRecvBuffer
 	adds r1, r2
 	movs r2, 0x70
 	b _080C905C
@@ -1065,7 +1065,7 @@ _080C8FBE:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C908E
-	ldr r0, _080C8FD4
+	ldr r0, _080C8FD4 @ =0x020192d0
 	movs r1, 0x14
 	bl sub_80C857C
 	b _080C9060
@@ -1076,11 +1076,11 @@ _080C8FD8:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C908E
-	ldr r0, _080C8FF4
-	ldr r1, _080C8FF8
+	ldr r0, _080C8FF4 @ =0x020192d0
+	ldr r1, _080C8FF8 @ =gUnknown_0203869B
 	ldrb r1, [r1]
 	lsls r1, 8
-	ldr r2, _080C8FFC
+	ldr r2, _080C8FFC @ =gBlockRecvBuffer
 	adds r1, r2
 	movs r2, 0x14
 	b _080C905C
@@ -1093,7 +1093,7 @@ _080C9000:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C908E
-	ldr r0, _080C9014
+	ldr r0, _080C9014 @ =0x02019328
 	movs r1, 0x4
 	bl sub_80C857C
 	b _080C9060
@@ -1104,7 +1104,7 @@ _080C9018:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C908E
-	ldr r0, _080C9028
+	ldr r0, _080C9028 @ =0x02019328
 	b _080C9050
 	.align 2, 0
 _080C9028: .4byte 0x02019328
@@ -1113,7 +1113,7 @@ _080C902C:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C908E
-	ldr r0, _080C9040
+	ldr r0, _080C9040 @ =gUnknown_02038696
 	movs r1, 0x4
 	bl sub_80C857C
 	b _080C9060
@@ -1124,18 +1124,18 @@ _080C9044:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C908E
-	ldr r0, _080C9074
+	ldr r0, _080C9074 @ =gUnknown_02038696
 _080C9050:
-	ldr r1, _080C9078
+	ldr r1, _080C9078 @ =gUnknown_0203869B
 	ldrb r1, [r1]
 	lsls r1, 8
-	ldr r2, _080C907C
+	ldr r2, _080C907C @ =gBlockRecvBuffer
 	adds r1, r2
 	movs r2, 0x4
 _080C905C:
 	bl memcpy
 _080C9060:
-	ldr r1, _080C9080
+	ldr r1, _080C9080 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1165,7 +1165,7 @@ sub_80C8E1C: @ 80C9094
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _080C90B8
+	ldr r1, _080C90B8 @ =gTasks
 	lsls r4, r5, 2
 	adds r0, r4, r5
 	lsls r6, r0, 3
@@ -1188,7 +1188,7 @@ _080C90BC:
 	cmp r0, 0x8
 	bne _080C9170
 _080C90C4:
-	ldr r1, _080C90F8
+	ldr r1, _080C90F8 @ =gBlockSendBuffer
 	movs r0, 0x64
 	strb r0, [r1]
 	bl GetMultiplayerId
@@ -1199,7 +1199,7 @@ _080C90C4:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C917E
-	ldr r0, _080C90FC
+	ldr r0, _080C90FC @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
@@ -1225,7 +1225,7 @@ _080C9100:
 _080C9112:
 	movs r0, 0
 	bl de_sub_80C9294
-	ldr r0, _080C9124
+	ldr r0, _080C9124 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
@@ -1239,7 +1239,7 @@ _080C9128:
 	cmp r0, 0
 	beq _080C917E
 	adds r1, r4, 0
-	ldr r4, _080C9160
+	ldr r4, _080C9160 @ =gBlockRecvBuffer
 	adds r0, r7, 0
 	adds r0, 0x12
 	adds r2, r6, r0
@@ -1289,7 +1289,7 @@ sub_80C8EBC: @ 80C9184
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _080C91AC
+	ldr r1, _080C91AC @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -1312,7 +1312,7 @@ _080C91B0:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C91EA
-	ldr r0, _080C91C4
+	ldr r0, _080C91C4 @ =gUnknown_02038670
 	movs r1, 0x8
 	bl sub_80C857C
 	b _080C91E4
@@ -1323,11 +1323,11 @@ _080C91C8:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C91EA
-	ldr r0, _080C91F0
-	ldr r1, _080C91F4
+	ldr r0, _080C91F0 @ =gUnknown_02038670
+	ldr r1, _080C91F4 @ =gUnknown_0203869B
 	ldrb r1, [r1]
 	lsls r1, 8
-	ldr r2, _080C91F8
+	ldr r2, _080C91F8 @ =gBlockRecvBuffer
 	adds r1, r2
 	movs r2, 0x8
 	bl memcpy
@@ -1350,7 +1350,7 @@ sub_80C8F34: @ 80C91FC
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _080C9224
+	ldr r1, _080C9224 @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -1373,7 +1373,7 @@ _080C9228:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C9262
-	ldr r0, _080C923C
+	ldr r0, _080C923C @ =gUnknown_02038696
 	movs r1, 0x4
 	bl sub_80C857C
 	b _080C925C
@@ -1384,11 +1384,11 @@ _080C9240:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080C9262
-	ldr r0, _080C9268
-	ldr r1, _080C926C
+	ldr r0, _080C9268 @ =gUnknown_02038696
+	ldr r1, _080C926C @ =gUnknown_0203869B
 	ldrb r1, [r1]
 	lsls r1, 8
-	ldr r2, _080C9270
+	ldr r2, _080C9270 @ =gBlockRecvBuffer
 	adds r1, r2
 	movs r2, 0x4
 	bl memcpy

@@ -51,25 +51,25 @@ coords8_add: @ 8057D28
 move_tilemap_camera_to_upper_left_corner: @ 8057D38
 	push {r4-r6,lr}
 	sub sp, 0x8
-	ldr r0, _08057D84
+	ldr r0, _08057D84 @ =gUnknown_03000590
 	bl move_tilemap_camera_to_upper_left_corner_
 	mov r0, sp
 	movs r6, 0
 	strh r6, [r0]
-	ldr r4, _08057D88
-	ldr r5, _08057D8C
+	ldr r4, _08057D88 @ =0x020221cc
+	ldr r5, _08057D8C @ =0x01000400
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl CpuSet
 	mov r0, sp
 	adds r0, 0x2
 	strh r6, [r0]
-	ldr r2, _08057D90
+	ldr r2, _08057D90 @ =0xfffff800
 	adds r1, r4, r2
 	adds r2, r5, 0
 	bl CpuSet
 	add r0, sp, 0x4
-	ldr r2, _08057D94
+	ldr r2, _08057D94 @ =0x00003014
 	adds r1, r2, 0
 	strh r1, [r0]
 	movs r1, 0x80
@@ -93,17 +93,17 @@ _08057D94: .4byte 0x00003014
 	thumb_func_start sub_8057A58
 sub_8057A58: @ 8057D98
 	push {r4-r7,lr}
-	ldr r5, _08057E28
+	ldr r5, _08057E28 @ =gBGHOffsetRegs
 	ldr r1, [r5, 0x4]
-	ldr r6, _08057E2C
-	ldr r4, _08057E30
+	ldr r6, _08057E2C @ =gUnknown_03000590
+	ldr r4, _08057E30 @ =gUnknown_03000598
 	ldrh r0, [r4]
 	ldrb r2, [r6]
 	adds r0, r2
 	strh r0, [r1]
-	ldr r3, _08057E34
+	ldr r3, _08057E34 @ =gBGVOffsetRegs
 	ldr r1, [r3, 0x4]
-	ldr r2, _08057E38
+	ldr r2, _08057E38 @ =gUnknown_0300059A
 	ldrh r0, [r2]
 	ldrb r7, [r6, 0x1]
 	adds r0, r7
@@ -134,19 +134,19 @@ sub_8057A58: @ 8057D98
 	ldrb r0, [r6, 0x4]
 	cmp r0, 0
 	beq _08057E20
-	ldr r0, _08057E3C
-	ldr r2, _08057E40
+	ldr r0, _08057E3C @ =0x040000d4
+	ldr r2, _08057E40 @ =0x020219cc
 	str r2, [r0]
-	ldr r1, _08057E44
+	ldr r1, _08057E44 @ =0x0600e800
 	str r1, [r0, 0x4]
-	ldr r3, _08057E48
+	ldr r3, _08057E48 @ =0x80000400
 	str r3, [r0, 0x8]
 	ldr r1, [r0, 0x8]
 	movs r4, 0x80
 	lsls r4, 4
 	adds r1, r2, r4
 	str r1, [r0]
-	ldr r1, _08057E4C
+	ldr r1, _08057E4C @ =0x0600e000
 	str r1, [r0, 0x4]
 	str r3, [r0, 0x8]
 	ldr r1, [r0, 0x8]
@@ -154,7 +154,7 @@ sub_8057A58: @ 8057D98
 	lsls r7, 5
 	adds r2, r7
 	str r2, [r0]
-	ldr r1, _08057E50
+	ldr r1, _08057E50 @ =0x0600f000
 	str r1, [r0, 0x4]
 	str r3, [r0, 0x8]
 	ldr r0, [r0, 0x8]
@@ -181,13 +181,13 @@ _08057E50: .4byte 0x0600f000
 	thumb_func_start sub_8057B14
 sub_8057B14: @ 8057E54
 	push {r4,lr}
-	ldr r3, _08057E74
-	ldr r2, _08057E78
+	ldr r3, _08057E74 @ =gUnknown_03000590
+	ldr r2, _08057E78 @ =gUnknown_03000598
 	ldrh r2, [r2]
 	ldrb r4, [r3]
 	adds r2, r4
 	strh r2, [r0]
-	ldr r0, _08057E7C
+	ldr r0, _08057E7C @ =gUnknown_0300059A
 	ldrh r0, [r0]
 	ldrb r3, [r3, 0x1]
 	adds r0, r3
@@ -205,15 +205,15 @@ _08057E7C: .4byte gUnknown_0300059A
 	thumb_func_start DrawWholeMapView
 DrawWholeMapView: @ 8057E80
 	push {lr}
-	ldr r1, _08057EA0
+	ldr r1, _08057EA0 @ =gSaveBlock1
 	movs r2, 0
 	ldrsh r0, [r1, r2]
 	movs r2, 0x2
 	ldrsh r1, [r1, r2]
-	ldr r2, _08057EA4
+	ldr r2, _08057EA4 @ =gMapHeader
 	ldr r2, [r2]
 	bl DrawWholeMapViewInternal
-	ldr r1, _08057EA8
+	ldr r1, _08057EA8 @ =gUnknown_03000590
 	movs r0, 0x1
 	strb r0, [r1, 0x4]
 	pop {r0}
@@ -237,7 +237,7 @@ DrawWholeMapViewInternal: @ 8057EAC
 	mov r8, r2
 	movs r1, 0
 _08057EC0:
-	ldr r2, _08057F2C
+	ldr r2, _08057F2C @ =gUnknown_03000590
 	ldrb r0, [r2, 0x3]
 	adds r0, r1, r0
 	lsls r0, 24
@@ -254,7 +254,7 @@ _08057ED4:
 	str r7, [sp]
 	lsrs r5, r1, 1
 _08057EDE:
-	ldr r1, _08057F2C
+	ldr r1, _08057F2C @ =gUnknown_03000590
 	ldrb r0, [r1, 0x2]
 	adds r0, r4, r0
 	lsls r0, 24
@@ -302,7 +302,7 @@ RedrawMapSlicesForCameraUpdate: @ 8057F30
 	adds r5, r0, 0
 	adds r6, r1, 0
 	adds r7, r2, 0
-	ldr r0, _08057F78
+	ldr r0, _08057F78 @ =gMapHeader
 	ldr r4, [r0]
 	cmp r6, 0
 	ble _08057F48
@@ -356,7 +356,7 @@ RedrawMapSliceNorth: @ 8057F7C
 _08057F98:
 	lsls r7, r0, 5
 	movs r4, 0
-	ldr r6, _08057FE0
+	ldr r6, _08057FE0 @ =gSaveBlock1
 _08057F9E:
 	ldrb r0, [r5, 0x2]
 	adds r0, r4, r0
@@ -404,7 +404,7 @@ RedrawMapSliceSouth: @ 8057FE4
 	ldrb r0, [r5, 0x3]
 	lsls r7, r0, 5
 	movs r4, 0
-	ldr r6, _08058030
+	ldr r6, _08058030 @ =gSaveBlock1
 _08057FF6:
 	ldrb r0, [r5, 0x2]
 	adds r0, r4, r0
@@ -463,7 +463,7 @@ _08058054:
 	adds r1, r6
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r0, _08058084
+	ldr r0, _08058084 @ =gSaveBlock1
 	movs r3, 0
 	ldrsh r2, [r0, r3]
 	movs r7, 0x2
@@ -505,7 +505,7 @@ RedrawMapSliceWest: @ 8058088
 	lsrs r5, r0, 24
 _080580A6:
 	movs r4, 0
-	ldr r7, _080580EC
+	ldr r7, _080580EC @ =gSaveBlock1
 _080580AA:
 	ldrb r0, [r6, 0x3]
 	adds r0, r4, r0
@@ -549,7 +549,7 @@ CurrentMapDrawMetatileAt: @ 80580F0
 	push {r4-r6,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r6, _08058124
+	ldr r6, _08058124 @ =gUnknown_03000590
 	adds r0, r6, 0
 	adds r1, r4, 0
 	adds r2, r5, 0
@@ -557,7 +557,7 @@ CurrentMapDrawMetatileAt: @ 80580F0
 	adds r1, r0, 0
 	cmp r1, 0
 	blt _0805811C
-	ldr r0, _08058128
+	ldr r0, _08058128 @ =gMapHeader
 	ldr r0, [r0]
 	lsls r1, 16
 	lsrs r1, 16
@@ -581,7 +581,7 @@ DrawDoorMetatileAt: @ 805812C
 	adds r3, r0, 0
 	adds r4, r1, 0
 	adds r5, r2, 0
-	ldr r6, _0805815C
+	ldr r6, _0805815C @ =gUnknown_03000590
 	adds r0, r6, 0
 	adds r1, r3, 0
 	adds r2, r4, 0
@@ -625,7 +625,7 @@ DrawMetatileAt: @ 8058160
 	bls _08058188
 	movs r4, 0
 _08058188:
-	ldr r0, _08058194
+	ldr r0, _08058194 @ =0x000001ff
 	cmp r4, r0
 	bhi _08058198
 	ldr r0, [r5, 0x10]
@@ -636,7 +636,7 @@ _08058194: .4byte 0x000001ff
 _08058198:
 	ldr r0, [r5, 0x14]
 	ldr r5, [r0, 0xC]
-	ldr r1, _080581C4
+	ldr r1, _080581C4 @ =0xfffffe00
 	adds r0, r4, r1
 	lsls r0, 16
 	lsrs r4, r0, 16
@@ -682,7 +682,7 @@ _080581E6:
 	beq _080581EC
 	b _08058350
 _080581EC:
-	ldr r0, _08058264
+	ldr r0, _08058264 @ =gBGTilemapBuffers
 	mov r12, r0
 	lsls r1, r6, 1
 	mov r9, r1
@@ -744,7 +744,7 @@ _080581EC:
 	.align 2, 0
 _08058264: .4byte gBGTilemapBuffers
 _08058268:
-	ldr r2, _080582D8
+	ldr r2, _080582D8 @ =gBGTilemapBuffers
 	mov r12, r2
 	lsls r3, r6, 1
 	mov r8, r3
@@ -789,7 +789,7 @@ _08058268:
 	adds r1, r3, r1
 	ldrh r0, [r7, 0xE]
 	strh r0, [r1]
-	ldr r1, _080582DC
+	ldr r1, _080582DC @ =0x020219cc
 	add r8, r1
 	mov r0, r9
 	mov r2, r8
@@ -804,7 +804,7 @@ _08058268:
 _080582D8: .4byte gBGTilemapBuffers
 _080582DC: .4byte 0x020219cc
 _080582E0:
-	ldr r1, _0805835C
+	ldr r1, _0805835C @ =gBGTilemapBuffers
 	mov r9, r1
 	lsls r2, r6, 1
 	mov r8, r2
@@ -812,7 +812,7 @@ _080582E0:
 	lsls r1, 5
 	add r1, r9
 	adds r0, r2, r1
-	ldr r2, _08058360
+	ldr r2, _08058360 @ =0x00003014
 	strh r2, [r0]
 	adds r5, r6, 0x1
 	lsls r5, 1
@@ -877,7 +877,7 @@ _08058360: .4byte 0x00003014
 MapPosToBgTilemapOffset: @ 8058364
 	push {r4,r5,lr}
 	adds r3, r0, 0
-	ldr r4, _08058394
+	ldr r4, _08058394 @ =gSaveBlock1
 	movs r5, 0
 	ldrsh r0, [r4, r5]
 	subs r1, r0
@@ -924,7 +924,7 @@ CameraUpdateCallback: @ 80583AC
 	ldr r2, [r3, 0x4]
 	cmp r2, 0
 	beq _080583CC
-	ldr r1, _080583D0
+	ldr r1, _080583D0 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
@@ -944,7 +944,7 @@ _080583D0: .4byte gSprites
 
 	thumb_func_start ResetCameraUpdateInfo
 ResetCameraUpdateInfo: @ 80583D4
-	ldr r1, _080583E8
+	ldr r1, _080583E8 @ =gUnknown_03004880
 	movs r0, 0
 	str r0, [r1, 0x8]
 	str r0, [r1, 0xC]
@@ -962,14 +962,14 @@ InitCameraUpdateCallback: @ 80583EC
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r4, _08058420
+	ldr r4, _08058420 @ =gUnknown_03004880
 	ldr r1, [r4, 0x4]
 	cmp r1, 0
 	beq _08058408
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08058424
+	ldr r1, _08058424 @ =gSprites
 	adds r0, r1
 	bl DestroySprite
 _08058408:
@@ -978,7 +978,7 @@ _08058408:
 	lsls r0, 24
 	lsrs r0, 24
 	str r0, [r4, 0x4]
-	ldr r0, _08058428
+	ldr r0, _08058428 @ =CameraUpdateCallback
 	str r0, [r4]
 	movs r0, 0
 	pop {r4,r5}
@@ -995,7 +995,7 @@ CameraUpdate: @ 805842C
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
-	ldr r6, _0805852C
+	ldr r6, _0805852C @ =gUnknown_03004880
 	ldr r1, [r6]
 	cmp r1, 0
 	beq _08058440
@@ -1050,7 +1050,7 @@ _08058484:
 	ble _08058498
 	movs r4, 0x1
 _08058498:
-	ldr r2, _0805852C
+	ldr r2, _0805852C @ =gUnknown_03004880
 	ldr r0, [r2, 0x10]
 	adds r1, r0, r7
 	str r1, [r2, 0x10]
@@ -1091,7 +1091,7 @@ _080584D0:
 	adds r1, r5, 0
 	bl RotatingGatePuzzleCameraUpdate
 	bl ResetBerryTreeSparkleFlags
-	ldr r6, _08058530
+	ldr r6, _08058530 @ =gUnknown_03000590
 	lsls r4, 1
 	lsls r5, 1
 	adds r0, r6, 0
@@ -1103,15 +1103,15 @@ _080584D0:
 	adds r2, r5, 0
 	bl RedrawMapSlicesForCameraUpdate
 _08058506:
-	ldr r0, _08058530
+	ldr r0, _08058530 @ =gUnknown_03000590
 	adds r1, r7, 0
 	mov r2, r8
 	bl coords8_add
-	ldr r1, _08058534
+	ldr r1, _08058534 @ =gUnknown_0300489C
 	ldrh r0, [r1]
 	subs r0, r7
 	strh r0, [r1]
-	ldr r1, _08058538
+	ldr r1, _08058538 @ =gUnknown_03004898
 	ldrh r0, [r1]
 	mov r2, r8
 	subs r0, r2
@@ -1140,12 +1140,12 @@ camera_move_and_redraw: @ 805853C
 	asrs r1, 16
 	bl UpdateFieldObjectsForCameraUpdate
 	bl DrawWholeMapView
-	ldr r1, _08058570
+	ldr r1, _08058570 @ =gUnknown_0300489C
 	lsls r4, 4
 	ldrh r0, [r1]
 	subs r0, r4
 	strh r0, [r1]
-	ldr r1, _08058574
+	ldr r1, _08058574 @ =gUnknown_03004898
 	lsls r5, 4
 	ldrh r0, [r1]
 	subs r0, r5
@@ -1160,7 +1160,7 @@ _08058574: .4byte gUnknown_03004898
 
 	thumb_func_start SetCameraPanningCallback
 SetCameraPanningCallback: @ 8058578
-	ldr r1, _08058580
+	ldr r1, _08058580 @ =gUnknown_030005A0
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -1169,9 +1169,9 @@ _08058580: .4byte gUnknown_030005A0
 
 	thumb_func_start SetCameraPanning
 SetCameraPanning: @ 8058584
-	ldr r2, _08058594
+	ldr r2, _08058594 @ =gUnknown_03000598
 	strh r0, [r2]
-	ldr r0, _08058598
+	ldr r0, _08058598 @ =gUnknown_0300059A
 	lsls r1, 16
 	asrs r1, 16
 	adds r1, 0x20
@@ -1184,16 +1184,16 @@ _08058598: .4byte gUnknown_0300059A
 
 	thumb_func_start InstallCameraPanAheadCallback
 InstallCameraPanAheadCallback: @ 805859C
-	ldr r1, _080585B8
-	ldr r0, _080585BC
+	ldr r1, _080585B8 @ =gUnknown_030005A0
+	ldr r0, _080585BC @ =CameraPanningCB_PanAhead
 	str r0, [r1]
-	ldr r1, _080585C0
+	ldr r1, _080585C0 @ =gUnknown_0300059C
 	movs r0, 0
 	strb r0, [r1]
-	ldr r1, _080585C4
+	ldr r1, _080585C4 @ =gUnknown_03000598
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080585C8
+	ldr r1, _080585C8 @ =gUnknown_0300059A
 	movs r0, 0x20
 	strh r0, [r1]
 	bx lr
@@ -1208,22 +1208,22 @@ _080585C8: .4byte gUnknown_0300059A
 	thumb_func_start UpdateCameraPanning
 UpdateCameraPanning: @ 80585CC
 	push {lr}
-	ldr r0, _080585FC
+	ldr r0, _080585FC @ =gUnknown_030005A0
 	ldr r0, [r0]
 	cmp r0, 0
 	beq _080585DA
 	bl _call_via_r0
 _080585DA:
-	ldr r2, _08058600
-	ldr r0, _08058604
-	ldr r1, _08058608
+	ldr r2, _08058600 @ =gSpriteCoordOffsetX
+	ldr r0, _08058604 @ =gUnknown_0300489C
+	ldr r1, _08058608 @ =gUnknown_03000598
 	ldrh r0, [r0]
 	ldrh r1, [r1]
 	subs r0, r1
 	strh r0, [r2]
-	ldr r2, _0805860C
-	ldr r0, _08058610
-	ldr r1, _08058614
+	ldr r2, _0805860C @ =gSpriteCoordOffsetY
+	ldr r0, _08058610 @ =gUnknown_03004898
+	ldr r1, _08058614 @ =gUnknown_0300059A
 	ldrh r0, [r0]
 	ldrh r1, [r1]
 	subs r0, r1
@@ -1244,7 +1244,7 @@ _08058614: .4byte gUnknown_0300059A
 	thumb_func_start CameraPanningCB_PanAhead
 CameraPanningCB_PanAhead: @ 8058618
 	push {lr}
-	ldr r0, _08058628
+	ldr r0, _08058628 @ =gUnknown_0202E854
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _0805862C
@@ -1253,11 +1253,11 @@ CameraPanningCB_PanAhead: @ 8058618
 	.align 2, 0
 _08058628: .4byte gUnknown_0202E854
 _0805862C:
-	ldr r0, _08058644
+	ldr r0, _08058644 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x3]
 	cmp r0, 0x1
 	bne _0805864C
-	ldr r0, _08058648
+	ldr r0, _08058648 @ =gUnknown_0300059C
 	ldrb r1, [r0]
 	movs r2, 0x1
 	eors r1, r2
@@ -1269,7 +1269,7 @@ _0805862C:
 _08058644: .4byte gPlayerAvatar
 _08058648: .4byte gUnknown_0300059C
 _0805864C:
-	ldr r1, _08058674
+	ldr r1, _08058674 @ =gUnknown_0300059C
 	movs r0, 0
 	strb r0, [r1]
 _08058652:
@@ -1278,7 +1278,7 @@ _08058652:
 	lsrs r0, 24
 	cmp r0, 0x2
 	bne _0805867C
-	ldr r2, _08058678
+	ldr r2, _08058678 @ =gUnknown_0300059A
 	ldrh r3, [r2]
 	movs r0, 0
 	ldrsh r1, [r2, r0]
@@ -1294,7 +1294,7 @@ _08058678: .4byte gUnknown_0300059A
 _0805867C:
 	cmp r0, 0x1
 	bne _08058698
-	ldr r1, _08058694
+	ldr r1, _08058694 @ =gUnknown_0300059A
 	ldrh r2, [r1]
 	movs r3, 0
 	ldrsh r0, [r1, r3]
@@ -1306,7 +1306,7 @@ _0805867C:
 	.align 2, 0
 _08058694: .4byte gUnknown_0300059A
 _08058698:
-	ldr r2, _080586A8
+	ldr r2, _080586A8 @ =gUnknown_0300059A
 	ldrh r0, [r2]
 	movs r3, 0
 	ldrsh r1, [r2, r3]

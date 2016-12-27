@@ -19,19 +19,19 @@ sub_8046234: @ 8046558
 	lsrs r7, r1, 16
 	lsls r2, 24
 	lsrs r4, r2, 24
-	ldr r5, _08046690
+	ldr r5, _08046690 @ =gUnknown_081FAEA4
 	ldrh r0, [r5, 0x6]
 	bl GetSpriteTileStartByTag
 	lsls r0, 16
-	ldr r1, _08046694
+	ldr r1, _08046694 @ =0xffff0000
 	cmp r0, r1
 	bne _0804658A
 	adds r0, r5, 0
 	bl LoadCompressedObjectPic
-	ldr r0, _08046698
+	ldr r0, _08046698 @ =gUnknown_081FAEAC
 	bl LoadCompressedObjectPalette
 _0804658A:
-	ldr r0, _0804669C
+	ldr r0, _0804669C @ =sub_8046388
 	bl object_new_hidden_with_callback
 	mov r8, r0
 	mov r0, r8
@@ -41,15 +41,15 @@ _0804658A:
 	lsls r5, r0, 4
 	add r5, r8
 	lsls r5, 2
-	ldr r0, _080466A0
+	ldr r0, _080466A0 @ =gSprites
 	adds r5, r0
 	strh r4, [r5, 0x30]
-	ldr r0, _080466A4
+	ldr r0, _080466A4 @ =gSpriteTemplate_81FAF0C
 	mov r9, r0
 	lsls r6, 16
 	asrs r0, r6, 16
 	mov r10, r0
-	ldr r0, _080466A8
+	ldr r0, _080466A8 @ =0xfff00000
 	adds r6, r0
 	asrs r6, 16
 	lsls r4, r7, 16
@@ -66,7 +66,7 @@ _0804658A:
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _080466A0
+	ldr r0, _080466A0 @ =gSprites
 	adds r1, r0
 	mov r0, r8
 	strh r0, [r1, 0x2E]
@@ -85,7 +85,7 @@ _0804658A:
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _080466A0
+	ldr r0, _080466A0 @ =gSprites
 	adds r4, r0
 	mov r0, r8
 	strh r0, [r4, 0x2E]
@@ -107,7 +107,7 @@ _0804658A:
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _080466A0
+	ldr r0, _080466A0 @ =gSprites
 	adds r4, r0
 	mov r0, r8
 	strh r0, [r4, 0x2E]
@@ -129,7 +129,7 @@ _0804658A:
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _080466A0
+	ldr r0, _080466A0 @ =gSprites
 	adds r4, r0
 	mov r0, r8
 	strh r0, [r4, 0x2E]
@@ -167,10 +167,10 @@ sub_8046388: @ 80466AC
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
 	bne _080466E4
-	ldr r0, _080466D8
+	ldr r0, _080466D8 @ =gUnknown_081FAEA4
 	ldrh r0, [r0, 0x6]
 	bl FreeSpriteTilesByTag
-	ldr r0, _080466DC
+	ldr r0, _080466DC @ =gUnknown_081FAEAC
 	ldrh r0, [r0, 0x4]
 	bl FreeSpritePaletteByTag
 	movs r1, 0x30
@@ -184,7 +184,7 @@ sub_8046388: @ 80466AC
 _080466D8: .4byte gUnknown_081FAEA4
 _080466DC: .4byte gUnknown_081FAEAC
 _080466E0:
-	ldr r0, _080466EC
+	ldr r0, _080466EC @ =SpriteCallbackDummy
 	str r0, [r4, 0x1C]
 _080466E4:
 	pop {r4}
@@ -204,7 +204,7 @@ sub_80463CC: @ 80466F0
 	ands r0, r1
 	cmp r0, 0
 	beq _0804671A
-	ldr r2, _08046720
+	ldr r2, _08046720 @ =gSprites
 	movs r0, 0x2E
 	ldrsh r1, [r3, r0]
 	lsls r0, r1, 4

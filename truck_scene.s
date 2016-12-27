@@ -60,13 +60,13 @@ Task_Truck1: @ 80C74C0
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080C7560
+	ldr r0, _080C7560 @ =0x03004b38
 	adds r5, r1, r0
 	movs r1, 0
 	ldrsh r0, [r5, r1]
 	adds r0, 0x1E
 	bl GetTruckBoxMovement
-	ldr r4, _080C7564
+	ldr r4, _080C7564 @ =gSaveBlock1
 	ldrb r1, [r4, 0x5]
 	ldrb r2, [r4, 0x4]
 	lsls r0, 18
@@ -84,7 +84,7 @@ Task_Truck1: @ 80C74C0
 	ldrb r1, [r4, 0x5]
 	ldrb r2, [r4, 0x4]
 	lsls r0, 17
-	ldr r3, _080C7568
+	ldr r3, _080C7568 @ =0xfffd0000
 	adds r0, r3
 	asrs r0, 16
 	str r0, [sp]
@@ -108,7 +108,7 @@ Task_Truck1: @ 80C74C0
 	adds r0, 0x1
 	strh r0, [r5]
 	lsls r0, 16
-	ldr r1, _080C756C
+	ldr r1, _080C756C @ =0x75300000
 	cmp r0, r1
 	bne _080C7542
 	strh r4, [r5]
@@ -141,7 +141,7 @@ Task_Truck2: @ 80C7570
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r3, r0, 3
-	ldr r4, _080C75B0
+	ldr r4, _080C75B0 @ =0x03004b38
 	adds r7, r3, r4
 	ldrh r1, [r7]
 	adds r1, 0x1
@@ -168,7 +168,7 @@ _080C75A0:
 	.align 2, 0
 _080C75B0: .4byte 0x03004b38
 _080C75B4:
-	ldr r2, _080C7670
+	ldr r2, _080C7670 @ =gTruckCamera_HorizontalTable
 	movs r1, 0x2
 	ldrsh r0, [r7, r1]
 	adds r0, r2
@@ -180,7 +180,7 @@ _080C75B4:
 	adds r0, r4, 0
 	subs r0, 0x8
 	adds r0, r3, r0
-	ldr r1, _080C7674
+	ldr r1, _080C7674 @ =Task_Truck3
 	str r1, [r0]
 _080C75D0:
 	movs r4, 0x2
@@ -204,7 +204,7 @@ _080C75D0:
 	ldrsh r0, [r7, r4]
 	adds r0, 0x1E
 	bl GetTruckBoxMovement
-	ldr r6, _080C7678
+	ldr r6, _080C7678 @ =gSaveBlock1
 	ldrb r1, [r6, 0x5]
 	ldrb r2, [r6, 0x4]
 	movs r3, 0x3
@@ -228,7 +228,7 @@ _080C75D0:
 	lsls r3, 16
 	asrs r3, 16
 	lsls r0, 17
-	ldr r4, _080C767C
+	ldr r4, _080C767C @ =0xfffd0000
 	adds r0, r4
 	asrs r0, 16
 	str r0, [sp]
@@ -274,7 +274,7 @@ Task_Truck3: @ 80C7680
 	lsls r0, r3, 2
 	adds r0, r3
 	lsls r0, 3
-	ldr r1, _080C76C0
+	ldr r1, _080C76C0 @ =0x03004b38
 	adds r2, r0, r1
 	ldrh r0, [r2]
 	adds r0, 0x1
@@ -298,7 +298,7 @@ _080C76B0:
 	.align 2, 0
 _080C76C0: .4byte 0x03004b38
 _080C76C4:
-	ldr r1, _080C7720
+	ldr r1, _080C7720 @ =gTruckCamera_HorizontalTable
 	movs r3, 0x2
 	ldrsh r0, [r2, r3]
 	adds r0, r1
@@ -308,7 +308,7 @@ _080C76C4:
 	ldrsb r6, [r0, r6]
 	adds r0, r6, 0
 	bl SetCameraPanning
-	ldr r5, _080C7724
+	ldr r5, _080C7724 @ =gSaveBlock1
 	ldrb r1, [r5, 0x5]
 	ldrb r2, [r5, 0x4]
 	movs r3, 0x3
@@ -353,7 +353,7 @@ Task_HandleTruckSequence: @ 80C7728
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080C774C
+	ldr r1, _080C774C @ =0x03004b38
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -362,7 +362,7 @@ Task_HandleTruckSequence: @ 80C7728
 	b _080C7894
 _080C7742:
 	lsls r0, 2
-	ldr r1, _080C7750
+	ldr r1, _080C7750 @ =_080C7754
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -391,7 +391,7 @@ _080C777C:
 	bl SetCameraPanningCallback
 	movs r0, 0
 	strh r0, [r4, 0x2]
-	ldr r0, _080C77A0
+	ldr r0, _080C77A0 @ =Task_Truck1
 	movs r1, 0xA
 	bl CreateTask
 	lsls r0, 24
@@ -422,7 +422,7 @@ _080C77C0:
 	ldrh r0, [r4, 0x2]
 	adds r3, r0, 0x1
 	strh r3, [r4, 0x2]
-	ldr r0, _080C7804
+	ldr r0, _080C7804 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -438,7 +438,7 @@ _080C77C0:
 	strh r2, [r4, 0x2]
 	ldrb r0, [r4, 0x4]
 	bl DestroyTask
-	ldr r0, _080C7808
+	ldr r0, _080C7808 @ =Task_Truck2
 	movs r1, 0xA
 	bl CreateTask
 	lsls r0, 24
@@ -453,7 +453,7 @@ _080C77C0:
 _080C7804: .4byte gPaletteFade
 _080C7808: .4byte Task_Truck2
 _080C780C:
-	ldr r2, _080C782C
+	ldr r2, _080C782C @ =gTasks
 	movs r0, 0x6
 	ldrsh r1, [r4, r0]
 	lsls r0, r1, 2
@@ -524,15 +524,15 @@ _080C7894:
 ExecuteTruckSequence: @ 80C789C
 	push {lr}
 	sub sp, 0x4
-	ldr r2, _080C78E4
+	ldr r2, _080C78E4 @ =0x0000020d
 	movs r0, 0xB
 	movs r1, 0x8
 	bl MapGridSetMetatileIdAt
-	ldr r2, _080C78E8
+	ldr r2, _080C78E8 @ =0x00000215
 	movs r0, 0xB
 	movs r1, 0x9
 	bl MapGridSetMetatileIdAt
-	ldr r2, _080C78EC
+	ldr r2, _080C78EC @ =0x0000021d
 	movs r0, 0xB
 	movs r1, 0xA
 	bl MapGridSetMetatileIdAt
@@ -540,11 +540,11 @@ ExecuteTruckSequence: @ 80C789C
 	bl ScriptContext2_Enable
 	movs r0, 0
 	str r0, [sp]
-	ldr r1, _080C78F0
-	ldr r2, _080C78F4
+	ldr r1, _080C78F0 @ =gPlttBufferFaded
+	ldr r2, _080C78F4 @ =0x01000100
 	mov r0, sp
 	bl CpuFastSet
-	ldr r0, _080C78F8
+	ldr r0, _080C78F8 @ =Task_HandleTruckSequence
 	movs r1, 0xA
 	bl CreateTask
 	add sp, 0x4
@@ -563,13 +563,13 @@ _080C78F8: .4byte Task_HandleTruckSequence
 EndTruckSequence: @ 80C78FC
 	push {r4-r6,lr}
 	sub sp, 0x4
-	ldr r0, _080C7948
+	ldr r0, _080C7948 @ =Task_HandleTruckSequence
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r6, r0, 24
 	cmp r6, 0
 	bne _080C7940
-	ldr r4, _080C794C
+	ldr r4, _080C794C @ =gSaveBlock1
 	ldrb r1, [r4, 0x5]
 	ldrb r2, [r4, 0x4]
 	movs r0, 0x3

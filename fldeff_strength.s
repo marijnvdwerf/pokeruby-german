@@ -13,15 +13,15 @@ SetUpFieldMove_Strength: @ 811AD90
 	lsls r0, 24
 	cmp r0, 0
 	beq _0811ADC8
-	ldr r1, _0811ADB0
-	ldr r0, _0811ADB4
+	ldr r1, _0811ADB0 @ =gScriptResult
+	ldr r0, _0811ADB4 @ =gUnknown_03005CE0
 	ldrb r0, [r0]
 	strh r0, [r1]
-	ldr r1, _0811ADB8
-	ldr r0, _0811ADBC
+	ldr r1, _0811ADB8 @ =gUnknown_0300485C
+	ldr r0, _0811ADBC @ =sub_808AB90
 	str r0, [r1]
-	ldr r1, _0811ADC0
-	ldr r0, _0811ADC4
+	ldr r1, _0811ADC0 @ =gUnknown_03005CE4
+	ldr r0, _0811ADC4 @ =sub_811AA38
 	b _0811ADEC
 	.align 2, 0
 _0811ADB0: .4byte gScriptResult
@@ -40,15 +40,15 @@ _0811ADC8:
 	movs r0, 0
 	b _0811ADF0
 _0811ADDA:
-	ldr r1, _0811ADF4
-	ldr r0, _0811ADF8
+	ldr r1, _0811ADF4 @ =gScriptResult
+	ldr r0, _0811ADF8 @ =gUnknown_03005CE0
 	ldrb r0, [r0]
 	strh r0, [r1]
-	ldr r1, _0811ADFC
-	ldr r0, _0811AE00
+	ldr r1, _0811ADFC @ =gUnknown_0300485C
+	ldr r0, _0811AE00 @ =sub_808AB90
 	str r0, [r1]
-	ldr r1, _0811AE04
-	ldr r0, _0811AE08
+	ldr r1, _0811AE04 @ =gUnknown_03005CE4
+	ldr r0, _0811AE08 @ =sub_811AA18
 _0811ADEC:
 	str r0, [r1]
 	movs r0, 0x1
@@ -67,11 +67,11 @@ _0811AE08: .4byte sub_811AA18
 	thumb_func_start sub_811AA18
 sub_811AA18: @ 811AE0C
 	push {lr}
-	ldr r1, _0811AE20
-	ldr r0, _0811AE24
+	ldr r1, _0811AE20 @ =gUnknown_0202FF84
+	ldr r0, _0811AE24 @ =gUnknown_03005CE0
 	ldrb r0, [r0]
 	str r0, [r1]
-	ldr r0, _0811AE28
+	ldr r0, _0811AE28 @ =UseStrengthScript
 	bl ScriptContext1_SetupScript
 	pop {r0}
 	bx r0
@@ -84,8 +84,8 @@ _0811AE28: .4byte UseStrengthScript
 	thumb_func_start sub_811AA38
 sub_811AA38: @ 811AE2C
 	push {lr}
-	ldr r0, _0811AE40
-	ldr r1, _0811AE44
+	ldr r0, _0811AE40 @ =gUnknown_0202FF84
+	ldr r1, _0811AE44 @ =gUnknown_03005CE0
 	ldrb r1, [r1]
 	str r1, [r0]
 	movs r0, 0x28
@@ -103,22 +103,22 @@ FldEff_UseStrength: @ 811AE48
 	bl oei_task_add
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0811AE7C
+	ldr r2, _0811AE7C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r2, _0811AE80
+	ldr r2, _0811AE80 @ =sub_811AA9C
 	lsrs r0, r2, 16
 	strh r0, [r1, 0x18]
 	strh r2, [r1, 0x1A]
-	ldr r0, _0811AE84
+	ldr r0, _0811AE84 @ =gUnknown_0202FF84
 	ldr r1, [r0]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _0811AE88
+	ldr r1, _0811AE88 @ =gPlayerParty
 	adds r0, r1
-	ldr r1, _0811AE8C
+	ldr r1, _0811AE8C @ =gStringVar1
 	bl GetMonNickname
 	movs r0, 0
 	pop {r1}

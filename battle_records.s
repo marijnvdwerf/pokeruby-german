@@ -14,7 +14,7 @@ sub_810FF78: @ 811036C
 	mov r1, sp
 	movs r0, 0
 	strh r0, [r1]
-	ldr r2, _08110398
+	ldr r2, _08110398 @ =0x01000008
 	mov r0, sp
 	adds r1, r4, 0
 	bl CpuSet
@@ -79,7 +79,7 @@ sub_810FFEC: @ 81103E0
 	lsls r2, 16
 	lsrs r7, r2, 16
 	movs r5, 0
-	ldr r6, _08110418
+	ldr r6, _08110418 @ =gStringVar1
 	adds r4, r0, 0
 _081103F2:
 	adds r0, r6, 0
@@ -203,7 +203,7 @@ _081104C4:
 	strh r0, [r2, 0xA]
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _081104D8
+	ldr r1, _081104D8 @ =0x0000270f
 	cmp r0, r1
 	bls _08110506
 	strh r1, [r2, 0xA]
@@ -216,7 +216,7 @@ _081104DC:
 	strh r0, [r2, 0xC]
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _081104F0
+	ldr r1, _081104F0 @ =0x0000270f
 	cmp r0, r1
 	bls _08110506
 	strh r1, [r2, 0xC]
@@ -229,7 +229,7 @@ _081104F4:
 	strh r0, [r2, 0xE]
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _0811050C
+	ldr r1, _0811050C @ =0x0000270f
 	cmp r0, r1
 	bls _08110506
 	strh r1, [r2, 0xE]
@@ -265,7 +265,7 @@ _0811052E:
 _08110530:
 	adds r0, r4, 0
 	bl sub_8053108
-	ldr r1, _08110548
+	ldr r1, _08110548 @ =0x0000270e
 	cmp r0, r1
 	bhi _08110542
 	adds r0, r4, 0
@@ -353,7 +353,7 @@ _081105C0:
 	thumb_func_start InitLinkBattleRecords
 InitLinkBattleRecords: @ 81105E0
 	push {lr}
-	ldr r0, _081105EC
+	ldr r0, _081105EC @ =0x020287ec
 	bl InitLinkBattleRecords_
 	pop {r0}
 	bx r0
@@ -367,14 +367,14 @@ sub_81101FC: @ 81105F0
 	lsls r1, r0, 3
 	subs r1, r0
 	lsls r1, 3
-	ldr r0, _08110614
+	ldr r0, _08110614 @ =0x0202ffd4
 	adds r1, r0
 	ldrh r0, [r1]
 	adds r0, 0x1
 	strh r0, [r1]
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r2, _08110618
+	ldr r2, _08110618 @ =0x0000270f
 	cmp r0, r2
 	bls _0811060E
 	strh r2, [r1]
@@ -392,14 +392,14 @@ sub_8110228: @ 811061C
 	lsls r1, r0, 3
 	subs r1, r0
 	lsls r1, 3
-	ldr r0, _08110640
+	ldr r0, _08110640 @ =0x0202ffd6
 	adds r1, r0
 	ldrh r0, [r1]
 	adds r0, 0x1
 	strh r0, [r1]
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r2, _08110644
+	ldr r2, _08110644 @ =0x0000270f
 	cmp r0, r2
 	bls _0811063A
 	strh r2, [r1]
@@ -415,7 +415,7 @@ _08110644: .4byte 0x0000270f
 sub_8110254: @ 8110648
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r0, _0811065C
+	ldr r0, _0811065C @ =gUnknown_02024D26
 	ldrb r0, [r0]
 	cmp r0, 0x1
 	beq _08110660
@@ -448,19 +448,19 @@ sub_8110290: @ 8110684
 	sub sp, 0x4
 	adds r4, r0, 0
 	bl sub_8110254
-	ldr r0, _081106C8
+	ldr r0, _081106C8 @ =0x020287ec
 	lsls r2, r4, 3
 	subs r2, r4
 	lsls r2, 3
-	ldr r3, _081106CC
+	ldr r3, _081106CC @ =0x0202fff0
 	adds r1, r2, r3
 	subs r3, 0x30
 	adds r2, r3
 	ldrh r2, [r2, 0xE]
-	ldr r3, _081106D0
+	ldr r3, _081106D0 @ =gUnknown_02024D26
 	ldrb r3, [r3]
-	ldr r6, _081106D4
-	ldr r5, _081106D8
+	ldr r6, _081106D4 @ =gLinkPlayers
+	ldr r5, _081106D8 @ =gLinkPlayerMapObjects
 	lsls r4, 2
 	adds r4, r5
 	ldrb r5, [r4, 0x1]
@@ -486,7 +486,7 @@ _081106D8: .4byte gLinkPlayerMapObjects
 	thumb_func_start PrintLinkBattleWinsLossesDraws
 PrintLinkBattleWinsLossesDraws: @ 81106DC
 	push {r4,lr}
-	ldr r4, _0811072C
+	ldr r4, _0811072C @ =gStringVar1
 	movs r0, 0x17
 	bl sub_8053108
 	adds r1, r0, 0
@@ -494,7 +494,7 @@ PrintLinkBattleWinsLossesDraws: @ 81106DC
 	movs r2, 0x1
 	movs r3, 0x4
 	bl ConvertIntToDecimalStringN_DigitWidth6
-	ldr r4, _08110730
+	ldr r4, _08110730 @ =gStringVar2
 	movs r0, 0x18
 	bl sub_8053108
 	adds r1, r0, 0
@@ -502,7 +502,7 @@ PrintLinkBattleWinsLossesDraws: @ 81106DC
 	movs r2, 0x1
 	movs r3, 0x4
 	bl ConvertIntToDecimalStringN_DigitWidth6
-	ldr r4, _08110734
+	ldr r4, _08110734 @ =gStringVar3
 	movs r0, 0x19
 	bl sub_8053108
 	adds r1, r0, 0
@@ -510,7 +510,7 @@ PrintLinkBattleWinsLossesDraws: @ 81106DC
 	movs r2, 0x1
 	movs r3, 0x4
 	bl ConvertIntToDecimalStringN_DigitWidth6
-	ldr r0, _08110738
+	ldr r0, _08110738 @ =gOtherText_WinRecord
 	movs r1, 0x3
 	movs r2, 0x3
 	bl MenuPrint
@@ -553,14 +553,14 @@ PrintLinkBattleRecord: @ 811073C
 	strb r0, [r1, 0x5]
 	mov r4, sp
 	adds r4, 0x6
-	ldr r1, _081107AC
+	ldr r1, _081107AC @ =gOtherText_SevenDashes
 	adds r0, r4, 0
 	bl StringCopy
 	mov r0, sp
 	movs r1, 0x3
 	adds r2, r6, 0
 	bl MenuPrint
-	ldr r1, _081107B0
+	ldr r1, _081107B0 @ =gOtherText_FourDashes
 	adds r0, r4, 0
 	bl StringCopy
 	mov r0, sp
@@ -580,7 +580,7 @@ PrintLinkBattleRecord: @ 811073C
 _081107AC: .4byte gOtherText_SevenDashes
 _081107B0: .4byte gOtherText_FourDashes
 _081107B4:
-	ldr r4, _0811082C
+	ldr r4, _0811082C @ =gStringVar1
 	adds r0, r4, 0
 	movs r1, 0x8
 	bl StringFillWithTerminator
@@ -643,14 +643,14 @@ ShowLinkBattleRecords: @ 8110830
 	movs r2, 0x1C
 	movs r3, 0x12
 	bl MenuDrawTextWindow
-	ldr r0, _08110880
+	ldr r0, _08110880 @ =gOtherText_BattleResults
 	movs r1, 0
 	movs r2, 0x1
 	movs r3, 0xF0
 	bl sub_8072BD8
-	ldr r0, _08110884
+	ldr r0, _08110884 @ =0x020287ec
 	bl PrintLinkBattleWinsLossesDraws
-	ldr r0, _08110888
+	ldr r0, _08110888 @ =gOtherText_WinLoseDraw
 	movs r1, 0x58
 	movs r2, 0x30
 	movs r3, 0x1
@@ -658,7 +658,7 @@ ShowLinkBattleRecords: @ 8110830
 	movs r4, 0
 _0811085E:
 	lsls r0, r4, 4
-	ldr r1, _08110884
+	ldr r1, _08110884 @ =0x020287ec
 	adds r0, r1
 	adds r4, 0x1
 	lsls r1, r4, 25
@@ -683,15 +683,15 @@ sub_8110494: @ 811088C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _081108AC
-	ldr r2, _081108B0
+	ldr r1, _081108AC @ =0x02024f4c
+	ldr r2, _081108B0 @ =0x000004ae
 	adds r1, r2
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0x6
 	bhi _081108D8
 	lsls r0, 2
-	ldr r1, _081108B4
+	ldr r1, _081108B4 @ =_081108B8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -732,17 +732,17 @@ sub_81104E8: @ 81108E0
 	adds r1, r5, 0
 	adds r2, r6, 0
 	bl MenuPrint
-	ldr r0, _08110924
+	ldr r0, _08110924 @ =0x0000270f
 	cmp r4, r0
 	bls _08110902
 	adds r4, r0, 0
 _08110902:
-	ldr r0, _08110928
+	ldr r0, _08110928 @ =gStringVar1
 	adds r1, r4, 0
 	movs r2, 0x18
 	movs r3, 0x1
 	bl sub_8072C14
-	ldr r0, _0811092C
+	ldr r0, _0811092C @ =gOtherText_WinStreak
 	adds r1, r5, 0x7
 	lsls r1, 24
 	lsrs r1, 24
@@ -767,14 +767,14 @@ sub_8110538: @ 8110930
 	lsrs r4, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r1, _0811095C
+	ldr r1, _0811095C @ =0x02024f4c
 	lsrs r0, 23
 	movs r2, 0x97
 	lsls r2, 3
 	adds r1, r2
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _08110960
+	ldr r0, _08110960 @ =gOtherText_Record
 	adds r2, r4, 0
 	bl sub_81104E8
 	pop {r4}
@@ -789,13 +789,13 @@ _08110960: .4byte gOtherText_Record
 sub_811056C: @ 8110964
 	push {lr}
 	lsls r0, 24
-	ldr r1, _08110980
+	ldr r1, _08110980 @ =gSaveBlock2
 	lsrs r0, 23
-	ldr r2, _08110984
+	ldr r2, _08110984 @ =0x00000574
 	adds r1, r2
 	adds r0, r1
 	ldrh r0, [r0]
-	ldr r1, _08110988
+	ldr r1, _08110988 @ =0x0000270f
 	cmp r0, r1
 	bls _0811097C
 	adds r0, r1, 0
@@ -826,7 +826,7 @@ sub_8110594: @ 811098C
 	bl sub_8110494
 	cmp r0, 0x1
 	bne _081109C4
-	ldr r0, _081109C0
+	ldr r0, _081109C0 @ =gOtherText_Current
 	adds r1, r5, 0
 	adds r2, r6, 0
 	adds r3, r7, 0
@@ -835,7 +835,7 @@ sub_8110594: @ 811098C
 	.align 2, 0
 _081109C0: .4byte gOtherText_Current
 _081109C4:
-	ldr r0, _081109D8
+	ldr r0, _081109D8 @ =gOtherText_Prev
 	adds r1, r5, 0
 	adds r2, r6, 0
 	adds r3, r7, 0
@@ -856,16 +856,16 @@ ShowBattleTowerRecords: @ 81109DC
 	movs r2, 0x1B
 	movs r3, 0x11
 	bl MenuDrawTextWindow
-	ldr r0, _08110A50
+	ldr r0, _08110A50 @ =gOtherText_BattleTowerResults
 	movs r1, 0x3
 	movs r2, 0x2
 	movs r3, 0xC8
 	bl sub_8072BD8
-	ldr r0, _08110A54
+	ldr r0, _08110A54 @ =gOtherText_Lv50
 	movs r1, 0x5
 	movs r2, 0x6
 	bl MenuPrint
-	ldr r0, _08110A58
+	ldr r0, _08110A58 @ =gOtherText_Lv100
 	movs r1, 0x5
 	movs r2, 0xC
 	bl MenuPrint

@@ -46,7 +46,7 @@ ScrCmd_special: @ 8065BD8
 	push {lr}
 	bl ScriptReadHalfword
 	lsls r0, 16
-	ldr r1, _08065BF4
+	ldr r1, _08065BF4 @ =gSpecials
 	lsrs r0, 14
 	adds r0, r1
 	ldr r0, [r0]
@@ -67,7 +67,7 @@ ScrCmd_specialval: @ 8065BF8
 	lsrs r0, 16
 	bl GetVarPointer
 	adds r6, r0, 0
-	ldr r4, _08065C28
+	ldr r4, _08065C28 @ =gSpecials
 	adds r0, r5, 0
 	bl ScriptReadHalfword
 	lsls r0, 16
@@ -151,7 +151,7 @@ ScrCmd_jumpif: @ 8065C84
 	adds r0, r5, 0
 	bl ScriptReadWord
 	adds r2, r0, 0
-	ldr r1, _08065CBC
+	ldr r1, _08065CBC @ =gScriptConditionTable
 	lsls r0, r4, 1
 	adds r0, r4
 	ldrb r3, [r5, 0x2]
@@ -183,7 +183,7 @@ ScrCmd_callif: @ 8065CC0
 	adds r0, r5, 0
 	bl ScriptReadWord
 	adds r2, r0, 0
-	ldr r1, _08065CF8
+	ldr r1, _08065CF8 @ =gScriptConditionTable
 	lsls r0, r4, 1
 	adds r0, r4
 	ldrb r3, [r5, 0x2]
@@ -210,7 +210,7 @@ ScrCmd_setvaddress: @ 8065CFC
 	ldr r4, [r0, 0x8]
 	subs r4, 0x1
 	bl ScriptReadWord
-	ldr r1, _08065D14
+	ldr r1, _08065D14 @ =gUnknown_0202E8B0
 	subs r0, r4
 	str r0, [r1]
 	movs r0, 0
@@ -227,7 +227,7 @@ ScrCmd_vjump: @ 8065D18
 	adds r4, r0, 0
 	bl ScriptReadWord
 	adds r1, r0, 0
-	ldr r0, _08065D38
+	ldr r0, _08065D38 @ =gUnknown_0202E8B0
 	ldr r0, [r0]
 	subs r1, r0
 	adds r0, r4, 0
@@ -246,7 +246,7 @@ ScrCmd_vcall: @ 8065D3C
 	adds r4, r0, 0
 	bl ScriptReadWord
 	adds r1, r0, 0
-	ldr r0, _08065D5C
+	ldr r0, _08065D5C @ =gUnknown_0202E8B0
 	ldr r0, [r0]
 	subs r1, r0
 	adds r0, r4, 0
@@ -269,10 +269,10 @@ ScrCmd_if5: @ 8065D60
 	str r0, [r5, 0x8]
 	adds r0, r5, 0
 	bl ScriptReadWord
-	ldr r1, _08065D9C
+	ldr r1, _08065D9C @ =gUnknown_0202E8B0
 	ldr r1, [r1]
 	subs r2, r0, r1
-	ldr r1, _08065DA0
+	ldr r1, _08065DA0 @ =gScriptConditionTable
 	lsls r0, r4, 1
 	adds r0, r4
 	ldrb r3, [r5, 0x2]
@@ -304,10 +304,10 @@ ScrCmd_if6: @ 8065DA4
 	str r0, [r5, 0x8]
 	adds r0, r5, 0
 	bl ScriptReadWord
-	ldr r1, _08065DE0
+	ldr r1, _08065DE0 @ =gUnknown_0202E8B0
 	ldr r1, [r1]
 	subs r2, r0, r1
-	ldr r1, _08065DE4
+	ldr r1, _08065DE4 @ =gScriptConditionTable
 	lsls r0, r4, 1
 	adds r0, r4
 	ldrb r3, [r5, 0x2]
@@ -338,9 +338,9 @@ ScrCmd_jumpstd: @ 8065DE8
 	adds r0, 0x1
 	str r0, [r2, 0x8]
 	lsls r1, 2
-	ldr r0, _08065E10
+	ldr r0, _08065E10 @ =gStdScripts
 	adds r1, r0
-	ldr r0, _08065E14
+	ldr r0, _08065E14 @ =PetalburgCity_MapScripts
 	cmp r1, r0
 	bcs _08065E08
 	ldr r1, [r1]
@@ -364,9 +364,9 @@ ScrCmd_callstd: @ 8065E18
 	adds r0, 0x1
 	str r0, [r2, 0x8]
 	lsls r1, 2
-	ldr r0, _08065E40
+	ldr r0, _08065E40 @ =gStdScripts
 	adds r1, r0
-	ldr r0, _08065E44
+	ldr r0, _08065E44 @ =PetalburgCity_MapScripts
 	cmp r1, r0
 	bcs _08065E38
 	ldr r1, [r1]
@@ -392,7 +392,7 @@ ScrCmd_jumpstdif: @ 8065E48
 	ldrb r4, [r0]
 	adds r0, 0x1
 	str r0, [r3, 0x8]
-	ldr r1, _08065E88
+	ldr r1, _08065E88 @ =gScriptConditionTable
 	lsls r0, r2, 1
 	adds r0, r2
 	ldrb r2, [r3, 0x2]
@@ -402,9 +402,9 @@ ScrCmd_jumpstdif: @ 8065E48
 	cmp r0, 0x1
 	bne _08065E80
 	lsls r0, r4, 2
-	ldr r1, _08065E8C
+	ldr r1, _08065E8C @ =gStdScripts
 	adds r1, r0, r1
-	ldr r0, _08065E90
+	ldr r0, _08065E90 @ =PetalburgCity_MapScripts
 	cmp r1, r0
 	bcs _08065E80
 	ldr r1, [r1]
@@ -432,7 +432,7 @@ ScrCmd_callstdif: @ 8065E94
 	ldrb r4, [r0]
 	adds r0, 0x1
 	str r0, [r3, 0x8]
-	ldr r1, _08065ED4
+	ldr r1, _08065ED4 @ =gScriptConditionTable
 	lsls r0, r2, 1
 	adds r0, r2
 	ldrb r2, [r3, 0x2]
@@ -442,9 +442,9 @@ ScrCmd_callstdif: @ 8065E94
 	cmp r0, 0x1
 	bne _08065ECC
 	lsls r0, r4, 2
-	ldr r1, _08065ED8
+	ldr r1, _08065ED8 @ =gStdScripts
 	adds r1, r0, r1
-	ldr r0, _08065EDC
+	ldr r0, _08065EDC @ =PetalburgCity_MapScripts
 	cmp r1, r0
 	bcs _08065ECC
 	ldr r1, [r1]
@@ -464,7 +464,7 @@ _08065EDC: .4byte PetalburgCity_MapScripts
 	thumb_func_start ScrCmd_jumpram
 ScrCmd_jumpram: @ 8065EE0
 	push {lr}
-	ldr r1, _08065EF0
+	ldr r1, _08065EF0 @ =gUnknown_0202E8AC
 	ldr r1, [r1]
 	bl ScriptJump
 	movs r0, 0
@@ -950,7 +950,7 @@ ScrCmd_random: @ 806624C
 	adds r4, r0, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r5, _0806627C
+	ldr r5, _0806627C @ =gScriptResult
 	bl Random
 	lsls r0, 16
 	lsrs r0, 16
@@ -982,7 +982,7 @@ ScrCmd_additem: @ 8066280
 	lsrs r0, 16
 	bl VarGet
 	adds r1, r0, 0
-	ldr r5, _080662C0
+	ldr r5, _080662C0 @ =gScriptResult
 	lsls r1, 24
 	lsrs r1, 24
 	adds r0, r4, 0
@@ -1015,7 +1015,7 @@ ScrCmd_removeitem: @ 80662C4
 	lsrs r0, 16
 	bl VarGet
 	adds r1, r0, 0
-	ldr r5, _08066304
+	ldr r5, _08066304 @ =gScriptResult
 	lsls r1, 24
 	lsrs r1, 24
 	adds r0, r4, 0
@@ -1048,7 +1048,7 @@ ScrCmd_checkitemspace: @ 8066308
 	lsrs r0, 16
 	bl VarGet
 	adds r1, r0, 0
-	ldr r5, _08066348
+	ldr r5, _08066348 @ =gScriptResult
 	lsls r1, 24
 	lsrs r1, 24
 	adds r0, r4, 0
@@ -1081,7 +1081,7 @@ ScrCmd_checkitem: @ 806634C
 	lsrs r0, 16
 	bl VarGet
 	adds r1, r0, 0
-	ldr r5, _0806638C
+	ldr r5, _0806638C @ =gScriptResult
 	lsls r1, 24
 	lsrs r1, 24
 	adds r0, r4, 0
@@ -1106,7 +1106,7 @@ ScrCmd_checkitemtype: @ 8066390
 	bl VarGet
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080663B8
+	ldr r4, _080663B8 @ =gScriptResult
 	bl GetPocketByItemId
 	lsls r0, 24
 	lsrs r0, 24
@@ -1138,7 +1138,7 @@ ScrCmd_addpcitem: @ 80663BC
 	adds r1, r0, 0
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r5, _080663FC
+	ldr r5, _080663FC @ =gScriptResult
 	adds r0, r4, 0
 	bl AddPCItem
 	lsls r0, 24
@@ -1171,7 +1171,7 @@ ScrCmd_checkpcitem: @ 8066400
 	adds r1, r0, 0
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r5, _08066440
+	ldr r5, _08066440 @ =gScriptResult
 	adds r0, r4, 0
 	bl CheckPCHasItem
 	lsls r0, 24
@@ -1192,7 +1192,7 @@ ScrCmd_adddecor: @ 8066444
 	lsls r0, 16
 	lsrs r0, 16
 	bl VarGet
-	ldr r4, _0806646C
+	ldr r4, _0806646C @ =gScriptResult
 	lsls r0, 24
 	lsrs r0, 24
 	bl IsThereStorageSpaceForDecoration
@@ -1214,7 +1214,7 @@ ScrCmd_removedecor: @ 8066470
 	lsls r0, 16
 	lsrs r0, 16
 	bl VarGet
-	ldr r4, _08066498
+	ldr r4, _08066498 @ =gScriptResult
 	lsls r0, 24
 	lsrs r0, 24
 	bl sub_81340A8
@@ -1236,7 +1236,7 @@ ScrCmd_checkdecor: @ 806649C
 	lsls r0, 16
 	lsrs r0, 16
 	bl VarGet
-	ldr r4, _080664C4
+	ldr r4, _080664C4 @ =gScriptResult
 	lsls r0, 24
 	lsrs r0, 24
 	bl sub_8134074
@@ -1258,7 +1258,7 @@ ScrCmd_testdecor: @ 80664C8
 	lsls r0, 16
 	lsrs r0, 16
 	bl VarGet
-	ldr r4, _080664F0
+	ldr r4, _080664F0 @ =gScriptResult
 	lsls r0, 24
 	lsrs r0, 24
 	bl sub_8133FE4
@@ -1359,7 +1359,7 @@ ScrCmd_darken: @ 806656C
 	thumb_func_start sub_8066248
 sub_8066248: @ 8066588
 	push {lr}
-	ldr r0, _0806659C
+	ldr r0, _0806659C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -1386,7 +1386,7 @@ ScrCmd_fadescreen: @ 80665A8
 	str r1, [r4, 0x8]
 	movs r1, 0
 	bl fade_screen
-	ldr r1, _080665CC
+	ldr r1, _080665CC @ =sub_8066248
 	adds r0, r4, 0
 	bl SetupNativeScript
 	movs r0, 0x1
@@ -1409,7 +1409,7 @@ ScrCmd_fadescreendelay: @ 80665D0
 	adds r2, 0x1
 	str r2, [r4, 0x8]
 	bl fade_screen
-	ldr r1, _080665F8
+	ldr r1, _080665F8 @ =sub_8066248
 	adds r0, r4, 0
 	bl SetupNativeScript
 	movs r0, 0x1
@@ -1423,7 +1423,7 @@ _080665F8: .4byte sub_8066248
 	thumb_func_start s28_pause_asm
 s28_pause_asm: @ 80665FC
 	push {lr}
-	ldr r1, _08066610
+	ldr r1, _08066610 @ =gUnknown_0202E8B4
 	ldrh r0, [r1]
 	subs r0, 0x1
 	strh r0, [r1]
@@ -1446,9 +1446,9 @@ ScrCmd_pause: @ 806661C
 	push {r4,lr}
 	adds r4, r0, 0
 	bl ScriptReadHalfword
-	ldr r1, _08066638
+	ldr r1, _08066638 @ =gUnknown_0202E8B4
 	strh r0, [r1]
-	ldr r1, _0806663C
+	ldr r1, _0806663C @ =s28_pause_asm
 	adds r0, r4, 0
 	bl SetupNativeScript
 	movs r0, 0x1
@@ -1500,16 +1500,16 @@ ScrCmd_checkdailyflags: @ 8066678
 ScrCmd_resetvars: @ 8066684
 	push {lr}
 	bl RtcCalcLocalTime
-	ldr r2, _080666AC
-	ldr r1, _080666B0
+	ldr r2, _080666AC @ =gSpecialVar_0x8000
+	ldr r1, _080666B0 @ =gLocalTime
 	movs r0, 0x2
 	ldrsb r0, [r1, r0]
 	strh r0, [r2]
-	ldr r2, _080666B4
+	ldr r2, _080666B4 @ =gSpecialVar_0x8001
 	movs r0, 0x3
 	ldrsb r0, [r1, r0]
 	strh r0, [r2]
-	ldr r2, _080666B8
+	ldr r2, _080666B8 @ =gSpecialVar_0x8002
 	movs r0, 0x4
 	ldrsb r0, [r1, r0]
 	strh r0, [r2]
@@ -2226,7 +2226,7 @@ ScrCmd_getplayerxy: @ 8066C3C
 	lsls r0, 16
 	lsrs r0, 16
 	bl GetVarPointer
-	ldr r2, _08066C70
+	ldr r2, _08066C70 @ =gSaveBlock1
 	ldrh r1, [r2]
 	strh r1, [r5]
 	ldrh r1, [r2, 0x2]
@@ -2242,7 +2242,7 @@ _08066C70: .4byte gSaveBlock1
 	thumb_func_start ScrCmd_countpokemon
 ScrCmd_countpokemon: @ 8066C74
 	push {r4,lr}
-	ldr r4, _08066C8C
+	ldr r4, _08066C8C @ =gScriptResult
 	bl CalculatePlayerPartyCount
 	lsls r0, 24
 	lsrs r0, 24
@@ -2286,7 +2286,7 @@ _08066CB6:
 	thumb_func_start ScrCmd_checksound
 ScrCmd_checksound: @ 8066CBC
 	push {lr}
-	ldr r1, _08066CCC
+	ldr r1, _08066CCC @ =s30_music_check_asm
 	bl SetupNativeScript
 	movs r0, 0x1
 	pop {r1}
@@ -2320,7 +2320,7 @@ s32_fanfare_wait_asm: @ 8066CE4
 	thumb_func_start ScrCmd_waitfanfare
 ScrCmd_waitfanfare: @ 8066CF4
 	push {lr}
-	ldr r1, _08066D04
+	ldr r1, _08066D04 @ =s32_fanfare_wait_asm
 	bl SetupNativeScript
 	movs r0, 0x1
 	pop {r1}
@@ -2405,7 +2405,7 @@ _08066D86:
 	movs r0, 0x4
 	bl FadeOutBGMTemporarily
 _08066D8C:
-	ldr r1, _08066D9C
+	ldr r1, _08066D9C @ =IsBGMPausedOrStopped
 	adds r0, r4, 0
 	bl SetupNativeScript
 	movs r0, 0x1
@@ -2454,11 +2454,11 @@ ScrCmd_move: @ 8066DC4
 	adds r3, r0, 0
 	lsls r0, r4, 24
 	lsrs r0, 24
-	ldr r2, _08066DFC
+	ldr r2, _08066DFC @ =gSaveBlock1
 	ldrb r1, [r2, 0x5]
 	ldrb r2, [r2, 0x4]
 	bl exec_movement
-	ldr r0, _08066E00
+	ldr r0, _08066E00 @ =gUnknown_0202E8B6
 	strh r4, [r0]
 	movs r0, 0
 	pop {r4,r5}
@@ -2493,7 +2493,7 @@ ScrCmd_movecoords: @ 8066E04
 	lsls r0, r4, 24
 	lsrs r0, 24
 	bl exec_movement
-	ldr r0, _08066E44
+	ldr r0, _08066E44 @ =gUnknown_0202E8B6
 	strh r4, [r0]
 	movs r0, 0
 	pop {r4,r5}
@@ -2506,11 +2506,11 @@ _08066E44: .4byte gUnknown_0202E8B6
 	thumb_func_start s51a_0806B288
 s51a_0806B288: @ 8066E48
 	push {lr}
-	ldr r0, _08066E64
+	ldr r0, _08066E64 @ =gUnknown_0202E8B6
 	ldrb r0, [r0]
-	ldr r1, _08066E68
+	ldr r1, _08066E68 @ =gUnknown_0202E8BA
 	ldrb r1, [r1]
-	ldr r2, _08066E6C
+	ldr r2, _08066E6C @ =gUnknown_0202E8B8
 	ldrb r2, [r2]
 	bl sub_80A212C
 	lsls r0, 24
@@ -2535,19 +2535,19 @@ ScrCmd_waitmove: @ 8066E70
 	lsrs r1, r0, 16
 	cmp r1, 0
 	beq _08066E8C
-	ldr r0, _08066EB0
+	ldr r0, _08066EB0 @ =gUnknown_0202E8B6
 	strh r1, [r0]
 _08066E8C:
-	ldr r1, _08066EB4
-	ldr r2, _08066EB8
+	ldr r1, _08066EB4 @ =gUnknown_0202E8B8
+	ldr r2, _08066EB8 @ =gSaveBlock1
 	movs r0, 0x4
 	ldrsb r0, [r2, r0]
 	strh r0, [r1]
-	ldr r1, _08066EBC
+	ldr r1, _08066EBC @ =gUnknown_0202E8BA
 	movs r0, 0x5
 	ldrsb r0, [r2, r0]
 	strh r0, [r1]
-	ldr r1, _08066EC0
+	ldr r1, _08066EC0 @ =s51a_0806B288
 	adds r0, r4, 0
 	bl SetupNativeScript
 	movs r0, 0x1
@@ -2574,7 +2574,7 @@ ScrCmd_waitmovexy: @ 8066EC4
 	lsrs r1, r0, 16
 	cmp r1, 0
 	beq _08066EE0
-	ldr r0, _08066F08
+	ldr r0, _08066F08 @ =gUnknown_0202E8B6
 	strh r1, [r0]
 _08066EE0:
 	ldr r0, [r4, 0x8]
@@ -2584,11 +2584,11 @@ _08066EE0:
 	ldrb r1, [r0]
 	adds r0, 0x1
 	str r0, [r4, 0x8]
-	ldr r0, _08066F0C
+	ldr r0, _08066F0C @ =gUnknown_0202E8B8
 	strh r2, [r0]
-	ldr r0, _08066F10
+	ldr r0, _08066F10 @ =gUnknown_0202E8BA
 	strh r1, [r0]
-	ldr r1, _08066F14
+	ldr r1, _08066F14 @ =s51a_0806B288
 	adds r0, r4, 0
 	bl SetupNativeScript
 	movs r0, 0x1
@@ -2611,7 +2611,7 @@ ScrCmd_disappear: @ 8066F18
 	bl VarGet
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08066F3C
+	ldr r2, _08066F3C @ =gSaveBlock1
 	ldrb r1, [r2, 0x5]
 	ldrb r2, [r2, 0x4]
 	bl RemoveFieldObjectByLocalIdAndMap
@@ -2655,7 +2655,7 @@ ScrCmd_reappear: @ 8066F70
 	bl VarGet
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08066F94
+	ldr r2, _08066F94 @ =gSaveBlock1
 	ldrb r1, [r2, 0x5]
 	ldrb r2, [r2, 0x4]
 	bl show_sprite
@@ -2717,7 +2717,7 @@ ScrCmd_movesprite: @ 8066FC8
 	bl VarGet
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r2, _08067028
+	ldr r2, _08067028 @ =gSaveBlock1
 	ldrb r1, [r2, 0x5]
 	ldrb r2, [r2, 0x4]
 	lsls r4, 16
@@ -2786,7 +2786,7 @@ ScrCmd_moveoffscreen: @ 8067084
 	bl VarGet
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080670A8
+	ldr r2, _080670A8 @ =gSaveBlock1
 	ldrb r1, [r2, 0x5]
 	ldrb r2, [r2, 0x4]
 	bl sub_805C78C
@@ -2904,8 +2904,8 @@ ScrCmd_restorespritelevel: @ 8067148
 	thumb_func_start ScrCmd_faceplayer
 ScrCmd_faceplayer: @ 8067178
 	push {r4,lr}
-	ldr r2, _080671A8
-	ldr r0, _080671AC
+	ldr r2, _080671A8 @ =gMapObjects
+	ldr r0, _080671AC @ =gSelectedMapObject
 	ldrb r1, [r0]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -2945,7 +2945,7 @@ ScrCmd_spriteface: @ 80671B0
 	str r1, [r4, 0x8]
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080671E0
+	ldr r2, _080671E0 @ =gSaveBlock1
 	ldrb r1, [r2, 0x5]
 	ldrb r2, [r2, 0x4]
 	bl FieldObjectTurnByLocalIdAndMap
@@ -3058,7 +3058,7 @@ ScrCmd_lockall: @ 8067298
 	cmp r0, 0
 	bne _080672B8
 	bl sub_8064D20
-	ldr r1, _080672B4
+	ldr r1, _080672B4 @ =sub_8064CFC
 	adds r0, r4, 0
 	bl SetupNativeScript
 	movs r0, 0x1
@@ -3083,8 +3083,8 @@ ScrCmd_lock: @ 80672C0
 	movs r0, 0
 	b _0806730E
 _080672D0:
-	ldr r2, _080672F4
-	ldr r0, _080672F8
+	ldr r2, _080672F4 @ =gMapObjects
+	ldr r0, _080672F8 @ =gSelectedMapObject
 	ldrb r1, [r0]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -3095,7 +3095,7 @@ _080672D0:
 	cmp r0, 0
 	beq _08067300
 	bl sub_8064DD8
-	ldr r1, _080672FC
+	ldr r1, _080672FC @ =sub_8064DB4
 	adds r0, r4, 0
 	bl SetupNativeScript
 	b _0806730C
@@ -3105,7 +3105,7 @@ _080672F8: .4byte gSelectedMapObject
 _080672FC: .4byte sub_8064DB4
 _08067300:
 	bl sub_8064D20
-	ldr r1, _08067314
+	ldr r1, _08067314 @ =sub_8064CFC
 	adds r0, r4, 0
 	bl SetupNativeScript
 _0806730C:
@@ -3132,7 +3132,7 @@ ScrCmd_releaseall: @ 8067318
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0806734C
+	ldr r1, _0806734C @ =gMapObjects
 	adds r0, r1
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	bl sub_80A2178
@@ -3148,8 +3148,8 @@ _0806734C: .4byte gMapObjects
 ScrCmd_release: @ 8067350
 	push {r4,lr}
 	bl HideFieldMessageBox
-	ldr r4, _080673A0
-	ldr r0, _080673A4
+	ldr r4, _080673A0 @ =gMapObjects
+	ldr r0, _080673A4 @ =gSelectedMapObject
 	ldrb r1, [r0]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -3220,7 +3220,7 @@ _080673D2:
 	thumb_func_start ScrCmd_waittext
 ScrCmd_waittext: @ 80673E0
 	push {lr}
-	ldr r1, _080673F0
+	ldr r1, _080673F0 @ =IsFieldMessageBoxHidden
 	bl SetupNativeScript
 	movs r0, 0x1
 	pop {r1}
@@ -3241,7 +3241,7 @@ ScrCmd_closebutton: @ 80673F4
 	thumb_func_start sub_80670C0
 sub_80670C0: @ 8067400
 	push {lr}
-	ldr r0, _0806741C
+	ldr r0, _0806741C @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -3265,7 +3265,7 @@ _08067422:
 	thumb_func_start ScrCmd_waitbutton
 ScrCmd_waitbutton: @ 8067428
 	push {lr}
-	ldr r1, _08067438
+	ldr r1, _08067438 @ =sub_80670C0
 	bl SetupNativeScript
 	movs r0, 0x1
 	pop {r1}
@@ -3583,7 +3583,7 @@ ScrCmd_braillemsg: @ 806764C
 	ldrb r0, [r1, 0x4]
 	mov r10, r0
 	ldrb r7, [r1, 0x5]
-	ldr r4, _080676A0
+	ldr r4, _080676A0 @ =gStringVar4
 	adds r1, 0x6
 	adds r0, r4, 0
 	bl StringBraille
@@ -3612,7 +3612,7 @@ _080676A0: .4byte gStringVar4
 ScrCmd_vtext: @ 80676A4
 	push {lr}
 	bl ScriptReadWord
-	ldr r1, _080676BC
+	ldr r1, _080676BC @ =gUnknown_0202E8B0
 	ldr r1, [r1]
 	subs r0, r1
 	bl ShowFieldMessage
@@ -3636,13 +3636,13 @@ ScrCmd_bufferpoke: @ 80676C0
 	bl VarGet
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _080676F8
+	ldr r1, _080676F8 @ =gUnknown_083762F0
 	lsls r4, 2
 	adds r4, r1
 	ldr r2, [r4]
 	movs r1, 0xB
 	muls r1, r0
-	ldr r0, _080676FC
+	ldr r0, _080676FC @ =gSpeciesNames
 	adds r1, r0
 	adds r0, r2, 0
 	bl StringCopy
@@ -3662,7 +3662,7 @@ ScrCmd_bufferfirstpoke: @ 8067700
 	ldrb r2, [r1]
 	adds r1, 0x1
 	str r1, [r0, 0x8]
-	ldr r0, _08067740
+	ldr r0, _08067740 @ =gUnknown_083762F0
 	lsls r2, 2
 	adds r2, r0
 	ldr r4, [r2]
@@ -3671,14 +3671,14 @@ ScrCmd_bufferfirstpoke: @ 8067700
 	lsrs r0, 24
 	movs r1, 0x64
 	muls r0, r1
-	ldr r1, _08067744
+	ldr r1, _08067744 @ =gPlayerParty
 	adds r0, r1
 	movs r1, 0xB
 	movs r2, 0
 	bl GetMonData
 	movs r1, 0xB
 	muls r1, r0
-	ldr r0, _08067748
+	ldr r0, _08067748 @ =gSpeciesNames
 	adds r1, r0
 	adds r0, r4, 0
 	bl StringCopy
@@ -3707,9 +3707,9 @@ ScrCmd_bufferpartypoke: @ 806774C
 	lsrs r0, 16
 	movs r1, 0x64
 	muls r0, r1
-	ldr r1, _0806778C
+	ldr r1, _0806778C @ =gPlayerParty
 	adds r0, r1
-	ldr r1, _08067790
+	ldr r1, _08067790 @ =gUnknown_083762F0
 	lsls r4, 2
 	adds r4, r1
 	ldr r4, [r4]
@@ -3740,7 +3740,7 @@ ScrCmd_bufferitem: @ 8067794
 	bl VarGet
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _080677C4
+	ldr r1, _080677C4 @ =gUnknown_083762F0
 	lsls r4, 2
 	adds r4, r1
 	ldr r1, [r4]
@@ -3766,12 +3766,12 @@ ScrCmd_bufferdecor: @ 80677C8
 	bl VarGet
 	adds r1, r0, 0
 	lsls r1, 16
-	ldr r0, _080677FC
+	ldr r0, _080677FC @ =gUnknown_083762F0
 	lsls r4, 2
 	adds r4, r0
 	ldr r0, [r4]
 	lsrs r1, 11
-	ldr r2, _08067800
+	ldr r2, _08067800 @ =0x083f7bf1
 	adds r1, r2
 	bl StringCopy
 	movs r0, 0
@@ -3796,13 +3796,13 @@ ScrCmd_bufferattack: @ 8067804
 	bl VarGet
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _0806783C
+	ldr r1, _0806783C @ =gUnknown_083762F0
 	lsls r4, 2
 	adds r4, r1
 	ldr r2, [r4]
 	movs r1, 0xD
 	muls r1, r0
-	ldr r0, _08067840
+	ldr r0, _08067840 @ =gMoveNames
 	adds r1, r0
 	adds r0, r2, 0
 	bl StringCopy
@@ -3834,7 +3834,7 @@ ScrCmd_buffernum: @ 8067844
 	adds r3, r0, 0
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _08067884
+	ldr r0, _08067884 @ =gUnknown_083762F0
 	lsls r5, 2
 	adds r5, r0
 	ldr r0, [r5]
@@ -3861,11 +3861,11 @@ ScrCmd_bufferstd: @ 8067888
 	lsrs r0, 16
 	bl VarGet
 	lsls r0, 16
-	ldr r1, _080678C0
+	ldr r1, _080678C0 @ =gUnknown_083762F0
 	lsls r4, 2
 	adds r4, r1
 	ldr r2, [r4]
-	ldr r1, _080678C4
+	ldr r1, _080678C4 @ =gUnknown_083CE048
 	lsrs r0, 14
 	adds r0, r1
 	ldr r1, [r0]
@@ -3889,7 +3889,7 @@ ScrCmd_buffertext: @ 80678C8
 	str r1, [r0, 0x8]
 	bl ScriptReadWord
 	adds r1, r0, 0
-	ldr r0, _080678EC
+	ldr r0, _080678EC @ =gUnknown_083762F0
 	lsls r4, 2
 	adds r4, r0
 	ldr r0, [r4]
@@ -3907,10 +3907,10 @@ ScrCmd_vloadptr: @ 80678F0
 	push {lr}
 	bl ScriptReadWord
 	adds r1, r0, 0
-	ldr r0, _0806790C
+	ldr r0, _0806790C @ =gUnknown_0202E8B0
 	ldr r0, [r0]
 	subs r1, r0
-	ldr r0, _08067910
+	ldr r0, _08067910 @ =gStringVar4
 	bl StringExpandPlaceholders
 	movs r0, 0
 	pop {r1}
@@ -3929,10 +3929,10 @@ ScrCmd_vbuffer: @ 8067914
 	str r1, [r0, 0x8]
 	bl ScriptReadWord
 	adds r1, r0, 0
-	ldr r0, _08067940
+	ldr r0, _08067940 @ =gUnknown_0202E8B0
 	ldr r0, [r0]
 	subs r1, r0
-	ldr r0, _08067944
+	ldr r0, _08067944 @ =gUnknown_083762F0
 	lsls r4, 2
 	adds r4, r0
 	ldr r0, [r4]
@@ -3983,7 +3983,7 @@ ScrCmd_givepokemon: @ 8067948
 	ldrb r2, [r1]
 	adds r1, 0x1
 	str r1, [r4, 0x8]
-	ldr r4, _080679C4
+	ldr r4, _080679C4 @ =gScriptResult
 	str r0, [sp]
 	str r2, [sp, 0x4]
 	adds r0, r6, 0
@@ -4015,7 +4015,7 @@ ScrCmd_giveegg: @ 80679C8
 	bl VarGet
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080679F0
+	ldr r4, _080679F0 @ =gScriptResult
 	bl ScriptGiveEgg
 	lsls r0, 24
 	lsrs r0, 24
@@ -4057,7 +4057,7 @@ ScrCmd_checkattack: @ 8067A20
 	bl ScriptReadHalfword
 	lsls r0, 16
 	lsrs r7, r0, 16
-	ldr r1, _08067A34
+	ldr r1, _08067A34 @ =gScriptResult
 	movs r0, 0x6
 	strh r0, [r1]
 	movs r6, 0
@@ -4077,9 +4077,9 @@ _08067A38:
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _08067A68
-	ldr r0, _08067A60
+	ldr r0, _08067A60 @ =gScriptResult
 	strh r6, [r0]
-	ldr r0, _08067A64
+	ldr r0, _08067A64 @ =gSpecialVar_0x8004
 	strh r5, [r0]
 	b _08067A8E
 	.align 2, 0
@@ -4095,7 +4095,7 @@ _08067A6E:
 	movs r0, 0x64
 	adds r1, r6, 0
 	muls r1, r0
-	ldr r0, _08067A98
+	ldr r0, _08067A98 @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0xB
@@ -4126,7 +4126,7 @@ ScrCmd_givemoney: @ 8067A9C
 	str r0, [r4, 0x8]
 	cmp r1, 0
 	bne _08067ABA
-	ldr r0, _08067AC4
+	ldr r0, _08067AC4 @ =0x02025bc4
 	adds r1, r2, 0
 	bl sub_80B79B8
 _08067ABA:
@@ -4150,7 +4150,7 @@ ScrCmd_paymoney: @ 8067AC8
 	str r0, [r4, 0x8]
 	cmp r1, 0
 	bne _08067AE6
-	ldr r0, _08067AF0
+	ldr r0, _08067AF0 @ =0x02025bc4
 	adds r1, r2, 0
 	bl sub_80B79E0
 _08067AE6:
@@ -4174,8 +4174,8 @@ ScrCmd_checkmoney: @ 8067AF4
 	str r0, [r4, 0x8]
 	cmp r1, 0
 	bne _08067B22
-	ldr r4, _08067B2C
-	ldr r0, _08067B30
+	ldr r4, _08067B2C @ =gScriptResult
+	ldr r0, _08067B30 @ =gSaveBlock1
 	movs r1, 0x92
 	lsls r1, 3
 	adds r0, r1
@@ -4210,7 +4210,7 @@ ScrCmd_showmoney: @ 8067B34
 	str r2, [r0, 0x8]
 	cmp r1, 0
 	bne _08067B60
-	ldr r0, _08067B68
+	ldr r0, _08067B68 @ =gSaveBlock1
 	movs r1, 0x92
 	lsls r1, 3
 	adds r0, r1
@@ -4259,7 +4259,7 @@ ScrCmd_updatemoney: @ 8067B88
 	str r2, [r0, 0x8]
 	cmp r1, 0
 	bne _08067BB4
-	ldr r0, _08067BBC
+	ldr r0, _08067BBC @ =gSaveBlock1
 	movs r1, 0x92
 	lsls r1, 3
 	adds r0, r1
@@ -4286,8 +4286,8 @@ ScrCmd_showcoins: @ 8067BC0
 	ldrb r2, [r3]
 	adds r3, 0x1
 	str r3, [r0, 0x8]
-	ldr r0, _08067BE4
-	ldr r3, _08067BE8
+	ldr r0, _08067BE4 @ =gSaveBlock1
+	ldr r3, _08067BE8 @ =0x00000494
 	adds r0, r3
 	ldrh r0, [r0]
 	bl ShowCoinsWindow
@@ -4326,8 +4326,8 @@ ScrCmd_updatecoins: @ 8067C08
 	ldrb r2, [r3]
 	adds r3, 0x1
 	str r3, [r0, 0x8]
-	ldr r0, _08067C2C
-	ldr r3, _08067C30
+	ldr r0, _08067C2C @ =gSaveBlock1
+	ldr r3, _08067C30 @ =0x00000494
 	adds r0, r3
 	ldrh r0, [r0]
 	bl UpdateCoinsWindow
@@ -4511,7 +4511,7 @@ ScrCmd_pokecasino: @ 8067D58
 	bl VarGet
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08067D7C
+	ldr r1, _08067D7C @ =c2_exit_to_overworld_1_continue_scripts_restart_music
 	bl PlaySlotMachine
 	bl ScriptContext1_Stop
 	movs r0, 0x1
@@ -4562,7 +4562,7 @@ ScrCmd_event_96: @ 8067DBC
 	lsls r0, 16
 	lsrs r0, 16
 	bl VarGet
-	ldr r4, _08067DE4
+	ldr r4, _08067DE4 @ =gScriptResult
 	lsls r0, 24
 	lsrs r0, 24
 	bl GetPriceReduction
@@ -4610,7 +4610,7 @@ ScrCmd_showcontestresults: @ 8067E08
 	thumb_func_start ScrCmd_contestlinktransfer
 ScrCmd_contestlinktransfer: @ 8067E18
 	push {lr}
-	ldr r0, _08067E2C
+	ldr r0, _08067E2C @ =gScriptContestCategory
 	ldrb r0, [r0]
 	bl sub_80C4980
 	bl ScriptContext1_Stop
@@ -4630,7 +4630,7 @@ ScrCmd_doanimation: @ 8067E30
 	bl VarGet
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _08067E54
+	ldr r1, _08067E54 @ =gUnknown_0202E8BC
 	strh r0, [r1]
 	lsls r0, 24
 	lsrs r0, 24
@@ -4653,7 +4653,7 @@ ScrCmd_setanimation: @ 8067E58
 	lsls r0, 16
 	lsrs r0, 16
 	bl VarGet
-	ldr r1, _08067E84
+	ldr r1, _08067E84 @ =gUnknown_0202FF84
 	lsls r4, 2
 	adds r4, r1
 	lsls r0, 16
@@ -4670,7 +4670,7 @@ _08067E84: .4byte gUnknown_0202FF84
 	thumb_func_start sub_8067B48
 sub_8067B48: @ 8067E88
 	push {lr}
-	ldr r0, _08067E9C
+	ldr r0, _08067E9C @ =gUnknown_0202E8BC
 	ldrb r0, [r0]
 	bl FieldEffectActiveListContains
 	lsls r0, 24
@@ -4695,9 +4695,9 @@ ScrCmd_checkanimation: @ 8067EA8
 	lsls r0, 16
 	lsrs r0, 16
 	bl VarGet
-	ldr r1, _08067ECC
+	ldr r1, _08067ECC @ =gUnknown_0202E8BC
 	strh r0, [r1]
-	ldr r1, _08067ED0
+	ldr r1, _08067ED0 @ =sub_8067B48
 	adds r0, r4, 0
 	bl SetupNativeScript
 	movs r0, 0x1
@@ -4726,8 +4726,8 @@ ScrCmd_sethealplace: @ 8067ED4
 
 	thumb_func_start ScrCmd_checkgender
 ScrCmd_checkgender: @ 8067EF0
-	ldr r0, _08067EFC
-	ldr r1, _08067F00
+	ldr r0, _08067EFC @ =gScriptResult
+	ldr r1, _08067F00 @ =gSaveBlock2
 	ldrb r1, [r1, 0x8]
 	strh r1, [r0]
 	movs r0, 0
@@ -4767,7 +4767,7 @@ ScrCmd_pokecry: @ 8067F04
 	thumb_func_start ScrCmd_waitpokecry
 ScrCmd_waitpokecry: @ 8067F3C
 	push {lr}
-	ldr r1, _08067F4C
+	ldr r1, _08067F4C @ =IsCryFinished
 	bl SetupNativeScript
 	movs r0, 0x1
 	pop {r1}
@@ -4927,7 +4927,7 @@ _0806807E:
 	thumb_func_start ScrCmd_doorchange
 ScrCmd_doorchange: @ 8068084
 	push {lr}
-	ldr r1, _08068094
+	ldr r1, _08068094 @ =IsDoorAnimationStopped
 	bl SetupNativeScript
 	movs r0, 0x1
 	pop {r1}
@@ -5093,13 +5093,13 @@ ScrCmd_givecoins: @ 80681BC
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _080681E4
-	ldr r1, _080681E0
+	ldr r1, _080681E0 @ =gScriptResult
 	movs r0, 0
 	b _080681E8
 	.align 2, 0
 _080681E0: .4byte gScriptResult
 _080681E4:
-	ldr r1, _080681F0
+	ldr r1, _080681F0 @ =gScriptResult
 	movs r0, 0x1
 _080681E8:
 	strh r0, [r1]
@@ -5124,13 +5124,13 @@ ScrCmd_removecoins: @ 80681F4
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _0806821C
-	ldr r1, _08068218
+	ldr r1, _08068218 @ =gScriptResult
 	movs r0, 0
 	b _08068220
 	.align 2, 0
 _08068218: .4byte gScriptResult
 _0806821C:
-	ldr r1, _08068228
+	ldr r1, _08068228 @ =gScriptResult
 	movs r0, 0x1
 _08068220:
 	strh r0, [r1]

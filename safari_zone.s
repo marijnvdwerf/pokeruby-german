@@ -9,7 +9,7 @@
 	thumb_func_start GetSafariZoneFlag
 GetSafariZoneFlag: @ 80C8380
 	push {lr}
-	ldr r0, _080C8390
+	ldr r0, _080C8390 @ =0x0000082c
 	bl FlagGet
 	lsls r0, 24
 	lsrs r0, 24
@@ -22,7 +22,7 @@ _080C8390: .4byte 0x0000082c
 	thumb_func_start SetSafariZoneFlag
 SetSafariZoneFlag: @ 80C8394
 	push {lr}
-	ldr r0, _080C83A0
+	ldr r0, _080C83A0 @ =0x0000082c
 	bl FlagSet
 	pop {r0}
 	bx r0
@@ -33,7 +33,7 @@ _080C83A0: .4byte 0x0000082c
 	thumb_func_start ResetSafariZoneFlag
 ResetSafariZoneFlag: @ 80C83A4
 	push {lr}
-	ldr r0, _080C83B0
+	ldr r0, _080C83B0 @ =0x0000082c
 	bl FlagReset
 	pop {r0}
 	bx r0
@@ -48,10 +48,10 @@ EnterSafariMode: @ 80C83B4
 	bl sav12_xor_increment
 	bl SetSafariZoneFlag
 	bl ClearAllPokeblockFeeders
-	ldr r1, _080C83D8
+	ldr r1, _080C83D8 @ =gNumSafariBalls
 	movs r0, 0x1E
 	strb r0, [r1]
-	ldr r1, _080C83DC
+	ldr r1, _080C83DC @ =0x0203880a
 	movs r2, 0xFA
 	lsls r2, 1
 	adds r0, r2, 0
@@ -68,10 +68,10 @@ ExitSafariMode: @ 80C83E0
 	push {lr}
 	bl ResetSafariZoneFlag
 	bl ClearAllPokeblockFeeders
-	ldr r1, _080C83FC
+	ldr r1, _080C83FC @ =gNumSafariBalls
 	movs r0, 0
 	strb r0, [r1]
-	ldr r1, _080C8400
+	ldr r1, _080C8400 @ =0x0203880a
 	movs r0, 0
 	strh r0, [r1]
 	pop {r0}
@@ -88,7 +88,7 @@ SafariZoneTakeStep: @ 80C8404
 	cmp r0, 0
 	beq _080C8420
 	bl DecrementFeederStepCounters
-	ldr r1, _080C8424
+	ldr r1, _080C8424 @ =0x0203880a
 	ldrh r0, [r1]
 	subs r0, 0x1
 	strh r0, [r1]
@@ -101,7 +101,7 @@ _080C8420:
 	.align 2, 0
 _080C8424: .4byte 0x0203880a
 _080C8428:
-	ldr r0, _080C8434
+	ldr r0, _080C8434 @ =gUnknown_081C3448
 	bl ScriptContext1_SetupScript
 	movs r0, 0x1
 _080C8430:
@@ -114,7 +114,7 @@ _080C8434: .4byte gUnknown_081C3448
 	thumb_func_start SafariZoneRetirePrompt
 SafariZoneRetirePrompt: @ 80C8438
 	push {lr}
-	ldr r0, _080C8444
+	ldr r0, _080C8444 @ =gUnknown_081C342D
 	bl ScriptContext1_SetupScript
 	pop {r0}
 	bx r0
@@ -125,28 +125,28 @@ _080C8444: .4byte gUnknown_081C342D
 	thumb_func_start sub_80C824C
 sub_80C824C: @ 80C8448
 	push {lr}
-	ldr r0, _080C845C
+	ldr r0, _080C845C @ =gNumSafariBalls
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _080C8464
-	ldr r0, _080C8460
+	ldr r0, _080C8460 @ =c2_exit_to_overworld_2_switch
 	bl SetMainCallback2
 	b _080C84AC
 	.align 2, 0
 _080C845C: .4byte gNumSafariBalls
 _080C8460: .4byte c2_exit_to_overworld_2_switch
 _080C8464:
-	ldr r0, _080C8484
+	ldr r0, _080C8484 @ =gUnknown_02024D26
 	ldrb r0, [r0]
 	cmp r0, 0x8
 	bne _080C8498
-	ldr r0, _080C8488
+	ldr r0, _080C8488 @ =gUnknown_081C340A
 	bl ScriptContext2_RunNewScript
 	bl warp_in
-	ldr r1, _080C848C
-	ldr r0, _080C8490
+	ldr r1, _080C848C @ =gUnknown_0300485C
+	ldr r0, _080C8490 @ =sub_8080E44
 	str r0, [r1]
-	ldr r0, _080C8494
+	ldr r0, _080C8494 @ =CB2_LoadMap
 	bl SetMainCallback2
 	b _080C84AC
 	.align 2, 0
@@ -158,10 +158,10 @@ _080C8494: .4byte CB2_LoadMap
 _080C8498:
 	cmp r0, 0x7
 	bne _080C84AC
-	ldr r0, _080C84B0
+	ldr r0, _080C84B0 @ =gUnknown_081C3459
 	bl ScriptContext1_SetupScript
 	bl ScriptContext1_Stop
-	ldr r0, _080C84B4
+	ldr r0, _080C84B4 @ =c2_exit_to_overworld_1_continue_scripts_restart_music
 	bl SetMainCallback2
 _080C84AC:
 	pop {r0}
@@ -176,7 +176,7 @@ ClearPokeblockFeeder: @ 80C84B8
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 20
-	ldr r1, _080C84D0
+	ldr r1, _080C84D0 @ =0x0203880c
 	adds r0, r1
 	movs r1, 0
 	movs r2, 0x10
@@ -190,7 +190,7 @@ _080C84D0: .4byte 0x0203880c
 	thumb_func_start ClearAllPokeblockFeeders
 ClearAllPokeblockFeeders: @ 80C84D4
 	push {lr}
-	ldr r0, _080C84E4
+	ldr r0, _080C84E4 @ =0x0203880c
 	movs r1, 0
 	movs r2, 0xA0
 	bl memset
@@ -211,9 +211,9 @@ SafariZoneGetPokeblockNameInFeeder: @ 80C84E8
 	bl GetXYCoordsOneStepInFrontOfPlayer
 	movs r3, 0
 	adds r5, r4, 0
-	ldr r4, _080C8540
+	ldr r4, _080C8540 @ =gSaveBlock1
 _080C84FE:
-	ldr r1, _080C8544
+	ldr r1, _080C8544 @ =0x0203880c
 	lsls r0, r3, 4
 	adds r2, r0, r1
 	movs r1, 0x5
@@ -235,14 +235,14 @@ _080C84FE:
 	ldrsh r0, [r5, r6]
 	cmp r1, r0
 	bne _080C8554
-	ldr r0, _080C8548
+	ldr r0, _080C8548 @ =gScriptResult
 	strh r3, [r0]
-	ldr r1, _080C854C
+	ldr r1, _080C854C @ =gPokeblockNames
 	ldrb r0, [r2, 0x8]
 	lsls r0, 2
 	adds r0, r1
 	ldr r1, [r0]
-	ldr r0, _080C8550
+	ldr r0, _080C8550 @ =gStringVar1
 	bl StringCopy
 	b _080C8566
 	.align 2, 0
@@ -257,8 +257,8 @@ _080C8554:
 	lsrs r3, r0, 16
 	cmp r3, 0x9
 	bls _080C84FE
-	ldr r1, _080C8570
-	ldr r2, _080C8574
+	ldr r1, _080C8570 @ =gScriptResult
+	ldr r2, _080C8574 @ =0x0000ffff
 	adds r0, r2, 0
 	strh r0, [r1]
 _080C8566:
@@ -282,11 +282,11 @@ GetPokeblockFeederWithinRange: @ 80C8578
 	bl PlayerGetDestCoords
 	movs r5, 0
 	adds r6, r4, 0
-	ldr r0, _080C85E4
+	ldr r0, _080C85E4 @ =gSaveBlock1
 	movs r7, 0x5
 	ldrsb r7, [r0, r7]
 	mov r4, sp
-	ldr r0, _080C85E8
+	ldr r0, _080C85E8 @ =0x0203880c
 	mov r12, r0
 _080C8598:
 	lsls r0, r5, 4
@@ -326,7 +326,7 @@ _080C85D0:
 	adds r0, r1
 	cmp r0, 0x5
 	bgt _080C85F0
-	ldr r0, _080C85EC
+	ldr r0, _080C85EC @ =gScriptResult
 	strh r5, [r0]
 	b _080C8602
 	.align 2, 0
@@ -339,8 +339,8 @@ _080C85F0:
 	lsrs r5, r0, 16
 	cmp r5, 0x9
 	bls _080C8598
-	ldr r1, _080C860C
-	ldr r2, _080C8610
+	ldr r1, _080C860C @ =gScriptResult
+	ldr r2, _080C8610 @ =0x0000ffff
 	adds r0, r2, 0
 	strh r0, [r1]
 _080C8602:
@@ -357,14 +357,14 @@ _080C8610: .4byte 0x0000ffff
 unref_sub_80C8418: @ 80C8614
 	push {lr}
 	bl SafariZoneGetPokeblockNameInFeeder
-	ldr r2, _080C8630
+	ldr r2, _080C8630 @ =gScriptResult
 	ldrh r1, [r2]
-	ldr r0, _080C8634
+	ldr r0, _080C8634 @ =0x0000ffff
 	cmp r1, r0
 	beq _080C863C
 	adds r0, r1, 0
 	lsls r0, 4
-	ldr r1, _080C8638
+	ldr r1, _080C8638 @ =0x02038814
 	adds r0, r1
 	b _080C863E
 	.align 2, 0
@@ -382,14 +382,14 @@ _080C863E:
 SafariZoneGetActivePokeblock: @ 80C8644
 	push {lr}
 	bl GetPokeblockFeederWithinRange
-	ldr r2, _080C8660
+	ldr r2, _080C8660 @ =gScriptResult
 	ldrh r1, [r2]
-	ldr r0, _080C8664
+	ldr r0, _080C8664 @ =0x0000ffff
 	cmp r1, r0
 	beq _080C866C
 	adds r0, r1, 0
 	lsls r0, 4
-	ldr r1, _080C8668
+	ldr r1, _080C8668 @ =0x02038814
 	adds r0, r1
 	b _080C866E
 	.align 2, 0
@@ -412,10 +412,10 @@ SafariZoneActivatePokeblockFeeder: @ 80C8674
 	sub sp, 0x4
 	lsls r0, 24
 	movs r2, 0
-	ldr r3, _080C86E4
+	ldr r3, _080C86E4 @ =0x0203880c
 	mov r6, sp
 	adds r6, 0x2
-	ldr r7, _080C86E8
+	ldr r7, _080C86E8 @ =gSaveBlock1
 	movs r1, 0x8
 	adds r1, r3
 	mov r9, r1
@@ -483,7 +483,7 @@ _080C86F6:
 DecrementFeederStepCounters: @ 80C8704
 	push {r4,r5,lr}
 	movs r4, 0
-	ldr r5, _080C8734
+	ldr r5, _080C8734 @ =0x0203880c
 _080C870A:
 	lsls r0, r4, 4
 	adds r1, r0, r5
@@ -514,13 +514,13 @@ _080C8734: .4byte 0x0203880c
 unref_sub_80C853C: @ 80C8738
 	push {lr}
 	bl SafariZoneGetPokeblockNameInFeeder
-	ldr r3, _080C8760
+	ldr r3, _080C8760 @ =gScriptResult
 	ldrh r1, [r3]
-	ldr r0, _080C8764
+	ldr r0, _080C8764 @ =0x0000ffff
 	cmp r1, r0
 	beq _080C8770
-	ldr r0, _080C8768
-	ldr r2, _080C876C
+	ldr r0, _080C8768 @ =gStringVar2
+	ldr r2, _080C876C @ =0x0203880c
 	lsls r1, 4
 	adds r1, r2
 	ldrb r1, [r1, 0x5]

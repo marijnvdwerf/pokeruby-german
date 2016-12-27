@@ -9,7 +9,7 @@
 	thumb_func_start CopyDoorTilesToVram
 CopyDoorTilesToVram: @ 80586B8
 	push {lr}
-	ldr r1, _080586C8
+	ldr r1, _080586C8 @ =0x06007f00
 	movs r2, 0x40
 	bl CpuFastSet
 	pop {r0}
@@ -111,7 +111,7 @@ DrawDoor: @ 8058768
 	adds r6, r2, 0
 	adds r7, r3, 0
 	ldrh r1, [r4, 0x2]
-	ldr r0, _08058784
+	ldr r0, _08058784 @ =0x0000ffff
 	cmp r1, r0
 	bne _08058788
 	adds r0, r6, 0
@@ -199,7 +199,7 @@ Task_AnimateDoor: @ 8058808
 	lsls r2, r4, 2
 	adds r2, r4
 	lsls r2, 3
-	ldr r0, _0805883C
+	ldr r0, _0805883C @ =0x03004b38
 	adds r2, r0
 	ldrh r1, [r2]
 	lsls r1, 16
@@ -272,7 +272,7 @@ StartDoorAnimationTask: @ 8058878
 	adds r5, r1, 0
 	adds r7, r2, 0
 	mov r8, r3
-	ldr r4, _080588C4
+	ldr r4, _080588C4 @ =Task_AnimateDoor
 	adds r0, r4, 0
 	bl FuncIsActiveTask
 	lsls r0, 24
@@ -287,7 +287,7 @@ StartDoorAnimationTask: @ 8058878
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r2, _080588C8
+	ldr r2, _080588C8 @ =0x03004b38
 	adds r1, r2
 	strh r7, [r1, 0xC]
 	mov r2, r8
@@ -342,7 +342,7 @@ DrawOpenedDoor: @ 80588EC
 	adds r4, r0, 0
 	cmp r4, 0
 	beq _08058922
-	ldr r1, _08058928
+	ldr r1, _08058928 @ =gDoorOpenAnimFrames
 	adds r0, r1, 0
 	bl GetLastDoorFrame
 	adds r1, r0, 0
@@ -374,7 +374,7 @@ StartDoorOpenAnimation: @ 805892C
 	bl GetDoorGraphics
 	cmp r0, 0
 	beq _08058960
-	ldr r1, _0805895C
+	ldr r1, _0805895C @ =gDoorOpenAnimFrames
 	adds r2, r5, 0
 	adds r3, r6, 0
 	bl StartDoorAnimationTask
@@ -408,7 +408,7 @@ StartDoorCloseAnimation: @ 805896C
 	bl GetDoorGraphics
 	cmp r0, 0
 	beq _080589A0
-	ldr r1, _0805899C
+	ldr r1, _0805899C @ =gDoorCloseAnimFrames
 	adds r2, r5, 0
 	adds r3, r6, 0
 	bl StartDoorAnimationTask
@@ -458,7 +458,7 @@ unref_sub_805869C: @ 80589DC
 	push {lr}
 	adds r3, r0, 0
 	adds r2, r1, 0
-	ldr r0, _080589F0
+	ldr r0, _080589F0 @ =gDoorAnimGraphicsTable
 	adds r1, r3, 0
 	bl StartDoorOpenAnimation
 	pop {r0}
@@ -479,7 +479,7 @@ FieldSetDoorOpened: @ 80589F4
 	lsls r0, 24
 	cmp r0, 0
 	beq _08058A16
-	ldr r0, _08058A1C
+	ldr r0, _08058A1C @ =gDoorAnimGraphicsTable
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl DrawOpenedDoor
@@ -503,7 +503,7 @@ FieldSetDoorClosed: @ 8058A20
 	lsls r0, 24
 	cmp r0, 0
 	beq _08058A42
-	ldr r0, _08058A48
+	ldr r0, _08058A48 @ =gDoorAnimGraphicsTable
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl DrawClosedDoor
@@ -527,7 +527,7 @@ FieldAnimateDoorClose: @ 8058A4C
 	lsls r0, 24
 	cmp r0, 0
 	beq _08058A78
-	ldr r0, _08058A74
+	ldr r0, _08058A74 @ =gDoorAnimGraphicsTable
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl StartDoorCloseAnimation
@@ -557,7 +557,7 @@ FieldAnimateDoorOpen: @ 8058A84
 	lsls r0, 24
 	cmp r0, 0
 	beq _08058AB0
-	ldr r0, _08058AAC
+	ldr r0, _08058AAC @ =gDoorAnimGraphicsTable
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl StartDoorOpenAnimation
@@ -578,7 +578,7 @@ _08058AB4:
 	thumb_func_start FieldIsDoorAnimationRunning
 FieldIsDoorAnimationRunning: @ 8058ABC
 	push {lr}
-	ldr r0, _08058ACC
+	ldr r0, _08058ACC @ =Task_AnimateDoor
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r0, 24
@@ -593,7 +593,7 @@ sub_8058790: @ 8058AD0
 	push {lr}
 	adds r3, r0, 0
 	adds r2, r1, 0
-	ldr r0, _08058AE8
+	ldr r0, _08058AE8 @ =gDoorAnimGraphicsTable
 	adds r1, r3, 0
 	bl cur_mapdata_get_door_x2_at
 	lsls r0, 24

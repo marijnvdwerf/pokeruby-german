@@ -310,7 +310,7 @@ ConvertIntToDecimalStringN: @ 8006D24
 	adds r4, r0, 0
 	adds r6, r1, 0
 	lsls r3, 24
-	ldr r0, _08006D74
+	ldr r0, _08006D74 @ =0x081f4240
 	lsrs r3, 22
 	subs r3, 0x4
 	adds r3, r0
@@ -327,7 +327,7 @@ _08006D48:
 	adds r5, r0, 0
 	cmp r5, 0
 	ble _08006DB4
-	ldr r0, _08006D78
+	ldr r0, _08006D78 @ =0x081f422f
 	mov r8, r0
 _08006D52:
 	adds r0, r6, 0
@@ -401,7 +401,7 @@ ConvertIntToDecimalStringN_DigitWidth6: @ 8006DC4
 	adds r4, r0, 0
 	adds r6, r1, 0
 	lsls r3, 24
-	ldr r0, _08006E24
+	ldr r0, _08006E24 @ =0x081f4240
 	lsrs r3, 22
 	subs r3, 0x4
 	adds r3, r0
@@ -427,7 +427,7 @@ _08006DFA:
 	adds r5, r1, 0
 	cmp r5, 0
 	ble _08006E64
-	ldr r0, _08006E28
+	ldr r0, _08006E28 @ =0x081f422f
 	mov r8, r0
 _08006E04:
 	adds r0, r6, 0
@@ -536,7 +536,7 @@ _08006EBA:
 	adds r5, r1, 0
 	cmp r5, 0
 	ble _08006F28
-	ldr r0, _08006EEC
+	ldr r0, _08006EEC @ =0x081f422f
 	mov r8, r0
 _08006EC4:
 	adds r0, r7, 0
@@ -615,7 +615,7 @@ ConvertIntToDecimalString: @ 8006F3C
 	adds r7, r0, 0
 	adds r5, r1, 0
 	movs r6, 0
-	ldr r0, _08006FA0
+	ldr r0, _08006FA0 @ =0x081f422f
 	mov r8, r0
 _08006F4E:
 	mov r2, sp
@@ -675,7 +675,7 @@ _08006FAA:
 	cmp r0, 0x5
 	bhi _08007010
 	lsls r0, 2
-	ldr r1, _08006FC0
+	ldr r1, _08006FC0 @ =_08006FC4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -732,12 +732,12 @@ StringBraille: @ 8007024
 	sub sp, 0xC
 	adds r5, r0, 0
 	adds r6, r1, 0
-	ldr r1, _0800705C
+	ldr r1, _0800705C @ =0x081f4268
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
 	add r4, sp, 0x4
-	ldr r1, _08007060
+	ldr r1, _08007060 @ =0x081f426c
 	adds r0, r4, 0
 	movs r2, 0x5
 	bl memcpy
@@ -779,7 +779,7 @@ _08007076:
 
 	thumb_func_start ExpandPlaceholder_UnknownStringVar
 ExpandPlaceholder_UnknownStringVar: @ 8007084
-	ldr r0, _08007088
+	ldr r0, _08007088 @ =gUnknownStringVar
 	bx lr
 	.align 2, 0
 _08007088: .4byte gUnknownStringVar
@@ -787,7 +787,7 @@ _08007088: .4byte gUnknownStringVar
 
 	thumb_func_start ExpandPlaceholder_PlayerName
 ExpandPlaceholder_PlayerName: @ 800708C
-	ldr r0, _08007090
+	ldr r0, _08007090 @ =gSaveBlock2
 	bx lr
 	.align 2, 0
 _08007090: .4byte gSaveBlock2
@@ -795,7 +795,7 @@ _08007090: .4byte gSaveBlock2
 
 	thumb_func_start ExpandPlaceholder_StringVar1
 ExpandPlaceholder_StringVar1: @ 8007094
-	ldr r0, _08007098
+	ldr r0, _08007098 @ =gStringVar1
 	bx lr
 	.align 2, 0
 _08007098: .4byte gStringVar1
@@ -803,7 +803,7 @@ _08007098: .4byte gStringVar1
 
 	thumb_func_start ExpandPlaceholder_StringVar2
 ExpandPlaceholder_StringVar2: @ 800709C
-	ldr r0, _080070A0
+	ldr r0, _080070A0 @ =gStringVar2
 	bx lr
 	.align 2, 0
 _080070A0: .4byte gStringVar2
@@ -811,7 +811,7 @@ _080070A0: .4byte gStringVar2
 
 	thumb_func_start ExpandPlaceholder_StringVar3
 ExpandPlaceholder_StringVar3: @ 80070A4
-	ldr r0, _080070A8
+	ldr r0, _080070A8 @ =gStringVar3
 	bx lr
 	.align 2, 0
 _080070A8: .4byte gStringVar3
@@ -820,17 +820,17 @@ _080070A8: .4byte gStringVar3
 	thumb_func_start ExpandPlaceholder_KunChan
 ExpandPlaceholder_KunChan: @ 80070AC
 	push {lr}
-	ldr r0, _080070BC
+	ldr r0, _080070BC @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
 	cmp r0, 0
 	beq _080070C4
-	ldr r0, _080070C0
+	ldr r0, _080070C0 @ =gExpandedPlaceholder_Chan
 	b _080070C6
 	.align 2, 0
 _080070BC: .4byte gSaveBlock2
 _080070C0: .4byte gExpandedPlaceholder_Chan
 _080070C4:
-	ldr r0, _080070CC
+	ldr r0, _080070CC @ =gExpandedPlaceholder_Kun
 _080070C6:
 	pop {r1}
 	bx r1
@@ -841,17 +841,17 @@ _080070CC: .4byte gExpandedPlaceholder_Kun
 	thumb_func_start ExpandPlaceholder_RivalName
 ExpandPlaceholder_RivalName: @ 80070D0
 	push {lr}
-	ldr r0, _080070E0
+	ldr r0, _080070E0 @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
 	cmp r0, 0
 	beq _080070E8
-	ldr r0, _080070E4
+	ldr r0, _080070E4 @ =gExpandedPlaceholder_Brendan
 	b _080070EA
 	.align 2, 0
 _080070E0: .4byte gSaveBlock2
 _080070E4: .4byte gExpandedPlaceholder_Brendan
 _080070E8:
-	ldr r0, _080070F0
+	ldr r0, _080070F0 @ =gExpandedPlaceholder_May
 _080070EA:
 	pop {r1}
 	bx r1
@@ -861,7 +861,7 @@ _080070F0: .4byte gExpandedPlaceholder_May
 
 	thumb_func_start ExpandPlaceholder_Version
 ExpandPlaceholder_Version: @ 80070F4
-	ldr r0, _080070F8
+	ldr r0, _080070F8 @ =gExpandedPlaceholder_Ruby
 	bx lr
 	.align 2, 0
 _080070F8: .4byte gExpandedPlaceholder_Ruby
@@ -869,7 +869,7 @@ _080070F8: .4byte gExpandedPlaceholder_Ruby
 
 	thumb_func_start ExpandPlaceholder_EvilTeam
 ExpandPlaceholder_EvilTeam: @ 80070FC
-	ldr r0, _08007100
+	ldr r0, _08007100 @ =gExpandedPlaceholder_Magma
 	bx lr
 	.align 2, 0
 _08007100: .4byte gExpandedPlaceholder_Magma
@@ -877,7 +877,7 @@ _08007100: .4byte gExpandedPlaceholder_Magma
 
 	thumb_func_start ExpandPlaceholder_GoodTeam
 ExpandPlaceholder_GoodTeam: @ 8007104
-	ldr r0, _08007108
+	ldr r0, _08007108 @ =gExpandedPlaceholder_Aqua
 	bx lr
 	.align 2, 0
 _08007108: .4byte gExpandedPlaceholder_Aqua
@@ -885,7 +885,7 @@ _08007108: .4byte gExpandedPlaceholder_Aqua
 
 	thumb_func_start ExpandPlaceholder_EvilLeader
 ExpandPlaceholder_EvilLeader: @ 800710C
-	ldr r0, _08007110
+	ldr r0, _08007110 @ =gExpandedPlaceholder_Maxie
 	bx lr
 	.align 2, 0
 _08007110: .4byte gExpandedPlaceholder_Maxie
@@ -893,7 +893,7 @@ _08007110: .4byte gExpandedPlaceholder_Maxie
 
 	thumb_func_start ExpandPlaceholder_GoodLeader
 ExpandPlaceholder_GoodLeader: @ 8007114
-	ldr r0, _08007118
+	ldr r0, _08007118 @ =gExpandedPlaceholder_Archie
 	bx lr
 	.align 2, 0
 _08007118: .4byte gExpandedPlaceholder_Archie
@@ -901,7 +901,7 @@ _08007118: .4byte gExpandedPlaceholder_Archie
 
 	thumb_func_start ExpandPlaceholder_EvilLegendary
 ExpandPlaceholder_EvilLegendary: @ 800711C
-	ldr r0, _08007120
+	ldr r0, _08007120 @ =gExpandedPlaceholder_Groudon
 	bx lr
 	.align 2, 0
 _08007120: .4byte gExpandedPlaceholder_Groudon
@@ -909,7 +909,7 @@ _08007120: .4byte gExpandedPlaceholder_Groudon
 
 	thumb_func_start ExpandPlaceholder_GoodLegendary
 ExpandPlaceholder_GoodLegendary: @ 8007124
-	ldr r0, _08007128
+	ldr r0, _08007128 @ =gExpandedPlaceholder_Kyogre
 	bx lr
 	.align 2, 0
 _08007128: .4byte gExpandedPlaceholder_Kyogre
@@ -920,7 +920,7 @@ GetExpandedPlaceholder: @ 800712C
 	push {lr}
 	cmp r0, 0xD
 	bhi _08007144
-	ldr r1, _08007140
+	ldr r1, _08007140 @ =0x081f4274
 	lsls r0, 2
 	adds r0, r1
 	ldr r0, [r0]
@@ -929,7 +929,7 @@ GetExpandedPlaceholder: @ 800712C
 	.align 2, 0
 _08007140: .4byte 0x081f4274
 _08007144:
-	ldr r0, _0800714C
+	ldr r0, _0800714C @ =gExpandedPlaceholder_Empty
 _08007146:
 	pop {r1}
 	bx r1
@@ -991,7 +991,7 @@ _0800719C:
 	subs r0, r3, 0x1
 	lsls r0, 16
 	lsrs r3, r0, 16
-	ldr r0, _080071CC
+	ldr r0, _080071CC @ =0x0000ffff
 	cmp r3, r0
 	beq _080071C0
 	adds r1, r0, 0

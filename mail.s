@@ -14,7 +14,7 @@ sub_80F890C: @ 80F8CBC
 	adds r6, r1, 0
 	lsls r2, 24
 	lsrs r5, r2, 24
-	ldr r2, _080F8D08
+	ldr r2, _080F8D08 @ =0x02000000
 	adds r1, r2, 0
 	adds r1, 0xFF
 	movs r0, 0x5
@@ -26,12 +26,12 @@ sub_80F890C: @ 80F8CBC
 	movs r0, 0x82
 	lsls r0, 1
 	adds r1, r2, r0
-	ldr r0, _080F8D0C
+	ldr r0, _080F8D0C @ =ConvertEasyChatWordsToString
 	str r0, [r1]
 	movs r0, 0x84
 	lsls r0, 1
 	adds r1, r2, r0
-	ldr r0, _080F8D10
+	ldr r0, _080F8D10 @ =sub_80EB544
 	str r0, [r1]
 	ldrh r1, [r4, 0x20]
 	adds r0, r1, 0
@@ -56,7 +56,7 @@ _080F8D14:
 	strb r0, [r1]
 	movs r5, 0
 _080F8D1E:
-	ldr r1, _080F8D44
+	ldr r1, _080F8D44 @ =0x02000000
 	movs r2, 0x80
 	lsls r2, 1
 	adds r0, r1, r2
@@ -73,7 +73,7 @@ _080F8D30:
 	adds r0, 0xFA
 	ldrb r0, [r0]
 	lsls r0, 3
-	ldr r1, _080F8D48
+	ldr r1, _080F8D48 @ =gUnknown_083E5730
 	b _080F8D5C
 	.align 2, 0
 _080F8D44: .4byte 0x02000000
@@ -86,7 +86,7 @@ _080F8D4C:
 	adds r0, 0xFA
 	ldrb r0, [r0]
 	lsls r0, 3
-	ldr r1, _080F8D8C
+	ldr r1, _080F8D8C @ =gUnknown_083E57A4
 _080F8D5C:
 	adds r0, r1
 	str r0, [r2]
@@ -94,13 +94,13 @@ _080F8D5C:
 	mov r1, sp
 	bl sub_80A2D64
 	lsls r0, 16
-	ldr r1, _080F8D90
+	ldr r1, _080F8D90 @ =0xffff0000
 	adds r0, r1
 	movs r1, 0xCD
 	lsls r1, 17
 	cmp r0, r1
 	bhi _080F8DA8
-	ldr r0, _080F8D94
+	ldr r0, _080F8D94 @ =0x02000000
 	adds r1, r0, 0
 	adds r1, 0xFA
 	ldrb r2, [r1]
@@ -125,7 +125,7 @@ _080F8DA0:
 	movs r0, 0x2
 	b _080F8DB0
 _080F8DA8:
-	ldr r1, _080F8DD0
+	ldr r1, _080F8DD0 @ =0x02000000
 _080F8DAA:
 	adds r2, r1, 0
 	adds r2, 0xFB
@@ -139,7 +139,7 @@ _080F8DB0:
 	str r6, [r0]
 	adds r0, 0xC
 	strb r5, [r0]
-	ldr r0, _080F8DD4
+	ldr r0, _080F8DD4 @ =sub_80F8D50
 	bl SetMainCallback2
 	add sp, 0x4
 	pop {r4-r6}
@@ -154,8 +154,8 @@ _080F8DD4: .4byte sub_80F8D50
 sub_80F8A28: @ 80F8DD8
 	push {r4,r5,lr}
 	sub sp, 0x8
-	ldr r0, _080F8DF4
-	ldr r1, _080F8DF8
+	ldr r0, _080F8DF4 @ =gMain
+	ldr r1, _080F8DF8 @ =0x0000043c
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0x12
@@ -163,7 +163,7 @@ sub_80F8A28: @ 80F8DD8
 	b _080F90EC
 _080F8DEA:
 	lsls r0, 2
-	ldr r1, _080F8DFC
+	ldr r1, _080F8DFC @ =_080F8E00
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -207,7 +207,7 @@ _080F8E60:
 	strh r0, [r1]
 	movs r1, 0xE0
 	lsls r1, 19
-	ldr r2, _080F8E74
+	ldr r2, _080F8E74 @ =0x01000200
 	add r0, sp, 0x4
 	bl CpuSet
 	b _080F90E0
@@ -224,7 +224,7 @@ _080F8E84:
 	b _080F90E0
 _080F8E8A:
 	bl FreeAllSpritePalettes
-	ldr r0, _080F8EBC
+	ldr r0, _080F8EBC @ =0x04000010
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -249,13 +249,13 @@ _080F8E8A:
 	.align 2, 0
 _080F8EBC: .4byte 0x04000010
 _080F8EC0:
-	ldr r0, _080F8EC8
+	ldr r0, _080F8EC8 @ =gWindowConfig_81E6DFC
 	bl SetUpWindowConfig
 	b _080F90E0
 	.align 2, 0
 _080F8EC8: .4byte gWindowConfig_81E6DFC
 _080F8ECC:
-	ldr r0, _080F8ED4
+	ldr r0, _080F8ED4 @ =gWindowConfig_81E6DFC
 	bl MultistepInitMenuWindowBegin
 	b _080F90E0
 	.align 2, 0
@@ -275,16 +275,16 @@ _080F8EEA:
 	adds r0, 0x6
 	movs r1, 0x1
 	strh r1, [r0]
-	ldr r1, _080F8EFC
-	ldr r2, _080F8F00
+	ldr r1, _080F8EFC @ =0x06004800
+	ldr r2, _080F8F00 @ =0x01000400
 	bl CpuSet
 	b _080F90E0
 	.align 2, 0
 _080F8EFC: .4byte 0x06004800
 _080F8F00: .4byte 0x01000400
 _080F8F04:
-	ldr r2, _080F8F20
-	ldr r0, _080F8F24
+	ldr r2, _080F8F20 @ =gMailGraphicsTable
+	ldr r0, _080F8F24 @ =0x02000000
 	adds r0, 0xFA
 	ldrb r1, [r0]
 	lsls r0, r1, 2
@@ -300,8 +300,8 @@ _080F8F04:
 _080F8F20: .4byte gMailGraphicsTable
 _080F8F24: .4byte 0x02000000
 _080F8F28:
-	ldr r2, _080F8F44
-	ldr r0, _080F8F48
+	ldr r2, _080F8F44 @ =gMailGraphicsTable
+	ldr r0, _080F8F48 @ =0x02000000
 	adds r0, 0xFA
 	ldrb r1, [r0]
 	lsls r0, r1, 2
@@ -310,7 +310,7 @@ _080F8F28:
 	adds r2, 0x8
 	adds r0, r2
 	ldr r0, [r0]
-	ldr r1, _080F8F4C
+	ldr r1, _080F8F4C @ =0x06004000
 	bl LZ77UnCompVram
 	b _080F90E0
 	.align 2, 0
@@ -318,8 +318,8 @@ _080F8F44: .4byte gMailGraphicsTable
 _080F8F48: .4byte 0x02000000
 _080F8F4C: .4byte 0x06004000
 _080F8F50:
-	ldr r5, _080F8FB0
-	ldr r4, _080F8FB4
+	ldr r5, _080F8FB0 @ =gMailGraphicsTable
+	ldr r4, _080F8FB4 @ =0x02000000
 	adds r4, 0xFA
 	ldrb r1, [r4]
 	lsls r0, r1, 2
@@ -331,7 +331,7 @@ _080F8F50:
 	movs r1, 0xC0
 	lsls r1, 19
 	bl LZ77UnCompVram
-	ldr r3, _080F8FB8
+	ldr r3, _080F8FB8 @ =gPlttBufferUnfaded
 	ldrb r1, [r4]
 	lsls r0, r1, 2
 	adds r0, r1
@@ -351,8 +351,8 @@ _080F8F50:
 	adds r2, 0xE
 	adds r0, r3, r2
 	strh r1, [r0]
-	ldr r1, _080F8FBC
-	ldr r2, _080F8FC0
+	ldr r1, _080F8FBC @ =gUnknown_083E562C
+	ldr r2, _080F8FC0 @ =gSaveBlock2
 	ldrb r0, [r2, 0x8]
 	lsls r0, 2
 	adds r0, r1
@@ -372,7 +372,7 @@ _080F8FB8: .4byte gPlttBufferUnfaded
 _080F8FBC: .4byte gUnknown_083E562C
 _080F8FC0: .4byte gSaveBlock2
 _080F8FC4:
-	ldr r0, _080F8FD8
+	ldr r0, _080F8FD8 @ =0x02000000
 	adds r0, 0xF8
 	ldrb r0, [r0]
 	cmp r0, 0
@@ -384,16 +384,16 @@ _080F8FD0:
 	.align 2, 0
 _080F8FD8: .4byte 0x02000000
 _080F8FDC:
-	ldr r0, _080F8FFC
+	ldr r0, _080F8FFC @ =0x02000000
 	adds r0, 0xF8
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _080F8FEA
 	bl sub_80F8E80
 _080F8FEA:
-	ldr r0, _080F9000
+	ldr r0, _080F9000 @ =sub_80F8F18
 	bl SetVBlankCallback
-	ldr r2, _080F9004
+	ldr r2, _080F9004 @ =gPaletteFade
 	ldrb r0, [r2, 0x8]
 	movs r1, 0x80
 	orrs r0, r1
@@ -404,7 +404,7 @@ _080F8FFC: .4byte 0x02000000
 _080F9000: .4byte sub_80F8F18
 _080F9004: .4byte gPaletteFade
 _080F9008:
-	ldr r5, _080F902C
+	ldr r5, _080F902C @ =0x02000000
 	adds r0, r5, 0
 	adds r0, 0xF4
 	ldr r0, [r0]
@@ -425,7 +425,7 @@ _080F902C: .4byte 0x02000000
 _080F9030:
 	adds r0, r4, 0
 	bl sub_809D580
-	ldr r1, _080F9044
+	ldr r1, _080F9044 @ =SpriteCallbackDummy
 	movs r0, 0
 	str r0, [sp]
 	adds r0, r4, 0
@@ -436,7 +436,7 @@ _080F9044: .4byte SpriteCallbackDummy
 _080F9048:
 	adds r0, r4, 0
 	bl sub_809D580
-	ldr r1, _080F9068
+	ldr r1, _080F9068 @ =SpriteCallbackDummy
 	movs r0, 0
 	str r0, [sp]
 	adds r0, r4, 0
@@ -456,16 +456,16 @@ _080F906C:
 	bne _080F90E0
 	b _080F90EC
 _080F9076:
-	ldr r1, _080F90C4
-	ldr r2, _080F90C8
+	ldr r1, _080F90C4 @ =0x04000008
+	ldr r2, _080F90C8 @ =0x00009f08
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r2, _080F90CC
+	ldr r2, _080F90CC @ =0x00000801
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r2, _080F90D0
+	ldr r2, _080F90D0 @ =0x00000902
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x44
@@ -483,14 +483,14 @@ _080F9076:
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r2, _080F90D4
+	ldr r2, _080F90D4 @ =gPaletteFade
 	ldrb r1, [r2, 0x8]
 	movs r0, 0x7F
 	ands r0, r1
 	strb r0, [r2, 0x8]
-	ldr r0, _080F90D8
+	ldr r0, _080F90D8 @ =0x02000000
 	adds r0, 0xF0
-	ldr r1, _080F90DC
+	ldr r1, _080F90DC @ =sub_80F8F58
 	str r1, [r0]
 	movs r0, 0x1
 	b _080F90EE
@@ -503,8 +503,8 @@ _080F90D4: .4byte gPaletteFade
 _080F90D8: .4byte 0x02000000
 _080F90DC: .4byte sub_80F8F58
 _080F90E0:
-	ldr r1, _080F90F8
-	ldr r0, _080F90FC
+	ldr r1, _080F90F8 @ =gMain
+	ldr r0, _080F90FC @ =0x0000043c
 	adds r1, r0
 	ldrb r0, [r1]
 	adds r0, 0x1
@@ -530,7 +530,7 @@ _080F9102:
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _080F911C
-	ldr r0, _080F9118
+	ldr r0, _080F9118 @ =sub_80F8F2C
 	bl SetMainCallback2
 	b _080F9128
 	.align 2, 0
@@ -571,7 +571,7 @@ sub_80F8DA0: @ 80F9150
 	push {r7}
 	movs r6, 0
 	movs r5, 0
-	ldr r2, _080F91EC
+	ldr r2, _080F91EC @ =0x02000000
 	movs r0, 0x86
 	lsls r0, 1
 	adds r1, r2, r0
@@ -617,7 +617,7 @@ _080F916E:
 	cmp r5, r1
 	bcc _080F916E
 _080F91B4:
-	ldr r2, _080F91F0
+	ldr r2, _080F91F0 @ =0x020000d8
 	adds r4, r2, 0
 	subs r4, 0xD8
 	adds r0, r2, 0
@@ -630,9 +630,9 @@ _080F91B4:
 	adds r0, r2, 0
 	bl sub_80F8D7C
 	adds r2, r0, 0
-	ldr r1, _080F91F4
+	ldr r1, _080F91F4 @ =gOtherText_From
 	bl StringCopy
-	ldr r0, _080F91F0
+	ldr r0, _080F91F0 @ =0x020000d8
 	bl StringLength
 	movs r2, 0x86
 	lsls r2, 1
@@ -646,7 +646,7 @@ _080F91EC: .4byte 0x02000000
 _080F91F0: .4byte 0x020000d8
 _080F91F4: .4byte gOtherText_From
 _080F91F8:
-	ldr r1, _080F922C
+	ldr r1, _080F922C @ =gOtherText_From
 	adds r0, r2, 0
 	bl StringCopy
 	adds r2, r0, 0
@@ -681,7 +681,7 @@ sub_80F8E80: @ 80F9230
 	push {r7}
 	movs r6, 0
 	movs r4, 0
-	ldr r1, _080F92C0
+	ldr r1, _080F92C0 @ =0x02000000
 	movs r0, 0x86
 	lsls r0, 1
 	adds r2, r1, r0
@@ -737,7 +737,7 @@ _080F9298:
 	cmp r4, r0
 	bcc _080F924E
 _080F92A6:
-	ldr r0, _080F92C4
+	ldr r0, _080F92C4 @ =0x020000d8
 	adds r1, r0, 0
 	adds r1, 0x21
 	ldrb r1, [r1]
@@ -767,7 +767,7 @@ sub_80F8F18: @ 80F92C8
 	thumb_func_start sub_80F8F2C
 sub_80F8F2C: @ 80F92DC
 	push {r4,lr}
-	ldr r4, _080F9304
+	ldr r4, _080F9304 @ =0x02000000
 	adds r0, r4, 0
 	adds r0, 0xFB
 	ldrb r0, [r0]
@@ -794,9 +794,9 @@ sub_80F8F58: @ 80F9308
 	lsls r0, 24
 	cmp r0, 0
 	bne _080F931C
-	ldr r0, _080F9320
+	ldr r0, _080F9320 @ =0x02000000
 	adds r0, 0xF0
-	ldr r1, _080F9324
+	ldr r1, _080F9324 @ =sub_80F8F78
 	str r1, [r0]
 _080F931C:
 	pop {r0}
@@ -810,7 +810,7 @@ _080F9324: .4byte sub_80F8F78
 sub_80F8F78: @ 80F9328
 	push {lr}
 	sub sp, 0x4
-	ldr r0, _080F9358
+	ldr r0, _080F9358 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x3
 	ands r0, r1
@@ -823,9 +823,9 @@ sub_80F8F78: @ 80F9328
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r0, _080F935C
+	ldr r0, _080F935C @ =0x02000000
 	adds r0, 0xF0
-	ldr r1, _080F9360
+	ldr r1, _080F9360 @ =sub_80F8FB4
 	str r1, [r0]
 _080F9350:
 	add sp, 0x4
@@ -844,7 +844,7 @@ sub_80F8FB4: @ 80F9364
 	lsls r0, 24
 	cmp r0, 0
 	bne _080F93C2
-	ldr r4, _080F93C8
+	ldr r4, _080F93C8 @ =0x02000000
 	adds r0, r4, 0
 	adds r0, 0xEC
 	ldr r0, [r0]
@@ -870,11 +870,11 @@ sub_80F8FB4: @ 80F9364
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080F93CC
+	ldr r1, _080F93CC @ =gSprites
 	adds r0, r1
 	bl sub_809D510
 _080F93B2:
-	ldr r0, _080F93C8
+	ldr r0, _080F93C8 @ =0x02000000
 	movs r2, 0x88
 	lsls r2, 1
 	movs r1, 0

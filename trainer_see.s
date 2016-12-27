@@ -10,7 +10,7 @@
 CheckTrainers: @ 8084410
 	push {r4,r5,lr}
 	movs r4, 0
-	ldr r5, _08084440
+	ldr r5, _08084440 @ =gMapObjects
 _08084416:
 	lsls r0, r4, 3
 	adds r0, r4
@@ -63,7 +63,7 @@ CheckTrainer: @ 8084458
 	lsls r0, r4, 3
 	adds r0, r4
 	lsls r0, 2
-	ldr r1, _0808448C
+	ldr r1, _0808448C @ =gMapObjects
 	adds r5, r0, r1
 	adds r0, r5, 0
 	bl TrainerCanApproachPlayer
@@ -108,7 +108,7 @@ TrainerCanApproachPlayer: @ 80844AC
 	mov r8, r4
 	cmp r0, 0x1
 	bne _0808450C
-	ldr r1, _08084504
+	ldr r1, _08084504 @ =gIsTrainerInRange
 	ldrb r0, [r7, 0x18]
 	lsls r0, 28
 	lsrs r0, 26
@@ -142,7 +142,7 @@ _08084508:
 _0808450C:
 	movs r5, 0
 _0808450E:
-	ldr r0, _08084558
+	ldr r0, _08084558 @ =gIsTrainerInRange
 	lsls r4, r5, 2
 	adds r4, r0
 	ldrb r1, [r7, 0x1D]
@@ -439,7 +439,7 @@ sub_80842C8: @ 808471C
 	adds r5, r0, 0
 	lsls r4, r1, 24
 	lsrs r4, 24
-	ldr r0, _08084748
+	ldr r0, _08084748 @ =RunTrainerSeeFuncList
 	movs r1, 0x50
 	bl CreateTask
 	lsls r0, 24
@@ -447,7 +447,7 @@ sub_80842C8: @ 808471C
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0808474C
+	ldr r0, _0808474C @ =gTasks
 	adds r1, r0
 	lsrs r0, r5, 16
 	strh r0, [r1, 0xA]
@@ -465,7 +465,7 @@ _0808474C: .4byte gTasks
 sub_80842FC: @ 8084750
 	push {r4-r6,lr}
 	adds r6, r0, 0
-	ldr r5, _08084788
+	ldr r5, _08084788 @ =RunTrainerSeeFuncList
 	adds r0, r5, 0
 	bl FindTaskIdByFunc
 	adds r4, r0, 0
@@ -475,7 +475,7 @@ sub_80842FC: @ 8084750
 	adds r1, r5, 0
 	adds r2, r6, 0
 	bl SetTaskFuncWithFollowupFunc
-	ldr r1, _0808478C
+	ldr r1, _0808478C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -500,7 +500,7 @@ RunTrainerSeeFuncList: @ 8084790
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
-	ldr r1, _080847BC
+	ldr r1, _080847BC @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0xA
 	ldrsh r0, [r4, r1]
@@ -518,7 +518,7 @@ RunTrainerSeeFuncList: @ 8084790
 	.align 2, 0
 _080847BC: .4byte gTasks
 _080847C0:
-	ldr r7, _080847E4
+	ldr r7, _080847E4 @ =gTrainerSeeFuncList
 _080847C2:
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -551,7 +551,7 @@ sub_8084398: @ 80847EC
 	push {r4,r5,lr}
 	adds r5, r1, 0
 	adds r4, r2, 0
-	ldr r1, _0808482C
+	ldr r1, _0808482C @ =gUnknown_0202FF84
 	adds r2, r1, 0x4
 	adds r3, r1, 0
 	adds r3, 0x8
@@ -700,12 +700,12 @@ _080848EA:
 	bl sub_805C774
 	adds r0, r5, 0
 	bl sub_805C754
-	ldr r0, _08084980
+	ldr r0, _08084980 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08084984
+	ldr r1, _08084984 @ =gMapObjects
 	adds r4, r0, r1
 	adds r0, r4, 0
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
@@ -719,12 +719,12 @@ _080848EA:
 	beq _08084978
 _08084942:
 	bl sub_80597E8
-	ldr r0, _08084980
+	ldr r0, _08084980 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _08084984
+	ldr r0, _08084984 @ =gMapObjects
 	adds r4, r0
 	ldrb r0, [r5, 0x18]
 	lsls r0, 28
@@ -756,12 +756,12 @@ sub_8084534: @ 8084988
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r0, _080849C4
+	ldr r0, _080849C4 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080849C8
+	ldr r1, _080849C8 @ =gMapObjects
 	adds r4, r0, r1
 	adds r0, r4, 0
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
@@ -872,14 +872,14 @@ sub_80845FC: @ 8084A50
 	lsls r0, 24
 	cmp r0, 0
 	beq _08084A96
-	ldr r2, _08084AA0
+	ldr r2, _08084AA0 @ =gUnknown_0202FF84
 	movs r1, 0x10
 	ldrsh r0, [r4, r1]
 	str r0, [r2]
 	movs r1, 0x12
 	ldrsh r0, [r4, r1]
 	str r0, [r2, 0x4]
-	ldr r3, _08084AA4
+	ldr r3, _08084AA4 @ =gSprites
 	ldrb r1, [r4, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -912,7 +912,7 @@ sub_8084654: @ 8084AA8
 	push {r4,r5,lr}
 	adds r5, r1, 0
 	adds r4, r2, 0
-	ldr r2, _08084B18
+	ldr r2, _08084B18 @ =gSprites
 	movs r1, 0x10
 	ldrsh r0, [r5, r1]
 	lsls r1, r0, 4
@@ -995,7 +995,7 @@ sub_80846E4: @ 8084B38
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08084BCC
+	ldr r1, _08084BCC @ =gTasks
 	adds r4, r0, r1
 	adds r0, r4, 0
 	adds r0, 0xA
@@ -1011,7 +1011,7 @@ sub_80846E4: @ 8084B38
 	adds r0, 0x1
 	strh r0, [r4, 0x16]
 _08084B6A:
-	ldr r1, _08084BD0
+	ldr r1, _08084BD0 @ =gTrainerSeeFuncList2
 	movs r2, 0x8
 	ldrsh r0, [r4, r2]
 	lsls r0, 2
@@ -1073,7 +1073,7 @@ _08084BDE:
 sub_8084794: @ 8084BE8
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r0, _08084C14
+	ldr r0, _08084C14 @ =sub_80846E4
 	movs r1, 0
 	bl CreateTask
 	adds r1, r0, 0
@@ -1082,7 +1082,7 @@ sub_8084794: @ 8084BE8
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _08084C18
+	ldr r1, _08084C18 @ =0x03004b38
 	adds r0, r1
 	adds r0, 0x2
 	adds r1, r4, 0
@@ -1098,7 +1098,7 @@ _08084C18: .4byte 0x03004b38
 	thumb_func_start sub_80847C8
 sub_80847C8: @ 8084C1C
 	push {lr}
-	ldr r0, _08084C28
+	ldr r0, _08084C28 @ =sub_80847D8
 	bl sub_80842FC
 	pop {r0}
 	bx r0

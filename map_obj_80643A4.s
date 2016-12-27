@@ -20,7 +20,7 @@ sub_80643A4: @ 80646E4
 	movs r4, 0x1
 	orrs r0, r4
 	strb r0, [r5, 0x1]
-	ldr r3, _08064768
+	ldr r3, _08064768 @ =gSprites
 	ldrb r1, [r5, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -87,7 +87,7 @@ _0806476E:
 player_bitmagic: @ 8064774
 	push {r4,r5,lr}
 	movs r4, 0
-	ldr r5, _080647A8
+	ldr r5, _080647A8 @ =gMapObjects
 _0806477A:
 	lsls r0, r4, 3
 	adds r0, r4
@@ -97,7 +97,7 @@ _0806477A:
 	lsls r0, 31
 	cmp r0, 0
 	beq _08064798
-	ldr r0, _080647AC
+	ldr r0, _080647AC @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	cmp r4, r0
 	beq _08064798
@@ -123,7 +123,7 @@ sub_8064470: @ 80647B0
 	lsls r0, 24
 	lsrs r5, r0, 24
 	movs r4, 0
-	ldr r6, _080647EC
+	ldr r6, _080647EC @ =gMapObjects
 _080647BA:
 	cmp r4, r5
 	beq _080647DC
@@ -135,7 +135,7 @@ _080647BA:
 	lsls r0, 31
 	cmp r0, 0
 	beq _080647DC
-	ldr r0, _080647F0
+	ldr r0, _080647F0 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	cmp r4, r0
 	beq _080647DC
@@ -160,7 +160,7 @@ npc_sync_anim_pause_bits: @ 80647F4
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	ldrh r2, [r5]
-	ldr r1, _08064854
+	ldr r1, _08064854 @ =0x00000101
 	adds r0, r1, 0
 	ands r0, r2
 	cmp r0, r1
@@ -170,7 +170,7 @@ npc_sync_anim_pause_bits: @ 80647F4
 	negs r0, r0
 	ands r0, r1
 	strb r0, [r5, 0x1]
-	ldr r4, _08064858
+	ldr r4, _08064858 @ =gSprites
 	ldrb r0, [r5, 0x4]
 	lsls r1, r0, 4
 	adds r1, r0
@@ -214,7 +214,7 @@ _08064858: .4byte gSprites
 sub_806451C: @ 806485C
 	push {r4,r5,lr}
 	movs r4, 0
-	ldr r5, _08064888
+	ldr r5, _08064888 @ =gMapObjects
 _08064862:
 	lsls r0, r4, 3
 	adds r0, r4
@@ -242,7 +242,7 @@ _08064888: .4byte gMapObjects
 	thumb_func_start little_step
 little_step: @ 806488C
 	lsls r1, 24
-	ldr r2, _080648A8
+	ldr r2, _080648A8 @ =gDirectionToVector
 	lsrs r1, 22
 	adds r1, r2
 	ldrh r2, [r1]
@@ -261,7 +261,7 @@ _080648A8: .4byte gDirectionToVector
 	thumb_func_start sub_806456C
 sub_806456C: @ 80648AC
 	lsls r1, 24
-	ldr r2, _080648CC
+	ldr r2, _080648CC @ =gDirectionToVector
 	lsrs r1, 22
 	adds r1, r2
 	ldrh r2, [r1]
@@ -282,7 +282,7 @@ _080648CC: .4byte gDirectionToVector
 	thumb_func_start sub_8064590
 sub_8064590: @ 80648D0
 	lsls r1, 24
-	ldr r2, _080648F4
+	ldr r2, _080648F4 @ =gDirectionToVector
 	lsrs r1, 22
 	adds r1, r2
 	ldrh r2, [r1]
@@ -305,7 +305,7 @@ _080648F4: .4byte gDirectionToVector
 	thumb_func_start sub_80645B8
 sub_80645B8: @ 80648F8
 	lsls r1, 24
-	ldr r2, _08064918
+	ldr r2, _08064918 @ =gDirectionToVector
 	lsrs r1, 22
 	adds r1, r2
 	ldrh r2, [r1]
@@ -326,7 +326,7 @@ _08064918: .4byte gDirectionToVector
 	thumb_func_start sub_80645DC
 sub_80645DC: @ 806491C
 	lsls r1, 24
-	ldr r2, _0806493C
+	ldr r2, _0806493C @ =gDirectionToVector
 	lsrs r1, 22
 	adds r1, r2
 	ldrh r2, [r1]
@@ -361,7 +361,7 @@ oamt_npc_ministep_reset: @ 8064940
 obj_npc_ministep: @ 8064954
 	push {r4,r5,lr}
 	adds r4, r0, 0
-	ldr r5, _080649AC
+	ldr r5, _080649AC @ =gUnknown_08376194
 	movs r0, 0x36
 	ldrsh r2, [r4, r0]
 	lsls r0, r2, 1
@@ -372,7 +372,7 @@ obj_npc_ministep: @ 8064954
 	ldrsh r0, [r0, r3]
 	cmp r1, r0
 	bge _080649B4
-	ldr r1, _080649B0
+	ldr r1, _080649B0 @ =gUnknown_08376180
 	lsls r0, r2, 2
 	adds r0, r1
 	movs r1, 0x38
@@ -461,7 +461,7 @@ _08064A00:
 	thumb_func_start sub_80646C8
 sub_80646C8: @ 8064A08
 	lsls r1, 24
-	ldr r2, _08064A20
+	ldr r2, _08064A20 @ =gUnknown_083761D0
 	lsrs r1, 22
 	adds r1, r2
 	lsls r0, 16
@@ -499,12 +499,12 @@ sub_8064704: @ 8064A44
 	push {r4-r6,lr}
 	sub sp, 0xC
 	adds r4, r0, 0
-	ldr r1, _08064AC4
+	ldr r1, _08064AC4 @ =gUnknown_083761DC
 	mov r0, sp
 	movs r2, 0x6
 	bl memcpy
 	add r5, sp, 0x8
-	ldr r1, _08064AC8
+	ldr r1, _08064AC8 @ =gUnknown_083761E2
 	adds r0, r5, 0
 	movs r2, 0x3
 	bl memcpy
@@ -569,12 +569,12 @@ sub_806478C: @ 8064ACC
 	push {r4-r6,lr}
 	sub sp, 0xC
 	adds r5, r0, 0
-	ldr r1, _08064B58
+	ldr r1, _08064B58 @ =gUnknown_083761E6
 	mov r0, sp
 	movs r2, 0x6
 	bl memcpy
 	add r4, sp, 0x8
-	ldr r1, _08064B5C
+	ldr r1, _08064B5C @ =gUnknown_083761EC
 	adds r0, r4, 0
 	movs r2, 0x3
 	bl memcpy
@@ -732,7 +732,7 @@ sub_806487C: @ 8064BBC
 	adds r4, 0x28
 	movs r0, 0
 	ldrsb r0, [r4, r0]
-	ldr r2, _08064C1C
+	ldr r2, _08064C1C @ =gSpriteCoordOffsetX
 	adds r0, r1
 	ldrh r2, [r2]
 	adds r0, r2
@@ -745,7 +745,7 @@ sub_806487C: @ 8064BBC
 	subs r3, 0x15
 	movs r0, 0
 	ldrsb r0, [r3, r0]
-	ldr r2, _08064C20
+	ldr r2, _08064C20 @ =gSpriteCoordOffsetY
 	adds r0, r1
 	ldrh r2, [r2]
 	adds r0, r2
@@ -860,7 +860,7 @@ sub_8064990: @ 8064CD0
 	lsls r1, 24
 	lsrs r3, r1, 24
 	movs r2, 0
-	ldr r6, _08064D1C
+	ldr r6, _08064D1C @ =gSprites
 _08064CDE:
 	lsls r0, r2, 4
 	adds r0, r2
@@ -874,7 +874,7 @@ _08064CDE:
 	cmp r0, 0
 	beq _08064D24
 	ldr r1, [r4, 0x1C]
-	ldr r0, _08064D20
+	ldr r0, _08064D20 @ =sub_8064970
 	cmp r1, r0
 	bne _08064D24
 	ldrh r0, [r4, 0x2E]
@@ -912,7 +912,7 @@ oe_exec_and_other_stuff: @ 8064D34
 	adds r0, r1, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r1, _08064D58
+	ldr r1, _08064D58 @ =gUnknown_0202FF84
 	adds r2, r1, 0x4
 	adds r3, r1, 0
 	adds r3, 0x8
@@ -950,7 +950,7 @@ DoRippleFieldEffect: @ 8064D78
 	adds r4, r1, 0
 	ldrb r0, [r0, 0x5]
 	bl GetFieldObjectGraphicsInfo
-	ldr r2, _08064DB0
+	ldr r2, _08064DB0 @ =gUnknown_0202FF84
 	movs r3, 0x20
 	ldrsh r1, [r4, r3]
 	str r1, [r2]

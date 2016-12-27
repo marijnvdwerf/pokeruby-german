@@ -15,7 +15,7 @@ SpriteCallback_VersionBannerLeft: @ 807C1C0
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _0807C1F4
+	ldr r1, _0807C1F4 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0xA
 	ldrsh r0, [r4, r1]
@@ -64,8 +64,8 @@ _0807C206:
 	adds r0, r1, 0x1
 	strh r0, [r2, 0x22]
 _0807C22A:
-	ldr r3, _0807C248
-	ldr r2, _0807C24C
+	ldr r3, _0807C248 @ =0x04000052
+	ldr r2, _0807C24C @ =gUnknown_08393E64
 	movs r1, 0x12
 	ldrsh r0, [r4, r1]
 	lsrs r1, r0, 31
@@ -93,7 +93,7 @@ SpriteCallback_VersionBannerRight: @ 807C250
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _0807C284
+	ldr r1, _0807C284 @ =gTasks
 	adds r1, r0, r1
 	movs r3, 0xA
 	ldrsh r0, [r1, r3]
@@ -180,7 +180,7 @@ CreatePressStartBanner: @ 807C2E8
 	mov r5, r8
 	push {r5-r7}
 	lsls r0, 16
-	ldr r2, _0807C3AC
+	ldr r2, _0807C3AC @ =0xffe00000
 	adds r0, r2
 	lsrs r0, 16
 	movs r6, 0
@@ -190,7 +190,7 @@ CreatePressStartBanner: @ 807C2E8
 _0807C302:
 	lsls r5, r0, 16
 	asrs r5, 16
-	ldr r0, _0807C3B0
+	ldr r0, _0807C3B0 @ =gSpriteTemplate_8393F74
 	adds r1, r5, 0
 	mov r3, r8
 	asrs r2, r3, 16
@@ -201,7 +201,7 @@ _0807C302:
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0807C3B4
+	ldr r0, _0807C3B4 @ =gSprites
 	mov r9, r0
 	add r4, r9
 	adds r0, r4, 0
@@ -217,7 +217,7 @@ _0807C302:
 	lsrs r0, r5, 16
 	cmp r6, 0x2
 	bls _0807C302
-	ldr r1, _0807C3B0
+	ldr r1, _0807C3B0 @ =gSpriteTemplate_8393F74
 	mov r8, r1
 	lsls r5, r0, 16
 	asrs r5, 16
@@ -276,7 +276,7 @@ _0807C3B4: .4byte gSprites
 CreateCopyrightBanner: @ 807C3B8
 	push {r4-r6,lr}
 	lsls r0, 16
-	ldr r2, _0807C408
+	ldr r2, _0807C408 @ =0xffc00000
 	adds r0, r2
 	lsrs r0, 16
 	movs r5, 0
@@ -284,7 +284,7 @@ CreateCopyrightBanner: @ 807C3B8
 _0807C3C6:
 	lsls r4, r0, 16
 	asrs r4, 16
-	ldr r0, _0807C40C
+	ldr r0, _0807C40C @ =gSpriteTemplate_8393F74
 	adds r1, r4, 0
 	asrs r2, r6, 16
 	movs r3, 0
@@ -294,7 +294,7 @@ _0807C3C6:
 	lsls r2, r0, 4
 	adds r2, r0
 	lsls r2, 2
-	ldr r0, _0807C410
+	ldr r0, _0807C410 @ =gSprites
 	adds r2, r0
 	adds r1, r5, 0x3
 	lsls r1, 24
@@ -322,8 +322,8 @@ _0807C410: .4byte gSprites
 SpriteCallback_PokemonLogoShine: @ 807C414
 	push {r4,lr}
 	adds r3, r0, 0
-	ldr r2, _0807C460
-	ldr r0, _0807C464
+	ldr r2, _0807C460 @ =gTasks
+	ldr r0, _0807C464 @ =gUnknown_0202F7E4
 	ldrb r1, [r0]
 	lsls r0, r1, 2
 	adds r0, r1
@@ -335,7 +335,7 @@ SpriteCallback_PokemonLogoShine: @ 807C414
 	bne _0807C4A4
 	movs r2, 0x20
 	ldrsh r1, [r3, r2]
-	ldr r0, _0807C468
+	ldr r0, _0807C468 @ =0x0000010f
 	ldrh r4, [r3, 0x20]
 	cmp r1, r0
 	bgt _0807C4A4
@@ -384,7 +384,7 @@ _0807C484:
 	lsls r2, r0, 5
 	adds r1, r2
 	orrs r1, r0
-	ldr r0, _0807C4A0
+	ldr r0, _0807C4A0 @ =gPlttBufferFaded
 	strh r1, [r0]
 	strh r1, [r0, 0x2A]
 _0807C498:
@@ -394,7 +394,7 @@ _0807C498:
 	.align 2, 0
 _0807C4A0: .4byte gPlttBufferFaded
 _0807C4A4:
-	ldr r1, _0807C4B8
+	ldr r1, _0807C4B8 @ =gPlttBufferFaded
 	movs r0, 0
 	strh r0, [r1]
 	strh r0, [r1, 0x2A]
@@ -414,14 +414,14 @@ StartPokemonLogoShine: @ 807C4BC
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _0807C4F4
+	ldr r0, _0807C4F4 @ =gSpriteTemplate_8393FC0
 	movs r1, 0
 	movs r2, 0x44
 	movs r3, 0
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0807C4F8
+	ldr r2, _0807C4F8 @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
@@ -446,8 +446,8 @@ _0807C4FC:
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r0, _0807C51C
-	ldr r1, _0807C520
+	ldr r0, _0807C51C @ =0x04000016
+	ldr r1, _0807C520 @ =gUnknown_030041B4
 	ldrh r1, [r1]
 	strh r1, [r0]
 	pop {r0}
@@ -461,14 +461,14 @@ _0807C520: .4byte gUnknown_030041B4
 CB2_InitTitleScreen: @ 807C524
 	push {r4,r5,lr}
 	sub sp, 0x14
-	ldr r0, _0807C540
-	ldr r1, _0807C544
+	ldr r0, _0807C540 @ =gMain
+	ldr r1, _0807C544 @ =0x0000043c
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0x5
 	bhi _0807C564
 	lsls r0, 2
-	ldr r1, _0807C548
+	ldr r1, _0807C548 @ =_0807C54C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -487,7 +487,7 @@ _0807C54C:
 _0807C564:
 	movs r0, 0
 	bl SetVBlankCallback
-	ldr r0, _0807C5F4
+	ldr r0, _0807C5F4 @ =0x04000050
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -496,7 +496,7 @@ _0807C564:
 	strh r1, [r0]
 	movs r2, 0xA0
 	lsls r2, 19
-	ldr r3, _0807C5F8
+	ldr r3, _0807C5F8 @ =0x00007fff
 	adds r0, r3, 0
 	strh r0, [r2]
 	movs r0, 0x80
@@ -522,12 +522,12 @@ _0807C564:
 	strh r1, [r0]
 	add r0, sp, 0xC
 	strh r1, [r0]
-	ldr r1, _0807C5FC
+	ldr r1, _0807C5FC @ =0x040000d4
 	str r0, [r1]
 	movs r0, 0xC0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _0807C600
+	ldr r0, _0807C600 @ =0x8100c000
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	movs r2, 0
@@ -537,20 +537,20 @@ _0807C564:
 	movs r0, 0xE0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _0807C604
+	ldr r0, _0807C604 @ =0x85000100
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	add r0, sp, 0xC
 	strh r2, [r0]
 	str r0, [r1]
-	ldr r0, _0807C608
+	ldr r0, _0807C608 @ =0x05000002
 	str r0, [r1, 0x4]
-	ldr r0, _0807C60C
+	ldr r0, _0807C60C @ =0x810001ff
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	bl ResetPaletteFade
-	ldr r0, _0807C610
-	ldr r1, _0807C614
+	ldr r0, _0807C610 @ =gMain
+	ldr r1, _0807C614 @ =0x0000043c
 	adds r0, r1
 	movs r1, 0x1
 	strb r1, [r0]
@@ -566,30 +566,30 @@ _0807C60C: .4byte 0x810001ff
 _0807C610: .4byte gMain
 _0807C614: .4byte 0x0000043c
 _0807C618:
-	ldr r0, _0807C6A4
+	ldr r0, _0807C6A4 @ =gUnknown_08E9D8CC
 	movs r1, 0xC0
 	lsls r1, 19
 	bl LZ77UnCompVram
-	ldr r0, _0807C6A8
-	ldr r1, _0807C6AC
+	ldr r0, _0807C6A8 @ =gUnknown_08E9F7E4
+	ldr r1, _0807C6AC @ =0x06004800
 	bl LZ77UnCompVram
-	ldr r4, _0807C6B0
+	ldr r4, _0807C6B0 @ =gUnknown_08E9F624
 	movs r5, 0xE0
 	lsls r5, 1
 	adds r0, r4, 0
 	movs r1, 0
 	adds r2, r5, 0
 	bl LoadPalette
-	ldr r0, _0807C6B4
-	ldr r1, _0807C6B8
+	ldr r0, _0807C6B4 @ =gUnknown_08393250
+	ldr r1, _0807C6B8 @ =0x06008000
 	bl LZ77UnCompVram
-	ldr r0, _0807C6BC
-	ldr r1, _0807C6C0
+	ldr r0, _0807C6BC @ =gUnknown_083939EC
+	ldr r1, _0807C6C0 @ =0x0600c000
 	bl LZ77UnCompVram
-	ldr r0, _0807C6C4
-	ldr r1, _0807C6C8
+	ldr r0, _0807C6C4 @ =gUnknown_08393BF8
+	ldr r1, _0807C6C8 @ =0x0600c800
 	bl LZ77UnCompVram
-	ldr r0, _0807C6CC
+	ldr r0, _0807C6CC @ =gUnknown_08393210
 	movs r1, 0xE0
 	movs r2, 0x40
 	bl LoadPalette
@@ -597,24 +597,24 @@ _0807C618:
 	bl ResetTasks
 	bl ResetSpriteData
 	bl FreeAllSpritePalettes
-	ldr r1, _0807C6D0
+	ldr r1, _0807C6D0 @ =gReservedSpritePaletteCount
 	movs r0, 0xE
 	strb r0, [r1]
-	ldr r0, _0807C6D4
+	ldr r0, _0807C6D4 @ =gUnknown_08393EFC
 	bl LoadCompressedObjectPic
-	ldr r0, _0807C6D8
+	ldr r0, _0807C6D8 @ =gUnknown_08393F8C
 	bl LoadCompressedObjectPic
-	ldr r0, _0807C6DC
+	ldr r0, _0807C6DC @ =gUnknown_08393FD8
 	bl LoadCompressedObjectPic
 	movs r1, 0x80
 	lsls r1, 1
 	adds r0, r4, 0
 	adds r2, r5, 0
 	bl LoadPalette
-	ldr r0, _0807C6E0
+	ldr r0, _0807C6E0 @ =gUnknown_08393F9C
 	bl LoadSpritePalette
-	ldr r0, _0807C6E4
-	ldr r2, _0807C6E8
+	ldr r0, _0807C6E4 @ =gMain
+	ldr r2, _0807C6E8 @ =0x0000043c
 	adds r0, r2
 	movs r1, 0x2
 	strb r1, [r0]
@@ -639,12 +639,12 @@ _0807C6E0: .4byte gUnknown_08393F9C
 _0807C6E4: .4byte gMain
 _0807C6E8: .4byte 0x0000043c
 _0807C6EC:
-	ldr r0, _0807C724
+	ldr r0, _0807C724 @ =Task_TitleScreenPhase1
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0807C728
+	ldr r2, _0807C728 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -654,14 +654,14 @@ _0807C6EC:
 	lsls r2, 1
 	strh r2, [r1, 0x8]
 	strh r3, [r1, 0xA]
-	ldr r2, _0807C72C
+	ldr r2, _0807C72C @ =0x0000fff0
 	strh r2, [r1, 0xC]
 	subs r2, 0x10
 	strh r2, [r1, 0xE]
-	ldr r1, _0807C730
+	ldr r1, _0807C730 @ =gUnknown_0202F7E4
 	strb r0, [r1]
-	ldr r0, _0807C734
-	ldr r3, _0807C738
+	ldr r0, _0807C734 @ =gMain
+	ldr r3, _0807C738 @ =0x0000043c
 	adds r0, r3
 	movs r1, 0x3
 	strb r1, [r0]
@@ -676,16 +676,16 @@ _0807C738: .4byte 0x0000043c
 _0807C73C:
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0807C760
+	ldr r1, _0807C760 @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0x1
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r0, _0807C764
+	ldr r0, _0807C764 @ =_0807C4FC
 	bl SetVBlankCallback
-	ldr r0, _0807C768
-	ldr r1, _0807C76C
+	ldr r0, _0807C768 @ =gMain
+	ldr r1, _0807C76C @ =0x0000043c
 	adds r0, r1
 	movs r1, 0x4
 	strb r1, [r0]
@@ -702,13 +702,13 @@ _0807C770:
 	movs r1, 0x50
 	movs r3, 0
 	bl sub_813CE30
-	ldr r1, _0807C808
-	ldr r0, _0807C80C
+	ldr r1, _0807C808 @ =0x04000028
+	ldr r0, _0807C80C @ =0xffffe300
 	str r0, [r1]
 	adds r1, 0x4
-	ldr r0, _0807C810
+	ldr r0, _0807C810 @ =0xffffdf00
 	str r0, [r1]
-	ldr r0, _0807C814
+	ldr r0, _0807C814 @ =0x04000040
 	movs r4, 0
 	strh r4, [r0]
 	adds r0, 0x4
@@ -718,54 +718,54 @@ _0807C770:
 	adds r0, 0x4
 	strh r4, [r0]
 	adds r1, 0x1C
-	ldr r2, _0807C818
+	ldr r2, _0807C818 @ =0x00001f1f
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r3, _0807C81C
+	ldr r3, _0807C81C @ =0x00003f1f
 	adds r0, r3, 0
 	strh r0, [r1]
 	adds r1, 0x6
 	movs r0, 0x84
 	strh r0, [r1]
-	ldr r0, _0807C820
+	ldr r0, _0807C820 @ =0x04000052
 	strh r4, [r0]
 	adds r0, 0x2
 	movs r5, 0x8
 	strh r5, [r0]
 	subs r1, 0x48
-	ldr r2, _0807C824
+	ldr r2, _0807C824 @ =0x0000180b
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r3, _0807C828
+	ldr r3, _0807C828 @ =0x0000190a
 	adds r0, r3, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r2, _0807C82C
+	ldr r2, _0807C82C @ =0x00004981
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r3, _0807C830
+	ldr r3, _0807C830 @ =0x04000208
 	ldrh r2, [r3]
 	strh r4, [r3]
-	ldr r4, _0807C834
+	ldr r4, _0807C834 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r1, _0807C838
+	ldr r1, _0807C838 @ =0x04000004
 	ldrh r0, [r1]
 	orrs r0, r5
 	strh r0, [r1]
 	subs r1, 0x4
-	ldr r3, _0807C83C
+	ldr r3, _0807C83C @ =0x0000b441
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _0807C840
+	ldr r0, _0807C840 @ =0x0000019d
 	bl m4aSongNumStart
-	ldr r0, _0807C844
-	ldr r1, _0807C848
+	ldr r0, _0807C844 @ =gMain
+	ldr r1, _0807C848 @ =0x0000043c
 	adds r0, r1
 	movs r1, 0x5
 	strb r1, [r0]
@@ -806,7 +806,7 @@ _0807C84C:
 	movs r2, 0x4
 	movs r3, 0x4
 	bl sub_8089944
-	ldr r0, _0807C884
+	ldr r0, _0807C884 @ =_0807C888
 	bl SetMainCallback2
 _0807C87A:
 	add sp, 0x14
@@ -830,11 +830,11 @@ Task_TitleScreenPhase1: @ 807C8A0
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r0, _0807C908
+	ldr r0, _0807C908 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0xF
 	ands r0, r1
-	ldr r5, _0807C90C
+	ldr r5, _0807C90C @ =gTasks
 	cmp r0, 0
 	bne _0807C8C6
 	lsls r0, r6, 2
@@ -873,7 +873,7 @@ _0807C8F0:
 	movs r0, 0x1
 	bl StartPokemonLogoShine
 _0807C8F6:
-	ldr r0, _0807C90C
+	ldr r0, _0807C90C @ =gTasks
 	adds r1, r4, r6
 	lsls r1, 3
 	adds r1, r0
@@ -887,30 +887,30 @@ _0807C90C: .4byte gTasks
 _0807C910:
 	movs r1, 0x80
 	lsls r1, 19
-	ldr r3, _0807C994
+	ldr r3, _0807C994 @ =0x00001441
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _0807C998
+	ldr r0, _0807C998 @ =0x04000048
 	strh r2, [r0]
 	adds r0, 0x2
 	strh r2, [r0]
 	adds r1, 0x50
-	ldr r3, _0807C99C
+	ldr r3, _0807C99C @ =0x00003f50
 	adds r0, r3, 0
 	strh r0, [r1]
 	adds r1, 0x2
 	movs r0, 0x1F
 	strh r0, [r1]
-	ldr r0, _0807C9A0
+	ldr r0, _0807C9A0 @ =0x04000054
 	strh r2, [r0]
-	ldr r0, _0807C9A4
+	ldr r0, _0807C9A4 @ =gSpriteTemplate_8393ECC
 	movs r1, 0x6C
 	movs r2, 0x2C
 	movs r3, 0
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0807C9A8
+	ldr r5, _0807C9A8 @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
@@ -922,7 +922,7 @@ _0807C910:
 	orrs r0, r4
 	strb r0, [r2]
 	strh r6, [r1, 0x30]
-	ldr r0, _0807C9AC
+	ldr r0, _0807C9AC @ =gSpriteTemplate_8393EE4
 	movs r1, 0xAC
 	movs r2, 0x2C
 	movs r3, 0
@@ -943,7 +943,7 @@ _0807C910:
 	strh r0, [r7, 0x12]
 	movs r0, 0x90
 	strh r0, [r7, 0x8]
-	ldr r0, _0807C9B0
+	ldr r0, _0807C9B0 @ =Task_TitleScreenPhase2
 	str r0, [r7]
 _0807C98C:
 	pop {r4-r7}
@@ -965,11 +965,11 @@ Task_TitleScreenPhase2: @ 807C9B4
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r0, _0807CA04
+	ldr r0, _0807CA04 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0xF
 	ands r0, r1
-	ldr r2, _0807CA08
+	ldr r2, _0807CA08 @ =gTasks
 	cmp r0, 0
 	bne _0807C9DA
 	lsls r0, r5, 2
@@ -992,7 +992,7 @@ _0807C9DA:
 	strh r2, [r0, 0x8]
 	adds r7, r3, 0
 _0807C9EC:
-	ldr r1, _0807CA08
+	ldr r1, _0807CA08 @ =gTasks
 	adds r0, r7, r5
 	lsls r0, 3
 	adds r4, r0, r1
@@ -1012,7 +1012,7 @@ _0807CA0C:
 	strh r0, [r4, 0xA]
 	movs r1, 0x80
 	lsls r1, 19
-	ldr r2, _0807CA68
+	ldr r2, _0807CA68 @ =0x00001741
 	adds r0, r2, 0
 	strh r0, [r1]
 	movs r0, 0x76
@@ -1022,10 +1022,10 @@ _0807CA0C:
 	movs r1, 0x94
 	bl CreateCopyrightBanner
 	strh r6, [r4, 0x10]
-	ldr r0, _0807CA6C
+	ldr r0, _0807CA6C @ =Task_TitleScreenPhase3
 	str r0, [r4]
 _0807CA30:
-	ldr r2, _0807CA70
+	ldr r2, _0807CA70 @ =gTasks
 	adds r0, r7, r5
 	lsls r0, 3
 	adds r3, r0, r2
@@ -1042,7 +1042,7 @@ _0807CA30:
 	adds r0, r1, 0x1
 	strh r0, [r3, 0xE]
 _0807CA50:
-	ldr r0, _0807CA74
+	ldr r0, _0807CA74 @ =0x0400002c
 	adds r1, r7, r5
 	lsls r1, 3
 	adds r1, r2
@@ -1066,18 +1066,18 @@ Task_TitleScreenPhase3: @ 807CA78
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r1, _0807CAD0
-	ldr r2, _0807CAD4
+	ldr r1, _0807CAD0 @ =0x04000050
+	ldr r2, _0807CAD4 @ =0x00002142
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r2, _0807CAD8
+	ldr r2, _0807CAD8 @ =0x00001f0f
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
 	movs r0, 0
 	strh r0, [r1]
-	ldr r4, _0807CADC
+	ldr r4, _0807CADC @ =gMain
 	ldrh r1, [r4, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -1094,13 +1094,13 @@ _0807CAAE:
 	bl FadeOutBGM
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0807CAE0
+	ldr r1, _0807CAE0 @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r0, _0807CAE4
+	ldr r0, _0807CAE4 @ =CB2_GoToMainMenu
 	bl SetMainCallback2
 	b _0807CB82
 	.align 2, 0
@@ -1116,7 +1116,7 @@ _0807CAE8:
 	ands r0, r1
 	cmp r0, 0x46
 	bne _0807CAF8
-	ldr r0, _0807CB28
+	ldr r0, _0807CB28 @ =CB2_GoToClearSaveDataScreen
 	bl SetMainCallback2
 _0807CAF8:
 	ldrh r1, [r4, 0x2C]
@@ -1136,17 +1136,17 @@ _0807CAF8:
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r0, _0807CB2C
+	ldr r0, _0807CB2C @ =CB2_GoToResetRtcScreen
 	bl SetMainCallback2
 	b _0807CB82
 	.align 2, 0
 _0807CB28: .4byte CB2_GoToClearSaveDataScreen
 _0807CB2C: .4byte CB2_GoToResetRtcScreen
 _0807CB30:
-	ldr r0, _0807CB8C
+	ldr r0, _0807CB8C @ =0x0400002c
 	movs r3, 0
 	str r3, [r0]
-	ldr r1, _0807CB90
+	ldr r1, _0807CB90 @ =gTasks
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
@@ -1161,15 +1161,15 @@ _0807CB30:
 	ldrh r0, [r2, 0x10]
 	adds r0, 0x1
 	strh r0, [r2, 0x10]
-	ldr r1, _0807CB94
+	ldr r1, _0807CB94 @ =gUnknown_030041B4
 	strh r0, [r1]
-	ldr r0, _0807CB98
+	ldr r0, _0807CB98 @ =gUnknown_030042C0
 	strh r3, [r0]
 _0807CB5C:
 	ldrb r0, [r2, 0x8]
 	bl UpdateLegendaryMarkingColor
-	ldr r0, _0807CB9C
-	ldr r1, _0807CBA0
+	ldr r0, _0807CB9C @ =gMPlay_BGM
+	ldr r1, _0807CBA0 @ =0x0000ffff
 	ldrh r0, [r0, 0x4]
 	cmp r0, 0
 	bne _0807CB82
@@ -1180,7 +1180,7 @@ _0807CB5C:
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r0, _0807CBA4
+	ldr r0, _0807CBA4 @ =CB2_GoToCopyrightScreen
 	bl SetMainCallback2
 _0807CB82:
 	add sp, 0x4
@@ -1204,7 +1204,7 @@ CB2_GoToMainMenu: @ 807CBA8
 	lsls r0, 24
 	cmp r0, 0
 	bne _0807CBBA
-	ldr r0, _0807CBC0
+	ldr r0, _0807CBC0 @ =CB2_InitMainMenu
 	bl SetMainCallback2
 _0807CBBA:
 	pop {r0}
@@ -1220,7 +1220,7 @@ CB2_GoToCopyrightScreen: @ 807CBC4
 	lsls r0, 24
 	cmp r0, 0
 	bne _0807CBD6
-	ldr r0, _0807CBDC
+	ldr r0, _0807CBDC @ =CB2_InitCopyrightScreen
 	bl SetMainCallback2
 _0807CBD6:
 	pop {r0}
@@ -1236,7 +1236,7 @@ CB2_GoToClearSaveDataScreen: @ 807CBE0
 	lsls r0, 24
 	cmp r0, 0
 	bne _0807CBF2
-	ldr r0, _0807CBF8
+	ldr r0, _0807CBF8 @ =CB2_InitClearSaveDataScreen
 	bl SetMainCallback2
 _0807CBF2:
 	pop {r0}
@@ -1252,7 +1252,7 @@ CB2_GoToResetRtcScreen: @ 807CBFC
 	lsls r0, 24
 	cmp r0, 0
 	bne _0807CC0E
-	ldr r0, _0807CC14
+	ldr r0, _0807CC14 @ =CB2_InitResetRtcScreen
 	bl SetMainCallback2
 _0807CC0E:
 	pop {r0}

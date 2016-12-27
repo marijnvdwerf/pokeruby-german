@@ -32,7 +32,7 @@ _080C58D2:
 	thumb_func_start AllMonsFainted
 AllMonsFainted: @ 80C58D8
 	push {r4,r5,lr}
-	ldr r4, _080C58F8
+	ldr r4, _080C58F8 @ =gPlayerParty
 	movs r5, 0
 _080C58DE:
 	adds r0, r4, 0
@@ -69,7 +69,7 @@ MonFaintFromPoisonOnField: @ 80C590C
 	movs r1, 0x64
 	adds r4, r0, 0
 	muls r4, r1
-	ldr r0, _080C5950
+	ldr r0, _080C5950 @ =gPlayerParty
 	adds r4, r0
 	movs r0, 0
 	str r0, [sp]
@@ -80,7 +80,7 @@ MonFaintFromPoisonOnField: @ 80C590C
 	movs r1, 0x37
 	mov r2, sp
 	bl SetMonData
-	ldr r5, _080C5954
+	ldr r5, _080C5954 @ =gStringVar1
 	adds r0, r4, 0
 	movs r1, 0x2
 	adds r2, r5, 0
@@ -103,7 +103,7 @@ CheckMonFaintedFromPoison: @ 80C5958
 	lsrs r0, 24
 	movs r1, 0x64
 	muls r1, r0
-	ldr r0, _080C5994
+	ldr r0, _080C5994 @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	bl CheckMonIsValid
@@ -142,7 +142,7 @@ Task_WhiteOut: @ 80C59A0
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080C59C4
+	ldr r1, _080C59C4 @ =0x03004b38
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -197,7 +197,7 @@ _080C5A0C:
 	adds r1, r0, 0
 	cmp r1, 0
 	beq _080C5A3C
-	ldr r1, _080C5A20
+	ldr r1, _080C5A20 @ =gScriptResult
 	movs r0, 0x1
 	strh r0, [r1]
 	b _080C5A40
@@ -206,7 +206,7 @@ _080C5A20: .4byte gScriptResult
 _080C5A24:
 	ldrb r0, [r4, 0x2]
 	bl MonFaintFromPoisonOnField
-	ldr r0, _080C5A38
+	ldr r0, _080C5A38 @ =fieldPoisonText_PokemonFainted
 	bl ShowFieldMessage
 	ldrh r0, [r4]
 	adds r0, 0x1
@@ -215,7 +215,7 @@ _080C5A24:
 	.align 2, 0
 _080C5A38: .4byte fieldPoisonText_PokemonFainted
 _080C5A3C:
-	ldr r0, _080C5A50
+	ldr r0, _080C5A50 @ =gScriptResult
 	strh r1, [r0]
 _080C5A40:
 	bl EnableBothScriptContexts
@@ -232,7 +232,7 @@ _080C5A50: .4byte gScriptResult
 	thumb_func_start DoWhiteOut
 DoWhiteOut: @ 80C5A54
 	push {lr}
-	ldr r0, _080C5A68
+	ldr r0, _080C5A68 @ =Task_WhiteOut
 	movs r1, 0x50
 	bl CreateTask
 	bl ScriptContext1_Stop
@@ -246,7 +246,7 @@ _080C5A68: .4byte Task_WhiteOut
 overworld_poison: @ 80C5A6C
 	push {r4-r7,lr}
 	sub sp, 0x4
-	ldr r4, _080C5AD8
+	ldr r4, _080C5AD8 @ =gPlayerParty
 	movs r7, 0
 	movs r6, 0
 	movs r5, 0x5

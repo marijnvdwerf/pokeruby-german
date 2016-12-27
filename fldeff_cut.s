@@ -17,11 +17,11 @@ SetUpFieldMove_Cut: @ 80A2654
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _080A2684
-	ldr r1, _080A2674
-	ldr r0, _080A2678
+	ldr r1, _080A2674 @ =gUnknown_0300485C
+	ldr r0, _080A2678 @ =sub_808AB90
 	str r0, [r1]
-	ldr r1, _080A267C
-	ldr r0, _080A2680
+	ldr r1, _080A267C @ =gUnknown_03005CE4
+	ldr r0, _080A2680 @ =sub_80A2634
 	b _080A26F8
 	.align 2, 0
 _080A2674: .4byte gUnknown_0300485C
@@ -29,14 +29,14 @@ _080A2678: .4byte sub_808AB90
 _080A267C: .4byte gUnknown_03005CE4
 _080A2680: .4byte sub_80A2634
 _080A2684:
-	ldr r4, _080A2700
+	ldr r4, _080A2700 @ =gUnknown_0203923C
 	adds r1, r4, 0x2
 	adds r0, r4, 0
 	bl PlayerGetDestCoords
 	movs r7, 0
 	mov r8, r4
 _080A2692:
-	ldr r1, _080A2704
+	ldr r1, _080A2704 @ =0x0000ffff
 	adds r0, r7, r1
 	mov r2, r8
 	ldrh r2, [r2, 0x2]
@@ -45,7 +45,7 @@ _080A2692:
 	lsls r0, 16
 	asrs r5, r0, 16
 _080A26A2:
-	ldr r1, _080A2704
+	ldr r1, _080A2704 @ =0x0000ffff
 	adds r0, r6, r1
 	mov r2, r8
 	ldrh r2, [r2]
@@ -80,11 +80,11 @@ _080A26A2:
 	cmp r0, 0x1
 	bne _080A2718
 _080A26EE:
-	ldr r1, _080A2708
-	ldr r0, _080A270C
+	ldr r1, _080A2708 @ =gUnknown_0300485C
+	ldr r0, _080A270C @ =sub_808AB90
 	str r0, [r1]
-	ldr r1, _080A2710
-	ldr r0, _080A2714
+	ldr r1, _080A2710 @ =gUnknown_03005CE4
+	ldr r0, _080A2714 @ =sub_80A25E8
 _080A26F8:
 	str r0, [r1]
 	movs r0, 0x1
@@ -121,8 +121,8 @@ sub_80A25E8: @ 80A2738
 	push {lr}
 	movs r0, 0x1
 	bl FieldEffectStart
-	ldr r0, _080A274C
-	ldr r1, _080A2750
+	ldr r0, _080A274C @ =gUnknown_0202FF84
+	ldr r1, _080A2750 @ =gUnknown_03005CE0
 	ldrb r1, [r1]
 	str r1, [r0]
 	pop {r0}
@@ -138,12 +138,12 @@ FldEff_UseCutOnGrass: @ 80A2754
 	bl oei_task_add
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080A277C
+	ldr r2, _080A277C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r2, _080A2780
+	ldr r2, _080A2780 @ =sub_80A2684
 	lsrs r0, r2, 16
 	strh r0, [r1, 0x18]
 	strh r2, [r1, 0x1A]
@@ -160,11 +160,11 @@ _080A2780: .4byte sub_80A2684
 	thumb_func_start sub_80A2634
 sub_80A2634: @ 80A2784
 	push {lr}
-	ldr r1, _080A2798
-	ldr r0, _080A279C
+	ldr r1, _080A2798 @ =gUnknown_0202FF84
+	ldr r0, _080A279C @ =gUnknown_03005CE0
 	ldrb r0, [r0]
 	str r0, [r1]
-	ldr r0, _080A27A0
+	ldr r0, _080A27A0 @ =UseCutScript
 	bl ScriptContext1_SetupScript
 	pop {r0}
 	bx r0
@@ -180,12 +180,12 @@ FldEff_UseCutOnTree: @ 80A27A4
 	bl oei_task_add
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080A27CC
+	ldr r2, _080A27CC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r2, _080A27D0
+	ldr r2, _080A27D0 @ =sub_80A2B00
 	lsrs r0, r2, 16
 	strh r0, [r1, 0x18]
 	strh r2, [r1, 0x1A]
@@ -218,13 +218,13 @@ FldEff_CutGrass: @ 80A27E8
 	movs r7, 0
 	movs r0, 0x80
 	bl PlaySE
-	ldr r4, _080A28E0
+	ldr r4, _080A28E0 @ =gUnknown_0203923C
 	adds r1, r4, 0x2
 	adds r0, r4, 0
 	bl PlayerGetDestCoords
 	mov r8, r4
 _080A2802:
-	ldr r1, _080A28E4
+	ldr r1, _080A28E4 @ =0x0000ffff
 	adds r0, r7, r1
 	mov r2, r8
 	ldrh r2, [r2, 0x2]
@@ -233,7 +233,7 @@ _080A2802:
 	lsls r0, 16
 	asrs r5, r0, 16
 _080A2812:
-	ldr r1, _080A28E4
+	ldr r1, _080A28E4 @ =0x0000ffff
 	adds r0, r6, r1
 	mov r2, r8
 	ldrh r2, [r2]
@@ -277,7 +277,7 @@ _080A285E:
 	lsrs r7, r0, 24
 	cmp r7, 0x2
 	bls _080A2802
-	ldr r1, _080A28E0
+	ldr r1, _080A28E0 @ =gUnknown_0203923C
 	ldrh r0, [r1]
 	subs r0, 0x1
 	lsls r0, 16
@@ -289,9 +289,9 @@ _080A285E:
 	bl sub_80A28F4
 	bl DrawWholeMapView
 	movs r7, 0
-	ldr r4, _080A28E8
+	ldr r4, _080A28E8 @ =gSprites
 _080A2890:
-	ldr r0, _080A28EC
+	ldr r0, _080A28EC @ =gPlayerAvatar
 	ldrb r1, [r0, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -306,10 +306,10 @@ _080A2890:
 	asrs r1, 16
 	ldrb r2, [r0]
 	adds r2, 0x14
-	ldr r0, _080A28F0
+	ldr r0, _080A28F0 @ =gSpriteTemplate_CutGrass
 	movs r3, 0
 	bl CreateSprite
-	ldr r1, _080A28F4
+	ldr r1, _080A28F4 @ =0x0201fff0
 	adds r1, r7, r1
 	strb r0, [r1]
 	ldrb r1, [r1]
@@ -352,7 +352,7 @@ sub_80A27A8: @ 80A28F8
 	adds r1, r5, 0
 	bl MapGridGetMetatileIdAt
 	adds r1, r0, 0
-	ldr r0, _080A2930
+	ldr r0, _080A2930 @ =0x00000207
 	cmp r1, r0
 	bgt _080A2944
 	subs r0, 0x1
@@ -379,7 +379,7 @@ _080A2934:
 	beq _080A299A
 	b _080A29E8
 _080A2944:
-	ldr r0, _080A295C
+	ldr r0, _080A295C @ =0x00000212
 	cmp r1, r0
 	beq _080A29CC
 	cmp r1, r0
@@ -394,7 +394,7 @@ _080A2944:
 	.align 2, 0
 _080A295C: .4byte 0x00000212
 _080A2960:
-	ldr r0, _080A2974
+	ldr r0, _080A2974 @ =0x00000282
 	cmp r1, r0
 	beq _080A29AC
 	cmp r1, r0
@@ -406,7 +406,7 @@ _080A2960:
 	.align 2, 0
 _080A2974: .4byte 0x00000282
 _080A2978:
-	ldr r0, _080A2980
+	ldr r0, _080A2980 @ =0x00000283
 	cmp r1, r0
 	beq _080A29B4
 	b _080A29E8
@@ -425,27 +425,27 @@ _080A2994:
 	lsls r2, 1
 	b _080A29BE
 _080A299A:
-	ldr r2, _080A29A0
+	ldr r2, _080A29A0 @ =0x000001cf
 	b _080A29BE
 	.align 2, 0
 _080A29A0: .4byte 0x000001cf
 _080A29A4:
-	ldr r2, _080A29A8
+	ldr r2, _080A29A8 @ =0x00000279
 	b _080A29BE
 	.align 2, 0
 _080A29A8: .4byte 0x00000279
 _080A29AC:
-	ldr r2, _080A29B0
+	ldr r2, _080A29B0 @ =0x0000027a
 	b _080A29BE
 	.align 2, 0
 _080A29B0: .4byte 0x0000027a
 _080A29B4:
-	ldr r2, _080A29B8
+	ldr r2, _080A29B8 @ =0x0000027b
 	b _080A29BE
 	.align 2, 0
 _080A29B8: .4byte 0x0000027b
 _080A29BC:
-	ldr r2, _080A29C8
+	ldr r2, _080A29C8 @ =0x00000271
 _080A29BE:
 	adds r0, r4, 0
 	adds r1, r5, 0
@@ -489,7 +489,7 @@ sub_80A28A0: @ 80A29F0
 	movs r0, 0x1
 	b _080A2A3E
 _080A2A0C:
-	ldr r0, _080A2A18
+	ldr r0, _080A2A18 @ =0x00000279
 	cmp r1, r0
 	bne _080A2A1C
 	movs r0, 0x2
@@ -497,7 +497,7 @@ _080A2A0C:
 	.align 2, 0
 _080A2A18: .4byte 0x00000279
 _080A2A1C:
-	ldr r0, _080A2A28
+	ldr r0, _080A2A28 @ =0x0000027a
 	cmp r1, r0
 	bne _080A2A2C
 	movs r0, 0x3
@@ -505,7 +505,7 @@ _080A2A1C:
 	.align 2, 0
 _080A2A28: .4byte 0x0000027a
 _080A2A2C:
-	ldr r0, _080A2A38
+	ldr r0, _080A2A38 @ =0x0000027b
 	cmp r2, r0
 	beq _080A2A3C
 	movs r0, 0
@@ -583,7 +583,7 @@ _080A2AAC:
 _080A2ABA:
 	adds r0, r5, 0
 	adds r1, r4, 0
-	ldr r2, _080A2AC8
+	ldr r2, _080A2AC8 @ =0x00000281
 	bl MapGridSetMetatileIdAt
 	b _080A2AE6
 	.align 2, 0
@@ -591,7 +591,7 @@ _080A2AC8: .4byte 0x00000281
 _080A2ACC:
 	adds r0, r5, 0
 	adds r1, r4, 0
-	ldr r2, _080A2AD8
+	ldr r2, _080A2AD8 @ =0x00000282
 	bl MapGridSetMetatileIdAt
 	b _080A2AE6
 	.align 2, 0
@@ -599,7 +599,7 @@ _080A2AD8: .4byte 0x00000282
 _080A2ADC:
 	adds r0, r5, 0
 	adds r1, r4, 0
-	ldr r2, _080A2B80
+	ldr r2, _080A2B80 @ =0x00000283
 	bl MapGridSetMetatileIdAt
 _080A2AE6:
 	lsls r0, r6, 16
@@ -628,34 +628,34 @@ _080A2B18:
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl MapGridGetMetatileIdAt
-	ldr r1, _080A2B84
+	ldr r1, _080A2B84 @ =0x00000281
 	cmp r0, r1
 	bne _080A2B30
 	adds r0, r5, 0
 	adds r1, r4, 0
-	ldr r2, _080A2B88
+	ldr r2, _080A2B88 @ =0x00000279
 	bl MapGridSetMetatileIdAt
 _080A2B30:
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl MapGridGetMetatileIdAt
-	ldr r1, _080A2B8C
+	ldr r1, _080A2B8C @ =0x00000282
 	cmp r0, r1
 	bne _080A2B48
 	adds r0, r5, 0
 	adds r1, r4, 0
-	ldr r2, _080A2B90
+	ldr r2, _080A2B90 @ =0x0000027a
 	bl MapGridSetMetatileIdAt
 _080A2B48:
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl MapGridGetMetatileIdAt
-	ldr r1, _080A2B80
+	ldr r1, _080A2B80 @ =0x00000283
 	cmp r0, r1
 	bne _080A2B60
 	adds r0, r5, 0
 	adds r1, r4, 0
-	ldr r2, _080A2B94
+	ldr r2, _080A2B94 @ =0x0000027b
 	bl MapGridSetMetatileIdAt
 _080A2B60:
 	movs r0, 0x80
@@ -690,7 +690,7 @@ sub_80A2A48: @ 80A2B98
 	strh r1, [r0, 0x2E]
 	strh r2, [r0, 0x30]
 	strh r2, [r0, 0x34]
-	ldr r1, _080A2BA8
+	ldr r1, _080A2BA8 @ =objc_8097BBC
 	str r1, [r0, 0x1C]
 	bx lr
 	.align 2, 0
@@ -736,7 +736,7 @@ objc_8097BBC: @ 80A2BAC
 	strh r0, [r4, 0x30]
 	b _080A2BFC
 _080A2BF8:
-	ldr r0, _080A2C04
+	ldr r0, _080A2C04 @ =sub_80A2AB8
 	str r0, [r4, 0x1C]
 _080A2BFC:
 	pop {r4}
@@ -751,13 +751,13 @@ sub_80A2AB8: @ 80A2C08
 	push {r4-r6,lr}
 	movs r4, 0x1
 _080A2C0C:
-	ldr r6, _080A2C48
+	ldr r6, _080A2C48 @ =0x0201fff0
 	adds r0, r4, r6
 	ldrb r1, [r0]
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r5, _080A2C4C
+	ldr r5, _080A2C4C @ =gSprites
 	adds r0, r5
 	bl DestroySprite
 	adds r0, r4, 0x1

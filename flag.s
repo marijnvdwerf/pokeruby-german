@@ -17,17 +17,17 @@ GetFlagPointer: @ 80695EC
 	movs r0, 0
 	b _08069622
 _080695FC:
-	ldr r0, _08069608
+	ldr r0, _08069608 @ =0x00003fff
 	cmp r1, r0
 	bhi _08069610
 	lsrs r0, r2, 19
-	ldr r1, _0806960C
+	ldr r1, _0806960C @ =0x02026954
 	b _08069620
 	.align 2, 0
 _08069608: .4byte 0x00003fff
 _0806960C: .4byte 0x02026954
 _08069610:
-	ldr r1, _08069628
+	ldr r1, _08069628 @ =0xffffc000
 	adds r0, r3, r1
 	cmp r0, 0
 	bge _0806961C
@@ -35,7 +35,7 @@ _08069610:
 	adds r0, r3, r1
 _0806961C:
 	asrs r0, 3
-	ldr r1, _0806962C
+	ldr r1, _0806962C @ =gUnknown_0202E8E2
 _08069620:
 	adds r0, r1
 _08069622:

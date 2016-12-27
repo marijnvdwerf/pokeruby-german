@@ -29,7 +29,7 @@ npc_clear_ids_and_state: @ 805AD90
 npcs_clear_ids_and_state: @ 805ADB0
 	push {r4,r5,lr}
 	movs r4, 0
-	ldr r5, _0805ADD4
+	ldr r5, _0805ADD4 @ =gMapObjects
 _0805ADB6:
 	lsls r0, r4, 3
 	adds r0, r4
@@ -66,7 +66,7 @@ sub_805AAB0: @ 805ADF0
 	mov r5, r9
 	mov r4, r8
 	push {r4-r6}
-	ldr r0, _0805AE8C
+	ldr r0, _0805AE8C @ =gFieldEffectObjectTemplatePointers
 	ldr r0, [r0, 0x54]
 	mov r9, r0
 	movs r1, 0
@@ -75,7 +75,7 @@ sub_805AAB0: @ 805ADF0
 	bl CreateSpriteAtEnd
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0805AE90
+	ldr r1, _0805AE90 @ =gSprites
 	mov r10, r1
 	lsls r4, r0, 4
 	adds r4, r0
@@ -142,7 +142,7 @@ _0805AE90: .4byte gSprites
 sub_805AB54: @ 805AE94
 	push {lr}
 	movs r1, 0
-	ldr r2, _0805AEA0
+	ldr r2, _0805AEA0 @ =gMapObjects
 	ldrb r0, [r2]
 	b _0805AEB8
 	.align 2, 0
@@ -220,7 +220,7 @@ _0805AF0C:
 GetFieldObjectIdByXY: @ 805AF14
 	push {r4-r6,lr}
 	movs r3, 0
-	ldr r5, _0805AF54
+	ldr r5, _0805AF54 @ =gMapObjects
 	lsls r0, 16
 	asrs r4, r0, 16
 	lsls r1, 16
@@ -267,7 +267,7 @@ GetFieldObjectIdByLocalIdAndMapInternal: @ 805AF58
 	lsls r2, 24
 	lsrs r2, 24
 	movs r1, 0
-	ldr r6, _0805AF90
+	ldr r6, _0805AF90 @ =gMapObjects
 _0805AF6A:
 	lsls r0, r1, 3
 	adds r0, r1
@@ -309,7 +309,7 @@ GetFieldObjectIdByLocalId: @ 805AFA8
 	lsls r0, 24
 	lsrs r3, r0, 24
 	movs r2, 0
-	ldr r4, _0805AFCC
+	ldr r4, _0805AFCC @ =gMapObjects
 _0805AFB2:
 	lsls r0, r2, 3
 	adds r0, r2
@@ -367,7 +367,7 @@ _0805B00E:
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805B110
+	ldr r1, _0805B110 @ =gMapObjects
 	adds r4, r0, r1
 	adds r0, r4, 0
 	bl npc_clear_ids_and_state
@@ -435,7 +435,7 @@ _0805B00E:
 	strb r0, [r4, 0x7]
 	ldrh r0, [r5, 0xE]
 	strb r0, [r4, 0x1D]
-	ldr r1, _0805B114
+	ldr r1, _0805B114 @ =gUnknown_0836DC09
 	ldrb r0, [r5, 0x9]
 	adds r0, r1
 	ldrb r1, [r0]
@@ -447,7 +447,7 @@ _0805B00E:
 	bl FieldObjectSetDirection
 	adds r0, r4, 0
 	bl FieldObjectHandleDynamicGraphicsId
-	ldr r1, _0805B118
+	ldr r1, _0805B118 @ =gUnknown_0836DBBC
 	ldrb r0, [r4, 0x6]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -505,7 +505,7 @@ sub_805ADDC: @ 805B11C
 	lsls r0, 24
 	lsrs r0, 24
 	mov r8, r0
-	ldr r0, _0805B134
+	ldr r0, _0805B134 @ =gMapHeader
 	ldr r0, [r0, 0x4]
 	cmp r0, 0
 	bne _0805B150
@@ -513,7 +513,7 @@ sub_805ADDC: @ 805B11C
 	.align 2, 0
 _0805B134: .4byte gMapHeader
 _0805B138:
-	ldr r1, _0805B14C
+	ldr r1, _0805B14C @ =0xfffff3e0
 	adds r0, r7, r1
 	ldrb r1, [r0, 0x5]
 	ldrb r2, [r0, 0x4]
@@ -529,7 +529,7 @@ _0805B150:
 	movs r5, 0
 	cmp r5, r6
 	bcs _0805B17E
-	ldr r7, _0805B18C
+	ldr r7, _0805B18C @ =0x02026354
 _0805B15A:
 	lsls r0, r5, 1
 	adds r0, r5
@@ -572,7 +572,7 @@ GetAvailableFieldObjectSlot: @ 805B190
 	lsls r2, 24
 	lsrs r4, r2, 24
 	movs r2, 0
-	ldr r1, _0805B1EC
+	ldr r1, _0805B1EC @ =gMapObjects
 	ldrb r0, [r1]
 	lsls r0, 31
 	adds r7, r1, 0
@@ -618,7 +618,7 @@ _0805B1EC: .4byte gMapObjects
 _0805B1F0:
 	mov r0, r12
 	strb r2, [r0]
-	ldr r1, _0805B22C
+	ldr r1, _0805B22C @ =gMapObjects
 _0805B1F6:
 	lsls r0, r2, 3
 	adds r0, r2
@@ -691,7 +691,7 @@ RemoveFieldObjectByLocalIdAndMap: @ 805B244
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805B288
+	ldr r1, _0805B288 @ =gMapObjects
 	adds r0, r1
 	bl RemoveFieldObject
 _0805B282:
@@ -710,12 +710,12 @@ RemoveFieldObjectInternal: @ 805B28C
 	ldrb r0, [r4, 0x5]
 	bl GetFieldObjectGraphicsInfo
 	ldrh r2, [r0, 0x6]
-	ldr r1, _0805B2D0
+	ldr r1, _0805B2D0 @ =0xffff0000
 	ldr r0, [sp, 0x4]
 	ands r0, r1
 	orrs r0, r2
 	str r0, [sp, 0x4]
-	ldr r2, _0805B2D4
+	ldr r2, _0805B2D4 @ =gSprites
 	ldrb r1, [r4, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -745,14 +745,14 @@ npc_hide_all_but_player: @ 805B2D8
 	push {r4,lr}
 	movs r4, 0
 _0805B2DC:
-	ldr r0, _0805B304
+	ldr r0, _0805B304 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	cmp r4, r0
 	beq _0805B2F2
 	lsls r0, r4, 3
 	adds r0, r4
 	lsls r0, 2
-	ldr r1, _0805B308
+	ldr r1, _0805B308 @ =gMapObjects
 	adds r0, r1
 	bl RemoveFieldObject
 _0805B2F2:
@@ -804,7 +804,7 @@ _0805B346:
 	lsls r4, r0, 3
 	adds r0, r4, r0
 	lsls r0, 2
-	ldr r1, _0805B370
+	ldr r1, _0805B370 @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r0, [r5, 0x5]
 	bl GetFieldObjectGraphicsInfo
@@ -837,7 +837,7 @@ _0805B382:
 	orrs r0, r1
 	strb r0, [r5, 0x1]
 _0805B390:
-	ldr r1, _0805B3C4
+	ldr r1, _0805B3C4 @ =0x0000ffff
 	adds r0, r1, 0
 	strh r0, [r7, 0x2]
 	adds r0, r7, 0
@@ -849,7 +849,7 @@ _0805B390:
 	lsrs r7, r0, 24
 	cmp r7, 0x40
 	bne _0805B3CC
-	ldr r0, _0805B3C8
+	ldr r0, _0805B3C8 @ =gMapObjects
 	mov r2, r8
 	adds r1, r4, r2
 	lsls r1, 2
@@ -868,7 +868,7 @@ _0805B3CC:
 	lsls r0, r7, 4
 	adds r0, r7
 	lsls r0, 2
-	ldr r1, _0805B4A4
+	ldr r1, _0805B4A4 @ =gSprites
 	adds r4, r0, r1
 	mov r1, r9
 	lsls r0, r1, 16
@@ -1006,7 +1006,7 @@ SpawnFieldObject: @ 805B4A8
 	add r1, sp, 0x8
 	bl MakeObjectTemplateFromFieldObjectTemplate
 	ldrh r3, [r7, 0x6]
-	ldr r2, _0805B520
+	ldr r2, _0805B520 @ =0xffff0000
 	add r1, sp, 0x24
 	ldr r0, [r1, 0x4]
 	ands r0, r2
@@ -1034,8 +1034,8 @@ SpawnFieldObject: @ 805B4A8
 	.align 2, 0
 _0805B520: .4byte 0xffff0000
 _0805B524:
-	ldr r4, _0805B568
-	ldr r1, _0805B56C
+	ldr r4, _0805B568 @ =gSprites
+	ldr r1, _0805B56C @ =gMapObjects
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
@@ -1084,7 +1084,7 @@ SpawnSpecialFieldObject: @ 805B570
 	add r0, sp, 0x4
 	adds r1, r4, 0
 	bl GetFieldObjectMovingCameraOffset
-	ldr r0, _0805B5A8
+	ldr r0, _0805B5A8 @ =gSaveBlock1
 	ldrb r1, [r0, 0x5]
 	ldrb r2, [r0, 0x4]
 	add r0, sp, 0x4
@@ -1117,7 +1117,7 @@ SpawnSpecialFieldObjectParametrized: @ 805B5AC
 	lsls r0, 24
 	lsrs r0, 24
 	lsls r3, 16
-	ldr r5, _0805B610
+	ldr r5, _0805B610 @ =0xfff90000
 	adds r3, r5
 	lsrs r3, 16
 	lsls r4, 16
@@ -1237,7 +1237,7 @@ MakeObjectTemplateFromFieldObjectGraphicsInfoWithCallbackIndex: @ 805B698
 	lsls r0, 16
 	lsrs r0, 16
 	lsls r1, 16
-	ldr r4, _0805B6B4
+	ldr r4, _0805B6B4 @ =gUnknown_0836DA88
 	lsrs r1, 14
 	adds r1, r4
 	ldr r1, [r1]
@@ -1282,7 +1282,7 @@ AddPseudoFieldObject: @ 805B6D0
 	bl MakeObjectTemplateFromFieldObjectGraphicsInfo
 	mov r0, sp
 	ldrh r1, [r0, 0x2]
-	ldr r0, _0805B748
+	ldr r0, _0805B748 @ =0x0000ffff
 	cmp r1, r0
 	beq _0805B700
 	mov r0, sp
@@ -1306,7 +1306,7 @@ _0805B700:
 	lsls r4, r5, 4
 	adds r4, r5
 	lsls r4, 2
-	ldr r0, _0805B74C
+	ldr r0, _0805B74C @ =gSprites
 	adds r4, r0
 	adds r0, r4, 0
 	bl SetSubspriteTables
@@ -1359,13 +1359,13 @@ sub_805B410: @ 805B750
 	adds r0, r5, 0
 	bl GetFieldObjectGraphicsInfo
 	adds r4, r0, 0
-	ldr r1, _0805B890
+	ldr r1, _0805B890 @ =sub_8064970
 	add r3, sp, 0x1C
 	adds r0, r5, 0
 	mov r2, sp
 	bl MakeObjectTemplateFromFieldObjectGraphicsInfo
 	mov r1, sp
-	ldr r2, _0805B894
+	ldr r2, _0805B894 @ =0x0000ffff
 	adds r0, r2, 0
 	strh r0, [r1, 0x2]
 	mov r1, r8
@@ -1397,7 +1397,7 @@ sub_805B410: @ 805B750
 	lsls r0, r6, 4
 	adds r0, r6
 	lsls r0, 2
-	ldr r1, _0805B898
+	ldr r1, _0805B898 @ =gSprites
 	adds r5, r0, r1
 	ldrh r0, [r4, 0x8]
 	lsls r0, 16
@@ -1501,11 +1501,11 @@ sub_805B55C: @ 805B89C
 	lsls r1, 16
 	lsrs r1, 16
 	str r1, [sp, 0x4]
-	ldr r0, _0805B968
+	ldr r0, _0805B968 @ =gMapHeader
 	ldr r5, [r0, 0x4]
 	cmp r5, 0
 	beq _0805B958
-	ldr r4, _0805B96C
+	ldr r4, _0805B96C @ =gSaveBlock1
 	ldrh r0, [r4]
 	subs r1, r0, 0x2
 	lsls r1, 16
@@ -1537,7 +1537,7 @@ _0805B8F2:
 	lsls r0, r5, 1
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _0805B970
+	ldr r1, _0805B970 @ =0x02026354
 	adds r4, r0, r1
 	ldrh r0, [r4, 0x4]
 	adds r0, 0x7
@@ -1603,7 +1603,7 @@ _0805B970: .4byte 0x02026354
 RemoveFieldObjectsOutsideView: @ 805B974
 	push {r4-r6,lr}
 	movs r3, 0
-	ldr r6, _0805B9C8
+	ldr r6, _0805B9C8 @ =gLinkPlayerMapObjects
 _0805B97A:
 	movs r2, 0
 	movs r4, 0
@@ -1629,10 +1629,10 @@ _0805B992:
 	lsls r0, r3, 3
 	adds r0, r3
 	lsls r0, 2
-	ldr r1, _0805B9CC
+	ldr r1, _0805B9CC @ =gMapObjects
 	adds r2, r0, r1
 	ldr r0, [r2]
-	ldr r1, _0805B9D0
+	ldr r1, _0805B9D0 @ =0x00010001
 	ands r0, r1
 	cmp r0, 0x1
 	bne _0805B9BA
@@ -1656,7 +1656,7 @@ _0805B9D0: .4byte 0x00010001
 RemoveFieldObjectIfOutsideView: @ 805B9D4
 	push {r4-r7,lr}
 	adds r3, r0, 0
-	ldr r2, _0805BA4C
+	ldr r2, _0805BA4C @ =gSaveBlock1
 	ldrh r0, [r2]
 	subs r1, r0, 0x2
 	lsls r1, 16
@@ -1731,7 +1731,7 @@ sub_805B710: @ 805BA50
 	lsrs r5, 16
 	bl ClearPlayerAvatarInfo
 	movs r6, 0
-	ldr r7, _0805BA98
+	ldr r7, _0805BA98 @ =gMapObjects
 	lsls r4, 16
 	lsls r5, 16
 _0805BA6A:
@@ -1779,7 +1779,7 @@ sub_805B75C: @ 805BA9C
 	lsrs r2, 16
 	mov r10, r2
 	movs r7, 0
-	ldr r2, _0805BC40
+	ldr r2, _0805BC40 @ =gLinkPlayerMapObjects
 _0805BABE:
 	lsls r0, r7, 2
 	adds r1, r0, r2
@@ -1800,7 +1800,7 @@ _0805BAD0:
 	lsls r0, r1, 3
 	add r0, r8
 	lsls r0, 2
-	ldr r1, _0805BC44
+	ldr r1, _0805BC44 @ =gMapObjects
 	adds r6, r0, r1
 	movs r0, 0
 	str r0, [sp, 0x20]
@@ -1808,7 +1808,7 @@ _0805BAD0:
 	bl GetFieldObjectGraphicsInfo
 	adds r5, r0, 0
 	ldrh r2, [r5, 0x6]
-	ldr r1, _0805BC48
+	ldr r1, _0805BC48 @ =0xffff0000
 	add r4, sp, 0x18
 	ldr r0, [r4, 0x4]
 	ands r0, r1
@@ -1821,7 +1821,7 @@ _0805BAD0:
 	bl MakeObjectTemplateFromFieldObjectGraphicsInfoWithCallbackIndex
 	str r4, [sp, 0xC]
 	mov r0, sp
-	ldr r2, _0805BC4C
+	ldr r2, _0805BC4C @ =0x0000ffff
 	adds r4, r2, 0
 	strh r4, [r0, 0x2]
 	ldrb r1, [r5, 0xC]
@@ -1856,7 +1856,7 @@ _0805BB3C:
 	lsls r0, r7, 4
 	adds r0, r7
 	lsls r0, 2
-	ldr r1, _0805BC50
+	ldr r1, _0805BC50 @ =gSprites
 	adds r4, r0, r1
 	mov r1, r9
 	lsls r0, r1, 16
@@ -2011,10 +2011,10 @@ SetPlayerAvatarFieldObjectIdAndObjectId: @ 805BC8C
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0805BCB8
+	ldr r5, _0805BCB8 @ =gPlayerAvatar
 	strb r0, [r5, 0x5]
 	strb r1, [r5, 0x4]
-	ldr r1, _0805BCBC
+	ldr r1, _0805BCBC @ =gMapObjects
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
@@ -2049,7 +2049,7 @@ sub_805B980: @ 805BCC0
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805BDBC
+	ldr r1, _0805BDBC @ =gSprites
 	adds r4, r0, r1
 	ldrb r1, [r5, 0xC]
 	movs r7, 0xF
@@ -2185,7 +2185,7 @@ unref_sub_805BA80: @ 805BDC0
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805BDFC
+	ldr r1, _0805BDFC @ =gMapObjects
 	adds r0, r1
 	adds r1, r4, 0
 	bl sub_805B980
@@ -2213,7 +2213,7 @@ FieldObjectTurn: @ 805BE00
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r5, _0805BE4C
+	ldr r5, _0805BE4C @ =gSprites
 	adds r4, r5
 	ldrb r0, [r6, 0x18]
 	lsls r0, 28
@@ -2261,7 +2261,7 @@ FieldObjectTurnByLocalIdAndMap: @ 805BE50
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805BE8C
+	ldr r1, _0805BE8C @ =gMapObjects
 	adds r0, r1
 	adds r1, r4, 0
 	bl FieldObjectTurn
@@ -2283,7 +2283,7 @@ unref_sub_805BB50: @ 805BE90
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805BEAC
+	ldr r2, _0805BEAC @ =gMapObjects
 	adds r0, r2
 	bl FieldObjectTurn
 	pop {r0}
@@ -2335,7 +2335,7 @@ get_berry_tree_graphics: @ 805BEB0
 	bls _0805BF04
 	movs r4, 0
 _0805BF04:
-	ldr r0, _0805BF44
+	ldr r0, _0805BF44 @ =gBerryTreeGraphicsIdTablePointers
 	lsls r4, 2
 	adds r0, r4, r0
 	ldr r0, [r0]
@@ -2343,11 +2343,11 @@ _0805BF04:
 	ldrb r1, [r0]
 	adds r0, r5, 0
 	bl sub_805B980
-	ldr r0, _0805BF48
+	ldr r0, _0805BF48 @ =gBerryTreePicTablePointers
 	adds r0, r4, r0
 	ldr r0, [r0]
 	str r0, [r7, 0xC]
-	ldr r0, _0805BF4C
+	ldr r0, _0805BF4C @ =gBerryTreePaletteSlotTablePointers
 	adds r4, r0
 	ldr r0, [r4]
 	adds r0, r6
@@ -2389,7 +2389,7 @@ _0805BF68:
 	bls _0805BF6E
 	movs r1, 0x5
 _0805BF6E:
-	ldr r0, _0805BF7C
+	ldr r0, _0805BF7C @ =gMapObjectGraphicsInfoPointers
 	lsls r1, 2
 	adds r1, r0
 	ldr r0, [r1]
@@ -2434,7 +2434,7 @@ npc_by_local_id_and_map_set_field_1_bit_x20: @ 805BF9C
 	lsls r0, 24
 	cmp r0, 0
 	bne _0805BFDE
-	ldr r2, _0805BFE8
+	ldr r2, _0805BFE8 @ =gMapObjects
 	mov r0, sp
 	ldrb r0, [r0]
 	lsls r1, r0, 3
@@ -2489,7 +2489,7 @@ sub_805BCC0: @ 805C000
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805C02C
+	ldr r1, _0805C02C @ =gMapObjects
 	adds r0, r1
 	ldrb r1, [r0]
 	movs r2, 0x4
@@ -2524,13 +2524,13 @@ sub_805BCF0: @ 805C030
 	lsls r2, r0, 3
 	adds r2, r0
 	lsls r2, 2
-	ldr r0, _0805C080
+	ldr r0, _0805C080 @ =gMapObjects
 	adds r2, r0
 	ldrb r1, [r2, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805C084
+	ldr r1, _0805C084 @ =gSprites
 	adds r0, r1
 	ldrb r1, [r2, 0x3]
 	movs r3, 0x4
@@ -2568,7 +2568,7 @@ sub_805BD48: @ 805C088
 	lsls r1, r0, 3
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _0805C0CC
+	ldr r0, _0805C0CC @ =gMapObjects
 	adds r1, r0
 	ldrb r2, [r1, 0x3]
 	movs r0, 0x5
@@ -2607,7 +2607,7 @@ sub_805BD90: @ 805C0D0
 	lsls r0, 24
 	cmp r0, 0
 	bne _0805C114
-	ldr r2, _0805C11C
+	ldr r2, _0805C11C @ =gMapObjects
 	mov r0, sp
 	ldrb r1, [r0]
 	lsls r0, r1, 3
@@ -2618,7 +2618,7 @@ sub_805BD90: @ 805C0D0
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805C120
+	ldr r1, _0805C120 @ =gSprites
 	adds r0, r1
 	strh r5, [r0, 0x24]
 	strh r4, [r0, 0x26]
@@ -2636,7 +2636,7 @@ _0805C120: .4byte gSprites
 gpu_pal_allocator_reset__manage_upper_four: @ 805C124
 	push {lr}
 	bl FreeAllSpritePalettes
-	ldr r1, _0805C134
+	ldr r1, _0805C134 @ =gReservedSpritePaletteCount
 	movs r0, 0xC
 	strb r0, [r1]
 	pop {r0}
@@ -2653,11 +2653,11 @@ sub_805BDF8: @ 805C138
 	bl FindFieldObjectPaletteIndexByTag
 	lsls r0, 24
 	lsrs r1, r0, 24
-	ldr r0, _0805C15C
+	ldr r0, _0805C15C @ =0x000011ff
 	cmp r1, r0
 	beq _0805C156
 	lsls r0, r1, 3
-	ldr r1, _0805C160
+	ldr r1, _0805C160 @ =gUnknown_0837377C
 	adds r0, r1
 	bl sub_805BE58
 _0805C156:
@@ -2674,7 +2674,7 @@ unref_sub_805BE24: @ 805C164
 	adds r5, r0, 0
 	movs r4, 0
 	ldrh r0, [r5]
-	ldr r1, _0805C194
+	ldr r1, _0805C194 @ =0x000011ff
 	cmp r0, r1
 	beq _0805C18E
 	adds r6, r1, 0
@@ -2732,7 +2732,7 @@ pal_patch_for_npc: @ 805C1C0
 	lsrs r4, 24
 	bl FindFieldObjectPaletteIndexByTag
 	lsls r0, 24
-	ldr r1, _0805C1F4
+	ldr r1, _0805C1F4 @ =gUnknown_0837377C
 	lsrs r0, 21
 	adds r0, r1
 	ldr r0, [r0]
@@ -2783,9 +2783,9 @@ FindFieldObjectPaletteIndexByTag: @ 805C224
 	lsls r0, 16
 	lsrs r5, r0, 16
 	movs r2, 0
-	ldr r0, _0805C24C
+	ldr r0, _0805C24C @ =gUnknown_0837377C
 	ldrh r1, [r0, 0x4]
-	ldr r3, _0805C250
+	ldr r3, _0805C250 @ =0x000011ff
 	adds r4, r0, 0
 	cmp r1, r3
 	beq _0805C264
@@ -2830,12 +2830,12 @@ npc_load_two_palettes__no_record: @ 805C26C
 	adds r1, r5, 0
 	bl pal_patch_for_npc
 	movs r3, 0
-	ldr r1, _0805C2B4
+	ldr r1, _0805C2B4 @ =gUnknown_08373874
 	ldrh r0, [r1]
-	ldr r2, _0805C2B8
+	ldr r2, _0805C2B8 @ =0x000011ff
 	cmp r0, r2
 	beq _0805C2D4
-	ldr r0, _0805C2BC
+	ldr r0, _0805C2BC @ =gUnknown_0830FD14
 	adds r5, r0
 	adds r6, r2, 0
 _0805C290:
@@ -2846,7 +2846,7 @@ _0805C290:
 	bne _0805C2C4
 	adds r1, 0x4
 	adds r1, r2, r1
-	ldr r0, _0805C2C0
+	ldr r0, _0805C2C0 @ =gUnknown_030005A4
 	ldrb r0, [r0]
 	ldr r1, [r1]
 	lsls r0, 1
@@ -2882,18 +2882,18 @@ npc_load_two_palettes__and_record: @ 805C2DC
 	lsrs r4, r0, 16
 	lsls r1, 24
 	lsrs r5, r1, 24
-	ldr r0, _0805C328
+	ldr r0, _0805C328 @ =gUnknown_030005A6
 	strh r4, [r0]
 	adds r0, r4, 0
 	adds r1, r5, 0
 	bl pal_patch_for_npc
 	movs r3, 0
-	ldr r1, _0805C32C
+	ldr r1, _0805C32C @ =gUnknown_083738E4
 	ldrh r0, [r1]
-	ldr r2, _0805C330
+	ldr r2, _0805C330 @ =0x000011ff
 	cmp r0, r2
 	beq _0805C34C
-	ldr r0, _0805C334
+	ldr r0, _0805C334 @ =gUnknown_0830FD14
 	adds r5, r0
 	adds r6, r2, 0
 _0805C304:
@@ -2904,7 +2904,7 @@ _0805C304:
 	bne _0805C33C
 	adds r1, 0x4
 	adds r1, r2, r1
-	ldr r0, _0805C338
+	ldr r0, _0805C338 @ =gUnknown_030005A4
 	ldrb r0, [r0]
 	ldr r1, [r1]
 	lsls r0, 1
@@ -2994,7 +2994,7 @@ sub_805C058: @ 805C398
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805C434
+	ldr r1, _0805C434 @ =gSprites
 	adds r7, r0, r1
 	ldrb r0, [r6, 0x5]
 	bl GetFieldObjectGraphicsInfo
@@ -3085,7 +3085,7 @@ sub_805C0F8: @ 805C438
 	lsls r0, r3, 3
 	adds r0, r3
 	lsls r0, 2
-	ldr r3, _0805C488
+	ldr r3, _0805C488 @ =gMapObjects
 	adds r0, r3
 	movs r3, 0xE0
 	lsls r3, 11
@@ -3118,14 +3118,14 @@ npc_coords_shift_still: @ 805C48C
 	thumb_func_start UpdateFieldObjectCoordsForCameraUpdate
 UpdateFieldObjectCoordsForCameraUpdate: @ 805C4A0
 	push {r4,r5,lr}
-	ldr r2, _0805C500
+	ldr r2, _0805C500 @ =gUnknown_0202E844
 	ldrb r1, [r2]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	beq _0805C4F8
 	movs r3, 0
-	ldr r5, _0805C504
+	ldr r5, _0805C504 @ =gMapObjects
 	movs r0, 0x4
 	ldrsh r4, [r2, r0]
 	movs r0, 0x8
@@ -3184,7 +3184,7 @@ GetFieldObjectIdByXYZ: @ 805C508
 	lsls r2, 24
 	lsrs r5, r2, 24
 	movs r4, 0
-	ldr r0, _0805C554
+	ldr r0, _0805C554 @ =gMapObjects
 	mov r8, r0
 _0805C520:
 	lsls r0, r4, 3
@@ -3283,14 +3283,14 @@ AddCameraObject: @ 805C5C4
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _0805C600
+	ldr r0, _0805C600 @ =gSpriteTemplate_830FD24
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x4
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0805C604
+	ldr r2, _0805C604 @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
@@ -3317,7 +3317,7 @@ ObjectCB_CameraObject: @ 805C608
 	push {r4,r5,lr}
 	sub sp, 0xC
 	mov r2, sp
-	ldr r1, _0805C62C
+	ldr r1, _0805C62C @ =gUnknown_0830FD3C
 	ldm r1!, {r3-r5}
 	stm r2!, {r3-r5}
 	movs r2, 0x30
@@ -3337,7 +3337,7 @@ _0805C62C: .4byte gUnknown_0830FD3C
 	thumb_func_start CameraObject_0
 CameraObject_0: @ 805C630
 	push {lr}
-	ldr r3, _0805C668
+	ldr r3, _0805C668 @ =gSprites
 	movs r1, 0x2E
 	ldrsh r2, [r0, r1]
 	lsls r1, r2, 4
@@ -3370,7 +3370,7 @@ _0805C668: .4byte gSprites
 	thumb_func_start CameraObject_1
 CameraObject_1: @ 805C66C
 	push {r4,r5,lr}
-	ldr r3, _0805C6A0
+	ldr r3, _0805C6A0 @ =gSprites
 	movs r1, 0x2E
 	ldrsh r2, [r0, r1]
 	lsls r1, r2, 4
@@ -3401,7 +3401,7 @@ _0805C6A0: .4byte gSprites
 	thumb_func_start CameraObject_2
 CameraObject_2: @ 805C6A4
 	push {r4,lr}
-	ldr r4, _0805C6D0
+	ldr r4, _0805C6D0 @ =gSprites
 	movs r1, 0x2E
 	ldrsh r2, [r0, r1]
 	lsls r1, r2, 4
@@ -3430,7 +3430,7 @@ _0805C6D0: .4byte gSprites
 FindCameraObject: @ 805C6D4
 	push {r4,r5,lr}
 	movs r3, 0
-	ldr r4, _0805C700
+	ldr r4, _0805C700 @ =gSprites
 	adds r5, r4, 0
 	adds r5, 0x1C
 _0805C6DE:
@@ -3446,7 +3446,7 @@ _0805C6DE:
 	beq _0805C708
 	adds r0, r1, r5
 	ldr r1, [r0]
-	ldr r0, _0805C704
+	ldr r0, _0805C704 @ =ObjectCB_CameraObject
 	cmp r1, r0
 	bne _0805C708
 	adds r0, r2, 0
@@ -3541,7 +3541,7 @@ unref_sub_805C43C: @ 805C77C
 	lsls r3, 24
 	lsrs r7, r3, 24
 	movs r5, 0
-	ldr r1, _0805C7C4
+	ldr r1, _0805C7C4 @ =gSprites
 _0805C796:
 	lsls r0, r5, 4
 	adds r0, r5
@@ -3595,7 +3595,7 @@ obj_unfreeze: @ 805C7E0
 	lsls r3, 24
 	lsrs r7, r3, 24
 	movs r5, 0x3F
-	ldr r3, _0805C834
+	ldr r3, _0805C834 @ =gSprites
 	movs r2, 0x1
 	negs r2, r2
 _0805C7FE:
@@ -3700,7 +3700,7 @@ GetFieldObjectScriptPointerByFieldObjectId: @ 805C8AC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0805C8CC
+	ldr r1, _0805C8CC @ =gMapObjects
 	lsls r2, r0, 3
 	adds r2, r0
 	lsls r2, 2
@@ -3735,7 +3735,7 @@ GetFieldObjectFlagIdByFieldObjectId: @ 805C8E8
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0805C90C
+	ldr r1, _0805C90C @ =gMapObjects
 	lsls r2, r0, 3
 	adds r2, r0
 	lsls r2, 2
@@ -3767,7 +3767,7 @@ unref_sub_805C5D0: @ 805C910
 	lsls r0, 24
 	cmp r0, 0
 	bne _0805C944
-	ldr r2, _0805C940
+	ldr r2, _0805C940 @ =gMapObjects
 	mov r0, sp
 	ldrb r1, [r0]
 	lsls r0, r1, 3
@@ -3790,7 +3790,7 @@ _0805C946:
 unref_sub_805C60C: @ 805C94C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0805C960
+	ldr r2, _0805C960 @ =gMapObjects
 	lsls r1, r0, 3
 	adds r1, r0
 	lsls r1, 2
@@ -3816,7 +3816,7 @@ unref_sub_805C624: @ 805C964
 	lsls r0, 24
 	cmp r0, 0
 	bne _0805C998
-	ldr r2, _0805C994
+	ldr r2, _0805C994 @ =gMapObjects
 	mov r0, sp
 	ldrb r1, [r0]
 	lsls r0, r1, 3
@@ -3839,7 +3839,7 @@ _0805C99A:
 FieldObjectGetBerryTreeId: @ 805C9A0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0805C9B4
+	ldr r2, _0805C9B4 @ =gMapObjects
 	lsls r1, r0, 3
 	adds r1, r0
 	lsls r1, 2
@@ -3859,7 +3859,7 @@ GetFieldObjectTemplateByLocalIdAndMap: @ 805C9B8
 	lsrs r3, r1, 24
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r1, _0805C9E4
+	ldr r1, _0805C9E4 @ =gSaveBlock1
 	movs r0, 0x5
 	ldrsb r0, [r1, r0]
 	cmp r0, r3
@@ -3871,7 +3871,7 @@ GetFieldObjectTemplateByLocalIdAndMap: @ 805C9B8
 	movs r0, 0xC2
 	lsls r0, 4
 	adds r1, r0
-	ldr r0, _0805C9E8
+	ldr r0, _0805C9E8 @ =gMapHeader
 	ldr r0, [r0, 0x4]
 	b _0805C9F8
 	.align 2, 0
@@ -3932,7 +3932,7 @@ sub_805C700: @ 805CA40
 	push {r4,r5,lr}
 	adds r2, r0, 0
 	ldrb r1, [r2, 0x9]
-	ldr r4, _0805CA60
+	ldr r4, _0805CA60 @ =gSaveBlock1
 	movs r0, 0x5
 	ldrsb r0, [r4, r0]
 	adds r5, r4, 0
@@ -4031,7 +4031,7 @@ sub_805C78C: @ 805CACC
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805CB00
+	ldr r1, _0805CB00 @ =gMapObjects
 	adds r0, r1
 	bl sub_805C754
 _0805CAFA:
@@ -4049,13 +4049,13 @@ sub_805C7C4: @ 805CB04
 	lsls r4, 24
 	lsrs r4, 24
 	bl gpu_pal_allocator_reset__manage_upper_four
-	ldr r1, _0805CB34
-	ldr r2, _0805CB38
+	ldr r1, _0805CB34 @ =gUnknown_030005A6
+	ldr r2, _0805CB38 @ =0x000011ff
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _0805CB3C
+	ldr r0, _0805CB3C @ =gUnknown_030005A4
 	strb r4, [r0]
-	ldr r1, _0805CB40
+	ldr r1, _0805CB40 @ =gUnknown_0837399C
 	ldrb r0, [r0]
 	lsls r0, 2
 	adds r0, r1
@@ -4080,8 +4080,8 @@ npc_paltag_by_palslot: @ 805CB44
 	lsrs r2, r0, 24
 	cmp r2, 0x9
 	bhi _0805CB80
-	ldr r1, _0805CB60
-	ldr r0, _0805CB64
+	ldr r1, _0805CB60 @ =gUnknown_0837399C
+	ldr r0, _0805CB64 @ =gUnknown_030005A4
 	ldrb r0, [r0]
 	lsls r0, 2
 	adds r0, r1
@@ -4094,7 +4094,7 @@ _0805CB64: .4byte gUnknown_030005A4
 _0805CB68:
 	adds r1, r4, 0x4
 	adds r1, r2, r1
-	ldr r0, _0805CB7C
+	ldr r0, _0805CB7C @ =gUnknown_030005A4
 	ldrb r0, [r0]
 	ldr r1, [r1]
 	lsls r0, 1
@@ -4106,14 +4106,14 @@ _0805CB74:
 _0805CB7C: .4byte gUnknown_030005A4
 _0805CB80:
 	movs r3, 0
-	ldr r0, _0805CBB8
+	ldr r0, _0805CBB8 @ =gUnknown_083738E4
 	ldrh r1, [r0]
-	ldr r2, _0805CBBC
+	ldr r2, _0805CBBC @ =0x000011ff
 	adds r4, r0, 0
 	cmp r1, r2
 	beq _0805CBB0
 	adds r6, r4, 0
-	ldr r0, _0805CBC0
+	ldr r0, _0805CBC0 @ =gUnknown_030005A6
 	ldrh r1, [r0]
 	adds r5, r2, 0
 _0805CB96:
@@ -4131,7 +4131,7 @@ _0805CB96:
 	cmp r0, r5
 	bne _0805CB96
 _0805CBB0:
-	ldr r0, _0805CBBC
+	ldr r0, _0805CBBC @ =0x000011ff
 _0805CBB2:
 	pop {r4-r6}
 	pop {r1}
@@ -4151,9 +4151,9 @@ sub_805C884: @ 805CBC4
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805CBE0
+	ldr r2, _0805CBE0 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805CBE4
+	ldr r2, _0805CBE4 @ =sub_805C8A8
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -4177,9 +4177,9 @@ sub_805C8AC: @ 805CBEC
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805CC08
+	ldr r2, _0805CC08 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805CC0C
+	ldr r2, _0805CC0C @ =sub_805C8D0
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -4191,7 +4191,7 @@ _0805CC0C: .4byte sub_805C8D0
 	thumb_func_start sub_805C8D0
 sub_805C8D0: @ 805CC10
 	push {r4,lr}
-	ldr r3, _0805CC2C
+	ldr r3, _0805CC2C @ =gUnknown_08375224
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -4250,7 +4250,7 @@ sub_805C930: @ 805CC70
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805CCA4
-	ldr r5, _0805CCA0
+	ldr r5, _0805CCA0 @ =gUnknown_0837520C
 	bl Random
 	movs r4, 0x3
 	adds r1, r4, 0
@@ -4301,7 +4301,7 @@ sub_805C98C: @ 805CCCC
 	sub sp, 0x4
 	adds r5, r0, 0
 	adds r6, r1, 0
-	ldr r1, _0805CD14
+	ldr r1, _0805CD14 @ =gUnknown_08375240
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -4887,7 +4887,7 @@ _0805D0EC:
 	lsls r0, 16
 	lsrs r3, r0, 16
 _0805D0FA:
-	ldr r0, _0805D124
+	ldr r0, _0805D124 @ =gUnknown_08375244
 	lsls r4, r6, 2
 	adds r4, r0
 	mov r0, sp
@@ -4921,9 +4921,9 @@ sub_805CDE8: @ 805D128
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805D144
+	ldr r2, _0805D144 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805D148
+	ldr r2, _0805D148 @ =sub_805CE0C
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -4935,7 +4935,7 @@ _0805D148: .4byte sub_805CE0C
 	thumb_func_start sub_805CE0C
 sub_805CE0C: @ 805D14C
 	push {r4,lr}
-	ldr r3, _0805D168
+	ldr r3, _0805D168 @ =gUnknown_08375270
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -4995,7 +4995,7 @@ sub_805CE6C: @ 805D1AC
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805D1E2
-	ldr r4, _0805D1EC
+	ldr r4, _0805D1EC @ =gUnknown_0837520C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -5055,7 +5055,7 @@ sub_805CEE0: @ 805D220
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805D264
+	ldr r1, _0805D264 @ =gUnknown_08375240
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -5094,9 +5094,9 @@ sub_805CF28: @ 805D268
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805D284
+	ldr r2, _0805D284 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805D288
+	ldr r2, _0805D288 @ =sub_805CF4C
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -5108,7 +5108,7 @@ _0805D288: .4byte sub_805CF4C
 	thumb_func_start sub_805CF4C
 sub_805CF4C: @ 805D28C
 	push {r4,lr}
-	ldr r3, _0805D2A8
+	ldr r3, _0805D2A8 @ =gUnknown_08375284
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -5167,7 +5167,7 @@ sub_805CFAC: @ 805D2EC
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805D320
-	ldr r5, _0805D31C
+	ldr r5, _0805D31C @ =gUnknown_0837520C
 	bl Random
 	movs r4, 0x3
 	adds r1, r4, 0
@@ -5218,7 +5218,7 @@ sub_805D008: @ 805D348
 	sub sp, 0x4
 	adds r5, r0, 0
 	adds r6, r1, 0
-	ldr r1, _0805D390
+	ldr r1, _0805D390 @ =gUnknown_083752A0
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
@@ -5309,9 +5309,9 @@ sub_805D0AC: @ 805D3EC
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805D408
+	ldr r2, _0805D408 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805D40C
+	ldr r2, _0805D40C @ =sub_805D0D0
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -5323,7 +5323,7 @@ _0805D40C: .4byte sub_805D0D0
 	thumb_func_start sub_805D0D0
 sub_805D0D0: @ 805D410
 	push {r4,lr}
-	ldr r3, _0805D42C
+	ldr r3, _0805D42C @ =gUnknown_083752A4
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -5382,7 +5382,7 @@ sub_805D130: @ 805D470
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805D4A4
-	ldr r5, _0805D4A0
+	ldr r5, _0805D4A0 @ =gUnknown_0837520C
 	bl Random
 	movs r4, 0x3
 	adds r1, r4, 0
@@ -5433,7 +5433,7 @@ sub_805D18C: @ 805D4CC
 	sub sp, 0x4
 	adds r5, r0, 0
 	adds r6, r1, 0
-	ldr r1, _0805D514
+	ldr r1, _0805D514 @ =gUnknown_083752C0
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
@@ -5524,9 +5524,9 @@ sub_805D230: @ 805D570
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805D58C
+	ldr r2, _0805D58C @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805D590
+	ldr r2, _0805D590 @ =sub_805D254
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -5538,7 +5538,7 @@ _0805D590: .4byte sub_805D254
 	thumb_func_start sub_805D254
 sub_805D254: @ 805D594
 	push {r4,lr}
-	ldr r3, _0805D5B0
+	ldr r3, _0805D5B0 @ =gUnknown_083752C4
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -5617,7 +5617,7 @@ FieldObjectCB_BerryTree: @ 805D610
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805D64C
+	ldr r1, _0805D64C @ =gMapObjects
 	adds r5, r0, r1
 	ldrh r1, [r4, 0x3C]
 	movs r0, 0x1
@@ -5632,7 +5632,7 @@ FieldObjectCB_BerryTree: @ 805D610
 	orrs r0, r1
 	strh r0, [r4, 0x3C]
 _0805D63C:
-	ldr r2, _0805D650
+	ldr r2, _0805D650 @ =sub_805D314
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl meta_step
@@ -5647,7 +5647,7 @@ _0805D650: .4byte sub_805D314
 	thumb_func_start sub_805D314
 sub_805D314: @ 805D654
 	push {r4,lr}
-	ldr r3, _0805D670
+	ldr r3, _0805D670 @ =gUnknown_083752D0
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -5694,7 +5694,7 @@ do_berry_tree_growth_sparkle_1: @ 805D674
 	ldrb r0, [r6]
 	cmp r0, 0x4
 	bne _0805D6DA
-	ldr r1, _0805D6E0
+	ldr r1, _0805D6E0 @ =gUnknown_0202FF84
 	movs r2, 0x10
 	ldrsh r0, [r4, r2]
 	str r0, [r1]
@@ -5792,7 +5792,7 @@ do_berry_tree_growth_sparkle_2: @ 805D74C
 	movs r2, 0x2
 	orrs r2, r3
 	strh r2, [r1, 0x3C]
-	ldr r3, _0805D794
+	ldr r3, _0805D794 @ =gUnknown_0202FF84
 	movs r4, 0x10
 	ldrsh r2, [r0, r4]
 	str r2, [r3]
@@ -5915,9 +5915,9 @@ sub_805D4F4: @ 805D834
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805D850
+	ldr r2, _0805D850 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805D854
+	ldr r2, _0805D854 @ =sub_805D518
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -5929,7 +5929,7 @@ _0805D854: .4byte sub_805D518
 	thumb_func_start sub_805D518
 sub_805D518: @ 805D858
 	push {r4,lr}
-	ldr r3, _0805D874
+	ldr r3, _0805D874 @ =gUnknown_083752E4
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -5989,7 +5989,7 @@ sub_805D578: @ 805D8B8
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805D8EE
-	ldr r4, _0805D8F8
+	ldr r4, _0805D8F8 @ =gUnknown_0837520C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -6049,7 +6049,7 @@ sub_805D5EC: @ 805D92C
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805D970
+	ldr r1, _0805D970 @ =gUnknown_083752A0
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
@@ -6088,9 +6088,9 @@ sub_805D634: @ 805D974
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805D990
+	ldr r2, _0805D990 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805D994
+	ldr r2, _0805D994 @ =sub_805D658
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -6102,7 +6102,7 @@ _0805D994: .4byte sub_805D658
 	thumb_func_start sub_805D658
 sub_805D658: @ 805D998
 	push {r4,lr}
-	ldr r3, _0805D9B4
+	ldr r3, _0805D9B4 @ =gUnknown_083752F8
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -6162,7 +6162,7 @@ sub_805D6B8: @ 805D9F8
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805DA2E
-	ldr r4, _0805DA38
+	ldr r4, _0805DA38 @ =gUnknown_0837520C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -6222,7 +6222,7 @@ sub_805D72C: @ 805DA6C
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805DAB0
+	ldr r1, _0805DAB0 @ =gUnknown_083752C0
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
@@ -6261,9 +6261,9 @@ sub_805D774: @ 805DAB4
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805DAD0
+	ldr r2, _0805DAD0 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805DAD4
+	ldr r2, _0805DAD4 @ =sub_805D798
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -6275,7 +6275,7 @@ _0805DAD4: .4byte sub_805D798
 	thumb_func_start sub_805D798
 sub_805D798: @ 805DAD8
 	push {r4,lr}
-	ldr r3, _0805DAF4
+	ldr r3, _0805DAF4 @ =gUnknown_0837530C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -6335,7 +6335,7 @@ sub_805D7F8: @ 805DB38
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805DB6E
-	ldr r4, _0805DB78
+	ldr r4, _0805DB78 @ =gUnknown_0837521C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -6395,7 +6395,7 @@ sub_805D86C: @ 805DBAC
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805DBF0
+	ldr r1, _0805DBF0 @ =gUnknown_08375320
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
@@ -6434,9 +6434,9 @@ sub_805D8B4: @ 805DBF4
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805DC10
+	ldr r2, _0805DC10 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805DC14
+	ldr r2, _0805DC14 @ =sub_805D8D8
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -6448,7 +6448,7 @@ _0805DC14: .4byte sub_805D8D8
 	thumb_func_start sub_805D8D8
 sub_805D8D8: @ 805DC18
 	push {r4,lr}
-	ldr r3, _0805DC34
+	ldr r3, _0805DC34 @ =gUnknown_08375324
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -6508,7 +6508,7 @@ sub_805D938: @ 805DC78
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805DCAE
-	ldr r4, _0805DCB8
+	ldr r4, _0805DCB8 @ =gUnknown_0837521C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -6568,7 +6568,7 @@ sub_805D9AC: @ 805DCEC
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805DD30
+	ldr r1, _0805DD30 @ =gUnknown_08375338
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
@@ -6607,9 +6607,9 @@ sub_805D9F4: @ 805DD34
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805DD50
+	ldr r2, _0805DD50 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805DD54
+	ldr r2, _0805DD54 @ =sub_805DA18
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -6621,7 +6621,7 @@ _0805DD54: .4byte sub_805DA18
 	thumb_func_start sub_805DA18
 sub_805DA18: @ 805DD58
 	push {r4,lr}
-	ldr r3, _0805DD74
+	ldr r3, _0805DD74 @ =gUnknown_0837533C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -6681,7 +6681,7 @@ sub_805DA78: @ 805DDB8
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805DDEE
-	ldr r4, _0805DDF8
+	ldr r4, _0805DDF8 @ =gUnknown_0837521C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -6741,7 +6741,7 @@ sub_805DAEC: @ 805DE2C
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805DE70
+	ldr r1, _0805DE70 @ =gUnknown_08375350
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
@@ -6780,9 +6780,9 @@ sub_805DB34: @ 805DE74
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805DE90
+	ldr r2, _0805DE90 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805DE94
+	ldr r2, _0805DE94 @ =sub_805DB58
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -6794,7 +6794,7 @@ _0805DE94: .4byte sub_805DB58
 	thumb_func_start sub_805DB58
 sub_805DB58: @ 805DE98
 	push {r4,lr}
-	ldr r3, _0805DEB4
+	ldr r3, _0805DEB4 @ =gUnknown_08375354
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -6854,7 +6854,7 @@ sub_805DBB8: @ 805DEF8
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805DF2E
-	ldr r4, _0805DF38
+	ldr r4, _0805DF38 @ =gUnknown_0837521C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -6914,7 +6914,7 @@ sub_805DC2C: @ 805DF6C
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805DFB0
+	ldr r1, _0805DFB0 @ =gUnknown_08375368
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
@@ -6953,9 +6953,9 @@ sub_805DC74: @ 805DFB4
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805DFD0
+	ldr r2, _0805DFD0 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805DFD4
+	ldr r2, _0805DFD4 @ =sub_805DC98
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -6967,7 +6967,7 @@ _0805DFD4: .4byte sub_805DC98
 	thumb_func_start sub_805DC98
 sub_805DC98: @ 805DFD8
 	push {r4,lr}
-	ldr r3, _0805DFF4
+	ldr r3, _0805DFF4 @ =gUnknown_0837536C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -7027,7 +7027,7 @@ sub_805DCF8: @ 805E038
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805E06E
-	ldr r4, _0805E078
+	ldr r4, _0805E078 @ =gUnknown_0837521C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -7087,7 +7087,7 @@ sub_805DD6C: @ 805E0AC
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805E0F0
+	ldr r1, _0805E0F0 @ =gUnknown_08375380
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -7126,9 +7126,9 @@ sub_805DDB4: @ 805E0F4
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805E110
+	ldr r2, _0805E110 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805E114
+	ldr r2, _0805E114 @ =sub_805DDD8
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -7140,7 +7140,7 @@ _0805E114: .4byte sub_805DDD8
 	thumb_func_start sub_805DDD8
 sub_805DDD8: @ 805E118
 	push {r4,lr}
-	ldr r3, _0805E134
+	ldr r3, _0805E134 @ =gUnknown_08375384
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -7200,7 +7200,7 @@ sub_805DE38: @ 805E178
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805E1AE
-	ldr r4, _0805E1B8
+	ldr r4, _0805E1B8 @ =gUnknown_0837521C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -7260,7 +7260,7 @@ sub_805DEAC: @ 805E1EC
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805E230
+	ldr r1, _0805E230 @ =gUnknown_08375398
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -7299,9 +7299,9 @@ sub_805DEF4: @ 805E234
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805E250
+	ldr r2, _0805E250 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805E254
+	ldr r2, _0805E254 @ =sub_805DF18
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -7313,7 +7313,7 @@ _0805E254: .4byte sub_805DF18
 	thumb_func_start sub_805DF18
 sub_805DF18: @ 805E258
 	push {r4,lr}
-	ldr r3, _0805E274
+	ldr r3, _0805E274 @ =gUnknown_0837539C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -7373,7 +7373,7 @@ sub_805DF78: @ 805E2B8
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805E2EE
-	ldr r4, _0805E2F8
+	ldr r4, _0805E2F8 @ =gUnknown_0837521C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -7433,7 +7433,7 @@ sub_805DFEC: @ 805E32C
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805E370
+	ldr r1, _0805E370 @ =gUnknown_083753B0
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -7472,9 +7472,9 @@ sub_805E034: @ 805E374
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805E390
+	ldr r2, _0805E390 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805E394
+	ldr r2, _0805E394 @ =sub_805E058
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -7486,7 +7486,7 @@ _0805E394: .4byte sub_805E058
 	thumb_func_start sub_805E058
 sub_805E058: @ 805E398
 	push {r4,lr}
-	ldr r3, _0805E3B4
+	ldr r3, _0805E3B4 @ =gUnknown_083753B4
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -7546,7 +7546,7 @@ sub_805E0B8: @ 805E3F8
 	lsls r0, 24
 	cmp r0, 0
 	beq _0805E42E
-	ldr r4, _0805E438
+	ldr r4, _0805E438 @ =gUnknown_0837521C
 	bl Random
 	movs r5, 0x3
 	adds r1, r5, 0
@@ -7606,7 +7606,7 @@ sub_805E12C: @ 805E46C
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805E4B0
+	ldr r1, _0805E4B0 @ =gUnknown_083753C8
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -7645,9 +7645,9 @@ sub_805E174: @ 805E4B4
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805E4D0
+	ldr r2, _0805E4D0 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805E4D4
+	ldr r2, _0805E4D4 @ =sub_805E198
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -7659,7 +7659,7 @@ _0805E4D4: .4byte sub_805E198
 	thumb_func_start sub_805E198
 sub_805E198: @ 805E4D8
 	push {r4,lr}
-	ldr r3, _0805E4F4
+	ldr r3, _0805E4F4 @ =gUnknown_083753CC
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -7749,7 +7749,7 @@ sub_805E234: @ 805E574
 	sub sp, 0x8
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805E5B4
+	ldr r1, _0805E5B4 @ =gUnknown_083753DC
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -7788,9 +7788,9 @@ sub_805E278: @ 805E5B8
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805E5D4
+	ldr r2, _0805E5D4 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805E5D8
+	ldr r2, _0805E5D8 @ =sub_805E29C
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -7802,7 +7802,7 @@ _0805E5D8: .4byte sub_805E29C
 	thumb_func_start sub_805E29C
 sub_805E29C: @ 805E5DC
 	push {r4,lr}
-	ldr r3, _0805E5F8
+	ldr r3, _0805E5F8 @ =gUnknown_083753E4
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -7892,7 +7892,7 @@ sub_805E338: @ 805E678
 	sub sp, 0x8
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805E6B8
+	ldr r1, _0805E6B8 @ =gUnknown_083753F4
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -7931,9 +7931,9 @@ sub_805E37C: @ 805E6BC
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805E6D8
+	ldr r2, _0805E6D8 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805E6DC
+	ldr r2, _0805E6DC @ =sub_805E3A0
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -7945,7 +7945,7 @@ _0805E6DC: .4byte sub_805E3A0
 	thumb_func_start sub_805E3A0
 sub_805E3A0: @ 805E6E0
 	push {r4,lr}
-	ldr r3, _0805E6FC
+	ldr r3, _0805E6FC @ =gUnknown_083753FC
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -7978,7 +7978,7 @@ sub_805E3D4: @ 805E714
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r0, _0805E748
+	ldr r0, _0805E748 @ =gUnknown_0836DC09
 	ldrb r1, [r4, 0x6]
 	adds r1, r0
 	ldrb r1, [r1]
@@ -8247,9 +8247,9 @@ sub_805E5DC: @ 805E91C
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805E938
+	ldr r2, _0805E938 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805E93C
+	ldr r2, _0805E93C @ =sub_805E600
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8261,7 +8261,7 @@ _0805E93C: .4byte sub_805E600
 	thumb_func_start sub_805E600
 sub_805E600: @ 805E940
 	push {r4,lr}
-	ldr r3, _0805E95C
+	ldr r3, _0805E95C @ =gUnknown_0837540C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8283,7 +8283,7 @@ sub_805E620: @ 805E960
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805E9A4
+	ldr r1, _0805E9A4 @ =gUnknown_08375418
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -8324,9 +8324,9 @@ sub_805E668: @ 805E9A8
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805E9C4
+	ldr r2, _0805E9C4 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805E9C8
+	ldr r2, _0805E9C8 @ =sub_805E68C
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8338,7 +8338,7 @@ _0805E9C8: .4byte sub_805E68C
 	thumb_func_start sub_805E68C
 sub_805E68C: @ 805E9CC
 	push {r4,lr}
-	ldr r3, _0805E9E8
+	ldr r3, _0805E9E8 @ =gUnknown_0837541C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8360,7 +8360,7 @@ sub_805E6AC: @ 805E9EC
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805EA30
+	ldr r1, _0805EA30 @ =gUnknown_08375428
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -8401,9 +8401,9 @@ sub_805E6F4: @ 805EA34
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805EA50
+	ldr r2, _0805EA50 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805EA54
+	ldr r2, _0805EA54 @ =sub_805E718
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8415,7 +8415,7 @@ _0805EA54: .4byte sub_805E718
 	thumb_func_start sub_805E718
 sub_805E718: @ 805EA58
 	push {r4,lr}
-	ldr r3, _0805EA74
+	ldr r3, _0805EA74 @ =gUnknown_0837542C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8437,7 +8437,7 @@ sub_805E738: @ 805EA78
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805EABC
+	ldr r1, _0805EABC @ =gUnknown_08375438
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -8478,9 +8478,9 @@ sub_805E780: @ 805EAC0
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805EADC
+	ldr r2, _0805EADC @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805EAE0
+	ldr r2, _0805EAE0 @ =sub_805E7A4
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8492,7 +8492,7 @@ _0805EAE0: .4byte sub_805E7A4
 	thumb_func_start sub_805E7A4
 sub_805E7A4: @ 805EAE4
 	push {r4,lr}
-	ldr r3, _0805EB00
+	ldr r3, _0805EB00 @ =gUnknown_0837543C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8514,7 +8514,7 @@ sub_805E7C4: @ 805EB04
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805EB48
+	ldr r1, _0805EB48 @ =gUnknown_08375448
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -8555,9 +8555,9 @@ sub_805E80C: @ 805EB4C
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805EB68
+	ldr r2, _0805EB68 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805EB6C
+	ldr r2, _0805EB6C @ =sub_805E830
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8569,7 +8569,7 @@ _0805EB6C: .4byte sub_805E830
 	thumb_func_start sub_805E830
 sub_805E830: @ 805EB70
 	push {r4,lr}
-	ldr r3, _0805EB8C
+	ldr r3, _0805EB8C @ =gUnknown_0837544C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8591,7 +8591,7 @@ sub_805E850: @ 805EB90
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805EBD4
+	ldr r1, _0805EBD4 @ =gUnknown_08375458
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -8632,9 +8632,9 @@ sub_805E898: @ 805EBD8
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805EBF4
+	ldr r2, _0805EBF4 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805EBF8
+	ldr r2, _0805EBF8 @ =sub_805E8BC
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8646,7 +8646,7 @@ _0805EBF8: .4byte sub_805E8BC
 	thumb_func_start sub_805E8BC
 sub_805E8BC: @ 805EBFC
 	push {r4,lr}
-	ldr r3, _0805EC18
+	ldr r3, _0805EC18 @ =gUnknown_0837545C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8668,7 +8668,7 @@ sub_805E8DC: @ 805EC1C
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805EC60
+	ldr r1, _0805EC60 @ =gUnknown_08375468
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -8709,9 +8709,9 @@ sub_805E924: @ 805EC64
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805EC80
+	ldr r2, _0805EC80 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805EC84
+	ldr r2, _0805EC84 @ =sub_805E948
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8723,7 +8723,7 @@ _0805EC84: .4byte sub_805E948
 	thumb_func_start sub_805E948
 sub_805E948: @ 805EC88
 	push {r4,lr}
-	ldr r3, _0805ECA4
+	ldr r3, _0805ECA4 @ =gUnknown_0837546C
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8745,7 +8745,7 @@ sub_805E968: @ 805ECA8
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805ECEC
+	ldr r1, _0805ECEC @ =gUnknown_08375240
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -8786,9 +8786,9 @@ sub_805E9B0: @ 805ECF0
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805ED0C
+	ldr r2, _0805ED0C @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805ED10
+	ldr r2, _0805ED10 @ =sub_805E9D4
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8800,7 +8800,7 @@ _0805ED10: .4byte sub_805E9D4
 	thumb_func_start sub_805E9D4
 sub_805E9D4: @ 805ED14
 	push {r4,lr}
-	ldr r3, _0805ED30
+	ldr r3, _0805ED30 @ =gUnknown_08375478
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8822,7 +8822,7 @@ sub_805E9F4: @ 805ED34
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805ED78
+	ldr r1, _0805ED78 @ =gUnknown_08375484
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -8863,9 +8863,9 @@ sub_805EA3C: @ 805ED7C
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805ED98
+	ldr r2, _0805ED98 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805ED9C
+	ldr r2, _0805ED9C @ =sub_805EA60
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8877,7 +8877,7 @@ _0805ED9C: .4byte sub_805EA60
 	thumb_func_start sub_805EA60
 sub_805EA60: @ 805EDA0
 	push {r4,lr}
-	ldr r3, _0805EDBC
+	ldr r3, _0805EDBC @ =gUnknown_08375488
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8899,7 +8899,7 @@ sub_805EA80: @ 805EDC0
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805EE04
+	ldr r1, _0805EE04 @ =gUnknown_08375494
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -8940,9 +8940,9 @@ sub_805EAC8: @ 805EE08
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805EE24
+	ldr r2, _0805EE24 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805EE28
+	ldr r2, _0805EE28 @ =sub_805EAEC
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -8954,7 +8954,7 @@ _0805EE28: .4byte sub_805EAEC
 	thumb_func_start sub_805EAEC
 sub_805EAEC: @ 805EE2C
 	push {r4,lr}
-	ldr r3, _0805EE48
+	ldr r3, _0805EE48 @ =gUnknown_08375498
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -8976,7 +8976,7 @@ sub_805EB0C: @ 805EE4C
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805EE90
+	ldr r1, _0805EE90 @ =gUnknown_083754A4
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9017,9 +9017,9 @@ sub_805EB54: @ 805EE94
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805EEB0
+	ldr r2, _0805EEB0 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805EEB4
+	ldr r2, _0805EEB4 @ =sub_805EB78
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9031,7 +9031,7 @@ _0805EEB4: .4byte sub_805EB78
 	thumb_func_start sub_805EB78
 sub_805EB78: @ 805EEB8
 	push {r4,lr}
-	ldr r3, _0805EED4
+	ldr r3, _0805EED4 @ =gUnknown_083754A8
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9053,7 +9053,7 @@ sub_805EB98: @ 805EED8
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805EF1C
+	ldr r1, _0805EF1C @ =gUnknown_083754B4
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9094,9 +9094,9 @@ sub_805EBE0: @ 805EF20
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805EF3C
+	ldr r2, _0805EF3C @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805EF40
+	ldr r2, _0805EF40 @ =sub_805EC04
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9108,7 +9108,7 @@ _0805EF40: .4byte sub_805EC04
 	thumb_func_start sub_805EC04
 sub_805EC04: @ 805EF44
 	push {r4,lr}
-	ldr r3, _0805EF60
+	ldr r3, _0805EF60 @ =gUnknown_083754B8
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9130,7 +9130,7 @@ sub_805EC24: @ 805EF64
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805EFA8
+	ldr r1, _0805EFA8 @ =gUnknown_083754C4
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9171,9 +9171,9 @@ sub_805EC6C: @ 805EFAC
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805EFC8
+	ldr r2, _0805EFC8 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805EFCC
+	ldr r2, _0805EFCC @ =sub_805EC90
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9185,7 +9185,7 @@ _0805EFCC: .4byte sub_805EC90
 	thumb_func_start sub_805EC90
 sub_805EC90: @ 805EFD0
 	push {r4,lr}
-	ldr r3, _0805EFEC
+	ldr r3, _0805EFEC @ =gUnknown_083754C8
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9207,7 +9207,7 @@ sub_805ECB0: @ 805EFF0
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F034
+	ldr r1, _0805F034 @ =gUnknown_083754D4
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9248,9 +9248,9 @@ sub_805ECF8: @ 805F038
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F054
+	ldr r2, _0805F054 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F058
+	ldr r2, _0805F058 @ =sub_805ED1C
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9262,7 +9262,7 @@ _0805F058: .4byte sub_805ED1C
 	thumb_func_start sub_805ED1C
 sub_805ED1C: @ 805F05C
 	push {r4,lr}
-	ldr r3, _0805F078
+	ldr r3, _0805F078 @ =gUnknown_083754D8
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9284,7 +9284,7 @@ sub_805ED3C: @ 805F07C
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F0C0
+	ldr r1, _0805F0C0 @ =gUnknown_083754E4
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9325,9 +9325,9 @@ sub_805ED84: @ 805F0C4
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F0E0
+	ldr r2, _0805F0E0 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F0E4
+	ldr r2, _0805F0E4 @ =sub_805EDA8
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9339,7 +9339,7 @@ _0805F0E4: .4byte sub_805EDA8
 	thumb_func_start sub_805EDA8
 sub_805EDA8: @ 805F0E8
 	push {r4,lr}
-	ldr r3, _0805F104
+	ldr r3, _0805F104 @ =gUnknown_083754E8
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9361,7 +9361,7 @@ sub_805EDC8: @ 805F108
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F14C
+	ldr r1, _0805F14C @ =gUnknown_083754F4
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9402,9 +9402,9 @@ sub_805EE10: @ 805F150
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F16C
+	ldr r2, _0805F16C @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F170
+	ldr r2, _0805F170 @ =sub_805EE34
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9416,7 +9416,7 @@ _0805F170: .4byte sub_805EE34
 	thumb_func_start sub_805EE34
 sub_805EE34: @ 805F174
 	push {r4,lr}
-	ldr r3, _0805F190
+	ldr r3, _0805F190 @ =gUnknown_083754F8
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9438,7 +9438,7 @@ sub_805EE54: @ 805F194
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F1D8
+	ldr r1, _0805F1D8 @ =gUnknown_08375504
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9479,9 +9479,9 @@ sub_805EE9C: @ 805F1DC
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F1F8
+	ldr r2, _0805F1F8 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F1FC
+	ldr r2, _0805F1FC @ =sub_805EEC0
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9493,7 +9493,7 @@ _0805F1FC: .4byte sub_805EEC0
 	thumb_func_start sub_805EEC0
 sub_805EEC0: @ 805F200
 	push {r4,lr}
-	ldr r3, _0805F21C
+	ldr r3, _0805F21C @ =gUnknown_08375508
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9515,7 +9515,7 @@ sub_805EEE0: @ 805F220
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F264
+	ldr r1, _0805F264 @ =gUnknown_08375514
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9556,9 +9556,9 @@ sub_805EF28: @ 805F268
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F284
+	ldr r2, _0805F284 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F288
+	ldr r2, _0805F288 @ =sub_805EF4C
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9570,7 +9570,7 @@ _0805F288: .4byte sub_805EF4C
 	thumb_func_start sub_805EF4C
 sub_805EF4C: @ 805F28C
 	push {r4,lr}
-	ldr r3, _0805F2A8
+	ldr r3, _0805F2A8 @ =gUnknown_08375518
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9592,7 +9592,7 @@ sub_805EF6C: @ 805F2AC
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F2F0
+	ldr r1, _0805F2F0 @ =gUnknown_08375524
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9633,9 +9633,9 @@ sub_805EFB4: @ 805F2F4
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F310
+	ldr r2, _0805F310 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F314
+	ldr r2, _0805F314 @ =sub_805EFD8
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9647,7 +9647,7 @@ _0805F314: .4byte sub_805EFD8
 	thumb_func_start sub_805EFD8
 sub_805EFD8: @ 805F318
 	push {r4,lr}
-	ldr r3, _0805F334
+	ldr r3, _0805F334 @ =gUnknown_08375528
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9669,7 +9669,7 @@ sub_805EFF8: @ 805F338
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F37C
+	ldr r1, _0805F37C @ =gUnknown_08375534
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9710,9 +9710,9 @@ sub_805F040: @ 805F380
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F39C
+	ldr r2, _0805F39C @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F3A0
+	ldr r2, _0805F3A0 @ =sub_805F064
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9724,7 +9724,7 @@ _0805F3A0: .4byte sub_805F064
 	thumb_func_start sub_805F064
 sub_805F064: @ 805F3A4
 	push {r4,lr}
-	ldr r3, _0805F3C0
+	ldr r3, _0805F3C0 @ =gUnknown_08375538
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9746,7 +9746,7 @@ sub_805F084: @ 805F3C4
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F408
+	ldr r1, _0805F408 @ =gUnknown_08375544
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9787,9 +9787,9 @@ sub_805F0CC: @ 805F40C
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F428
+	ldr r2, _0805F428 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F42C
+	ldr r2, _0805F42C @ =sub_805F0F0
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9801,7 +9801,7 @@ _0805F42C: .4byte sub_805F0F0
 	thumb_func_start sub_805F0F0
 sub_805F0F0: @ 805F430
 	push {r4,lr}
-	ldr r3, _0805F44C
+	ldr r3, _0805F44C @ =gUnknown_08375548
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9823,7 +9823,7 @@ sub_805F110: @ 805F450
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F494
+	ldr r1, _0805F494 @ =gUnknown_08375554
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9864,9 +9864,9 @@ sub_805F158: @ 805F498
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F4B4
+	ldr r2, _0805F4B4 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F4B8
+	ldr r2, _0805F4B8 @ =sub_805F17C
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9878,7 +9878,7 @@ _0805F4B8: .4byte sub_805F17C
 	thumb_func_start sub_805F17C
 sub_805F17C: @ 805F4BC
 	push {r4,lr}
-	ldr r3, _0805F4D8
+	ldr r3, _0805F4D8 @ =gUnknown_08375558
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9900,7 +9900,7 @@ sub_805F19C: @ 805F4DC
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F520
+	ldr r1, _0805F520 @ =gUnknown_08375564
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -9941,9 +9941,9 @@ sub_805F1E4: @ 805F524
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F540
+	ldr r2, _0805F540 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F544
+	ldr r2, _0805F544 @ =sub_805F208
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -9955,7 +9955,7 @@ _0805F544: .4byte sub_805F208
 	thumb_func_start sub_805F208
 sub_805F208: @ 805F548
 	push {r4,lr}
-	ldr r3, _0805F564
+	ldr r3, _0805F564 @ =gUnknown_08375568
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -9977,7 +9977,7 @@ sub_805F228: @ 805F568
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F5AC
+	ldr r1, _0805F5AC @ =gUnknown_08375574
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -10018,9 +10018,9 @@ sub_805F270: @ 805F5B0
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F5CC
+	ldr r2, _0805F5CC @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F5D0
+	ldr r2, _0805F5D0 @ =sub_805F294
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -10032,7 +10032,7 @@ _0805F5D0: .4byte sub_805F294
 	thumb_func_start sub_805F294
 sub_805F294: @ 805F5D4
 	push {r4,lr}
-	ldr r3, _0805F5F0
+	ldr r3, _0805F5F0 @ =gUnknown_08375578
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -10054,7 +10054,7 @@ sub_805F2B4: @ 805F5F4
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805F638
+	ldr r1, _0805F638 @ =gUnknown_08375584
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -10095,9 +10095,9 @@ sub_805F2FC: @ 805F63C
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805F658
+	ldr r2, _0805F658 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805F65C
+	ldr r2, _0805F65C @ =sub_805F320
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -10109,7 +10109,7 @@ _0805F65C: .4byte sub_805F320
 	thumb_func_start sub_805F320
 sub_805F320: @ 805F660
 	push {r4,lr}
-	ldr r3, _0805F67C
+	ldr r3, _0805F67C @ =gUnknown_08375588
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -10150,8 +10150,8 @@ sub_805F364: @ 805F6A4
 	push {r4-r7,lr}
 	adds r6, r0, 0
 	adds r7, r1, 0
-	ldr r2, _0805F6C8
-	ldr r3, _0805F6CC
+	ldr r2, _0805F6C8 @ =gMapObjects
+	ldr r3, _0805F6CC @ =gPlayerAvatar
 	ldrb r1, [r3, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -10170,7 +10170,7 @@ _0805F6C4:
 _0805F6C8: .4byte gMapObjects
 _0805F6CC: .4byte gPlayerAvatar
 _0805F6D0:
-	ldr r5, _0805F700
+	ldr r5, _0805F700 @ =gUnknown_08375594
 	bl player_get_x22
 	adds r4, r0, 0
 	lsls r4, 24
@@ -10231,7 +10231,7 @@ sub_805F3F0: @ 805F730
 	adds r5, r1, 0
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r1, _0805F774
+	ldr r1, _0805F774 @ =gUnknown_0836DC09
 	ldrb r0, [r4, 0x6]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -10271,7 +10271,7 @@ sub_805F438: @ 805F778
 	mov r8, r3
 	lsls r2, 24
 	lsrs r6, r2, 24
-	ldr r1, _0805F82C
+	ldr r1, _0805F82C @ =gUnknown_0836DC09
 	ldrb r0, [r4, 0x6]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -10360,7 +10360,7 @@ sub_805F4F0: @ 805F830
 	mov r8, r3
 	lsls r2, 24
 	lsrs r6, r2, 24
-	ldr r1, _0805F8E4
+	ldr r1, _0805F8E4 @ =gUnknown_0836DC09
 	ldrb r0, [r4, 0x6]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -10449,7 +10449,7 @@ sub_805F5A8: @ 805F8E8
 	mov r8, r3
 	lsls r2, 24
 	lsrs r6, r2, 24
-	ldr r1, _0805F99C
+	ldr r1, _0805F99C @ =gUnknown_0836DC09
 	ldrb r0, [r4, 0x6]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -10538,7 +10538,7 @@ sub_805F660: @ 805F9A0
 	mov r8, r3
 	lsls r2, 24
 	lsrs r6, r2, 24
-	ldr r1, _0805FA54
+	ldr r1, _0805FA54 @ =gUnknown_0836DC09
 	ldrb r0, [r4, 0x6]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -10623,7 +10623,7 @@ cph_IM_DIFFERENT: @ 805FA58
 	adds r5, r1, 0
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r1, _0805FA9C
+	ldr r1, _0805FA9C @ =gUnknown_0836DC09
 	ldrb r0, [r4, 0x6]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -10663,7 +10663,7 @@ sub_805F760: @ 805FAA0
 	mov r8, r3
 	lsls r2, 24
 	lsrs r6, r2, 24
-	ldr r1, _0805FB54
+	ldr r1, _0805FB54 @ =gUnknown_0836DC09
 	ldrb r0, [r4, 0x6]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -10752,7 +10752,7 @@ oac_hopping: @ 805FB58
 	mov r8, r3
 	lsls r2, 24
 	lsrs r6, r2, 24
-	ldr r1, _0805FC1C
+	ldr r1, _0805FC1C @ =gUnknown_0836DC09
 	ldrb r0, [r4, 0x6]
 	adds r0, r1
 	ldrb r0, [r0]
@@ -10846,9 +10846,9 @@ sub_805F8E0: @ 805FC20
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805FC3C
+	ldr r2, _0805FC3C @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805FC40
+	ldr r2, _0805FC40 @ =sub_805F904
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -10860,7 +10860,7 @@ _0805FC40: .4byte sub_805F904
 	thumb_func_start sub_805F904
 sub_805F904: @ 805FC44
 	push {r4,lr}
-	ldr r3, _0805FC60
+	ldr r3, _0805FC60 @ =gUnknown_083755C0
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -10881,8 +10881,8 @@ mss_08062EA4: @ 805FC64
 	push {r4-r7,lr}
 	adds r6, r0, 0
 	adds r7, r1, 0
-	ldr r2, _0805FC88
-	ldr r3, _0805FC8C
+	ldr r2, _0805FC88 @ =gMapObjects
+	ldr r3, _0805FC8C @ =gPlayerAvatar
 	ldrb r1, [r3, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -10901,7 +10901,7 @@ _0805FC84:
 _0805FC88: .4byte gMapObjects
 _0805FC8C: .4byte gPlayerAvatar
 _0805FC90:
-	ldr r5, _0805FCC0
+	ldr r5, _0805FCC0 @ =gUnknown_08375594
 	bl player_get_x22
 	adds r4, r0, 0
 	lsls r4, 24
@@ -10911,7 +10911,7 @@ _0805FC90:
 	adds r2, r0, 0
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r3, _0805FCC4
+	ldr r3, _0805FCC4 @ =sub_8056E14
 	ldr r4, [r4]
 	adds r0, r6, 0
 	adds r1, r7, 0
@@ -10936,7 +10936,7 @@ FieldObjectCB_TreeDisguise: @ 805FCC8
 	lsls r1, r0, 3
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _0805FD2C
+	ldr r0, _0805FD2C @ =gMapObjects
 	adds r4, r1, r0
 	adds r6, r4, 0
 	adds r6, 0x21
@@ -10950,7 +10950,7 @@ FieldObjectCB_TreeDisguise: @ 805FCC8
 	cmp r0, 0
 	bne _0805FD10
 _0805FCF0:
-	ldr r1, _0805FD30
+	ldr r1, _0805FD30 @ =gUnknown_0202FF84
 	adds r2, r1, 0x4
 	adds r3, r1, 0
 	adds r3, 0x8
@@ -10970,9 +10970,9 @@ _0805FD10:
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805FD2C
+	ldr r1, _0805FD2C @ =gMapObjects
 	adds r0, r1
-	ldr r2, _0805FD34
+	ldr r2, _0805FD34 @ =sub_805F9F8
 	adds r1, r5, 0
 	bl meta_step
 	pop {r4-r6}
@@ -11002,7 +11002,7 @@ FieldObjectCB_MountainDisguise: @ 805FD44
 	lsls r1, r0, 3
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _0805FDA8
+	ldr r0, _0805FDA8 @ =gMapObjects
 	adds r4, r1, r0
 	adds r6, r4, 0
 	adds r6, 0x21
@@ -11016,7 +11016,7 @@ FieldObjectCB_MountainDisguise: @ 805FD44
 	cmp r0, 0
 	bne _0805FD8C
 _0805FD6C:
-	ldr r1, _0805FDAC
+	ldr r1, _0805FDAC @ =gUnknown_0202FF84
 	adds r2, r1, 0x4
 	adds r3, r1, 0
 	adds r3, 0x8
@@ -11036,9 +11036,9 @@ _0805FD8C:
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0805FDA8
+	ldr r1, _0805FDA8 @ =gMapObjects
 	adds r0, r1
-	ldr r2, _0805FDB0
+	ldr r2, _0805FDB0 @ =sub_805F9F8
 	adds r1, r5, 0
 	bl meta_step
 	pop {r4-r6}
@@ -11056,7 +11056,7 @@ FieldObjectCB_Hidden1: @ 805FDB4
 	adds r3, r0, 0
 	movs r1, 0x3C
 	ldrsh r0, [r3, r1]
-	ldr r4, _0805FE10
+	ldr r4, _0805FE10 @ =gMapObjects
 	cmp r0, 0
 	bne _0805FDF4
 	movs r0, 0x2E
@@ -11091,7 +11091,7 @@ _0805FDF4:
 	adds r0, r1
 	lsls r0, 2
 	adds r0, r4
-	ldr r2, _0805FE14
+	ldr r2, _0805FE14 @ =sub_805FAD8
 	adds r1, r3, 0
 	bl meta_step
 	pop {r4}
@@ -11105,7 +11105,7 @@ _0805FE14: .4byte sub_805FAD8
 	thumb_func_start sub_805FAD8
 sub_805FAD8: @ 805FE18
 	push {r4,lr}
-	ldr r3, _0805FE34
+	ldr r3, _0805FE34 @ =gUnknown_083755CC
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -11156,9 +11156,9 @@ sub_805FB20: @ 805FE60
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805FE7C
+	ldr r2, _0805FE7C @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805FE80
+	ldr r2, _0805FE80 @ =sub_805FB44
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -11170,7 +11170,7 @@ _0805FE80: .4byte sub_805FB44
 	thumb_func_start sub_805FB44
 sub_805FB44: @ 805FE84
 	push {r4,lr}
-	ldr r3, _0805FEA0
+	ldr r3, _0805FEA0 @ =gUnknown_083755D0
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -11218,9 +11218,9 @@ sub_805FB90: @ 805FED0
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805FEEC
+	ldr r2, _0805FEEC @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805FEF0
+	ldr r2, _0805FEF0 @ =sub_805FBB4
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -11232,7 +11232,7 @@ _0805FEF0: .4byte sub_805FBB4
 	thumb_func_start sub_805FBB4
 sub_805FBB4: @ 805FEF4
 	push {r4,lr}
-	ldr r3, _0805FF10
+	ldr r3, _0805FF10 @ =gUnknown_083755D8
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -11280,9 +11280,9 @@ sub_805FC00: @ 805FF40
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805FF5C
+	ldr r2, _0805FF5C @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805FF60
+	ldr r2, _0805FF60 @ =sub_805FC24
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -11294,7 +11294,7 @@ _0805FF60: .4byte sub_805FC24
 	thumb_func_start sub_805FC24
 sub_805FC24: @ 805FF64
 	push {r4,lr}
-	ldr r3, _0805FF80
+	ldr r3, _0805FF80 @ =gUnknown_083755E0
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -11342,9 +11342,9 @@ sub_805FC70: @ 805FFB0
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _0805FFCC
+	ldr r2, _0805FFCC @ =gMapObjects
 	adds r0, r2
-	ldr r2, _0805FFD0
+	ldr r2, _0805FFD0 @ =sub_805FC94
 	bl meta_step
 	pop {r0}
 	bx r0
@@ -11356,7 +11356,7 @@ _0805FFD0: .4byte sub_805FC94
 	thumb_func_start sub_805FC94
 sub_805FC94: @ 805FFD4
 	push {r4,lr}
-	ldr r3, _0805FFF0
+	ldr r3, _0805FFF0 @ =gUnknown_083755E8
 	movs r4, 0x30
 	ldrsh r2, [r1, r4]
 	lsls r2, 2
@@ -11453,7 +11453,7 @@ npc_reset: @ 8060058
 FieldObjectDirectionToImageAnimId: @ 8060078
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08060084
+	ldr r1, _08060084 @ =gUnknown_083755F4
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11465,7 +11465,7 @@ _08060084: .4byte gUnknown_083755F4
 get_go_image_anim_num: @ 8060088
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08060094
+	ldr r1, _08060094 @ =gUnknown_083755FD
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11477,7 +11477,7 @@ _08060094: .4byte gUnknown_083755FD
 get_go_fast_image_anim_num: @ 8060098
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080600A4
+	ldr r1, _080600A4 @ =gUnknown_08375606
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11489,7 +11489,7 @@ _080600A4: .4byte gUnknown_08375606
 get_go_faster_image_anim_num: @ 80600A8
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080600B4
+	ldr r1, _080600B4 @ =gUnknown_0837560F
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11501,7 +11501,7 @@ _080600B4: .4byte gUnknown_0837560F
 sub_805FD78: @ 80600B8
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080600C4
+	ldr r1, _080600C4 @ =gUnknown_08375618
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11513,7 +11513,7 @@ _080600C4: .4byte gUnknown_08375618
 sub_805FD88: @ 80600C8
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080600D4
+	ldr r1, _080600D4 @ =gUnknown_08375621
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11525,7 +11525,7 @@ _080600D4: .4byte gUnknown_08375621
 sub_805FD98: @ 80600D8
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080600E4
+	ldr r1, _080600E4 @ =gUnknown_0837562A
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11537,7 +11537,7 @@ _080600E4: .4byte gUnknown_0837562A
 unref_sub_805FDA8: @ 80600E8
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080600F4
+	ldr r1, _080600F4 @ =gUnknown_08375633
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11549,7 +11549,7 @@ _080600F4: .4byte gUnknown_08375633
 sub_805FDB8: @ 80600F8
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08060104
+	ldr r1, _08060104 @ =gUnknown_0837563C
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11561,7 +11561,7 @@ _08060104: .4byte gUnknown_0837563C
 sub_805FDC8: @ 8060108
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08060114
+	ldr r1, _08060114 @ =gUnknown_08375645
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11573,7 +11573,7 @@ _08060114: .4byte gUnknown_08375645
 sub_805FDD8: @ 8060118
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08060124
+	ldr r1, _08060124 @ =gUnknown_0837564E
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11585,7 +11585,7 @@ _08060124: .4byte gUnknown_0837564E
 sub_805FDE8: @ 8060128
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08060134
+	ldr r1, _08060134 @ =gUnknown_08375657
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11597,7 +11597,7 @@ _08060134: .4byte gUnknown_08375657
 sub_805FDF8: @ 8060138
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08060144
+	ldr r1, _08060144 @ =gUnknown_08375660
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11609,7 +11609,7 @@ _08060144: .4byte gUnknown_08375660
 sub_805FE08: @ 8060148
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08060154
+	ldr r1, _08060154 @ =gUnknown_08375669
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11621,7 +11621,7 @@ _08060154: .4byte gUnknown_08375669
 get_run_image_anim_num: @ 8060158
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08060164
+	ldr r1, _08060164 @ =gUnknown_08375672
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -11738,7 +11738,7 @@ npc_set_running_behaviour_etc: @ 8060204
 	strb r3, [r0]
 	adds r0, 0x1
 	strb r3, [r0]
-	ldr r4, _08060248
+	ldr r4, _08060248 @ =gSprites
 	mov r0, r12
 	ldrb r2, [r0, 0x4]
 	lsls r0, r2, 4
@@ -11747,7 +11747,7 @@ npc_set_running_behaviour_etc: @ 8060204
 	adds r2, r4, 0
 	adds r2, 0x1C
 	adds r0, r2
-	ldr r2, _0806024C
+	ldr r2, _0806024C @ =gUnknown_0836DA88
 	lsls r1, 2
 	adds r1, r2
 	ldr r1, [r1]
@@ -11771,7 +11771,7 @@ _0806024C: .4byte gUnknown_0836DA88
 npc_running_behaviour_by_direction: @ 8060250
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0806025C
+	ldr r1, _0806025C @ =gUnknown_0837567B
 	adds r0, r1
 	ldrb r0, [r0]
 	bx lr
@@ -12089,7 +12089,7 @@ IsMetatileDirectionallyImpassable: @ 80604A0
 	lsls r2, 16
 	lsrs r7, r2, 16
 	lsls r3, 24
-	ldr r1, _080604E8
+	ldr r1, _080604E8 @ =gUnknown_08375684
 	lsrs r3, 22
 	subs r5, r3, 0x4
 	adds r1, r5, r1
@@ -12099,7 +12099,7 @@ IsMetatileDirectionallyImpassable: @ 80604A0
 	lsls r0, 24
 	cmp r0, 0
 	bne _080604E2
-	ldr r4, _080604EC
+	ldr r4, _080604EC @ =gUnknown_08375694
 	adds r4, r5, r4
 	lsls r0, r6, 16
 	asrs r0, 16
@@ -12140,7 +12140,7 @@ _08060506:
 	lsls r0, r4, 3
 	adds r0, r4
 	lsls r0, 2
-	ldr r1, _0806055C
+	ldr r1, _0806055C @ =gMapObjects
 	adds r2, r0, r1
 	ldrb r0, [r2]
 	lsls r0, 31
@@ -12210,8 +12210,8 @@ sub_8060234: @ 8060574
 	lsls r0, 24
 	cmp r0, 0
 	bne _080605C0
-	ldr r3, _080605B8
-	ldr r2, _080605BC
+	ldr r3, _080605B8 @ =gSprites
+	ldr r2, _080605BC @ =gMapObjects
 	mov r0, sp
 	ldrb r1, [r0]
 	lsls r0, r1, 3
@@ -12256,8 +12256,8 @@ sub_8060288: @ 80605C8
 	lsls r0, 24
 	cmp r0, 0
 	bne _08060606
-	ldr r3, _0806060C
-	ldr r2, _08060610
+	ldr r3, _0806060C @ =gSprites
+	ldr r2, _08060610 @ =gMapObjects
 	mov r0, sp
 	ldrb r1, [r0]
 	lsls r0, r1, 3
@@ -12286,7 +12286,7 @@ _08060610: .4byte gMapObjects
 MoveCoords: @ 8060614
 	push {r4,lr}
 	lsls r0, 24
-	ldr r3, _08060634
+	ldr r3, _08060634 @ =gDirectionToVector
 	lsrs r0, 22
 	adds r0, r3
 	ldrh r3, [r0]
@@ -12308,7 +12308,7 @@ _08060634: .4byte gDirectionToVector
 unref_sub_80602F8: @ 8060638
 	push {r4,lr}
 	lsls r0, 24
-	ldr r3, _0806065C
+	ldr r3, _0806065C @ =gDirectionToVector
 	lsrs r0, 22
 	adds r0, r3
 	ldrh r3, [r0]
@@ -12340,7 +12340,7 @@ sub_8060320: @ 8060660
 	lsls r1, 16
 	lsrs r6, r1, 16
 	mov r12, r6
-	ldr r1, _080606C4
+	ldr r1, _080606C4 @ =gDirectionToVector
 	lsrs r0, 22
 	adds r5, r0, r1
 	movs r0, 0
@@ -12390,7 +12390,7 @@ _080606C4: .4byte gDirectionToVector
 	thumb_func_start sub_8060388
 sub_8060388: @ 80606C8
 	push {r4,r5,lr}
-	ldr r5, _08060700
+	ldr r5, _08060700 @ =gSaveBlock1
 	ldrh r4, [r5]
 	lsls r0, 16
 	asrs r0, 16
@@ -12403,12 +12403,12 @@ sub_8060388: @ 80606C8
 	subs r1, r0
 	lsls r1, 4
 	strh r1, [r3]
-	ldr r1, _08060704
+	ldr r1, _08060704 @ =gUnknown_0300489C
 	ldrh r0, [r2]
 	ldrh r1, [r1]
 	subs r0, r1
 	strh r0, [r2]
-	ldr r1, _08060708
+	ldr r1, _08060708 @ =gUnknown_03004898
 	ldrh r0, [r3]
 	ldrh r1, [r1]
 	subs r0, r1
@@ -12431,15 +12431,15 @@ sub_80603CC: @ 806070C
 	lsrs r5, r0, 16
 	lsls r1, 16
 	lsrs r6, r1, 16
-	ldr r0, _0806079C
+	ldr r0, _0806079C @ =gUnknown_0300489C
 	ldrh r0, [r0]
 	negs r0, r0
-	ldr r1, _080607A0
+	ldr r1, _080607A0 @ =gUnknown_03004880
 	ldr r2, [r1, 0x10]
 	subs r0, r2
 	lsls r0, 16
 	lsrs r3, r0, 16
-	ldr r0, _080607A4
+	ldr r0, _080607A4 @ =gUnknown_03004898
 	ldrh r0, [r0]
 	negs r0, r0
 	ldr r1, [r1, 0x14]
@@ -12457,7 +12457,7 @@ _08060746:
 	cmp r2, 0
 	bge _08060752
 	lsls r0, r3, 16
-	ldr r2, _080607A8
+	ldr r2, _080607A8 @ =0xfff00000
 	adds r0, r2
 	lsrs r3, r0, 16
 _08060752:
@@ -12472,11 +12472,11 @@ _08060760:
 	cmp r1, 0
 	bge _0806076C
 	lsls r0, r4, 16
-	ldr r1, _080607A8
+	ldr r1, _080607A8 @ =0xfff00000
 	adds r0, r1
 	lsrs r4, r0, 16
 _0806076C:
-	ldr r2, _080607AC
+	ldr r2, _080607AC @ =gSaveBlock1
 	ldrh r1, [r2]
 	lsls r0, r5, 16
 	asrs r0, 16
@@ -12554,7 +12554,7 @@ GetFieldObjectMovingCameraOffset: @ 80607FC
 	movs r0, 0
 	strh r0, [r2]
 	strh r0, [r1]
-	ldr r3, _08060838
+	ldr r3, _08060838 @ =gUnknown_03004880
 	ldr r0, [r3, 0x10]
 	cmp r0, 0
 	ble _08060812
@@ -12662,7 +12662,7 @@ FieldObjectSetSpecialAnim: @ 8060890
 	movs r1, 0x7F
 	ands r0, r1
 	strb r0, [r4]
-	ldr r2, _080608CC
+	ldr r2, _080608CC @ =gSprites
 	ldrb r1, [r4, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -12722,7 +12722,7 @@ FieldObjectClearAnim: @ 806090C
 	movs r2, 0x7F
 	ands r1, r2
 	strb r1, [r0]
-	ldr r3, _0806093C
+	ldr r3, _0806093C @ =gSprites
 	ldrb r2, [r0, 0x4]
 	lsls r1, r2, 4
 	adds r1, r2
@@ -12852,7 +12852,7 @@ GetFaceDirectionAnimId: @ 8060A00
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060A28
+	ldr r1, _08060A28 @ =gUnknown_083756C8
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -12877,7 +12877,7 @@ GetSimpleGoAnimId: @ 8060A2C
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060A54
+	ldr r1, _08060A54 @ =gUnknown_083756CD
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -12902,7 +12902,7 @@ GetGoSpeed0AnimId: @ 8060A58
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060A80
+	ldr r1, _08060A80 @ =gUnknown_083756D2
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -12927,7 +12927,7 @@ sub_8060744: @ 8060A84
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060AAC
+	ldr r1, _08060AAC @ =gUnknown_083756D7
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -12952,7 +12952,7 @@ d2s_08064034: @ 8060AB0
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060AD8
+	ldr r1, _08060AD8 @ =gUnknown_083756DC
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -12977,7 +12977,7 @@ sub_806079C: @ 8060ADC
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060B04
+	ldr r1, _08060B04 @ =gUnknown_083756E1
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13002,7 +13002,7 @@ sub_80607C8: @ 8060B08
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060B30
+	ldr r1, _08060B30 @ =gUnknown_083756E6
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13027,7 +13027,7 @@ sub_80607F4: @ 8060B34
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060B5C
+	ldr r1, _08060B5C @ =gUnknown_083756EB
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13052,7 +13052,7 @@ GetJumpLedgeAnimId: @ 8060B60
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060B88
+	ldr r1, _08060B88 @ =gUnknown_083756F0
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13077,7 +13077,7 @@ sub_806084C: @ 8060B8C
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060BB4
+	ldr r1, _08060BB4 @ =gUnknown_083756F5
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13102,7 +13102,7 @@ sub_8060878: @ 8060BB8
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060BE0
+	ldr r1, _08060BE0 @ =gUnknown_083756FA
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13127,7 +13127,7 @@ sub_80608A4: @ 8060BE4
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060C0C
+	ldr r1, _08060C0C @ =gUnknown_083756FF
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13152,7 +13152,7 @@ sub_80608D0: @ 8060C10
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060C38
+	ldr r1, _08060C38 @ =gUnknown_08375704
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13177,7 +13177,7 @@ GetStepInPlaceDelay32AnimId: @ 8060C3C
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060C64
+	ldr r1, _08060C64 @ =gUnknown_08375709
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13202,7 +13202,7 @@ GetStepInPlaceDelay16AnimId: @ 8060C68
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060C90
+	ldr r1, _08060C90 @ =gUnknown_0837570E
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13227,7 +13227,7 @@ GetStepInPlaceDelay8AnimId: @ 8060C94
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060CBC
+	ldr r1, _08060CBC @ =gUnknown_08375713
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13252,7 +13252,7 @@ GetStepInPlaceDelay4AnimId: @ 8060CC0
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060CE8
+	ldr r1, _08060CE8 @ =gUnknown_08375718
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13299,7 +13299,7 @@ sub_80609D8: @ 8060D18
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060D40
+	ldr r1, _08060D40 @ =gUnknown_0837571D
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13324,7 +13324,7 @@ sub_8060A04: @ 8060D44
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060D6C
+	ldr r1, _08060D6C @ =gUnknown_08375722
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13349,7 +13349,7 @@ sub_8060A30: @ 8060D70
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060D98
+	ldr r1, _08060D98 @ =gUnknown_08375727
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13374,7 +13374,7 @@ sub_8060A5C: @ 8060D9C
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060DC4
+	ldr r1, _08060DC4 @ =gUnknown_0837572C
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13399,7 +13399,7 @@ sub_8060A88: @ 8060DC8
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060DF0
+	ldr r1, _08060DF0 @ =gUnknown_08375731
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13424,7 +13424,7 @@ sub_8060AB4: @ 8060DF4
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060E1C
+	ldr r1, _08060E1C @ =gUnknown_08375736
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13449,7 +13449,7 @@ sub_8060AE0: @ 8060E20
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060E48
+	ldr r1, _08060E48 @ =gUnknown_0837573B
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13474,7 +13474,7 @@ sub_8060B0C: @ 8060E4C
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060E74
+	ldr r1, _08060E74 @ =gUnknown_08375740
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13499,7 +13499,7 @@ sub_8060B38: @ 8060E78
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060EA0
+	ldr r1, _08060EA0 @ =gUnknown_08375745
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13524,7 +13524,7 @@ sub_8060B64: @ 8060EA4
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060ECC
+	ldr r1, _08060ECC @ =gUnknown_0837574A
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -13549,7 +13549,7 @@ GetOppositeDirection: @ 8060ED0
 	sub sp, 0x8
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08060EF4
+	ldr r1, _08060EF4 @ =gUnknown_0837574F
 	mov r0, sp
 	movs r2, 0x8
 	bl memcpy
@@ -13578,7 +13578,7 @@ zffu_offset_calc: @ 8060F04
 	lsls r0, 24
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r2, _08060F18
+	ldr r2, _08060F18 @ =gUnknown_08375757
 	lsrs r0, 22
 	subs r0, 0x5
 	adds r1, r0
@@ -13613,7 +13613,7 @@ _08060F3C:
 _08060F40:
 	adds r1, r2, 0
 	bl zffu_offset_calc
-	ldr r2, _08060F58
+	ldr r2, _08060F58 @ =gUnknown_08375767
 	lsls r1, r4, 2
 	subs r1, 0x5
 	adds r0, r1
@@ -13631,7 +13631,7 @@ _08060F58: .4byte gUnknown_08375767
 FieldObjectExecSpecialAnim: @ 8060F5C
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r2, _08060F90
+	ldr r2, _08060F90 @ =gUnknown_08375778
 	ldrb r0, [r4, 0x1C]
 	lsls r0, 2
 	adds r0, r2
@@ -13663,7 +13663,7 @@ FieldObjectExecRegularAnim: @ 8060F94
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _08060FC0
+	ldr r1, _08060FC0 @ =gUnknown_08375778
 	ldrb r0, [r4, 0x1C]
 	lsls r0, 2
 	adds r0, r1
@@ -13856,7 +13856,7 @@ do_go_anim: @ 80610E4
 	lsls r4, 24
 	lsrs r4, 24
 	mov r1, sp
-	ldr r0, _0806113C
+	ldr r0, _0806113C @ =gUnknown_083759C0
 	ldm r0!, {r3,r6,r7}
 	stm r1!, {r3,r6,r7}
 	ldm r0!, {r3,r6}
@@ -14378,7 +14378,7 @@ sub_806113C: @ 806147C
 	lsls r0, 24
 	lsrs r0, 24
 	mov r9, r0
-	ldr r1, _08061534
+	ldr r1, _08061534 @ =gUnknown_08375A34
 	add r0, sp, 0x4
 	movs r2, 0x6
 	bl memcpy
@@ -14492,7 +14492,7 @@ sub_806123C: @ 806157C
 	adds r6, r0, 0
 	adds r7, r1, 0
 	adds r4, r2, 0
-	ldr r1, _08061608
+	ldr r1, _08061608 @ =gUnknown_08375A3A
 	add r0, sp, 0x4
 	movs r2, 0x6
 	bl memcpy
@@ -14583,7 +14583,7 @@ _08061630:
 	thumb_func_start sub_8061300
 sub_8061300: @ 8061640
 	push {lr}
-	ldr r2, _08061650
+	ldr r2, _08061650 @ =sub_8064704
 	bl sub_806123C
 	lsls r0, 24
 	lsrs r0, 24
@@ -14596,7 +14596,7 @@ _08061650: .4byte sub_8064704
 	thumb_func_start sub_8061314
 sub_8061314: @ 8061654
 	push {lr}
-	ldr r2, _08061664
+	ldr r2, _08061664 @ =sub_806478C
 	bl sub_806123C
 	lsls r0, 24
 	lsrs r0, 24
@@ -16568,7 +16568,7 @@ sub_80620B0: @ 80623F0
 	ldrsh r0, [r5, r1]
 	movs r2, 0x12
 	ldrsh r1, [r5, r2]
-	ldr r4, _08062448
+	ldr r4, _08062448 @ =gMapObjects
 	mov r2, sp
 	ldrb r2, [r2]
 	lsls r3, r2, 3
@@ -16615,7 +16615,7 @@ sub_806210C: @ 806244C
 	ldrsh r0, [r5, r1]
 	movs r2, 0x12
 	ldrsh r1, [r5, r2]
-	ldr r4, _080624AC
+	ldr r4, _080624AC @ =gMapObjects
 	mov r2, sp
 	ldrb r2, [r2]
 	lsls r3, r2, 3
@@ -17261,7 +17261,7 @@ _080628E8:
 	thumb_func_start sub_80625B0
 sub_80625B0: @ 80628F0
 	push {lr}
-	ldr r3, _08062904
+	ldr r3, _08062904 @ =gUnknown_0836DC09
 	ldrb r2, [r0, 0x6]
 	adds r2, r3
 	ldrb r2, [r2]
@@ -17369,7 +17369,7 @@ sub_8062644: @ 8062984
 do_exclamation_mark_bubble_1: @ 8062994
 	push {r4,lr}
 	adds r4, r1, 0
-	ldr r1, _080629B4
+	ldr r1, _080629B4 @ =gUnknown_0202FF84
 	adds r2, r1, 0x4
 	adds r3, r1, 0
 	adds r3, 0x8
@@ -17389,7 +17389,7 @@ _080629B4: .4byte gUnknown_0202FF84
 do_exclamation_mark_bubble_2: @ 80629B8
 	push {r4,lr}
 	adds r4, r1, 0
-	ldr r1, _080629D8
+	ldr r1, _080629D8 @ =gUnknown_0202FF84
 	adds r2, r1, 0x4
 	adds r3, r1, 0
 	adds r3, 0x8
@@ -17409,7 +17409,7 @@ _080629D8: .4byte gUnknown_0202FF84
 do_heart_bubble: @ 80629DC
 	push {r4,lr}
 	adds r4, r1, 0
-	ldr r1, _080629FC
+	ldr r1, _080629FC @ =gUnknown_0202FF84
 	adds r2, r1, 0x4
 	adds r3, r1, 0
 	adds r3, 0x8
@@ -19487,7 +19487,7 @@ sub_80634E8: @ 8063828
 	ldrb r0, [r0]
 	lsls r0, 24
 	asrs r0, 24
-	ldr r2, _08063884
+	ldr r2, _08063884 @ =gSpriteCoordOffsetX
 	adds r0, r1
 	ldrh r2, [r2]
 	adds r0, r2
@@ -19501,7 +19501,7 @@ sub_80634E8: @ 8063828
 	ldrb r0, [r0]
 	lsls r0, 24
 	asrs r0, 24
-	ldr r2, _08063888
+	ldr r2, _08063888 @ =gSpriteCoordOffsetY
 	adds r0, r1
 	ldrh r2, [r2]
 	adds r0, r2

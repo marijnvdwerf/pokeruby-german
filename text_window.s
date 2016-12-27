@@ -10,7 +10,7 @@
 SetTextWindowBaseTileNum: @ 8065234
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _08065244
+	ldr r1, _08065244 @ =0x030005ac
 	strh r0, [r1]
 	adds r0, 0x9
 	lsls r0, 16
@@ -24,12 +24,12 @@ _08065244: .4byte 0x030005ac
 LoadTextWindowGraphics: @ 8065248
 	push {r4,lr}
 	ldr r1, [r0, 0x2C]
-	ldr r0, _08065270
+	ldr r0, _08065270 @ =0x030005ac
 	ldrh r0, [r0]
 	lsls r0, 5
 	ldr r1, [r1, 0x10]
 	adds r1, r0
-	ldr r4, _08065274
+	ldr r4, _08065274 @ =gSaveBlock2
 	ldrb r0, [r4, 0x14]
 	lsrs r0, 3
 	bl LoadTextWindowTiles
@@ -51,12 +51,12 @@ LoadTextWindowGraphics_OverridePalSlot: @ 8065278
 	lsls r5, r1, 24
 	lsrs r5, 24
 	ldr r1, [r0, 0x2C]
-	ldr r0, _080652A4
+	ldr r0, _080652A4 @ =0x030005ac
 	ldrh r0, [r0]
 	lsls r0, 5
 	ldr r1, [r1, 0x10]
 	adds r1, r0
-	ldr r4, _080652A8
+	ldr r4, _080652A8 @ =gSaveBlock2
 	ldrb r0, [r4, 0x14]
 	lsrs r0, 3
 	bl LoadTextWindowTiles
@@ -78,7 +78,7 @@ LoadTextWindowGraphics_OverrideFrameType: @ 80652AC
 	lsls r4, r1, 24
 	lsrs r4, 24
 	ldr r1, [r0, 0x2C]
-	ldr r0, _080652D4
+	ldr r0, _080652D4 @ =0x030005ac
 	ldrh r0, [r0]
 	lsls r0, 5
 	ldr r1, [r1, 0x10]
@@ -112,7 +112,7 @@ DrawTextWindow: @ 80652D8
 	lsrs r2, 24
 	ldr r0, [r0, 0x2C]
 	ldr r0, [r0, 0x14]
-	ldr r1, _08065310
+	ldr r1, _08065310 @ =0x030005ac
 	ldrh r1, [r1]
 	str r3, [sp]
 	str r2, [sp, 0x4]
@@ -135,13 +135,13 @@ GetTextWindowFrameGraphics: @ 8065314
 	cmp r0, 0x13
 	bhi _0806532C
 	lsls r0, 3
-	ldr r1, _08065328
+	ldr r1, _08065328 @ =gUnknown_083761F0
 	adds r0, r1
 	b _0806532E
 	.align 2, 0
 _08065328: .4byte gUnknown_083761F0
 _0806532C:
-	ldr r0, _08065334
+	ldr r0, _08065334 @ =gUnknown_083761F0
 _0806532E:
 	pop {r1}
 	bx r1
@@ -264,7 +264,7 @@ _080653CC:
 	mov r10, r3
 	mov r1, r9
 	adds r1, 0x1
-	ldr r5, _08065504
+	ldr r5, _08065504 @ =0xffffe000
 	adds r0, r5, 0
 	orrs r1, r0
 _08065412:
@@ -282,7 +282,7 @@ _08065426:
 	adds r0, r3, r6
 	lsls r0, 1
 	adds r0, r7
-	ldr r2, _08065504
+	ldr r2, _08065504 @ =0xffffe000
 	adds r1, r2, 0
 	orrs r4, r1
 	strh r4, [r0]
@@ -323,7 +323,7 @@ _08065462:
 	adds r3, 0x1
 	cmp r2, r6
 	bcs _08065496
-	ldr r4, _08065504
+	ldr r4, _08065504 @ =0xffffe000
 	adds r0, r4, 0
 	ldr r4, [sp, 0xC]
 	orrs r4, r0
@@ -353,7 +353,7 @@ _080654AA:
 	add r0, r10
 	lsls r0, 1
 	adds r0, r7
-	ldr r1, _08065504
+	ldr r1, _08065504 @ =0xffffe000
 	adds r4, r1, 0
 	ldr r2, [sp, 0x10]
 	orrs r2, r4
@@ -382,7 +382,7 @@ _080654E0:
 	adds r0, r2, r6
 	lsls r0, 1
 	adds r0, r7
-	ldr r4, _08065504
+	ldr r4, _08065504 @ =0xffffe000
 	adds r1, r4, 0
 	ldr r5, [sp, 0x14]
 	orrs r5, r1
@@ -403,7 +403,7 @@ _08065504: .4byte 0xffffe000
 SetMessageBoxBaseTileNum: @ 8065508
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _08065518
+	ldr r1, _08065518 @ =0x030005ae
 	strh r0, [r1]
 	adds r0, 0xE
 	lsls r0, 16
@@ -417,7 +417,7 @@ _08065518: .4byte 0x030005ae
 unref_sub_80651DC: @ 806551C
 	push {lr}
 	sub sp, 0x4
-	ldr r2, _0806553C
+	ldr r2, _0806553C @ =0x030005ae
 	ldrh r2, [r2]
 	adds r2, 0xE
 	lsls r2, 16
@@ -489,7 +489,7 @@ _08065598:
 	bhi _080655AE
 	cmp r2, 0x4
 	bhi _080655AE
-	ldr r1, _080655BC
+	ldr r1, _080655BC @ =gMessageBoxTilemap
 	lsls r0, r2, 3
 	subs r0, r2
 	adds r0, r5
@@ -533,7 +533,7 @@ DrawMessageBox: @ 80655C0
 	ldr r1, [sp, 0x4]
 	ldrb r0, [r1, 0x6]
 	lsls r0, 12
-	ldr r1, _0806566C
+	ldr r1, _0806566C @ =0x030005ae
 	ldrh r1, [r1]
 	orrs r0, r1
 	lsls r0, 16
@@ -623,8 +623,8 @@ LoadMessageBoxTiles: @ 8065688
 	push {lr}
 	ldr r0, [r0, 0x2C]
 	ldr r1, [r0, 0x10]
-	ldr r0, _080656A4
-	ldr r2, _080656A8
+	ldr r0, _080656A4 @ =gMessageBox_Gfx
+	ldr r2, _080656A8 @ =0x030005ae
 	ldrh r2, [r2]
 	lsls r2, 5
 	adds r1, r2

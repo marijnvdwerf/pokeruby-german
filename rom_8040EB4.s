@@ -10,14 +10,14 @@
 object_new_hidden_with_callback: @ 80411D8
 	push {r4-r6,lr}
 	adds r6, r0, 0
-	ldr r0, _0804120C
+	ldr r0, _0804120C @ =gSpriteTemplate_82087AC
 	movs r1, 0xF8
 	movs r2, 0xA8
 	movs r3, 0xE
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _08041210
+	ldr r5, _08041210 @ =gSprites
 	lsls r2, r0, 4
 	adds r2, r0
 	lsls r2, 2
@@ -134,7 +134,7 @@ sub_8040F80: @ 80412A4
 	ldr r7, [sp, 0x5C]
 	lsls r0, 24
 	lsls r1, 24
-	ldr r2, _0804132C
+	ldr r2, _0804132C @ =gUnknown_082087C4
 	lsrs r1, 23
 	lsrs r0, 21
 	adds r1, r0
@@ -164,11 +164,11 @@ _080412E2:
 	bcc _080412F0
 	b _08041448
 _080412F0:
-	ldr r0, _08041330
+	ldr r0, _08041330 @ =0x040000d4
 	mov r8, r0
 _080412F4:
 	ldrh r1, [r4]
-	ldr r0, _08041334
+	ldr r0, _08041334 @ =0x000003ff
 	ands r0, r1
 	lsls r0, 5
 	mov r12, r0
@@ -184,7 +184,7 @@ _080412F4:
 	mov r1, r8
 	str r0, [r1]
 	str r7, [r1, 0x4]
-	ldr r3, _08041338
+	ldr r3, _08041338 @ =0x84000008
 	str r3, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	adds r4, 0x2
@@ -212,8 +212,8 @@ _0804133C:
 	mov r10, r0
 	adds r2, 0x1
 	mov r9, r2
-	ldr r4, _08041384
-	ldr r6, _08041388
+	ldr r4, _08041384 @ =0x040000d4
+	ldr r6, _08041388 @ =0x84000001
 	movs r5, 0x7
 _0804135A:
 	lsls r2, r3, 24
@@ -293,8 +293,8 @@ _080413AA:
 	cmp r0, 0
 	beq _08041428
 	movs r3, 0
-	ldr r4, _08041420
-	ldr r6, _08041424
+	ldr r4, _08041420 @ =0x040000d4
+	ldr r6, _08041424 @ =0x84000001
 	movs r5, 0x7
 _080413F8:
 	lsls r1, r3, 24
@@ -324,7 +324,7 @@ _08041428:
 	mov r1, r8
 	str r0, [r1]
 	str r7, [r1, 0x4]
-	ldr r2, _0804146C
+	ldr r2, _0804146C @ =0x84000008
 	str r2, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _08041436:
@@ -391,12 +391,12 @@ sub_8041174: @ 8041498
 	push {r4-r7,lr}
 	adds r7, r0, 0
 	adds r4, r1, 0
-	ldr r2, _080414C8
+	ldr r2, _080414C8 @ =0x00001121
 	movs r3, 0
 	cmp r3, r4
 	bge _080414E4
 	movs r6, 0x1
-	ldr r0, _080414CC
+	ldr r0, _080414CC @ =0x00008408
 	adds r5, r0, 0
 _080414AC:
 	adds r0, r7, r3
@@ -443,11 +443,11 @@ unref_sub_80411CC: @ 80414F0
 	push {r4-r6,lr}
 	adds r5, r0, 0
 	adds r4, r1, 0
-	ldr r2, _0804152C
+	ldr r2, _0804152C @ =0x00001121
 	movs r3, 0
 	cmp r3, r4
 	bge _0804151E
-	ldr r6, _08041530
+	ldr r6, _08041530 @ =gCrc16Table
 _08041500:
 	lsrs r1, r2, 8
 	adds r0, r5, r3

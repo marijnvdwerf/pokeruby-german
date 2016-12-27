@@ -112,7 +112,7 @@ _08065772:
 	ldr r2, [r4, 0x8]
 	cmp r2, 0
 	beq _08065764
-	ldr r0, _08065784
+	ldr r0, _08065784 @ =gUnknown_083762D8
 	ldr r0, [r0]
 	cmp r2, r0
 	bne _08065788
@@ -270,7 +270,7 @@ ScriptReadWord: @ 8065840
 
 	thumb_func_start ScriptContext2_Enable
 ScriptContext2_Enable: @ 8065870
-	ldr r1, _08065878
+	ldr r1, _08065878 @ =0x030006a4
 	movs r0, 0x1
 	strb r0, [r1]
 	bx lr
@@ -280,7 +280,7 @@ _08065878: .4byte 0x030006a4
 
 	thumb_func_start ScriptContext2_Disable
 ScriptContext2_Disable: @ 806587C
-	ldr r1, _08065884
+	ldr r1, _08065884 @ =0x030006a4
 	movs r0, 0
 	strb r0, [r1]
 	bx lr
@@ -290,7 +290,7 @@ _08065884: .4byte 0x030006a4
 
 	thumb_func_start ScriptContext2_IsEnabled
 ScriptContext2_IsEnabled: @ 8065888
-	ldr r0, _08065890
+	ldr r0, _08065890 @ =0x030006a4
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
@@ -300,11 +300,11 @@ _08065890: .4byte 0x030006a4
 	thumb_func_start ScriptContext1_Init
 ScriptContext1_Init: @ 8065894
 	push {lr}
-	ldr r0, _080658AC
-	ldr r1, _080658B0
-	ldr r2, _080658B4
+	ldr r0, _080658AC @ =0x030005b8
+	ldr r1, _080658B0 @ =gScriptCmdTable
+	ldr r2, _080658B4 @ =gScriptCmdTableEnd
 	bl InitScriptContext
-	ldr r1, _080658B8
+	ldr r1, _080658B8 @ =0x030005b0
 	movs r0, 0x2
 	strb r0, [r1]
 	pop {r0}
@@ -319,14 +319,14 @@ _080658B8: .4byte 0x030005b0
 	thumb_func_start ScriptContext2_RunScript
 ScriptContext2_RunScript: @ 80658BC
 	push {r4,lr}
-	ldr r4, _080658E0
+	ldr r4, _080658E0 @ =0x030005b0
 	ldrb r0, [r4]
 	cmp r0, 0x2
 	beq _080658F0
 	cmp r0, 0x1
 	beq _080658F0
 	bl ScriptContext2_Enable
-	ldr r0, _080658E4
+	ldr r0, _080658E4 @ =0x030005b8
 	bl RunScript
 	lsls r0, 24
 	cmp r0, 0
@@ -352,16 +352,16 @@ _080658F2:
 ScriptContext1_SetupScript: @ 80658F8
 	push {r4,r5,lr}
 	adds r5, r0, 0
-	ldr r4, _08065920
-	ldr r1, _08065924
-	ldr r2, _08065928
+	ldr r4, _08065920 @ =0x030005b8
+	ldr r1, _08065924 @ =gScriptCmdTable
+	ldr r2, _08065928 @ =gScriptCmdTableEnd
 	adds r0, r4, 0
 	bl InitScriptContext
 	adds r0, r4, 0
 	adds r1, r5, 0
 	bl SetupBytecodeScript
 	bl ScriptContext2_Enable
-	ldr r1, _0806592C
+	ldr r1, _0806592C @ =0x030005b0
 	movs r0, 0
 	strb r0, [r1]
 	pop {r4,r5}
@@ -376,7 +376,7 @@ _0806592C: .4byte 0x030005b0
 
 	thumb_func_start ScriptContext1_Stop
 ScriptContext1_Stop: @ 8065930
-	ldr r1, _08065938
+	ldr r1, _08065938 @ =0x030005b0
 	movs r0, 0x1
 	strb r0, [r1]
 	bx lr
@@ -387,7 +387,7 @@ _08065938: .4byte 0x030005b0
 	thumb_func_start EnableBothScriptContexts
 EnableBothScriptContexts: @ 806593C
 	push {lr}
-	ldr r1, _0806594C
+	ldr r1, _0806594C @ =0x030005b0
 	movs r0, 0
 	strb r0, [r1]
 	bl ScriptContext2_Enable
@@ -401,16 +401,16 @@ _0806594C: .4byte 0x030005b0
 ScriptContext2_RunNewScript: @ 8065950
 	push {r4,r5,lr}
 	adds r5, r0, 0
-	ldr r4, _0806597C
-	ldr r1, _08065980
-	ldr r2, _08065984
+	ldr r4, _0806597C @ =0x03000630
+	ldr r1, _08065980 @ =gScriptCmdTable
+	ldr r2, _08065984 @ =gScriptCmdTableEnd
 	adds r0, r4, 0
 	bl InitScriptContext
 	adds r0, r4, 0
 	adds r1, r5, 0
 	bl SetupBytecodeScript
 _08065968:
-	ldr r0, _0806597C
+	ldr r0, _0806597C @ =0x03000630
 	bl RunScript
 	lsls r0, 24
 	lsrs r0, 24
@@ -430,7 +430,7 @@ mapheader_get_tagged_pointer: @ 8065988
 	push {lr}
 	lsls r0, 24
 	lsrs r1, r0, 24
-	ldr r0, _080659A0
+	ldr r0, _080659A0 @ =gMapHeader
 	ldr r2, [r0, 0x8]
 	cmp r2, 0
 	beq _0806599C
@@ -604,8 +604,8 @@ CalculateRamScriptChecksum: @ 8065AA0
 	push {r4,lr}
 	movs r2, 0
 	movs r1, 0
-	ldr r4, _08065AC0
-	ldr r3, _08065AC4
+	ldr r4, _08065AC0 @ =0x000003e7
+	ldr r3, _08065AC4 @ =0x02028dc8
 _08065AAA:
 	adds r0, r1, r3
 	ldrb r0, [r0]
@@ -628,8 +628,8 @@ ClearRamScript: @ 8065AC8
 	sub sp, 0x4
 	movs r0, 0
 	str r0, [sp]
-	ldr r1, _08065AE0
-	ldr r2, _08065AE4
+	ldr r1, _08065AE0 @ =0x02028dc4
+	ldr r2, _08065AE4 @ =0x050000fb
 	mov r0, sp
 	bl CpuSet
 	add sp, 0x4
@@ -657,9 +657,9 @@ InitRamScript: @ 8065AE8
 	lsrs r6, r3, 24
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r4, _08065B34
+	ldr r4, _08065B34 @ =0x02028dc8
 	bl ClearRamScript
-	ldr r0, _08065B38
+	ldr r0, _08065B38 @ =0x000003e3
 	cmp r8, r0
 	bhi _08065B3C
 	movs r0, 0x33
@@ -696,15 +696,15 @@ GetRamScript: @ 8065B4C
 	adds r5, r1, 0
 	lsls r0, 24
 	lsrs r3, r0, 24
-	ldr r4, _08065B94
-	ldr r6, _08065B98
+	ldr r4, _08065B94 @ =0x02028dc8
+	ldr r6, _08065B98 @ =gUnknown_0202E8AC
 	movs r0, 0
 	str r0, [r6]
 	ldrb r0, [r4]
 	cmp r0, 0x33
 	bne _08065BA4
 	ldrb r1, [r4, 0x1]
-	ldr r0, _08065B9C
+	ldr r0, _08065B9C @ =0xffffc96c
 	adds r2, r4, r0
 	movs r0, 0x4
 	ldrsb r0, [r2, r0]

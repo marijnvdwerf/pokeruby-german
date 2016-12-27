@@ -15,13 +15,13 @@ FieldEffectStart: @ 8085ABC
 	lsrs r4, 24
 	adds r0, r4, 0
 	bl FieldEffectActiveListAdd
-	ldr r0, _08085AFC
+	ldr r0, _08085AFC @ =gFieldEffectScriptPointers
 	lsls r4, 2
 	adds r4, r0
 	ldr r0, [r4]
 	str r0, [sp]
 	add r4, sp, 0x4
-	ldr r5, _08085B00
+	ldr r5, _08085B00 @ =gFieldEffectScriptFuncs
 _08085ADA:
 	ldr r0, [sp]
 	ldrb r0, [r0]
@@ -182,7 +182,7 @@ FieldEffectScript_LoadTiles: @ 8085BE0
 	ldrh r0, [r5, 0x6]
 	bl GetSpriteTileStartByTag
 	lsls r0, 16
-	ldr r1, _08085C0C
+	ldr r1, _08085C0C @ =0xffff0000
 	cmp r0, r1
 	bne _08085BFE
 	adds r0, r5, 0
@@ -288,11 +288,11 @@ FieldEffectFreeTilesIfUnused: @ 8085CA8
 	bl GetSpriteTileTagByTileStart
 	lsls r0, 16
 	lsrs r3, r0, 16
-	ldr r0, _08085D04
+	ldr r0, _08085D04 @ =0x0000ffff
 	cmp r3, r0
 	beq _08085CFC
 	movs r2, 0
-	ldr r5, _08085D08
+	ldr r5, _08085D08 @ =gSprites
 _08085CC2:
 	lsls r0, r2, 4
 	adds r0, r2
@@ -341,11 +341,11 @@ FieldEffectFreePaletteIfUnused: @ 8085D0C
 	bl GetSpritePaletteTagByPaletteNum
 	lsls r0, 16
 	lsrs r5, r0, 16
-	ldr r0, _08085D5C
+	ldr r0, _08085D5C @ =0x0000ffff
 	cmp r5, r0
 	beq _08085D54
 	movs r2, 0
-	ldr r6, _08085D60
+	ldr r6, _08085D60 @ =gSprites
 	adds r3, r4, 0
 _08085D28:
 	lsls r0, r2, 4
@@ -383,7 +383,7 @@ _08085D60: .4byte gSprites
 FieldEffectActiveListClear: @ 8085D64
 	push {r4,lr}
 	movs r2, 0
-	ldr r4, _08085D84
+	ldr r4, _08085D84 @ =0x030006e0
 	movs r3, 0xFF
 _08085D6C:
 	adds r0, r2, r4
@@ -408,7 +408,7 @@ FieldEffectActiveListAdd: @ 8085D88
 	lsls r0, 24
 	lsrs r3, r0, 24
 	movs r2, 0
-	ldr r4, _08085DA0
+	ldr r4, _08085DA0 @ =0x030006e0
 _08085D92:
 	adds r1, r2, r4
 	ldrb r0, [r1]
@@ -436,7 +436,7 @@ FieldEffectActiveListRemove: @ 8085DB4
 	lsls r0, 24
 	lsrs r3, r0, 24
 	movs r2, 0
-	ldr r4, _08085DD0
+	ldr r4, _08085DD0 @ =0x030006e0
 	movs r5, 0xFF
 _08085DC0:
 	adds r1, r2, r4
@@ -466,7 +466,7 @@ FieldEffectActiveListContains: @ 8085DE4
 	lsls r0, 24
 	lsrs r2, r0, 24
 	movs r1, 0
-	ldr r3, _08085DFC
+	ldr r3, _08085DFC @ =0x030006e0
 _08085DEE:
 	adds r0, r1, r3
 	ldrb r0, [r0]

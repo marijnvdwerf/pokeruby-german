@@ -11,8 +11,8 @@ sub_811AABC: @ 811AEB0
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0811AEC4
-	ldr r1, _0811AEC8
+	ldr r2, _0811AEC4 @ =gMain
+	ldr r1, _0811AEC8 @ =sub_8054398
 	str r1, [r2, 0x4]
 	bl sub_811AB20
 	pop {r0}
@@ -35,11 +35,11 @@ sub_811AAD8: @ 811AECC
 	thumb_func_start sub_811AAE8
 sub_811AAE8: @ 811AEDC
 	push {lr}
-	ldr r0, _0811AF00
+	ldr r0, _0811AF00 @ =sub_811AB50
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _0811AF04
+	ldr r1, _0811AF04 @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -68,12 +68,12 @@ sub_811AB20: @ 811AF14
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _0811AF3C
+	ldr r0, _0811AF3C @ =sub_811AB50
 	movs r1, 0x2
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0811AF40
+	ldr r2, _0811AF40 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -92,8 +92,8 @@ sub_811AB50: @ 811AF44
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811AF74
-	ldr r2, _0811AF78
+	ldr r5, _0811AF74 @ =gUnknown_083FD794
+	ldr r2, _0811AF78 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -122,11 +122,11 @@ sub_811AB88: @ 811AF7C
 	push {r4,lr}
 	adds r4, r0, 0
 	bl sub_807DE10
-	ldr r0, _0811AFA8
-	ldr r1, _0811AFAC
-	ldr r2, _0811AFB0
+	ldr r0, _0811AFA8 @ =gPlttBufferFaded
+	ldr r1, _0811AFAC @ =gPlttBufferUnfaded
+	ldr r2, _0811AFB0 @ =0x04000100
 	bl CpuSet
-	ldr r1, _0811AFB4
+	ldr r1, _0811AFB4 @ =gUnknown_083FD70C
 	movs r2, 0xA
 	ldrsh r0, [r4, r2]
 	lsls r0, 2
@@ -160,7 +160,7 @@ _0811AFC6:
 sub_811ABD8: @ 811AFCC
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r1, _0811AFEC
+	ldr r1, _0811AFEC @ =gUnknown_083FD70C
 	movs r2, 0xA
 	ldrsh r0, [r4, r2]
 	lsls r0, 2
@@ -190,7 +190,7 @@ _0811AFF8:
 sub_811AC0C: @ 811B000
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r1, _0811B024
+	ldr r1, _0811B024 @ =gBattleTransitionFuncs
 	movs r2, 0xA
 	ldrsh r0, [r4, r2]
 	lsls r0, 2
@@ -215,7 +215,7 @@ sub_811AC34: @ 811B028
 	adds r4, r0, 0
 	movs r0, 0
 	strh r0, [r4, 0x26]
-	ldr r1, _0811B054
+	ldr r1, _0811B054 @ =gBattleTransitionFuncs
 	movs r2, 0xA
 	ldrsh r0, [r4, r2]
 	lsls r0, 2
@@ -244,7 +244,7 @@ sub_811AC64: @ 811B058
 	lsls r0, 24
 	lsrs r0, 24
 	adds r4, r0, 0
-	ldr r1, _0811B08C
+	ldr r1, _0811B08C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -285,8 +285,8 @@ sub_811ACB4: @ 811B0A8
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811B0D8
-	ldr r2, _0811B0DC
+	ldr r5, _0811B0D8 @ =gUnknown_083FD7A4
+	ldr r2, _0811B0DC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -312,7 +312,7 @@ _0811B0DC: .4byte gTasks
 
 	thumb_func_start sub_811ACEC
 sub_811ACEC: @ 811B0E0
-	ldr r2, _0811B10C
+	ldr r2, _0811B10C @ =0x0400004c
 	movs r1, 0
 	strh r1, [r2]
 	subs r2, 0x42
@@ -368,7 +368,7 @@ _0811B126:
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
 _0811B148:
-	ldr r2, _0811B170
+	ldr r2, _0811B170 @ =0x0400004c
 	ldrh r0, [r4, 0xC]
 	movs r1, 0xF
 	ands r1, r0
@@ -395,13 +395,13 @@ _0811B170: .4byte 0x0400004c
 	thumb_func_start sub_811AD80
 sub_811AD80: @ 811B174
 	push {lr}
-	ldr r0, _0811B198
+	ldr r0, _0811B198 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0811B190
-	ldr r0, _0811B19C
+	ldr r0, _0811B19C @ =sub_811ACB4
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -420,8 +420,8 @@ sub_811ADAC: @ 811B1A0
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811B1D0
-	ldr r2, _0811B1D4
+	ldr r5, _0811B1D0 @ =gUnknown_083FD7B0
+	ldr r2, _0811B1D4 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -460,8 +460,8 @@ sub_811ADE4: @ 811B1D8
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r0, _0811B248
-	ldr r1, _0811B24C
+	ldr r0, _0811B248 @ =gUnknown_03005560
+	ldr r1, _0811B24C @ =0x0200c000
 	movs r2, 0x14
 	ldrsh r1, [r1, r2]
 	str r4, [sp]
@@ -470,20 +470,20 @@ sub_811ADE4: @ 811B1D8
 	movs r2, 0
 	movs r3, 0x2
 	bl sub_811D6E8
-	ldr r0, _0811B250
+	ldr r0, _0811B250 @ =sub_811AEE0
 	bl SetVBlankCallback
-	ldr r0, _0811B254
+	ldr r0, _0811B254 @ =sub_811AF18
 	bl SetHBlankCallback
-	ldr r3, _0811B258
+	ldr r3, _0811B258 @ =0x04000208
 	ldrh r2, [r3]
 	strh r4, [r3]
-	ldr r4, _0811B25C
+	ldr r4, _0811B25C @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x3
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0811B260
+	ldr r2, _0811B260 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x18
 	orrs r0, r1
@@ -510,7 +510,7 @@ _0811B260: .4byte 0x04000004
 sub_811AE70: @ 811B264
 	push {r4,r5,lr}
 	sub sp, 0x8
-	ldr r4, _0811B2C4
+	ldr r4, _0811B2C4 @ =0x0200c000
 	ldrb r1, [r4]
 	movs r1, 0
 	strb r1, [r4]
@@ -520,7 +520,7 @@ sub_811AE70: @ 811B264
 	ldrh r1, [r0, 0xC]
 	adds r1, 0x8
 	strh r1, [r0, 0xC]
-	ldr r3, _0811B2C8
+	ldr r3, _0811B2C8 @ =gUnknown_03004DE0
 	movs r2, 0x14
 	ldrsh r1, [r4, r2]
 	movs r5, 0xA
@@ -533,13 +533,13 @@ sub_811AE70: @ 811B264
 	adds r0, r3, 0
 	movs r3, 0x2
 	bl sub_811D6E8
-	ldr r0, _0811B2CC
+	ldr r0, _0811B2CC @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0811B2B2
-	ldr r0, _0811B2D0
+	ldr r0, _0811B2D0 @ =sub_811ADAC
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -565,18 +565,18 @@ _0811B2D0: .4byte sub_811ADAC
 sub_811AEE0: @ 811B2D4
 	push {lr}
 	bl sub_811D67C
-	ldr r0, _0811B2FC
+	ldr r0, _0811B2FC @ =0x0200c000
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _0811B2F6
-	ldr r1, _0811B300
-	ldr r0, _0811B304
+	ldr r1, _0811B300 @ =0x040000d4
+	ldr r0, _0811B304 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r2, 0xF0
 	lsls r2, 3
 	adds r0, r2
 	str r0, [r1, 0x4]
-	ldr r0, _0811B308
+	ldr r0, _0811B308 @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811B2F6:
@@ -591,8 +591,8 @@ _0811B308: .4byte 0x800000a0
 
 	thumb_func_start sub_811AF18
 sub_811AF18: @ 811B30C
-	ldr r1, _0811B32C
-	ldr r0, _0811B330
+	ldr r1, _0811B32C @ =gUnknown_03004DE0
+	ldr r0, _0811B330 @ =0x04000006
 	ldrh r0, [r0]
 	lsls r0, 1
 	movs r2, 0xF0
@@ -600,7 +600,7 @@ sub_811AF18: @ 811B30C
 	adds r1, r2
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _0811B334
+	ldr r0, _0811B334 @ =0x04000014
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
@@ -618,8 +618,8 @@ sub_811AF44: @ 811B338
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811B368
-	ldr r2, _0811B36C
+	ldr r5, _0811B368 @ =gUnknown_083FD7B8
+	ldr r2, _0811B36C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -658,27 +658,27 @@ sub_811AF7C: @ 811B370
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _0811B3D8
-	ldr r0, _0811B3DC
+	ldr r1, _0811B3D8 @ =0x0200c000
+	ldr r0, _0811B3DC @ =gUnknown_03005560
 	movs r2, 0x16
 	ldrsh r1, [r1, r2]
 	movs r2, 0xA0
 	lsls r2, 1
 	bl memset
-	ldr r0, _0811B3E0
+	ldr r0, _0811B3E0 @ =sub_811B08C
 	bl SetVBlankCallback
-	ldr r0, _0811B3E4
+	ldr r0, _0811B3E4 @ =sub_811B0C4
 	bl SetHBlankCallback
-	ldr r3, _0811B3E8
+	ldr r3, _0811B3E8 @ =0x04000208
 	ldrh r2, [r3]
 	strh r4, [r3]
-	ldr r4, _0811B3EC
+	ldr r4, _0811B3EC @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x3
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0811B3F0
+	ldr r2, _0811B3F0 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x18
 	orrs r0, r1
@@ -704,7 +704,7 @@ _0811B3F0: .4byte 0x04000004
 	thumb_func_start sub_811B000
 sub_811B000: @ 811B3F4
 	push {r4-r7,lr}
-	ldr r2, _0811B470
+	ldr r2, _0811B470 @ =0x0200c000
 	ldrb r1, [r2]
 	movs r1, 0
 	strb r1, [r2]
@@ -726,10 +726,10 @@ _0811B41A:
 	lsrs r0, r4, 8
 	asrs r1, r7, 16
 	bl Sin
-	ldr r2, _0811B474
+	ldr r2, _0811B474 @ =gUnknown_03004DE0
 	lsls r1, r5, 1
 	adds r1, r2
-	ldr r6, _0811B470
+	ldr r6, _0811B470 @ =0x0200c000
 	ldrh r2, [r6, 0x16]
 	adds r0, r2
 	strh r0, [r1]
@@ -743,13 +743,13 @@ _0811B41A:
 	lsrs r4, r0, 16
 	cmp r5, 0x9F
 	bls _0811B41A
-	ldr r0, _0811B478
+	ldr r0, _0811B478 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0811B45E
-	ldr r0, _0811B47C
+	ldr r0, _0811B47C @ =sub_811AF44
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -774,18 +774,18 @@ _0811B47C: .4byte sub_811AF44
 sub_811B08C: @ 811B480
 	push {lr}
 	bl sub_811D67C
-	ldr r0, _0811B4A8
+	ldr r0, _0811B4A8 @ =0x0200c000
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _0811B4A2
-	ldr r1, _0811B4AC
-	ldr r0, _0811B4B0
+	ldr r1, _0811B4AC @ =0x040000d4
+	ldr r0, _0811B4B0 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r2, 0xF0
 	lsls r2, 3
 	adds r0, r2
 	str r0, [r1, 0x4]
-	ldr r0, _0811B4B4
+	ldr r0, _0811B4B4 @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811B4A2:
@@ -800,8 +800,8 @@ _0811B4B4: .4byte 0x800000a0
 
 	thumb_func_start sub_811B0C4
 sub_811B0C4: @ 811B4B8
-	ldr r1, _0811B4D8
-	ldr r0, _0811B4DC
+	ldr r1, _0811B4D8 @ =gUnknown_03004DE0
+	ldr r0, _0811B4DC @ =0x04000006
 	ldrh r0, [r0]
 	lsls r0, 1
 	movs r2, 0xF0
@@ -809,7 +809,7 @@ sub_811B0C4: @ 811B4B8
 	adds r1, r2
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _0811B4E0
+	ldr r0, _0811B4E0 @ =0x04000016
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
@@ -827,8 +827,8 @@ sub_811B0F0: @ 811B4E4
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811B514
-	ldr r2, _0811B518
+	ldr r5, _0811B514 @ =gUnknown_083FD7C0
+	ldr r2, _0811B518 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -867,7 +867,7 @@ sub_811B128: @ 811B51C
 	movs r0, 0x80
 	lsls r0, 7
 	strh r0, [r4, 0x12]
-	ldr r1, _0811B5B0
+	ldr r1, _0811B5B0 @ =0x0200c000
 	movs r0, 0x3F
 	strh r0, [r1, 0x2]
 	strh r2, [r1, 0x4]
@@ -875,14 +875,14 @@ sub_811B128: @ 811B51C
 	strh r0, [r1, 0x6]
 	movs r0, 0xA0
 	strh r0, [r1, 0x8]
-	ldr r0, _0811B5B4
+	ldr r0, _0811B5B4 @ =0x00003f41
 	strh r0, [r1, 0xE]
 	lsls r3, 8
 	strh r3, [r1, 0x10]
 	movs r1, 0
 	add r5, sp, 0x4
 	add r6, sp, 0x8
-	ldr r3, _0811B5B8
+	ldr r3, _0811B5B8 @ =gUnknown_03005560
 	movs r2, 0xF0
 _0811B55C:
 	lsls r0, r1, 1
@@ -893,7 +893,7 @@ _0811B55C:
 	lsrs r1, r0, 16
 	cmp r1, 0x9F
 	bls _0811B55C
-	ldr r0, _0811B5BC
+	ldr r0, _0811B5BC @ =sub_811B520
 	bl SetVBlankCallback
 	adds r0, r5, 0
 	adds r1, r6, 0
@@ -902,15 +902,15 @@ _0811B55C:
 	movs r0, 0
 	strh r0, [r1]
 	ldr r1, [sp, 0x4]
-	ldr r2, _0811B5C0
+	ldr r2, _0811B5C0 @ =0x01000400
 	mov r0, sp
 	bl CpuSet
-	ldr r0, _0811B5C4
+	ldr r0, _0811B5C4 @ =gUnknown_083FBB88
 	ldr r1, [sp, 0x8]
 	movs r2, 0xB0
 	lsls r2, 2
 	bl CpuSet
-	ldr r0, _0811B5C8
+	ldr r0, _0811B5C8 @ =gFieldEffectObjectPalette10
 	movs r1, 0xF0
 	movs r2, 0x20
 	bl LoadPalette
@@ -940,14 +940,14 @@ sub_811B1D8: @ 811B5CC
 	push {r6,r7}
 	sub sp, 0x10
 	adds r7, r0, 0
-	ldr r5, _0811B654
+	ldr r5, _0811B654 @ =gUnknown_083FDB44
 	add r1, sp, 0xC
 	add r0, sp, 0x8
 	bl sub_811D6A8
 	movs r1, 0
 	ldr r0, [sp, 0x8]
 	mov r9, r0
-	ldr r6, _0811B658
+	ldr r6, _0811B658 @ =gUnknown_03004DE0
 	mov r8, r6
 	movs r0, 0xF0
 	lsls r0, 8
@@ -1012,7 +1012,7 @@ sub_811B268: @ 811B65C
 	push {r4,lr}
 	sub sp, 0x8
 	adds r2, r0, 0
-	ldr r1, _0811B6DC
+	ldr r1, _0811B6DC @ =0x0200c000
 	ldrb r0, [r1]
 	movs r0, 0
 	strb r0, [r1]
@@ -1050,12 +1050,12 @@ _0811B6A2:
 	ldrh r0, [r2, 0x10]
 	adds r0, 0x8
 	strh r0, [r2, 0x10]
-	ldr r0, _0811B6E0
+	ldr r0, _0811B6E0 @ =0xffffff00
 	adds r1, r0, 0
 	ldrh r3, [r2, 0x12]
 	adds r1, r3
 	strh r1, [r2, 0x12]
-	ldr r0, _0811B6E4
+	ldr r0, _0811B6E4 @ =gUnknown_03004DE0
 	movs r3, 0x10
 	ldrsh r2, [r2, r3]
 	lsls r1, 16
@@ -1086,7 +1086,7 @@ sub_811B2F4: @ 811B6E8
 	push {r4,r5,lr}
 	sub sp, 0x8
 	adds r3, r0, 0
-	ldr r1, _0811B768
+	ldr r1, _0811B768 @ =0x0200c000
 	ldrb r0, [r1]
 	movs r0, 0
 	strb r0, [r1]
@@ -1123,12 +1123,12 @@ _0811B72C:
 	ldrh r0, [r3, 0x10]
 	adds r0, 0x8
 	strh r0, [r3, 0x10]
-	ldr r5, _0811B76C
+	ldr r5, _0811B76C @ =0xffffff00
 	adds r1, r5, 0
 	ldrh r0, [r3, 0x12]
 	adds r1, r0
 	strh r1, [r3, 0x12]
-	ldr r0, _0811B770
+	ldr r0, _0811B770 @ =gUnknown_03004DE0
 	movs r5, 0x10
 	ldrsh r2, [r3, r5]
 	lsls r1, 16
@@ -1159,19 +1159,19 @@ sub_811B380: @ 811B774
 	push {r4-r7,lr}
 	sub sp, 0x8
 	adds r4, r0, 0
-	ldr r5, _0811B7D4
+	ldr r5, _0811B7D4 @ =0x0200c000
 	ldrb r0, [r5]
 	movs r7, 0
 	strb r7, [r5]
 	ldrh r0, [r4, 0x10]
 	adds r0, 0x8
 	strh r0, [r4, 0x10]
-	ldr r0, _0811B7D8
+	ldr r0, _0811B7D8 @ =0xffffff00
 	adds r1, r0, 0
 	ldrh r3, [r4, 0x12]
 	adds r1, r3
 	strh r1, [r4, 0x12]
-	ldr r0, _0811B7DC
+	ldr r0, _0811B7DC @ =gUnknown_03004DE0
 	movs r3, 0x10
 	ldrsh r2, [r4, r3]
 	lsls r1, 16
@@ -1214,14 +1214,14 @@ _0811B7DC: .4byte gUnknown_03004DE0
 sub_811B3EC: @ 811B7E0
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r0, _0811B87C
+	ldr r0, _0811B87C @ =0x0200c000
 	ldrb r1, [r0]
 	movs r3, 0
 	strb r3, [r0]
 	ldrh r2, [r4, 0xC]
 	movs r0, 0xC
 	ldrsh r1, [r4, r0]
-	ldr r0, _0811B880
+	ldr r0, _0811B880 @ =0x000003ff
 	cmp r1, r0
 	bgt _0811B7FE
 	adds r0, r2, 0
@@ -1243,7 +1243,7 @@ _0811B7FE:
 	bge _0811B81A
 	strh r3, [r4, 0xA]
 _0811B81A:
-	ldr r0, _0811B884
+	ldr r0, _0811B884 @ =gUnknown_03004DE0
 	movs r1, 0xA
 	ldrsh r3, [r4, r1]
 	movs r1, 0x78
@@ -1253,18 +1253,18 @@ _0811B81A:
 	ldrsh r0, [r4, r2]
 	cmp r0, 0
 	bne _0811B856
-	ldr r1, _0811B888
+	ldr r1, _0811B888 @ =0x040000b0
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811B88C
+	ldr r0, _0811B88C @ =0x0000c5ff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811B890
+	ldr r0, _0811B890 @ =0x00007fff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
 	bl sub_811D6D4
-	ldr r0, _0811B894
+	ldr r0, _0811B894 @ =sub_811B0F0
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -1277,10 +1277,10 @@ _0811B856:
 	bne _0811B86A
 	adds r0, r1, 0x1
 	strh r0, [r4, 0xE]
-	ldr r0, _0811B898
+	ldr r0, _0811B898 @ =sub_811B54C
 	bl SetVBlankCallback
 _0811B86A:
-	ldr r0, _0811B87C
+	ldr r0, _0811B87C @ =0x0200c000
 	ldrb r1, [r0]
 	adds r1, 0x1
 	ldrb r2, [r0]
@@ -1303,33 +1303,33 @@ _0811B898: .4byte sub_811B54C
 	thumb_func_start sub_811B4A8
 sub_811B4A8: @ 811B89C
 	push {lr}
-	ldr r1, _0811B8F4
+	ldr r1, _0811B8F4 @ =0x040000b0
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811B8F8
+	ldr r0, _0811B8F8 @ =0x0000c5ff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811B8FC
+	ldr r0, _0811B8FC @ =0x00007fff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
 	bl sub_811D67C
-	ldr r2, _0811B900
+	ldr r2, _0811B900 @ =0x0200c000
 	ldrb r0, [r2]
 	cmp r0, 0
 	beq _0811B8D2
-	ldr r1, _0811B904
-	ldr r0, _0811B908
+	ldr r1, _0811B904 @ =0x040000d4
+	ldr r0, _0811B908 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r3, 0xF0
 	lsls r3, 3
 	adds r0, r3
 	str r0, [r1, 0x4]
-	ldr r0, _0811B90C
+	ldr r0, _0811B90C @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811B8D2:
-	ldr r1, _0811B910
+	ldr r1, _0811B910 @ =0x04000048
 	ldrh r0, [r2, 0x2]
 	strh r0, [r1]
 	adds r1, 0x2
@@ -1361,12 +1361,12 @@ _0811B910: .4byte 0x04000048
 sub_811B520: @ 811B914
 	push {lr}
 	bl sub_811B4A8
-	ldr r1, _0811B930
-	ldr r0, _0811B934
+	ldr r1, _0811B930 @ =0x040000b0
+	ldr r0, _0811B934 @ =gUnknown_03005560
 	str r0, [r1]
-	ldr r0, _0811B938
+	ldr r0, _0811B938 @ =0x04000010
 	str r0, [r1, 0x4]
-	ldr r0, _0811B93C
+	ldr r0, _0811B93C @ =0xa2400001
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	pop {r0}
@@ -1382,12 +1382,12 @@ _0811B93C: .4byte 0xa2400001
 sub_811B54C: @ 811B940
 	push {lr}
 	bl sub_811B4A8
-	ldr r1, _0811B95C
-	ldr r0, _0811B960
+	ldr r1, _0811B95C @ =0x040000b0
+	ldr r0, _0811B960 @ =gUnknown_03005560
 	str r0, [r1]
-	ldr r0, _0811B964
+	ldr r0, _0811B964 @ =0x04000040
 	str r0, [r1, 0x4]
-	ldr r0, _0811B968
+	ldr r0, _0811B968 @ =0xa2400001
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	pop {r0}
@@ -1404,8 +1404,8 @@ sub_811B578: @ 811B96C
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811B99C
-	ldr r2, _0811B9A0
+	ldr r5, _0811B99C @ =gUnknown_083FD7D8
+	ldr r2, _0811B9A0 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1437,17 +1437,17 @@ sub_811B5B0: @ 811B9A4
 	add r0, sp, 0x4
 	add r1, sp, 0x8
 	bl sub_811D6A8
-	ldr r0, _0811B9E4
+	ldr r0, _0811B9E4 @ =gUnknown_083FC108
 	ldr r1, [sp, 0x8]
 	movs r2, 0x20
 	bl CpuSet
 	movs r0, 0
 	str r0, [sp]
 	ldr r1, [sp, 0x4]
-	ldr r2, _0811B9E8
+	ldr r2, _0811B9E8 @ =0x05000200
 	mov r0, sp
 	bl CpuSet
-	ldr r0, _0811B9EC
+	ldr r0, _0811B9EC @ =gFieldEffectObjectPalette10
 	movs r1, 0xF0
 	movs r2, 0x20
 	bl LoadPalette
@@ -1472,12 +1472,12 @@ sub_811B5FC: @ 811B9F0
 	push {r7}
 	sub sp, 0x10
 	adds r7, r0, 0
-	ldr r1, _0811BA70
+	ldr r1, _0811BA70 @ =gUnknown_083FD7E4
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
 	add r4, sp, 0x4
-	ldr r1, _0811BA74
+	ldr r1, _0811BA74 @ =gUnknown_083FD7E8
 	adds r0, r4, 0
 	movs r2, 0xA
 	bl memcpy
@@ -1486,7 +1486,7 @@ sub_811B5FC: @ 811B9F0
 	ands r5, r0
 	movs r1, 0
 	mov r8, r4
-	ldr r6, _0811BA78
+	ldr r6, _0811BA78 @ =gUnknown_0202FF84
 _0811BA1E:
 	lsls r5, 16
 	asrs r5, 16
@@ -1543,7 +1543,7 @@ sub_811B688: @ 811BA7C
 	cmp r0, 0
 	bne _0811BA9C
 	bl sub_811D6D4
-	ldr r0, _0811BAA4
+	ldr r0, _0811BAA4 @ =sub_811B578
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -1559,8 +1559,8 @@ _0811BAA4: .4byte sub_811B578
 	thumb_func_start FldEff_Pokeball
 FldEff_Pokeball: @ 811BAA8
 	push {r4,r5,lr}
-	ldr r0, _0811BB04
-	ldr r5, _0811BB08
+	ldr r0, _0811BB04 @ =gSpriteTemplate_83FD98C
+	ldr r5, _0811BB08 @ =gUnknown_0202FF84
 	movs r2, 0
 	ldrsh r1, [r5, r2]
 	movs r3, 0x4
@@ -1569,7 +1569,7 @@ FldEff_Pokeball: @ 811BAA8
 	bl CreateSpriteAtEnd
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0811BB0C
+	ldr r1, _0811BB0C @ =gSprites
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
@@ -1590,7 +1590,7 @@ FldEff_Pokeball: @ 811BAA8
 	strh r0, [r4, 0x2E]
 	ldr r0, [r5, 0xC]
 	strh r0, [r4, 0x30]
-	ldr r0, _0811BB10
+	ldr r0, _0811BB10 @ =0x0000ffff
 	strh r0, [r4, 0x32]
 	adds r0, r4, 0
 	bl InitSpriteAffineAnim
@@ -1613,7 +1613,7 @@ sub_811B720: @ 811BB14
 	push {r4-r6,lr}
 	sub sp, 0x4
 	adds r4, r0, 0
-	ldr r1, _0811BB34
+	ldr r1, _0811BB34 @ =gUnknown_083FD7F2
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -1647,7 +1647,7 @@ _0811BB38:
 	cmp r5, r0
 	beq _0811BBA6
 	strh r2, [r4, 0x32]
-	ldr r0, _0811BBD4
+	ldr r0, _0811BBD4 @ =0x04000008
 	ldrh r2, [r0]
 	lsrs r2, 8
 	movs r0, 0x1F
@@ -1663,7 +1663,7 @@ _0811BB38:
 	adds r0, r5
 	lsls r0, 1
 	adds r0, r2
-	ldr r6, _0811BBD8
+	ldr r6, _0811BBD8 @ =0x0000f001
 	adds r3, r6, 0
 	strh r3, [r0]
 	subs r0, r1, 0x1
@@ -1716,8 +1716,8 @@ sub_811B7E8: @ 811BBDC
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811BC0C
-	ldr r2, _0811BC10
+	ldr r5, _0811BC0C @ =gUnknown_083FD7F8
+	ldr r2, _0811BC10 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1747,18 +1747,18 @@ sub_811B820: @ 811BC14
 	adds r4, r0, 0
 	bl sub_811D658
 	bl dp12_8087EA4
-	ldr r1, _0811BC64
+	ldr r1, _0811BC64 @ =0x0200c000
 	movs r0, 0
 	strh r0, [r1, 0x2]
 	movs r0, 0x3F
 	strh r0, [r1, 0x4]
-	ldr r0, _0811BC68
+	ldr r0, _0811BC68 @ =0x0000f0f1
 	strh r0, [r1, 0x6]
 	movs r0, 0xA0
 	strh r0, [r1, 0x8]
 	movs r1, 0
-	ldr r3, _0811BC6C
-	ldr r2, _0811BC70
+	ldr r3, _0811BC6C @ =gUnknown_03005560
+	ldr r2, _0811BC70 @ =0x0000f3f4
 _0811BC38:
 	lsls r0, r1, 1
 	adds r0, r3
@@ -1768,9 +1768,9 @@ _0811BC38:
 	lsrs r1, r0, 16
 	cmp r1, 0x9F
 	bls _0811BC38
-	ldr r0, _0811BC74
+	ldr r0, _0811BC74 @ =sub_811BC2C
 	bl SetVBlankCallback
-	ldr r1, _0811BC64
+	ldr r1, _0811BC64 @ =0x0200c000
 	movs r0, 0x78
 	strh r0, [r1, 0x2C]
 	ldrh r0, [r4, 0x8]
@@ -1793,7 +1793,7 @@ sub_811B884: @ 811BC78
 	push {r4-r6,lr}
 	sub sp, 0xC
 	adds r6, r0, 0
-	ldr r4, _0811BCF8
+	ldr r4, _0811BCF8 @ =0x0200c000
 	ldrb r0, [r4]
 	movs r0, 0
 	strb r0, [r4]
@@ -1810,7 +1810,7 @@ sub_811B884: @ 811BC78
 	movs r1, 0x78
 	movs r2, 0x50
 	bl sub_811D8FC
-	ldr r5, _0811BCFC
+	ldr r5, _0811BCFC @ =gUnknown_03004DE0
 _0811BCA4:
 	movs r3, 0x2A
 	ldrsh r2, [r4, r3]
@@ -1831,7 +1831,7 @@ _0811BCA4:
 	lsls r0, 24
 	cmp r0, 0
 	beq _0811BCA4
-	ldr r2, _0811BCF8
+	ldr r2, _0811BCF8 @ =0x0200c000
 	ldrh r0, [r2, 0x2C]
 	adds r0, 0x10
 	strh r0, [r2, 0x2C]
@@ -1869,7 +1869,7 @@ sub_811B90C: @ 811BD00
 	add r1, sp, 0xC
 	movs r0, 0
 	strb r0, [r1]
-	ldr r4, _0811BD7C
+	ldr r4, _0811BD7C @ =0x0200c000
 	ldrb r0, [r4]
 	movs r0, 0
 	strb r0, [r4]
@@ -1886,7 +1886,7 @@ sub_811B90C: @ 811BD00
 	movs r3, 0xF0
 	bl sub_811D8FC
 	adds r6, r4, 0
-	ldr r5, _0811BD80
+	ldr r5, _0811BD80 @ =gUnknown_03004DE0
 	mov r8, r5
 	add r5, sp, 0xC
 _0811BD3A:
@@ -1944,8 +1944,8 @@ _0811BD9E:
 	ldrsh r0, [r4, r2]
 	cmp r0, r1
 	bge _0811BDC4
-	ldr r4, _0811BDDC
-	ldr r2, _0811BDE0
+	ldr r4, _0811BDDC @ =gUnknown_03004DE0
+	ldr r2, _0811BDE0 @ =0x0200c000
 _0811BDAA:
 	ldrh r0, [r2, 0x2A]
 	adds r0, 0x1
@@ -1982,7 +1982,7 @@ sub_811B9F0: @ 811BDE4
 	push {r4-r6,lr}
 	sub sp, 0xC
 	adds r6, r0, 0
-	ldr r4, _0811BE5C
+	ldr r4, _0811BE5C @ =0x0200c000
 	ldrb r0, [r4]
 	movs r0, 0
 	strb r0, [r4]
@@ -1998,7 +1998,7 @@ sub_811B9F0: @ 811BDE4
 	movs r1, 0x78
 	movs r2, 0x50
 	bl sub_811D8FC
-	ldr r5, _0811BE60
+	ldr r5, _0811BE60 @ =gUnknown_03004DE0
 _0811BE0E:
 	movs r0, 0x2A
 	ldrsh r2, [r4, r0]
@@ -2017,7 +2017,7 @@ _0811BE0E:
 	lsls r0, 24
 	cmp r0, 0
 	beq _0811BE0E
-	ldr r2, _0811BE5C
+	ldr r2, _0811BE5C @ =0x0200c000
 	ldrh r0, [r2, 0x2C]
 	subs r0, 0x10
 	strh r0, [r2, 0x2C]
@@ -2056,7 +2056,7 @@ sub_811BA70: @ 811BE64
 	add r1, sp, 0xC
 	movs r0, 0
 	strb r0, [r1]
-	ldr r4, _0811BEE4
+	ldr r4, _0811BEE4 @ =0x0200c000
 	ldrb r0, [r4]
 	movs r0, 0
 	strb r0, [r4]
@@ -2072,7 +2072,7 @@ sub_811BA70: @ 811BE64
 	movs r2, 0x50
 	movs r3, 0
 	bl sub_811D8FC
-	ldr r3, _0811BEE8
+	ldr r3, _0811BEE8 @ =gUnknown_03004DE0
 	mov r9, r3
 	mov r10, r4
 	add r6, sp, 0xC
@@ -2131,8 +2131,8 @@ _0811BF06:
 	ldrsh r0, [r4, r3]
 	cmp r0, r2
 	ble _0811BF2E
-	ldr r4, _0811BF4C
-	ldr r2, _0811BF50
+	ldr r4, _0811BF4C @ =gUnknown_03004DE0
+	ldr r2, _0811BF50 @ =0x0200c000
 	adds r3, r1, 0
 _0811BF14:
 	ldrh r0, [r2, 0x2A]
@@ -2174,7 +2174,7 @@ sub_811BB60: @ 811BF54
 	push {r4-r6,lr}
 	sub sp, 0xC
 	adds r6, r0, 0
-	ldr r4, _0811BFD8
+	ldr r4, _0811BFD8 @ =0x0200c000
 	ldrb r0, [r4]
 	movs r1, 0
 	strb r1, [r4]
@@ -2189,7 +2189,7 @@ sub_811BB60: @ 811BF54
 	movs r1, 0x78
 	movs r2, 0x50
 	bl sub_811D8FC
-	ldr r5, _0811BFDC
+	ldr r5, _0811BFDC @ =gUnknown_03004DE0
 _0811BF7C:
 	movs r2, 0x78
 	ldrh r3, [r4, 0x28]
@@ -2217,7 +2217,7 @@ _0811BF8C:
 	lsls r0, 24
 	cmp r0, 0
 	beq _0811BF7C
-	ldr r2, _0811BFD8
+	ldr r2, _0811BFD8 @ =0x0200c000
 	ldrh r0, [r2, 0x2C]
 	adds r0, 0x10
 	strh r0, [r2, 0x2C]
@@ -2246,18 +2246,18 @@ _0811BFDC: .4byte gUnknown_03004DE0
 	thumb_func_start sub_811BBEC
 sub_811BBEC: @ 811BFE0
 	push {lr}
-	ldr r1, _0811C010
+	ldr r1, _0811C010 @ =0x040000b0
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811C014
+	ldr r0, _0811C014 @ =0x0000c5ff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811C018
+	ldr r0, _0811C018 @ =0x00007fff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
 	bl sub_811D6D4
-	ldr r0, _0811C01C
+	ldr r0, _0811C01C @ =sub_811B7E8
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -2275,33 +2275,33 @@ _0811C01C: .4byte sub_811B7E8
 	thumb_func_start sub_811BC2C
 sub_811BC2C: @ 811C020
 	push {r4,lr}
-	ldr r4, _0811C088
+	ldr r4, _0811C088 @ =0x040000b0
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811C08C
+	ldr r0, _0811C08C @ =0x0000c5ff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811C090
+	ldr r0, _0811C090 @ =0x00007fff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r0, [r4, 0xA]
 	bl sub_811D67C
-	ldr r2, _0811C094
+	ldr r2, _0811C094 @ =0x0200c000
 	ldrb r0, [r2]
 	cmp r0, 0
 	beq _0811C056
-	ldr r1, _0811C098
-	ldr r0, _0811C09C
+	ldr r1, _0811C098 @ =0x040000d4
+	ldr r0, _0811C09C @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r3, 0xF0
 	lsls r3, 3
 	adds r0, r3
 	str r0, [r1, 0x4]
-	ldr r0, _0811C0A0
+	ldr r0, _0811C0A0 @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811C056:
-	ldr r1, _0811C0A4
+	ldr r1, _0811C0A4 @ =0x04000048
 	ldrh r0, [r2, 0x2]
 	strh r0, [r1]
 	adds r1, 0x2
@@ -2310,8 +2310,8 @@ _0811C056:
 	subs r1, 0x6
 	ldrh r0, [r2, 0x8]
 	strh r0, [r1]
-	ldr r2, _0811C0A8
-	ldr r0, _0811C09C
+	ldr r2, _0811C0A8 @ =0x04000040
+	ldr r0, _0811C09C @ =gUnknown_03004DE0
 	movs r1, 0xF0
 	lsls r1, 3
 	adds r0, r1
@@ -2319,7 +2319,7 @@ _0811C056:
 	strh r1, [r2]
 	str r0, [r4]
 	str r2, [r4, 0x4]
-	ldr r0, _0811C0AC
+	ldr r0, _0811C0AC @ =0xa2400001
 	str r0, [r4, 0x8]
 	ldr r0, [r4, 0x8]
 	pop {r4}
@@ -2343,8 +2343,8 @@ sub_811BCBC: @ 811C0B0
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811C0E0
-	ldr r2, _0811C0E4
+	ldr r5, _0811C0E0 @ =gUnknown_083FD814
+	ldr r2, _0811C0E4 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2375,8 +2375,8 @@ sub_811BCF4: @ 811C0E8
 	bl sub_811D658
 	bl dp12_8087EA4
 	movs r2, 0
-	ldr r4, _0811C13C
-	ldr r3, _0811C140
+	ldr r4, _0811C13C @ =gUnknown_03005560
+	ldr r3, _0811C140 @ =0x0200c000
 _0811C0FA:
 	lsls r0, r2, 1
 	adds r0, r4
@@ -2387,16 +2387,16 @@ _0811C0FA:
 	lsrs r2, r0, 24
 	cmp r2, 0x9F
 	bls _0811C0FA
-	ldr r0, _0811C144
+	ldr r0, _0811C144 @ =sub_811BE3C
 	bl SetVBlankCallback
-	ldr r0, _0811C148
+	ldr r0, _0811C148 @ =sub_811BE74
 	bl SetHBlankCallback
-	ldr r2, _0811C14C
+	ldr r2, _0811C14C @ =0x04000200
 	ldrh r0, [r2]
 	movs r1, 0x2
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r2, _0811C150
+	ldr r2, _0811C150 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x10
 	orrs r0, r1
@@ -2424,7 +2424,7 @@ sub_811BD60: @ 811C154
 	push {r7}
 	sub sp, 0x4
 	adds r6, r0, 0
-	ldr r1, _0811C21C
+	ldr r1, _0811C21C @ =0x0200c000
 	ldrb r0, [r1]
 	movs r0, 0
 	strb r0, [r1]
@@ -2441,7 +2441,7 @@ sub_811BD60: @ 811C154
 	lsls r5, 3
 	adds r0, r4, r5
 	strh r0, [r6, 0xA]
-	ldr r0, _0811C220
+	ldr r0, _0811C220 @ =0x1fff0000
 	cmp r1, r0
 	bgt _0811C18E
 	movs r1, 0xC0
@@ -2455,10 +2455,10 @@ _0811C192:
 	lsrs r0, r4, 8
 	asrs r1, r7, 16
 	bl Sin
-	ldr r1, _0811C224
+	ldr r1, _0811C224 @ =gUnknown_03004DE0
 	lsls r2, r5, 1
 	adds r2, r1
-	ldr r1, _0811C21C
+	ldr r1, _0811C21C @ =0x0200c000
 	ldrh r1, [r1, 0x16]
 	adds r0, r1
 	strh r0, [r2]
@@ -2494,19 +2494,19 @@ _0811C1E0:
 	ldrsh r0, [r6, r5]
 	cmp r0, 0
 	beq _0811C202
-	ldr r0, _0811C228
+	ldr r0, _0811C228 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0811C202
-	ldr r0, _0811C22C
+	ldr r0, _0811C22C @ =sub_811BCBC
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
 	bl DestroyTask
 _0811C202:
-	ldr r0, _0811C21C
+	ldr r0, _0811C21C @ =0x0200c000
 	ldrb r1, [r0]
 	adds r1, 0x1
 	ldrb r2, [r0]
@@ -2530,18 +2530,18 @@ _0811C22C: .4byte sub_811BCBC
 sub_811BE3C: @ 811C230
 	push {lr}
 	bl sub_811D67C
-	ldr r0, _0811C258
+	ldr r0, _0811C258 @ =0x0200c000
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _0811C252
-	ldr r1, _0811C25C
-	ldr r0, _0811C260
+	ldr r1, _0811C25C @ =0x040000d4
+	ldr r0, _0811C260 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r2, 0xF0
 	lsls r2, 3
 	adds r0, r2
 	str r0, [r1, 0x4]
-	ldr r0, _0811C264
+	ldr r0, _0811C264 @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811C252:
@@ -2556,8 +2556,8 @@ _0811C264: .4byte 0x800000a0
 
 	thumb_func_start sub_811BE74
 sub_811BE74: @ 811C268
-	ldr r1, _0811C288
-	ldr r0, _0811C28C
+	ldr r1, _0811C288 @ =gUnknown_03004DE0
+	ldr r0, _0811C28C @ =0x04000006
 	ldrh r0, [r0]
 	lsls r0, 1
 	movs r2, 0xF0
@@ -2565,7 +2565,7 @@ sub_811BE74: @ 811C268
 	adds r1, r2
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _0811C290
+	ldr r0, _0811C290 @ =0x04000016
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
@@ -2583,8 +2583,8 @@ sub_811BEA0: @ 811C294
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811C2C4
-	ldr r2, _0811C2C8
+	ldr r5, _0811C2C4 @ =gUnknown_083FD81C
+	ldr r2, _0811C2C8 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2614,7 +2614,7 @@ sub_811BED8: @ 811C2CC
 	adds r4, r0, 0
 	bl sub_811D658
 	bl dp12_8087EA4
-	ldr r1, _0811C314
+	ldr r1, _0811C314 @ =0x0200c000
 	movs r2, 0
 	movs r0, 0x3F
 	strh r0, [r1, 0x2]
@@ -2624,7 +2624,7 @@ sub_811BED8: @ 811C2CC
 	movs r0, 0xA0
 	strh r0, [r1, 0x8]
 	movs r1, 0
-	ldr r3, _0811C318
+	ldr r3, _0811C318 @ =gUnknown_03005560
 	movs r2, 0xF2
 _0811C2F0:
 	lsls r0, r1, 1
@@ -2635,7 +2635,7 @@ _0811C2F0:
 	lsrs r1, r0, 24
 	cmp r1, 0x9F
 	bls _0811C2F0
-	ldr r0, _0811C31C
+	ldr r0, _0811C31C @ =sub_811C004
 	bl SetVBlankCallback
 	ldrh r0, [r4, 0x8]
 	adds r0, 0x1
@@ -2656,11 +2656,11 @@ sub_811BF2C: @ 811C320
 	mov r7, r8
 	push {r7}
 	adds r4, r0, 0
-	ldr r1, _0811C3B0
+	ldr r1, _0811C3B0 @ =0x0200c000
 	ldrb r0, [r1]
 	movs r0, 0
 	strb r0, [r1]
-	ldr r7, _0811C3B4
+	ldr r7, _0811C3B4 @ =gUnknown_03004DE0
 	ldrh r0, [r4, 0xC]
 	ldrb r5, [r4, 0xC]
 	adds r0, 0x10
@@ -2716,7 +2716,7 @@ _0811C37A:
 	adds r0, 0x1
 	strh r0, [r4, 0x8]
 _0811C398:
-	ldr r0, _0811C3B0
+	ldr r0, _0811C3B0 @ =0x0200c000
 	ldrb r1, [r0]
 	adds r1, 0x1
 	ldrb r2, [r0]
@@ -2735,18 +2735,18 @@ _0811C3B4: .4byte gUnknown_03004DE0
 	thumb_func_start sub_811BFC4
 sub_811BFC4: @ 811C3B8
 	push {lr}
-	ldr r1, _0811C3E8
+	ldr r1, _0811C3E8 @ =0x040000b0
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811C3EC
+	ldr r0, _0811C3EC @ =0x0000c5ff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811C3F0
+	ldr r0, _0811C3F0 @ =0x00007fff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
 	bl sub_811D6D4
-	ldr r0, _0811C3F4
+	ldr r0, _0811C3F4 @ =sub_811BEA0
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -2764,33 +2764,33 @@ _0811C3F4: .4byte sub_811BEA0
 	thumb_func_start sub_811C004
 sub_811C004: @ 811C3F8
 	push {r4,lr}
-	ldr r4, _0811C454
+	ldr r4, _0811C454 @ =0x040000b0
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811C458
+	ldr r0, _0811C458 @ =0x0000c5ff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811C45C
+	ldr r0, _0811C45C @ =0x00007fff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r0, [r4, 0xA]
 	bl sub_811D67C
-	ldr r2, _0811C460
+	ldr r2, _0811C460 @ =0x0200c000
 	ldrb r0, [r2]
 	cmp r0, 0
 	beq _0811C42E
-	ldr r1, _0811C464
-	ldr r0, _0811C468
+	ldr r1, _0811C464 @ =0x040000d4
+	ldr r0, _0811C468 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r3, 0xF0
 	lsls r3, 3
 	adds r0, r3
 	str r0, [r1, 0x4]
-	ldr r0, _0811C46C
+	ldr r0, _0811C46C @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811C42E:
-	ldr r1, _0811C470
+	ldr r1, _0811C470 @ =0x04000048
 	ldrh r0, [r2, 0x2]
 	strh r0, [r1]
 	adds r1, 0x2
@@ -2799,11 +2799,11 @@ _0811C42E:
 	subs r1, 0x6
 	ldrh r0, [r2, 0x8]
 	strh r0, [r1]
-	ldr r0, _0811C474
+	ldr r0, _0811C474 @ =gUnknown_03005560
 	str r0, [r4]
-	ldr r0, _0811C478
+	ldr r0, _0811C478 @ =0x04000040
 	str r0, [r4, 0x4]
-	ldr r0, _0811C47C
+	ldr r0, _0811C47C @ =0xa2400001
 	str r0, [r4, 0x8]
 	ldr r0, [r4, 0x8]
 	pop {r4}
@@ -2828,7 +2828,7 @@ sub_811C08C: @ 811C480
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0811C49C
+	ldr r2, _0811C49C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2847,7 +2847,7 @@ sub_811C0AC: @ 811C4A0
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0811C4BC
+	ldr r2, _0811C4BC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2866,7 +2866,7 @@ sub_811C0CC: @ 811C4C0
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0811C4DC
+	ldr r2, _0811C4DC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2885,7 +2885,7 @@ sub_811C0EC: @ 811C4E0
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0811C4FC
+	ldr r2, _0811C4FC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2904,7 +2904,7 @@ sub_811C10C: @ 811C500
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0811C51C
+	ldr r2, _0811C51C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2923,8 +2923,8 @@ sub_811C12C: @ 811C520
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811C550
-	ldr r2, _0811C554
+	ldr r5, _0811C550 @ =gUnknown_083FD828
+	ldr r2, _0811C554 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2962,7 +2962,7 @@ sub_811C164: @ 811C558
 	strh r0, [r4, 0xC]
 	movs r0, 0xEF
 	strh r0, [r4, 0xE]
-	ldr r1, _0811C5B0
+	ldr r1, _0811C5B0 @ =0x0200c000
 	movs r0, 0x3F
 	strh r0, [r1, 0x2]
 	movs r0, 0x3E
@@ -2970,8 +2970,8 @@ sub_811C164: @ 811C558
 	movs r0, 0xA0
 	strh r0, [r1, 0x8]
 	movs r1, 0
-	ldr r3, _0811C5B4
-	ldr r2, _0811C5B8
+	ldr r3, _0811C5B4 @ =gUnknown_03005560
+	ldr r2, _0811C5B8 @ =0x0000f0f1
 _0811C58A:
 	lsls r0, r1, 1
 	adds r0, r3
@@ -2981,7 +2981,7 @@ _0811C58A:
 	lsrs r1, r0, 24
 	cmp r1, 0x9F
 	bls _0811C58A
-	ldr r0, _0811C5BC
+	ldr r0, _0811C5BC @ =sub_811C670
 	bl SetVBlankCallback
 	ldrh r0, [r4, 0x8]
 	adds r0, 0x1
@@ -3004,15 +3004,15 @@ sub_811C1CC: @ 811C5C0
 	push {r7}
 	sub sp, 0x8
 	mov r8, r0
-	ldr r6, _0811C678
+	ldr r6, _0811C678 @ =gUnknown_083FDFF4
 	add r1, sp, 0x4
 	mov r0, sp
 	bl sub_811D6A8
-	ldr r0, _0811C67C
+	ldr r0, _0811C67C @ =gUnknown_083FC348
 	ldr r1, [sp, 0x4]
 	movs r2, 0xF0
 	bl CpuSet
-	ldr r1, _0811C680
+	ldr r1, _0811C680 @ =gUnknown_083FDB00
 	mov r2, r8
 	movs r3, 0x26
 	ldrsh r0, [r2, r3]
@@ -3022,8 +3022,8 @@ sub_811C1CC: @ 811C5C0
 	movs r1, 0xF0
 	movs r2, 0x20
 	bl LoadPalette
-	ldr r1, _0811C684
-	ldr r0, _0811C688
+	ldr r1, _0811C684 @ =gUnknown_083FDB14
+	ldr r0, _0811C688 @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
 	lsls r0, 2
 	adds r0, r1
@@ -3033,7 +3033,7 @@ sub_811C1CC: @ 811C5C0
 	bl LoadPalette
 	movs r1, 0
 	ldr r5, [sp]
-	ldr r0, _0811C68C
+	ldr r0, _0811C68C @ =sub_811C77C
 	mov r12, r0
 	movs r2, 0xF0
 	lsls r2, 8
@@ -3065,12 +3065,12 @@ _0811C61C:
 	asrs r0, 16
 	cmp r0, 0x13
 	ble _0811C616
-	ldr r2, _0811C690
+	ldr r2, _0811C690 @ =0x04000200
 	ldrh r0, [r2]
 	movs r1, 0x2
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r2, _0811C694
+	ldr r2, _0811C694 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x10
 	orrs r0, r1
@@ -3103,11 +3103,11 @@ _0811C694: .4byte 0x04000004
 sub_811C2A4: @ 811C698
 	push {r4-r7,lr}
 	adds r4, r0, 0
-	ldr r1, _0811C778
+	ldr r1, _0811C778 @ =0x0200c000
 	ldrb r0, [r1]
 	movs r0, 0
 	strb r0, [r1]
-	ldr r7, _0811C77C
+	ldr r7, _0811C77C @ =gUnknown_03004DE0
 	ldrh r0, [r4, 0xA]
 	ldrb r5, [r4, 0xA]
 	adds r0, 0x10
@@ -3205,7 +3205,7 @@ _0811C74C:
 	adds r0, 0x1
 	strh r0, [r4, 0x8]
 _0811C758:
-	ldr r1, _0811C778
+	ldr r1, _0811C778 @ =0x0200c000
 	ldrh r0, [r1, 0x18]
 	subs r0, 0x8
 	strh r0, [r1, 0x18]
@@ -3229,11 +3229,11 @@ _0811C77C: .4byte gUnknown_03004DE0
 sub_811C38C: @ 811C780
 	push {r4,r5,lr}
 	adds r4, r0, 0
-	ldr r0, _0811C7EC
+	ldr r0, _0811C7EC @ =0x0200c000
 	ldrb r1, [r0]
 	movs r1, 0
 	strb r1, [r0]
-	ldr r2, _0811C7F0
+	ldr r2, _0811C7F0 @ =gUnknown_03004DE0
 	adds r5, r0, 0
 	movs r3, 0xF0
 _0811C792:
@@ -3287,7 +3287,7 @@ _0811C7F0: .4byte gUnknown_03004DE0
 sub_811C400: @ 811C7F4
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r1, _0811C82C
+	ldr r1, _0811C82C @ =0x0200c000
 	ldrh r0, [r1, 0x18]
 	subs r0, 0x8
 	strh r0, [r1, 0x18]
@@ -3321,7 +3321,7 @@ sub_811C43C: @ 811C830
 	mov r7, r8
 	push {r7}
 	adds r6, r0, 0
-	ldr r7, _0811C8C4
+	ldr r7, _0811C8C4 @ =0x0200c000
 	ldrh r0, [r7, 0x18]
 	subs r0, 0x8
 	movs r1, 0
@@ -3341,17 +3341,17 @@ sub_811C43C: @ 811C830
 	strb r0, [r7]
 	movs r0, 0
 	bl SetVBlankCallback
-	ldr r1, _0811C8C8
+	ldr r1, _0811C8C8 @ =0x040000b0
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811C8CC
+	ldr r0, _0811C8CC @ =0x0000c5ff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811C8D0
+	ldr r0, _0811C8D0 @ =0x00007fff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
-	ldr r4, _0811C8D4
+	ldr r4, _0811C8D4 @ =gUnknown_03004DE0
 	movs r5, 0xA0
 	lsls r5, 1
 	adds r0, r4, 0
@@ -3365,10 +3365,10 @@ sub_811C43C: @ 811C830
 	movs r1, 0
 	adds r2, r5, 0
 	bl memset
-	ldr r1, _0811C8D8
+	ldr r1, _0811C8D8 @ =0x04000040
 	movs r0, 0xF0
 	strh r0, [r1]
-	ldr r0, _0811C8DC
+	ldr r0, _0811C8DC @ =0x04000054
 	mov r1, r8
 	strh r1, [r0]
 	ldrh r0, [r6, 0x8]
@@ -3378,7 +3378,7 @@ sub_811C43C: @ 811C830
 	strh r1, [r6, 0x10]
 	movs r0, 0xBF
 	strh r0, [r7, 0xE]
-	ldr r0, _0811C8E0
+	ldr r0, _0811C8E0 @ =sub_811C700
 	bl SetVBlankCallback
 _0811C8B8:
 	movs r0, 0
@@ -3402,7 +3402,7 @@ _0811C8E0: .4byte sub_811C700
 sub_811C4F0: @ 811C8E4
 	push {r4-r7,lr}
 	adds r4, r0, 0
-	ldr r1, _0811C9A0
+	ldr r1, _0811C9A0 @ =0x0200c000
 	ldrb r0, [r1]
 	movs r0, 0
 	strb r0, [r1]
@@ -3444,7 +3444,7 @@ _0811C91A:
 	blt _0811C980
 	movs r2, 0x50
 	mov r12, r2
-	ldr r5, _0811C9A4
+	ldr r5, _0811C9A4 @ =gUnknown_03004DE0
 _0811C93A:
 	lsls r0, r3, 16
 	asrs r2, r0, 16
@@ -3509,13 +3509,13 @@ _0811C9A4: .4byte gUnknown_03004DE0
 sub_811C5B4: @ 811C9A8
 	push {r4-r6,lr}
 	adds r5, r0, 0
-	ldr r4, _0811C9D4
+	ldr r4, _0811C9D4 @ =0x0200c000
 	ldrb r0, [r4]
 	movs r6, 0
 	strb r6, [r4]
 	movs r0, 0x1
 	negs r0, r0
-	ldr r2, _0811C9D8
+	ldr r2, _0811C9D8 @ =0x00007fff
 	movs r1, 0x10
 	bl BlendPalettes
 	movs r0, 0xFF
@@ -3537,14 +3537,14 @@ _0811C9D8: .4byte 0x00007fff
 sub_811C5E8: @ 811C9DC
 	push {r4,r5,lr}
 	adds r4, r0, 0
-	ldr r5, _0811CA1C
+	ldr r5, _0811CA1C @ =0x0200c000
 	ldrb r0, [r5]
 	movs r0, 0
 	strb r0, [r5]
 	ldrh r0, [r4, 0xE]
 	adds r0, 0x1
 	strh r0, [r4, 0xE]
-	ldr r0, _0811CA20
+	ldr r0, _0811CA20 @ =gUnknown_03004DE0
 	movs r2, 0xE
 	ldrsh r1, [r4, r2]
 	movs r2, 0xA0
@@ -3575,13 +3575,13 @@ _0811CA20: .4byte gUnknown_03004DE0
 sub_811C630: @ 811CA24
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r1, _0811CA58
+	ldr r1, _0811CA58 @ =0x040000b0
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811CA5C
+	ldr r0, _0811CA5C @ =0x0000c5ff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811CA60
+	ldr r0, _0811CA60 @ =0x00007fff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
@@ -3604,33 +3604,33 @@ _0811CA60: .4byte 0x00007fff
 	thumb_func_start sub_811C670
 sub_811C670: @ 811CA64
 	push {r4,lr}
-	ldr r4, _0811CAC8
+	ldr r4, _0811CAC8 @ =0x040000b0
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811CACC
+	ldr r0, _0811CACC @ =0x0000c5ff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811CAD0
+	ldr r0, _0811CAD0 @ =0x00007fff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r0, [r4, 0xA]
 	bl sub_811D67C
-	ldr r2, _0811CAD4
+	ldr r2, _0811CAD4 @ =0x0200c000
 	ldrb r0, [r2]
 	cmp r0, 0
 	beq _0811CA9A
-	ldr r1, _0811CAD8
-	ldr r0, _0811CADC
+	ldr r1, _0811CAD8 @ =0x040000d4
+	ldr r0, _0811CADC @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r3, 0xF0
 	lsls r3, 3
 	adds r0, r3
 	str r0, [r1, 0x4]
-	ldr r0, _0811CAE0
+	ldr r0, _0811CAE0 @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811CA9A:
-	ldr r1, _0811CAE4
+	ldr r1, _0811CAE4 @ =0x04000012
 	ldrh r0, [r2, 0x1C]
 	strh r0, [r1]
 	adds r1, 0x36
@@ -3642,11 +3642,11 @@ _0811CA9A:
 	subs r1, 0x6
 	ldrh r0, [r2, 0x8]
 	strh r0, [r1]
-	ldr r0, _0811CAE8
+	ldr r0, _0811CAE8 @ =gUnknown_03005560
 	str r0, [r4]
-	ldr r0, _0811CAEC
+	ldr r0, _0811CAEC @ =0x04000040
 	str r0, [r4, 0x4]
-	ldr r0, _0811CAF0
+	ldr r0, _0811CAF0 @ =0xa2400001
 	str r0, [r4, 0x8]
 	ldr r0, [r4, 0x8]
 	pop {r4}
@@ -3669,40 +3669,40 @@ _0811CAF0: .4byte 0xa2400001
 	thumb_func_start sub_811C700
 sub_811C700: @ 811CAF4
 	push {r4,lr}
-	ldr r4, _0811CB44
+	ldr r4, _0811CB44 @ =0x040000b0
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811CB48
+	ldr r0, _0811CB48 @ =0x0000c5ff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811CB4C
+	ldr r0, _0811CB4C @ =0x00007fff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r0, [r4, 0xA]
 	bl sub_811D67C
-	ldr r2, _0811CB50
+	ldr r2, _0811CB50 @ =0x0200c000
 	ldrb r0, [r2]
 	cmp r0, 0
 	beq _0811CB2A
-	ldr r1, _0811CB54
-	ldr r0, _0811CB58
+	ldr r1, _0811CB54 @ =0x040000d4
+	ldr r0, _0811CB58 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r3, 0xF0
 	lsls r3, 3
 	adds r0, r3
 	str r0, [r1, 0x4]
-	ldr r0, _0811CB5C
+	ldr r0, _0811CB5C @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811CB2A:
-	ldr r1, _0811CB60
+	ldr r1, _0811CB60 @ =0x04000050
 	ldrh r0, [r2, 0xE]
 	strh r0, [r1]
-	ldr r0, _0811CB64
+	ldr r0, _0811CB64 @ =gUnknown_03005560
 	str r0, [r4]
-	ldr r0, _0811CB68
+	ldr r0, _0811CB68 @ =0x04000054
 	str r0, [r4, 0x4]
-	ldr r0, _0811CB6C
+	ldr r0, _0811CB6C @ =0xa2400001
 	str r0, [r4, 0x8]
 	ldr r0, [r4, 0x8]
 	pop {r4}
@@ -3725,12 +3725,12 @@ _0811CB6C: .4byte 0xa2400001
 	thumb_func_start sub_811C77C
 sub_811C77C: @ 811CB70
 	push {lr}
-	ldr r0, _0811CB84
+	ldr r0, _0811CB84 @ =0x04000006
 	ldrh r0, [r0]
 	cmp r0, 0x4F
 	bhi _0811CB90
-	ldr r0, _0811CB88
-	ldr r1, _0811CB8C
+	ldr r0, _0811CB88 @ =0x04000010
+	ldr r1, _0811CB8C @ =0x0200c000
 	ldrh r1, [r1, 0x18]
 	b _0811CB96
 	.align 2, 0
@@ -3738,8 +3738,8 @@ _0811CB84: .4byte 0x04000006
 _0811CB88: .4byte 0x04000010
 _0811CB8C: .4byte 0x0200c000
 _0811CB90:
-	ldr r0, _0811CB9C
-	ldr r1, _0811CBA0
+	ldr r0, _0811CB9C @ =0x04000010
+	ldr r1, _0811CBA0 @ =0x0200c000
 	ldrh r1, [r1, 0x1A]
 _0811CB96:
 	strh r1, [r0]
@@ -3758,13 +3758,13 @@ sub_811C7B0: @ 811CBA4
 	push {r5,r6}
 	sub sp, 0x4
 	adds r4, r0, 0
-	ldr r0, _0811CCE0
+	ldr r0, _0811CCE0 @ =gUnknown_083FD850
 	movs r2, 0x26
 	ldrsh r1, [r4, r2]
 	mov r8, r1
 	add r0, r8
 	ldrb r0, [r0]
-	ldr r2, _0811CCE4
+	ldr r2, _0811CCE4 @ =gUnknown_083FD86A
 	lsls r1, 2
 	mov r8, r1
 	adds r1, r2
@@ -3778,14 +3778,14 @@ sub_811C7B0: @ 811CBA4
 	adds r2, 0x2A
 	lsls r2, 16
 	asrs r2, 16
-	ldr r5, _0811CCE8
+	ldr r5, _0811CCE8 @ =0x0200c03c
 	str r5, [sp]
 	movs r3, 0
 	bl CreateTrainerSprite_BirchSpeech
 	lsls r0, 24
 	lsrs r0, 24
 	strh r0, [r4, 0x22]
-	ldr r0, _0811CCEC
+	ldr r0, _0811CCEC @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
 	movs r1, 0x88
 	lsls r1, 1
@@ -3801,7 +3801,7 @@ sub_811C7B0: @ 811CBA4
 	lsls r5, r0, 4
 	adds r5, r0
 	lsls r5, 2
-	ldr r1, _0811CCF0
+	ldr r1, _0811CCF0 @ =gSprites
 	adds r5, r1
 	movs r2, 0x24
 	ldrsh r0, [r4, r2]
@@ -3809,7 +3809,7 @@ sub_811C7B0: @ 811CBA4
 	adds r6, r0
 	lsls r6, 2
 	adds r6, r1
-	ldr r0, _0811CCF4
+	ldr r0, _0811CCF4 @ =sub_811C90C
 	str r0, [r5, 0x1C]
 	str r0, [r6, 0x1C]
 	ldrb r0, [r5, 0x1]
@@ -3875,7 +3875,7 @@ sub_811C7B0: @ 811CBA4
 	ldrb r0, [r5, 0x3]
 	lsls r0, 26
 	lsrs r0, 27
-	ldr r2, _0811CCF8
+	ldr r2, _0811CCF8 @ =gUnknown_083FD856
 	mov r3, r8
 	adds r1, r3, r2
 	movs r4, 0
@@ -3890,7 +3890,7 @@ sub_811C7B0: @ 811CBA4
 	ldrb r0, [r6, 0x3]
 	lsls r0, 26
 	lsrs r0, 27
-	ldr r1, _0811CCFC
+	ldr r1, _0811CCFC @ =0xfffffe00
 	movs r2, 0x80
 	lsls r2, 2
 	movs r3, 0
@@ -3917,7 +3917,7 @@ _0811CCFC: .4byte 0xfffffe00
 sub_811C90C: @ 811CD00
 	push {r4,r5,lr}
 	adds r4, r0, 0
-	ldr r5, _0811CD24
+	ldr r5, _0811CD24 @ =gUnknown_083FD880
 _0811CD06:
 	movs r1, 0x2E
 	ldrsh r0, [r4, r1]
@@ -3947,12 +3947,12 @@ sub_811C938: @ 811CD2C
 	push {r4,r5,lr}
 	sub sp, 0x8
 	adds r5, r0, 0
-	ldr r1, _0811CD70
+	ldr r1, _0811CD70 @ =gUnknown_083FD89C
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
 	add r4, sp, 0x4
-	ldr r1, _0811CD74
+	ldr r1, _0811CD74 @ =gUnknown_083FD8A0
 	adds r0, r4, 0
 	movs r2, 0x4
 	bl memcpy
@@ -4068,7 +4068,7 @@ _0811CDFC:
 
 	thumb_func_start sub_811CA10
 sub_811CA10: @ 811CE04
-	ldr r3, _0811CE18
+	ldr r3, _0811CE18 @ =gSprites
 	lsls r0, 16
 	asrs r0, 16
 	lsls r2, r0, 4
@@ -4083,7 +4083,7 @@ _0811CE18: .4byte gSprites
 
 	thumb_func_start sub_811CA28
 sub_811CA28: @ 811CE1C
-	ldr r2, _0811CE34
+	ldr r2, _0811CE34 @ =gSprites
 	lsls r0, 16
 	asrs r0, 16
 	lsls r1, r0, 4
@@ -4100,7 +4100,7 @@ _0811CE34: .4byte gSprites
 
 	thumb_func_start sub_811CA44
 sub_811CA44: @ 811CE38
-	ldr r2, _0811CE4C
+	ldr r2, _0811CE4C @ =gSprites
 	lsls r0, 16
 	asrs r0, 16
 	lsls r1, r0, 4
@@ -4119,8 +4119,8 @@ sub_811CA5C: @ 811CE50
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811CE80
-	ldr r2, _0811CE84
+	ldr r5, _0811CE80 @ =gUnknown_083FD8A4
+	ldr r2, _0811CE84 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -4156,13 +4156,13 @@ sub_811CA94: @ 811CE88
 	strh r0, [r4, 0xC]
 	movs r0, 0x1
 	strh r0, [r4, 0xE]
-	ldr r1, _0811CEFC
+	ldr r1, _0811CEFC @ =0x0200c000
 	movs r0, 0x3F
 	strh r0, [r1, 0x2]
 	strh r2, [r1, 0x4]
 	movs r0, 0xA0
 	strh r0, [r1, 0x8]
-	ldr r3, _0811CF00
+	ldr r3, _0811CF00 @ =gUnknown_03005560
 	adds r6, r1, 0
 	movs r5, 0xF0
 _0811CEB2:
@@ -4180,19 +4180,19 @@ _0811CEB2:
 	lsrs r2, r0, 16
 	cmp r2, 0x9F
 	bls _0811CEB2
-	ldr r2, _0811CF04
+	ldr r2, _0811CF04 @ =0x04000200
 	ldrh r0, [r2]
 	movs r1, 0x2
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r2, _0811CF08
+	ldr r2, _0811CF08 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x10
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _0811CF0C
+	ldr r0, _0811CF0C @ =sub_811CC28
 	bl SetVBlankCallback
-	ldr r0, _0811CF10
+	ldr r0, _0811CF10 @ =sub_811CCB0
 	bl SetHBlankCallback
 	ldrh r0, [r4, 0x8]
 	adds r0, 0x1
@@ -4216,7 +4216,7 @@ sub_811CB20: @ 811CF14
 	mov r7, r8
 	push {r7}
 	adds r2, r0, 0
-	ldr r1, _0811CF8C
+	ldr r1, _0811CF8C @ =0x0200c000
 	ldrb r0, [r1]
 	movs r0, 0
 	strb r0, [r1]
@@ -4237,7 +4237,7 @@ _0811CF3E:
 	ldrh r4, [r2, 0xC]
 	movs r0, 0xC
 	ldrsh r1, [r2, r0]
-	ldr r0, _0811CF90
+	ldr r0, _0811CF90 @ =0x00000fff
 	ldrh r3, [r2, 0xE]
 	cmp r1, r0
 	bgt _0811CF50
@@ -4252,7 +4252,7 @@ _0811CF50:
 	strh r0, [r2, 0xE]
 _0811CF5C:
 	movs r5, 0
-	ldr r7, _0811CF94
+	ldr r7, _0811CF94 @ =gUnknown_03004DE0
 	movs r1, 0xA0
 	lsls r1, 1
 	adds r1, r7
@@ -4320,18 +4320,18 @@ _0811CFC2:
 	thumb_func_start sub_811CBE8
 sub_811CBE8: @ 811CFDC
 	push {lr}
-	ldr r1, _0811D00C
+	ldr r1, _0811D00C @ =0x040000b0
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811D010
+	ldr r0, _0811D010 @ =0x0000c5ff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811D014
+	ldr r0, _0811D014 @ =0x00007fff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
 	bl sub_811D6D4
-	ldr r0, _0811D018
+	ldr r0, _0811D018 @ =sub_811CA5C
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -4349,19 +4349,19 @@ _0811D018: .4byte sub_811CA5C
 	thumb_func_start sub_811CC28
 sub_811CC28: @ 811D01C
 	push {r4,lr}
-	ldr r4, _0811D078
+	ldr r4, _0811D078 @ =0x040000b0
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811D07C
+	ldr r0, _0811D07C @ =0x0000c5ff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811D080
+	ldr r0, _0811D080 @ =0x00007fff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r0, [r4, 0xA]
 	bl sub_811D67C
-	ldr r2, _0811D084
-	ldr r1, _0811D088
+	ldr r2, _0811D084 @ =0x04000048
+	ldr r1, _0811D088 @ =0x0200c000
 	ldrh r0, [r1, 0x2]
 	strh r0, [r2]
 	adds r2, 0x2
@@ -4373,22 +4373,22 @@ sub_811CC28: @ 811D01C
 	ldrb r0, [r1]
 	cmp r0, 0
 	beq _0811D064
-	ldr r1, _0811D08C
-	ldr r0, _0811D090
+	ldr r1, _0811D08C @ =0x040000d4
+	ldr r0, _0811D090 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r2, 0xF0
 	lsls r2, 3
 	adds r0, r2
 	str r0, [r1, 0x4]
-	ldr r0, _0811D094
+	ldr r0, _0811D094 @ =0x80000140
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811D064:
-	ldr r0, _0811D098
+	ldr r0, _0811D098 @ =gUnknown_030056A0
 	str r0, [r4]
-	ldr r0, _0811D09C
+	ldr r0, _0811D09C @ =0x04000040
 	str r0, [r4, 0x4]
-	ldr r0, _0811D0A0
+	ldr r0, _0811D0A0 @ =0xa2400001
 	str r0, [r4, 0x8]
 	ldr r0, [r4, 0x8]
 	pop {r4}
@@ -4410,8 +4410,8 @@ _0811D0A0: .4byte 0xa2400001
 
 	thumb_func_start sub_811CCB0
 sub_811CCB0: @ 811D0A4
-	ldr r1, _0811D0C4
-	ldr r0, _0811D0C8
+	ldr r1, _0811D0C4 @ =gUnknown_03004DE0
+	ldr r0, _0811D0C8 @ =0x04000006
 	ldrh r0, [r0]
 	lsls r0, 1
 	movs r2, 0xF0
@@ -4419,7 +4419,7 @@ sub_811CCB0: @ 811D0A4
 	adds r1, r2
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _0811D0CC
+	ldr r0, _0811D0CC @ =0x04000014
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
@@ -4437,8 +4437,8 @@ sub_811CCDC: @ 811D0D0
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811D100
-	ldr r2, _0811D104
+	ldr r5, _0811D100 @ =gUnknown_083FD8B0
+	ldr r2, _0811D104 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -4468,7 +4468,7 @@ sub_811CD14: @ 811D108
 	adds r5, r0, 0
 	bl sub_811D658
 	bl dp12_8087EA4
-	ldr r1, _0811D17C
+	ldr r1, _0811D17C @ =0x0200c000
 	movs r2, 0
 	movs r0, 0xBF
 	strh r0, [r1, 0xE]
@@ -4480,7 +4480,7 @@ sub_811CD14: @ 811D108
 	movs r0, 0xA0
 	strh r0, [r1, 0x8]
 	movs r1, 0
-	ldr r2, _0811D180
+	ldr r2, _0811D180 @ =gUnknown_03005560
 	movs r4, 0
 	movs r3, 0xF0
 _0811D132:
@@ -4497,19 +4497,19 @@ _0811D132:
 	lsrs r1, r0, 16
 	cmp r1, 0x9F
 	bls _0811D132
-	ldr r2, _0811D184
+	ldr r2, _0811D184 @ =0x04000200
 	ldrh r0, [r2]
 	movs r1, 0x2
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r2, _0811D188
+	ldr r2, _0811D188 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x10
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _0811D18C
+	ldr r0, _0811D18C @ =sub_811CFAC
 	bl SetHBlankCallback
-	ldr r0, _0811D190
+	ldr r0, _0811D190 @ =sub_811CEE4
 	bl SetVBlankCallback
 	ldrh r0, [r5, 0x8]
 	adds r0, 0x1
@@ -4532,21 +4532,21 @@ sub_811CDA0: @ 811D194
 	push {r4-r6,lr}
 	sub sp, 0x10
 	adds r6, r0, 0
-	ldr r1, _0811D1FC
+	ldr r1, _0811D1FC @ =gUnknown_083FD8C4
 	mov r0, sp
 	movs r2, 0x10
 	bl memcpy
 	movs r5, 0
 	movs r4, 0
 _0811D1A8:
-	ldr r0, _0811D200
+	ldr r0, _0811D200 @ =sub_811CFD0
 	bl CreateInvisibleSprite
 	lsls r0, 24
 	lsrs r0, 24
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _0811D204
+	ldr r0, _0811D204 @ =gSprites
 	adds r2, r1, r0
 	movs r0, 0xF0
 	strh r0, [r2, 0x20]
@@ -4589,7 +4589,7 @@ _0811D204: .4byte gSprites
 sub_811CE14: @ 811D208
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r0, _0811D238
+	ldr r0, _0811D238 @ =0x0200c000
 	ldrb r1, [r0]
 	movs r1, 0
 	strb r1, [r0]
@@ -4599,7 +4599,7 @@ sub_811CE14: @ 811D208
 	ble _0811D22E
 	movs r0, 0x1
 	negs r0, r0
-	ldr r2, _0811D23C
+	ldr r2, _0811D23C @ =0x00007fff
 	movs r1, 0x10
 	bl BlendPalettes
 	ldrh r0, [r4, 0x8]
@@ -4619,17 +4619,17 @@ _0811D23C: .4byte 0x00007fff
 sub_811CE4C: @ 811D240
 	push {r4-r6,lr}
 	adds r6, r0, 0
-	ldr r4, _0811D290
+	ldr r4, _0811D290 @ =0x0200c000
 	ldrb r0, [r4]
 	movs r5, 0
 	strb r5, [r4]
-	ldr r1, _0811D294
+	ldr r1, _0811D294 @ =0x040000b0
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811D298
+	ldr r0, _0811D298 @ =0x0000c5ff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811D29C
+	ldr r0, _0811D29C @ =0x00007fff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
@@ -4644,7 +4644,7 @@ sub_811CE4C: @ 811D240
 	strh r0, [r4, 0xE]
 	movs r0, 0x3F
 	strh r0, [r4, 0x2]
-	ldr r0, _0811D2A0
+	ldr r0, _0811D2A0 @ =sub_811CF74
 	bl SetVBlankCallback
 	ldrh r0, [r6, 0x8]
 	adds r0, 0x1
@@ -4664,7 +4664,7 @@ _0811D2A0: .4byte sub_811CF74
 	thumb_func_start sub_811CEB0
 sub_811CEB0: @ 811D2A4
 	push {lr}
-	ldr r1, _0811D2D0
+	ldr r1, _0811D2D0 @ =0x0200c000
 	ldrh r0, [r1, 0x12]
 	adds r0, 0x1
 	strh r0, [r1, 0x12]
@@ -4673,7 +4673,7 @@ sub_811CEB0: @ 811D2A4
 	cmp r0, 0x10
 	bls _0811D2C8
 	bl sub_811D6D4
-	ldr r0, _0811D2D4
+	ldr r0, _0811D2D4 @ =sub_811CCDC
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -4690,19 +4690,19 @@ _0811D2D4: .4byte sub_811CCDC
 	thumb_func_start sub_811CEE4
 sub_811CEE4: @ 811D2D8
 	push {r4,lr}
-	ldr r4, _0811D33C
+	ldr r4, _0811D33C @ =0x040000b0
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811D340
+	ldr r0, _0811D340 @ =0x0000c5ff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811D344
+	ldr r0, _0811D344 @ =0x00007fff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r0, [r4, 0xA]
 	bl sub_811D67C
-	ldr r2, _0811D348
-	ldr r1, _0811D34C
+	ldr r2, _0811D348 @ =0x04000050
+	ldr r1, _0811D34C @ =0x0200c000
 	ldrh r0, [r1, 0xE]
 	strh r0, [r2]
 	subs r2, 0x8
@@ -4717,22 +4717,22 @@ sub_811CEE4: @ 811D2D8
 	ldrb r0, [r1]
 	cmp r0, 0
 	beq _0811D326
-	ldr r1, _0811D350
-	ldr r0, _0811D354
+	ldr r1, _0811D350 @ =0x040000d4
+	ldr r0, _0811D354 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r2, 0xF0
 	lsls r2, 3
 	adds r0, r2
 	str r0, [r1, 0x4]
-	ldr r0, _0811D358
+	ldr r0, _0811D358 @ =0x80000140
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811D326:
-	ldr r0, _0811D35C
+	ldr r0, _0811D35C @ =gUnknown_030056A0
 	str r0, [r4]
-	ldr r0, _0811D360
+	ldr r0, _0811D360 @ =0x04000040
 	str r0, [r4, 0x4]
-	ldr r0, _0811D364
+	ldr r0, _0811D364 @ =0xa2400001
 	str r0, [r4, 0x8]
 	ldr r0, [r4, 0x8]
 	pop {r4}
@@ -4756,8 +4756,8 @@ _0811D364: .4byte 0xa2400001
 sub_811CF74: @ 811D368
 	push {lr}
 	bl sub_811D67C
-	ldr r1, _0811D398
-	ldr r2, _0811D39C
+	ldr r1, _0811D398 @ =0x04000054
+	ldr r2, _0811D39C @ =0x0200c000
 	ldrh r0, [r2, 0x12]
 	strh r0, [r1]
 	subs r1, 0x4
@@ -4784,9 +4784,9 @@ _0811D39C: .4byte 0x0200c000
 
 	thumb_func_start sub_811CFAC
 sub_811CFAC: @ 811D3A0
-	ldr r2, _0811D3B8
-	ldr r1, _0811D3BC
-	ldr r0, _0811D3C0
+	ldr r2, _0811D3B8 @ =0x04000054
+	ldr r1, _0811D3BC @ =gUnknown_03004DE0
+	ldr r0, _0811D3C0 @ =0x04000006
 	ldrh r0, [r0]
 	lsls r0, 1
 	movs r3, 0xF0
@@ -4817,7 +4817,7 @@ sub_811CFD0: @ 811D3C4
 	ldrsh r0, [r3, r1]
 	cmp r0, 0
 	beq _0811D49E
-	ldr r0, _0811D3E8
+	ldr r0, _0811D3E8 @ =0x0200c000
 	ldrb r1, [r0]
 	movs r1, 0x1
 	strb r1, [r0]
@@ -4828,7 +4828,7 @@ _0811D3EC:
 	movs r2, 0x22
 	ldrsh r1, [r3, r2]
 	lsls r1, 1
-	ldr r0, _0811D4A4
+	ldr r0, _0811D4A4 @ =gUnknown_03004DE0
 	adds r6, r1, r0
 	movs r2, 0xA0
 	lsls r2, 1
@@ -4890,7 +4890,7 @@ _0811D45E:
 	ldrsh r2, [r3, r0]
 	cmp r2, 0
 	beq _0811D46E
-	ldr r0, _0811D4A8
+	ldr r0, _0811D4A8 @ =0x0200c000
 	ldrb r1, [r0]
 	movs r1, 0x1
 	strb r1, [r0]
@@ -4899,7 +4899,7 @@ _0811D46E:
 	ldrsh r0, [r3, r1]
 	cmp r0, 0
 	beq _0811D49E
-	ldr r4, _0811D4A8
+	ldr r4, _0811D4A8 @ =0x0200c000
 	cmp r2, 0
 	beq _0811D492
 	movs r2, 0x20
@@ -4933,8 +4933,8 @@ sub_811D0B8: @ 811D4AC
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811D4DC
-	ldr r2, _0811D4E0
+	ldr r5, _0811D4DC @ =gUnknown_083FD8D4
+	ldr r2, _0811D4E0 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -4966,7 +4966,7 @@ sub_811D0F0: @ 811D4E4
 	add r0, sp, 0x4
 	add r1, sp, 0x8
 	bl sub_811D6A8
-	ldr r0, _0811D52C
+	ldr r0, _0811D52C @ =gUnknown_083FD528
 	ldr r1, [sp, 0x8]
 	movs r2, 0x10
 	bl CpuSet
@@ -4976,10 +4976,10 @@ sub_811D0F0: @ 811D4E4
 	adds r0, r2, 0
 	strh r0, [r1]
 	ldr r1, [sp, 0x4]
-	ldr r2, _0811D530
+	ldr r2, _0811D530 @ =0x01000400
 	mov r0, sp
 	bl CpuSet
-	ldr r0, _0811D534
+	ldr r0, _0811D534 @ =gFieldEffectObjectPalette10
 	movs r1, 0xF0
 	movs r2, 0x20
 	bl LoadPalette
@@ -5016,7 +5016,7 @@ sub_811D144: @ 811D538
 	movs r1, 0xC
 	ldrsh r0, [r4, r1]
 	lsls r0, 5
-	ldr r1, _0811D58C
+	ldr r1, _0811D58C @ =gUnknown_083FD528
 	adds r0, r1
 	ldr r1, [sp]
 	movs r2, 0x10
@@ -5053,7 +5053,7 @@ sub_811D19C: @ 811D590
 	cmp r1, 0
 	bne _0811D5B0
 	bl sub_811D6D4
-	ldr r0, _0811D5B8
+	ldr r0, _0811D5B8 @ =sub_811D0B8
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -5071,8 +5071,8 @@ sub_811D1C8: @ 811D5BC
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811D5EC
-	ldr r2, _0811D5F0
+	ldr r5, _0811D5EC @ =gUnknown_083FD8E0
+	ldr r2, _0811D5F0 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -5102,7 +5102,7 @@ sub_811D200: @ 811D5F4
 	adds r5, r0, 0
 	bl sub_811D658
 	bl dp12_8087EA4
-	ldr r1, _0811D648
+	ldr r1, _0811D648 @ =0x0200c000
 	movs r2, 0
 	movs r0, 0x3F
 	strh r0, [r1, 0x2]
@@ -5110,7 +5110,7 @@ sub_811D200: @ 811D5F4
 	movs r0, 0xA0
 	strh r0, [r1, 0x8]
 	movs r1, 0
-	ldr r2, _0811D64C
+	ldr r2, _0811D64C @ =gUnknown_03004DE0
 	movs r3, 0xF0
 	adds r4, r2, 0
 _0811D616:
@@ -5128,7 +5128,7 @@ _0811D616:
 	adds r0, r4, 0
 	movs r2, 0xA0
 	bl CpuSet
-	ldr r0, _0811D650
+	ldr r0, _0811D650 @ =sub_811D438
 	bl SetVBlankCallback
 	ldrh r0, [r5, 0x8]
 	adds r0, 0x1
@@ -5150,8 +5150,8 @@ sub_811D260: @ 811D654
 	push {r6}
 	sub sp, 0xC
 	mov r8, r0
-	ldr r0, _0811D6C4
-	ldr r6, _0811D6C8
+	ldr r0, _0811D6C4 @ =0x0200c024
+	ldr r6, _0811D6C8 @ =gUnknown_083FD8F4
 	mov r2, r8
 	movs r3, 0xA
 	ldrsh r1, [r2, r3]
@@ -5211,17 +5211,17 @@ sub_811D2D8: @ 811D6CC
 	mov r6, r8
 	push {r6,r7}
 	adds r7, r0, 0
-	ldr r0, _0811D718
+	ldr r0, _0811D718 @ =0x0200c000
 	ldrb r1, [r0]
 	movs r1, 0
 	strb r1, [r0]
 	mov r8, r1
 	mov r12, r1
 	adds r6, r0, 0
-	ldr r0, _0811D71C
+	ldr r0, _0811D71C @ =gUnknown_03004DE0
 	mov r9, r0
 _0811D6E8:
-	ldr r1, _0811D71C
+	ldr r1, _0811D71C @ =gUnknown_03004DE0
 	movs r2, 0x2A
 	ldrsh r0, [r6, r2]
 	lsls r0, 1
@@ -5264,7 +5264,7 @@ _0811D72E:
 	bgt _0811D738
 	lsrs r4, r1, 16
 _0811D738:
-	ldr r5, _0811D75C
+	ldr r5, _0811D75C @ =0x0200c000
 	movs r0, 0x2A
 	ldrsh r2, [r5, r0]
 	lsls r2, 1
@@ -5304,7 +5304,7 @@ _0811D760:
 	cmp r0, 0xF
 	ble _0811D6E8
 _0811D786:
-	ldr r0, _0811D7A0
+	ldr r0, _0811D7A0 @ =0x0200c000
 	ldrb r1, [r0]
 	adds r1, 0x1
 	ldrb r2, [r0]
@@ -5331,18 +5331,18 @@ sub_811D3B0: @ 811D7A4
 	asrs r0, 16
 	cmp r0, 0x6
 	ble _0811D7F0
-	ldr r1, _0811D7E0
+	ldr r1, _0811D7E0 @ =0x040000b0
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811D7E4
+	ldr r0, _0811D7E4 @ =0x0000c5ff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r2, [r1, 0xA]
-	ldr r0, _0811D7E8
+	ldr r0, _0811D7E8 @ =0x00007fff
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
 	bl sub_811D6D4
-	ldr r0, _0811D7EC
+	ldr r0, _0811D7EC @ =sub_811D1C8
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -5358,7 +5358,7 @@ _0811D7F0:
 	ldrh r0, [r2, 0x8]
 	adds r0, 0x1
 	strh r0, [r2, 0x8]
-	ldr r1, _0811D80C
+	ldr r1, _0811D80C @ =gUnknown_083FD93A
 	movs r3, 0xA
 	ldrsh r0, [r2, r3]
 	subs r0, 0x1
@@ -5397,33 +5397,33 @@ _0811D828:
 	thumb_func_start sub_811D438
 sub_811D438: @ 811D82C
 	push {r4,lr}
-	ldr r4, _0811D894
+	ldr r4, _0811D894 @ =0x040000b0
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811D898
+	ldr r0, _0811D898 @ =0x0000c5ff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r1, [r4, 0xA]
-	ldr r0, _0811D89C
+	ldr r0, _0811D89C @ =0x00007fff
 	ands r0, r1
 	strh r0, [r4, 0xA]
 	ldrh r0, [r4, 0xA]
 	bl sub_811D67C
-	ldr r2, _0811D8A0
+	ldr r2, _0811D8A0 @ =0x0200c000
 	ldrb r0, [r2]
 	cmp r0, 0
 	beq _0811D862
-	ldr r1, _0811D8A4
-	ldr r0, _0811D8A8
+	ldr r1, _0811D8A4 @ =0x040000d4
+	ldr r0, _0811D8A8 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r3, 0xF0
 	lsls r3, 3
 	adds r0, r3
 	str r0, [r1, 0x4]
-	ldr r0, _0811D8AC
+	ldr r0, _0811D8AC @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _0811D862:
-	ldr r1, _0811D8B0
+	ldr r1, _0811D8B0 @ =0x04000048
 	ldrh r0, [r2, 0x2]
 	strh r0, [r1]
 	adds r1, 0x2
@@ -5432,8 +5432,8 @@ _0811D862:
 	subs r1, 0x6
 	ldrh r0, [r2, 0x8]
 	strh r0, [r1]
-	ldr r2, _0811D8B4
-	ldr r0, _0811D8A8
+	ldr r2, _0811D8B4 @ =0x04000040
+	ldr r0, _0811D8A8 @ =gUnknown_03004DE0
 	movs r1, 0xF0
 	lsls r1, 3
 	adds r0, r1
@@ -5441,7 +5441,7 @@ _0811D862:
 	strh r1, [r2]
 	str r0, [r4]
 	str r2, [r4, 0x4]
-	ldr r0, _0811D8B8
+	ldr r0, _0811D8B8 @ =0xa2400001
 	str r0, [r4, 0x8]
 	ldr r0, [r4, 0x8]
 	pop {r4}
@@ -5482,13 +5482,13 @@ sub_811D4C8: @ 811D8BC
 	lsrs r6, 16
 	lsls r3, 16
 	lsrs r3, 16
-	ldr r0, _0811D918
+	ldr r0, _0811D918 @ =sub_811D54C
 	movs r1, 0x3
 	str r3, [sp]
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0811D91C
+	ldr r2, _0811D91C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -5515,7 +5515,7 @@ _0811D91C: .4byte gTasks
 	thumb_func_start sub_811D52C
 sub_811D52C: @ 811D920
 	push {lr}
-	ldr r0, _0811D934
+	ldr r0, _0811D934 @ =sub_811D54C
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -5537,8 +5537,8 @@ sub_811D54C: @ 811D940
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0811D970
-	ldr r2, _0811D974
+	ldr r5, _0811D970 @ =gUnknown_083FD948
+	ldr r2, _0811D974 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -5593,7 +5593,7 @@ _0811D9A8:
 	movs r0, 0x1
 	negs r0, r0
 	ldrb r1, [r4, 0x16]
-	ldr r2, _0811D9D0
+	ldr r2, _0811D9D0 @ =0x00002d6b
 	bl BlendPalettes
 _0811D9B4:
 	movs r2, 0x16
@@ -5644,7 +5644,7 @@ _0811DA02:
 	movs r0, 0x1
 	negs r0, r0
 	ldrb r1, [r4, 0x16]
-	ldr r2, _0811DA34
+	ldr r2, _0811DA34 @ =0x00002d6b
 	bl BlendPalettes
 _0811DA0E:
 	movs r0, 0x16
@@ -5657,7 +5657,7 @@ _0811DA0E:
 	lsls r0, 16
 	cmp r0, 0
 	bne _0811DA3C
-	ldr r0, _0811DA38
+	ldr r0, _0811DA38 @ =sub_811D54C
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -5680,12 +5680,12 @@ _0811DA42:
 	thumb_func_start sub_811D658
 sub_811D658: @ 811DA4C
 	push {lr}
-	ldr r0, _0811DA68
+	ldr r0, _0811DA68 @ =gUnknown_083FD708
 	ldr r0, [r0]
 	movs r1, 0
 	movs r2, 0x3C
 	bl memset
-	ldr r0, _0811DA6C
+	ldr r0, _0811DA6C @ =0x0200c014
 	adds r1, r0, 0x2
 	bl sub_8057B14
 	pop {r0}
@@ -5707,7 +5707,7 @@ sub_811D67C: @ 811DA70
 
 	thumb_func_start sub_811D690
 sub_811D690: @ 811DA84
-	ldr r1, _0811DA98
+	ldr r1, _0811DA98 @ =0x04000008
 	ldrh r1, [r1]
 	lsrs r1, 2
 	lsls r1, 30
@@ -5724,7 +5724,7 @@ _0811DA98: .4byte 0x04000008
 	thumb_func_start sub_811D6A8
 sub_811D6A8: @ 811DA9C
 	push {r4,lr}
-	ldr r3, _0811DAC4
+	ldr r3, _0811DAC4 @ =0x04000008
 	ldrh r2, [r3]
 	lsrs r2, 8
 	ldrh r3, [r3]
@@ -5801,7 +5801,7 @@ _0811DB14:
 	add r0, r9
 	strh r0, [r1]
 	lsls r1, r5, 16
-	ldr r0, _0811DB54
+	ldr r0, _0811DB54 @ =0xffff0000
 	adds r1, r0
 	adds r0, r6, 0x1
 	lsls r0, 24
@@ -5959,7 +5959,7 @@ _0811DC48:
 	adds r2, r1, 0
 _0811DC58:
 	lsls r1, r7, 16
-	ldr r0, _0811DCEC
+	ldr r0, _0811DCEC @ =0xffff0000
 	adds r1, r0
 	asrs r0, r1, 15
 	add r0, r9
@@ -5991,7 +5991,7 @@ _0811DC8A:
 	ble _0811DCA8
 	adds r1, r0, 0
 _0811DC92:
-	ldr r2, _0811DCEC
+	ldr r2, _0811DCEC @ =0xffff0000
 	adds r0, r4, r2
 	lsrs r3, r0, 16
 	mov r8, r3

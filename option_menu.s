@@ -12,14 +12,14 @@ CB2_InitOptionMenu: @ 808BA90
 	mov r7, r8
 	push {r7}
 	sub sp, 0xC
-	ldr r0, _0808BAB0
-	ldr r1, _0808BAB4
+	ldr r0, _0808BAB0 @ =gMain
+	ldr r1, _0808BAB4 @ =0x0000043c
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0x9
 	bhi _0808BAE4
 	lsls r0, 2
-	ldr r1, _0808BAB8
+	ldr r1, _0808BAB8 @ =_0808BABC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -72,10 +72,10 @@ _0808BAE4:
 	mov r8, r2
 	add r2, sp, 0x4
 	movs r6, 0
-	ldr r1, _0808BB9C
+	ldr r1, _0808BB9C @ =0x040000d4
 	movs r5, 0x80
 	lsls r5, 5
-	ldr r7, _0808BBA0
+	ldr r7, _0808BBA0 @ =0x81000800
 	movs r0, 0x81
 	lsls r0, 24
 	mov r12, r0
@@ -105,7 +105,7 @@ _0808BB34:
 	lsls r3, 3
 	movs r4, 0
 	str r4, [sp, 0x8]
-	ldr r2, _0808BB9C
+	ldr r2, _0808BB9C @ =0x040000d4
 	mov r1, r8
 	str r1, [r2]
 	str r0, [r2, 0x4]
@@ -127,8 +127,8 @@ _0808BB34:
 	orrs r3, r0
 	str r3, [r2, 0x8]
 	ldr r0, [r2, 0x8]
-	ldr r1, _0808BBA4
-	ldr r2, _0808BBA8
+	ldr r1, _0808BBA4 @ =gMain
+	ldr r2, _0808BBA8 @ =0x0000043c
 	adds r1, r2
 	b _0808BDB6
 	.align 2, 0
@@ -143,10 +143,10 @@ _0808BBAC:
 	bl ResetSpriteData
 	b _0808BDB0
 _0808BBBE:
-	ldr r0, _0808BBCC
+	ldr r0, _0808BBCC @ =gWindowConfig_81E71B4
 	bl SetUpWindowConfig
-	ldr r1, _0808BBD0
-	ldr r2, _0808BBD4
+	ldr r1, _0808BBD0 @ =gMain
+	ldr r2, _0808BBD4 @ =0x0000043c
 	adds r1, r2
 	b _0808BDB6
 	.align 2, 0
@@ -154,7 +154,7 @@ _0808BBCC: .4byte gWindowConfig_81E71B4
 _0808BBD0: .4byte gMain
 _0808BBD4: .4byte 0x0000043c
 _0808BBD8:
-	ldr r0, _0808BBE0
+	ldr r0, _0808BBE0 @ =gWindowConfig_81E71B4
 	bl MultistepInitMenuWindowBegin
 	b _0808BDB0
 	.align 2, 0
@@ -165,20 +165,20 @@ _0808BBE4:
 	bne _0808BBEE
 	b _0808BE06
 _0808BBEE:
-	ldr r1, _0808BBF8
-	ldr r2, _0808BBFC
+	ldr r1, _0808BBF8 @ =gMain
+	ldr r2, _0808BBFC @ =0x0000043c
 	adds r1, r2
 	b _0808BDB6
 	.align 2, 0
 _0808BBF8: .4byte gMain
 _0808BBFC: .4byte 0x0000043c
 _0808BC00:
-	ldr r0, _0808BC18
+	ldr r0, _0808BC18 @ =gUnknown_0839F5FC
 	movs r1, 0x80
 	movs r2, 0x40
 	bl LoadPalette
-	ldr r0, _0808BC1C
-	ldr r1, _0808BC20
+	ldr r0, _0808BC1C @ =gUnknown_0839F63C
+	ldr r1, _0808BC20 @ =0x0600bee0
 	movs r2, 0x20
 	bl CpuSet
 	b _0808BDB0
@@ -194,15 +194,15 @@ _0808BC24:
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r1, _0808BC3C
-	ldr r2, _0808BC40
+	ldr r1, _0808BC3C @ =gMain
+	ldr r2, _0808BC40 @ =0x0000043c
 	adds r1, r2
 	b _0808BDB6
 	.align 2, 0
 _0808BC3C: .4byte gMain
 _0808BC40: .4byte 0x0000043c
 _0808BC44:
-	ldr r0, _0808BCA4
+	ldr r0, _0808BCA4 @ =0x04000040
 	movs r4, 0
 	strh r4, [r0]
 	adds r0, 0x4
@@ -211,8 +211,8 @@ _0808BC44:
 	strh r4, [r0]
 	adds r0, 0x4
 	strh r4, [r0]
-	ldr r1, _0808BCA8
-	ldr r2, _0808BCAC
+	ldr r1, _0808BCA8 @ =0x04000048
+	ldr r2, _0808BCAC @ =0x00001111
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
@@ -221,30 +221,30 @@ _0808BC44:
 	adds r1, 0x6
 	movs r0, 0xE1
 	strh r0, [r1]
-	ldr r0, _0808BCB0
+	ldr r0, _0808BCB0 @ =0x04000052
 	strh r4, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
 	strh r0, [r1]
-	ldr r3, _0808BCB4
+	ldr r3, _0808BCB4 @ =0x04000208
 	ldrh r2, [r3]
 	strh r4, [r3]
-	ldr r4, _0808BCB8
+	ldr r4, _0808BCB8 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0808BCBC
+	ldr r2, _0808BCBC @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _0808BCC0
+	ldr r0, _0808BCC0 @ =_0808BA7C
 	bl SetVBlankCallback
 	movs r1, 0x80
 	lsls r1, 19
-	ldr r2, _0808BCC4
+	ldr r2, _0808BCC4 @ =0x00007140
 	adds r0, r2, 0
 	strh r0, [r1]
 	b _0808BDB0
@@ -259,19 +259,19 @@ _0808BCBC: .4byte 0x04000004
 _0808BCC0: .4byte _0808BA7C
 _0808BCC4: .4byte 0x00007140
 _0808BCC8:
-	ldr r0, _0808BDC0
+	ldr r0, _0808BDC0 @ =Task_OptionMenuFadeIn
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0808BDC4
+	ldr r1, _0808BDC4 @ =gTasks
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
 	adds r4, r1
 	movs r0, 0
 	strh r0, [r4, 0x8]
-	ldr r1, _0808BDC8
+	ldr r1, _0808BDC8 @ =gSaveBlock2
 	ldrb r0, [r1, 0x14]
 	lsls r0, 29
 	lsrs r0, 29
@@ -303,35 +303,35 @@ _0808BCC8:
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _0808BDCC
+	ldr r0, _0808BDCC @ =gSystemText_OptionMenu
 	movs r1, 0x4
 	movs r2, 0x1
 	bl MenuPrint
-	ldr r0, _0808BDD0
+	ldr r0, _0808BDD0 @ =gSystemText_TextSpeed
 	movs r1, 0x4
 	movs r2, 0x5
 	bl MenuPrint
-	ldr r0, _0808BDD4
+	ldr r0, _0808BDD4 @ =gSystemText_BattleScene
 	movs r1, 0x4
 	movs r2, 0x7
 	bl MenuPrint
-	ldr r0, _0808BDD8
+	ldr r0, _0808BDD8 @ =gSystemText_BattleStyle
 	movs r1, 0x4
 	movs r2, 0x9
 	bl MenuPrint
-	ldr r0, _0808BDDC
+	ldr r0, _0808BDDC @ =gSystemText_Sound
 	movs r1, 0x4
 	movs r2, 0xB
 	bl MenuPrint
-	ldr r0, _0808BDE0
+	ldr r0, _0808BDE0 @ =gSystemText_ButtonMode
 	movs r1, 0x4
 	movs r2, 0xD
 	bl MenuPrint
-	ldr r0, _0808BDE4
+	ldr r0, _0808BDE4 @ =gSystemText_Frame
 	movs r1, 0x4
 	movs r2, 0xF
 	bl MenuPrint
-	ldr r0, _0808BDE8
+	ldr r0, _0808BDE8 @ =gSystemText_Cancel
 	movs r1, 0x4
 	movs r2, 0x11
 	bl MenuPrint
@@ -347,19 +347,19 @@ _0808BCC8:
 	bl ButtonMode_DrawChoices
 	ldrb r0, [r4, 0x14]
 	bl FrameType_DrawChoices
-	ldr r1, _0808BDEC
-	ldr r2, _0808BDF0
+	ldr r1, _0808BDEC @ =0x04000040
+	ldr r2, _0808BDF0 @ =0x000011df
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x4
-	ldr r2, _0808BDF4
+	ldr r2, _0808BDF4 @ =0x0000011f
 	adds r0, r2, 0
 	strh r0, [r1]
 	ldrb r0, [r4, 0x8]
 	bl HighlightOptionMenuItem
 _0808BDB0:
-	ldr r1, _0808BDF8
-	ldr r0, _0808BDFC
+	ldr r1, _0808BDF8 @ =gMain
+	ldr r0, _0808BDFC @ =0x0000043c
 	adds r1, r0
 _0808BDB6:
 	ldrb r0, [r1]
@@ -384,7 +384,7 @@ _0808BDF4: .4byte 0x0000011f
 _0808BDF8: .4byte gMain
 _0808BDFC: .4byte 0x0000043c
 _0808BE00:
-	ldr r0, _0808BE14
+	ldr r0, _0808BE14 @ =_0808BA64
 	bl SetMainCallback2
 _0808BE06:
 	add sp, 0xC
@@ -402,18 +402,18 @@ Task_OptionMenuFadeIn: @ 808BE18
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _0808BE3C
+	ldr r0, _0808BE3C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0808BE38
-	ldr r0, _0808BE40
+	ldr r0, _0808BE40 @ =gTasks
 	lsls r1, r2, 2
 	adds r1, r2
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0808BE44
+	ldr r0, _0808BE44 @ =Task_OptionMenuProcessInput
 	str r0, [r1]
 _0808BE38:
 	pop {r0}
@@ -429,13 +429,13 @@ Task_OptionMenuProcessInput: @ 808BE48
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0808BE70
+	ldr r0, _0808BE70 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	beq _0808BE78
-	ldr r0, _0808BE74
+	ldr r0, _0808BE74 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -455,13 +455,13 @@ _0808BE78:
 	ands r0, r1
 	cmp r0, 0
 	beq _0808BE98
-	ldr r0, _0808BE90
+	ldr r0, _0808BE90 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
 _0808BE8A:
-	ldr r0, _0808BE94
+	ldr r0, _0808BE94 @ =Task_OptionMenuSave
 	str r0, [r1]
 	b _0808BFCE
 	.align 2, 0
@@ -474,7 +474,7 @@ _0808BE98:
 	lsrs r6, r0, 16
 	cmp r6, 0
 	beq _0808BEC8
-	ldr r1, _0808BEC0
+	ldr r1, _0808BEC0 @ =gTasks
 	lsls r2, r4, 2
 	adds r0, r2, r4
 	lsls r0, 3
@@ -497,7 +497,7 @@ _0808BEC8:
 	ands r0, r1
 	cmp r0, 0
 	beq _0808BF00
-	ldr r1, _0808BEEC
+	ldr r1, _0808BEEC @ =gTasks
 	lsls r2, r4, 2
 	adds r0, r2, r4
 	lsls r0, 3
@@ -524,7 +524,7 @@ _0808BEF2:
 	bl HighlightOptionMenuItem
 	b _0808BFCE
 _0808BF00:
-	ldr r0, _0808BF20
+	ldr r0, _0808BF20 @ =gTasks
 	lsls r2, r4, 2
 	adds r1, r2, r4
 	lsls r1, 3
@@ -535,7 +535,7 @@ _0808BF00:
 	cmp r1, 0x5
 	bhi _0808BFCE
 	lsls r0, r1, 2
-	ldr r1, _0808BF24
+	ldr r1, _0808BF24 @ =_0808BF28
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -627,8 +627,8 @@ Task_OptionMenuSave: @ 808BFD4
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0808C058
-	ldr r1, _0808C05C
+	ldr r5, _0808C058 @ =gSaveBlock2
+	ldr r1, _0808C05C @ =gTasks
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
@@ -682,7 +682,7 @@ Task_OptionMenuSave: @ 808BFD4
 	movs r1, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r0, _0808C060
+	ldr r0, _0808C060 @ =Task_OptionMenuFadeOut
 	str r0, [r4]
 	add sp, 0x4
 	pop {r4-r6}
@@ -699,7 +699,7 @@ Task_OptionMenuFadeOut: @ 808C064
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _0808C088
+	ldr r0, _0808C088 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -707,7 +707,7 @@ Task_OptionMenuFadeOut: @ 808C064
 	bne _0808C084
 	adds r0, r2, 0
 	bl DestroyTask
-	ldr r0, _0808C08C
+	ldr r0, _0808C08C @ =gMain
 	ldr r0, [r0, 0x8]
 	bl SetMainCallback2
 _0808C084:
@@ -721,8 +721,8 @@ _0808C08C: .4byte gMain
 	thumb_func_start HighlightOptionMenuItem
 HighlightOptionMenuItem: @ 808C090
 	lsls r0, 24
-	ldr r2, _0808C0AC
-	ldr r3, _0808C0B0
+	ldr r2, _0808C0AC @ =0x04000042
+	ldr r3, _0808C0B0 @ =0x000018d7
 	adds r1, r3, 0
 	strh r1, [r2]
 	adds r2, 0x4
@@ -791,7 +791,7 @@ TextSpeed_ProcessInput: @ 808C108
 	push {lr}
 	lsls r0, 24
 	lsrs r3, r0, 24
-	ldr r2, _0808C128
+	ldr r2, _0808C128 @ =gMain
 	ldrh r1, [r2, 0x2E]
 	movs r0, 0x10
 	ands r0, r1
@@ -841,19 +841,19 @@ TextSpeed_DrawChoices: @ 808C14C
 	adds r1, r0
 	movs r0, 0x8
 	strb r0, [r1]
-	ldr r0, _0808C194
+	ldr r0, _0808C194 @ =gSystemText_Slow
 	mov r1, sp
 	ldrb r3, [r1]
 	movs r1, 0x78
 	movs r2, 0x28
 	bl DrawOptionMenuChoice
-	ldr r0, _0808C198
+	ldr r0, _0808C198 @ =gSystemText_Mid
 	mov r1, sp
 	ldrb r3, [r1, 0x1]
 	movs r1, 0xA1
 	movs r2, 0x28
 	bl DrawOptionMenuChoice
-	ldr r0, _0808C19C
+	ldr r0, _0808C19C @ =gSystemText_Fast
 	mov r1, sp
 	ldrb r3, [r1, 0x2]
 	movs r1, 0xCA
@@ -873,7 +873,7 @@ BattleScene_ProcessInput: @ 808C1A0
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _0808C1BC
+	ldr r0, _0808C1BC @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x30
 	ands r0, r1
@@ -902,13 +902,13 @@ BattleScene_DrawChoices: @ 808C1C0
 	adds r1, r0
 	movs r0, 0x8
 	strb r0, [r1]
-	ldr r0, _0808C1F8
+	ldr r0, _0808C1F8 @ =gSystemText_On
 	mov r1, sp
 	ldrb r3, [r1]
 	movs r1, 0x78
 	movs r2, 0x38
 	bl DrawOptionMenuChoice
-	ldr r0, _0808C1FC
+	ldr r0, _0808C1FC @ =gSystemText_Off
 	mov r1, sp
 	ldrb r3, [r1, 0x1]
 	movs r1, 0xBE
@@ -927,7 +927,7 @@ BattleStyle_ProcessInput: @ 808C200
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _0808C21C
+	ldr r0, _0808C21C @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x30
 	ands r0, r1
@@ -956,13 +956,13 @@ BattleStyle_DrawChoices: @ 808C220
 	adds r1, r0
 	movs r0, 0x8
 	strb r0, [r1]
-	ldr r0, _0808C258
+	ldr r0, _0808C258 @ =gSystemText_Shift
 	mov r1, sp
 	ldrb r3, [r1]
 	movs r1, 0x78
 	movs r2, 0x48
 	bl DrawOptionMenuChoice
-	ldr r0, _0808C25C
+	ldr r0, _0808C25C @ =gSystemText_Set
 	mov r1, sp
 	ldrb r3, [r1, 0x1]
 	movs r1, 0xB2
@@ -981,7 +981,7 @@ Sound_ProcessInput: @ 808C260
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0808C284
+	ldr r0, _0808C284 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x30
 	ands r0, r1
@@ -1013,13 +1013,13 @@ Sound_DrawChoices: @ 808C288
 	adds r1, r0
 	movs r0, 0x8
 	strb r0, [r1]
-	ldr r0, _0808C2C0
+	ldr r0, _0808C2C0 @ =gSystemText_Mono
 	mov r1, sp
 	ldrb r3, [r1]
 	movs r1, 0x78
 	movs r2, 0x58
 	bl DrawOptionMenuChoice
-	ldr r0, _0808C2C4
+	ldr r0, _0808C2C4 @ =gSystemText_Stereo
 	mov r1, sp
 	ldrb r3, [r1, 0x1]
 	movs r1, 0xAC
@@ -1038,7 +1038,7 @@ FrameType_ProcessInput: @ 808C2C8
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0808C2E8
+	ldr r0, _0808C2E8 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x10
 	ands r0, r1
@@ -1058,7 +1058,7 @@ _0808C2EE:
 	adds r0, r4, 0
 	bl MenuLoadTextWindowGraphics_OverrideFrameType
 _0808C2F4:
-	ldr r0, _0808C30C
+	ldr r0, _0808C30C @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x20
 	ands r0, r1
@@ -1093,10 +1093,10 @@ FrameType_DrawChoices: @ 808C320
 	lsls r1, 17
 	adds r0, r1
 	lsrs r5, r0, 24
-	ldr r1, _0808C368
+	ldr r1, _0808C368 @ =gSystemText_Type
 	mov r0, sp
 	bl StringCopy
-	ldr r1, _0808C36C
+	ldr r1, _0808C36C @ =gSystemText_Terminator
 	mov r0, sp
 	bl StringAppend
 	adds r4, r0, 0
@@ -1148,7 +1148,7 @@ ButtonMode_ProcessInput: @ 808C398
 	push {lr}
 	lsls r0, 24
 	lsrs r3, r0, 24
-	ldr r2, _0808C3B8
+	ldr r2, _0808C3B8 @ =gMain
 	ldrh r1, [r2, 0x2E]
 	movs r0, 0x10
 	ands r0, r1
@@ -1198,19 +1198,19 @@ ButtonMode_DrawChoices: @ 808C3DC
 	adds r1, r0
 	movs r0, 0x8
 	strb r0, [r1]
-	ldr r0, _0808C424
+	ldr r0, _0808C424 @ =gSystemText_Normal
 	mov r1, sp
 	ldrb r3, [r1]
 	movs r1, 0x78
 	movs r2, 0x68
 	bl DrawOptionMenuChoice
-	ldr r0, _0808C428
+	ldr r0, _0808C428 @ =gSystemText_LR
 	mov r1, sp
 	ldrb r3, [r1, 0x1]
 	movs r1, 0xA6
 	movs r2, 0x68
 	bl DrawOptionMenuChoice
-	ldr r0, _0808C42C
+	ldr r0, _0808C42C @ =gSystemText_LA
 	mov r1, sp
 	ldrb r3, [r1, 0x2]
 	movs r1, 0xBC

@@ -29,7 +29,7 @@ sub_8145D88: @ 8146140
 	mov r8, r0
 	movs r1, 0
 	strh r1, [r0]
-	ldr r6, _08146268
+	ldr r6, _08146268 @ =0x0400000e
 	strh r1, [r6]
 	adds r0, 0xC
 	strh r1, [r0]
@@ -55,12 +55,12 @@ sub_8145D88: @ 8146140
 	strh r1, [r0]
 	add r0, sp, 0x4
 	strh r1, [r0]
-	ldr r2, _0814626C
+	ldr r2, _0814626C @ =0x040000d4
 	str r0, [r2]
 	movs r1, 0xC0
 	lsls r1, 19
 	str r1, [r2, 0x4]
-	ldr r0, _08146270
+	ldr r0, _08146270 @ =0x8100c000
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
 	movs r5, 0
@@ -70,7 +70,7 @@ sub_8145D88: @ 8146140
 	movs r0, 0xE0
 	lsls r0, 19
 	str r0, [r2, 0x4]
-	ldr r0, _08146274
+	ldr r0, _08146274 @ =0x85000100
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
 	add r0, sp, 0x4
@@ -79,26 +79,26 @@ sub_8145D88: @ 8146140
 	movs r0, 0xA0
 	lsls r0, 19
 	str r0, [r2, 0x4]
-	ldr r0, _08146278
+	ldr r0, _08146278 @ =0x81000200
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
-	ldr r0, _0814627C
+	ldr r0, _0814627C @ =gDiplomaTiles
 	bl LZ77UnCompVram
-	ldr r0, _08146280
-	ldr r1, _08146284
+	ldr r0, _08146280 @ =gDiplomaTilemap
+	ldr r1, _08146284 @ =0x06003000
 	bl LZ77UnCompVram
 	bl remove_some_task
 	bl ResetTasks
 	bl ResetSpriteData
 	bl ResetPaletteFade
 	bl FreeAllSpritePalettes
-	ldr r0, _08146288
+	ldr r0, _08146288 @ =gDiplomaPalettes
 	movs r1, 0
 	movs r2, 0x40
 	bl LoadPalette
-	ldr r0, _0814628C
+	ldr r0, _0814628C @ =gWindowConfig_81E6C3C
 	bl SetUpWindowConfig
-	ldr r0, _08146290
+	ldr r0, _08146290 @ =gWindowConfig_81E6CE4
 	bl InitMenuWindow
 	bl DisplayDiplomaText
 	movs r0, 0x1
@@ -108,31 +108,31 @@ sub_8145D88: @ 8146140
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r3, _08146294
+	ldr r3, _08146294 @ =0x04000208
 	ldrh r2, [r3]
 	strh r5, [r3]
-	ldr r4, _08146298
+	ldr r4, _08146298 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0814629C
+	ldr r2, _0814629C @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _081462A0
+	ldr r0, _081462A0 @ =VBlankCB
 	bl SetVBlankCallback
-	ldr r0, _081462A4
+	ldr r0, _081462A4 @ =MainCB2
 	bl SetMainCallback2
-	ldr r0, _081462A8
+	ldr r0, _081462A8 @ =0x04000050
 	strh r5, [r0]
 	adds r0, 0x2
 	strh r5, [r0]
 	adds r0, 0x2
 	strh r5, [r0]
-	ldr r1, _081462AC
+	ldr r1, _081462AC @ =0x00004603
 	adds r0, r1, 0
 	strh r0, [r6]
 	movs r1, 0xCA
@@ -140,7 +140,7 @@ sub_8145D88: @ 8146140
 	adds r0, r1, 0
 	mov r1, r8
 	strh r0, [r1]
-	ldr r0, _081462B0
+	ldr r0, _081462B0 @ =Task_DiplomaFadeIn
 	movs r1, 0
 	bl CreateTask
 	add sp, 0xC
@@ -187,18 +187,18 @@ Task_DiplomaFadeIn: @ 81462CC
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _081462F0
+	ldr r0, _081462F0 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _081462EC
-	ldr r0, _081462F4
+	ldr r0, _081462F4 @ =gTasks
 	lsls r1, r2, 2
 	adds r1, r2
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _081462F8
+	ldr r0, _081462F8 @ =Task_DiplomaWaitForKeyPress
 	str r0, [r1]
 _081462EC:
 	pop {r0}
@@ -215,7 +215,7 @@ Task_DiplomaWaitForKeyPress: @ 81462FC
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _08146338
+	ldr r0, _08146338 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x3
 	ands r0, r1
@@ -228,12 +228,12 @@ Task_DiplomaWaitForKeyPress: @ 81462FC
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _0814633C
+	ldr r1, _0814633C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08146340
+	ldr r1, _08146340 @ =Task_DiplomaFadeOut
 	str r1, [r0]
 _0814632E:
 	add sp, 0x4
@@ -251,7 +251,7 @@ Task_DiplomaFadeOut: @ 8146344
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _08146368
+	ldr r0, _08146368 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -259,7 +259,7 @@ Task_DiplomaFadeOut: @ 8146344
 	bne _08146362
 	adds r0, r2, 0
 	bl DestroyTask
-	ldr r0, _0814636C
+	ldr r0, _0814636C @ =sub_80546F0
 	bl SetMainCallback2
 _08146362:
 	pop {r0}
@@ -277,13 +277,13 @@ DisplayDiplomaText: @ 8146370
 	lsrs r1, r0, 16
 	cmp r1, 0
 	beq _081463A0
-	ldr r1, _08146394
+	ldr r1, _08146394 @ =0x0400001c
 	movs r2, 0x80
 	lsls r2, 1
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _08146398
-	ldr r1, _0814639C
+	ldr r0, _08146398 @ =gStringVar1
+	ldr r1, _0814639C @ =gOtherText_NationalDex
 	bl StringCopy
 	b _081463AC
 	.align 2, 0
@@ -291,13 +291,13 @@ _08146394: .4byte 0x0400001c
 _08146398: .4byte gStringVar1
 _0814639C: .4byte gOtherText_NationalDex
 _081463A0:
-	ldr r0, _081463BC
+	ldr r0, _081463BC @ =0x0400001c
 	strh r1, [r0]
-	ldr r0, _081463C0
-	ldr r1, _081463C4
+	ldr r0, _081463C0 @ =gStringVar1
+	ldr r1, _081463C4 @ =gOtherText_HoennDex
 	bl StringCopy
 _081463AC:
-	ldr r0, _081463C8
+	ldr r0, _081463C8 @ =gOtherText_DiplomaCertificationGameFreak
 	movs r1, 0x6
 	movs r2, 0x2
 	bl MenuPrint

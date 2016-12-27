@@ -16,17 +16,17 @@ ResetSpriteData: @ 800087C
 	bl ClearSpriteCopyRequests
 	bl ResetAffineAnimData
 	bl FreeSpriteTileRanges
-	ldr r1, _080008B8
+	ldr r1, _080008B8 @ =gOamLimit
 	movs r0, 0x40
 	strb r0, [r1]
-	ldr r0, _080008BC
+	ldr r0, _080008BC @ =gReservedSpriteTileCount
 	movs r4, 0
 	strh r4, [r0]
 	movs r0, 0
 	bl AllocSpriteTiles
-	ldr r0, _080008C0
+	ldr r0, _080008C0 @ =gSpriteCoordOffsetX
 	strh r4, [r0]
-	ldr r0, _080008C4
+	ldr r0, _080008C4 @ =gSpriteCoordOffsetY
 	strh r4, [r0]
 	pop {r4}
 	pop {r0}
@@ -47,7 +47,7 @@ _080008CE:
 	lsls r0, r6, 4
 	adds r0, r6
 	lsls r0, 2
-	ldr r1, _08000910
+	ldr r1, _08000910 @ =gSprites
 	adds r4, r0, r1
 	adds r5, r4, 0
 	adds r5, 0x3E
@@ -85,8 +85,8 @@ BuildOamBuffer: @ 8000914
 	bl UpdateOamCoords
 	bl BuildSpritePriorities
 	bl SortSprites
-	ldr r5, _08000954
-	ldr r0, _08000958
+	ldr r5, _08000954 @ =gMain
+	ldr r0, _08000958 @ =0x0000043d
 	adds r5, r0
 	ldrb r0, [r5]
 	lsls r4, r0, 31
@@ -103,7 +103,7 @@ BuildOamBuffer: @ 8000914
 	ands r0, r1
 	orrs r4, r0
 	strb r4, [r5]
-	ldr r0, _0800095C
+	ldr r0, _0800095C @ =gShouldProcessSpriteCopyRequests
 	strb r2, [r0]
 	pop {r4,r5}
 	pop {r0}
@@ -118,10 +118,10 @@ _0800095C: .4byte gShouldProcessSpriteCopyRequests
 UpdateOamCoords: @ 8000960
 	push {r4-r7,lr}
 	movs r4, 0
-	ldr r7, _080009CC
-	ldr r0, _080009D0
+	ldr r7, _080009CC @ =gSprites
+	ldr r0, _080009D0 @ =0x000001ff
 	adds r5, r0, 0
-	ldr r6, _080009D4
+	ldr r6, _080009D4 @ =0xfffffe00
 _0800096C:
 	lsls r0, r4, 4
 	adds r0, r4
@@ -149,7 +149,7 @@ _0800096C:
 	lsls r0, 24
 	asrs r0, 24
 	adds r1, r0
-	ldr r0, _080009D8
+	ldr r0, _080009D8 @ =gSpriteCoordOffsetX
 	movs r2, 0
 	ldrsh r0, [r0, r2]
 	adds r1, r0
@@ -165,7 +165,7 @@ _0800096C:
 	adds r0, r3, 0
 	adds r0, 0x29
 	ldrb r0, [r0]
-	ldr r2, _080009DC
+	ldr r2, _080009DC @ =gSpriteCoordOffsetY
 	adds r0, r1
 	ldrb r2, [r2]
 	adds r0, r2
@@ -218,8 +218,8 @@ _08000A12:
 BuildSpritePriorities: @ 8000A24
 	push {r4,lr}
 	movs r2, 0
-	ldr r4, _08000A5C
-	ldr r3, _08000A60
+	ldr r4, _08000A5C @ =gSprites
+	ldr r3, _08000A60 @ =gSpritePriorities
 _08000A2C:
 	lsls r0, r2, 4
 	adds r0, r2
@@ -259,11 +259,11 @@ SortSprites: @ 8000A64
 	sub sp, 0x4
 	movs r0, 0x1
 	mov r12, r0
-	ldr r1, _08000B2C
+	ldr r1, _08000B2C @ =gSpriteOrder
 	mov r10, r1
-	ldr r3, _08000B30
+	ldr r3, _08000B30 @ =0xffffff00
 	mov r9, r3
-	ldr r6, _08000B34
+	ldr r6, _08000B34 @ =0xc0000300
 	mov r8, r6
 _08000A80:
 	mov r5, r12
@@ -274,7 +274,7 @@ _08000A80:
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
-	ldr r7, _08000B38
+	ldr r7, _08000B38 @ =gSprites
 	adds r3, r0, r7
 	mov r0, r12
 	add r0, r10
@@ -284,7 +284,7 @@ _08000A80:
 	lsls r0, 2
 	adds r4, r0, r7
 	lsls r2, 1
-	ldr r0, _08000B3C
+	ldr r0, _08000B3C @ =gSpritePriorities
 	adds r2, r0
 	ldrh r2, [r2]
 	str r2, [sp]
@@ -381,7 +381,7 @@ _08000B40:
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
-	ldr r6, _08000C1C
+	ldr r6, _08000C1C @ =gSprites
 	adds r3, r0, r6
 	mov r7, r10
 	adds r0, r5, r7
@@ -391,7 +391,7 @@ _08000B40:
 	lsls r0, 2
 	adds r4, r0, r6
 	lsls r2, 1
-	ldr r0, _08000C20
+	ldr r0, _08000C20 @ =gSpritePriorities
 	adds r2, r0
 	ldrh r2, [r2]
 	str r2, [sp]
@@ -493,8 +493,8 @@ _08000C20: .4byte gSpritePriorities
 CopyMatricesToOamBuffer: @ 8000C24
 	push {r4-r6,lr}
 	movs r4, 0
-	ldr r5, _08000C70
-	ldr r6, _08000C74
+	ldr r5, _08000C70 @ =gMain
+	ldr r6, _08000C74 @ =gOamMatrices
 _08000C2C:
 	lsls r2, r4, 2
 	lsls r0, r4, 5
@@ -543,13 +543,13 @@ AddSpritesToOamBuffer: @ 8000C78
 	mov r0, sp
 	strb r4, [r0]
 _08000C82:
-	ldr r0, _08000CFC
+	ldr r0, _08000CFC @ =gSpriteOrder
 	adds r0, r4, r0
 	ldrb r1, [r0]
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08000D00
+	ldr r1, _08000D00 @ =gSprites
 	adds r2, r0, r1
 	adds r0, r2, 0
 	adds r0, 0x3E
@@ -571,13 +571,13 @@ _08000CAE:
 	cmp r4, 0x3F
 	bls _08000C82
 _08000CB8:
-	ldr r2, _08000D04
+	ldr r2, _08000D04 @ =gMain
 	mov r0, sp
 	ldrb r0, [r0]
 	adds r1, r2, 0
 	adds r1, 0x38
 	strb r0, [r1]
-	ldr r1, _08000D08
+	ldr r1, _08000D08 @ =gOamLimit
 	lsls r0, 24
 	lsrs r0, 24
 	ldrb r3, [r1]
@@ -585,7 +585,7 @@ _08000CB8:
 	bcs _08000CF4
 	adds r5, r2, 0
 	mov r2, sp
-	ldr r0, _08000D0C
+	ldr r0, _08000D0C @ =gDummyOamData
 	ldr r3, [r0]
 	ldr r4, [r0, 0x4]
 _08000CDA:
@@ -623,7 +623,7 @@ CreateSprite: @ 8000D10
 	lsls r3, 24
 	lsrs r4, r3, 24
 	movs r3, 0
-	ldr r0, _08000D4C
+	ldr r0, _08000D4C @ =gSprites
 	mov r12, r0
 	lsls r5, r1, 16
 	lsls r6, r2, 16
@@ -672,7 +672,7 @@ CreateSpriteAtEnd: @ 8000D64
 	lsls r3, 24
 	lsrs r6, r3, 24
 	movs r3, 0x3F
-	ldr r0, _08000DB0
+	ldr r0, _08000DB0 @ =gSprites
 	mov r8, r0
 	movs r0, 0x1
 	negs r0, r0
@@ -724,7 +724,7 @@ _08000DC2:
 CreateInvisibleSprite: @ 8000DD0
 	push {r4-r6,lr}
 	adds r6, r0, 0
-	ldr r0, _08000E08
+	ldr r0, _08000E08 @ =gDummySpriteTemplate
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x1F
@@ -733,7 +733,7 @@ CreateInvisibleSprite: @ 8000DD0
 	lsrs r5, r0, 24
 	cmp r5, 0x40
 	beq _08000E10
-	ldr r4, _08000E0C
+	ldr r4, _08000E0C @ =gSprites
 	lsls r1, r5, 4
 	adds r1, r5
 	lsls r1, 2
@@ -782,7 +782,7 @@ CreateSpriteAt: @ 8000E18
 	lsls r0, 4
 	add r0, r10
 	lsls r0, 2
-	ldr r1, _08000EDC
+	ldr r1, _08000EDC @ =gSprites
 	adds r7, r0, r1
 	adds r0, r7, 0
 	bl ResetSprite
@@ -833,7 +833,7 @@ CreateSpriteAt: @ 8000E18
 	bl CalcCenterToCornerVec
 	mov r0, r8
 	ldrh r1, [r0]
-	ldr r4, _08000EE0
+	ldr r4, _08000EE0 @ =0xffff0000
 	lsrs r0, r4, 16
 	cmp r1, r0
 	bne _08000F14
@@ -859,11 +859,11 @@ CreateSpriteAt: @ 8000E18
 _08000EDC: .4byte gSprites
 _08000EE0: .4byte 0xffff0000
 _08000EE4:
-	ldr r1, _08000F0C
+	ldr r1, _08000F0C @ =0x000003ff
 	adds r0, r1, 0
 	ands r2, r0
 	ldrh r1, [r7, 0x4]
-	ldr r0, _08000F10
+	ldr r0, _08000F10 @ =0xfffffc00
 	ands r0, r1
 	orrs r0, r2
 	strh r0, [r7, 0x4]
@@ -904,7 +904,7 @@ _08000F28:
 _08000F3C:
 	mov r0, r8
 	ldrh r1, [r0, 0x2]
-	ldr r0, _08000F6C
+	ldr r0, _08000F6C @ =0x0000ffff
 	cmp r1, r0
 	beq _08000F5A
 	mov r1, r8
@@ -943,7 +943,7 @@ CreateSpriteAndAnimate: @ 8000F70
 	lsrs r3, 24
 	mov r9, r3
 	movs r3, 0
-	ldr r5, _08000FE0
+	ldr r5, _08000FE0 @ =gSprites
 	lsls r1, 16
 	mov r12, r1
 	lsls r2, 16
@@ -973,7 +973,7 @@ _08000F90:
 	adds r5, r0, 0
 	cmp r5, 0x40
 	beq _08000FF2
-	ldr r1, _08000FE4
+	ldr r1, _08000FE4 @ =0x02020020
 	adds r0, r6, r1
 	ldr r1, [r0]
 	adds r0, r4, 0
@@ -1036,7 +1036,7 @@ DestroySprite: @ 8001004
 	adds r3, r1, 0
 	cmp r3, r4
 	bcs _0800105A
-	ldr r0, _08001068
+	ldr r0, _08001068 @ =gSpriteTileAllocBitmap
 	mov r12, r0
 	movs r6, 0x7
 	movs r7, 0x1
@@ -1075,8 +1075,8 @@ ResetOamRange: @ 800106C
 	lsrs r3, r0, 24
 	cmp r3, r4
 	bcs _08001094
-	ldr r6, _0800109C
-	ldr r5, _080010A0
+	ldr r6, _0800109C @ =0x030017ac
+	ldr r5, _080010A0 @ =gDummyOamData
 _0800107E:
 	lsls r0, r3, 3
 	adds r0, r6
@@ -1101,8 +1101,8 @@ _080010A0: .4byte gDummyOamData
 	thumb_func_start LoadOam
 LoadOam: @ 80010A4
 	push {lr}
-	ldr r2, _080010C8
-	ldr r1, _080010CC
+	ldr r2, _080010C8 @ =gMain
+	ldr r1, _080010CC @ =0x0000043d
 	adds r0, r2, r1
 	ldrb r1, [r0]
 	movs r0, 0x1
@@ -1113,7 +1113,7 @@ LoadOam: @ 80010A4
 	adds r0, 0x3C
 	movs r1, 0xE0
 	lsls r1, 19
-	ldr r2, _080010D0
+	ldr r2, _080010D0 @ =0x04000100
 	bl CpuSet
 _080010C4:
 	pop {r0}
@@ -1127,13 +1127,13 @@ _080010D0: .4byte 0x04000100
 	thumb_func_start ClearSpriteCopyRequests
 ClearSpriteCopyRequests: @ 80010D4
 	push {r4,r5,lr}
-	ldr r0, _08001108
+	ldr r0, _08001108 @ =gShouldProcessSpriteCopyRequests
 	movs r1, 0
 	strb r1, [r0]
-	ldr r0, _0800110C
+	ldr r0, _0800110C @ =gSpriteCopyRequestCount
 	strb r1, [r0]
 	movs r2, 0
-	ldr r4, _08001110
+	ldr r4, _08001110 @ =gSpriteCopyRequests
 	movs r3, 0
 	adds r5, r4, 0x4
 _080010E8:
@@ -1163,7 +1163,7 @@ _08001110: .4byte gSpriteCopyRequests
 ResetOamMatrices: @ 8001114
 	push {r4,lr}
 	movs r1, 0
-	ldr r4, _0800113C
+	ldr r4, _0800113C @ =gOamMatrices
 	movs r3, 0
 	movs r2, 0x80
 	lsls r2, 1
@@ -1191,7 +1191,7 @@ SetOamMatrix: @ 8001140
 	push {r4,r5,lr}
 	ldr r5, [sp, 0xC]
 	lsls r0, 24
-	ldr r4, _0800115C
+	ldr r4, _0800115C @ =gOamMatrices
 	lsrs r0, 21
 	adds r0, r4
 	strh r1, [r0]
@@ -1208,7 +1208,7 @@ _0800115C: .4byte gOamMatrices
 	thumb_func_start ResetSprite
 ResetSprite: @ 8001160
 	push {lr}
-	ldr r1, _08001170
+	ldr r1, _08001170 @ =0x081ef830
 	movs r2, 0x44
 	bl memcpy
 	pop {r0}
@@ -1225,7 +1225,7 @@ CalcCenterToCornerVec: @ 8001174
 	lsls r2, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r4, _080011B4
+	ldr r4, _080011B4 @ =0x081ef815
 	lsrs r2, 23
 	lsrs r1, 21
 	adds r2, r1
@@ -1265,12 +1265,12 @@ AllocSpriteTiles: @ 80011B8
 	lsrs r4, r0, 16
 	cmp r4, 0
 	bne _0800120E
-	ldr r0, _080011FC
+	ldr r0, _080011FC @ =gReservedSpriteTileCount
 	ldrh r3, [r0]
-	ldr r0, _08001200
+	ldr r0, _08001200 @ =0x000003ff
 	cmp r3, r0
 	bhi _080011F6
-	ldr r7, _08001204
+	ldr r7, _08001204 @ =gSpriteTileAllocBitmap
 	movs r6, 0x7
 	adds r4, r0, 0
 	movs r5, 0x1
@@ -1301,9 +1301,9 @@ _08001208:
 	negs r0, r0
 	b _080012C0
 _0800120E:
-	ldr r0, _080012CC
+	ldr r0, _080012CC @ =gReservedSpriteTileCount
 	ldrh r3, [r0]
-	ldr r0, _080012D0
+	ldr r0, _080012D0 @ =gSpriteTileAllocBitmap
 	mov r9, r0
 	movs r7, 0x7
 	movs r6, 0x1
@@ -1319,7 +1319,7 @@ _0800121A:
 	beq _0800124E
 	movs r5, 0x80
 	lsls r5, 3
-	ldr r2, _080012D0
+	ldr r2, _080012D0 @ =gSpriteTileAllocBitmap
 _08001232:
 	adds r0, r3, 0x1
 	lsls r0, 16
@@ -1343,7 +1343,7 @@ _0800124E:
 	movs r1, 0x80
 	lsls r1, 3
 	mov r12, r1
-	ldr r5, _080012D0
+	ldr r5, _080012D0 @ =gSpriteTileAllocBitmap
 _0800125E:
 	adds r0, r3, 0x1
 	lsls r0, 16
@@ -1376,7 +1376,7 @@ _08001288:
 	adds r6, r0, 0
 	cmp r3, r1
 	bge _080012BE
-	ldr r0, _080012D0
+	ldr r0, _080012D0 @ =gSpriteTileAllocBitmap
 	mov r8, r0
 	movs r7, 0x7
 	adds r4, r1, 0
@@ -1432,7 +1432,7 @@ SpriteTileAllocBitmapOp: @ 80012D4
 	mvns r0, r0
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _08001308
+	ldr r0, _08001308 @ =gSpriteTileAllocBitmap
 	adds r0, r3, r0
 	ldrb r1, [r0]
 	ands r2, r1
@@ -1446,7 +1446,7 @@ _0800130C:
 	lsls r1, r2
 	lsls r0, r1, 24
 	lsrs r2, r0, 24
-	ldr r0, _08001324
+	ldr r0, _08001324 @ =gSpriteTileAllocBitmap
 	adds r0, r3, r0
 	ldrb r1, [r0]
 	orrs r2, r1
@@ -1459,7 +1459,7 @@ _08001328:
 	lsls r0, 17
 	lsls r0, r4
 	lsrs r5, r0, 24
-	ldr r0, _08001340
+	ldr r0, _08001340 @ =gSpriteTileAllocBitmap
 	adds r0, r6, r0
 	ldrb r0, [r0]
 	ands r5, r0
@@ -1480,16 +1480,16 @@ SpriteCallbackDummy: @ 8001344
 	thumb_func_start ProcessSpriteCopyRequests
 ProcessSpriteCopyRequests: @ 8001348
 	push {r4-r7,lr}
-	ldr r0, _08001398
+	ldr r0, _08001398 @ =gShouldProcessSpriteCopyRequests
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _08001390
 	movs r4, 0
-	ldr r1, _0800139C
+	ldr r1, _0800139C @ =gSpriteCopyRequestCount
 	ldrb r0, [r1]
 	cmp r0, 0
 	beq _0800138A
-	ldr r6, _080013A0
+	ldr r6, _080013A0 @ =gSpriteCopyRequests
 	adds r7, r6, 0x4
 	adds r5, r1, 0
 _08001362:
@@ -1513,7 +1513,7 @@ _08001362:
 	cmp r1, 0
 	bne _08001362
 _0800138A:
-	ldr r1, _08001398
+	ldr r1, _08001398 @ =gShouldProcessSpriteCopyRequests
 	movs r0, 0
 	strb r0, [r1]
 _08001390:
@@ -1534,11 +1534,11 @@ RequestSpriteFrameImageCopy: @ 80013A4
 	lsrs r2, r0, 16
 	lsls r1, 16
 	lsrs r6, r1, 16
-	ldr r4, _080013FC
+	ldr r4, _080013FC @ =gSpriteCopyRequestCount
 	ldrb r0, [r4]
 	cmp r0, 0x3F
 	bhi _080013F4
-	ldr r3, _08001400
+	ldr r3, _08001400 @ =gSpriteCopyRequests
 	adds r1, r0, 0
 	lsls r0, r1, 1
 	adds r0, r1
@@ -1555,7 +1555,7 @@ RequestSpriteFrameImageCopy: @ 80013A4
 	adds r0, r3, 0x4
 	adds r1, r0
 	lsls r0, r6, 5
-	ldr r5, _08001404
+	ldr r5, _08001404 @ =0x06010000
 	adds r0, r5
 	str r0, [r1]
 	ldrb r1, [r4]
@@ -1585,11 +1585,11 @@ RequestSpriteCopy: @ 8001408
 	adds r5, r1, 0
 	lsls r2, 16
 	lsrs r6, r2, 16
-	ldr r3, _08001450
+	ldr r3, _08001450 @ =gSpriteCopyRequestCount
 	ldrb r0, [r3]
 	cmp r0, 0x3F
 	bhi _08001448
-	ldr r2, _08001454
+	ldr r2, _08001454 @ =gSpriteCopyRequests
 	adds r1, r0, 0
 	lsls r0, r1, 1
 	adds r0, r1
@@ -1625,9 +1625,9 @@ _08001454: .4byte gSpriteCopyRequests
 CopyFromSprites: @ 8001458
 	push {r4,lr}
 	adds r1, r0, 0
-	ldr r3, _08001478
+	ldr r3, _08001478 @ =gSprites
 	movs r2, 0
-	ldr r4, _0800147C
+	ldr r4, _0800147C @ =0x000010ff
 _08001462:
 	ldrb r0, [r3]
 	strb r0, [r1]
@@ -1648,9 +1648,9 @@ _0800147C: .4byte 0x000010ff
 CopyToSprites: @ 8001480
 	push {r4,lr}
 	adds r1, r0, 0
-	ldr r3, _080014A0
+	ldr r3, _080014A0 @ =gSprites
 	movs r2, 0
-	ldr r4, _080014A4
+	ldr r4, _080014A4 @ =0x000010ff
 _0800148A:
 	ldrb r0, [r1]
 	strb r0, [r3]
@@ -1675,10 +1675,10 @@ _080014AC:
 	lsls r0, r4, 4
 	adds r0, r4
 	lsls r0, 2
-	ldr r5, _080014E0
+	ldr r5, _080014E0 @ =gSprites
 	adds r0, r5
 	bl ResetSprite
-	ldr r0, _080014E4
+	ldr r0, _080014E4 @ =gSpriteOrder
 	adds r0, r4, r0
 	strb r4, [r0]
 	adds r0, r4, 0x1
@@ -1705,7 +1705,7 @@ FreeSpriteTiles: @ 80014E8
 	push {lr}
 	ldr r2, [r0, 0x14]
 	ldrh r1, [r2]
-	ldr r0, _08001500
+	ldr r0, _08001500 @ =0x0000ffff
 	cmp r1, r0
 	beq _080014FA
 	adds r0, r1, 0
@@ -1782,7 +1782,7 @@ sub_800142C: @ 8001560
 	lsls r3, 16
 	lsrs r6, r3, 16
 	adds r3, r2, 0
-	ldr r0, _08001628
+	ldr r0, _08001628 @ =gMain
 	mov r12, r0
 	adds r0, 0x38
 	ldrb r1, [r0]
@@ -1799,7 +1799,7 @@ sub_800142C: @ 8001560
 	lsls r0, 16
 	cmp r0, 0
 	beq _08001616
-	ldr r5, _0800162C
+	ldr r5, _0800162C @ =0x081ef8a8
 	ldrh r2, [r5]
 	str r2, [sp, 0x8]
 	ldrh r0, [r5, 0x4]
@@ -1881,7 +1881,7 @@ _0800162C: .4byte 0x081ef8a8
 AnimateSprite: @ 8001630
 	push {r4,r5,lr}
 	adds r4, r0, 0
-	ldr r2, _0800166C
+	ldr r2, _0800166C @ =0x081ef8bc
 	adds r5, r4, 0
 	adds r5, 0x3F
 	ldrb r1, [r5]
@@ -1891,11 +1891,11 @@ AnimateSprite: @ 8001630
 	ldr r1, [r0]
 	adds r0, r4, 0
 	bl _call_via_r1
-	ldr r0, _08001670
+	ldr r0, _08001670 @ =gAffineAnimsDisabled
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08001666
-	ldr r0, _08001674
+	ldr r0, _08001674 @ =0x081ef8c4
 	ldrb r1, [r5]
 	lsls r1, 28
 	lsrs r1, 31
@@ -2009,11 +2009,11 @@ _0800171E:
 	adds r0, 0x40
 	ldrh r1, [r0]
 	add r1, r9
-	ldr r2, _08001744
+	ldr r2, _08001744 @ =0x000003ff
 	adds r0, r2, 0
 	ands r1, r0
 	ldrh r2, [r4, 0x4]
-	ldr r0, _08001748
+	ldr r0, _08001748 @ =0xfffffc00
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r4, 0x4]
@@ -2107,7 +2107,7 @@ _080017B8:
 	lsls r0, 16
 	lsrs r2, r0, 16
 _080017EE:
-	ldr r0, _08001804
+	ldr r0, _08001804 @ =0x081ef8cc
 	lsls r1, r2, 16
 	asrs r1, 14
 	adds r1, r0
@@ -2186,11 +2186,11 @@ _0800186C:
 	adds r0, 0x40
 	ldrh r1, [r0]
 	adds r1, r7
-	ldr r2, _08001894
+	ldr r2, _08001894 @ =0x000003ff
 	adds r0, r2, 0
 	ands r1, r0
 	ldrh r2, [r4, 0x4]
-	ldr r0, _08001898
+	ldr r0, _08001898 @ =0xfffffc00
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r4, 0x4]
@@ -2305,11 +2305,11 @@ _0800194A:
 	adds r0, 0x40
 	ldrh r1, [r0]
 	adds r1, r7
-	ldr r2, _08001974
+	ldr r2, _08001974 @ =0x000003ff
 	adds r0, r2, 0
 	ands r1, r0
 	ldrh r2, [r4, 0x4]
-	ldr r0, _08001978
+	ldr r0, _08001978 @ =0xfffffc00
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r4, 0x4]
@@ -2479,7 +2479,7 @@ BeginAffineAnim: @ 8001A80
 	ldr r0, [r0]
 	movs r2, 0
 	ldrsh r1, [r0, r2]
-	ldr r0, _08001AF4
+	ldr r0, _08001AF4 @ =0x00007fff
 	cmp r1, r0
 	beq _08001AEA
 	adds r0, r6, 0
@@ -2507,7 +2507,7 @@ BeginAffineAnim: @ 8001A80
 	adds r0, r4, 0
 	mov r1, sp
 	bl ApplyAffineAnimFrame
-	ldr r1, _08001AF8
+	ldr r1, _08001AF8 @ =0x03000180
 	lsls r0, r4, 1
 	adds r0, r4
 	lsls r0, 2
@@ -2540,7 +2540,7 @@ ContinueAffineAnim: @ 8001AFC
 	lsls r0, 24
 	lsrs r2, r0, 24
 	adds r5, r2, 0
-	ldr r1, _08001B34
+	ldr r1, _08001B34 @ =0x03000180
 	lsls r0, r2, 1
 	adds r0, r2
 	lsls r0, 2
@@ -2576,15 +2576,15 @@ _08001B38:
 	movs r2, 0x3
 	movs r0, 0
 	ldrsh r1, [r1, r0]
-	ldr r0, _08001B88
+	ldr r0, _08001B88 @ =0x00007ffc
 	cmp r1, r0
 	ble _08001B70
-	ldr r2, _08001B8C
+	ldr r2, _08001B8C @ =0xffff8003
 	adds r0, r1, r2
 	lsls r0, 16
 	lsrs r2, r0, 16
 _08001B70:
-	ldr r0, _08001B90
+	ldr r0, _08001B90 @ =0x081ef8dc
 	lsls r1, r2, 16
 	asrs r1, 14
 	adds r1, r0
@@ -2635,7 +2635,7 @@ AffineAnimCmd_loop: @ 8001BC8
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _08001BEC
+	ldr r1, _08001BEC @ =0x03000180
 	lsls r0, r2, 1
 	adds r0, r2
 	lsls r0, 2
@@ -2664,7 +2664,7 @@ BeginAffineAnimLoop: @ 8001BFC
 	adds r4, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08001C34
+	ldr r1, _08001C34 @ =0x03000180
 	lsls r3, r0, 1
 	adds r3, r0
 	lsls r3, 2
@@ -2696,7 +2696,7 @@ ContinueAffineAnimLoop: @ 8001C38
 	adds r4, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08001C64
+	ldr r2, _08001C64 @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
@@ -2721,7 +2721,7 @@ JumpToTopOfAffineAnimLoop: @ 8001C68
 	mov r12, r1
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _08001C8C
+	ldr r1, _08001C8C @ =0x03000180
 	lsls r3, r5, 1
 	adds r0, r3, r5
 	lsls r0, 2
@@ -2758,7 +2758,7 @@ _08001C98:
 	subs r0, 0x8
 	movs r7, 0
 	ldrsh r1, [r0, r7]
-	ldr r0, _08001CD0
+	ldr r0, _08001CD0 @ =0x00007ffd
 	cmp r1, r0
 	bne _08001C90
 _08001CBC:
@@ -2783,7 +2783,7 @@ AffineAnimCmd_jump: @ 8001CD4
 	adds r5, r0, 0
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r0, _08001D1C
+	ldr r0, _08001D1C @ =0x03000180
 	lsls r4, r5, 1
 	adds r4, r5
 	lsls r4, 2
@@ -2830,7 +2830,7 @@ AffineAnimCmd_end: @ 8001D20
 	movs r3, 0x20
 	orrs r2, r3
 	strb r2, [r1]
-	ldr r2, _08001D58
+	ldr r2, _08001D58 @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
@@ -2861,7 +2861,7 @@ AffineAnimCmd_frame: @ 8001D5C
 	adds r0, r4, 0
 	mov r1, sp
 	bl ApplyAffineAnimFrame
-	ldr r1, _08001D90
+	ldr r1, _08001D90 @ =0x03000180
 	lsls r0, r4, 1
 	adds r0, r4
 	lsls r0, 2
@@ -2879,7 +2879,7 @@ _08001D90: .4byte 0x03000180
 	thumb_func_start CopyOamMatrix
 CopyOamMatrix: @ 8001D94
 	lsls r0, 24
-	ldr r2, _08001DB0
+	ldr r2, _08001DB0 @ =gOamMatrices
 	lsrs r0, 21
 	adds r0, r2
 	ldrh r2, [r1]
@@ -2981,7 +2981,7 @@ SetSpriteOamFlipBits: @ 8001DD4
 AffineAnimStateRestartAnim: @ 8001E48
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08001E60
+	ldr r2, _08001E60 @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
@@ -2999,7 +2999,7 @@ _08001E60: .4byte 0x03000180
 AffineAnimStateStartAnim: @ 8001E64
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r3, _08001E88
+	ldr r3, _08001E88 @ =0x03000180
 	lsls r2, r0, 1
 	adds r2, r0
 	lsls r2, 2
@@ -3023,7 +3023,7 @@ _08001E88: .4byte 0x03000180
 AffineAnimStateReset: @ 8001E8C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08001EB0
+	ldr r2, _08001EB0 @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
@@ -3047,7 +3047,7 @@ _08001EB0: .4byte 0x03000180
 ApplyAffineAnimFrameAbsolute: @ 8001EB4
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r3, _08001ED4
+	ldr r3, _08001ED4 @ =0x03000180
 	lsls r2, r0, 1
 	adds r2, r0
 	lsls r2, 2
@@ -3101,7 +3101,7 @@ DecrementAffineAnimDelayCounter: @ 8001F00
 	ands r0, r1
 	cmp r0, 0
 	bne _08001F24
-	ldr r0, _08001F2C
+	ldr r0, _08001F2C @ =0x03000180
 	lsls r1, r2, 1
 	adds r1, r2
 	lsls r1, 2
@@ -3125,7 +3125,7 @@ ApplyAffineAnimFrameRelativeAndUpdateMatrix: @ 8001F30
 	adds r5, r0, 0
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r0, _08001FB8
+	ldr r0, _08001FB8 @ =0x03000180
 	lsls r4, r5, 1
 	adds r4, r5
 	lsls r4, 2
@@ -3142,7 +3142,7 @@ ApplyAffineAnimFrameRelativeAndUpdateMatrix: @ 8001F30
 	lsls r0, 8
 	ldrh r1, [r4, 0x8]
 	adds r0, r1
-	ldr r2, _08001FBC
+	ldr r2, _08001FBC @ =0xffffff00
 	adds r1, r2, 0
 	ands r0, r1
 	strh r0, [r4, 0x8]
@@ -3151,7 +3151,7 @@ ApplyAffineAnimFrameRelativeAndUpdateMatrix: @ 8001F30
 	bl ConvertScaleParam
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r6, _08001FC0
+	ldr r6, _08001FC0 @ =0xffff0000
 	ldr r1, [sp]
 	ands r1, r6
 	orrs r1, r0
@@ -3160,7 +3160,7 @@ ApplyAffineAnimFrameRelativeAndUpdateMatrix: @ 8001F30
 	ldrsh r0, [r4, r2]
 	bl ConvertScaleParam
 	lsls r0, 16
-	ldr r2, _08001FC4
+	ldr r2, _08001FC4 @ =0x0000ffff
 	ldr r1, [sp]
 	ands r1, r2
 	orrs r1, r0
@@ -3210,7 +3210,7 @@ GetAffineAnimFrame: @ 8001FE0
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r3, _08002048
+	ldr r3, _08002048 @ =0x03000180
 	lsls r4, r0, 1
 	adds r4, r0
 	lsls r4, 2
@@ -3427,7 +3427,7 @@ StartSpriteAffineAnimIfDifferent: @ 8002168
 	bl GetSpriteMatrixNum
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08002198
+	ldr r2, _08002198 @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
@@ -3455,7 +3455,7 @@ ChangeSpriteAffineAnim: @ 800219C
 	bl GetSpriteMatrixNum
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080021D0
+	ldr r2, _080021D0 @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
@@ -3485,7 +3485,7 @@ ChangeSpriteAffineAnimIfDifferent: @ 80021D4
 	bl GetSpriteMatrixNum
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08002204
+	ldr r2, _08002204 @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
@@ -3537,11 +3537,11 @@ _0800223C:
 	adds r0, 0x40
 	ldrh r1, [r0]
 	adds r1, r2
-	ldr r2, _08002258
+	ldr r2, _08002258 @ =0x000003ff
 	adds r0, r2, 0
 	ands r1, r0
 	ldrh r2, [r3, 0x4]
-	ldr r0, _0800225C
+	ldr r0, _0800225C @ =0xfffffc00
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r3, 0x4]
@@ -3556,10 +3556,10 @@ _0800225C: .4byte 0xfffffc00
 	thumb_func_start ResetAffineAnimData
 ResetAffineAnimData: @ 8002260
 	push {r4,lr}
-	ldr r1, _0800228C
+	ldr r1, _0800228C @ =gAffineAnimsDisabled
 	movs r0, 0
 	strb r0, [r1]
-	ldr r1, _08002290
+	ldr r1, _08002290 @ =gOamMatrixAllocBitmap
 	movs r0, 0
 	str r0, [r1]
 	bl ResetOamMatrices
@@ -3585,7 +3585,7 @@ AllocOamMatrix: @ 8002294
 	push {r4,lr}
 	movs r2, 0
 	movs r1, 0x1
-	ldr r0, _080022B4
+	ldr r0, _080022B4 @ =gOamMatrixAllocBitmap
 	ldr r4, [r0]
 	adds r3, r0, 0
 _080022A0:
@@ -3622,7 +3622,7 @@ FreeOamMatrix: @ 80022CC
 	lsrs r2, r0, 24
 	movs r0, 0
 	movs r1, 0x1
-	ldr r3, _08002308
+	ldr r3, _08002308 @ =gOamMatrixAllocBitmap
 	cmp r0, r2
 	bcs _080022EA
 _080022DE:
@@ -3712,7 +3712,7 @@ SetOamMatrixRotationScaling: @ 800235C
 	bl ConvertScaleParam
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _080023D4
+	ldr r1, _080023D4 @ =0xffff0000
 	mov r8, r1
 	ldr r1, [sp]
 	mov r2, r8
@@ -3724,7 +3724,7 @@ SetOamMatrixRotationScaling: @ 800235C
 	adds r0, r4, 0
 	bl ConvertScaleParam
 	lsls r0, 16
-	ldr r2, _080023D8
+	ldr r2, _080023D8 @ =0x0000ffff
 	ldr r1, [sp]
 	ands r1, r2
 	orrs r1, r0
@@ -3773,7 +3773,7 @@ LoadSpriteSheet: @ 80023DC
 	bl AllocSpriteTileRange
 	ldr r0, [r5]
 	lsls r1, r6, 5
-	ldr r2, _08002414
+	ldr r2, _08002414 @ =0x06010000
 	adds r1, r2
 	ldrh r2, [r5, 0x4]
 	lsrs r2, 1
@@ -3878,7 +3878,7 @@ LoadTilesForSpriteSheet: @ 80024A4
 	adds r1, r0, 0
 	lsls r1, 16
 	lsrs r1, 11
-	ldr r0, _080024CC
+	ldr r0, _080024CC @ =0x06010000
 	adds r1, r0
 	ldrh r2, [r4, 0x4]
 	lsrs r2, 1
@@ -3929,7 +3929,7 @@ FreeSpriteTilesByTag: @ 80024FC
 	lsrs r4, r0, 24
 	cmp r4, 0xFF
 	beq _0800255A
-	ldr r0, _08002564
+	ldr r0, _08002564 @ =0x03000080
 	lsls r1, r4, 2
 	adds r2, r1, r0
 	adds r0, 0x2
@@ -3937,12 +3937,12 @@ FreeSpriteTilesByTag: @ 80024FC
 	ldrh r0, [r1]
 	ldrh r3, [r2]
 	adds r0, r3, r0
-	ldr r1, _08002568
+	ldr r1, _08002568 @ =0x03000000
 	mov r8, r1
 	lsls r5, r4, 1
 	cmp r3, r0
 	bge _08002552
-	ldr r1, _0800256C
+	ldr r1, _0800256C @ =gSpriteTileAllocBitmap
 	mov r12, r1
 	movs r6, 0x7
 	movs r7, 0x1
@@ -3965,7 +3965,7 @@ _08002536:
 _08002552:
 	mov r0, r8
 	adds r1, r5, r0
-	ldr r0, _08002570
+	ldr r0, _08002570 @ =0x0000ffff
 	strh r0, [r1]
 _0800255A:
 	pop {r3}
@@ -3984,10 +3984,10 @@ _08002570: .4byte 0x0000ffff
 FreeSpriteTileRanges: @ 8002574
 	push {r4-r7,lr}
 	movs r2, 0
-	ldr r7, _080025A8
-	ldr r0, _080025AC
+	ldr r7, _080025A8 @ =0x03000000
+	ldr r0, _080025AC @ =0x0000ffff
 	adds r6, r0, 0
-	ldr r4, _080025B0
+	ldr r4, _080025B0 @ =0x03000080
 	movs r3, 0
 	adds r5, r4, 0x2
 _08002584:
@@ -4025,7 +4025,7 @@ GetSpriteTileStartByTag: @ 80025B4
 	lsrs r1, r0, 24
 	cmp r1, 0xFF
 	beq _080025D4
-	ldr r0, _080025D0
+	ldr r0, _080025D0 @ =0x03000080
 	lsls r1, 2
 	adds r1, r0
 	ldrh r0, [r1]
@@ -4033,7 +4033,7 @@ GetSpriteTileStartByTag: @ 80025B4
 	.align 2, 0
 _080025D0: .4byte 0x03000080
 _080025D4:
-	ldr r0, _080025DC
+	ldr r0, _080025DC @ =0x0000ffff
 _080025D6:
 	pop {r1}
 	bx r1
@@ -4047,7 +4047,7 @@ IndexOfSpriteTileTag: @ 80025E0
 	lsls r0, 16
 	lsrs r2, r0, 16
 	movs r1, 0
-	ldr r3, _080025F8
+	ldr r3, _080025F8 @ =0x03000000
 _080025EA:
 	lsls r0, r1, 1
 	adds r0, r3
@@ -4076,9 +4076,9 @@ GetSpriteTileTagByTileStart: @ 800260C
 	lsls r0, 16
 	lsrs r3, r0, 16
 	movs r2, 0
-	ldr r6, _08002634
-	ldr r5, _08002638
-	ldr r4, _0800263C
+	ldr r6, _08002634 @ =0x03000000
+	ldr r5, _08002638 @ =0x0000ffff
+	ldr r4, _0800263C @ =0x03000080
 _0800261A:
 	lsls r0, r2, 1
 	adds r1, r0, r6
@@ -4102,7 +4102,7 @@ _08002640:
 	lsrs r2, r0, 24
 	cmp r2, 0x3F
 	bls _0800261A
-	ldr r0, _08002654
+	ldr r0, _08002654 @ =0x0000ffff
 _0800264C:
 	pop {r4-r6}
 	pop {r1}
@@ -4123,15 +4123,15 @@ AllocSpriteTileRange: @ 8002658
 	lsrs r5, 16
 	lsls r6, 16
 	lsrs r6, 16
-	ldr r0, _08002694
+	ldr r0, _08002694 @ =0x0000ffff
 	bl IndexOfSpriteTileTag
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08002698
+	ldr r2, _08002698 @ =0x03000000
 	lsls r1, r0, 1
 	adds r1, r2
 	strh r4, [r1]
-	ldr r1, _0800269C
+	ldr r1, _0800269C @ =0x03000080
 	lsls r0, 2
 	adds r2, r0, r1
 	strh r5, [r2]
@@ -4157,7 +4157,7 @@ RequestSpriteSheetCopy: @ 80026A0
 	adds r1, r0, 0
 	lsls r1, 16
 	lsrs r1, 11
-	ldr r0, _080026C4
+	ldr r0, _080026C4 @ =0x06010000
 	adds r1, r0
 	ldrh r2, [r4, 0x4]
 	adds r0, r5, 0
@@ -4200,12 +4200,12 @@ _080026F4:
 	thumb_func_start FreeAllSpritePalettes
 FreeAllSpritePalettes: @ 80026FC
 	push {r4,lr}
-	ldr r1, _08002728
+	ldr r1, _08002728 @ =gReservedSpritePaletteCount
 	movs r0, 0
 	strb r0, [r1]
 	movs r2, 0
-	ldr r4, _0800272C
-	ldr r0, _08002730
+	ldr r4, _0800272C @ =0x03000300
+	ldr r0, _08002730 @ =0x0000ffff
 	adds r3, r0, 0
 _0800270C:
 	lsls r0, r2, 1
@@ -4240,13 +4240,13 @@ LoadSpritePalette: @ 8002734
 	adds r0, r4, 0
 	b _0800277A
 _0800274A:
-	ldr r0, _08002770
+	ldr r0, _08002770 @ =0x0000ffff
 	bl IndexOfSpritePaletteTag
 	lsls r0, 24
 	lsrs r4, r0, 24
 	cmp r4, 0xFF
 	beq _08002778
-	ldr r1, _08002774
+	ldr r1, _08002774 @ =0x03000300
 	lsls r0, r4, 1
 	adds r0, r1
 	ldrh r1, [r5, 0x4]
@@ -4314,13 +4314,13 @@ AllocSpritePalette: @ 80027C4
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r4, r0, 16
-	ldr r0, _080027E4
+	ldr r0, _080027E4 @ =0x0000ffff
 	bl IndexOfSpritePaletteTag
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0xFF
 	beq _080027EC
-	ldr r1, _080027E8
+	ldr r1, _080027E8 @ =0x03000300
 	lsls r0, r2, 1
 	adds r0, r1
 	strh r4, [r0]
@@ -4342,11 +4342,11 @@ IndexOfSpritePaletteTag: @ 80027F4
 	push {lr}
 	lsls r0, 16
 	lsrs r2, r0, 16
-	ldr r0, _08002814
+	ldr r0, _08002814 @ =gReservedSpritePaletteCount
 	ldrb r1, [r0]
 	cmp r1, 0xF
 	bhi _08002826
-	ldr r3, _08002818
+	ldr r3, _08002818 @ =0x03000300
 _08002804:
 	lsls r0, r1, 1
 	adds r0, r3
@@ -4374,7 +4374,7 @@ _08002828:
 	thumb_func_start GetSpritePaletteTagByPaletteNum
 GetSpritePaletteTagByPaletteNum: @ 800282C
 	lsls r0, 24
-	ldr r1, _08002838
+	ldr r1, _08002838 @ =0x03000300
 	lsrs r0, 23
 	adds r0, r1
 	ldrh r0, [r0]
@@ -4393,10 +4393,10 @@ FreeSpritePaletteByTag: @ 800283C
 	lsrs r1, r0, 24
 	cmp r1, 0xFF
 	beq _08002858
-	ldr r0, _0800285C
+	ldr r0, _0800285C @ =0x03000300
 	lsls r1, 1
 	adds r1, r0
-	ldr r0, _08002860
+	ldr r0, _08002860 @ =0x0000ffff
 	strh r0, [r1]
 _08002858:
 	pop {r0}
@@ -4420,7 +4420,7 @@ AddSpriteToOamBuffer: @ 8002870
 	push {r4,lr}
 	adds r4, r0, 0
 	adds r3, r1, 0
-	ldr r1, _08002884
+	ldr r1, _08002884 @ =gOamLimit
 	ldrb r0, [r3]
 	ldrb r1, [r1]
 	cmp r0, r1
@@ -4441,7 +4441,7 @@ _08002888:
 	cmp r0, 0
 	bne _080028BC
 _0800289C:
-	ldr r0, _080028B8
+	ldr r0, _080028B8 @ =gMain
 	ldrb r2, [r3]
 	lsls r2, 3
 	adds r2, r0
@@ -4459,7 +4459,7 @@ _080028B8: .4byte gMain
 _080028BC:
 	ldrb r1, [r3]
 	lsls r1, 3
-	ldr r0, _080028D8
+	ldr r0, _080028D8 @ =0x030017ac
 	adds r1, r0
 	adds r0, r4, 0
 	adds r2, r3, 0
@@ -4485,7 +4485,7 @@ AddSubspritesToOamBuffer: @ 80028DC
 	adds r3, r0, 0
 	str r1, [sp]
 	mov r8, r2
-	ldr r0, _080028FC
+	ldr r0, _080028FC @ =gOamLimit
 	ldrb r1, [r2]
 	ldrb r0, [r0]
 	cmp r1, r0
@@ -4577,7 +4577,7 @@ _08002990:
 _08002996:
 	mov r2, r8
 	ldrb r0, [r2]
-	ldr r1, _08002AC8
+	ldr r1, _08002AC8 @ =gOamLimit
 	ldrb r1, [r1]
 	cmp r0, r1
 	bcs _080028F8
@@ -4596,7 +4596,7 @@ _08002996:
 	lsls r1, 30
 	lsrs r1, 26
 	adds r0, r1
-	ldr r1, _08002ACC
+	ldr r1, _08002ACC @ =0x081ef8ec
 	adds r0, r1
 	movs r1, 0
 	ldrsb r1, [r0, r1]
@@ -4619,7 +4619,7 @@ _080029DA:
 	lsls r1, 30
 	lsrs r1, 26
 	adds r0, r1
-	ldr r1, _08002ACC
+	ldr r1, _08002ACC @ =0x081ef8ec
 	adds r0, r1
 	movs r1, 0x1
 	ldrsb r1, [r0, r1]
@@ -4665,11 +4665,11 @@ _08002A06:
 	asrs r1, 16
 	ldr r0, [sp, 0x14]
 	adds r1, r0, r1
-	ldr r2, _08002AD0
+	ldr r2, _08002AD0 @ =0x000001ff
 	adds r0, r2, 0
 	ands r1, r0
 	ldrh r2, [r3, 0x2]
-	ldr r0, _08002AD4
+	ldr r0, _08002AD4 @ =0xfffffe00
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r3, 0x2]
@@ -4683,11 +4683,11 @@ _08002A06:
 	lsrs r1, 22
 	ldr r2, [sp, 0x4]
 	adds r1, r2, r1
-	ldr r2, _08002AD8
+	ldr r2, _08002AD8 @ =0x000003ff
 	adds r0, r2, 0
 	ands r1, r0
 	ldrh r2, [r3, 0x4]
-	ldr r0, _08002ADC
+	ldr r0, _08002ADC @ =0xfffffc00
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r3, 0x4]

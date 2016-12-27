@@ -14,7 +14,7 @@ GetHealLocationIndexByMap: @ 80FAC1C
 	lsls r1, 16
 	lsrs r1, 16
 	movs r3, 0
-	ldr r2, _080FAC40
+	ldr r2, _080FAC40 @ =gHealLocations
 _080FAC2A:
 	movs r0, 0
 	ldrsb r0, [r2, r0]
@@ -51,7 +51,7 @@ GetHealLocationByMap: @ 80FAC54
 	cmp r0, 0
 	beq _080FAC74
 	lsls r0, 3
-	ldr r1, _080FAC70
+	ldr r1, _080FAC70 @ =gUnknown_083E5A18
 	adds r0, r1
 	b _080FAC76
 	.align 2, 0
@@ -71,7 +71,7 @@ GetHealLocation: @ 80FAC7C
 	cmp r0, 0x16
 	bhi _080FAC94
 	lsls r0, 3
-	ldr r1, _080FAC90
+	ldr r1, _080FAC90 @ =gUnknown_083E5A18
 	adds r0, r1
 	b _080FAC96
 	.align 2, 0

@@ -13,8 +13,8 @@ AgbMain: @ 8000380
 	push {r7}
 	movs r0, 0xFF
 	bl RegisterRamReset
-	ldr r1, _08000418
-	ldr r2, _0800041C
+	ldr r1, _08000418 @ =0x04000204
+	ldr r2, _0800041C @ =0x00004014
 	adds r0, r2, 0
 	strh r0, [r1]
 	bl InitKeys
@@ -25,27 +25,27 @@ AgbMain: @ 8000380
 	bl InitMainCallbacks
 	bl InitMapMusic
 	bl SeedRngWithRtc
-	ldr r0, _08000420
+	ldr r0, _08000420 @ =gUnknown_3001BB4
 	movs r4, 0
 	strb r4, [r0]
-	ldr r0, _08000424
+	ldr r0, _08000424 @ =gUnknown_3004820
 	ldr r0, [r0]
 	cmp r0, 0x1
 	beq _080003C8
 	movs r0, 0
 	bl SetMainCallback2
 _080003C8:
-	ldr r0, _08000428
+	ldr r0, _08000428 @ =gUnknown_3001764
 	strb r4, [r0]
-	ldr r5, _0800042C
-	ldr r6, _08000430
-	ldr r0, _08000434
+	ldr r5, _0800042C @ =gMain
+	ldr r6, _08000430 @ =0x030033b9
+	ldr r0, _08000434 @ =0x00000c84
 	adds r0, r6
 	mov r8, r0
 	movs r7, 0
 _080003D8:
 	bl ReadKeys
-	ldr r0, _08000420
+	ldr r0, _08000420 @ =gUnknown_3001BB4
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _080003FA
@@ -66,7 +66,7 @@ _080003FA:
 	bl sub_8055910
 	cmp r0, 0x1
 	bne _08000438
-	ldr r4, _08000428
+	ldr r4, _08000428 @ =gUnknown_3001764
 	strb r0, [r4]
 	bl UpdateLinkAndCallCallbacks
 	movs r0, 0
@@ -82,7 +82,7 @@ _0800042C: .4byte gMain
 _08000430: .4byte 0x030033b9
 _08000434: .4byte 0x00000c84
 _08000438:
-	ldr r4, _08000470
+	ldr r4, _08000470 @ =gUnknown_3001764
 	movs r0, 0
 	strb r0, [r4]
 	bl UpdateLinkAndCallCallbacks
@@ -111,13 +111,13 @@ _08000470: .4byte gUnknown_3001764
 	thumb_func_start UpdateLinkAndCallCallbacks
 UpdateLinkAndCallCallbacks: @ 8000474
 	push {r4,lr}
-	ldr r0, _080004A8
-	ldr r1, _080004AC
-	ldr r2, _080004B0
+	ldr r0, _080004A8 @ =gShouldAdvanceLinkState
+	ldr r1, _080004AC @ =gSendCmd
+	ldr r2, _080004B0 @ =gRecvCmds
 	bl LinkMain1
-	ldr r4, _080004B4
+	ldr r4, _080004B4 @ =gLinkStatus
 	str r0, [r4]
-	ldr r0, _080004B8
+	ldr r0, _080004B8 @ =0x0300179c
 	bl LinkMain2
 	ldr r0, [r4]
 	movs r1, 0x80
@@ -145,12 +145,12 @@ _080004B8: .4byte 0x0300179c
 	thumb_func_start InitMainCallbacks
 InitMainCallbacks: @ 80004BC
 	push {lr}
-	ldr r0, _080004D4
+	ldr r0, _080004D4 @ =gMain
 	movs r1, 0
 	str r1, [r0, 0x20]
 	str r1, [r0, 0x24]
 	str r1, [r0]
-	ldr r0, _080004D8
+	ldr r0, _080004D8 @ =c2_copyright_1
 	bl SetMainCallback2
 	pop {r0}
 	bx r0
@@ -162,7 +162,7 @@ _080004D8: .4byte c2_copyright_1
 	thumb_func_start CallCallbacks
 CallCallbacks: @ 80004DC
 	push {r4,lr}
-	ldr r4, _080004FC
+	ldr r4, _080004FC @ =gMain
 	ldr r0, [r4]
 	cmp r0, 0
 	beq _080004EA
@@ -182,9 +182,9 @@ _080004FC: .4byte gMain
 
 	thumb_func_start SetMainCallback2
 SetMainCallback2: @ 8000500
-	ldr r1, _08000510
+	ldr r1, _08000510 @ =gMain
 	str r0, [r1, 0x4]
-	ldr r0, _08000514
+	ldr r0, _08000514 @ =0x0000043c
 	adds r1, r0
 	movs r0, 0
 	strb r0, [r1]
@@ -200,7 +200,7 @@ SeedRngWithRtc: @ 8000518
 	bl RtcGetMinuteCount
 	adds r2, r0, 0
 	lsrs r0, r2, 16
-	ldr r1, _08000530
+	ldr r1, _08000530 @ =0x0000ffff
 	ands r1, r2
 	eors r0, r1
 	bl SeedRng
@@ -212,13 +212,13 @@ _08000530: .4byte 0x0000ffff
 
 	thumb_func_start InitKeys
 InitKeys: @ 8000534
-	ldr r1, _08000550
+	ldr r1, _08000550 @ =gKeyRepeatContinueDelay
 	movs r0, 0x5
 	strh r0, [r1]
-	ldr r1, _08000554
+	ldr r1, _08000554 @ =gKeyRepeatStartDelay
 	movs r0, 0x28
 	strh r0, [r1]
-	ldr r1, _08000558
+	ldr r1, _08000558 @ =gMain
 	movs r0, 0
 	strh r0, [r1, 0x2C]
 	strh r0, [r1, 0x2E]
@@ -235,13 +235,13 @@ _08000558: .4byte gMain
 	thumb_func_start ReadKeys
 ReadKeys: @ 800055C
 	push {lr}
-	ldr r0, _08000598
+	ldr r0, _08000598 @ =0x04000130
 	ldrh r1, [r0]
-	ldr r2, _0800059C
+	ldr r2, _0800059C @ =0x000003ff
 	adds r0, r2, 0
 	adds r3, r0, 0
 	eors r3, r1
-	ldr r1, _080005A0
+	ldr r1, _080005A0 @ =gMain
 	ldrh r2, [r1, 0x28]
 	adds r0, r3, 0
 	bics r0, r2
@@ -261,7 +261,7 @@ ReadKeys: @ 800055C
 	cmp r0, 0
 	bne _080005AE
 	strh r3, [r2, 0x30]
-	ldr r0, _080005A4
+	ldr r0, _080005A4 @ =gKeyRepeatContinueDelay
 	b _080005AA
 	.align 2, 0
 _08000598: .4byte 0x04000130
@@ -269,14 +269,14 @@ _0800059C: .4byte 0x000003ff
 _080005A0: .4byte gMain
 _080005A4: .4byte gKeyRepeatContinueDelay
 _080005A8:
-	ldr r0, _080005F0
+	ldr r0, _080005F0 @ =gKeyRepeatStartDelay
 _080005AA:
 	ldrh r0, [r0]
 	strh r0, [r2, 0x32]
 _080005AE:
 	strh r3, [r2, 0x28]
 	strh r3, [r2, 0x2C]
-	ldr r0, _080005F4
+	ldr r0, _080005F4 @ =gSaveBlock2
 	ldrb r0, [r0, 0x13]
 	cmp r0, 0x2
 	bne _080005DE
@@ -318,10 +318,10 @@ _080005F4: .4byte gSaveBlock2
 	thumb_func_start InitIntrHandlers
 InitIntrHandlers: @ 80005F8
 	push {r4,r5,lr}
-	ldr r5, _0800064C
-	ldr r4, _08000650
-	ldr r3, _08000654
-	ldr r2, _08000658
+	ldr r5, _0800064C @ =_08000240
+	ldr r4, _08000650 @ =IntrMain_Buffer
+	ldr r3, _08000654 @ =gIntrTableTemplate
+	ldr r2, _08000658 @ =gIntrTable
 	movs r1, 0xD
 _08000604:
 	ldm r3!, {r0}
@@ -329,13 +329,13 @@ _08000604:
 	subs r1, 0x1
 	cmp r1, 0
 	bge _08000604
-	ldr r0, _0800065C
+	ldr r0, _0800065C @ =0x040000d4
 	str r5, [r0]
 	str r4, [r0, 0x4]
-	ldr r1, _08000660
+	ldr r1, _08000660 @ =0x84000200
 	str r1, [r0, 0x8]
 	ldr r0, [r0, 0x8]
-	ldr r0, _08000664
+	ldr r0, _08000664 @ =0x03007ffc
 	str r4, [r0]
 	movs r0, 0
 	bl SetVBlankCallback
@@ -343,12 +343,12 @@ _08000604:
 	bl SetHBlankCallback
 	movs r0, 0
 	bl SetSerialCallback
-	ldr r0, _08000668
+	ldr r0, _08000668 @ =0x04000208
 	movs r2, 0x1
 	strh r2, [r0]
-	ldr r1, _0800066C
+	ldr r1, _0800066C @ =0x04000200
 	strh r2, [r1]
-	ldr r3, _08000670
+	ldr r3, _08000670 @ =0x04000004
 	movs r0, 0x8
 	strh r0, [r3]
 	ldrh r0, [r1]
@@ -372,7 +372,7 @@ _08000670: .4byte 0x04000004
 
 	thumb_func_start SetVBlankCallback
 SetVBlankCallback: @ 8000674
-	ldr r1, _0800067C
+	ldr r1, _0800067C @ =gMain
 	str r0, [r1, 0xC]
 	bx lr
 	.align 2, 0
@@ -381,7 +381,7 @@ _0800067C: .4byte gMain
 
 	thumb_func_start SetHBlankCallback
 SetHBlankCallback: @ 8000680
-	ldr r1, _08000688
+	ldr r1, _08000688 @ =gMain
 	str r0, [r1, 0x10]
 	bx lr
 	.align 2, 0
@@ -390,7 +390,7 @@ _08000688: .4byte gMain
 
 	thumb_func_start SetVCountCallback
 SetVCountCallback: @ 800068C
-	ldr r1, _08000694
+	ldr r1, _08000694 @ =gMain
 	str r0, [r1, 0x14]
 	bx lr
 	.align 2, 0
@@ -399,7 +399,7 @@ _08000694: .4byte gMain
 
 	thumb_func_start SetSerialCallback
 SetSerialCallback: @ 8000698
-	ldr r1, _080006A0
+	ldr r1, _080006A0 @ =gMain
 	str r0, [r1, 0x18]
 	bx lr
 	.align 2, 0
@@ -409,19 +409,19 @@ _080006A0: .4byte gMain
 	thumb_func_start VBlankIntr
 VBlankIntr: @ 80006A4
 	push {r4-r6,lr}
-	ldr r0, _08000708
+	ldr r0, _08000708 @ =gLinkVSyncDisabled
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _080006B2
 	bl LinkVSync
 _080006B2:
-	ldr r5, _0800070C
+	ldr r5, _0800070C @ =0x04000208
 	ldrh r4, [r5]
 	movs r6, 0
 	strh r6, [r5]
 	bl m4aSoundVSync
 	strh r4, [r5]
-	ldr r4, _08000710
+	ldr r4, _08000710 @ =gMain
 	ldr r0, [r4, 0x20]
 	adds r0, 0x1
 	str r0, [r4, 0x20]
@@ -433,14 +433,14 @@ _080006D2:
 	ldr r0, [r4, 0x24]
 	adds r0, 0x1
 	str r0, [r4, 0x24]
-	ldr r1, _08000714
-	ldr r0, _08000718
+	ldr r1, _08000714 @ =gPcmDmaCounter
+	ldr r0, _08000718 @ =gSoundInfo
 	ldrb r0, [r0, 0x4]
 	strb r0, [r1]
 	bl m4aSoundMain
 	bl sub_800C35C
 	bl Random
-	ldr r1, _0800071C
+	ldr r1, _0800071C @ =0x03007ff8
 	ldrh r0, [r1]
 	movs r2, 0x1
 	orrs r0, r2
@@ -465,7 +465,7 @@ _0800071C: .4byte 0x03007ff8
 	thumb_func_start InitFlashTimer
 InitFlashTimer: @ 8000720
 	push {lr}
-	ldr r0, _08000730
+	ldr r0, _08000730 @ =gFlashTimerIntrFunc
 	ldr r1, [r0]
 	movs r0, 0x2
 	bl SetFlashTimerIntr
@@ -478,13 +478,13 @@ _08000730: .4byte gFlashTimerIntrFunc
 	thumb_func_start HBlankIntr
 HBlankIntr: @ 8000734
 	push {r4,lr}
-	ldr r4, _0800075C
+	ldr r4, _0800075C @ =gMain
 	ldr r0, [r4, 0x10]
 	cmp r0, 0
 	beq _08000742
 	bl _call_via_r0
 _08000742:
-	ldr r2, _08000760
+	ldr r2, _08000760 @ =0x03007ff8
 	ldrh r0, [r2]
 	movs r1, 0x2
 	orrs r0, r1
@@ -504,13 +504,13 @@ _08000760: .4byte 0x03007ff8
 	thumb_func_start VCountIntr
 VCountIntr: @ 8000764
 	push {r4,lr}
-	ldr r4, _0800078C
+	ldr r4, _0800078C @ =gMain
 	ldr r0, [r4, 0x14]
 	cmp r0, 0
 	beq _08000772
 	bl _call_via_r0
 _08000772:
-	ldr r2, _08000790
+	ldr r2, _08000790 @ =0x03007ff8
 	ldrh r0, [r2]
 	movs r1, 0x4
 	orrs r0, r1
@@ -530,13 +530,13 @@ _08000790: .4byte 0x03007ff8
 	thumb_func_start SerialIntr
 SerialIntr: @ 8000794
 	push {r4,lr}
-	ldr r4, _080007BC
+	ldr r4, _080007BC @ =gMain
 	ldr r0, [r4, 0x18]
 	cmp r0, 0
 	beq _080007A2
 	bl _call_via_r0
 _080007A2:
-	ldr r2, _080007C0
+	ldr r2, _080007C0 @ =0x03007ff8
 	ldrh r0, [r2]
 	movs r1, 0x80
 	orrs r0, r1
@@ -561,9 +561,9 @@ IntrDummy: @ 80007C4
 	thumb_func_start WaitForVBlank
 WaitForVBlank: @ 80007C8
 	push {lr}
-	ldr r1, _080007E0
+	ldr r1, _080007E0 @ =gMain
 	ldrh r2, [r1, 0x1C]
-	ldr r0, _080007E4
+	ldr r0, _080007E4 @ =0x0000fffe
 	ands r0, r2
 	ldrh r2, [r1, 0x1C]
 	strh r0, [r1, 0x1C]
@@ -578,19 +578,19 @@ _080007E4: .4byte 0x0000fffe
 	thumb_func_start DoSoftReset
 DoSoftReset: @ 80007E8
 	push {r4,lr}
-	ldr r1, _08000844
+	ldr r1, _08000844 @ =0x04000208
 	movs r0, 0
 	strh r0, [r1]
 	bl m4aSoundVSyncOff
 	bl remove_some_task
-	ldr r1, _08000848
+	ldr r1, _08000848 @ =0x040000bc
 	ldrh r2, [r1, 0xA]
-	ldr r3, _0800084C
+	ldr r3, _0800084C @ =0x0000c5ff
 	adds r0, r3, 0
 	ands r0, r2
 	strh r0, [r1, 0xA]
 	ldrh r4, [r1, 0xA]
-	ldr r2, _08000850
+	ldr r2, _08000850 @ =0x00007fff
 	adds r0, r2, 0
 	ands r0, r4
 	strh r0, [r1, 0xA]
@@ -605,7 +605,7 @@ DoSoftReset: @ 80007E8
 	ands r0, r4
 	strh r0, [r1, 0xA]
 	ldrh r0, [r1, 0xA]
-	ldr r0, _08000854
+	ldr r0, _08000854 @ =0x040000d4
 	ldrh r1, [r0, 0xA]
 	ands r3, r1
 	strh r3, [r0, 0xA]
@@ -634,8 +634,8 @@ ClearPokemonCrySongs: @ 8000858
 	mov r1, sp
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08000874
-	ldr r2, _08000878
+	ldr r1, _08000874 @ =gPokemonCrySongs
+	ldr r2, _08000878 @ =0x01000034
 	mov r0, sp
 	bl CpuSet
 	add sp, 0x4

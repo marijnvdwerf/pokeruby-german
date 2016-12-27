@@ -11,7 +11,7 @@ sub_80A7E7C: @ 80A7FCC
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r4, _080A7FEC
+	ldr r4, _080A7FEC @ =gUnknown_03004B00
 	ldrb r0, [r4]
 	bl obj_id_for_side_relative_to_move
 	lsls r0, 24
@@ -24,7 +24,7 @@ sub_80A7E7C: @ 80A7FCC
 	.align 2, 0
 _080A7FEC: .4byte gUnknown_03004B00
 _080A7FF0:
-	ldr r1, _080A8034
+	ldr r1, _080A8034 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
@@ -33,7 +33,7 @@ _080A7FF0:
 	strh r1, [r0, 0x24]
 	ldrh r1, [r4, 0x4]
 	strh r1, [r0, 0x26]
-	ldr r1, _080A8038
+	ldr r1, _080A8038 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -49,7 +49,7 @@ _080A7FF0:
 	strh r1, [r0, 0x10]
 	ldrh r1, [r4, 0x4]
 	strh r1, [r0, 0x12]
-	ldr r1, _080A803C
+	ldr r1, _080A803C @ =sub_80A7EF0
 	str r1, [r0]
 	adds r0, r5, 0
 	bl _call_via_r1
@@ -68,7 +68,7 @@ sub_80A7EF0: @ 80A8040
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _080A807C
+	ldr r1, _080A807C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -79,7 +79,7 @@ sub_80A7EF0: @ 80A8040
 	adds r7, r1, 0
 	cmp r5, 0
 	bne _080A80E6
-	ldr r2, _080A8080
+	ldr r2, _080A8080 @ =gSprites
 	movs r6, 0x8
 	ldrsh r1, [r3, r6]
 	lsls r0, r1, 4
@@ -164,7 +164,7 @@ sub_80A7FA0: @ 80A80F0
 	lsls r0, 24
 	lsrs r5, r0, 24
 	movs r6, 0
-	ldr r2, _080A8118
+	ldr r2, _080A8118 @ =gUnknown_03004B00
 	ldrh r0, [r2]
 	movs r3, 0
 	ldrsh r1, [r2, r3]
@@ -218,14 +218,14 @@ _080A8146:
 	bne _080A815C
 	movs r6, 0x1
 _080A815C:
-	ldr r0, _080A8164
+	ldr r0, _080A8164 @ =gUnknown_02024BE0
 	adds r0, r4, r0
 	b _080A8170
 	.align 2, 0
 _080A8164: .4byte gUnknown_02024BE0
 _080A8168:
-	ldr r1, _080A8180
-	ldr r0, _080A8184
+	ldr r1, _080A8180 @ =gUnknown_02024BE0
+	ldr r0, _080A8184 @ =gUnknown_0202F7C8
 	ldrb r0, [r0]
 	adds r0, r1
 _080A8170:
@@ -241,17 +241,17 @@ _080A8176:
 _080A8180: .4byte gUnknown_02024BE0
 _080A8184: .4byte gUnknown_0202F7C8
 _080A8188:
-	ldr r1, _080A81CC
+	ldr r1, _080A81CC @ =gSprites
 	lsls r0, r3, 4
 	adds r0, r3
 	lsls r0, 2
 	adds r0, r1
-	ldr r2, _080A81D0
+	ldr r2, _080A81D0 @ =gUnknown_03004B00
 	ldrh r1, [r2, 0x2]
 	strh r1, [r0, 0x24]
 	ldrh r1, [r2, 0x4]
 	strh r1, [r0, 0x26]
-	ldr r1, _080A81D4
+	ldr r1, _080A81D4 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -267,7 +267,7 @@ _080A8188:
 	strh r1, [r0, 0x10]
 	ldrh r1, [r2, 0x4]
 	strh r1, [r0, 0x12]
-	ldr r1, _080A81D8
+	ldr r1, _080A81D8 @ =sub_80A808C
 	str r1, [r0]
 	adds r0, r5, 0
 	bl _call_via_r1
@@ -289,7 +289,7 @@ sub_80A808C: @ 80A81DC
 	push {r7}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r1, _080A8220
+	ldr r1, _080A8220 @ =gTasks
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
@@ -300,7 +300,7 @@ sub_80A808C: @ 80A81DC
 	mov r12, r1
 	cmp r0, 0
 	bne _080A8294
-	ldr r2, _080A8224
+	ldr r2, _080A8224 @ =gSprites
 	movs r7, 0x8
 	ldrsh r1, [r3, r7]
 	lsls r0, r1, 4
@@ -394,7 +394,7 @@ sub_80A8154: @ 80A82A4
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r4, _080A82C4
+	ldr r4, _080A82C4 @ =gUnknown_03004B00
 	ldrb r0, [r4]
 	bl obj_id_for_side_relative_to_move
 	lsls r0, 24
@@ -407,7 +407,7 @@ sub_80A8154: @ 80A82A4
 	.align 2, 0
 _080A82C4: .4byte gUnknown_03004B00
 _080A82C8:
-	ldr r0, _080A831C
+	ldr r0, _080A831C @ =gSprites
 	lsls r1, r3, 4
 	adds r1, r3
 	lsls r1, 2
@@ -421,7 +421,7 @@ _080A82C8:
 	ldrh r6, [r1, 0x26]
 	adds r0, r6
 	strh r0, [r1, 0x26]
-	ldr r0, _080A8320
+	ldr r0, _080A8320 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
@@ -441,7 +441,7 @@ _080A82C8:
 	ldrsh r0, [r4, r6]
 	lsls r0, 1
 	strh r0, [r1, 0x14]
-	ldr r2, _080A8324
+	ldr r2, _080A8324 @ =sub_80A81D8
 	str r2, [r1]
 	adds r0, r5, 0
 	bl _call_via_r2
@@ -460,7 +460,7 @@ sub_80A81D8: @ 80A8328
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _080A8380
+	ldr r1, _080A8380 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -478,7 +478,7 @@ _080A8346:
 	ands r0, r1
 	cmp r0, 0
 	beq _080A8388
-	ldr r2, _080A8384
+	ldr r2, _080A8384 @ =gSprites
 	movs r0, 0x8
 	ldrsh r1, [r4, r0]
 	lsls r0, r1, 4
@@ -505,7 +505,7 @@ _080A8346:
 _080A8380: .4byte gTasks
 _080A8384: .4byte gSprites
 _080A8388:
-	ldr r3, _080A8414
+	ldr r3, _080A8414 @ =gSprites
 	movs r0, 0x8
 	ldrsh r1, [r4, r0]
 	lsls r0, r1, 4
@@ -625,19 +625,19 @@ sub_80A8314: @ 80A8464
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r5, _080A84B4
+	ldr r5, _080A84B4 @ =gUnknown_03004B00
 	ldrb r0, [r5]
 	bl obj_id_for_side_relative_to_move
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080A84B8
+	ldr r2, _080A84B8 @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
 	adds r1, r2
 	ldrh r2, [r5, 0x2]
 	strh r2, [r1, 0x24]
-	ldr r2, _080A84BC
+	ldr r2, _080A84BC @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -651,7 +651,7 @@ sub_80A8314: @ 80A8464
 	strh r0, [r1, 0xE]
 	ldrh r0, [r5, 0x8]
 	strh r0, [r1, 0x10]
-	ldr r2, _080A84C0
+	ldr r2, _080A84C0 @ =sub_80A8374
 	str r2, [r1]
 	adds r0, r4, 0
 	bl _call_via_r2
@@ -670,7 +670,7 @@ sub_80A8374: @ 80A84C4
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r2, _080A8550
+	ldr r2, _080A8550 @ =gTasks
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
@@ -685,7 +685,7 @@ sub_80A8374: @ 80A84C4
 	lsls r1, 16
 	asrs r1, 16
 	mov r12, r2
-	ldr r7, _080A8554
+	ldr r7, _080A8554 @ =gSprites
 	cmp r0, r1
 	bne _080A8516
 	movs r0, 0
@@ -751,7 +751,7 @@ sub_80A8408: @ 80A8558
 	lsls r0, 24
 	lsrs r5, r0, 24
 	movs r6, 0x1
-	ldr r4, _080A85CC
+	ldr r4, _080A85CC @ =gUnknown_03004B00
 	ldrb r0, [r4]
 	bl obj_id_for_side_relative_to_move
 	lsls r0, 24
@@ -767,10 +767,10 @@ _080A857C:
 	movs r2, 0x8
 	ldrsh r0, [r4, r2]
 	adds r3, r4, 0
-	ldr r2, _080A85D0
+	ldr r2, _080A85D0 @ =gTasks
 	mov r12, r2
 	lsls r4, r5, 2
-	ldr r2, _080A85D4
+	ldr r2, _080A85D4 @ =sub_80A8488
 	mov r8, r2
 	cmp r1, r0
 	bge _080A85A2
@@ -816,7 +816,7 @@ sub_80A8488: @ 80A85D8
 	lsls r0, 24
 	lsrs r0, 24
 	adds r6, r0, 0
-	ldr r1, _080A8648
+	ldr r1, _080A8648 @ =gTasks
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
@@ -827,7 +827,7 @@ sub_80A8488: @ 80A85D8
 	movs r2, 0xA
 	ldrsh r1, [r5, r2]
 	bl Sin
-	ldr r2, _080A864C
+	ldr r2, _080A864C @ =gSprites
 	lsls r1, r4, 4
 	adds r1, r4
 	lsls r1, 2
@@ -877,13 +877,13 @@ sub_80A8500: @ 80A8650
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080A8678
+	ldr r0, _080A8678 @ =gUnknown_0202F7C8
 	ldrb r0, [r0]
 	bl battle_side_get_owner
 	lsls r0, 24
 	cmp r0, 0
 	beq _080A866C
-	ldr r1, _080A867C
+	ldr r1, _080A867C @ =gUnknown_03004B00
 	ldrh r0, [r1, 0x2]
 	negs r0, r0
 	strh r0, [r1, 0x2]
@@ -908,13 +908,13 @@ sub_80A8530: @ 80A8680
 	movs r1, 0x4
 	orrs r0, r1
 	strb r0, [r2]
-	ldr r0, _080A86A8
+	ldr r0, _080A86A8 @ =gUnknown_0202F7C8
 	ldrb r0, [r0]
 	bl battle_side_get_owner
 	lsls r0, 24
 	cmp r0, 0
 	beq _080A86B0
-	ldr r1, _080A86AC
+	ldr r1, _080A86AC @ =gUnknown_03004B00
 	ldrh r0, [r1, 0x2]
 	negs r0, r0
 	b _080A86B4
@@ -922,7 +922,7 @@ sub_80A8530: @ 80A8680
 _080A86A8: .4byte gUnknown_0202F7C8
 _080A86AC: .4byte gUnknown_03004B00
 _080A86B0:
-	ldr r1, _080A86E0
+	ldr r1, _080A86E0 @ =gUnknown_03004B00
 	ldrh r0, [r1, 0x2]
 _080A86B4:
 	strh r0, [r4, 0x30]
@@ -930,17 +930,17 @@ _080A86B4:
 	movs r0, 0
 	strh r2, [r4, 0x2E]
 	strh r0, [r4, 0x32]
-	ldr r1, _080A86E4
-	ldr r0, _080A86E8
+	ldr r1, _080A86E4 @ =gUnknown_02024BE0
+	ldr r0, _080A86E8 @ =gUnknown_0202F7C8
 	ldrb r0, [r0]
 	adds r0, r1
 	ldrb r0, [r0]
 	strh r0, [r4, 0x34]
 	strh r2, [r4, 0x36]
-	ldr r1, _080A86EC
+	ldr r1, _080A86EC @ =sub_80A85A4
 	adds r0, r4, 0
 	bl oamt_set_x3A_32
-	ldr r0, _080A86F0
+	ldr r0, _080A86F0 @ =sub_8078458
 	str r0, [r4, 0x1C]
 	pop {r4}
 	pop {r0}
@@ -961,9 +961,9 @@ sub_80A85A4: @ 80A86F4
 	ldrh r1, [r0, 0x30]
 	negs r1, r1
 	strh r1, [r0, 0x30]
-	ldr r1, _080A8710
+	ldr r1, _080A8710 @ =sub_8078458
 	str r1, [r0, 0x1C]
-	ldr r1, _080A8714
+	ldr r1, _080A8714 @ =move_anim_8072740
 	bl oamt_set_x3A_32
 	pop {r0}
 	bx r0
@@ -982,7 +982,7 @@ sub_80A85C8: @ 80A8718
 	movs r1, 0x4
 	orrs r0, r1
 	strb r0, [r2]
-	ldr r5, _080A8758
+	ldr r5, _080A8758 @ =gUnknown_03004B00
 	ldrb r0, [r5, 0x4]
 	bl obj_id_for_side_relative_to_move
 	lsls r0, 24
@@ -995,10 +995,10 @@ sub_80A85C8: @ 80A8718
 	strh r1, [r4, 0x32]
 	strh r0, [r4, 0x34]
 	strh r2, [r4, 0x36]
-	ldr r1, _080A875C
+	ldr r1, _080A875C @ =sub_80A8614
 	adds r0, r4, 0
 	bl oamt_set_x3A_32
-	ldr r0, _080A8760
+	ldr r0, _080A8760 @ =sub_8078458
 	str r0, [r4, 0x1C]
 	pop {r4,r5}
 	pop {r0}
@@ -1017,9 +1017,9 @@ sub_80A8614: @ 80A8764
 	ldrh r1, [r0, 0x32]
 	negs r1, r1
 	strh r1, [r0, 0x32]
-	ldr r1, _080A8780
+	ldr r1, _080A8780 @ =sub_8078458
 	str r1, [r0, 0x1C]
-	ldr r1, _080A8784
+	ldr r1, _080A8784 @ =move_anim_8072740
 	bl oamt_set_x3A_32
 	pop {r0}
 	bx r0
@@ -1033,30 +1033,30 @@ sub_80A8638: @ 80A8788
 	push {r4-r7,lr}
 	sub sp, 0x4
 	adds r6, r0, 0
-	ldr r0, _080A87A0
+	ldr r0, _080A87A0 @ =gUnknown_03004B00
 	movs r1, 0
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
 	bne _080A87AC
-	ldr r1, _080A87A4
-	ldr r0, _080A87A8
+	ldr r1, _080A87A4 @ =gUnknown_02024BE0
+	ldr r0, _080A87A8 @ =gUnknown_0202F7C8
 	b _080A87B0
 	.align 2, 0
 _080A87A0: .4byte gUnknown_03004B00
 _080A87A4: .4byte gUnknown_02024BE0
 _080A87A8: .4byte gUnknown_0202F7C8
 _080A87AC:
-	ldr r1, _080A8810
-	ldr r0, _080A8814
+	ldr r1, _080A8810 @ =gUnknown_02024BE0
+	ldr r0, _080A8814 @ =gUnknown_0202F7C9
 _080A87B0:
 	ldrb r0, [r0]
 	adds r0, r1
 	ldrb r7, [r0]
-	ldr r5, _080A8818
+	ldr r5, _080A8818 @ =gUnknown_03004B00
 	ldrh r0, [r5, 0x4]
 	movs r3, 0
 	strh r0, [r6, 0x2E]
-	ldr r0, _080A881C
+	ldr r0, _080A881C @ =gSprites
 	lsls r4, r7, 4
 	adds r4, r7
 	lsls r4, 2
@@ -1105,12 +1105,12 @@ _080A8820:
 	bne _080A8826
 	strh r3, [r6, 0x30]
 _080A8826:
-	ldr r0, _080A883C
+	ldr r0, _080A883C @ =gUnknown_03004B00
 	ldrh r1, [r0, 0x2]
 	lsls r0, r7, 8
 	orrs r0, r1
 	strh r0, [r6, 0x3C]
-	ldr r0, _080A8840
+	ldr r0, _080A8840 @ =sub_80A86F4
 	str r0, [r6, 0x1C]
 	add sp, 0x4
 	pop {r4-r7}
@@ -1134,7 +1134,7 @@ sub_80A86F4: @ 80A8844
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _080A8880
+	ldr r0, _080A8880 @ =gSprites
 	adds r3, r1, r0
 	ldrh r0, [r2, 0x2E]
 	movs r6, 0x2E
@@ -1189,21 +1189,21 @@ _080A88AE:
 sub_80A8764: @ 80A88B4
 	push {r4-r6,lr}
 	adds r5, r0, 0
-	ldr r0, _080A88C8
+	ldr r0, _080A88C8 @ =gUnknown_03004B00
 	movs r1, 0
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
 	bne _080A88D0
-	ldr r0, _080A88CC
+	ldr r0, _080A88CC @ =gUnknown_0202F7C8
 	b _080A88D2
 	.align 2, 0
 _080A88C8: .4byte gUnknown_03004B00
 _080A88CC: .4byte gUnknown_0202F7C8
 _080A88D0:
-	ldr r0, _080A8950
+	ldr r0, _080A8950 @ =gUnknown_0202F7C9
 _080A88D2:
 	ldrb r2, [r0]
-	ldr r0, _080A8954
+	ldr r0, _080A8954 @ =gUnknown_02024BE0
 	adds r0, r2, r0
 	ldrb r6, [r0]
 	adds r0, r2, 0
@@ -1211,7 +1211,7 @@ _080A88D2:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080A88FC
-	ldr r1, _080A8958
+	ldr r1, _080A8958 @ =gUnknown_03004B00
 	ldrh r0, [r1, 0x2]
 	negs r0, r0
 	strh r0, [r1, 0x2]
@@ -1223,11 +1223,11 @@ _080A88D2:
 	negs r0, r0
 	strh r0, [r1, 0x4]
 _080A88FC:
-	ldr r2, _080A8958
+	ldr r2, _080A8958 @ =gUnknown_03004B00
 	ldrh r0, [r2, 0x8]
 	movs r4, 0
 	strh r0, [r5, 0x2E]
-	ldr r0, _080A895C
+	ldr r0, _080A895C @ =gSprites
 	lsls r1, r6, 4
 	adds r1, r6
 	lsls r1, 2
@@ -1255,10 +1255,10 @@ _080A88FC:
 	movs r1, 0x4
 	orrs r0, r1
 	strb r0, [r2]
-	ldr r1, _080A8960
+	ldr r1, _080A8960 @ =move_anim_8072740
 	adds r0, r5, 0
 	bl oamt_set_x3A_32
-	ldr r0, _080A8964
+	ldr r0, _080A8964 @ =sub_80784A8
 	str r0, [r5, 0x1C]
 	pop {r4-r6}
 	pop {r0}
@@ -1282,21 +1282,21 @@ sub_80A8818: @ 80A8968
 	movs r1, 0x4
 	orrs r0, r1
 	strb r0, [r2]
-	ldr r0, _080A8988
+	ldr r0, _080A8988 @ =gUnknown_03004B00
 	movs r1, 0
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
 	bne _080A8990
-	ldr r0, _080A898C
+	ldr r0, _080A898C @ =gUnknown_0202F7C8
 	b _080A8992
 	.align 2, 0
 _080A8988: .4byte gUnknown_03004B00
 _080A898C: .4byte gUnknown_0202F7C8
 _080A8990:
-	ldr r0, _080A8A10
+	ldr r0, _080A8A10 @ =gUnknown_0202F7C9
 _080A8992:
 	ldrb r1, [r0]
-	ldr r0, _080A8A14
+	ldr r0, _080A8A14 @ =gUnknown_02024BE0
 	adds r0, r1, r0
 	ldrb r7, [r0]
 	adds r0, r1, 0
@@ -1304,7 +1304,7 @@ _080A8992:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080A89BC
-	ldr r1, _080A8A18
+	ldr r1, _080A8A18 @ =gUnknown_03004B00
 	ldrh r0, [r1, 0x2]
 	negs r0, r0
 	strh r0, [r1, 0x2]
@@ -1316,10 +1316,10 @@ _080A8992:
 	negs r0, r0
 	strh r0, [r1, 0x4]
 _080A89BC:
-	ldr r5, _080A8A18
+	ldr r5, _080A8A18 @ =gUnknown_03004B00
 	ldrh r0, [r5, 0x8]
 	strh r0, [r6, 0x2E]
-	ldr r0, _080A8A1C
+	ldr r0, _080A8A1C @ =gSprites
 	lsls r4, r7, 4
 	adds r4, r7
 	lsls r4, 2
@@ -1352,7 +1352,7 @@ _080A89BC:
 	lsls r0, 16
 	cmp r0, 0
 	bne _080A8A24
-	ldr r1, _080A8A20
+	ldr r1, _080A8A20 @ =move_anim_8072740
 	adds r0, r6, 0
 	bl oamt_set_x3A_32
 	b _080A8A2C
@@ -1363,11 +1363,11 @@ _080A8A18: .4byte gUnknown_03004B00
 _080A8A1C: .4byte gSprites
 _080A8A20: .4byte move_anim_8072740
 _080A8A24:
-	ldr r1, _080A8A38
+	ldr r1, _080A8A38 @ =sub_80A88F0
 	adds r0, r6, 0
 	bl oamt_set_x3A_32
 _080A8A2C:
-	ldr r0, _080A8A3C
+	ldr r0, _080A8A3C @ =sub_80784A8
 	str r0, [r6, 0x1C]
 	pop {r4-r7}
 	pop {r0}
@@ -1380,7 +1380,7 @@ _080A8A3C: .4byte sub_80784A8
 	thumb_func_start sub_80A88F0
 sub_80A88F0: @ 80A8A40
 	push {r4,lr}
-	ldr r4, _080A8A6C
+	ldr r4, _080A8A6C @ =gSprites
 	movs r1, 0x38
 	ldrsh r2, [r0, r1]
 	lsls r1, r2, 4
@@ -1409,7 +1409,7 @@ sub_80A8920: @ 80A8A70
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r5, _080A8AF4
+	ldr r5, _080A8AF4 @ =gUnknown_03004B00
 	movs r0, 0x6
 	ldrsh r1, [r5, r0]
 	movs r0, 0x80
@@ -1417,7 +1417,7 @@ sub_80A8920: @ 80A8A70
 	bl __divsi3
 	lsls r0, 16
 	lsrs r7, r0, 16
-	ldr r0, _080A8AF8
+	ldr r0, _080A8AF8 @ =gUnknown_0202F7C8
 	ldrb r0, [r0]
 	bl battle_side_get_owner
 	lsls r0, 24
@@ -1432,7 +1432,7 @@ sub_80A8920: @ 80A8A70
 _080A8AA2:
 	ldrb r0, [r5]
 	bl obj_id_for_side_relative_to_move
-	ldr r1, _080A8AFC
+	ldr r1, _080A8AFC @ =gTasks
 	lsls r4, r6, 2
 	adds r4, r6
 	lsls r4, 3
@@ -1463,7 +1463,7 @@ _080A8AA2:
 	ldrh r0, [r5, 0xC]
 	strh r0, [r4, 0x14]
 	strh r7, [r4, 0x16]
-	ldr r0, _080A8B00
+	ldr r0, _080A8B00 @ =sub_80A89B4
 	str r0, [r4]
 	pop {r4-r7}
 	pop {r0}
@@ -1480,7 +1480,7 @@ sub_80A89B4: @ 80A8B04
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080A8B5C
+	ldr r2, _080A8B5C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1490,7 +1490,7 @@ sub_80A89B4: @ 80A8B04
 	ldrh r2, [r5, 0x1E]
 	adds r0, r2
 	strh r0, [r5, 0x1E]
-	ldr r2, _080A8B60
+	ldr r2, _080A8B60 @ =gSprites
 	lsls r4, r1, 4
 	adds r4, r1
 	lsls r4, 2
@@ -1514,7 +1514,7 @@ sub_80A89B4: @ 80A8B04
 	lsls r0, 16
 	cmp r0, 0
 	bne _080A8B54
-	ldr r0, _080A8B64
+	ldr r0, _080A8B64 @ =sub_80A8A18
 	str r0, [r5]
 _080A8B54:
 	pop {r4,r5}
@@ -1532,7 +1532,7 @@ sub_80A8A18: @ 80A8B68
 	lsls r0, 24
 	lsrs r0, 24
 	adds r5, r0, 0
-	ldr r1, _080A8B8C
+	ldr r1, _080A8B8C @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -1553,7 +1553,7 @@ _080A8B90:
 	ldrh r1, [r4, 0x20]
 	adds r2, r1
 	strh r2, [r4, 0x20]
-	ldr r3, _080A8BCC
+	ldr r3, _080A8BCC @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
@@ -1586,7 +1586,7 @@ sub_80A8A80: @ 80A8BD0
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r1, _080A8BF4
+	ldr r1, _080A8BF4 @ =gUnknown_03004B00
 	movs r2, 0
 	ldrsh r0, [r1, r2]
 	cmp r0, 0x2
@@ -1607,12 +1607,12 @@ _080A8BF8:
 	beq _080A8C08
 	b _080A8C30
 _080A8BFE:
-	ldr r5, _080A8C04
+	ldr r5, _080A8C04 @ =gUnknown_0202F7C8
 	b _080A8C0A
 	.align 2, 0
 _080A8C04: .4byte gUnknown_0202F7C8
 _080A8C08:
-	ldr r5, _080A8C28
+	ldr r5, _080A8C28 @ =gUnknown_0202F7C9
 _080A8C0A:
 	ldrb r0, [r5]
 	movs r4, 0x2
@@ -1621,7 +1621,7 @@ _080A8C0A:
 	lsls r0, 24
 	cmp r0, 0
 	beq _080A8C30
-	ldr r1, _080A8C2C
+	ldr r1, _080A8C2C @ =gUnknown_02024BE0
 	ldrb r0, [r5]
 	eors r0, r4
 	adds r0, r1
@@ -1635,19 +1635,19 @@ _080A8C30:
 	bl move_anim_task_del
 	b _080A8C78
 _080A8C38:
-	ldr r1, _080A8C58
+	ldr r1, _080A8C58 @ =gTasks
 	lsls r4, r6, 2
 	adds r0, r4, r6
 	lsls r0, 3
 	adds r5, r0, r1
 	strh r2, [r5, 0x8]
-	ldr r0, _080A8C5C
+	ldr r0, _080A8C5C @ =gUnknown_0202F7C9
 	ldrb r0, [r0]
 	bl battle_side_get_owner
 	lsls r0, 24
 	cmp r0, 0
 	beq _080A8C64
-	ldr r0, _080A8C60
+	ldr r0, _080A8C60 @ =gUnknown_03004B00
 	ldrh r0, [r0, 0x2]
 	b _080A8C6A
 	.align 2, 0
@@ -1655,16 +1655,16 @@ _080A8C58: .4byte gTasks
 _080A8C5C: .4byte gUnknown_0202F7C9
 _080A8C60: .4byte gUnknown_03004B00
 _080A8C64:
-	ldr r0, _080A8C80
+	ldr r0, _080A8C80 @ =gUnknown_03004B00
 	ldrh r0, [r0, 0x2]
 	negs r0, r0
 _080A8C6A:
 	strh r0, [r5, 0xA]
-	ldr r0, _080A8C84
+	ldr r0, _080A8C84 @ =gTasks
 	adds r1, r4, r6
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _080A8C88
+	ldr r0, _080A8C88 @ =sub_80A8B3C
 	str r0, [r1]
 _080A8C78:
 	pop {r4-r6}
@@ -1681,13 +1681,13 @@ sub_80A8B3C: @ 80A8C8C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080A8CD0
+	ldr r0, _080A8CD0 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
 	ldrb r2, [r1, 0x8]
-	ldr r3, _080A8CD4
+	ldr r3, _080A8CD4 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
@@ -1722,23 +1722,23 @@ sub_80A8B88: @ 80A8CD8
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r6, _080A8D28
+	ldr r6, _080A8D28 @ =gUnknown_0202F7C8
 	ldrb r0, [r6]
 	bl battle_side_get_owner
 	lsls r0, 24
 	cmp r0, 0
 	beq _080A8CF4
-	ldr r1, _080A8D2C
+	ldr r1, _080A8D2C @ =gUnknown_03004B00
 	ldrh r0, [r1, 0x2]
 	negs r0, r0
 	strh r0, [r1, 0x2]
 _080A8CF4:
-	ldr r4, _080A8D2C
+	ldr r4, _080A8D2C @ =gUnknown_03004B00
 	ldrb r0, [r4, 0x8]
 	bl obj_id_for_side_relative_to_move
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080A8D30
+	ldr r2, _080A8D30 @ =gTasks
 	lsls r3, r5, 2
 	adds r1, r3, r5
 	lsls r1, 3
@@ -1763,17 +1763,17 @@ _080A8D28: .4byte gUnknown_0202F7C8
 _080A8D2C: .4byte gUnknown_03004B00
 _080A8D30: .4byte gTasks
 _080A8D34:
-	ldr r0, _080A8D50
+	ldr r0, _080A8D50 @ =gUnknown_0202F7C9
 	ldrb r0, [r0]
 _080A8D38:
 	strh r0, [r2, 0x12]
-	ldr r1, _080A8D54
+	ldr r1, _080A8D54 @ =gTasks
 	adds r0, r3, r5
 	lsls r0, 3
 	adds r0, r1
 	movs r1, 0x1
 	strh r1, [r0, 0x20]
-	ldr r1, _080A8D58
+	ldr r1, _080A8D58 @ =sub_80A8C0C
 	str r1, [r0]
 	pop {r4-r6}
 	pop {r0}
@@ -1792,7 +1792,7 @@ sub_80A8C0C: @ 80A8D5C
 	push {r6,r7}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r1, _080A8DAC
+	ldr r1, _080A8DAC @ =gTasks
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
@@ -1816,7 +1816,7 @@ sub_80A8C0C: @ 80A8D5C
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
 	bne _080A8DB4
-	ldr r0, _080A8DB0
+	ldr r0, _080A8DB0 @ =gSprites
 	lsls r2, r7, 4
 	adds r1, r2, r7
 	lsls r1, 2
@@ -1834,7 +1834,7 @@ _080A8DB4:
 	lsls r0, 24
 	cmp r0, 0
 	bne _080A8DDC
-	ldr r1, _080A8DD8
+	ldr r1, _080A8DD8 @ =gSprites
 	lsls r2, r7, 4
 	adds r0, r2, r7
 	lsls r0, 2
@@ -1849,7 +1849,7 @@ _080A8DB4:
 	.align 2, 0
 _080A8DD8: .4byte gSprites
 _080A8DDC:
-	ldr r1, _080A8E7C
+	ldr r1, _080A8E7C @ =gSprites
 	lsls r2, r7, 4
 	adds r0, r2, r7
 	lsls r0, 2
@@ -1870,7 +1870,7 @@ _080A8DFA:
 	mov r5, r8
 	cmp r5, 0x7F
 	bls _080A8E1C
-	ldr r1, _080A8E80
+	ldr r1, _080A8E80 @ =gTasks
 	lsls r2, r6, 2
 	adds r0, r2, r6
 	lsls r0, 3
@@ -1888,7 +1888,7 @@ _080A8E1C:
 	mov r2, r8
 	cmp r2, 0x7E
 	bhi _080A8E70
-	ldr r1, _080A8E80
+	ldr r1, _080A8E80 @ =gTasks
 	lsls r2, r6, 2
 	adds r0, r2, r6
 	lsls r0, 3
@@ -1945,7 +1945,7 @@ sub_80A8D34: @ 80A8E84
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r6, _080A8ED0
+	ldr r6, _080A8ED0 @ =gUnknown_03004B00
 	ldrb r0, [r6, 0x6]
 	bl obj_id_for_side_relative_to_move
 	adds r5, r0, 0
@@ -1954,7 +1954,7 @@ sub_80A8D34: @ 80A8E84
 	ldrb r1, [r6, 0x8]
 	adds r0, r5, 0
 	bl sub_8078E70
-	ldr r1, _080A8ED4
+	ldr r1, _080A8ED4 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1972,7 +1972,7 @@ sub_80A8D34: @ 80A8E84
 	lsls r1, 1
 	strh r1, [r0, 0x1C]
 	strh r1, [r0, 0x1E]
-	ldr r1, _080A8ED8
+	ldr r1, _080A8ED8 @ =sub_80A8D8C
 	str r1, [r0]
 	pop {r4-r6}
 	pop {r0}
@@ -1989,7 +1989,7 @@ sub_80A8D8C: @ 80A8EDC
 	lsls r0, 24
 	lsrs r0, 24
 	adds r5, r0, 0
-	ldr r1, _080A8F3C
+	ldr r1, _080A8F3C @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -2052,7 +2052,7 @@ sub_80A8E04: @ 80A8F54
 	push {r7}
 	lsls r0, 24
 	lsrs r7, r0, 24
-	ldr r4, _080A8F90
+	ldr r4, _080A8F90 @ =gUnknown_03004B00
 	ldrb r0, [r4, 0x4]
 	bl obj_id_for_side_relative_to_move
 	lsls r0, 24
@@ -2060,7 +2060,7 @@ sub_80A8E04: @ 80A8F54
 	mov r8, r0
 	movs r1, 0
 	bl sub_8078E70
-	ldr r1, _080A8F94
+	ldr r1, _080A8F94 @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
@@ -2086,12 +2086,12 @@ _080A8F98:
 	adds r0, r3, 0
 	strh r0, [r2, 0xE]
 _080A8FA4:
-	ldr r1, _080A8FD0
+	ldr r1, _080A8FD0 @ =gTasks
 	lsls r4, r7, 2
 	adds r0, r4, r7
 	lsls r0, 3
 	adds r5, r0, r1
-	ldr r6, _080A8FD4
+	ldr r6, _080A8FD4 @ =gUnknown_03004B00
 	ldrh r0, [r6, 0x2]
 	strh r0, [r5, 0x10]
 	mov r0, r8
@@ -2114,12 +2114,12 @@ _080A8FD8:
 	ldrsh r0, [r6, r1]
 	cmp r0, 0
 	bne _080A8FE8
-	ldr r0, _080A8FE4
+	ldr r0, _080A8FE4 @ =gUnknown_0202F7C8
 	b _080A8FEA
 	.align 2, 0
 _080A8FE4: .4byte gUnknown_0202F7C8
 _080A8FE8:
-	ldr r0, _080A9040
+	ldr r0, _080A9040 @ =gUnknown_0202F7C9
 _080A8FEA:
 	ldrb r0, [r0]
 	bl battle_side_get_owner
@@ -2131,7 +2131,7 @@ _080A8FEA:
 _080A8FFA:
 	strh r1, [r5, 0x16]
 _080A8FFC:
-	ldr r0, _080A9044
+	ldr r0, _080A9044 @ =gTasks
 	mov r2, r8
 	adds r1, r2, r7
 	lsls r1, 3
@@ -2153,12 +2153,12 @@ _080A8FFC:
 	negs r0, r0
 	strh r0, [r4, 0x10]
 _080A9028:
-	ldr r0, _080A9044
+	ldr r0, _080A9044 @ =gTasks
 	mov r3, r8
 	adds r1, r3, r7
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _080A9048
+	ldr r0, _080A9048 @ =sub_80A8FD8
 	str r0, [r1]
 	pop {r3}
 	mov r8, r3
@@ -2178,7 +2178,7 @@ sub_80A8EFC: @ 80A904C
 	push {r7}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r4, _080A9088
+	ldr r4, _080A9088 @ =gUnknown_03004B00
 	ldrb r0, [r4, 0x4]
 	bl obj_id_for_side_relative_to_move
 	lsls r0, 24
@@ -2186,7 +2186,7 @@ sub_80A8EFC: @ 80A904C
 	mov r8, r0
 	movs r1, 0
 	bl sub_8078E70
-	ldr r1, _080A908C
+	ldr r1, _080A908C @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -2199,14 +2199,14 @@ sub_80A8EFC: @ 80A904C
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
 	bne _080A9094
-	ldr r0, _080A9090
+	ldr r0, _080A9090 @ =gUnknown_0202F7C8
 	b _080A9096
 	.align 2, 0
 _080A9088: .4byte gUnknown_03004B00
 _080A908C: .4byte gTasks
 _080A9090: .4byte gUnknown_0202F7C8
 _080A9094:
-	ldr r0, _080A90C4
+	ldr r0, _080A90C4 @ =gUnknown_0202F7C9
 _080A9096:
 	ldrb r0, [r0]
 	bl battle_side_get_owner
@@ -2217,13 +2217,13 @@ _080A9096:
 	negs r0, r0
 	strh r0, [r4, 0x2]
 _080A90A8:
-	ldr r0, _080A90C8
+	ldr r0, _080A90C8 @ =gUnknown_03004B00
 	movs r2, 0x6
 	ldrsh r1, [r0, r2]
 	adds r6, r0, 0
 	cmp r1, 0x1
 	beq _080A90D0
-	ldr r2, _080A90CC
+	ldr r2, _080A90CC @ =gTasks
 	lsls r3, r5, 2
 	adds r0, r3, r5
 	lsls r0, 3
@@ -2236,7 +2236,7 @@ _080A90C4: .4byte gUnknown_0202F7C9
 _080A90C8: .4byte gUnknown_03004B00
 _080A90CC: .4byte gTasks
 _080A90D0:
-	ldr r3, _080A9120
+	ldr r3, _080A9120 @ =gTasks
 	lsls r4, r5, 2
 	adds r0, r4, r5
 	lsls r0, 3
@@ -2269,7 +2269,7 @@ _080A90EA:
 	ldrsh r0, [r1, r7]
 	negs r0, r0
 	strh r0, [r1, 0x10]
-	ldr r0, _080A9124
+	ldr r0, _080A9124 @ =sub_80A8FD8
 	str r0, [r1]
 	pop {r3}
 	mov r8, r3
@@ -2286,7 +2286,7 @@ sub_80A8FD8: @ 80A9128
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _080A9180
+	ldr r1, _080A9180 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -2357,18 +2357,18 @@ sub_80A9058: @ 80A91A8
 	push {r7}
 	lsls r0, 24
 	lsrs r7, r0, 24
-	ldr r0, _080A91D4
+	ldr r0, _080A91D4 @ =gUnknown_03004B00
 	movs r2, 0
 	ldrsh r1, [r0, r2]
 	mov r8, r0
 	cmp r1, 0
 	bne _080A91E0
-	ldr r4, _080A91D8
+	ldr r4, _080A91D8 @ =gTasks
 	lsls r5, r7, 2
 	adds r0, r5, r7
 	lsls r0, 3
 	adds r6, r0, r4
-	ldr r0, _080A91DC
+	ldr r0, _080A91DC @ =gUnknown_0202F7BC
 	ldrh r0, [r0]
 	movs r1, 0xC
 	bl __udivsi3
@@ -2378,12 +2378,12 @@ _080A91D4: .4byte gUnknown_03004B00
 _080A91D8: .4byte gTasks
 _080A91DC: .4byte gUnknown_0202F7BC
 _080A91E0:
-	ldr r4, _080A927C
+	ldr r4, _080A927C @ =gTasks
 	lsls r5, r7, 2
 	adds r0, r5, r7
 	lsls r0, 3
 	adds r6, r0, r4
-	ldr r0, _080A9280
+	ldr r0, _080A9280 @ =gUnknown_0202F7B8
 	ldr r0, [r0]
 	movs r1, 0xC
 	bl __divsi3
@@ -2429,7 +2429,7 @@ _080A920E:
 	lsls r0, 24
 	lsrs r0, 24
 	strh r0, [r4, 0x16]
-	ldr r2, _080A9284
+	ldr r2, _080A9284 @ =gSprites
 	movs r0, 0x16
 	ldrsh r1, [r4, r0]
 	lsls r0, r1, 4
@@ -2450,7 +2450,7 @@ _080A920E:
 	strh r0, [r4, 0xA]
 	ldrh r0, [r1, 0x4]
 	strh r0, [r4, 0xC]
-	ldr r0, _080A9288
+	ldr r0, _080A9288 @ =sub_80A913C
 	str r0, [r4]
 	pop {r3}
 	mov r8, r3
@@ -2472,7 +2472,7 @@ sub_80A913C: @ 80A928C
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080A92E0
+	ldr r1, _080A92E0 @ =gTasks
 	adds r3, r0, r1
 	ldrh r0, [r3, 0x8]
 	adds r0, 0x1
@@ -2496,7 +2496,7 @@ sub_80A913C: @ 80A928C
 	beq _080A92FE
 	cmp r1, 0
 	beq _080A92E8
-	ldr r2, _080A92E4
+	ldr r2, _080A92E4 @ =gSprites
 	movs r0, 0x16
 	ldrsh r1, [r3, r0]
 	lsls r0, r1, 4
@@ -2511,7 +2511,7 @@ sub_80A913C: @ 80A928C
 _080A92E0: .4byte gTasks
 _080A92E4: .4byte gSprites
 _080A92E8:
-	ldr r2, _080A9324
+	ldr r2, _080A9324 @ =gSprites
 	movs r0, 0x16
 	ldrsh r1, [r3, r0]
 	lsls r0, r1, 4
@@ -2532,7 +2532,7 @@ _080A92FE:
 	ldrsh r4, [r3, r2]
 	cmp r4, 0
 	beq _080A9328
-	ldr r2, _080A9324
+	ldr r2, _080A9324 @ =gSprites
 	movs r0, 0x16
 	ldrsh r1, [r3, r0]
 	lsls r0, r1, 4
@@ -2545,7 +2545,7 @@ _080A92FE:
 	.align 2, 0
 _080A9324: .4byte gSprites
 _080A9328:
-	ldr r2, _080A9370
+	ldr r2, _080A9370 @ =gSprites
 	movs r0, 0x16
 	ldrsh r1, [r3, r0]
 	lsls r0, r1, 4
@@ -2561,7 +2561,7 @@ _080A9338:
 	asrs r4, r0, 16
 	cmp r4, 0
 	bne _080A936A
-	ldr r2, _080A9370
+	ldr r2, _080A9370 @ =gSprites
 	movs r0, 0x16
 	ldrsh r1, [r3, r0]
 	lsls r0, r1, 4

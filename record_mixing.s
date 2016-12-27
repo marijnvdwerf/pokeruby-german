@@ -24,7 +24,7 @@ sub_80B9C6C: @ 80B9E00
 	lsls r0, 16
 	lsrs r0, 16
 	str r0, [sp, 0x40]
-	ldr r0, _080B9F3C
+	ldr r0, _080B9F3C @ =gLinkPlayers
 	ldrh r0, [r0, 0x4]
 	bl SeedRng
 	bl GetLinkPlayerCount
@@ -301,7 +301,7 @@ _080BA01E:
 	bl sub_80B9BC4
 	b _080BA084
 _080BA030:
-	ldr r0, _080BA04C
+	ldr r0, _080BA04C @ =gUnknown_083D02B4
 	lsls r1, 1
 	adds r2, r1, r0
 	ldrb r3, [r2]
@@ -318,7 +318,7 @@ _080BA030:
 _080BA04C: .4byte gUnknown_083D02B4
 _080BA050:
 	add r6, sp, 0x24
-	ldr r4, _080BA0C0
+	ldr r4, _080BA0C0 @ =gUnknown_083D02BA
 	lsls r5, r1, 2
 	adds r0, r5, r4
 	ldrb r3, [r0]
@@ -345,13 +345,13 @@ _080BA084:
 	ldr r1, [sp, 0x2C]
 	ldr r2, [sp, 0x48]
 	adds r6, r1, r2
-	ldr r4, _080BA0C4
-	ldr r1, _080BA0C8
+	ldr r4, _080BA0C4 @ =gSaveBlock1
+	ldr r1, _080BA0C8 @ =0x0000303c
 	adds r0, r4, r1
 	adds r1, r6, 0
 	movs r2, 0x38
 	bl memcpy
-	ldr r2, _080BA0CC
+	ldr r2, _080BA0CC @ =0x00003074
 	adds r4, r2
 	adds r1, r6, 0
 	adds r1, 0x38
@@ -408,17 +408,17 @@ sub_80B9F3C: @ 80BA0D0
 	lsls r0, 24
 	cmp r0, 0
 	beq _080BA14C
-	ldr r0, _080BA138
+	ldr r0, _080BA138 @ =0x00004001
 	ldrh r1, [r4]
 	bl VarSet
-	ldr r0, _080BA13C
-	ldr r1, _080BA140
+	ldr r0, _080BA13C @ =gStringVar1
+	ldr r1, _080BA140 @ =0x03002988
 	bl StringCopy
 	ldrh r1, [r4]
-	ldr r0, _080BA144
+	ldr r0, _080BA144 @ =0x00000113
 	cmp r1, r0
 	bne _080BA194
-	ldr r0, _080BA148
+	ldr r0, _080BA148 @ =0x00000853
 	bl FlagSet
 	b _080BA194
 	.align 2, 0
@@ -428,7 +428,7 @@ _080BA140: .4byte 0x03002988
 _080BA144: .4byte 0x00000113
 _080BA148: .4byte 0x00000853
 _080BA14C:
-	ldr r0, _080BA158
+	ldr r0, _080BA158 @ =0x00004001
 	movs r1, 0
 	bl VarSet
 	b _080BA194
@@ -442,11 +442,11 @@ _080BA15C:
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _080BA18C
-	ldr r0, _080BA180
+	ldr r0, _080BA180 @ =0x00004001
 	ldrh r1, [r4]
 	bl VarSet
-	ldr r0, _080BA184
-	ldr r1, _080BA188
+	ldr r0, _080BA184 @ =gStringVar1
+	ldr r1, _080BA188 @ =0x03002988
 	bl StringCopy
 	b _080BA194
 	.align 2, 0
@@ -454,7 +454,7 @@ _080BA180: .4byte 0x00004001
 _080BA184: .4byte gStringVar1
 _080BA188: .4byte 0x03002988
 _080BA18C:
-	ldr r0, _080BA19C
+	ldr r0, _080BA19C @ =0x00004001
 	movs r1, 0
 	bl VarSet
 _080BA194:
@@ -473,14 +473,14 @@ sub_80BA00C: @ 80BA1A0
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
-	ldr r1, _080BA1C4
+	ldr r1, _080BA1C4 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
 	cmp r0, 0x5
 	bhi _080BA230
 	lsls r0, 2
-	ldr r1, _080BA1C8
+	ldr r1, _080BA1C8 @ =_080BA1CC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -526,7 +526,7 @@ _080BA21A:
 	strh r0, [r4, 0x8]
 	b _080BA230
 _080BA222:
-	ldr r0, _080BA238
+	ldr r0, _080BA238 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _080BA230

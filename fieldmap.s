@@ -20,7 +20,7 @@ mapconnection_get_mapheader: @ 80562D0
 	thumb_func_start not_trainer_hill_battle_pyramid
 not_trainer_hill_battle_pyramid: @ 80562E0
 	push {r4,lr}
-	ldr r4, _080562FC
+	ldr r4, _080562FC @ =gMapHeader
 	adds r0, r4, 0
 	bl mapheader_copy_mapdata_with_padding
 	ldr r0, [r4, 0x4]
@@ -36,7 +36,7 @@ _080562FC: .4byte gMapHeader
 	thumb_func_start sub_8055FC0
 sub_8055FC0: @ 8056300
 	push {r4,lr}
-	ldr r4, _08056330
+	ldr r4, _08056330 @ =gMapHeader
 	adds r0, r4, 0
 	bl mapheader_copy_mapdata_with_padding
 	movs r0, 0
@@ -45,7 +45,7 @@ sub_8055FC0: @ 8056300
 	bl sub_80BB970
 	bl sub_8056670
 	bl mapheader_run_script_with_tag_x1
-	ldr r1, _08056334
+	ldr r1, _08056334 @ =gUnknown_03004870
 	ldr r0, [r1]
 	ldr r1, [r1, 0x4]
 	bl UpdateTVScreensOnMap
@@ -63,14 +63,14 @@ mapheader_copy_mapdata_with_padding: @ 8056338
 	sub sp, 0x4
 	adds r6, r0, 0
 	ldr r5, [r6]
-	ldr r0, _08056384
+	ldr r0, _08056384 @ =0x03ff03ff
 	str r0, [sp]
-	ldr r4, _08056388
-	ldr r2, _0805638C
+	ldr r4, _08056388 @ =0x02029828
+	ldr r2, _0805638C @ =0x01001400
 	mov r0, sp
 	adds r1, r4, 0
 	bl CpuFastSet
-	ldr r2, _08056390
+	ldr r2, _08056390 @ =gUnknown_03004870
 	str r4, [r2, 0x8]
 	ldr r1, [r5]
 	adds r1, 0xF
@@ -113,7 +113,7 @@ map_copy_with_padding: @ 8056394
 	mov r8, r1
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r0, _080563E8
+	ldr r0, _080563E8 @ =gUnknown_03004870
 	ldr r4, [r0, 0x8]
 	ldr r1, [r0]
 	lsls r0, r1, 3
@@ -157,8 +157,8 @@ sub_80560AC: @ 80563EC
 	ldr r0, [r6, 0xC]
 	ldr r1, [r0]
 	ldr r5, [r0, 0x4]
-	ldr r2, _08056420
-	ldr r0, _08056424
+	ldr r2, _08056420 @ =0x0202e850
+	ldr r0, _08056424 @ =0x08314610
 	ldr r0, [r0]
 	str r0, [r2]
 	cmp r1, 0
@@ -238,7 +238,7 @@ sub_8056134: @ 8056474
 	lsls r2, 1
 	ldr r3, [r4, 0xC]
 	adds r6, r3, r2
-	ldr r3, _080564D0
+	ldr r3, _080564D0 @ =gUnknown_03004870
 	ldr r2, [r3]
 	muls r1, r2
 	adds r1, r0
@@ -249,7 +249,7 @@ sub_8056134: @ 8056474
 	cmp r0, 0
 	ble _080564C6
 	adds r4, r0, 0
-	ldr r3, _080564D4
+	ldr r3, _080564D4 @ =0x001fffff
 	mov r8, r3
 _080564A6:
 	adds r0, r6, 0
@@ -258,7 +258,7 @@ _080564A6:
 	mov r3, r8
 	ands r2, r3
 	bl CpuSet
-	ldr r0, _080564D0
+	ldr r0, _080564D0 @ =gUnknown_03004870
 	ldr r0, [r0]
 	lsls r0, 1
 	adds r5, r0
@@ -296,7 +296,7 @@ fillSouthConnection: @ 80564D8
 	bge _0805650C
 	negs r6, r2
 	adds r2, r4
-	ldr r0, _08056508
+	ldr r0, _08056508 @ =gUnknown_03004870
 	ldr r3, [r0]
 	cmp r2, r3
 	bge _08056502
@@ -309,7 +309,7 @@ _08056508: .4byte gUnknown_03004870
 _0805650C:
 	movs r6, 0
 	adds r0, r2, r4
-	ldr r1, _0805653C
+	ldr r1, _0805653C @ =gUnknown_03004870
 	ldr r1, [r1]
 	subs r3, r1, r2
 	cmp r0, r1
@@ -351,7 +351,7 @@ fillNorthConnection: @ 8056540
 	bge _08056570
 	negs r6, r2
 	adds r2, r4
-	ldr r0, _0805656C
+	ldr r0, _0805656C @ =gUnknown_03004870
 	ldr r3, [r0]
 	cmp r2, r3
 	bge _08056566
@@ -364,7 +364,7 @@ _0805656C: .4byte gUnknown_03004870
 _08056570:
 	movs r6, 0
 	adds r0, r2, r4
-	ldr r1, _0805659C
+	ldr r1, _0805659C @ =gUnknown_03004870
 	ldr r1, [r1]
 	subs r3, r1, r2
 	cmp r0, r1
@@ -405,7 +405,7 @@ fillWestConnection: @ 80565A0
 	bge _080565D0
 	negs r6, r2
 	adds r1, r2, r4
-	ldr r0, _080565CC
+	ldr r0, _080565CC @ =gUnknown_03004870
 	ldr r3, [r0, 0x4]
 	cmp r1, r3
 	bge _080565C6
@@ -418,7 +418,7 @@ _080565CC: .4byte gUnknown_03004870
 _080565D0:
 	movs r6, 0
 	adds r0, r2, r4
-	ldr r1, _080565FC
+	ldr r1, _080565FC @ =gUnknown_03004870
 	ldr r1, [r1, 0x4]
 	subs r3, r1, r2
 	cmp r0, r1
@@ -461,7 +461,7 @@ fillEastConnection: @ 8056600
 	bge _08056634
 	negs r6, r2
 	adds r1, r2, r4
-	ldr r0, _08056630
+	ldr r0, _08056630 @ =gUnknown_03004870
 	ldr r3, [r0, 0x4]
 	cmp r1, r3
 	bge _0805662A
@@ -474,7 +474,7 @@ _08056630: .4byte gUnknown_03004870
 _08056634:
 	movs r6, 0
 	adds r0, r2, r4
-	ldr r1, _08056660
+	ldr r1, _08056660 @ =gUnknown_03004870
 	ldr r1, [r1, 0x4]
 	subs r3, r1, r2
 	cmp r0, r1
@@ -506,7 +506,7 @@ MapGridGetZCoordAt: @ 8056664
 	adds r4, r1, 0
 	cmp r2, 0
 	blt _08056694
-	ldr r1, _08056690
+	ldr r1, _08056690 @ =gUnknown_03004870
 	ldr r3, [r1]
 	cmp r2, r3
 	bge _08056694
@@ -526,7 +526,7 @@ MapGridGetZCoordAt: @ 8056664
 	.align 2, 0
 _08056690: .4byte gUnknown_03004870
 _08056694:
-	ldr r0, _080566C0
+	ldr r0, _080566C0 @ =gMapHeader
 	ldr r3, [r0]
 	adds r1, r2, 0x1
 	movs r2, 0x1
@@ -544,7 +544,7 @@ _08056694:
 	adds r0, r2, 0
 	orrs r1, r0
 _080566B6:
-	ldr r0, _080566C4
+	ldr r0, _080566C4 @ =0x000003ff
 	cmp r1, r0
 	beq _080566C8
 	lsrs r0, r1, 12
@@ -567,7 +567,7 @@ MapGridIsImpassableAt: @ 80566D0
 	adds r4, r1, 0
 	cmp r2, 0
 	blt _08056700
-	ldr r1, _080566FC
+	ldr r1, _080566FC @ =gUnknown_03004870
 	ldr r3, [r1]
 	cmp r2, r3
 	bge _08056700
@@ -587,7 +587,7 @@ MapGridIsImpassableAt: @ 80566D0
 	.align 2, 0
 _080566FC: .4byte gUnknown_03004870
 _08056700:
-	ldr r0, _08056734
+	ldr r0, _08056734 @ =gMapHeader
 	ldr r3, [r0]
 	adds r1, r2, 0x1
 	movs r2, 0x1
@@ -605,7 +605,7 @@ _08056700:
 	adds r0, r2, 0
 	orrs r1, r0
 _08056722:
-	ldr r0, _08056738
+	ldr r0, _08056738 @ =0x000003ff
 	cmp r1, r0
 	beq _0805673C
 	movs r0, 0xC0
@@ -631,7 +631,7 @@ MapGridGetMetatileIdAt: @ 8056744
 	adds r6, r1, 0
 	cmp r5, 0
 	blt _08056774
-	ldr r1, _08056770
+	ldr r1, _08056770 @ =gUnknown_03004870
 	ldr r2, [r1]
 	cmp r5, r2
 	bge _08056774
@@ -651,7 +651,7 @@ MapGridGetMetatileIdAt: @ 8056744
 	.align 2, 0
 _08056770: .4byte gUnknown_03004870
 _08056774:
-	ldr r0, _080567A4
+	ldr r0, _080567A4 @ =gMapHeader
 	ldr r3, [r0]
 	adds r1, r5, 0x1
 	movs r2, 0x1
@@ -670,7 +670,7 @@ _08056774:
 	adds r4, r0, 0
 	orrs r4, r1
 _08056798:
-	ldr r0, _080567A8
+	ldr r0, _080567A8 @ =0x000003ff
 	cmp r4, r0
 	beq _080567AC
 	ands r4, r0
@@ -680,7 +680,7 @@ _08056798:
 _080567A4: .4byte gMapHeader
 _080567A8: .4byte 0x000003ff
 _080567AC:
-	ldr r0, _080567D8
+	ldr r0, _080567D8 @ =gMapHeader
 	ldr r3, [r0]
 	adds r1, r5, 0x1
 	movs r2, 0x1
@@ -744,7 +744,7 @@ MapGridSetMetatileIdAt: @ 8056810
 	lsrs r5, r2, 16
 	cmp r3, 0
 	blt _08056848
-	ldr r2, _08056850
+	ldr r2, _08056850 @ =gUnknown_03004870
 	ldr r4, [r2]
 	cmp r3, r4
 	bge _08056848
@@ -762,7 +762,7 @@ MapGridSetMetatileIdAt: @ 8056810
 	movs r2, 0xF0
 	lsls r2, 8
 	ands r2, r0
-	ldr r0, _08056854
+	ldr r0, _08056854 @ =0x00000fff
 	ands r0, r5
 	orrs r2, r0
 	strh r2, [r1]
@@ -783,7 +783,7 @@ MapGridSetMetatileEntryAt: @ 8056858
 	lsrs r5, r2, 16
 	cmp r3, 0
 	blt _08056884
-	ldr r2, _0805688C
+	ldr r2, _0805688C @ =gUnknown_03004870
 	ldr r4, [r2]
 	cmp r3, r4
 	bge _08056884
@@ -813,10 +813,10 @@ GetBehaviorByMetatileId: @ 8056890
 	lsls r0, 16
 	lsrs r2, r0, 16
 	adds r3, r2, 0
-	ldr r0, _080568AC
+	ldr r0, _080568AC @ =0x000001ff
 	cmp r2, r0
 	bhi _080568B4
-	ldr r0, _080568B0
+	ldr r0, _080568B0 @ =gMapHeader
 	ldr r0, [r0]
 	ldr r0, [r0, 0x10]
 	ldr r1, [r0, 0x10]
@@ -826,7 +826,7 @@ GetBehaviorByMetatileId: @ 8056890
 _080568AC: .4byte 0x000001ff
 _080568B0: .4byte gMapHeader
 _080568B4:
-	ldr r0, _080568C0
+	ldr r0, _080568C0 @ =0x000003ff
 	cmp r2, r0
 	bls _080568C4
 	movs r0, 0xFF
@@ -834,13 +834,13 @@ _080568B4:
 	.align 2, 0
 _080568C0: .4byte 0x000003ff
 _080568C4:
-	ldr r0, _080568DC
+	ldr r0, _080568DC @ =gMapHeader
 	ldr r0, [r0]
 	ldr r0, [r0, 0x14]
 	ldr r1, [r0, 0x10]
 	lsls r0, r3, 1
 	adds r0, r1
-	ldr r1, _080568E0
+	ldr r1, _080568E0 @ =0xfffffc00
 _080568D2:
 	adds r0, r1
 	ldrh r0, [r0]
@@ -858,8 +858,8 @@ save_serialize_map: @ 80568E4
 	mov r7, r9
 	mov r6, r8
 	push {r6,r7}
-	ldr r5, _0805694C
-	ldr r0, _08056950
+	ldr r5, _0805694C @ =0x02025768
+	ldr r0, _08056950 @ =gUnknown_03004870
 	ldr r0, [r0]
 	mov r8, r0
 	adds r0, r5, 0
@@ -873,7 +873,7 @@ save_serialize_map: @ 80568E4
 	cmp r0, r1
 	bge _0805693E
 	mov r12, r1
-	ldr r1, _08056954
+	ldr r1, _08056954 @ =0x02029828
 	mov r9, r1
 	lsls r7, r6, 1
 _08056910:
@@ -920,8 +920,8 @@ sub_8056618: @ 8056958
 	push {r4,lr}
 	movs r2, 0
 	movs r1, 0
-	ldr r4, _0805697C
-	ldr r3, _08056980
+	ldr r4, _0805697C @ =0x02025768
+	ldr r3, _08056980 @ =0x000001ff
 _08056962:
 	lsls r0, r1, 1
 	adds r0, r4
@@ -954,8 +954,8 @@ sav2_mapdata_clear: @ 805698C
 	mov r1, sp
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080569A8
-	ldr r2, _080569AC
+	ldr r1, _080569A8 @ =0x02025768
+	ldr r2, _080569AC @ =0x01000100
 	mov r0, sp
 	bl CpuSet
 	add sp, 0x4
@@ -972,11 +972,11 @@ sub_8056670: @ 80569B0
 	mov r7, r9
 	mov r6, r8
 	push {r6,r7}
-	ldr r5, _08056A24
+	ldr r5, _08056A24 @ =0x02025768
 	bl sub_8056618
 	cmp r0, 0
 	bne _08056A16
-	ldr r0, _08056A28
+	ldr r0, _08056A28 @ =gUnknown_03004870
 	ldr r0, [r0]
 	mov r8, r0
 	adds r0, r5, 0
@@ -990,7 +990,7 @@ sub_8056670: @ 80569B0
 	cmp r0, r1
 	bge _08056A12
 	mov r12, r1
-	ldr r1, _08056A2C
+	ldr r1, _08056A2C @ =0x02029828
 	mov r9, r1
 	lsls r7, r6, 1
 _080569E4:
@@ -1045,9 +1045,9 @@ sub_80566F0: @ 8056A30
 	lsls r0, 24
 	lsrs r1, r0, 24
 	adds r2, r1, 0
-	ldr r0, _08056A74
+	ldr r0, _08056A74 @ =0x02025768
 	mov r10, r0
-	ldr r0, _08056A78
+	ldr r0, _08056A78 @ =gUnknown_03004870
 	ldr r0, [r0]
 	str r0, [sp]
 	movs r3, 0
@@ -1120,7 +1120,7 @@ _08056AAC:
 	adds r2, r1, r2
 	adds r3, r7, 0
 	lsls r2, 1
-	ldr r6, _08056AFC
+	ldr r6, _08056AFC @ =0x02029828
 	adds r2, r6
 	lsls r0, 1
 	mov r6, r10
@@ -1158,7 +1158,7 @@ GetMapBorderIdAt: @ 8056B00
 	adds r5, r1, 0
 	cmp r4, 0
 	blt _08056B3C
-	ldr r1, _08056B34
+	ldr r1, _08056B34 @ =gUnknown_03004870
 	ldr r2, [r1]
 	cmp r4, r2
 	bge _08056B3C
@@ -1174,7 +1174,7 @@ GetMapBorderIdAt: @ 8056B00
 	lsls r0, 1
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _08056B38
+	ldr r0, _08056B38 @ =0x000003ff
 	cmp r1, r0
 	beq _08056BD4
 	b _08056B64
@@ -1182,7 +1182,7 @@ GetMapBorderIdAt: @ 8056B00
 _08056B34: .4byte gUnknown_03004870
 _08056B38: .4byte 0x000003ff
 _08056B3C:
-	ldr r0, _08056B80
+	ldr r0, _08056B80 @ =gMapHeader
 	ldr r3, [r0]
 	adds r1, r4, 0x1
 	movs r2, 0x1
@@ -1199,16 +1199,16 @@ _08056B3C:
 	lsls r2, 4
 	adds r0, r2, 0
 	orrs r0, r1
-	ldr r1, _08056B84
+	ldr r1, _08056B84 @ =0x000003ff
 	cmp r0, r1
 	beq _08056BD4
 _08056B64:
-	ldr r1, _08056B88
+	ldr r1, _08056B88 @ =gUnknown_03004870
 	ldr r0, [r1]
 	subs r0, 0x8
 	cmp r4, r0
 	blt _08056B90
-	ldr r0, _08056B8C
+	ldr r0, _08056B8C @ =0x0202e850
 	ldrb r1, [r0]
 	movs r0, 0x8
 	ands r0, r1
@@ -1224,7 +1224,7 @@ _08056B8C: .4byte 0x0202e850
 _08056B90:
 	cmp r4, 0x6
 	bgt _08056BA8
-	ldr r0, _08056BA4
+	ldr r0, _08056BA4 @ =0x0202e850
 	ldrb r1, [r0]
 	movs r0, 0x4
 	ands r0, r1
@@ -1239,7 +1239,7 @@ _08056BA8:
 	subs r0, 0x7
 	cmp r5, r0
 	blt _08056BC4
-	ldr r0, _08056BC0
+	ldr r0, _08056BC0 @ =0x0202e850
 	ldrb r1, [r0]
 	movs r0, 0x1
 	ands r0, r1
@@ -1252,7 +1252,7 @@ _08056BC0: .4byte 0x0202e850
 _08056BC4:
 	cmp r5, 0x6
 	bgt _08056BE4
-	ldr r0, _08056BDC
+	ldr r0, _08056BDC @ =0x0202e850
 	ldrb r1, [r0]
 	movs r0, 0x2
 	ands r0, r1
@@ -1279,7 +1279,7 @@ _08056BE6:
 GetPostCameraMoveMapBorderId: @ 8056BEC
 	push {r4,lr}
 	adds r3, r1, 0
-	ldr r1, _08056C10
+	ldr r1, _08056C10 @ =gSaveBlock1
 	movs r4, 0
 	ldrsh r2, [r1, r4]
 	adds r0, 0x7
@@ -1300,10 +1300,10 @@ _08056C10: .4byte gSaveBlock1
 	thumb_func_start CanCameraMoveInDirection
 CanCameraMoveInDirection: @ 8056C14
 	push {r4,r5,lr}
-	ldr r4, _08056C48
+	ldr r4, _08056C48 @ =gSaveBlock1
 	movs r1, 0
 	ldrsh r3, [r4, r1]
-	ldr r2, _08056C4C
+	ldr r2, _08056C4C @ =gUnknown_0821664C
 	lsls r0, 3
 	adds r1, r0, r2
 	ldr r1, [r1]
@@ -1356,7 +1356,7 @@ _08056C76:
 	beq _08056C90
 	cmp r4, 0x4
 	bne _08056CC8
-	ldr r1, _08056C8C
+	ldr r1, _08056C8C @ =gSaveBlock1
 	negs r0, r6
 	strh r0, [r1]
 	ldr r2, [r5, 0x4]
@@ -1366,7 +1366,7 @@ _08056C76:
 	.align 2, 0
 _08056C8C: .4byte gSaveBlock1
 _08056C90:
-	ldr r1, _08056CA0
+	ldr r1, _08056CA0 @ =gSaveBlock1
 	ldr r0, [r3]
 	ldr r0, [r0]
 	strh r0, [r1]
@@ -1377,7 +1377,7 @@ _08056C90:
 	.align 2, 0
 _08056CA0: .4byte gSaveBlock1
 _08056CA4:
-	ldr r1, _08056CB4
+	ldr r1, _08056CB4 @ =gSaveBlock1
 	ldr r2, [r5, 0x4]
 	ldrh r0, [r1]
 	subs r0, r2
@@ -1387,7 +1387,7 @@ _08056CA4:
 	.align 2, 0
 _08056CB4: .4byte gSaveBlock1
 _08056CB8:
-	ldr r1, _08056CD0
+	ldr r1, _08056CD0 @ =gSaveBlock1
 	ldr r2, [r5, 0x4]
 	ldrh r0, [r1]
 	subs r0, r2
@@ -1414,12 +1414,12 @@ CameraMove: @ 8056CD4
 	sub sp, 0x4
 	mov r10, r0
 	str r1, [sp]
-	ldr r1, _08056D14
+	ldr r1, _08056D14 @ =gUnknown_0202E844
 	ldrb r0, [r1]
 	movs r1, 0x2
 	negs r1, r1
 	ands r1, r0
-	ldr r2, _08056D14
+	ldr r2, _08056D14 @ =gUnknown_0202E844
 	strb r1, [r2]
 	mov r0, r10
 	ldr r1, [sp]
@@ -1428,7 +1428,7 @@ CameraMove: @ 8056CD4
 	adds r0, r7, 0x1
 	cmp r0, 0x1
 	bhi _08056D1C
-	ldr r0, _08056D18
+	ldr r0, _08056D18 @ =gSaveBlock1
 	ldrh r1, [r0]
 	add r1, r10
 	strh r1, [r0]
@@ -1442,7 +1442,7 @@ _08056D14: .4byte gUnknown_0202E844
 _08056D18: .4byte gSaveBlock1
 _08056D1C:
 	bl save_serialize_map
-	ldr r5, _08056D9C
+	ldr r5, _08056D9C @ =gSaveBlock1
 	movs r0, 0
 	ldrsh r6, [r5, r0]
 	movs r2, 0x2
@@ -1462,11 +1462,11 @@ _08056D1C:
 	ldrb r0, [r4, 0x8]
 	ldrb r1, [r4, 0x9]
 	bl sub_80538F0
-	ldr r1, _08056DA0
+	ldr r1, _08056DA0 @ =gUnknown_0202E844
 	ldrb r0, [r1]
 	movs r1, 0x1
 	orrs r0, r1
-	ldr r2, _08056DA0
+	ldr r2, _08056DA0 @ =gUnknown_0202E844
 	strb r0, [r2]
 	movs r1, 0
 	ldrsh r0, [r5, r1]
@@ -1476,7 +1476,7 @@ _08056D1C:
 	ldrsh r0, [r5, r2]
 	mov r1, r8
 	subs r1, r0
-	ldr r2, _08056DA0
+	ldr r2, _08056DA0 @ =gUnknown_0202E844
 	str r1, [r2, 0x8]
 	ldrh r0, [r5]
 	add r0, r10
@@ -1488,7 +1488,7 @@ _08056D1C:
 	mov r0, r9
 	bl sub_80566F0
 _08056D82:
-	ldr r0, _08056DA0
+	ldr r0, _08056DA0 @ =gUnknown_0202E844
 	ldrb r0, [r0]
 	lsls r0, 31
 	lsrs r0, 31
@@ -1515,7 +1515,7 @@ sub_8056A64: @ 8056DA4
 	mov r8, r2
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r0, _08056DE0
+	ldr r0, _08056DE0 @ =gMapHeader
 	ldr r0, [r0, 0xC]
 	ldr r7, [r0]
 	ldr r4, [r0, 0x4]
@@ -1573,7 +1573,7 @@ sub_8056ABC: @ 8056DFC
 	blt _08056E54
 	cmp r4, 0x2
 	bgt _08056E34
-	ldr r0, _08056E30
+	ldr r0, _08056E30 @ =gMapHeader
 	ldr r0, [r0]
 	ldr r1, [r0]
 	ldr r0, [r2]
@@ -1586,7 +1586,7 @@ _08056E30: .4byte gMapHeader
 _08056E34:
 	cmp r6, 0x4
 	bgt _08056E54
-	ldr r0, _08056E50
+	ldr r0, _08056E50 @ =gMapHeader
 	ldr r0, [r0]
 	ldr r1, [r0, 0x4]
 	ldr r0, [r2]
@@ -1703,7 +1703,7 @@ sub_8056BA0: @ 8056EE0
 	mov r8, r0
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r2, _08056F00
+	ldr r2, _08056F00 @ =gMapHeader
 	ldr r0, [r2, 0xC]
 	cmp r0, 0
 	bne _08056F08
@@ -1796,7 +1796,7 @@ sub_8056C50: @ 8056F90
 	lsrs r0, 16
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r2, _08056FA4
+	ldr r2, _08056FA4 @ =gSaveBlock1
 	subs r0, 0x7
 	strh r0, [r2]
 	subs r1, 0x7
@@ -1808,7 +1808,7 @@ _08056FA4: .4byte gSaveBlock1
 
 	thumb_func_start sav1_camera_get_focus_coords
 sav1_camera_get_focus_coords: @ 8056FA8
-	ldr r3, _08056FB8
+	ldr r3, _08056FB8 @ =gSaveBlock1
 	ldrh r2, [r3]
 	adds r2, 0x7
 	strh r2, [r0]
@@ -1822,7 +1822,7 @@ _08056FB8: .4byte gSaveBlock1
 
 	thumb_func_start unref_sub_8056C7C
 unref_sub_8056C7C: @ 8056FBC
-	ldr r2, _08056FC4
+	ldr r2, _08056FC4 @ =gSaveBlock1
 	strh r0, [r2]
 	strh r1, [r2, 0x2]
 	bx lr
@@ -1832,7 +1832,7 @@ _08056FC4: .4byte gSaveBlock1
 
 	thumb_func_start GetCameraCoords
 GetCameraCoords: @ 8056FC8
-	ldr r3, _08056FD4
+	ldr r3, _08056FD4 @ =gSaveBlock1
 	ldrh r2, [r3]
 	strh r2, [r0]
 	ldrh r0, [r3, 0x2]
@@ -1935,7 +1935,7 @@ sub_8056D28: @ 8057068
 	thumb_func_start sub_8056D38
 sub_8056D38: @ 8057078
 	push {lr}
-	ldr r1, _08057088
+	ldr r1, _08057088 @ =0x06004000
 	ldr r0, [r0, 0x14]
 	bl sub_8056C98
 	pop {r0}

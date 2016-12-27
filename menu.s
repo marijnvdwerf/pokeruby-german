@@ -52,13 +52,13 @@ MultistepInitMenuWindowBegin: @ 8071F74
 MultistepInitMenuWindowInternal: @ 8071F80
 	push {lr}
 	adds r3, r0, 0
-	ldr r2, _08071FA0
+	ldr r2, _08071FA0 @ =gMenuMultistepInitState
 	movs r0, 0
 	strb r0, [r2]
-	ldr r0, _08071FA4
+	ldr r0, _08071FA4 @ =gMenuTextTileOffset
 	strh r1, [r0]
-	ldr r1, _08071FA8
-	ldr r0, _08071FAC
+	ldr r1, _08071FA8 @ =gMenuWindowPtr
+	ldr r0, _08071FAC @ =gMenuWindow
 	str r0, [r1]
 	adds r1, r3, 0
 	bl InitWindowFromConfig
@@ -74,13 +74,13 @@ _08071FAC: .4byte gMenuWindow
 	thumb_func_start MultistepInitMenuWindowContinue
 MultistepInitMenuWindowContinue: @ 8071FB0
 	push {r4,lr}
-	ldr r0, _08071FC8
+	ldr r0, _08071FC8 @ =gMenuMultistepInitState
 	ldrb r1, [r0]
 	adds r2, r0, 0
 	cmp r1, 0x4
 	bhi _0807205C
 	lsls r0, r1, 2
-	ldr r1, _08071FCC
+	ldr r1, _08071FCC @ =_08071FD0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -100,10 +100,10 @@ _08071FE4:
 	strb r0, [r2]
 	b _0807205C
 _08071FEC:
-	ldr r4, _08072000
-	ldr r0, _08072004
+	ldr r4, _08072000 @ =gMenuTextWindowTileOffset
+	ldr r0, _08072004 @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r1, _08072008
+	ldr r1, _08072008 @ =gMenuTextTileOffset
 	ldrh r1, [r1]
 	bl MultistepInitWindowTileData
 	strh r0, [r4]
@@ -118,13 +118,13 @@ _0807200C:
 	beq _0807205C
 	b _08072022
 _08072016:
-	ldr r0, _0807202C
+	ldr r0, _0807202C @ =gMenuTextWindowTileOffset
 	ldrh r0, [r0]
 	bl SetTextWindowBaseTileNum
-	ldr r1, _08072030
+	ldr r1, _08072030 @ =gMenuTextWindowContentTileOffset
 	strh r0, [r1]
 _08072022:
-	ldr r1, _08072034
+	ldr r1, _08072034 @ =gMenuMultistepInitState
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
@@ -134,13 +134,13 @@ _0807202C: .4byte gMenuTextWindowTileOffset
 _08072030: .4byte gMenuTextWindowContentTileOffset
 _08072034: .4byte gMenuMultistepInitState
 _08072038:
-	ldr r0, _08072050
+	ldr r0, _08072050 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl LoadTextWindowGraphics
-	ldr r0, _08072054
+	ldr r0, _08072054 @ =gMenuTextWindowContentTileOffset
 	ldrh r0, [r0]
 	bl SetMessageBoxBaseTileNum
-	ldr r1, _08072058
+	ldr r1, _08072058 @ =gMenuMessageBoxContentTileOffset
 	strh r0, [r1]
 	movs r0, 0x1
 	b _0807205E
@@ -162,27 +162,27 @@ InitMenuWindowInternal: @ 8072064
 	adds r2, r0, 0
 	lsls r4, r1, 16
 	lsrs r4, 16
-	ldr r5, _080720A8
-	ldr r0, _080720AC
+	ldr r5, _080720A8 @ =gMenuWindowPtr
+	ldr r0, _080720AC @ =gMenuWindow
 	str r0, [r5]
 	adds r1, r2, 0
 	bl InitWindowFromConfig
-	ldr r1, _080720B0
+	ldr r1, _080720B0 @ =gMenuTextTileOffset
 	strh r4, [r1]
 	ldr r0, [r5]
 	ldrh r1, [r1]
 	bl InitWindowTileData
-	ldr r1, _080720B4
+	ldr r1, _080720B4 @ =gMenuTextWindowTileOffset
 	strh r0, [r1]
 	ldrh r0, [r1]
 	bl SetTextWindowBaseTileNum
-	ldr r4, _080720B8
+	ldr r4, _080720B8 @ =gMenuTextWindowContentTileOffset
 	strh r0, [r4]
 	ldr r0, [r5]
 	bl LoadTextWindowGraphics
 	ldrh r0, [r4]
 	bl SetMessageBoxBaseTileNum
-	ldr r1, _080720BC
+	ldr r1, _080720BC @ =gMenuMessageBoxContentTileOffset
 	strh r0, [r1]
 	pop {r4,r5}
 	pop {r0}
@@ -202,27 +202,27 @@ unref_sub_8071DA4: @ 80720C0
 	adds r2, r0, 0
 	lsls r4, r1, 16
 	lsrs r4, 16
-	ldr r5, _08072104
-	ldr r0, _08072108
+	ldr r5, _08072104 @ =gMenuWindowPtr
+	ldr r0, _08072108 @ =gMenuWindow
 	str r0, [r5]
 	adds r1, r2, 0
 	bl InitWindowFromConfig
-	ldr r0, _0807210C
+	ldr r0, _0807210C @ =gMenuTextWindowTileOffset
 	strh r4, [r0]
 	ldrh r0, [r0]
 	bl SetTextWindowBaseTileNum
-	ldr r4, _08072110
+	ldr r4, _08072110 @ =gMenuTextWindowContentTileOffset
 	strh r0, [r4]
 	ldr r0, [r5]
 	bl LoadTextWindowGraphics
 	ldrh r0, [r4]
 	bl SetMessageBoxBaseTileNum
-	ldr r1, _08072114
+	ldr r1, _08072114 @ =gMenuTextTileOffset
 	strh r0, [r1]
 	ldr r0, [r5]
 	ldrh r1, [r1]
 	bl InitWindowTileData
-	ldr r1, _08072118
+	ldr r1, _08072118 @ =gMenuMessageBoxContentTileOffset
 	strh r0, [r1]
 	pop {r4,r5}
 	pop {r0}
@@ -242,7 +242,7 @@ MenuLoadTextWindowGraphics_OverrideFrameType: @ 807211C
 	adds r1, r0, 0
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r0, _08072130
+	ldr r0, _08072130 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl LoadTextWindowGraphics_OverrideFrameType
 	pop {r0}
@@ -254,7 +254,7 @@ _08072130: .4byte gMenuWindowPtr
 	thumb_func_start MenuLoadTextWindowGraphics
 MenuLoadTextWindowGraphics: @ 8072134
 	push {lr}
-	ldr r0, _08072144
+	ldr r0, _08072144 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl LoadTextWindowGraphics
 	pop {r0}
@@ -267,11 +267,11 @@ _08072144: .4byte gMenuWindowPtr
 BasicInitMenuWindow: @ 8072148
 	push {r4,lr}
 	adds r1, r0, 0
-	ldr r4, _08072164
+	ldr r4, _08072164 @ =gMenuWindowPtr
 	ldr r0, [r4]
 	bl InitWindowFromConfig
 	ldr r1, [r4]
-	ldr r0, _08072168
+	ldr r0, _08072168 @ =gMenuTextTileOffset
 	ldrh r0, [r0]
 	strh r0, [r1, 0x1A]
 	pop {r4}
@@ -292,9 +292,9 @@ MenuPrint: @ 807216C
 	lsrs r3, 24
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r0, _08072198
+	ldr r0, _08072198 @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r1, _0807219C
+	ldr r1, _0807219C @ =gMenuTextTileOffset
 	ldrh r4, [r1]
 	str r2, [sp]
 	adds r1, r5, 0
@@ -324,7 +324,7 @@ MenuZeroFillWindowRect: @ 80721A0
 	lsrs r6, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _080721D4
+	ldr r0, _080721D4 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	str r3, [sp]
 	adds r1, r4, 0
@@ -354,7 +354,7 @@ MenuFillWindowRectWithBlankTile: @ 80721D8
 	lsrs r6, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _0807220C
+	ldr r0, _0807220C @ =gMenuWindowPtr
 	ldr r0, [r0]
 	str r3, [sp]
 	adds r1, r4, 0
@@ -396,7 +396,7 @@ MenuDrawTextWindow: @ 8072224
 	lsrs r6, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _08072258
+	ldr r0, _08072258 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	str r3, [sp]
 	adds r1, r4, 0
@@ -441,9 +441,9 @@ sub_8071F60: @ 807227C
 	lsrs r3, 24
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r0, _080722AC
+	ldr r0, _080722AC @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r1, _080722B0
+	ldr r1, _080722B0 @ =gMenuTextTileOffset
 	ldrh r5, [r1]
 	str r2, [sp]
 	adds r1, r4, 0
@@ -467,7 +467,7 @@ unref_sub_8071F98: @ 80722B4
 	lsrs r3, 24
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r0, _080722D4
+	ldr r0, _080722D4 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	adds r1, r3, 0
 	bl GetWindowTilemapEntry
@@ -497,7 +497,7 @@ unref_sub_8071FBC: @ 80722D8
 	lsrs r3, 24
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r0, _08072314
+	ldr r0, _08072314 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	str r3, [sp]
 	str r1, [sp, 0x4]
@@ -516,7 +516,7 @@ _08072314: .4byte gMenuWindowPtr
 	thumb_func_start MenuDisplayMessageBox
 MenuDisplayMessageBox: @ 8072318
 	push {lr}
-	ldr r0, _08072328
+	ldr r0, _08072328 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl DisplayMessageBox
 	pop {r0}
@@ -535,9 +535,9 @@ MenuPrintMessage: @ 807232C
 	lsrs r3, 24
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r0, _08072358
+	ldr r0, _08072358 @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r1, _0807235C
+	ldr r1, _0807235C @ =gMenuTextTileOffset
 	ldrh r4, [r1]
 	str r2, [sp]
 	adds r1, r5, 0
@@ -557,9 +557,9 @@ sub_8072044: @ 8072360
 	push {lr}
 	sub sp, 0x4
 	adds r1, r0, 0
-	ldr r0, _08072380
+	ldr r0, _08072380 @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r2, _08072384
+	ldr r2, _08072384 @ =gMenuTextTileOffset
 	ldrh r2, [r2]
 	movs r3, 0xF
 	str r3, [sp]
@@ -577,7 +577,7 @@ _08072384: .4byte gMenuTextTileOffset
 MenuSetText: @ 8072388
 	push {lr}
 	adds r1, r0, 0
-	ldr r0, _08072398
+	ldr r0, _08072398 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl sub_8002E90
 	pop {r0}
@@ -589,7 +589,7 @@ _08072398: .4byte gMenuWindowPtr
 	thumb_func_start MenuUpdateWindowText
 MenuUpdateWindowText: @ 807239C
 	push {lr}
-	ldr r0, _080723B0
+	ldr r0, _080723B0 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl sub_80035AC
 	lsls r0, 24
@@ -603,7 +603,7 @@ _080723B0: .4byte gMenuWindowPtr
 	thumb_func_start unref_sub_8072098
 unref_sub_8072098: @ 80723B4
 	push {lr}
-	ldr r0, _080723C8
+	ldr r0, _080723C8 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl sub_8003418
 	lsls r0, 24
@@ -617,7 +617,7 @@ _080723C8: .4byte gMenuWindowPtr
 	thumb_func_start sub_80720B0
 sub_80720B0: @ 80723CC
 	push {lr}
-	ldr r0, _080723DC
+	ldr r0, _080723DC @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl ClearWindowTextLines
 	pop {r0}
@@ -629,7 +629,7 @@ _080723DC: .4byte gMenuWindowPtr
 	thumb_func_start MoveMenuCursor
 MoveMenuCursor: @ 80723E0
 	push {r4,lr}
-	ldr r1, _080723FC
+	ldr r1, _080723FC @ =0x030006b0
 	movs r2, 0x2
 	ldrsb r2, [r1, r2]
 	lsls r0, 24
@@ -674,7 +674,7 @@ _08072410:
 	thumb_func_start MoveMenuCursorNoWrap
 MoveMenuCursorNoWrap: @ 8072430
 	push {r4,lr}
-	ldr r1, _0807244C
+	ldr r1, _0807244C @ =0x030006b0
 	movs r2, 0x2
 	ldrsb r2, [r1, r2]
 	lsls r0, 24
@@ -718,7 +718,7 @@ _08072460:
 
 	thumb_func_start GetMenuCursorPos
 GetMenuCursorPos: @ 8072480
-	ldr r0, _08072488
+	ldr r0, _08072488 @ =0x030006b0
 	ldrb r0, [r0, 0x2]
 	bx lr
 	.align 2, 0
@@ -728,7 +728,7 @@ _08072488: .4byte 0x030006b0
 	thumb_func_start ProcessMenuInput
 ProcessMenuInput: @ 807248C
 	push {r4,lr}
-	ldr r0, _080724B4
+	ldr r0, _080724B4 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -736,7 +736,7 @@ ProcessMenuInput: @ 807248C
 	beq _080724BC
 	movs r0, 0x5
 	bl PlaySE
-	ldr r4, _080724B8
+	ldr r4, _080724B8 @ =0x030006b0
 	ldrb r0, [r4, 0x7]
 	cmp r0, 0
 	beq _080724AC
@@ -753,7 +753,7 @@ _080724BC:
 	ands r0, r1
 	cmp r0, 0
 	beq _080724DC
-	ldr r0, _080724D8
+	ldr r0, _080724D8 @ =0x030006b0
 	ldrb r0, [r0, 0x7]
 	cmp r0, 0
 	beq _080724D0
@@ -796,10 +796,10 @@ _08072508:
 	thumb_func_start ProcessMenuInputNoWrap
 ProcessMenuInputNoWrap: @ 8072510
 	push {r4-r6,lr}
-	ldr r4, _0807253C
+	ldr r4, _0807253C @ =0x030006b0
 	ldrb r5, [r4, 0x2]
 	adds r6, r5, 0
-	ldr r0, _08072540
+	ldr r0, _08072540 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -875,7 +875,7 @@ _080725A4:
 	thumb_func_start MoveMenuCursor3
 MoveMenuCursor3: @ 80725AC
 	push {r4-r7,lr}
-	ldr r2, _080725D4
+	ldr r2, _080725D4 @ =0x030006b0
 	movs r4, 0x4
 	ldrsb r4, [r2, r4]
 	adds r1, r4, 0x1
@@ -938,7 +938,7 @@ _080725E4:
 	thumb_func_start MoveMenuCursor4
 MoveMenuCursor4: @ 8072624
 	push {r4-r7,lr}
-	ldr r6, _0807264C
+	ldr r6, _0807264C @ =0x030006b0
 	movs r1, 0x2
 	ldrsb r1, [r6, r1]
 	lsls r0, 24
@@ -1025,7 +1025,7 @@ _080726AA:
 	adds r0, r4, 0
 	bl RedrawMenuCursor
 _080726E0:
-	ldr r0, _080726EC
+	ldr r0, _080726EC @ =0x030006b0
 	ldrb r0, [r0, 0x2]
 _080726E4:
 	pop {r4-r7}
@@ -1040,14 +1040,14 @@ sub_80723D4: @ 80726F0
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
-	ldr r2, _0807278C
+	ldr r2, _0807278C @ =gMain
 	ldrh r1, [r2, 0x2E]
 	movs r0, 0x40
 	ands r0, r1
 	mov r8, r2
 	cmp r0, 0
 	beq _08072710
-	ldr r1, _08072790
+	ldr r1, _08072790 @ =0x030006b0
 	movs r0, 0x2
 	ldrsb r0, [r1, r0]
 	ldrb r1, [r1, 0x5]
@@ -1060,7 +1060,7 @@ _08072710:
 	ands r0, r1
 	cmp r0, 0
 	beq _08072730
-	ldr r0, _08072790
+	ldr r0, _08072790 @ =0x030006b0
 	movs r2, 0x2
 	ldrsb r2, [r0, r2]
 	movs r1, 0x4
@@ -1077,7 +1077,7 @@ _08072730:
 	ands r0, r1
 	cmp r0, 0
 	beq _08072768
-	ldr r6, _08072790
+	ldr r6, _08072790 @ =0x030006b0
 	movs r4, 0x2
 	ldrsb r4, [r6, r4]
 	ldrb r5, [r6, 0x5]
@@ -1104,7 +1104,7 @@ _08072768:
 	ands r0, r1
 	cmp r0, 0
 	beq _08072794
-	ldr r1, _08072790
+	ldr r1, _08072790 @ =0x030006b0
 	movs r0, 0x2
 	ldrsb r0, [r1, r0]
 	ldrb r4, [r1, 0x5]
@@ -1156,7 +1156,7 @@ sub_8072484: @ 80727A0
 	lsrs r1, 24
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r7, _0807280C
+	ldr r7, _0807280C @ =0x030006b0
 	strb r1, [r7, 0x5]
 	adds r0, r5, 0
 	bl __udivsi3
@@ -1209,7 +1209,7 @@ sub_80724F4: @ 8072810
 	lsls r3, 24
 	lsrs r5, r3, 24
 	movs r4, 0
-	ldr r0, _080728F0
+	ldr r0, _080728F0 @ =0x030006b0
 	mov r9, r0
 	mov r1, r9
 	adds r1, 0x8
@@ -1251,7 +1251,7 @@ _08072878:
 	bcc _08072860
 _08072882:
 	movs r4, 0x1
-	ldr r2, _080728F0
+	ldr r2, _080728F0 @ =0x030006b0
 	mov r9, r2
 	cmp r4, r5
 	bhi _0807289E
@@ -1269,7 +1269,7 @@ _0807289E:
 	movs r4, 0x1
 	cmp r4, r5
 	bhi _080728C0
-	ldr r3, _080728F4
+	ldr r3, _080728F4 @ =0x030006b8
 _080728A6:
 	adds r2, r4, r3
 	ldrb r1, [r2]
@@ -1370,7 +1370,7 @@ sub_8072620: @ 807293C
 	lsls r3, 24
 	lsrs r6, r3, 24
 	movs r4, 0
-	ldr r7, _08072A60
+	ldr r7, _08072A60 @ =0x030006b0
 	adds r1, r7, 0
 	adds r1, 0x8
 	movs r2, 0
@@ -1406,7 +1406,7 @@ _0807299A:
 	bcc _08072982
 _080729A4:
 	movs r4, 0x1
-	ldr r7, _08072A60
+	ldr r7, _08072A60 @ =0x030006b0
 	cmp r4, r6
 	bhi _080729BE
 	adds r1, r7, 0
@@ -1423,7 +1423,7 @@ _080729BE:
 	movs r4, 0x1
 	cmp r4, r6
 	bhi _080729E0
-	ldr r3, _08072A64
+	ldr r3, _08072A64 @ =0x030006b8
 _080729C6:
 	adds r2, r4, r3
 	ldrb r1, [r2]
@@ -1460,7 +1460,7 @@ _080729F2:
 	bl __umodsi3
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08072A64
+	ldr r1, _08072A64 @ =0x030006b8
 	adds r0, r1
 	str r0, [sp, 0xC]
 _08072A10:
@@ -1577,13 +1577,13 @@ sub_807274C: @ 8072A68
 	thumb_func_start sub_80727CC
 sub_80727CC: @ 8072AE8
 	push {lr}
-	ldr r0, _08072B14
+	ldr r0, _08072B14 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	beq _08072B1C
-	ldr r0, _08072B18
+	ldr r0, _08072B18 @ =0x030006b0
 	ldrb r0, [r0, 0x7]
 	cmp r0, 0
 	beq _08072B02
@@ -1603,7 +1603,7 @@ _08072B1C:
 	ands r0, r1
 	cmp r0, 0
 	beq _08072B3C
-	ldr r0, _08072B38
+	ldr r0, _08072B38 @ =0x030006b0
 	ldrb r0, [r0, 0x7]
 	cmp r0, 0
 	beq _08072B30
@@ -1621,7 +1621,7 @@ _08072B3C:
 	beq _08072B5C
 	movs r0, 0x5
 	bl PlaySE
-	ldr r0, _08072B58
+	ldr r0, _08072B58 @ =0x030006b0
 	ldrb r0, [r0, 0x5]
 	negs r0, r0
 	lsls r0, 24
@@ -1636,7 +1636,7 @@ _08072B5C:
 	beq _08072B78
 	movs r0, 0x5
 	bl PlaySE
-	ldr r0, _08072B74
+	ldr r0, _08072B74 @ =0x030006b0
 	ldrb r0, [r0, 0x5]
 	lsls r0, 24
 	asrs r0, 24
@@ -1675,7 +1675,7 @@ _08072BA4:
 sub_807288C: @ 8072BA8
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08072BB8
+	ldr r1, _08072BB8 @ =0x030006b0
 	adds r1, 0x8
 	adds r0, r1
 	ldrb r0, [r0]
@@ -1780,7 +1780,7 @@ InitYesNoMenu: @ 8072C48
 	lsrs r4, 24
 	adds r5, r0
 	lsrs r5, 24
-	ldr r3, _08072C8C
+	ldr r3, _08072C8C @ =gUnknown_08376D74
 	adds r0, r4, 0
 	adds r1, r5, 0
 	movs r2, 0x2
@@ -1828,7 +1828,7 @@ DisplayYesNoMenu: @ 8072C90
 	adds r1, r5, 0
 	movs r2, 0x5
 	bl InitYesNoMenu
-	ldr r1, _08072CE0
+	ldr r1, _08072CE0 @ =0x030006b0
 	movs r0, 0
 	mov r2, r8
 	cmp r2, 0
@@ -1867,9 +1867,9 @@ MenuPrint_PixelCoords: @ 8072CF4
 	lsrs r2, 16
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _08072D2C
+	ldr r0, _08072D2C @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r1, _08072D30
+	ldr r1, _08072D30 @ =gMenuTextTileOffset
 	ldrh r5, [r1]
 	str r2, [sp]
 	str r3, [sp, 0x4]
@@ -1900,9 +1900,9 @@ sub_8072A18: @ 8072D34
 	lsrs r2, 16
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _08072D70
+	ldr r0, _08072D70 @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r4, _08072D74
+	ldr r4, _08072D74 @ =gMenuTextTileOffset
 	ldrh r4, [r4]
 	str r1, [sp]
 	str r2, [sp, 0x4]
@@ -1940,9 +1940,9 @@ unref_sub_8072A5C: @ 8072D78
 	lsrs r3, 16
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _08072DC4
+	ldr r0, _08072DC4 @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r1, _08072DC8
+	ldr r1, _08072DC8 @ =gMenuTextTileOffset
 	ldrh r5, [r1]
 	str r2, [sp]
 	str r3, [sp, 0x4]
@@ -1982,9 +1982,9 @@ sub_8072AB0: @ 8072DCC
 	lsrs r6, r3, 24
 	lsls r0, 24
 	lsrs r7, r0, 24
-	ldr r0, _08072E14
+	ldr r0, _08072E14 @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r1, _08072E18
+	ldr r1, _08072E18 @ =gMenuTextTileOffset
 	ldrh r3, [r1]
 	str r5, [sp]
 	str r4, [sp, 0x4]
@@ -2056,9 +2056,9 @@ MenuPrint_RightAligned: @ 8072E64
 	lsrs r3, 24
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r0, _08072E90
+	ldr r0, _08072E90 @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r1, _08072E94
+	ldr r1, _08072E94 @ =gMenuTextTileOffset
 	ldrh r4, [r1]
 	str r2, [sp]
 	adds r1, r5, 0
@@ -2087,7 +2087,7 @@ sub_8072B80: @ 8072E98
 	lsrs r6, 24
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r4, _08072EE8
+	ldr r4, _08072EE8 @ =gMenuWindowPtr
 	ldr r0, [r4]
 	bl GetStringWidth
 	adds r3, r0, 0
@@ -2100,7 +2100,7 @@ sub_8072B80: @ 8072E98
 	mov r2, r8
 	bl AlignString
 	ldr r0, [r4]
-	ldr r1, _08072EEC
+	ldr r1, _08072EEC @ =gMenuTextTileOffset
 	ldrh r2, [r1]
 	str r5, [sp]
 	add r1, sp, 0x4
@@ -2129,9 +2129,9 @@ sub_8072BD8: @ 8072EF0
 	lsrs r2, 24
 	lsls r3, 16
 	lsrs r3, 16
-	ldr r0, _08072F24
+	ldr r0, _08072F24 @ =gMenuWindowPtr
 	ldr r0, [r0]
-	ldr r1, _08072F28
+	ldr r1, _08072F28 @ =gMenuTextTileOffset
 	ldrh r5, [r1]
 	str r2, [sp]
 	str r3, [sp, 0x4]
@@ -2159,7 +2159,7 @@ sub_8072C14: @ 8072F2C
 	lsrs r4, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _08072F58
+	ldr r0, _08072F58 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	str r3, [sp]
 	adds r1, r5, 0
@@ -2185,7 +2185,7 @@ sub_8072C44: @ 8072F5C
 	lsrs r4, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _08072F88
+	ldr r0, _08072F88 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	str r3, [sp]
 	adds r1, r5, 0
@@ -2211,7 +2211,7 @@ sub_8072C74: @ 8072F8C
 	lsrs r4, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _08072FB8
+	ldr r0, _08072FB8 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	str r3, [sp]
 	adds r1, r5, 0
@@ -2230,7 +2230,7 @@ _08072FB8: .4byte gMenuWindowPtr
 sub_8072CA4: @ 8072FBC
 	push {lr}
 	adds r1, r0, 0
-	ldr r0, _08072FD0
+	ldr r0, _08072FD0 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl GetStringWidth
 	lsls r0, 24
@@ -2244,7 +2244,7 @@ _08072FD0: .4byte gMenuWindowPtr
 	thumb_func_start sub_8072CBC
 sub_8072CBC: @ 8072FD4
 	push {lr}
-	ldr r0, _08072FE8
+	ldr r0, _08072FE8 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl sub_8004E24
 	lsls r0, 24
@@ -2261,7 +2261,7 @@ sub_8072CD4: @ 8072FEC
 	adds r4, r0, 0
 	adds r5, r1, 0
 	adds r3, r2, 0
-	ldr r0, _08073008
+	ldr r0, _08073008 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	adds r1, r4, 0
 	adds r2, r5, 0
@@ -2279,7 +2279,7 @@ MenuUpdateWindowText_OverrideLineLength: @ 807300C
 	adds r1, r0, 0
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r0, _08073020
+	ldr r0, _08073020 @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bl sub_80037C8
 	pop {r1}
@@ -2290,7 +2290,7 @@ _08073020: .4byte gMenuWindowPtr
 
 	thumb_func_start unref_sub_8072D0C
 unref_sub_8072D0C: @ 8073024
-	ldr r0, _0807302C
+	ldr r0, _0807302C @ =gMenuWindowPtr
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
@@ -2303,8 +2303,8 @@ sub_8072D18: @ 8073030
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08073050
-	ldr r3, _08073054
+	ldr r2, _08073050 @ =0x0000ffff
+	ldr r3, _08073054 @ =0x00002d9f
 	lsls r1, 27
 	lsrs r1, 24
 	str r1, [sp]
@@ -2343,7 +2343,7 @@ InitMenu: @ 8073058
 	beq _08073084
 	bl sub_8072D18
 _08073084:
-	ldr r1, _080730BC
+	ldr r1, _080730BC @ =0x030006b0
 	subs r0, r7, 0x1
 	movs r2, 0
 	strb r0, [r1]
@@ -2434,7 +2434,7 @@ de_sub_8073110: @ 8073110
 	adds r6, r0, 0
 	mov r8, r1
 	adds r5, r6, 0
-	ldr r4, _08073134
+	ldr r4, _08073134 @ =gStringVar1
 	movs r1, 0x80
 	lsls r1, 1
 	adds r0, r4, 0
@@ -2484,7 +2484,7 @@ de_sub_8073174: @ 8073174
 	push {r6}
 	mov r8, r0
 	adds r6, r1, 0
-	ldr r4, _080731B4
+	ldr r4, _080731B4 @ =gStringVar2
 	movs r1, 0x80
 	lsls r1, 1
 	adds r0, r4, 0

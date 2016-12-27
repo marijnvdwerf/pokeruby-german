@@ -129,7 +129,7 @@ sub_8069408: @ 8069748
 	lsls r0, 24
 	lsrs r4, r0, 24
 	movs r2, 0
-	ldr r3, _08069768
+	ldr r3, _08069768 @ =gUnknown_083762FC
 _08069752:
 	lsls r1, r2, 3
 	adds r0, r1, r3
@@ -160,14 +160,14 @@ task_per_step_callback_manager: @ 806977C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080697A0
+	ldr r2, _080697A0 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
 	movs r2, 0x8
 	ldrsh r1, [r1, r2]
-	ldr r2, _080697A4
+	ldr r2, _080697A4 @ =gUnknown_08376364
 	lsls r1, 2
 	adds r1, r2
 	ldr r1, [r1]
@@ -191,7 +191,7 @@ sub_8069468: @ 80697A8
 	beq _080697D8
 	b _080697EC
 _080697BA:
-	ldr r0, _080697D4
+	ldr r0, _080697D4 @ =gMain
 	ldr r0, [r0, 0x20]
 	movs r1, 0x80
 	lsls r1, 5
@@ -205,7 +205,7 @@ _080697BA:
 	.align 2, 0
 _080697D4: .4byte gMain
 _080697D8:
-	ldr r0, _080697F4
+	ldr r0, _080697F4 @ =gMain
 	ldr r0, [r0, 0x20]
 	movs r1, 0x80
 	lsls r1, 5
@@ -232,7 +232,7 @@ sub_80694B8: @ 80697F8
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _08069828
+	ldr r0, _08069828 @ =0x03004b38
 	adds r4, r1, r0
 	bl ScriptContext2_IsEnabled
 	lsls r0, 24
@@ -254,7 +254,7 @@ _08069828: .4byte 0x03004b38
 	thumb_func_start overworld_ensure_per_step_coros_running
 overworld_ensure_per_step_coros_running: @ 806982C
 	push {r4,r5,lr}
-	ldr r5, _08069888
+	ldr r5, _08069888 @ =task_per_step_callback_manager
 	adds r0, r5, 0
 	bl FuncIsActiveTask
 	lsls r0, 24
@@ -266,14 +266,14 @@ overworld_ensure_per_step_coros_running: @ 806982C
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0806988C
+	ldr r2, _0806988C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
 	strh r4, [r1, 0x8]
 _08069856:
-	ldr r4, _08069890
+	ldr r4, _08069890 @ =sub_806A1E8
 	adds r0, r4, 0
 	bl FuncIsActiveTask
 	lsls r0, 24
@@ -283,7 +283,7 @@ _08069856:
 	movs r1, 0x50
 	bl CreateTask
 _0806986C:
-	ldr r4, _08069894
+	ldr r4, _08069894 @ =sub_80694B8
 	adds r0, r4, 0
 	bl FuncIsActiveTask
 	lsls r0, 24
@@ -308,7 +308,7 @@ activate_per_step_callback: @ 8069898
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080698D0
+	ldr r0, _080698D0 @ =task_per_step_callback_manager
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r1, r0, 24
@@ -317,7 +317,7 @@ activate_per_step_callback: @ 8069898
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _080698D4
+	ldr r1, _080698D4 @ =0x03004b38
 	adds r1, r0, r1
 	movs r2, 0
 	adds r0, r1, 0
@@ -346,11 +346,11 @@ _080698DA:
 	thumb_func_start wild_encounter_reset_coro_args
 wild_encounter_reset_coro_args: @ 80698E0
 	push {lr}
-	ldr r0, _08069910
+	ldr r0, _08069910 @ =task_per_step_callback_manager
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r1, r0, 24
-	ldr r0, _08069914
+	ldr r0, _08069914 @ =sub_80694B8
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r1, r0, 24
@@ -359,7 +359,7 @@ wild_encounter_reset_coro_args: @ 80698E0
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _08069918
+	ldr r1, _08069918 @ =0x03004b38
 	adds r0, r1
 	movs r1, 0
 	strh r1, [r0, 0x2]
@@ -500,7 +500,7 @@ sub_80696C0: @ 8069A00
 	adds r4, r0, 0
 	adds r5, r1, 0
 	adds r3, r2, 0
-	ldr r0, _08069A20
+	ldr r0, _08069A20 @ =gUnknown_08376384
 	lsls r4, 16
 	asrs r4, 16
 	lsls r5, 16
@@ -521,7 +521,7 @@ sub_80696E4: @ 8069A24
 	adds r4, r0, 0
 	adds r5, r1, 0
 	adds r3, r2, 0
-	ldr r0, _08069A44
+	ldr r0, _08069A44 @ =gUnknown_083763A4
 	lsls r4, 16
 	asrs r4, 16
 	lsls r5, 16
@@ -542,7 +542,7 @@ sub_8069708: @ 8069A48
 	adds r4, r0, 0
 	adds r5, r1, 0
 	adds r3, r2, 0
-	ldr r0, _08069A68
+	ldr r0, _08069A68 @ =gUnknown_083763C4
 	lsls r4, 16
 	asrs r4, 16
 	lsls r5, 16
@@ -730,7 +730,7 @@ sub_8069864: @ 8069BA4
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _08069BD8
+	ldr r0, _08069BD8 @ =0x03004b38
 	adds r4, r1, r0
 	mov r5, sp
 	adds r5, 0x2
@@ -929,7 +929,7 @@ sub_80699D8: @ 8069D18
 	adds r1, r5, 0
 	bl MapGridGetMetatileIdAt
 	adds r1, r0, 0
-	ldr r0, _08069D54
+	ldr r0, _08069D54 @ =0x0000024e
 	cmp r1, r0
 	beq _08069D58
 	adds r0, 0x8
@@ -939,7 +939,7 @@ sub_80699D8: @ 8069D18
 	.align 2, 0
 _08069D54: .4byte 0x0000024e
 _08069D58:
-	ldr r2, _08069D64
+	ldr r2, _08069D64 @ =0x0000024f
 	adds r0, r4, 0
 	adds r1, r5, 0
 	bl MapGridSetMetatileIdAt
@@ -947,7 +947,7 @@ _08069D58:
 	.align 2, 0
 _08069D64: .4byte 0x0000024f
 _08069D68:
-	ldr r2, _08069D78
+	ldr r2, _08069D78 @ =0x00000257
 	adds r0, r4, 0
 	adds r1, r5, 0
 	bl MapGridSetMetatileIdAt
@@ -981,7 +981,7 @@ sub_8069A3C: @ 8069D7C
 	adds r1, r5, 0
 	bl MapGridGetMetatileIdAt
 	adds r1, r0, 0
-	ldr r0, _08069DB8
+	ldr r0, _08069DB8 @ =0x0000024f
 	cmp r1, r0
 	beq _08069DBC
 	adds r0, 0x8
@@ -991,7 +991,7 @@ sub_8069A3C: @ 8069D7C
 	.align 2, 0
 _08069DB8: .4byte 0x0000024f
 _08069DBC:
-	ldr r2, _08069DC8
+	ldr r2, _08069DC8 @ =0x0000024e
 	adds r0, r4, 0
 	adds r1, r5, 0
 	bl MapGridSetMetatileIdAt
@@ -999,7 +999,7 @@ _08069DBC:
 	.align 2, 0
 _08069DC8: .4byte 0x0000024e
 _08069DCC:
-	ldr r2, _08069DDC
+	ldr r2, _08069DDC @ =0x00000256
 	adds r0, r4, 0
 	adds r1, r5, 0
 	bl MapGridSetMetatileIdAt
@@ -1024,7 +1024,7 @@ sub_8069AA0: @ 8069DE0
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _08069E1C
+	ldr r0, _08069E1C @ =0x03004b38
 	adds r6, r1, r0
 	mov r4, sp
 	adds r4, 0x2
@@ -1210,7 +1210,7 @@ _08069F54:
 	cmp r0, 0x7
 	bhi _08069FDA
 	lsls r0, 2
-	ldr r1, _08069F80
+	ldr r1, _08069F80 @ =_08069F84
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1276,19 +1276,19 @@ sub_8069CB8: @ 8069FF8
 	lsls r1, 16
 	lsrs r1, 16
 	lsls r0, 16
-	ldr r2, _0806A028
+	ldr r2, _0806A028 @ =0xfffd0000
 	adds r0, r2
 	lsrs r0, 16
 	cmp r0, 0xA
 	bhi _0806A034
 	lsls r0, r1, 16
 	asrs r1, r0, 16
-	ldr r2, _0806A02C
+	ldr r2, _0806A02C @ =0xfffa0000
 	adds r0, r2
 	lsrs r0, 16
 	cmp r0, 0xD
 	bhi _0806A034
-	ldr r0, _0806A030
+	ldr r0, _0806A030 @ =gUnknown_083763E4
 	lsls r1, 1
 	adds r1, r0
 	ldrh r0, [r1]
@@ -1319,7 +1319,7 @@ sub_8069CFC: @ 806A03C
 	bl sub_8069CB8
 	cmp r0, 0
 	beq _0806A06A
-	ldr r1, _0806A070
+	ldr r1, _0806A070 @ =gUnknown_083763E4
 	lsls r0, r4, 1
 	adds r0, r1
 	ldrh r0, [r0]
@@ -1350,7 +1350,7 @@ sub_8069D34: @ 806A074
 	bl sub_8069CB8
 	cmp r0, 0
 	beq _0806A0A6
-	ldr r1, _0806A0AC
+	ldr r1, _0806A0AC @ =gUnknown_083763E4
 	lsls r0, r4, 1
 	adds r0, r1
 	ldrh r0, [r0]
@@ -1382,7 +1382,7 @@ sub_8069D78: @ 806A0B8
 	mov r7, r9
 	mov r6, r8
 	push {r6,r7}
-	ldr r0, _0806A10C
+	ldr r0, _0806A10C @ =gMapHeader
 	ldr r0, [r0]
 	ldr r1, [r0]
 	mov r9, r1
@@ -1406,7 +1406,7 @@ _0806A0DC:
 	bne _0806A0F4
 	adds r1, r4, 0x7
 	adds r0, r5, 0x7
-	ldr r2, _0806A110
+	ldr r2, _0806A110 @ =0x0000020e
 	bl MapGridSetMetatileIdAt
 _0806A0F4:
 	adds r4, 0x1
@@ -1437,7 +1437,7 @@ sub_8069DD4: @ 806A114
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0806A138
+	ldr r0, _0806A138 @ =0x03004b38
 	adds r5, r1, r0
 	movs r1, 0x2
 	ldrsh r0, [r5, r1]
@@ -1504,7 +1504,7 @@ _0806A18A:
 	adds r4, r0, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _0806A1CC
+	ldr r0, _0806A1CC @ =0x00004022
 	bl GetVarPointer
 	adds r6, r0, 0
 	lsls r4, 24
@@ -1564,7 +1564,7 @@ _0806A1F6:
 	ldrsh r0, [r0, r1]
 	movs r2, 0
 	ldrsh r1, [r4, r2]
-	ldr r2, _0806A24C
+	ldr r2, _0806A24C @ =0x0000020e
 	bl MapGridSetMetatileIdAt
 	mov r0, sp
 	movs r3, 0
@@ -1610,7 +1610,7 @@ _0806A260:
 	ldrsh r0, [r0, r1]
 	movs r2, 0
 	ldrsh r1, [r4, r2]
-	ldr r2, _0806A2A0
+	ldr r2, _0806A2A0 @ =0x00000206
 	bl MapGridSetMetatileIdAt
 	mov r0, sp
 	movs r3, 0
@@ -1639,7 +1639,7 @@ sub_8069F64: @ 806A2A4
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0806A328
+	ldr r0, _0806A328 @ =0x03004b38
 	adds r5, r1, r0
 	mov r4, sp
 	adds r4, 0x2
@@ -1682,7 +1682,7 @@ _0806A2DE:
 	movs r2, 0
 	ldrsh r1, [r4, r2]
 	bl MapGridGetMetatileIdAt
-	ldr r1, _0806A32C
+	ldr r1, _0806A32C @ =0x0000020a
 	cmp r0, r1
 	bne _0806A334
 	mov r0, sp
@@ -1690,7 +1690,7 @@ _0806A2DE:
 	ldrsh r0, [r0, r3]
 	movs r2, 0
 	ldrsh r1, [r4, r2]
-	ldr r2, _0806A330
+	ldr r2, _0806A330 @ =0x00000212
 	movs r3, 0x4
 	bl ash
 	b _0806A346
@@ -1704,7 +1704,7 @@ _0806A334:
 	ldrsh r0, [r0, r3]
 	movs r2, 0
 	ldrsh r1, [r4, r2]
-	ldr r2, _0806A374
+	ldr r2, _0806A374 @ =0x00000206
 	movs r3, 0x4
 	bl ash
 _0806A346:
@@ -1715,11 +1715,11 @@ _0806A346:
 	lsls r0, 24
 	cmp r0, 0
 	beq _0806A36A
-	ldr r0, _0806A378
+	ldr r0, _0806A378 @ =0x00004048
 	bl GetVarPointer
 	adds r2, r0, 0
 	ldrh r1, [r2]
-	ldr r0, _0806A37C
+	ldr r0, _0806A37C @ =0x0000270e
 	cmp r1, r0
 	bhi _0806A36A
 	adds r0, r1, 0x1
@@ -1745,8 +1745,8 @@ sub_806A040: @ 806A380
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl MapGridGetMetatileIdAt
-	ldr r1, _0806A3B4
-	ldr r2, _0806A3B8
+	ldr r1, _0806A3B4 @ =0x0000022f
+	ldr r2, _0806A3B8 @ =0x00000237
 	cmp r0, r1
 	bne _0806A39C
 	subs r2, 0x31
@@ -1774,7 +1774,7 @@ sub_806A07C: @ 806A3BC
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0806A4A4
+	ldr r0, _0806A4A4 @ =0x03004b38
 	adds r5, r1, r0
 	mov r4, sp
 	adds r4, 0x2
@@ -1829,7 +1829,7 @@ _0806A42E:
 	lsls r0, 24
 	cmp r0, 0
 	beq _0806A446
-	ldr r0, _0806A4A8
+	ldr r0, _0806A4A8 @ =0x00004022
 	movs r1, 0
 	bl VarSet
 _0806A446:
@@ -1862,7 +1862,7 @@ _0806A462:
 	asrs r0, 16
 	cmp r0, 0x4
 	beq _0806A48A
-	ldr r0, _0806A4A8
+	ldr r0, _0806A4A8 @ =0x00004022
 	movs r1, 0
 	bl VarSet
 _0806A48A:
@@ -1917,7 +1917,7 @@ sub_806A18C: @ 806A4CC
 	movs r2, 0xE8
 	b _0806A4FC
 _0806A4E8:
-	ldr r1, _0806A524
+	ldr r1, _0806A524 @ =gUnknown_08376418
 	movs r2, 0
 	ldrsh r0, [r3, r2]
 	cmp r0, 0
@@ -1961,14 +1961,14 @@ sub_806A1E8: @ 806A528
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0806A570
+	ldr r0, _0806A570 @ =0x03004b38
 	adds r4, r1, r0
 	mov r5, sp
 	adds r5, 0x2
 	mov r0, sp
 	adds r1, r5, 0
 	bl PlayerGetDestCoords
-	ldr r0, _0806A574
+	ldr r0, _0806A574 @ =gSaveBlock1
 	movs r1, 0x4
 	ldrsb r1, [r0, r1]
 	lsls r1, 8
@@ -2057,7 +2057,7 @@ _0806A5E8:
 	cmp r6, 0xD
 	ble _0806A5E8
 _0806A5F8:
-	ldr r2, _0806A614
+	ldr r2, _0806A614 @ =gUnknown_0202E844
 	ldrb r1, [r2]
 	movs r0, 0x1
 	ands r0, r1
@@ -2121,17 +2121,17 @@ _0806A652:
 	thumb_func_start sub_806A328
 sub_806A328: @ 806A668
 	push {lr}
-	ldr r0, _0806A690
+	ldr r0, _0806A690 @ =0x00000835
 	bl FlagSet
 	bl RtcCalcLocalTime
-	ldr r2, _0806A694
+	ldr r2, _0806A694 @ =gSaveBlock2
 	adds r2, 0xA0
-	ldr r3, _0806A698
+	ldr r3, _0806A698 @ =gLocalTime
 	ldr r0, [r3]
 	ldr r1, [r3, 0x4]
 	str r0, [r2]
 	str r1, [r2, 0x4]
-	ldr r0, _0806A69C
+	ldr r0, _0806A69C @ =0x00004040
 	ldrh r1, [r3]
 	bl VarSet
 	pop {r0}
@@ -2146,13 +2146,13 @@ _0806A69C: .4byte 0x00004040
 	thumb_func_start DoTimeBasedEvents
 DoTimeBasedEvents: @ 806A6A0
 	push {r4,lr}
-	ldr r0, _0806A6C8
+	ldr r0, _0806A6C8 @ =0x00000835
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
 	beq _0806A6C0
 	bl RtcCalcLocalTime
-	ldr r4, _0806A6CC
+	ldr r4, _0806A6CC @ =gLocalTime
 	adds r0, r4, 0
 	bl sub_806A390
 	adds r0, r4, 0
@@ -2170,7 +2170,7 @@ _0806A6CC: .4byte gLocalTime
 sub_806A390: @ 806A6D0
 	push {r4-r6,lr}
 	adds r5, r0, 0
-	ldr r0, _0806A730
+	ldr r0, _0806A730 @ =0x00004040
 	bl GetVarPointer
 	adds r6, r0, 0
 	ldrh r0, [r6]
@@ -2217,7 +2217,7 @@ sub_806A3F4: @ 806A734
 	sub sp, 0x8
 	adds r5, r0, 0
 	mov r4, sp
-	ldr r6, _0806A788
+	ldr r6, _0806A788 @ =0x02024f44
 	mov r0, sp
 	adds r1, r6, 0
 	adds r2, r5, 0
@@ -2261,7 +2261,7 @@ _0806A788: .4byte 0x02024f44
 sub_806A44C: @ 806A78C
 	push {lr}
 	bl sub_806A328
-	ldr r0, _0806A79C
+	ldr r0, _0806A79C @ =c2_exit_to_overworld_1_continue_scripts_restart_music
 	bl SetMainCallback2
 	pop {r0}
 	bx r0
@@ -2272,10 +2272,10 @@ _0806A79C: .4byte c2_exit_to_overworld_1_continue_scripts_restart_music
 	thumb_func_start sub_806A460
 sub_806A460: @ 806A7A0
 	push {lr}
-	ldr r0, _0806A7B4
+	ldr r0, _0806A7B4 @ =Cb2_StartWallClock
 	bl SetMainCallback2
-	ldr r1, _0806A7B8
-	ldr r0, _0806A7BC
+	ldr r1, _0806A7B8 @ =gMain
+	ldr r0, _0806A7BC @ =sub_806A44C
 	str r0, [r1, 0x8]
 	pop {r0}
 	bx r0

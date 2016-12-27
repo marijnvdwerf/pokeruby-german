@@ -31,22 +31,22 @@ InitLinkTestBG: @ 80071F0
 	lsrs r6, r2, 24
 	lsls r3, 24
 	lsrs r7, r3, 24
-	ldr r0, _08007240
+	ldr r0, _08007240 @ =sLinkTestDigitPalette
 	lsls r1, r4, 4
 	movs r2, 0x20
 	bl LoadPalette
-	ldr r2, _08007244
-	ldr r0, _08007248
+	ldr r2, _08007244 @ =0x040000d4
+	ldr r0, _08007248 @ =sLinkTestDigitTiles
 	str r0, [r2]
 	lsls r0, r7, 14
 	movs r1, 0xC0
 	lsls r1, 19
 	adds r0, r1
 	str r0, [r2, 0x4]
-	ldr r0, _0800724C
+	ldr r0, _0800724C @ =0x80000110
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
-	ldr r0, _08007250
+	ldr r0, _08007250 @ =gLinkTestBGInfo
 	str r6, [r0]
 	str r4, [r0, 0x4]
 	cmp r5, 0x2
@@ -68,17 +68,17 @@ _08007254:
 	beq _0800726C
 	b _0800727A
 _0800725C:
-	ldr r2, _08007260
+	ldr r2, _08007260 @ =0x0400000a
 	b _0800726E
 	.align 2, 0
 _08007260: .4byte 0x0400000a
 _08007264:
-	ldr r2, _08007268
+	ldr r2, _08007268 @ =0x0400000c
 	b _0800726E
 	.align 2, 0
 _08007268: .4byte 0x0400000c
 _0800726C:
-	ldr r2, _08007284
+	ldr r2, _08007284 @ =0x0400000e
 _0800726E:
 	lsls r0, r6, 8
 	movs r1, 0x1
@@ -114,27 +114,27 @@ InitLinkTestBG_Unused: @ 8007288
 	lsrs r4, 24
 	lsls r6, 24
 	lsrs r6, 24
-	ldr r0, _080072EC
+	ldr r0, _080072EC @ =sLinkTestDigitPalette
 	mov r2, r8
 	lsls r1, r2, 4
 	movs r2, 0x20
 	bl LoadPalette
-	ldr r2, _080072F0
-	ldr r0, _080072F4
+	ldr r2, _080072F0 @ =0x040000d4
+	ldr r0, _080072F4 @ =sLinkTestDigitTiles
 	str r0, [r2]
 	lsls r0, r6, 14
 	movs r1, 0xC0
 	lsls r1, 19
 	adds r0, r1
 	str r0, [r2, 0x4]
-	ldr r0, _080072F8
+	ldr r0, _080072F8 @ =0x80000110
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
-	ldr r0, _080072FC
+	ldr r0, _080072FC @ =gLinkTestBGInfo
 	str r4, [r0]
 	mov r1, r8
 	str r1, [r0, 0x4]
-	ldr r0, _08007300
+	ldr r0, _08007300 @ =gBGControlRegs
 	lsls r5, 2
 	adds r5, r0
 	ldr r0, [r5]
@@ -162,24 +162,24 @@ LinkTestScreen: @ 8007304
 	bl ResetSpriteData
 	bl FreeAllSpritePalettes
 	bl ResetTasks
-	ldr r0, _080073A8
+	ldr r0, _080073A8 @ =VBlankCB_LinkTest
 	bl SetVBlankCallback
-	ldr r4, _080073AC
+	ldr r4, _080073AC @ =gWindowConfig_81E6CE4
 	adds r0, r4, 0
 	bl SetUpWindowConfig
 	adds r0, r4, 0
 	bl InitMenuWindow
 	bl ResetBlockSend
-	ldr r1, _080073B0
-	ldr r2, _080073B4
+	ldr r1, _080073B0 @ =gLinkType
+	ldr r2, _080073B4 @ =0x00001111
 	adds r0, r2, 0
 	strh r0, [r1]
 	bl OpenLink
-	ldr r0, _080073B8
+	ldr r0, _080073B8 @ =gMain
 	ldrh r0, [r0, 0x20]
 	bl SeedRng
 	movs r4, 0
-	ldr r6, _080073BC
+	ldr r6, _080073BC @ =0x02024eae
 	movs r5, 0xFF
 _08007344:
 	bl Random
@@ -202,21 +202,21 @@ _08007344:
 	lsls r2, 5
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _080073C0
+	ldr r0, _080073C0 @ =Task_DestroySelf
 	movs r1, 0
 	bl CreateTask
 	bl RunTasks
 	bl AnimateSprites
 	bl BuildOamBuffer
 	bl UpdatePaletteFade
-	ldr r1, _080073C4
+	ldr r1, _080073C4 @ =0x03000444
 	movs r0, 0
 	str r0, [r1]
 	bl InitLocalLinkPlayer
-	ldr r0, _080073C8
+	ldr r0, _080073C8 @ =Task_PrintTestData
 	movs r1, 0
 	bl CreateTask
-	ldr r0, _080073CC
+	ldr r0, _080073CC @ =CB2_LinkTest
 	bl SetMainCallback2
 	pop {r4-r6}
 	pop {r0}
@@ -238,7 +238,7 @@ _080073CC: .4byte CB2_LinkTest
 sub_8007270: @ 80073D0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080073DC
+	ldr r1, _080073DC @ =localLinkPlayer
 	strh r0, [r1, 0x18]
 	bx lr
 	.align 2, 0
@@ -250,8 +250,8 @@ InitLocalLinkPlayer: @ 80073E0
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
-	ldr r3, _0800744C
-	ldr r2, _08007450
+	ldr r3, _0800744C @ =localLinkPlayer
+	ldr r2, _08007450 @ =gSaveBlock2
 	ldrb r1, [r2, 0xA]
 	ldrb r0, [r2, 0xB]
 	lsls r0, 8
@@ -265,10 +265,10 @@ InitLocalLinkPlayer: @ 80073E0
 	str r1, [r3, 0x4]
 	movs r4, 0
 	adds r6, r2, 0
-	ldr r7, _08007454
-	ldr r0, _08007458
+	ldr r7, _08007454 @ =gLinkType
+	ldr r0, _08007458 @ =gGameLanguage
 	mov r12, r0
-	ldr r1, _0800745C
+	ldr r1, _0800745C @ =gGameVersion
 	mov r8, r1
 	adds r5, r3, 0
 	adds r5, 0x8
@@ -322,9 +322,9 @@ VBlankCB_LinkTest: @ 8007460
 	thumb_func_start InitLink
 InitLink: @ 8007474
 	push {lr}
-	ldr r3, _08007494
-	ldr r1, _08007498
-	ldr r2, _0800749C
+	ldr r3, _08007494 @ =gLinkOpen
+	ldr r1, _08007498 @ =gSendCmd
+	ldr r2, _0800749C @ =0x0000efff
 	adds r0, r1, 0
 	adds r0, 0xE
 _08007480:
@@ -348,7 +348,7 @@ Task_TriggerHandshake: @ 80074A0
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _080074D0
+	ldr r0, _080074D0 @ =gTasks
 	lsls r1, r2, 2
 	adds r1, r2
 	lsls r1, 3
@@ -360,7 +360,7 @@ Task_TriggerHandshake: @ 80074A0
 	asrs r0, 16
 	cmp r0, 0x5
 	bne _080074CA
-	ldr r1, _080074D4
+	ldr r1, _080074D4 @ =gShouldAdvanceLinkState
 	movs r0, 0x1
 	strb r0, [r1]
 	adds r0, r2, 0
@@ -378,31 +378,31 @@ OpenLink: @ 80074D8
 	push {r4-r6,lr}
 	bl ResetSerial
 	bl InitLink
-	ldr r1, _08007538
-	ldr r0, _0800753C
+	ldr r1, _08007538 @ =gLinkCallback
+	ldr r0, _0800753C @ =LinkCB_RequestPlayerDataExchange
 	str r0, [r1]
-	ldr r0, _08007540
+	ldr r0, _08007540 @ =gLinkVSyncDisabled
 	movs r1, 0
 	strb r1, [r0]
-	ldr r0, _08007544
+	ldr r0, _08007544 @ =gLinkErrorOccurred
 	strb r1, [r0]
-	ldr r0, _08007548
+	ldr r0, _08007548 @ =gSuppressLinkErrorMessage
 	strb r1, [r0]
 	bl ResetBlockReceivedFlags
-	ldr r0, _0800754C
+	ldr r0, _0800754C @ =0x0300042c
 	movs r1, 0
 	str r1, [r0]
-	ldr r0, _08007550
+	ldr r0, _08007550 @ =byte_3002A68
 	strb r1, [r0]
-	ldr r0, _08007554
+	ldr r0, _08007554 @ =gLinkDummyBool
 	strb r1, [r0]
-	ldr r0, _08007558
+	ldr r0, _08007558 @ =gReceivedRemoteLinkPlayers
 	strb r1, [r0]
-	ldr r6, _0800755C
+	ldr r6, _0800755C @ =gLinkPlayerPending
 	movs r2, 0
 	movs r5, 0x1
-	ldr r4, _08007560
-	ldr r3, _08007564
+	ldr r4, _08007560 @ =u8_array_3002B78
+	ldr r3, _08007564 @ =u8_array_3002B70
 _08007516:
 	adds r0, r1, r6
 	strb r5, [r0]
@@ -413,7 +413,7 @@ _08007516:
 	adds r1, 0x1
 	cmp r1, 0x3
 	ble _08007516
-	ldr r0, _08007568
+	ldr r0, _08007568 @ =Task_TriggerHandshake
 	movs r1, 0x2
 	bl CreateTask
 	pop {r4-r6}
@@ -438,10 +438,10 @@ _08007568: .4byte Task_TriggerHandshake
 	thumb_func_start CloseLink
 CloseLink: @ 800756C
 	push {lr}
-	ldr r0, _08007580
+	ldr r0, _08007580 @ =gReceivedRemoteLinkPlayers
 	movs r1, 0
 	strb r1, [r0]
-	ldr r0, _08007584
+	ldr r0, _08007584 @ =gLinkOpen
 	strb r1, [r0]
 	bl DisableSerial
 	pop {r0}
@@ -457,8 +457,8 @@ TestBlockTransfer: @ 8007588
 	mov r7, r9
 	mov r6, r8
 	push {r6,r7}
-	ldr r5, _0800764C
-	ldr r4, _08007650
+	ldr r5, _0800764C @ =0x03000448
+	ldr r4, _08007650 @ =0x030003e8
 	ldrb r0, [r5]
 	ldrh r1, [r4]
 	cmp r0, r1
@@ -472,9 +472,9 @@ TestBlockTransfer: @ 8007588
 	strb r0, [r5]
 _080075AC:
 	movs r5, 0
-	ldr r7, _08007654
+	ldr r7, _08007654 @ =0x030003f8
 _080075B0:
-	ldr r0, _08007658
+	ldr r0, _08007658 @ =0x0300044c
 	adds r6, r5, r0
 	lsls r0, r5, 1
 	adds r0, r5
@@ -505,9 +505,9 @@ _080075D8:
 	cmp r7, 0xF
 	bne _0800763E
 	movs r5, 0
-	ldr r0, _08007654
+	ldr r0, _08007654 @ =0x030003f8
 	mov r9, r0
-	ldr r1, _0800765C
+	ldr r1, _0800765C @ =0x00000342
 	mov r8, r1
 _080075F8:
 	adds r0, r7, 0
@@ -517,7 +517,7 @@ _080075F8:
 	cmp r0, 0
 	beq _08007634
 	lsls r0, r5, 8
-	ldr r1, _08007660
+	ldr r1, _08007660 @ =gBlockRecvBuffer
 	adds r0, r1
 	lsls r4, r5, 1
 	adds r1, r4, r5
@@ -525,7 +525,7 @@ _080075F8:
 	add r1, r9
 	ldrh r1, [r1, 0x2]
 	bl LinkTestCalcBlockChecksum
-	ldr r1, _08007664
+	ldr r1, _08007664 @ =gLinkTestBlockChecksums
 	adds r4, r1
 	movs r6, 0
 	strh r0, [r4]
@@ -534,9 +534,9 @@ _080075F8:
 	ldrh r0, [r4]
 	cmp r0, r8
 	beq _08007634
-	ldr r0, _08007668
+	ldr r0, _08007668 @ =gLinkTestDebugValuesEnabled
 	strb r6, [r0]
-	ldr r0, _0800766C
+	ldr r0, _0800766C @ =gLinkTestDummyBool
 	strb r6, [r0]
 _08007634:
 	adds r0, r5, 0x1
@@ -567,13 +567,13 @@ _0800766C: .4byte gLinkTestDummyBool
 LinkTestProcessKeyInput: @ 8007670
 	push {r4,r5,lr}
 	sub sp, 0x4
-	ldr r4, _08007710
+	ldr r4, _08007710 @ =gMain
 	ldrh r1, [r4, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	beq _08007686
-	ldr r1, _08007714
+	ldr r1, _08007714 @ =gShouldAdvanceLinkState
 	movs r0, 0x1
 	strb r0, [r1]
 _08007686:
@@ -583,8 +583,8 @@ _08007686:
 	ands r0, r1
 	cmp r0, 0
 	beq _0800769A
-	ldr r0, _08007718
-	ldr r1, _0800771C
+	ldr r0, _08007718 @ =0x02004000
+	ldr r1, _0800771C @ =0x00002004
 	bl InitBlockSend
 _0800769A:
 	ldrh r1, [r4, 0x2E]
@@ -625,14 +625,14 @@ _080076D8:
 	beq _080076E6
 	bl sub_800832C
 _080076E6:
-	ldr r0, _08007720
+	ldr r0, _08007720 @ =gLinkTestDebugValuesEnabled
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _08007706
 	ldr r2, [r4, 0x20]
-	ldr r0, _08007724
+	ldr r0, _08007724 @ =gLinkVSyncDisabled
 	ldrb r1, [r0]
-	ldr r0, _08007728
+	ldr r0, _08007728 @ =gLinkCallback
 	ldr r0, [r0]
 	cmp r0, 0
 	bne _08007700
@@ -676,7 +676,7 @@ CB2_LinkTest: @ 800772C
 LinkMain2: @ 8007750
 	push {r4,r5,lr}
 	adds r4, r0, 0
-	ldr r0, _08007760
+	ldr r0, _08007760 @ =gLinkOpen
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08007764
@@ -686,8 +686,8 @@ LinkMain2: @ 8007750
 _08007760: .4byte gLinkOpen
 _08007764:
 	movs r1, 0
-	ldr r5, _080077B4
-	ldr r3, _080077B8
+	ldr r5, _080077B4 @ =gLinkHeldKeys
+	ldr r3, _080077B8 @ =gSendCmd
 	movs r2, 0
 _0800776C:
 	lsls r0, r1, 1
@@ -700,18 +700,18 @@ _0800776C:
 	bls _0800776C
 	ldrh r0, [r4]
 	strh r0, [r5]
-	ldr r0, _080077BC
+	ldr r0, _080077BC @ =gLinkStatus
 	ldr r0, [r0]
 	movs r1, 0x40
 	ands r0, r1
 	cmp r0, 0
 	beq _080077A8
-	ldr r0, _080077C0
+	ldr r0, _080077C0 @ =0x04000128
 	ldr r0, [r0]
 	lsls r0, 26
 	lsrs r0, 30
 	bl ProcessRecvCmds
-	ldr r0, _080077C4
+	ldr r0, _080077C4 @ =gLinkCallback
 	ldr r0, [r0]
 	cmp r0, 0
 	beq _080077A4
@@ -719,7 +719,7 @@ _0800776C:
 _080077A4:
 	bl CheckErrorStatus
 _080077A8:
-	ldr r0, _080077BC
+	ldr r0, _080077BC @ =gLinkStatus
 	ldrh r0, [r0]
 _080077AC:
 	pop {r4,r5}
@@ -739,7 +739,7 @@ HandleReceiveRemoteLinkPlayer: @ 80077C8
 	lsls r0, 24
 	lsrs r0, 24
 	movs r5, 0
-	ldr r1, _080077DC
+	ldr r1, _080077DC @ =gLinkPlayerPending
 	adds r0, r1
 	strb r5, [r0]
 	movs r4, 0
@@ -760,7 +760,7 @@ _080077E8:
 	blt _080077E0
 	cmp r5, 0
 	bne _08007804
-	ldr r1, _0800780C
+	ldr r1, _0800780C @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r1]
 	cmp r0, 0
 	bne _08007804
@@ -783,16 +783,16 @@ ProcessRecvCmds: @ 8007810
 	push {r5-r7}
 	sub sp, 0x4
 	movs r7, 0
-	ldr r0, _0800786C
+	ldr r0, _0800786C @ =gRecvCmds
 	adds r0, 0x8
 	mov r10, r0
 _08007824:
-	ldr r0, _08007870
+	ldr r0, _08007870 @ =word_3002910
 	lsls r3, r7, 1
 	adds r2, r3, r0
 	movs r1, 0
 	strh r1, [r2]
-	ldr r4, _0800786C
+	ldr r4, _0800786C @ =gRecvCmds
 	adds r1, r3, r4
 	ldrh r0, [r1]
 	mov r8, r3
@@ -803,24 +803,24 @@ _08007824:
 	b _08007B54
 _08007840:
 	ldrh r1, [r1]
-	ldr r0, _08007874
+	ldr r0, _08007874 @ =0x00005fff
 	cmp r1, r0
 	bne _0800784A
 	b _08007A92
 _0800784A:
 	cmp r1, r0
 	bgt _08007898
-	ldr r0, _08007878
+	ldr r0, _08007878 @ =0x00004444
 	cmp r1, r0
 	bne _08007856
 	b _08007B4C
 _08007856:
 	cmp r1, r0
 	bgt _08007884
-	ldr r0, _0800787C
+	ldr r0, _0800787C @ =0x00002222
 	cmp r1, r0
 	beq _080078EC
-	ldr r0, _08007880
+	ldr r0, _08007880 @ =0x00002ffe
 	cmp r1, r0
 	bne _08007868
 	b _08007A9C
@@ -834,7 +834,7 @@ _08007878: .4byte 0x00004444
 _0800787C: .4byte 0x00002222
 _08007880: .4byte 0x00002ffe
 _08007884:
-	ldr r0, _08007894
+	ldr r0, _08007894 @ =0x00005555
 	cmp r1, r0
 	beq _0800793C
 	adds r0, 0x11
@@ -844,17 +844,17 @@ _08007884:
 	.align 2, 0
 _08007894: .4byte 0x00005555
 _08007898:
-	ldr r0, _080078B4
+	ldr r0, _080078B4 @ =0x0000aaab
 	cmp r1, r0
 	bne _080078A0
 	b _08007AB2
 _080078A0:
 	cmp r1, r0
 	bgt _080078C0
-	ldr r0, _080078B8
+	ldr r0, _080078B8 @ =0x00008888
 	cmp r1, r0
 	beq _08007970
-	ldr r0, _080078BC
+	ldr r0, _080078BC @ =0x0000aaaa
 	cmp r1, r0
 	bne _080078B2
 	b _08007AAC
@@ -865,14 +865,14 @@ _080078B4: .4byte 0x0000aaab
 _080078B8: .4byte 0x00008888
 _080078BC: .4byte 0x0000aaaa
 _080078C0:
-	ldr r0, _080078D4
+	ldr r0, _080078D4 @ =0x0000cafe
 	cmp r1, r0
 	bne _080078C8
 	b _08007B4C
 _080078C8:
 	cmp r1, r0
 	bgt _080078DC
-	ldr r0, _080078D8
+	ldr r0, _080078D8 @ =0x0000bbbb
 	cmp r1, r0
 	beq _08007948
 	b _08007B54
@@ -880,7 +880,7 @@ _080078C8:
 _080078D4: .4byte 0x0000cafe
 _080078D8: .4byte 0x0000bbbb
 _080078DC:
-	ldr r0, _080078E8
+	ldr r0, _080078E8 @ =0x0000cccc
 	cmp r1, r0
 	bne _080078E4
 	b _08007AC2
@@ -890,17 +890,17 @@ _080078E4:
 _080078E8: .4byte 0x0000cccc
 _080078EC:
 	bl InitLocalLinkPlayer
-	ldr r0, _08007930
+	ldr r0, _08007930 @ =localLinkPlayerBlock
 	adds r2, r0, 0
 	adds r2, 0x10
-	ldr r1, _08007934
+	ldr r1, _08007934 @ =localLinkPlayer
 	ldm r1!, {r3,r4,r6}
 	stm r2!, {r3,r4,r6}
 	ldm r1!, {r3,r5,r6}
 	stm r2!, {r3,r5,r6}
 	ldr r1, [r1]
 	str r1, [r2]
-	ldr r4, _08007938
+	ldr r4, _08007938 @ =0x081f4578
 	adds r2, r0, 0
 	adds r1, r4, 0
 	ldm r1!, {r3,r5,r6}
@@ -925,7 +925,7 @@ _08007930: .4byte localLinkPlayerBlock
 _08007934: .4byte localLinkPlayer
 _08007938: .4byte 0x081f4578
 _0800793C:
-	ldr r1, _08007944
+	ldr r1, _08007944 @ =byte_3002A68
 	movs r0, 0x1
 	strb r0, [r1]
 	b _08007B54
@@ -934,7 +934,7 @@ _08007944: .4byte byte_3002A68
 _08007948:
 	adds r1, r3, r7
 	lsls r1, 2
-	ldr r5, _08007968
+	ldr r5, _08007968 @ =0x030003f8
 	adds r1, r5
 	movs r6, 0
 	strh r6, [r1]
@@ -942,7 +942,7 @@ _08007948:
 	adds r0, r3, r2
 	ldrh r0, [r0]
 	strh r0, [r1, 0x2]
-	ldr r0, _0800796C
+	ldr r0, _0800796C @ =gRecvCmds
 	adds r0, 0x10
 	adds r0, r3, r0
 	ldrh r0, [r0]
@@ -954,7 +954,7 @@ _0800796C: .4byte gRecvCmds
 _08007970:
 	adds r0, r3, r7
 	lsls r0, 2
-	ldr r5, _080079B0
+	ldr r5, _080079B0 @ =0x030003f8
 	adds r4, r0, r5
 	ldrh r1, [r4, 0x2]
 	movs r0, 0x80
@@ -963,11 +963,11 @@ _08007970:
 	mov r9, r6
 	cmp r1, r0
 	bls _080079BC
-	ldr r6, _080079B4
+	ldr r6, _080079B4 @ =0x02000000
 	movs r2, 0
 	adds r5, r3, 0
 	adds r3, r4, 0
-	ldr r4, _080079B8
+	ldr r4, _080079B8 @ =gRecvCmds
 _08007990:
 	ldrh r1, [r3]
 	lsrs r1, 1
@@ -991,10 +991,10 @@ _080079B4: .4byte 0x02000000
 _080079B8: .4byte gRecvCmds
 _080079BC:
 	movs r2, 0
-	ldr r0, _08007A50
+	ldr r0, _08007A50 @ =gBlockRecvBuffer
 	mov r12, r0
 	adds r5, r3, 0
-	ldr r6, _08007A54
+	ldr r6, _08007A54 @ =gRecvCmds
 	lsls r3, r7, 8
 _080079C8:
 	ldrh r1, [r4]
@@ -1028,18 +1028,18 @@ _080079E8:
 	bcs _08007A02
 	b _08007B54
 _08007A02:
-	ldr r0, _08007A58
+	ldr r0, _08007A58 @ =gLinkPlayerPending
 	adds r0, r7, r0
 	ldrb r0, [r0]
 	cmp r0, 0x1
 	bne _08007A88
 	lsls r1, r7, 8
-	ldr r0, _08007A50
+	ldr r0, _08007A50 @ =gBlockRecvBuffer
 	adds r5, r1, r0
 	lsls r4, r7, 3
 	subs r1, r4, r7
 	lsls r1, 2
-	ldr r0, _08007A5C
+	ldr r0, _08007A5C @ =gLinkPlayers
 	adds r1, r0
 	adds r0, r5, 0
 	adds r0, 0x10
@@ -1049,7 +1049,7 @@ _08007A02:
 	stm r1!, {r2,r3,r6}
 	ldr r0, [r0]
 	str r0, [r1]
-	ldr r6, _08007A60
+	ldr r6, _08007A60 @ =0x081f4578
 	adds r0, r5, 0
 	adds r1, r6, 0
 	bl strcmp
@@ -1062,7 +1062,7 @@ _08007A02:
 	cmp r0, 0
 	beq _08007A68
 _08007A48:
-	ldr r0, _08007A64
+	ldr r0, _08007A64 @ =CB2_LinkError
 	bl SetMainCallback2
 	b _08007A70
 	.align 2, 0
@@ -1079,7 +1079,7 @@ _08007A68:
 _08007A70:
 	subs r2, r4, r7
 	lsls r2, 2
-	ldr r1, _08007A84
+	ldr r1, _08007A84 @ =0x03002988
 	adds r0, r2, r1
 	adds r1, r2
 	ldrb r1, [r1, 0x12]
@@ -1093,12 +1093,12 @@ _08007A88:
 	bl SetBlockReceivedFlag
 	b _08007B54
 _08007A92:
-	ldr r0, _08007A98
+	ldr r0, _08007A98 @ =u8_array_3002B78
 	b _08007A9E
 	.align 2, 0
 _08007A98: .4byte u8_array_3002B78
 _08007A9C:
-	ldr r0, _08007AA8
+	ldr r0, _08007AA8 @ =u8_array_3002B70
 _08007A9E:
 	adds r0, r7, r0
 	movs r1, 0x1
@@ -1118,13 +1118,13 @@ _08007AB2:
 	bl sub_80516C4
 	b _08007B54
 _08007AC2:
-	ldr r4, _08007ADC
+	ldr r4, _08007ADC @ =0x03002970
 	ldrb r0, [r4]
 	cmp r0, 0x1
 	bne _08007AE4
 	movs r0, 0x2
 	strb r0, [r4]
-	ldr r1, _08007AE0
+	ldr r1, _08007AE0 @ =deuUnkValue1
 	mov r5, r10
 	adds r0, r3, r5
 	ldrh r0, [r0]
@@ -1143,10 +1143,10 @@ _08007AE4:
 	adds r0, r3, r6
 	ldrh r0, [r0]
 	lsls r0, 3
-	ldr r2, _08007B14
+	ldr r2, _08007B14 @ =0x081f4548
 	adds r1, r0, r2
 	ldr r1, [r1]
-	ldr r3, _08007B18
+	ldr r3, _08007B18 @ =0x081f454c
 	adds r0, r3
 	ldrh r2, [r0]
 	movs r0, 0
@@ -1171,10 +1171,10 @@ _08007B26:
 	adds r0, r3, r1
 	ldrh r0, [r0]
 	lsls r0, 3
-	ldr r2, _08007B44
+	ldr r2, _08007B44 @ =0x081f4548
 	adds r1, r0, r2
 	ldr r1, [r1]
-	ldr r3, _08007B48
+	ldr r3, _08007B48 @ =0x081f454c
 	adds r0, r3
 	ldrh r2, [r0]
 	movs r0, 0
@@ -1211,20 +1211,20 @@ BuildSendCmd: @ 8007B70
 	push {lr}
 	lsls r0, 16
 	lsrs r2, r0, 16
-	ldr r0, _08007B94
+	ldr r0, _08007B94 @ =0x00006666
 	cmp r2, r0
 	beq _08007C38
 	cmp r2, r0
 	bgt _08007BC8
-	ldr r0, _08007B98
+	ldr r0, _08007B98 @ =0x00004444
 	cmp r2, r0
 	beq _08007C24
 	cmp r2, r0
 	bgt _08007BA4
-	ldr r0, _08007B9C
+	ldr r0, _08007B9C @ =0x00002222
 	cmp r2, r0
 	beq _08007C10
-	ldr r0, _08007BA0
+	ldr r0, _08007BA0 @ =0x00002ffe
 	b _08007BBA
 	.align 2, 0
 _08007B94: .4byte 0x00006666
@@ -1232,7 +1232,7 @@ _08007B98: .4byte 0x00004444
 _08007B9C: .4byte 0x00002222
 _08007BA0: .4byte 0x00002ffe
 _08007BA4:
-	ldr r0, _08007BB4
+	ldr r0, _08007BB4 @ =0x00005566
 	cmp r2, r0
 	bne _08007BAC
 	b _08007CA8
@@ -1244,7 +1244,7 @@ _08007BAC:
 	.align 2, 0
 _08007BB4: .4byte 0x00005566
 _08007BB8:
-	ldr r0, _08007BC4
+	ldr r0, _08007BC4 @ =0x00005fff
 _08007BBA:
 	cmp r2, r0
 	bne _08007BC0
@@ -1254,27 +1254,27 @@ _08007BC0:
 	.align 2, 0
 _08007BC4: .4byte 0x00005fff
 _08007BC8:
-	ldr r0, _08007BDC
+	ldr r0, _08007BDC @ =0x0000aaab
 	cmp r2, r0
 	beq _08007C80
 	cmp r2, r0
 	bgt _08007BE8
-	ldr r0, _08007BE0
+	ldr r0, _08007BE0 @ =0x00007777
 	cmp r2, r0
 	beq _08007C44
-	ldr r0, _08007BE4
+	ldr r0, _08007BE4 @ =0x0000aaaa
 	b _08007BBA
 	.align 2, 0
 _08007BDC: .4byte 0x0000aaab
 _08007BE0: .4byte 0x00007777
 _08007BE4: .4byte 0x0000aaaa
 _08007BE8:
-	ldr r0, _08007BFC
+	ldr r0, _08007BFC @ =0x0000cafe
 	cmp r2, r0
 	beq _08007CB4
 	cmp r2, r0
 	bgt _08007C04
-	ldr r0, _08007C00
+	ldr r0, _08007C00 @ =0x0000bbbb
 	cmp r2, r0
 	beq _08007C64
 	b _08007CCA
@@ -1282,38 +1282,38 @@ _08007BE8:
 _08007BFC: .4byte 0x0000cafe
 _08007C00: .4byte 0x0000bbbb
 _08007C04:
-	ldr r0, _08007C0C
+	ldr r0, _08007C0C @ =0x0000cccc
 	cmp r2, r0
 	beq _08007C94
 	b _08007CCA
 	.align 2, 0
 _08007C0C: .4byte 0x0000cccc
 _08007C10:
-	ldr r0, _08007C1C
+	ldr r0, _08007C1C @ =gSendCmd
 	strh r2, [r0]
-	ldr r1, _08007C20
+	ldr r1, _08007C20 @ =gLinkType
 	ldrh r1, [r1]
 	b _08007CC8
 	.align 2, 0
 _08007C1C: .4byte gSendCmd
 _08007C20: .4byte gLinkType
 _08007C24:
-	ldr r0, _08007C30
+	ldr r0, _08007C30 @ =gSendCmd
 	strh r2, [r0]
-	ldr r1, _08007C34
+	ldr r1, _08007C34 @ =gMain
 	ldrh r1, [r1, 0x2C]
 	b _08007CC8
 	.align 2, 0
 _08007C30: .4byte gSendCmd
 _08007C34: .4byte gMain
 _08007C38:
-	ldr r0, _08007C40
+	ldr r0, _08007C40 @ =gSendCmd
 	movs r1, 0
 	b _08007CC6
 	.align 2, 0
 _08007C40: .4byte gSendCmd
 _08007C44:
-	ldr r0, _08007C60
+	ldr r0, _08007C60 @ =gSendCmd
 	strh r2, [r0]
 	movs r1, 0
 	adds r3, r0, 0
@@ -1331,9 +1331,9 @@ _08007C4E:
 	.align 2, 0
 _08007C60: .4byte gSendCmd
 _08007C64:
-	ldr r1, _08007C78
+	ldr r1, _08007C78 @ =gSendCmd
 	strh r2, [r1]
-	ldr r2, _08007C7C
+	ldr r2, _08007C7C @ =0x030003e8
 	ldrh r0, [r2, 0x2]
 	strh r0, [r1, 0x2]
 	ldrb r0, [r2, 0x9]
@@ -1344,39 +1344,39 @@ _08007C64:
 _08007C78: .4byte gSendCmd
 _08007C7C: .4byte 0x030003e8
 _08007C80:
-	ldr r0, _08007C8C
+	ldr r0, _08007C8C @ =gSendCmd
 	strh r2, [r0]
-	ldr r1, _08007C90
+	ldr r1, _08007C90 @ =gScriptItemId
 	ldrh r1, [r1]
 	b _08007CC8
 	.align 2, 0
 _08007C8C: .4byte gSendCmd
 _08007C90: .4byte gScriptItemId
 _08007C94:
-	ldr r0, _08007CA0
+	ldr r0, _08007CA0 @ =gSendCmd
 	strh r2, [r0]
-	ldr r1, _08007CA4
+	ldr r1, _08007CA4 @ =gBlockRequestType
 	ldrb r1, [r1]
 	b _08007CC8
 	.align 2, 0
 _08007CA0: .4byte gSendCmd
 _08007CA4: .4byte gBlockRequestType
 _08007CA8:
-	ldr r0, _08007CB0
+	ldr r0, _08007CB0 @ =gSendCmd
 	strh r2, [r0]
 	b _08007CCA
 	.align 2, 0
 _08007CB0: .4byte gSendCmd
 _08007CB4:
-	ldr r0, _08007CD0
+	ldr r0, _08007CD0 @ =word_3004858
 	ldrh r1, [r0]
 	cmp r1, 0
 	beq _08007CCA
-	ldr r0, _08007CD4
+	ldr r0, _08007CD4 @ =gUnknown_3001764
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08007CCA
-	ldr r0, _08007CD8
+	ldr r0, _08007CD8 @ =gSendCmd
 _08007CC6:
 	strh r2, [r0]
 _08007CC8:
@@ -1392,8 +1392,8 @@ _08007CD8: .4byte gSendCmd
 
 	thumb_func_start sub_8007B14
 sub_8007B14: @ 8007CDC
-	ldr r1, _08007CE4
-	ldr r0, _08007CE8
+	ldr r1, _08007CE4 @ =gLinkCallback
+	ldr r0, _08007CE8 @ =sub_8007B44
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -1404,9 +1404,9 @@ _08007CE8: .4byte sub_8007B44
 	thumb_func_start sub_8007B24
 sub_8007B24: @ 8007CEC
 	push {lr}
-	ldr r0, _08007CFC
+	ldr r0, _08007CFC @ =gLinkCallback
 	ldr r1, [r0]
-	ldr r0, _08007D00
+	ldr r0, _08007D00 @ =sub_8007B44
 	cmp r1, r0
 	beq _08007D04
 	movs r0, 0
@@ -1424,11 +1424,11 @@ _08007D06:
 	thumb_func_start sub_8007B44
 sub_8007B44: @ 8007D0C
 	push {lr}
-	ldr r0, _08007D20
+	ldr r0, _08007D20 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0x1
 	bne _08007D1C
-	ldr r0, _08007D24
+	ldr r0, _08007D24 @ =0x0000cafe
 	bl BuildSendCmd
 _08007D1C:
 	pop {r0}
@@ -1440,7 +1440,7 @@ _08007D24: .4byte 0x0000cafe
 
 	thumb_func_start ClearLinkCallback
 ClearLinkCallback: @ 8007D28
-	ldr r1, _08007D30
+	ldr r1, _08007D30 @ =gLinkCallback
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -1450,7 +1450,7 @@ _08007D30: .4byte gLinkCallback
 
 	thumb_func_start ClearLinkCallback_2
 ClearLinkCallback_2: @ 8007D34
-	ldr r1, _08007D3C
+	ldr r1, _08007D3C @ =gLinkCallback
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -1460,7 +1460,7 @@ _08007D3C: .4byte gLinkCallback
 
 	thumb_func_start GetLinkPlayerCount
 GetLinkPlayerCount: @ 8007D40
-	ldr r0, _08007D4C
+	ldr r0, _08007D4C @ =gLinkStatus
 	ldr r0, [r0]
 	movs r1, 0x1C
 	ands r0, r1
@@ -1473,10 +1473,10 @@ _08007D4C: .4byte gLinkStatus
 	thumb_func_start OpenLinkTimed
 OpenLinkTimed: @ 8007D50
 	push {lr}
-	ldr r0, _08007D68
+	ldr r0, _08007D68 @ =0x03000434
 	movs r1, 0
 	str r1, [r0]
-	ldr r0, _08007D6C
+	ldr r0, _08007D6C @ =gLinkTimeOutCounter
 	strh r1, [r0]
 	bl ResetBlockSend
 	bl OpenLink
@@ -1491,7 +1491,7 @@ _08007D6C: .4byte gLinkTimeOutCounter
 GetLinkPlayerDataExchangeStatusTimed: @ 8007D70
 	push {r4-r7,lr}
 	movs r7, 0
-	ldr r0, _08007D98
+	ldr r0, _08007D98 @ =gReceivedRemoteLinkPlayers
 	ldrb r4, [r0]
 	cmp r4, 0x1
 	bne _08007DEC
@@ -1499,12 +1499,12 @@ GetLinkPlayerDataExchangeStatusTimed: @ 8007D70
 	lsls r0, 24
 	cmp r0, 0
 	bne _08007D8E
-	ldr r0, _08007D9C
+	ldr r0, _08007D9C @ =gLinkErrorOccurred
 	strb r4, [r0]
 	bl CloseLink
 _08007D8E:
 	movs r6, 0
-	ldr r4, _08007DA0
+	ldr r4, _08007DA0 @ =gLinkPlayers
 	movs r5, 0
 	b _08007DB8
 	.align 2, 0
@@ -1534,13 +1534,13 @@ _08007DB8:
 	lsrs r0, 24
 	cmp r7, r0
 	bne _08007DDC
-	ldr r1, _08007DD8
+	ldr r1, _08007DD8 @ =0x03000434
 	movs r0, 0x1
 	b _08007DE0
 	.align 2, 0
 _08007DD8: .4byte 0x03000434
 _08007DDC:
-	ldr r1, _08007DE8
+	ldr r1, _08007DE8 @ =0x03000434
 	movs r0, 0x3
 _08007DE0:
 	str r0, [r1]
@@ -1549,14 +1549,14 @@ _08007DE0:
 	.align 2, 0
 _08007DE8: .4byte 0x03000434
 _08007DEC:
-	ldr r0, _08007E0C
+	ldr r0, _08007E0C @ =gLinkTimeOutCounter
 	ldrh r1, [r0]
 	adds r1, 0x1
 	strh r1, [r0]
 	lsls r1, 16
 	movs r0, 0x96
 	lsls r0, 18
-	ldr r2, _08007E10
+	ldr r2, _08007E10 @ =0x03000434
 	cmp r1, r0
 	bls _08007E04
 	movs r0, 0x2
@@ -1576,7 +1576,7 @@ IsLinkPlayerDataExchangeComplete: @ 8007E14
 	push {r4-r6,lr}
 	movs r6, 0
 	movs r4, 0
-	ldr r5, _08007E20
+	ldr r5, _08007E20 @ =gLinkPlayers
 	b _08007E44
 	.align 2, 0
 _08007E20: .4byte gLinkPlayers
@@ -1610,14 +1610,14 @@ _08007E44:
 	cmp r6, r0
 	bne _08007E68
 	movs r2, 0x1
-	ldr r0, _08007E64
+	ldr r0, _08007E64 @ =0x03000434
 	str r2, [r0]
 	b _08007E70
 	.align 2, 0
 _08007E64: .4byte 0x03000434
 _08007E68:
 	movs r2, 0
-	ldr r1, _08007E78
+	ldr r1, _08007E78 @ =0x03000434
 	movs r0, 0x3
 	str r0, [r1]
 _08007E70:
@@ -1633,7 +1633,7 @@ _08007E78: .4byte 0x03000434
 GetLinkPlayerTrainerId: @ 8007E7C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08007E90
+	ldr r2, _08007E90 @ =gLinkPlayers
 	lsls r1, r0, 3
 	subs r1, r0
 	lsls r1, 2
@@ -1648,7 +1648,7 @@ _08007E90: .4byte gLinkPlayers
 	thumb_func_start ResetLinkPlayers
 ResetLinkPlayers: @ 8007E94
 	push {r4,r5,lr}
-	ldr r5, _08007EB4
+	ldr r5, _08007EB4 @ =gLinkPlayers
 	movs r4, 0x3
 _08007E9A:
 	adds r0, r5, 0
@@ -1668,7 +1668,7 @@ _08007EB4: .4byte gLinkPlayers
 
 	thumb_func_start ResetBlockSend
 ResetBlockSend: @ 8007EB8
-	ldr r1, _08007EC8
+	ldr r1, _08007EC8 @ =0x030003e8
 	movs r0, 0
 	strb r0, [r1, 0x8]
 	strh r0, [r1]
@@ -1684,7 +1684,7 @@ InitBlockSend: @ 8007ECC
 	push {r4-r7,lr}
 	adds r7, r0, 0
 	adds r6, r1, 0
-	ldr r4, _08007EE0
+	ldr r4, _08007EE0 @ =0x030003e8
 	ldrb r5, [r4, 0x8]
 	cmp r5, 0
 	beq _08007EE4
@@ -1705,7 +1705,7 @@ _08007EE4:
 	str r7, [r4, 0x4]
 	b _08007F0E
 _08007EFC:
-	ldr r5, _08007F28
+	ldr r5, _08007F28 @ =gBlockSendBuffer
 	cmp r7, r5
 	beq _08007F0C
 	adds r0, r5, 0
@@ -1715,12 +1715,12 @@ _08007EFC:
 _08007F0C:
 	str r5, [r4, 0x4]
 _08007F0E:
-	ldr r0, _08007F2C
+	ldr r0, _08007F2C @ =0x0000bbbb
 	bl BuildSendCmd
-	ldr r1, _08007F30
-	ldr r0, _08007F34
+	ldr r1, _08007F30 @ =gLinkCallback
+	ldr r0, _08007F34 @ =LinkCB_BlockSendBegin
 	str r0, [r1]
-	ldr r1, _08007F38
+	ldr r1, _08007F38 @ =0x03000428
 	movs r0, 0
 	str r0, [r1]
 	movs r0, 0x1
@@ -1739,14 +1739,14 @@ _08007F38: .4byte 0x03000428
 	thumb_func_start LinkCB_BlockSendBegin
 LinkCB_BlockSendBegin: @ 8007F3C
 	push {lr}
-	ldr r1, _08007F54
+	ldr r1, _08007F54 @ =0x03000428
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
 	cmp r0, 0x2
 	bls _08007F50
-	ldr r1, _08007F58
-	ldr r0, _08007F5C
+	ldr r1, _08007F58 @ =gLinkCallback
+	ldr r0, _08007F5C @ =LinkCB_BlockSend
 	str r0, [r1]
 _08007F50:
 	pop {r0}
@@ -1760,10 +1760,10 @@ _08007F5C: .4byte LinkCB_BlockSend
 	thumb_func_start LinkCB_BlockSend
 LinkCB_BlockSend: @ 8007F60
 	push {r4-r6,lr}
-	ldr r0, _08007FB0
+	ldr r0, _08007FB0 @ =0x030003e8
 	ldr r5, [r0, 0x4]
-	ldr r2, _08007FB4
-	ldr r1, _08007FB8
+	ldr r2, _08007FB4 @ =gSendCmd
+	ldr r1, _08007FB8 @ =0x00008888
 	strh r1, [r2]
 	movs r3, 0
 	adds r4, r0, 0
@@ -1793,8 +1793,8 @@ _08007F74:
 	bhi _08007FA8
 	movs r0, 0
 	strb r0, [r4, 0x8]
-	ldr r1, _08007FBC
-	ldr r0, _08007FC0
+	ldr r1, _08007FBC @ =gLinkCallback
+	ldr r0, _08007FC0 @ =LinkCB_BlockSendEnd
 	str r0, [r1]
 _08007FA8:
 	pop {r4-r6}
@@ -1810,7 +1810,7 @@ _08007FC0: .4byte LinkCB_BlockSendEnd
 
 	thumb_func_start LinkCB_BlockSendEnd
 LinkCB_BlockSendEnd: @ 8007FC4
-	ldr r1, _08007FCC
+	ldr r1, _08007FCC @ =gLinkCallback
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -1822,9 +1822,9 @@ _08007FCC: .4byte gLinkCallback
 sub_8007E04: @ 8007FD0
 	push {lr}
 	bl GetMultiplayerId
-	ldr r0, _08007FE8
+	ldr r0, _08007FE8 @ =0x00004444
 	bl BuildSendCmd
-	ldr r1, _08007FEC
+	ldr r1, _08007FEC @ =dword_20238BC
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -1837,11 +1837,11 @@ _08007FEC: .4byte dword_20238BC
 
 	thumb_func_start sub_8007E24
 sub_8007E24: @ 8007FF0
-	ldr r1, _08008000
+	ldr r1, _08008000 @ =dword_20238BC
 	movs r0, 0
 	str r0, [r1]
-	ldr r1, _08008004
-	ldr r0, _08008008
+	ldr r1, _08008004 @ =gLinkCallback
+	ldr r0, _08008008 @ =sub_8007E04
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -1852,7 +1852,7 @@ _08008008: .4byte sub_8007E04
 
 	thumb_func_start sub_8007E40
 sub_8007E40: @ 800800C
-	ldr r0, _08008014
+	ldr r0, _08008014 @ =dword_20238BC
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
@@ -1862,7 +1862,7 @@ _08008014: .4byte dword_20238BC
 	thumb_func_start sub_8007E4C
 sub_8007E4C: @ 8008018
 	push {lr}
-	ldr r0, _08008024
+	ldr r0, _08008024 @ =0x0000aaaa
 	bl BuildSendCmd
 	pop {r0}
 	bx r0
@@ -1872,7 +1872,7 @@ _08008024: .4byte 0x0000aaaa
 
 	thumb_func_start GetMultiplayerId
 GetMultiplayerId: @ 8008028
-	ldr r0, _08008034
+	ldr r0, _08008034 @ =0x04000128
 	ldr r0, [r0]
 	lsls r0, 26
 	lsrs r0, 30
@@ -1916,7 +1916,7 @@ sub_8007E9C: @ 8008068
 	push {lr}
 	lsls r0, 24
 	lsrs r1, r0, 24
-	ldr r0, _0800807C
+	ldr r0, _0800807C @ =gLinkCallback
 	ldr r0, [r0]
 	cmp r0, 0
 	beq _08008080
@@ -1925,9 +1925,9 @@ sub_8007E9C: @ 8008068
 	.align 2, 0
 _0800807C: .4byte gLinkCallback
 _08008080:
-	ldr r0, _08008090
+	ldr r0, _08008090 @ =gBlockRequestType
 	strb r1, [r0]
-	ldr r0, _08008094
+	ldr r0, _08008094 @ =0x0000cccc
 	bl BuildSendCmd
 	movs r0, 0x1
 _0800808C:
@@ -1942,7 +1942,7 @@ _08008094: .4byte 0x0000cccc
 sub_8007ECC: @ 8008098
 	push {lr}
 	movs r1, 0
-	ldr r0, _080080AC
+	ldr r0, _080080AC @ =gLinkCallback
 	ldr r0, [r0]
 	cmp r0, 0
 	bne _080080A6
@@ -1957,7 +1957,7 @@ _080080AC: .4byte gLinkCallback
 
 	thumb_func_start GetBlockReceivedStatus
 GetBlockReceivedStatus: @ 80080B0
-	ldr r2, _080080CC
+	ldr r2, _080080CC @ =gBlockReceived
 	ldrb r0, [r2, 0x3]
 	lsls r0, 3
 	ldrb r1, [r2, 0x2]
@@ -1979,7 +1979,7 @@ _080080CC: .4byte gBlockReceived
 SetBlockReceivedFlag: @ 80080D0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080080E0
+	ldr r1, _080080E0 @ =gBlockReceived
 	adds r0, r1
 	movs r1, 0x1
 	strb r1, [r0]
@@ -1991,7 +1991,7 @@ _080080E0: .4byte gBlockReceived
 	thumb_func_start ResetBlockReceivedFlags
 ResetBlockReceivedFlags: @ 80080E4
 	push {lr}
-	ldr r1, _080080F8
+	ldr r1, _080080F8 @ =gBlockReceived
 	movs r2, 0
 	adds r0, r1, 0x3
 _080080EC:
@@ -2010,7 +2010,7 @@ ResetBlockReceivedFlag: @ 80080FC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08008114
+	ldr r1, _08008114 @ =gBlockReceived
 	adds r1, r0, r1
 	ldrb r0, [r1]
 	cmp r0, 0
@@ -2027,7 +2027,7 @@ _08008114: .4byte gBlockReceived
 	thumb_func_start sub_8007F4C
 sub_8007F4C: @ 8008118
 	push {lr}
-	ldr r0, _08008138
+	ldr r0, _08008138 @ =gLinkStatus
 	ldr r1, [r0]
 	movs r0, 0x20
 	ands r0, r1
@@ -2037,7 +2037,7 @@ sub_8007F4C: @ 8008118
 	ands r1, r0
 	cmp r1, 0x4
 	bls _08008134
-	ldr r1, _0800813C
+	ldr r1, _0800813C @ =gShouldAdvanceLinkState
 	movs r0, 0x1
 	strb r0, [r1]
 _08008134:
@@ -2085,7 +2085,7 @@ PrintHexDigit: @ 8008170
 	lsls r1, 24
 	lsrs r1, 24
 	lsls r2, 24
-	ldr r4, _080081A0
+	ldr r4, _080081A0 @ =gLinkTestBGInfo
 	ldr r3, [r4]
 	lsls r3, 11
 	movs r5, 0xC0
@@ -2159,16 +2159,16 @@ _080081F0:
 	thumb_func_start LinkCB_RequestPlayerDataExchange
 LinkCB_RequestPlayerDataExchange: @ 80081F8
 	push {lr}
-	ldr r0, _08008218
+	ldr r0, _08008218 @ =gLinkStatus
 	ldr r0, [r0]
 	movs r1, 0x20
 	ands r0, r1
 	cmp r0, 0
 	beq _0800820C
-	ldr r0, _0800821C
+	ldr r0, _0800821C @ =0x00002222
 	bl BuildSendCmd
 _0800820C:
-	ldr r1, _08008220
+	ldr r1, _08008220 @ =gLinkCallback
 	movs r0, 0
 	str r0, [r1]
 	pop {r0}
@@ -2182,19 +2182,19 @@ _08008220: .4byte gLinkCallback
 	thumb_func_start Task_PrintTestData
 Task_PrintTestData: @ 8008224
 	push {r4-r6,lr}
-	ldr r0, _08008330
+	ldr r0, _08008330 @ =gShouldAdvanceLinkState
 	ldrb r0, [r0]
 	movs r1, 0x2
 	movs r2, 0x1
 	movs r3, 0x2
 	bl PrintHex
-	ldr r4, _08008334
+	ldr r4, _08008334 @ =gLinkStatus
 	ldr r0, [r4]
 	movs r1, 0xF
 	movs r2, 0x1
 	movs r3, 0x8
 	bl PrintHex
-	ldr r0, _08008338
+	ldr r0, _08008338 @ =gLink
 	ldrb r0, [r0, 0x1]
 	movs r1, 0x2
 	movs r2, 0xA
@@ -2215,13 +2215,13 @@ Task_PrintTestData: @ 8008224
 	movs r2, 0xC
 	movs r3, 0x2
 	bl PrintHex
-	ldr r0, _0800833C
+	ldr r0, _0800833C @ =gLastSendQueueCount
 	ldrb r0, [r0]
 	movs r1, 0x19
 	movs r2, 0x1
 	movs r3, 0x2
 	bl PrintHex
-	ldr r0, _08008340
+	ldr r0, _08008340 @ =gLastRecvQueueCount
 	ldrb r0, [r0]
 	movs r1, 0x19
 	movs r2, 0x2
@@ -2234,13 +2234,13 @@ Task_PrintTestData: @ 8008224
 	movs r2, 0x5
 	movs r3, 0x2
 	bl PrintHex
-	ldr r0, _08008344
+	ldr r0, _08008344 @ =gLinkDebugValue1
 	ldr r0, [r0]
 	movs r1, 0x2
 	movs r2, 0xC
 	movs r3, 0x8
 	bl PrintHex
-	ldr r0, _08008348
+	ldr r0, _08008348 @ =gLinkDebugValue2
 	ldr r0, [r0]
 	movs r1, 0x2
 	movs r2, 0xD
@@ -2277,7 +2277,7 @@ Task_PrintTestData: @ 8008224
 	movs r6, 0
 	movs r5, 0x80
 	lsls r5, 19
-	ldr r4, _0800834C
+	ldr r4, _0800834C @ =gLinkTestBlockChecksums
 _0800830E:
 	ldrh r0, [r4]
 	lsrs r2, r5, 24
@@ -2307,9 +2307,9 @@ _0800834C: .4byte gLinkTestBlockChecksums
 
 	thumb_func_start SetLinkDebugValues
 SetLinkDebugValues: @ 8008350
-	ldr r2, _0800835C
+	ldr r2, _0800835C @ =gLinkDebugValue1
 	str r0, [r2]
-	ldr r0, _08008360
+	ldr r0, _08008360 @ =gLinkDebugValue2
 	str r1, [r0]
 	bx lr
 	.align 2, 0
@@ -2322,7 +2322,7 @@ sub_8008198: @ 8008364
 	push {r4,lr}
 	movs r1, 0
 	movs r2, 0
-	ldr r0, _08008390
+	ldr r0, _08008390 @ =gSavedLinkPlayerCount
 	ldrb r0, [r0]
 	cmp r1, r0
 	bge _08008386
@@ -2349,13 +2349,13 @@ _08008390: .4byte gSavedLinkPlayerCount
 	thumb_func_start sub_80081C8
 sub_80081C8: @ 8008394
 	push {r4-r7,lr}
-	ldr r1, _080083C8
+	ldr r1, _080083C8 @ =gSavedLinkPlayerCount
 	strb r0, [r1]
 	bl GetMultiplayerId
-	ldr r1, _080083CC
+	ldr r1, _080083CC @ =gSavedMultiplayerId
 	strb r0, [r1]
-	ldr r4, _080083D0
-	ldr r3, _080083D4
+	ldr r4, _080083D0 @ =gLinkPlayers
+	ldr r3, _080083D4 @ =gSavedLinkPlayers
 	movs r2, 0x3
 _080083A8:
 	adds r0, r3, 0
@@ -2383,7 +2383,7 @@ _080083D4: .4byte gSavedLinkPlayers
 
 	thumb_func_start sub_800820C
 sub_800820C: @ 80083D8
-	ldr r0, _080083E0
+	ldr r0, _080083E0 @ =gSavedLinkPlayerCount
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
@@ -2392,7 +2392,7 @@ _080083E0: .4byte gSavedLinkPlayerCount
 
 	thumb_func_start sub_8008218
 sub_8008218: @ 80083E4
-	ldr r0, _080083EC
+	ldr r0, _080083EC @ =gSavedMultiplayerId
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
@@ -2403,13 +2403,13 @@ _080083EC: .4byte gSavedMultiplayerId
 sub_8008224: @ 80083F0
 	push {r4-r6,lr}
 	movs r5, 0
-	ldr r0, _08008424
+	ldr r0, _08008424 @ =gSavedLinkPlayerCount
 	ldrb r2, [r0]
 	adds r6, r0, 0
 	cmp r5, r2
 	bge _0800841A
-	ldr r1, _08008428
-	ldr r0, _0800842C
+	ldr r1, _08008428 @ =gLinkPlayers
+	ldr r0, _0800842C @ =gSavedLinkPlayers
 	adds r4, r0, 0x4
 	adds r3, r1, 0x4
 _08008406:
@@ -2448,12 +2448,12 @@ sub_800826C: @ 8008438
 	mov r7, r8
 	push {r7}
 	movs r4, 0
-	ldr r0, _080084A4
+	ldr r0, _080084A4 @ =gSavedLinkPlayerCount
 	ldrb r0, [r0]
 	cmp r4, r0
 	bcs _08008498
-	ldr r6, _080084A8
-	ldr r5, _080084AC
+	ldr r6, _080084A8 @ =gSavedLinkPlayers
+	ldr r5, _080084AC @ =gLinkPlayers
 	movs r0, 0x8
 	adds r0, r6
 	mov r8, r0
@@ -2478,17 +2478,17 @@ _08008456:
 	cmp r0, 0
 	beq _0800848A
 _0800847A:
-	ldr r1, _080084B0
+	ldr r1, _080084B0 @ =gLinkErrorOccurred
 	movs r0, 0x1
 	strb r0, [r1]
 	bl CloseLink
-	ldr r0, _080084B4
+	ldr r0, _080084B4 @ =CB2_LinkError
 	bl SetMainCallback2
 _0800848A:
 	adds r0, r4, 0x1
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080084A4
+	ldr r0, _080084A4 @ =gSavedLinkPlayerCount
 	ldrb r0, [r0]
 	cmp r4, r0
 	bcc _08008456
@@ -2508,10 +2508,10 @@ _080084B4: .4byte CB2_LinkError
 
 	thumb_func_start sub_80082EC
 sub_80082EC: @ 80084B8
-	ldr r0, _080084C4
+	ldr r0, _080084C4 @ =gSavedLinkPlayerCount
 	movs r1, 0
 	strb r1, [r0]
-	ldr r0, _080084C8
+	ldr r0, _080084C8 @ =gSavedMultiplayerId
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
@@ -2521,7 +2521,7 @@ _080084C8: .4byte gSavedMultiplayerId
 
 	thumb_func_start GetLinkPlayerCount_2
 GetLinkPlayerCount_2: @ 80084CC
-	ldr r0, _080084D8
+	ldr r0, _080084D8 @ =gLinkStatus
 	ldr r0, [r0]
 	movs r1, 0x1C
 	ands r0, r1
@@ -2533,7 +2533,7 @@ _080084D8: .4byte gLinkStatus
 
 	thumb_func_start IsLinkMaster
 IsLinkMaster: @ 80084DC
-	ldr r0, _080084E8
+	ldr r0, _080084E8 @ =gLinkStatus
 	ldr r0, [r0]
 	lsrs r0, 5
 	movs r1, 0x1
@@ -2545,7 +2545,7 @@ _080084E8: .4byte gLinkStatus
 
 	thumb_func_start GetDummy2
 GetDummy2: @ 80084EC
-	ldr r0, _080084F4
+	ldr r0, _080084F4 @ =0x03000430
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
@@ -2555,13 +2555,13 @@ _080084F4: .4byte 0x03000430
 	thumb_func_start sub_800832C
 sub_800832C: @ 80084F8
 	push {lr}
-	ldr r2, _08008510
+	ldr r2, _08008510 @ =gLinkCallback
 	ldr r1, [r2]
 	cmp r1, 0
 	bne _0800850A
-	ldr r0, _08008514
+	ldr r0, _08008514 @ =sub_8008350
 	str r0, [r2]
-	ldr r0, _08008518
+	ldr r0, _08008518 @ =gLinkDummyBool
 	strb r1, [r0]
 _0800850A:
 	pop {r0}
@@ -2575,14 +2575,14 @@ _08008518: .4byte gLinkDummyBool
 	thumb_func_start sub_8008350
 sub_8008350: @ 800851C
 	push {lr}
-	ldr r0, _08008538
+	ldr r0, _08008538 @ =gLastRecvQueueCount
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08008532
-	ldr r0, _0800853C
+	ldr r0, _0800853C @ =0x00005fff
 	bl BuildSendCmd
-	ldr r1, _08008540
-	ldr r0, _08008544
+	ldr r1, _08008540 @ =gLinkCallback
+	ldr r0, _08008544 @ =sub_800837C
 	str r0, [r1]
 _08008532:
 	pop {r0}
@@ -2604,7 +2604,7 @@ sub_800837C: @ 8008548
 	movs r1, 0
 	cmp r3, r2
 	bge _0800856C
-	ldr r4, _08008594
+	ldr r4, _08008594 @ =u8_array_3002B78
 _0800855C:
 	adds r0, r1, r4
 	ldrb r0, [r0]
@@ -2618,19 +2618,19 @@ _08008566:
 _0800856C:
 	cmp r3, r2
 	bne _0800858E
-	ldr r2, _08008598
+	ldr r2, _08008598 @ =gUnknown_020239F8
 	ldrh r1, [r2]
-	ldr r0, _0800859C
+	ldr r0, _0800859C @ =0x0000ffdf
 	ands r0, r1
 	strh r0, [r2]
-	ldr r0, _080085A0
+	ldr r0, _080085A0 @ =gLinkVSyncDisabled
 	movs r4, 0x1
 	strb r4, [r0]
 	bl CloseLink
-	ldr r1, _080085A4
+	ldr r1, _080085A4 @ =gLinkCallback
 	movs r0, 0
 	str r0, [r1]
-	ldr r0, _080085A8
+	ldr r0, _080085A8 @ =gLinkDummyBool
 	strb r4, [r0]
 _0800858E:
 	pop {r4}
@@ -2655,8 +2655,8 @@ sub_80083E0: @ 80085AC
 	movs r2, 0
 	cmp r1, r3
 	bge _080085DA
-	ldr r5, _08008604
-	ldr r4, _08008608
+	ldr r5, _08008604 @ =u8_array_3002B78
+	ldr r4, _08008608 @ =gLinkPlayers
 _080085C2:
 	ldrh r0, [r4, 0x1A]
 	cmp r0, 0x1
@@ -2675,19 +2675,19 @@ _080085D2:
 _080085DA:
 	cmp r1, r3
 	bne _080085FC
-	ldr r2, _0800860C
+	ldr r2, _0800860C @ =gUnknown_020239F8
 	ldrh r1, [r2]
-	ldr r0, _08008610
+	ldr r0, _08008610 @ =0x0000ffdf
 	ands r0, r1
 	strh r0, [r2]
-	ldr r0, _08008614
+	ldr r0, _08008614 @ =gLinkVSyncDisabled
 	movs r4, 0x1
 	strb r4, [r0]
 	bl CloseLink
-	ldr r1, _08008618
+	ldr r1, _08008618 @ =gLinkCallback
 	movs r0, 0
 	str r0, [r1]
-	ldr r0, _0800861C
+	ldr r0, _0800861C @ =gLinkDummyBool
 	strb r4, [r0]
 _080085FC:
 	pop {r4,r5}
@@ -2706,14 +2706,14 @@ _0800861C: .4byte gLinkDummyBool
 	thumb_func_start sub_8008454
 sub_8008454: @ 8008620
 	push {lr}
-	ldr r0, _0800863C
+	ldr r0, _0800863C @ =gLastRecvQueueCount
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08008636
-	ldr r0, _08008640
+	ldr r0, _08008640 @ =0x00005fff
 	bl BuildSendCmd
-	ldr r1, _08008644
-	ldr r0, _08008648
+	ldr r1, _08008644 @ =gLinkCallback
+	ldr r0, _08008648 @ =sub_80083E0
 	str r0, [r1]
 _08008636:
 	pop {r0}
@@ -2728,13 +2728,13 @@ _08008648: .4byte sub_80083E0
 	thumb_func_start sub_8008480
 sub_8008480: @ 800864C
 	push {lr}
-	ldr r2, _08008664
+	ldr r2, _08008664 @ =gLinkCallback
 	ldr r1, [r2]
 	cmp r1, 0
 	bne _0800865E
-	ldr r0, _08008668
+	ldr r0, _08008668 @ =sub_8008454
 	str r0, [r2]
-	ldr r0, _0800866C
+	ldr r0, _0800866C @ =gLinkDummyBool
 	strb r1, [r0]
 _0800865E:
 	pop {r0}
@@ -2748,14 +2748,14 @@ _0800866C: .4byte gLinkDummyBool
 	thumb_func_start sub_80084A4
 sub_80084A4: @ 8008670
 	push {lr}
-	ldr r1, _08008688
+	ldr r1, _08008688 @ =gLinkCallback
 	ldr r0, [r1]
 	cmp r0, 0
 	bne _0800867E
-	ldr r0, _0800868C
+	ldr r0, _0800868C @ =sub_80084C8
 	str r0, [r1]
 _0800867E:
-	ldr r1, _08008690
+	ldr r1, _08008690 @ =gLinkDummyBool
 	movs r0, 0
 	strb r0, [r1]
 	pop {r0}
@@ -2769,14 +2769,14 @@ _08008690: .4byte gLinkDummyBool
 	thumb_func_start sub_80084C8
 sub_80084C8: @ 8008694
 	push {lr}
-	ldr r0, _080086B0
+	ldr r0, _080086B0 @ =gLastRecvQueueCount
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _080086AA
-	ldr r0, _080086B4
+	ldr r0, _080086B4 @ =0x00002ffe
 	bl BuildSendCmd
-	ldr r1, _080086B8
-	ldr r0, _080086BC
+	ldr r1, _080086B8 @ =gLinkCallback
+	ldr r0, _080086BC @ =sub_80084F4
 	str r0, [r1]
 _080086AA:
 	pop {r0}
@@ -2797,7 +2797,7 @@ sub_80084F4: @ 80086C0
 	movs r1, 0
 	cmp r1, r2
 	bcs _080086EA
-	ldr r3, _08008710
+	ldr r3, _08008710 @ =u8_array_3002B70
 	ldrb r0, [r3]
 	cmp r0, 0
 	beq _080086EA
@@ -2815,8 +2815,8 @@ _080086EA:
 	cmp r1, r2
 	bne _08008708
 	movs r1, 0
-	ldr r4, _08008714
-	ldr r3, _08008710
+	ldr r4, _08008714 @ =gLinkCallback
+	ldr r3, _08008710 @ =u8_array_3002B70
 	movs r2, 0
 _080086F6:
 	adds r0, r1, r3
@@ -2840,35 +2840,35 @@ _08008714: .4byte gLinkCallback
 	thumb_func_start CheckErrorStatus
 CheckErrorStatus: @ 8008718
 	push {lr}
-	ldr r0, _08008760
+	ldr r0, _08008760 @ =gLinkOpen
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _0800875C
-	ldr r0, _08008764
+	ldr r0, _08008764 @ =gLinkStatus
 	ldr r1, [r0]
 	movs r0, 0xFE
 	lsls r0, 11
 	ands r0, r1
 	cmp r0, 0
 	beq _0800875C
-	ldr r0, _08008768
+	ldr r0, _08008768 @ =gSuppressLinkErrorMessage
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08008752
-	ldr r0, _0800876C
+	ldr r0, _0800876C @ =0x03000438
 	str r1, [r0]
-	ldr r1, _08008770
-	ldr r0, _08008774
+	ldr r1, _08008770 @ =0x0300043c
+	ldr r0, _08008774 @ =gLastRecvQueueCount
 	ldrb r0, [r0]
 	str r0, [r1]
-	ldr r1, _08008778
-	ldr r0, _0800877C
+	ldr r1, _08008778 @ =0x03000440
+	ldr r0, _0800877C @ =gLastSendQueueCount
 	ldrb r0, [r0]
 	str r0, [r1]
-	ldr r0, _08008780
+	ldr r0, _08008780 @ =CB2_LinkError
 	bl SetMainCallback2
 _08008752:
-	ldr r1, _08008784
+	ldr r1, _08008784 @ =gLinkErrorOccurred
 	movs r0, 0x1
 	strb r0, [r1]
 	bl CloseLink
@@ -2899,15 +2899,15 @@ CB2_LinkError: @ 8008788
 	movs r2, 0x2
 	bl FillPalette
 	bl ResetTasks
-	ldr r0, _08008804
+	ldr r0, _08008804 @ =VBlankCB_LinkTest
 	bl SetVBlankCallback
-	ldr r4, _08008808
+	ldr r4, _08008808 @ =gWindowConfig_81E7198
 	adds r0, r4, 0
 	bl SetUpWindowConfig
 	adds r0, r4, 0
 	bl InitMenuWindow
 	bl MenuZeroFillScreen
-	ldr r0, _0800880C
+	ldr r0, _0800880C @ =0x04000052
 	movs r1, 0
 	strh r1, [r0]
 	subs r0, 0x40
@@ -2920,9 +2920,9 @@ CB2_LinkError: @ 8008788
 	lsls r3, 1
 	adds r0, r3, 0
 	strh r0, [r2]
-	ldr r0, _08008810
+	ldr r0, _08008810 @ =gUnknown_3001BB4
 	strb r1, [r0]
-	ldr r0, _08008814
+	ldr r0, _08008814 @ =Task_DestroySelf
 	movs r1, 0
 	bl CreateTask
 	bl StopMapMusic
@@ -2930,7 +2930,7 @@ CB2_LinkError: @ 8008788
 	bl AnimateSprites
 	bl BuildOamBuffer
 	bl UpdatePaletteFade
-	ldr r0, _08008818
+	ldr r0, _08008818 @ =CB2_PrintErrorMessage
 	bl SetMainCallback2
 	pop {r4}
 	pop {r0}
@@ -2948,8 +2948,8 @@ _08008818: .4byte CB2_PrintErrorMessage
 CB2_PrintErrorMessage: @ 800881C
 	push {lr}
 	sub sp, 0x40
-	ldr r0, _08008838
-	ldr r1, _0800883C
+	ldr r0, _08008838 @ =gMain
+	ldr r1, _0800883C @ =0x0000043c
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0x1E
@@ -2969,7 +2969,7 @@ _08008840:
 	beq _08008864
 	b _0800886A
 _0800884A:
-	ldr r0, _08008858
+	ldr r0, _08008858 @ =gMultiText_LinkError
 	movs r1, 0x14
 	movs r2, 0x38
 	movs r3, 0x1
@@ -2985,8 +2985,8 @@ _08008864:
 	movs r0, 0x16
 	bl PlaySE
 _0800886A:
-	ldr r0, _08008880
-	ldr r2, _08008884
+	ldr r0, _08008880 @ =gMain
+	ldr r2, _08008884 @ =0x0000043c
 	adds r1, r0, r2
 	ldrb r0, [r1]
 	cmp r0, 0xC8
@@ -3004,7 +3004,7 @@ _08008884: .4byte 0x0000043c
 
 	thumb_func_start GetSioMultiSI
 GetSioMultiSI: @ 8008888
-	ldr r0, _08008894
+	ldr r0, _08008894 @ =0x04000128
 	ldrh r0, [r0]
 	lsrs r0, 2
 	movs r1, 0x1
@@ -3018,7 +3018,7 @@ _08008894: .4byte 0x04000128
 IsSioMultiMaster: @ 8008898
 	push {lr}
 	movs r3, 0
-	ldr r2, _080088BC
+	ldr r2, _080088BC @ =0x04000128
 	ldrh r1, [r2]
 	movs r0, 0x8
 	ands r0, r1
@@ -3040,7 +3040,7 @@ _080088BC: .4byte 0x04000128
 
 	thumb_func_start IsLinkConnectionEstablished
 IsLinkConnectionEstablished: @ 80088C0
-	ldr r0, _080088CC
+	ldr r0, _080088CC @ =gLinkStatus
 	ldr r0, [r0]
 	lsrs r0, 6
 	movs r1, 0x1
@@ -3052,7 +3052,7 @@ _080088CC: .4byte gLinkStatus
 
 	thumb_func_start SetSuppressLinkErrorMessage
 SetSuppressLinkErrorMessage: @ 80088D0
-	ldr r1, _080088D8
+	ldr r1, _080088D8 @ =gSuppressLinkErrorMessage
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
@@ -3061,7 +3061,7 @@ _080088D8: .4byte gSuppressLinkErrorMessage
 
 	thumb_func_start HasLinkErrorOccurred
 HasLinkErrorOccurred: @ 80088DC
-	ldr r0, _080088E4
+	ldr r0, _080088E4 @ =gLinkErrorOccurred
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
@@ -3072,29 +3072,29 @@ _080088E4: .4byte gLinkErrorOccurred
 DisableSerial: @ 80088E8
 	push {r4,r5,lr}
 	sub sp, 0x4
-	ldr r0, _08008928
-	ldr r2, _0800892C
+	ldr r0, _08008928 @ =gLinkSavedIme
+	ldr r2, _0800892C @ =0x04000208
 	ldrh r5, [r2]
 	strh r5, [r0]
 	movs r4, 0
 	strh r4, [r2]
-	ldr r3, _08008930
+	ldr r3, _08008930 @ =0x04000200
 	ldrh r1, [r3]
-	ldr r0, _08008934
+	ldr r0, _08008934 @ =0x0000ff3f
 	ands r0, r1
 	strh r0, [r3]
 	strh r5, [r2]
-	ldr r0, _08008938
+	ldr r0, _08008938 @ =0x04000128
 	strh r4, [r0]
 	subs r0, 0x1A
 	strh r4, [r0]
-	ldr r1, _0800893C
+	ldr r1, _0800893C @ =0x04000202
 	movs r0, 0xC0
 	strh r0, [r1]
 	movs r0, 0
 	str r0, [sp]
-	ldr r1, _08008940
-	ldr r2, _08008944
+	ldr r1, _08008940 @ =gLink
+	ldr r2, _08008944 @ =0x050003f0
 	mov r0, sp
 	bl CpuSet
 	add sp, 0x4
@@ -3116,26 +3116,26 @@ _08008944: .4byte 0x050003f0
 EnableSerial: @ 8008948
 	push {r4-r7,lr}
 	sub sp, 0x4
-	ldr r6, _080089C0
-	ldr r3, _080089C4
+	ldr r6, _080089C0 @ =gLinkSavedIme
+	ldr r3, _080089C4 @ =0x04000208
 	ldrh r2, [r3]
 	movs r4, 0
 	strh r4, [r3]
-	ldr r5, _080089C8
+	ldr r5, _080089C8 @ =0x04000200
 	ldrh r1, [r5]
-	ldr r0, _080089CC
+	ldr r0, _080089CC @ =0x0000ff3f
 	ands r0, r1
 	strh r0, [r5]
 	strh r2, [r3]
-	ldr r0, _080089D0
+	ldr r0, _080089D0 @ =0x04000134
 	strh r4, [r0]
-	ldr r2, _080089D4
+	ldr r2, _080089D4 @ =0x04000128
 	movs r1, 0x80
 	lsls r1, 6
 	adds r0, r1, 0
 	strh r0, [r2]
 	ldrh r0, [r2]
-	ldr r7, _080089D8
+	ldr r7, _080089D8 @ =0x00004003
 	adds r1, r7, 0
 	orrs r0, r1
 	strh r0, [r2]
@@ -3147,27 +3147,27 @@ EnableSerial: @ 8008948
 	orrs r0, r1
 	strh r0, [r5]
 	strh r2, [r3]
-	ldr r0, _080089DC
+	ldr r0, _080089DC @ =0x0400012a
 	strh r4, [r0]
 	movs r5, 0
 	str r5, [sp]
-	ldr r1, _080089E0
-	ldr r2, _080089E4
+	ldr r1, _080089E0 @ =gLink
+	ldr r2, _080089E4 @ =0x050003f0
 	mov r0, sp
 	bl CpuSet
-	ldr r0, _080089E8
+	ldr r0, _080089E8 @ =0x03000450
 	strb r4, [r0]
-	ldr r0, _080089EC
+	ldr r0, _080089EC @ =0x03000452
 	strh r5, [r0]
-	ldr r0, _080089F0
+	ldr r0, _080089F0 @ =0x03000454
 	strh r5, [r0]
-	ldr r0, _080089F4
+	ldr r0, _080089F4 @ =0x03000456
 	strb r4, [r0]
-	ldr r0, _080089F8
+	ldr r0, _080089F8 @ =0x03000457
 	strb r4, [r0]
-	ldr r0, _080089FC
+	ldr r0, _080089FC @ =gLastSendQueueCount
 	strb r4, [r0]
-	ldr r0, _08008A00
+	ldr r0, _08008A00 @ =gLastRecvQueueCount
 	strb r4, [r0]
 	add sp, 0x4
 	pop {r4-r7}
@@ -3208,12 +3208,12 @@ LinkMain1: @ 8008A14
 	adds r4, r0, 0
 	adds r5, r1, 0
 	adds r6, r2, 0
-	ldr r0, _08008A30
+	ldr r0, _08008A30 @ =gLink
 	ldrb r0, [r0, 0x1]
 	cmp r0, 0x4
 	bhi _08008AC6
 	lsls r0, 2
-	ldr r1, _08008A34
+	ldr r1, _08008A34 @ =_08008A38
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -3229,7 +3229,7 @@ _08008A38:
 	.4byte _08008ABA
 _08008A4C:
 	bl DisableSerial
-	ldr r1, _08008A58
+	ldr r1, _08008A58 @ =gLink
 	movs r0, 0x1
 	strb r0, [r1, 0x1]
 	b _08008AC6
@@ -3240,7 +3240,7 @@ _08008A5C:
 	cmp r0, 0x1
 	bne _08008AC6
 	bl EnableSerial
-	ldr r1, _08008A70
+	ldr r1, _08008A70 @ =gLink
 	movs r0, 0x2
 	strb r0, [r1, 0x1]
 	b _08008AC6
@@ -3255,7 +3255,7 @@ _08008A74:
 	bl CheckMasterOrSlave
 	b _08008AC6
 _08008A84:
-	ldr r2, _08008A98
+	ldr r2, _08008A98 @ =gLink
 	ldrb r0, [r2]
 	cmp r0, 0x8
 	bne _08008AC6
@@ -3267,10 +3267,10 @@ _08008A84:
 	.align 2, 0
 _08008A98: .4byte gLink
 _08008A9C:
-	ldr r0, _08008AA8
+	ldr r0, _08008AA8 @ =gLink
 	movs r1, 0
 	strb r1, [r0, 0x1]
-	ldr r0, _08008AAC
+	ldr r0, _08008AAC @ =0x0400012a
 	strh r1, [r0]
 	b _08008AC6
 	.align 2, 0
@@ -3278,7 +3278,7 @@ _08008AA8: .4byte gLink
 _08008AAC: .4byte 0x0400012a
 _08008AB0:
 	bl InitTimer
-	ldr r1, _08008B00
+	ldr r1, _08008B00 @ =gLink
 	movs r0, 0x4
 	strb r0, [r1, 0x1]
 _08008ABA:
@@ -3289,7 +3289,7 @@ _08008ABA:
 _08008AC6:
 	movs r0, 0
 	strb r0, [r4]
-	ldr r1, _08008B00
+	ldr r1, _08008B00 @ =gLink
 	ldrb r2, [r1, 0x2]
 	ldrb r0, [r1, 0x3]
 	lsls r0, 2
@@ -3358,11 +3358,11 @@ _08008B36:
 	thumb_func_start CheckMasterOrSlave
 CheckMasterOrSlave: @ 8008B40
 	push {lr}
-	ldr r0, _08008B5C
+	ldr r0, _08008B5C @ =0x04000128
 	ldr r1, [r0]
 	movs r0, 0xC
 	ands r1, r0
-	ldr r2, _08008B60
+	ldr r2, _08008B60 @ =gLink
 	cmp r1, 0x8
 	bne _08008B64
 	ldrb r0, [r2, 0x2]
@@ -3384,24 +3384,24 @@ _08008B68:
 	thumb_func_start InitTimer
 InitTimer: @ 8008B6C
 	push {r4,lr}
-	ldr r0, _08008BA4
+	ldr r0, _08008BA4 @ =gLink
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _08008B9C
-	ldr r1, _08008BA8
-	ldr r2, _08008BAC
+	ldr r1, _08008BA8 @ =0x0400010c
+	ldr r2, _08008BAC @ =0x0000ff3b
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
 	movs r0, 0x41
 	strh r0, [r1]
-	ldr r0, _08008BB0
-	ldr r2, _08008BB4
+	ldr r0, _08008BB0 @ =gLinkSavedIme
+	ldr r2, _08008BB4 @ =0x04000208
 	ldrh r4, [r2]
 	strh r4, [r0]
 	movs r0, 0
 	strh r0, [r2]
-	ldr r3, _08008BB8
+	ldr r3, _08008BB8 @ =0x04000200
 	ldrh r0, [r3]
 	movs r1, 0x40
 	orrs r0, r1
@@ -3428,14 +3428,14 @@ EnqueueSendCmd: @ 8008BBC
 	mov r5, r8
 	push {r5-r7}
 	adds r3, r0, 0
-	ldr r2, _08008C34
-	ldr r1, _08008C38
+	ldr r2, _08008C34 @ =gLinkSavedIme
+	ldr r1, _08008C38 @ =0x04000208
 	ldrh r0, [r1]
 	strh r0, [r2]
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08008C3C
-	ldr r4, _08008C40
+	ldr r1, _08008C3C @ =gLink
+	ldr r4, _08008C40 @ =0x00000339
 	adds r0, r1, r4
 	ldrb r4, [r0]
 	adds r6, r1, 0
@@ -3455,9 +3455,9 @@ EnqueueSendCmd: @ 8008BBC
 	lsrs r0, 24
 _08008BFA:
 	movs r2, 0
-	ldr r4, _08008C44
+	ldr r4, _08008C44 @ =0x03000452
 	mov r9, r4
-	ldr r1, _08008C48
+	ldr r1, _08008C48 @ =gLastSendQueueCount
 	mov r10, r1
 	lsls r5, r0, 1
 	movs r0, 0x18
@@ -3494,16 +3494,16 @@ _08008C48: .4byte gLastSendQueueCount
 _08008C4C:
 	movs r0, 0x1
 	strb r0, [r6, 0x12]
-	ldr r2, _08008C90
+	ldr r2, _08008C90 @ =0x03000452
 	mov r9, r2
-	ldr r4, _08008C94
+	ldr r4, _08008C94 @ =gLastSendQueueCount
 	mov r10, r4
 _08008C58:
 	mov r1, r9
 	ldrh r0, [r1]
 	cmp r0, 0
 	beq _08008C70
-	ldr r2, _08008C98
+	ldr r2, _08008C98 @ =0x00000339
 	adds r0, r6, r2
 	ldrb r1, [r0]
 	adds r1, 0x1
@@ -3512,11 +3512,11 @@ _08008C58:
 	mov r4, r9
 	strh r2, [r4]
 _08008C70:
-	ldr r1, _08008C9C
-	ldr r2, _08008CA0
+	ldr r1, _08008C9C @ =0x04000208
+	ldr r2, _08008CA0 @ =gLinkSavedIme
 	ldrh r0, [r2]
 	strh r0, [r1]
-	ldr r4, _08008C98
+	ldr r4, _08008C98 @ =0x00000339
 	adds r0, r6, r4
 	ldrb r0, [r0]
 	mov r1, r10
@@ -3544,14 +3544,14 @@ DequeueRecvCmds: @ 8008CA4
 	mov r5, r8
 	push {r5-r7}
 	mov r12, r0
-	ldr r2, _08008D04
-	ldr r1, _08008D08
+	ldr r2, _08008D04 @ =gLinkSavedIme
+	ldr r1, _08008D08 @ =0x04000208
 	ldrh r0, [r1]
 	strh r0, [r2]
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08008D0C
-	ldr r3, _08008D10
+	ldr r1, _08008D0C @ =gLink
+	ldr r3, _08008D10 @ =0x00000fbd
 	adds r0, r1, r3
 	ldrb r0, [r0]
 	adds r7, r1, 0
@@ -3610,7 +3610,7 @@ _08008D24:
 	lsls r0, r3, 3
 	mov r1, r12
 	adds r6, r0, r1
-	ldr r0, _08008DA4
+	ldr r0, _08008DA4 @ =0x0300403c
 	ldrb r1, [r0]
 	lsls r1, 1
 	mov r0, r10
@@ -3640,13 +3640,13 @@ _08008D60:
 	cmp r3, 0x7
 	bls _08008D24
 	adds r2, r7, 0
-	ldr r3, _08008DA8
+	ldr r3, _08008DA8 @ =0x00000fbd
 	adds r1, r2, r3
 	ldrb r0, [r1]
 	subs r0, 0x1
 	movs r3, 0
 	strb r0, [r1]
-	ldr r0, _08008DAC
+	ldr r0, _08008DAC @ =0x00000fbc
 	adds r2, r0
 	ldrb r0, [r2]
 	adds r0, 0x1
@@ -3659,8 +3659,8 @@ _08008D60:
 _08008D8A:
 	strb r3, [r7, 0xC]
 _08008D8C:
-	ldr r1, _08008DB0
-	ldr r2, _08008DB4
+	ldr r1, _08008DB0 @ =0x04000208
+	ldr r2, _08008DB4 @ =gLinkSavedIme
 	ldrh r0, [r2]
 	strh r0, [r1]
 	pop {r3-r5}
@@ -3681,7 +3681,7 @@ _08008DB4: .4byte gLinkSavedIme
 	thumb_func_start LinkVSync
 LinkVSync: @ 8008DB8
 	push {r4,lr}
-	ldr r3, _08008DE0
+	ldr r3, _08008DE0 @ =gLink
 	ldrb r4, [r3]
 	cmp r4, 0
 	beq _08008DF4
@@ -3718,7 +3718,7 @@ _08008DF4:
 	cmp r2, 0x2
 	bne _08008E1E
 _08008DFE:
-	ldr r1, _08008E24
+	ldr r1, _08008E24 @ =0x03000450
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
@@ -3755,8 +3755,8 @@ Timer3Intr: @ 8008E28
 	thumb_func_start SerialCB
 SerialCB: @ 8008E38
 	push {r4,lr}
-	ldr r4, _08008E64
-	ldr r0, _08008E68
+	ldr r4, _08008E64 @ =gLink
+	ldr r0, _08008E68 @ =0x04000128
 	ldr r1, [r0]
 	lsls r0, r1, 26
 	lsrs r0, 30
@@ -3793,19 +3793,19 @@ _08008E86:
 	movs r0, 0x4
 	strb r0, [r4, 0x1]
 _08008E8A:
-	ldr r3, _08008EB0
+	ldr r3, _08008EB0 @ =gLink
 	ldrb r0, [r3, 0xD]
 	adds r0, 0x1
 	movs r2, 0
 	strb r0, [r3, 0xD]
-	ldr r1, _08008EB4
+	ldr r1, _08008EB4 @ =0x03000450
 	strb r2, [r1]
 	lsls r0, 24
 	asrs r0, 24
 	cmp r0, 0x8
 	bne _08008EAA
-	ldr r0, _08008EB8
-	ldr r2, _08008EBC
+	ldr r0, _08008EB8 @ =gLastRecvQueueCount
+	ldr r2, _08008EBC @ =0x00000fbd
 	adds r1, r3, r2
 	ldrb r1, [r1]
 	strb r1, [r0]
@@ -3822,7 +3822,7 @@ _08008EBC: .4byte 0x00000fbd
 
 	thumb_func_start StartTransfer
 StartTransfer: @ 8008EC0
-	ldr r0, _08008ECC
+	ldr r0, _08008ECC @ =0x04000128
 	ldrh r1, [r0]
 	movs r2, 0x80
 	orrs r1, r2
@@ -3839,14 +3839,14 @@ DoHandshake: @ 8008ED0
 	mov r6, r8
 	push {r6,r7}
 	movs r5, 0
-	ldr r6, _08008EEC
-	ldr r0, _08008EF0
+	ldr r6, _08008EEC @ =0x0000ffff
+	ldr r0, _08008EF0 @ =gLink
 	ldrb r1, [r0, 0xE]
 	adds r7, r0, 0
 	cmp r1, 0x1
 	bne _08008EFC
-	ldr r1, _08008EF4
-	ldr r2, _08008EF8
+	ldr r1, _08008EF4 @ =0x0400012a
+	ldr r2, _08008EF8 @ =0x00008fff
 	b _08008F00
 	.align 2, 0
 _08008EEC: .4byte 0x0000ffff
@@ -3854,13 +3854,13 @@ _08008EF0: .4byte gLink
 _08008EF4: .4byte 0x0400012a
 _08008EF8: .4byte 0x00008fff
 _08008EFC:
-	ldr r1, _08008F54
-	ldr r2, _08008F58
+	ldr r1, _08008F54 @ =0x0400012a
+	ldr r2, _08008F58 @ =0x0000b9a0
 _08008F00:
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r2, _08008F5C
-	ldr r3, _08008F60
+	ldr r2, _08008F5C @ =0x03003084
+	ldr r3, _08008F60 @ =0x04000120
 	ldr r0, [r3]
 	ldr r1, [r3, 0x4]
 	str r0, [r2]
@@ -3871,11 +3871,11 @@ _08008F00:
 	str r1, [r3, 0x4]
 	strb r0, [r2, 0xA]
 	movs r4, 0
-	ldr r0, _08008F64
+	ldr r0, _08008F64 @ =0x03000457
 	mov r9, r0
 	mov r8, r2
-	ldr r2, _08008F68
-	ldr r1, _08008F6C
+	ldr r2, _08008F68 @ =0x00008fff
+	ldr r1, _08008F6C @ =0x0000ffff
 	mov r12, r1
 _08008F28:
 	lsls r0, r4, 1
@@ -3884,7 +3884,7 @@ _08008F28:
 	movs r0, 0x4
 	negs r0, r0
 	ands r0, r3
-	ldr r1, _08008F58
+	ldr r1, _08008F58 @ =0x0000b9a0
 	cmp r0, r1
 	beq _08008F40
 	adds r0, r3, 0
@@ -3930,7 +3930,7 @@ _08008F82:
 	cmp r0, r2
 	bne _08008FA4
 	ldrh r1, [r7, 0x4]
-	ldr r0, _08008FA0
+	ldr r0, _08008FA0 @ =0x00008fff
 	cmp r1, r0
 	bne _08008FA4
 	movs r0, 0x1
@@ -3968,18 +3968,18 @@ DoRecv: @ 8008FCC
 	mov r7, r8
 	push {r7}
 	sub sp, 0x8
-	ldr r0, _08009024
+	ldr r0, _08009024 @ =0x04000120
 	ldr r1, [r0, 0x4]
 	ldr r0, [r0]
 	str r0, [sp]
 	str r1, [sp, 0x4]
-	ldr r0, _08009028
+	ldr r0, _08009028 @ =gLink
 	ldrb r1, [r0, 0x16]
 	adds r6, r0, 0
 	cmp r1, 0
 	bne _08009030
 	movs r4, 0
-	ldr r7, _0800902C
+	ldr r7, _0800902C @ =0x03000456
 	ldrb r0, [r6, 0x3]
 	cmp r4, r0
 	bcs _0800901A
@@ -4016,7 +4016,7 @@ _08009024: .4byte 0x04000120
 _08009028: .4byte gLink
 _0800902C: .4byte 0x03000456
 _08009030:
-	ldr r2, _080090A0
+	ldr r2, _080090A0 @ =0x00000fbc
 	adds r1, r6, r2
 	adds r2, 0x1
 	adds r0, r6, r2
@@ -4038,7 +4038,7 @@ _0800904C:
 	cmp r4, r1
 	bcs _080090AC
 	adds r5, r6, 0
-	ldr r7, _080090A4
+	ldr r7, _080090A4 @ =0x03000454
 	lsls r0, 1
 	mov r12, r0
 	movs r2, 0xCF
@@ -4088,11 +4088,11 @@ _080090AC:
 	lsrs r0, 24
 	cmp r0, 0x8
 	bne _080090D0
-	ldr r2, _080090DC
+	ldr r2, _080090DC @ =0x03000454
 	ldrh r0, [r2]
 	cmp r0, 0
 	beq _080090D0
-	ldr r1, _080090E0
+	ldr r1, _080090E0 @ =0x00000fbd
 	adds r0, r6, r1
 	ldrb r1, [r0]
 	adds r1, 0x1
@@ -4114,19 +4114,19 @@ _080090E0: .4byte 0x00000fbd
 	thumb_func_start DoSend
 DoSend: @ 80090E4
 	push {r4,lr}
-	ldr r0, _08009120
+	ldr r0, _08009120 @ =gLink
 	ldrb r1, [r0, 0x16]
 	adds r4, r0, 0
 	cmp r1, 0x8
 	bne _08009136
-	ldr r1, _08009124
+	ldr r1, _08009124 @ =0x0400012a
 	ldrh r0, [r4, 0x14]
 	strh r0, [r1]
-	ldr r1, _08009128
+	ldr r1, _08009128 @ =0x03000451
 	ldrb r2, [r1]
 	cmp r2, 0
 	bne _08009130
-	ldr r0, _0800912C
+	ldr r0, _0800912C @ =0x00000339
 	adds r1, r4, r0
 	ldrb r0, [r1]
 	subs r0, 0x1
@@ -4153,11 +4153,11 @@ _08009130:
 	strb r0, [r1]
 	b _0800918C
 _08009136:
-	ldr r1, _0800915C
+	ldr r1, _0800915C @ =0x03000451
 	ldrb r0, [r1]
 	cmp r0, 0
 	bne _08009152
-	ldr r2, _08009160
+	ldr r2, _08009160 @ =0x00000339
 	adds r0, r4, r2
 	ldrb r0, [r0]
 	cmp r0, 0
@@ -4169,7 +4169,7 @@ _0800914C:
 	cmp r0, 0
 	beq _08009168
 _08009152:
-	ldr r1, _08009164
+	ldr r1, _08009164 @ =0x0400012a
 	movs r0, 0
 	strh r0, [r1]
 	b _08009186
@@ -4178,7 +4178,7 @@ _0800915C: .4byte 0x03000451
 _08009160: .4byte 0x00000339
 _08009164: .4byte 0x0400012a
 _08009168:
-	ldr r3, _08009194
+	ldr r3, _08009194 @ =0x0400012a
 	movs r1, 0xCE
 	lsls r1, 2
 	adds r0, r4, r1
@@ -4208,17 +4208,17 @@ _08009194: .4byte 0x0400012a
 	thumb_func_start StopTimer
 StopTimer: @ 8009198
 	push {lr}
-	ldr r0, _080091B8
+	ldr r0, _080091B8 @ =gLink
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _080091B4
-	ldr r2, _080091BC
+	ldr r2, _080091BC @ =0x0400010e
 	ldrh r1, [r2]
-	ldr r0, _080091C0
+	ldr r0, _080091C0 @ =0x0000ff7f
 	ands r0, r1
 	strh r0, [r2]
-	ldr r1, _080091C4
-	ldr r2, _080091C8
+	ldr r1, _080091C4 @ =0x0400010c
+	ldr r2, _080091C8 @ =0x0000ff3b
 	adds r0, r2, 0
 	strh r0, [r1]
 _080091B4:
@@ -4235,7 +4235,7 @@ _080091C8: .4byte 0x0000ff3b
 	thumb_func_start SendRecvDone
 SendRecvDone: @ 80091CC
 	push {lr}
-	ldr r1, _080091E0
+	ldr r1, _080091E0 @ =gLink
 	ldrb r0, [r1, 0x17]
 	cmp r0, 0x8
 	bne _080091E4
@@ -4249,7 +4249,7 @@ _080091E4:
 	ldrb r0, [r1]
 	cmp r0, 0
 	beq _080091F4
-	ldr r0, _080091F8
+	ldr r0, _080091F8 @ =0x0400010e
 	ldrh r1, [r0]
 	movs r2, 0x80
 	orrs r1, r2
@@ -4264,8 +4264,8 @@ _080091F8: .4byte 0x0400010e
 	thumb_func_start ResetSendBuffer
 ResetSendBuffer: @ 80091FC
 	push {r4-r6,lr}
-	ldr r1, _08009244
-	ldr r2, _08009248
+	ldr r1, _08009244 @ =gLink
+	ldr r2, _08009248 @ =0x00000339
 	adds r0, r1, r2
 	movs r2, 0
 	strb r2, [r0]
@@ -4277,7 +4277,7 @@ ResetSendBuffer: @ 80091FC
 	movs r6, 0x64
 	adds r5, r1, 0
 	adds r5, 0x18
-	ldr r4, _0800924C
+	ldr r4, _0800924C @ =0x0000efff
 _0800921A:
 	movs r2, 0
 	adds r1, r0, 0x1
@@ -4309,12 +4309,12 @@ _0800924C: .4byte 0x0000efff
 	thumb_func_start ResetRecvBuffer
 ResetRecvBuffer: @ 8009250
 	push {r4-r7,lr}
-	ldr r1, _080092B0
-	ldr r2, _080092B4
+	ldr r1, _080092B0 @ =gLink
+	ldr r2, _080092B4 @ =0x00000fbd
 	adds r0, r1, r2
 	movs r2, 0
 	strb r2, [r0]
-	ldr r3, _080092B8
+	ldr r3, _080092B8 @ =0x00000fbc
 	adds r0, r1, r3
 	strb r2, [r0]
 	movs r0, 0x64
@@ -4322,7 +4322,7 @@ ResetRecvBuffer: @ 8009250
 	movs r3, 0xCF
 	lsls r3, 2
 	adds r7, r1, r3
-	ldr r6, _080092BC
+	ldr r6, _080092BC @ =0x0000efff
 _0800926E:
 	movs r3, 0
 	lsls r0, r2, 1

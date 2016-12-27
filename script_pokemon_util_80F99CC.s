@@ -11,12 +11,12 @@ sub_80F99CC: @ 80F9D7C
 	push {lr}
 	sub sp, 0x4
 	bl ScriptContext2_Enable
-	ldr r0, _080F9DB4
+	ldr r0, _080F9DB4 @ =sub_80F9A8C
 	movs r1, 0xA
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080F9DB8
+	ldr r2, _080F9DB8 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -42,12 +42,12 @@ sub_80F9A0C: @ 80F9DBC
 	push {lr}
 	sub sp, 0x4
 	bl ScriptContext2_Enable
-	ldr r0, _080F9DF4
+	ldr r0, _080F9DF4 @ =sub_80F9A8C
 	movs r1, 0xA
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080F9DF8
+	ldr r2, _080F9DF8 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -73,12 +73,12 @@ sub_80F9A4C: @ 80F9DFC
 	push {lr}
 	sub sp, 0x4
 	bl ScriptContext2_Enable
-	ldr r0, _080F9E34
+	ldr r0, _080F9E34 @ =sub_80F9A8C
 	movs r1, 0xA
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080F9E38
+	ldr r2, _080F9E38 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -104,7 +104,7 @@ sub_80F9A8C: @ 80F9E3C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r2, _080F9E74
+	ldr r2, _080F9E74 @ =gPaletteFade
 	ldrb r1, [r2, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -114,7 +114,7 @@ sub_80F9A8C: @ 80F9E3C
 	movs r1, 0x80
 	orrs r0, r1
 	strb r0, [r2, 0x8]
-	ldr r1, _080F9E78
+	ldr r1, _080F9E78 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -136,7 +136,7 @@ _080F9E78: .4byte gTasks
 	thumb_func_start sub_80F9ACC
 sub_80F9ACC: @ 80F9E7C
 	push {r4,r5,lr}
-	ldr r1, _080F9E9C
+	ldr r1, _080F9E9C @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r0, r1, r2
@@ -148,7 +148,7 @@ sub_80F9ACC: @ 80F9E7C
 	b _080F9FA6
 _080F9E92:
 	lsls r0, 2
-	ldr r1, _080F9EA0
+	ldr r1, _080F9EA0 @ =_080F9EA4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -166,11 +166,11 @@ _080F9EA4:
 	.4byte _080F9F60
 	.4byte _080F9F78
 _080F9EC4:
-	ldr r0, _080F9EEC
+	ldr r0, _080F9EEC @ =0x00000266
 	adds r5, r4, r0
 	movs r1, 0
 	ldrsh r3, [r5, r1]
-	ldr r0, _080F9EF0
+	ldr r0, _080F9EF0 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r3, r0
 	bge _080F9EF8
@@ -181,7 +181,7 @@ _080F9EC4:
 	ldrb r1, [r5]
 	movs r2, 0x64
 	muls r2, r3
-	ldr r3, _080F9EF4
+	ldr r3, _080F9EF4 @ =gPlayerParty
 	adds r2, r3
 	bl sub_806D90C
 	b _080F9FA0
@@ -214,7 +214,7 @@ _080F9F1E:
 	lsls r1, 2
 	adds r0, r4, r1
 	ldrb r0, [r0]
-	ldr r2, _080F9F44
+	ldr r2, _080F9F44 @ =0x00000266
 	adds r5, r4, r2
 	ldrb r1, [r5]
 	bl sub_806BD58
@@ -235,7 +235,7 @@ _080F9F48:
 	b _080F9F64
 _080F9F4E:
 	bl sub_806E0C4
-	ldr r1, _080F9F5C
+	ldr r1, _080F9F5C @ =0x0201b000
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r0
@@ -245,7 +245,7 @@ _080F9F5C: .4byte 0x0201b000
 _080F9F60:
 	bl sub_80F9C00
 _080F9F64:
-	ldr r1, _080F9F74
+	ldr r1, _080F9F74 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r1, r2
@@ -257,7 +257,7 @@ _080F9F6C:
 	.align 2, 0
 _080F9F74: .4byte 0x0201b000
 _080F9F78:
-	ldr r0, _080F9F9C
+	ldr r0, _080F9F9C @ =0x00000266
 	adds r5, r4, r0
 	ldrb r0, [r5]
 	bl sub_806B58C
@@ -295,7 +295,7 @@ sub_80F9C00: @ 80F9FB0
 _080F9FB6:
 	movs r0, 0x64
 	muls r0, r4
-	ldr r1, _080F9FD4
+	ldr r1, _080F9FD4 @ =gPlayerParty
 	adds r0, r1
 	bl sub_80AE47C
 	lsls r0, 24
@@ -303,7 +303,7 @@ _080F9FB6:
 	cmp r0, 0x4
 	bhi _080FA002
 	lsls r0, 2
-	ldr r1, _080F9FD8
+	ldr r1, _080F9FD8 @ =_080F9FDC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -331,7 +331,7 @@ _080FA002:
 	lsls r0, 24
 	lsrs r4, r0, 24
 _080FA008:
-	ldr r0, _080FA018
+	ldr r0, _080FA018 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r4, r0
 	bcc _080F9FB6
@@ -347,7 +347,7 @@ sub_80F9C6C: @ 80FA01C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080FA044
+	ldr r0, _080FA044 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -369,9 +369,9 @@ _080FA048:
 	bl PlaySE
 	adds r0, r4, 0
 	bl sub_806CA38
-	ldr r1, _080FA068
+	ldr r1, _080FA068 @ =gUnknown_02038694
 	strb r0, [r1]
-	ldr r2, _080FA06C
+	ldr r2, _080FA06C @ =gSpecialVar_0x8004
 	ldrb r0, [r1]
 	strh r0, [r2]
 	adds r0, r4, 0
@@ -383,10 +383,10 @@ _080FA06C: .4byte gSpecialVar_0x8004
 _080FA070:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _080FA090
+	ldr r1, _080FA090 @ =gUnknown_02038694
 	movs r0, 0xFF
 	strb r0, [r1]
-	ldr r1, _080FA094
+	ldr r1, _080FA094 @ =gSpecialVar_0x8004
 	movs r0, 0xFF
 	strh r0, [r1]
 	adds r0, r4, 0
@@ -403,7 +403,7 @@ _080FA094: .4byte gSpecialVar_0x8004
 	thumb_func_start sub_80F9CE8
 sub_80F9CE8: @ 80FA098
 	push {r4,r5,lr}
-	ldr r1, _080FA0B8
+	ldr r1, _080FA0B8 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r0, r1, r2
@@ -415,7 +415,7 @@ sub_80F9CE8: @ 80FA098
 	b _080FA1C2
 _080FA0AE:
 	lsls r0, 2
-	ldr r1, _080FA0BC
+	ldr r1, _080FA0BC @ =_080FA0C0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -433,11 +433,11 @@ _080FA0C0:
 	.4byte _080FA17C
 	.4byte _080FA194
 _080FA0E0:
-	ldr r0, _080FA108
+	ldr r0, _080FA108 @ =0x00000266
 	adds r5, r4, r0
 	movs r1, 0
 	ldrsh r3, [r5, r1]
-	ldr r0, _080FA10C
+	ldr r0, _080FA10C @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r3, r0
 	bge _080FA114
@@ -448,7 +448,7 @@ _080FA0E0:
 	ldrb r1, [r5]
 	movs r2, 0x64
 	muls r2, r3
-	ldr r3, _080FA110
+	ldr r3, _080FA110 @ =gPlayerParty
 	adds r2, r3
 	bl sub_806D90C
 	b _080FA1BC
@@ -481,7 +481,7 @@ _080FA13A:
 	lsls r1, 2
 	adds r0, r4, r1
 	ldrb r0, [r0]
-	ldr r2, _080FA160
+	ldr r2, _080FA160 @ =0x00000266
 	adds r5, r4, r2
 	ldrb r1, [r5]
 	bl sub_806BD58
@@ -502,7 +502,7 @@ _080FA164:
 	b _080FA180
 _080FA16A:
 	bl sub_806E0C4
-	ldr r1, _080FA178
+	ldr r1, _080FA178 @ =0x0201b000
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r0
@@ -512,7 +512,7 @@ _080FA178: .4byte 0x0201b000
 _080FA17C:
 	bl sub_80F9E1C
 _080FA180:
-	ldr r1, _080FA190
+	ldr r1, _080FA190 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r1, r2
@@ -524,7 +524,7 @@ _080FA188:
 	.align 2, 0
 _080FA190: .4byte 0x0201b000
 _080FA194:
-	ldr r0, _080FA1B8
+	ldr r0, _080FA1B8 @ =0x00000266
 	adds r5, r4, r0
 	ldrb r0, [r5]
 	bl sub_806B58C
@@ -562,7 +562,7 @@ sub_80F9E1C: @ 80FA1CC
 _080FA1D2:
 	movs r0, 0x64
 	muls r0, r4
-	ldr r1, _080FA1F0
+	ldr r1, _080FA1F0 @ =gPlayerParty
 	adds r0, r1
 	bl sub_8040574
 	lsls r0, 24
@@ -583,7 +583,7 @@ _080FA1FC:
 	lsls r0, 24
 	lsrs r4, r0, 24
 _080FA202:
-	ldr r0, _080FA210
+	ldr r0, _080FA210 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r4, r0
 	bcc _080FA1D2
@@ -599,7 +599,7 @@ sub_80F9E64: @ 80FA214
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r0, _080FA23C
+	ldr r0, _080FA23C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -619,17 +619,17 @@ _080FA23C: .4byte gPaletteFade
 _080FA240:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r4, _080FA274
+	ldr r4, _080FA274 @ =gSpecialVar_0x8004
 	adds r0, r6, 0
 	bl sub_806CA38
 	lsls r0, 24
 	lsrs r0, 24
 	strh r0, [r4]
-	ldr r5, _080FA278
+	ldr r5, _080FA278 @ =gSpecialVar_0x8005
 	ldrh r1, [r4]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _080FA27C
+	ldr r1, _080FA27C @ =gPlayerParty
 	adds r0, r1
 	bl sub_8040574
 	lsls r0, 24
@@ -645,7 +645,7 @@ _080FA27C: .4byte gPlayerParty
 _080FA280:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _080FA298
+	ldr r1, _080FA298 @ =gSpecialVar_0x8004
 	movs r0, 0xFF
 	strh r0, [r1]
 	adds r0, r6, 0
@@ -662,23 +662,23 @@ _080FA298: .4byte gSpecialVar_0x8004
 sub_80F9EEC: @ 80FA29C
 	push {r4,lr}
 	sub sp, 0x4
-	ldr r0, _080FA2D0
-	ldr r1, _080FA2D4
+	ldr r0, _080FA2D0 @ =gPlayerParty
+	ldr r1, _080FA2D4 @ =gSpecialVar_0x8004
 	ldrb r1, [r1]
-	ldr r2, _080FA2D8
+	ldr r2, _080FA2D8 @ =gPlayerPartyCount
 	ldrb r2, [r2]
 	subs r2, 0x1
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r3, _080FA2DC
+	ldr r3, _080FA2DC @ =c2_exit_to_overworld_2_switch
 	movs r4, 0
 	str r4, [sp]
 	bl sub_809D9F0
-	ldr r1, _080FA2E0
+	ldr r1, _080FA2E0 @ =0x02018000
 	movs r0, 0x3
 	strb r0, [r1, 0x8]
-	ldr r1, _080FA2E4
-	ldr r0, _080FA2E8
+	ldr r1, _080FA2E4 @ =gUnknown_0300485C
+	ldr r0, _080FA2E8 @ =sub_8080990
 	str r0, [r1]
 	add sp, 0x4
 	pop {r4}
@@ -697,17 +697,17 @@ _080FA2E8: .4byte sub_8080990
 	thumb_func_start sub_80F9F3C
 sub_80F9F3C: @ 80FA2EC
 	push {r4,r5,lr}
-	ldr r1, _080FA328
+	ldr r1, _080FA328 @ =gScriptResult
 	movs r0, 0
 	strh r0, [r1]
 	movs r4, 0
 	adds r5, r1, 0
 _080FA2F8:
-	ldr r0, _080FA32C
+	ldr r0, _080FA32C @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _080FA330
+	ldr r1, _080FA330 @ =gPlayerParty
 	adds r0, r1
 	adds r1, r4, 0
 	adds r1, 0xD
@@ -735,14 +735,14 @@ _080FA330: .4byte gPlayerParty
 	thumb_func_start sub_80F9F84
 sub_80F9F84: @ 80FA334
 	push {r4,r5,lr}
-	ldr r0, _080FA374
+	ldr r0, _080FA374 @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	movs r0, 0x64
 	adds r5, r1, 0
 	muls r5, r0
-	ldr r0, _080FA378
+	ldr r0, _080FA378 @ =gPlayerParty
 	adds r5, r0
-	ldr r0, _080FA37C
+	ldr r0, _080FA37C @ =gSpecialVar_0x8005
 	ldrh r1, [r0]
 	adds r1, 0xD
 	adds r0, r5, 0
@@ -750,13 +750,13 @@ sub_80F9F84: @ 80FA334
 	adds r4, r0, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r1, _080FA380
+	ldr r1, _080FA380 @ =gStringVar1
 	adds r0, r5, 0
 	bl GetMonNickname
-	ldr r0, _080FA384
+	ldr r0, _080FA384 @ =gStringVar2
 	movs r1, 0xD
 	muls r1, r4
-	ldr r2, _080FA388
+	ldr r2, _080FA388 @ =gMoveNames
 	adds r1, r2
 	bl StringCopy
 	pop {r4,r5}
@@ -829,7 +829,7 @@ sub_80F9FDC: @ 80FA38C
 	mov r6, sp
 	adds r6, 0x6
 	strb r0, [r6]
-	ldr r1, _080FA488
+	ldr r1, _080FA488 @ =gUnknown_08208238
 	adds r0, r5, r1
 	ldrb r0, [r0]
 	mov r9, r0
@@ -898,14 +898,14 @@ sub_80FA0DC: @ 80FA48C
 	push {r4-r6,lr}
 	mov r6, r8
 	push {r6}
-	ldr r0, _080FA4EC
+	ldr r0, _080FA4EC @ =gSpecialVar_0x8004
 	mov r8, r0
 	ldrh r0, [r0]
 	movs r6, 0x64
 	muls r0, r6
-	ldr r5, _080FA4F0
+	ldr r5, _080FA4F0 @ =gPlayerParty
 	adds r0, r5
-	ldr r4, _080FA4F4
+	ldr r4, _080FA4F4 @ =gSpecialVar_0x8005
 	ldrb r2, [r4]
 	movs r1, 0
 	bl SetMonMoveSlot
@@ -919,11 +919,11 @@ sub_80FA0DC: @ 80FA48C
 	cmp r4, 0x2
 	bhi _080FA4E0
 _080FA4BE:
-	ldr r0, _080FA4EC
+	ldr r0, _080FA4EC @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _080FA4F0
+	ldr r1, _080FA4F0 @ =gPlayerParty
 	adds r0, r1
 	lsls r1, r4, 24
 	lsrs r1, 24
@@ -950,13 +950,13 @@ _080FA4F4: .4byte gSpecialVar_0x8005
 	thumb_func_start sub_80FA148
 sub_80FA148: @ 80FA4F8
 	push {r4,lr}
-	ldr r0, _080FA520
+	ldr r0, _080FA520 @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _080FA524
+	ldr r1, _080FA524 @ =gPlayerParty
 	adds r0, r1
-	ldr r4, _080FA528
+	ldr r4, _080FA528 @ =gScriptResult
 	movs r1, 0
 	strh r1, [r4]
 	movs r1, 0x2D

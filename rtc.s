@@ -8,8 +8,8 @@
 
 	thumb_func_start RtcDisableInterrupts
 RtcDisableInterrupts: @ 80092C0
-	ldr r2, _080092D0
-	ldr r1, _080092D4
+	ldr r2, _080092D0 @ =0x0300046e
+	ldr r1, _080092D4 @ =0x04000208
 	ldrh r0, [r1]
 	strh r0, [r2]
 	movs r0, 0
@@ -22,8 +22,8 @@ _080092D4: .4byte 0x04000208
 
 	thumb_func_start RtcRestoreInterrupts
 RtcRestoreInterrupts: @ 80092D8
-	ldr r0, _080092E4
-	ldr r1, _080092E8
+	ldr r0, _080092E4 @ =0x04000208
+	ldr r1, _080092E8 @ =0x0300046e
 	ldrh r1, [r1]
 	strh r1, [r0]
 	bx lr
@@ -110,7 +110,7 @@ ConvertDateToDayCount: @ 800934C
 	cmp r4, 0
 	ble _0800938C
 _08009368:
-	ldr r1, _080093D0
+	ldr r1, _080093D0 @ =0x0000016d
 	adds r0, r5, r1
 	lsls r0, 16
 	lsrs r5, r0, 16
@@ -132,7 +132,7 @@ _0800938C:
 	subs r0, r6, 0x1
 	cmp r0, 0
 	ble _080093A4
-	ldr r1, _080093D4
+	ldr r1, _080093D4 @ =0x081f4598
 	adds r4, r0, 0
 _08009396:
 	ldm r1!, {r0}
@@ -202,13 +202,13 @@ RtcGetDayCount: @ 80093D8
 	thumb_func_start RtcInit
 RtcInit: @ 8009414
 	push {r4,r5,lr}
-	ldr r5, _08009440
+	ldr r5, _08009440 @ =0x03000458
 	movs r0, 0
 	strh r0, [r5]
 	bl RtcDisableInterrupts
 	bl SiiRtcUnprotect
 	bl SiiRtcProbe
-	ldr r4, _08009444
+	ldr r4, _08009444 @ =0x0300046c
 	strb r0, [r4]
 	bl RtcRestoreInterrupts
 	ldrb r4, [r4]
@@ -230,12 +230,12 @@ _08009448:
 	movs r0, 0x2
 _08009452:
 	strh r0, [r5]
-	ldr r4, _0800946C
+	ldr r4, _0800946C @ =0x03000460
 	adds r0, r4, 0
 	bl RtcGetRawInfo
 	adds r0, r4, 0
 	bl RtcCheckInfo
-	ldr r1, _08009470
+	ldr r1, _08009470 @ =0x03000458
 	strh r0, [r1]
 _08009466:
 	pop {r4,r5}
@@ -248,7 +248,7 @@ _08009470: .4byte 0x03000458
 
 	thumb_func_start RtcGetErrorStatus
 RtcGetErrorStatus: @ 8009474
-	ldr r0, _0800947C
+	ldr r0, _0800947C @ =0x03000458
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
@@ -259,7 +259,7 @@ _0800947C: .4byte 0x03000458
 RtcGetInfo: @ 8009480
 	push {r4,lr}
 	adds r2, r0, 0
-	ldr r0, _0800949C
+	ldr r0, _0800949C @ =0x03000458
 	ldrh r1, [r0]
 	movs r0, 0xFF
 	lsls r0, 4
@@ -267,7 +267,7 @@ RtcGetInfo: @ 8009480
 	cmp r0, 0
 	beq _080094A4
 	adds r1, r2, 0
-	ldr r0, _080094A0
+	ldr r0, _080094A0 @ =0x081f458c
 	ldm r0!, {r2-r4}
 	stm r1!, {r2-r4}
 	b _080094AA
@@ -388,14 +388,14 @@ _08009562:
 	bl IsLeapYear
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800957C
+	ldr r1, _0800957C @ =0x081f4598
 	ldr r1, [r1, 0x4]
 	adds r0, r1
 	b _0800958A
 	.align 2, 0
 _0800957C: .4byte 0x081f4598
 _08009580:
-	ldr r0, _080095F0
+	ldr r0, _080095F0 @ =0x081f4598
 	subs r1, r6, 0x1
 	lsls r1, 2
 	adds r1, r0
@@ -525,7 +525,7 @@ FormatHexTime: @ 8009640
 	thumb_func_start FormatHexRtcTime
 FormatHexRtcTime: @ 8009678
 	push {lr}
-	ldr r3, _0800968C
+	ldr r3, _0800968C @ =0x03000460
 	ldrb r1, [r3, 0x4]
 	ldrb r2, [r3, 0x5]
 	ldrb r3, [r3, 0x6]
@@ -664,11 +664,11 @@ _0800977E:
 	thumb_func_start RtcCalcLocalTime
 RtcCalcLocalTime: @ 8009784
 	push {r4,lr}
-	ldr r4, _080097A0
+	ldr r4, _080097A0 @ =0x03000460
 	adds r0, r4, 0
 	bl RtcGetInfo
-	ldr r1, _080097A4
-	ldr r2, _080097A8
+	ldr r1, _080097A4 @ =gLocalTime
+	ldr r2, _080097A8 @ =0x02024f3c
 	adds r0, r4, 0
 	bl RtcCalcTimeDifference
 	pop {r4}
@@ -696,15 +696,15 @@ RtcInitLocalTimeOffset: @ 80097AC
 	thumb_func_start RtcCalcLocalTimeOffset
 RtcCalcLocalTimeOffset: @ 80097C0
 	push {r4,r5,lr}
-	ldr r4, _080097E4
+	ldr r4, _080097E4 @ =gLocalTime
 	strh r0, [r4]
 	strb r1, [r4, 0x2]
 	strb r2, [r4, 0x3]
 	strb r3, [r4, 0x4]
-	ldr r5, _080097E8
+	ldr r5, _080097E8 @ =0x03000460
 	adds r0, r5, 0
 	bl RtcGetInfo
-	ldr r1, _080097EC
+	ldr r1, _080097EC @ =0x02024f3c
 	adds r0, r5, 0
 	adds r2, r4, 0
 	bl RtcCalcTimeDifference
@@ -778,7 +778,7 @@ _08009850:
 	thumb_func_start RtcGetMinuteCount
 RtcGetMinuteCount: @ 8009858
 	push {r4,lr}
-	ldr r4, _0800988C
+	ldr r4, _0800988C @ =0x03000460
 	adds r0, r4, 0
 	bl RtcGetInfo
 	adds r0, r4, 0

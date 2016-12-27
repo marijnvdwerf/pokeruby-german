@@ -8,10 +8,10 @@
 
 	thumb_func_start PlayTimeCounter_Reset
 PlayTimeCounter_Reset: @ 8052F68
-	ldr r1, _08052F80
+	ldr r1, _08052F80 @ =0x0300057c
 	movs r0, 0
 	strb r0, [r1]
-	ldr r1, _08052F84
+	ldr r1, _08052F84 @ =gSaveBlock2
 	movs r2, 0
 	movs r0, 0
 	strh r0, [r1, 0xE]
@@ -27,12 +27,12 @@ _08052F84: .4byte gSaveBlock2
 	thumb_func_start PlayTimeCounter_Start
 PlayTimeCounter_Start: @ 8052F88
 	push {lr}
-	ldr r1, _08052FA4
+	ldr r1, _08052FA4 @ =0x0300057c
 	movs r0, 0x1
 	strb r0, [r1]
-	ldr r0, _08052FA8
+	ldr r0, _08052FA8 @ =gSaveBlock2
 	ldrh r1, [r0, 0xE]
-	ldr r0, _08052FAC
+	ldr r0, _08052FAC @ =0x000003e7
 	cmp r1, r0
 	bls _08052F9E
 	bl PlayTimeCounter_SetToMax
@@ -47,7 +47,7 @@ _08052FAC: .4byte 0x000003e7
 
 	thumb_func_start PlayTimeCounter_Stop
 PlayTimeCounter_Stop: @ 8052FB0
-	ldr r1, _08052FB8
+	ldr r1, _08052FB8 @ =0x0300057c
 	movs r0, 0
 	strb r0, [r1]
 	bx lr
@@ -58,11 +58,11 @@ _08052FB8: .4byte 0x0300057c
 	thumb_func_start PlayTimeCounter_Update
 PlayTimeCounter_Update: @ 8052FBC
 	push {lr}
-	ldr r0, _08053010
+	ldr r0, _08053010 @ =0x0300057c
 	ldrb r0, [r0]
 	cmp r0, 0x1
 	bne _0805300C
-	ldr r1, _08053014
+	ldr r1, _08053014 @ =gSaveBlock2
 	ldrb r0, [r1, 0x12]
 	adds r0, 0x1
 	movs r2, 0
@@ -92,7 +92,7 @@ PlayTimeCounter_Update: @ 8052FBC
 	adds r0, 0x1
 	strh r0, [r1, 0xE]
 	lsls r0, 16
-	ldr r1, _08053018
+	ldr r1, _08053018 @ =0x03e70000
 	cmp r0, r1
 	bls _0805300C
 	bl PlayTimeCounter_SetToMax
@@ -107,11 +107,11 @@ _08053018: .4byte 0x03e70000
 
 	thumb_func_start PlayTimeCounter_SetToMax
 PlayTimeCounter_SetToMax: @ 805301C
-	ldr r1, _08053034
+	ldr r1, _08053034 @ =0x0300057c
 	movs r0, 0x2
 	strb r0, [r1]
-	ldr r1, _08053038
-	ldr r0, _0805303C
+	ldr r1, _08053038 @ =gSaveBlock2
+	ldr r0, _0805303C @ =0x000003e7
 	strh r0, [r1, 0xE]
 	movs r0, 0x3B
 	strb r0, [r1, 0x10]

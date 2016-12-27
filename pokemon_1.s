@@ -81,7 +81,7 @@ ZeroMonData: @ 803A8AC
 	thumb_func_start ZeroPlayerPartyMons
 ZeroPlayerPartyMons: @ 803A92C
 	push {r4,r5,lr}
-	ldr r4, _0803A948
+	ldr r4, _0803A948 @ =gPlayerParty
 	movs r0, 0xFA
 	lsls r0, 1
 	adds r5, r4, r0
@@ -101,7 +101,7 @@ _0803A948: .4byte gPlayerParty
 	thumb_func_start ZeroEnemyPartyMons
 ZeroEnemyPartyMons: @ 803A94C
 	push {r4,r5,lr}
-	ldr r4, _0803A968
+	ldr r4, _0803A968 @ =gEnemyParty
 	movs r0, 0xFA
 	lsls r0, 1
 	adds r5, r4, r0
@@ -224,9 +224,9 @@ _0803AA2C:
 	mov r1, r10
 	cmp r1, 0x2
 	bne _0803AA84
-	ldr r2, _0803AA7C
+	ldr r2, _0803AA7C @ =0xffff0000
 	mov r8, r2
-	ldr r6, _0803AA80
+	ldr r6, _0803AA80 @ =0x0000ffff
 _0803AA48:
 	bl Random
 	adds r4, r0, 0
@@ -263,7 +263,7 @@ _0803AA84:
 	str r0, [sp, 0x18]
 	b _0803AAA8
 _0803AA90:
-	ldr r2, _0803ABD4
+	ldr r2, _0803ABD4 @ =gSaveBlock2
 	ldrb r1, [r2, 0xA]
 	ldrb r0, [r2, 0xB]
 	lsls r0, 8
@@ -296,11 +296,11 @@ _0803AAA8:
 	movs r1, 0x2
 	mov r2, sp
 	bl SetBoxMonData
-	ldr r2, _0803ABD8
+	ldr r2, _0803ABD8 @ =gGameLanguage
 	adds r0, r7, 0
 	movs r1, 0x3
 	bl SetBoxMonData
-	ldr r5, _0803ABD4
+	ldr r5, _0803ABD4 @ =gSaveBlock2
 	adds r0, r7, 0
 	movs r1, 0x7
 	adds r2, r5, 0
@@ -310,7 +310,7 @@ _0803AAA8:
 	mov r2, sp
 	adds r2, 0xE
 	bl SetBoxMonData
-	ldr r4, _0803ABDC
+	ldr r4, _0803ABDC @ =gBaseStats
 	mov r2, sp
 	ldrh r1, [r2, 0xE]
 	lsls r0, r1, 3
@@ -325,7 +325,7 @@ _0803AAA8:
 	mov r3, sp
 	ldrb r0, [r3, 0x10]
 	lsls r0, 2
-	ldr r1, _0803ABE0
+	ldr r1, _0803ABE0 @ =gExperienceTables
 	adds r0, r1
 	adds r2, r0
 	adds r0, r7, 0
@@ -353,7 +353,7 @@ _0803AAA8:
 	movs r1, 0x24
 	add r2, sp, 0x10
 	bl SetBoxMonData
-	ldr r2, _0803ABE4
+	ldr r2, _0803ABE4 @ =gGameVersion
 	adds r0, r7, 0
 	movs r1, 0x25
 	bl SetBoxMonData
@@ -470,7 +470,7 @@ _0803ABE8:
 	adds r2, r4, 0
 	bl SetBoxMonData
 _0803AC70:
-	ldr r2, _0803ACAC
+	ldr r2, _0803ACAC @ =gBaseStats
 	mov r3, sp
 	ldrh r1, [r3, 0xE]
 	lsls r0, r1, 3
@@ -1183,7 +1183,7 @@ _0803B188:
 	ands r0, r5
 	lsls r0, 5
 	ldrh r2, [r6, 0x18]
-	ldr r1, _0803B2EC
+	ldr r1, _0803B2EC @ =0xfffffc1f
 	ands r1, r2
 	orrs r1, r0
 	strh r1, [r6, 0x18]
@@ -1207,7 +1207,7 @@ _0803B188:
 	ands r1, r0
 	lsls r1, 15
 	ldr r0, [r6, 0x18]
-	ldr r2, _0803B2F0
+	ldr r2, _0803B2F0 @ =0xfff07fff
 	ands r0, r2
 	orrs r0, r1
 	str r0, [r6, 0x18]
@@ -1218,7 +1218,7 @@ _0803B188:
 	ands r0, r5
 	lsls r0, 4
 	ldrh r2, [r6, 0x1A]
-	ldr r1, _0803B2F4
+	ldr r1, _0803B2F4 @ =0xfffffe0f
 	ands r1, r2
 	orrs r1, r0
 	strh r1, [r6, 0x1A]
@@ -1435,7 +1435,7 @@ CalculateMonStats: @ 803B38C
 	movs r1, 0x38
 	mov r2, sp
 	bl SetMonData
-	ldr r0, _0803B474
+	ldr r0, _0803B474 @ =0x0000012f
 	cmp r7, r0
 	bne _0803B478
 	movs r0, 0x1
@@ -1445,7 +1445,7 @@ CalculateMonStats: @ 803B38C
 	.align 2, 0
 _0803B474: .4byte 0x0000012f
 _0803B478:
-	ldr r1, _0803B644
+	ldr r1, _0803B644 @ =gBaseStats
 	lsls r2, r7, 3
 	subs r0, r2, r7
 	lsls r0, 2
@@ -1469,12 +1469,12 @@ _0803B492:
 	adds r0, 0xA
 	str r0, [sp, 0x4]
 _0803B4A6:
-	ldr r1, _0803B648
+	ldr r1, _0803B648 @ =0x02000000
 	add r2, sp, 0x4
 	ldrb r0, [r2]
 	mov r3, r8
 	subs r0, r3
-	ldr r3, _0803B64C
+	ldr r3, _0803B64C @ =0x000160fa
 	adds r1, r3
 	strb r0, [r1]
 	lsls r0, 24
@@ -1486,7 +1486,7 @@ _0803B4C0:
 	adds r0, r5, 0
 	movs r1, 0x3A
 	bl SetMonData
-	ldr r0, _0803B644
+	ldr r0, _0803B644 @ =gBaseStats
 	subs r1, r6, r7
 	lsls r1, 2
 	adds r6, r1, r0
@@ -1650,7 +1650,7 @@ _0803B5F8:
 	movs r1, 0x3F
 	adds r2, r4, 0
 	bl SetMonData
-	ldr r0, _0803B650
+	ldr r0, _0803B650 @ =0x0000012f
 	cmp r7, r0
 	bne _0803B654
 	ldr r0, [sp, 0x1C]
@@ -1752,8 +1752,8 @@ GetLevelFromMonExp: @ 803B6D8
 	bl GetMonData
 	adds r3, r0, 0
 	movs r2, 0x1
-	ldr r6, _0803B73C
-	ldr r1, _0803B740
+	ldr r6, _0803B73C @ =gExperienceTables
+	ldr r1, _0803B740 @ =gBaseStats
 	lsls r0, r4, 3
 	subs r0, r4
 	lsls r0, 2
@@ -1808,8 +1808,8 @@ GetLevelFromBoxMonExp: @ 803B744
 	bl GetBoxMonData
 	adds r3, r0, 0
 	movs r2, 0x1
-	ldr r6, _0803B7A8
-	ldr r1, _0803B7AC
+	ldr r6, _0803B7A8 @ =gExperienceTables
+	ldr r1, _0803B7AC @ =gBaseStats
 	lsls r0, r4, 3
 	subs r0, r4
 	lsls r0, 2
@@ -1890,7 +1890,7 @@ _0803B7D2:
 	lsls r2, r0, 1
 	adds r2, r0
 	lsls r2, 2
-	ldr r0, _0803B80C
+	ldr r0, _0803B80C @ =0x08208100
 	adds r2, r0
 	adds r0, r7, 0
 	bl SetBoxMonData
@@ -1902,7 +1902,7 @@ _0803B810:
 	ldrh r1, [r6]
 	cmp r0, r1
 	bne _0803B820
-	ldr r0, _0803B81C
+	ldr r0, _0803B81C @ =0x0000fffe
 	b _0803B828
 	.align 2, 0
 _0803B81C: .4byte 0x0000fffe
@@ -1910,7 +1910,7 @@ _0803B820:
 	adds r5, 0x1
 	cmp r5, 0x3
 	ble _0803B7D2
-	ldr r0, _0803B830
+	ldr r0, _0803B830 @ =0x0000ffff
 _0803B828:
 	add sp, 0x4
 	pop {r4-r7}
@@ -1928,7 +1928,7 @@ GiveMoveToBattleMon: @ 803B834
 	movs r3, 0
 	adds r5, r0, 0
 	adds r5, 0x24
-	ldr r2, _0803B860
+	ldr r2, _0803B860 @ =gBattleMoves
 	lsls r1, r4, 1
 	adds r1, r4
 	lsls r1, 2
@@ -1952,7 +1952,7 @@ _0803B864:
 	adds r3, 0x1
 	cmp r3, 0x3
 	ble _0803B84E
-	ldr r0, _0803B874
+	ldr r0, _0803B874 @ =0x0000ffff
 _0803B86E:
 	pop {r4,r5}
 	pop {r1}
@@ -1982,7 +1982,7 @@ SetMonMoveSlot: @ 803B878
 	lsls r2, r0, 1
 	adds r2, r0
 	lsls r2, 2
-	ldr r0, _0803B8B4
+	ldr r0, _0803B8B4 @ =0x08208100
 	adds r2, r0
 	adds r0, r5, 0
 	adds r1, r4, 0
@@ -2009,7 +2009,7 @@ SetBattleMonMoveSlot: @ 803B8B8
 	strh r1, [r3]
 	adds r0, 0x24
 	adds r0, r2
-	ldr r3, _0803B8E4
+	ldr r3, _0803B8E4 @ =gBattleMoves
 	lsls r2, r1, 1
 	adds r2, r1
 	lsls r2, 2
@@ -2051,19 +2051,19 @@ GiveBoxMonInitialMoveset: @ 803B8F4
 	lsls r0, 24
 	lsrs r0, 24
 	mov r10, r0
-	ldr r0, _0803B990
+	ldr r0, _0803B990 @ =gLevelUpLearnsets
 	lsls r6, r4, 2
 	adds r0, r6, r0
 	ldr r0, [r0]
 	ldrh r1, [r0]
-	ldr r2, _0803B994
+	ldr r2, _0803B994 @ =0xffff0000
 	lsrs r0, r2, 16
 	cmp r1, r0
 	beq _0803B980
 	mov r9, r2
 	movs r3, 0
 _0803B932:
-	ldr r0, _0803B990
+	ldr r0, _0803B990 @ =gLevelUpLearnsets
 	adds r7, r6, r0
 	ldr r0, [r7]
 	adds r0, r3, r0
@@ -2076,7 +2076,7 @@ _0803B932:
 	lsls r1, r4, 9
 	cmp r0, r1
 	bgt _0803B980
-	ldr r1, _0803B998
+	ldr r1, _0803B998 @ =0x000001ff
 	adds r0, r1, 0
 	adds r4, r0, 0
 	ands r4, r2
@@ -2145,11 +2145,11 @@ sub_803B7C8: @ 803B99C
 	mov r10, r0
 	cmp r4, 0
 	beq _0803BA34
-	ldr r4, _0803BA20
+	ldr r4, _0803BA20 @ =byte_2024E88
 	mov r1, sp
 	ldrb r1, [r1]
 	strb r1, [r4]
-	ldr r2, _0803BA24
+	ldr r2, _0803BA24 @ =gLevelUpLearnsets
 	mov r5, r9
 	lsls r3, r5, 2
 	adds r5, r3, r2
@@ -2166,7 +2166,7 @@ sub_803B7C8: @ 803B99C
 	cmp r0, r4
 	beq _0803BA5C
 	adds r2, r6, 0
-	ldr r0, _0803BA28
+	ldr r0, _0803BA28 @ =0x0000ffff
 	mov r12, r0
 	adds r6, r7, 0
 	adds r3, r5, 0
@@ -2193,11 +2193,11 @@ _0803BA2C:
 	cmp r0, r4
 	bne _0803BA08
 _0803BA34:
-	ldr r3, _0803BA98
+	ldr r3, _0803BA98 @ =gLevelUpLearnsets
 	mov r1, r9
 	lsls r4, r1, 2
 	adds r1, r4, r3
-	ldr r2, _0803BA9C
+	ldr r2, _0803BA9C @ =byte_2024E88
 	ldrb r0, [r2]
 	ldr r1, [r1]
 	lsls r0, 1
@@ -2214,7 +2214,7 @@ _0803BA34:
 	cmp r0, r1
 	bne _0803BA86
 _0803BA5C:
-	ldr r2, _0803BAA0
+	ldr r2, _0803BAA0 @ =word_2024E82
 	mov r0, r12
 	adds r1, r3, r0
 	ldrb r0, [r6]
@@ -2222,7 +2222,7 @@ _0803BA5C:
 	lsls r0, 1
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _0803BAA4
+	ldr r0, _0803BAA4 @ =0x000001ff
 	ands r0, r1
 	strh r0, [r2]
 	ldrb r0, [r6]
@@ -2298,7 +2298,7 @@ _0803BAC4:
 	mov r0, sp
 	mov r2, r8
 	strh r2, [r0, 0x6]
-	ldr r1, _0803BB50
+	ldr r1, _0803BB50 @ =gBattleMoves
 	mov r2, r8
 	lsls r0, r2, 1
 	add r0, r8
@@ -2384,7 +2384,7 @@ _0803BB70:
 	mov r0, sp
 	mov r2, r8
 	strh r2, [r0, 0x6]
-	ldr r1, _0803BBFC
+	ldr r1, _0803BBFC @ =gBattleMoves
 	mov r2, r8
 	lsls r0, r2, 1
 	add r0, r8

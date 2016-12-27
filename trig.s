@@ -10,7 +10,7 @@
 de_sub_8040FE0: @ 8040FE0
 	push {lr}
 	lsls r0, 24
-	ldr r0, _08040FF0
+	ldr r0, _08040FF0 @ =gTrainerClassNames
 	movs r1, 0xA9
 	lsls r1, 1
 	adds r0, r1
@@ -24,8 +24,8 @@ _08040FF0: .4byte gTrainerClassNames
 de_sub_8040FF4: @ 8040FF4
 	push {lr}
 	lsls r0, 24
-	ldr r0, _08041004
-	ldr r1, _08041008
+	ldr r0, _08041004 @ =gTrainerClassNames
+	ldr r1, _08041008 @ =0x00000256
 	adds r0, r1
 	pop {r1}
 	bx r1
@@ -38,8 +38,8 @@ _08041008: .4byte 0x00000256
 de_sub_804100C: @ 804100C
 	push {lr}
 	lsls r0, 24
-	ldr r0, _0804101C
-	ldr r1, _08041020
+	ldr r0, _0804101C @ =gTrainerClassNames
+	ldr r1, _08041020 @ =0x00000145
 	adds r0, r1
 	pop {r1}
 	bx r1
@@ -74,7 +74,7 @@ _0804104A:
 	bl GetSecretBaseTrainerNameIndex
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r0, _08041060
+	ldr r0, _08041060 @ =0x02017000
 	ldrb r0, [r0, 0x1]
 	lsls r0, 27
 	lsrs r2, r0, 31
@@ -111,7 +111,7 @@ _08041094:
 	bl de_sub_8040FE0
 	b _08041102
 _0804109C:
-	ldr r1, _080410C0
+	ldr r1, _080410C0 @ =gTrainers
 	lsls r4, r6, 2
 	adds r0, r4, r6
 	lsls r0, 3
@@ -142,7 +142,7 @@ _080410CC:
 _080410D4:
 	cmp r5, 0x19
 	bne _080410F8
-	ldr r0, _080410F4
+	ldr r0, _080410F4 @ =gTrainers
 	adds r1, r4, r6
 	lsls r1, 3
 	adds r1, r0
@@ -161,7 +161,7 @@ _080410F8:
 	movs r0, 0xD
 	adds r1, r5, 0
 	muls r1, r0
-	ldr r0, _08041108
+	ldr r0, _08041108 @ =gTrainerClassNames
 	adds r0, r1, r0
 _08041102:
 	pop {r4-r6}
@@ -181,7 +181,7 @@ de_sub_804110C: @ 804110C
 Sin: @ 8041110
 	lsls r1, 16
 	asrs r1, 16
-	ldr r2, _08041128
+	ldr r2, _08041128 @ =gSineTable
 	lsls r0, 16
 	asrs r0, 15
 	adds r0, r2
@@ -199,7 +199,7 @@ _08041128: .4byte gSineTable
 Cos: @ 804112C
 	lsls r1, 16
 	asrs r1, 16
-	ldr r2, _08041148
+	ldr r2, _08041148 @ =gSineTable
 	lsls r0, 16
 	asrs r0, 15
 	adds r0, 0x80
@@ -231,7 +231,7 @@ Sin2: @ 804114C
 	bl __udivsi3
 	movs r1, 0x1
 	ands r0, r1
-	ldr r1, _08041180
+	ldr r1, _08041180 @ =gSineDegreeTable
 	lsls r4, 1
 	adds r4, r1
 	ldrh r1, [r4]

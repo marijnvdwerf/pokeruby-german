@@ -56,12 +56,12 @@ sub_80C77A0: @ 80C799C
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080C79C8
+	ldr r1, _080C79C8 @ =0x03004b38
 	adds r4, r0, r1
-	ldr r0, _080C79CC
+	ldr r0, _080C79CC @ =0x000040b4
 	bl GetVarPointer
 	adds r6, r0, 0
-	ldr r7, _080C79D0
+	ldr r7, _080C79D0 @ =0x02025738
 	movs r0, 0
 	ldrsh r2, [r4, r0]
 	cmp r2, 0x1
@@ -82,7 +82,7 @@ _080C79D4:
 	beq _080C7A74
 	b _080C7A92
 _080C79DE:
-	ldr r0, _080C79F4
+	ldr r0, _080C79F4 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -95,7 +95,7 @@ _080C79DE:
 	.align 2, 0
 _080C79F4: .4byte gPaletteFade
 _080C79F8:
-	ldr r0, _080C7A2C
+	ldr r0, _080C7A2C @ =gMain
 	ldrh r1, [r0, 0x2E]
 	adds r0, r2, 0
 	ands r0, r1
@@ -144,14 +144,14 @@ _080C7A48:
 	bne _080C7A5C
 	ldrb r1, [r7, 0x1]
 	ldrb r2, [r7]
-	ldr r3, _080C7A58
+	ldr r3, _080C7A58 @ =gUnknown_083D295F
 	b _080C7A62
 	.align 2, 0
 _080C7A58: .4byte gUnknown_083D295F
 _080C7A5C:
 	ldrb r1, [r7, 0x1]
 	ldrb r2, [r7]
-	ldr r3, _080C7A70
+	ldr r3, _080C7A70 @ =gUnknown_083D2961
 _080C7A62:
 	movs r0, 0xFF
 	bl exec_movement
@@ -161,7 +161,7 @@ _080C7A62:
 	.align 2, 0
 _080C7A70: .4byte gUnknown_083D2961
 _080C7A74:
-	ldr r0, _080C7A98
+	ldr r0, _080C7A98 @ =0x00004001
 	bl FlagReset
 	movs r0, 0x80
 	lsls r0, 7
@@ -183,7 +183,7 @@ _080C7A98: .4byte 0x00004001
 sub_80C78A0: @ 80C7A9C
 	push {r4,lr}
 	sub sp, 0x4
-	ldr r1, _080C7AF0
+	ldr r1, _080C7AF0 @ =SpriteCallbackDummy
 	movs r0, 0
 	str r0, [sp]
 	movs r0, 0x8C
@@ -192,7 +192,7 @@ sub_80C78A0: @ 80C7A9C
 	bl AddPseudoFieldObject
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080C7AF4
+	ldr r2, _080C7AF4 @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
@@ -204,7 +204,7 @@ sub_80C78A0: @ 80C7A9C
 	negs r0, r0
 	ands r0, r1
 	strb r0, [r2]
-	ldr r0, _080C7AF8
+	ldr r0, _080C7AF8 @ =0x000040b4
 	bl VarGet
 	lsls r0, 16
 	lsrs r0, 16
@@ -241,8 +241,8 @@ _080C7B0E:
 sub_80C791C: @ 80C7B18
 	push {lr}
 	bl sub_80C78A0
-	ldr r2, _080C7B48
-	ldr r0, _080C7B4C
+	ldr r2, _080C7B48 @ =gMapObjects
+	ldr r0, _080C7B4C @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -253,7 +253,7 @@ sub_80C791C: @ 80C7B18
 	orrs r1, r2
 	strb r1, [r0, 0x1]
 	bl pal_fill_black
-	ldr r0, _080C7B50
+	ldr r0, _080C7B50 @ =sub_80C77A0
 	movs r1, 0x50
 	bl CreateTask
 	bl ScriptContext2_Enable
@@ -268,14 +268,14 @@ _080C7B50: .4byte sub_80C77A0
 	thumb_func_start sub_80C7958
 sub_80C7958: @ 80C7B54
 	push {lr}
-	ldr r0, _080C7B8C
+	ldr r0, _080C7B8C @ =0x0000082d
 	bl FlagSet
-	ldr r0, _080C7B90
+	ldr r0, _080C7B90 @ =0x00004001
 	bl FlagSet
 	movs r0, 0x80
 	lsls r0, 7
 	bl FlagSet
-	ldr r0, _080C7B94
+	ldr r0, _080C7B94 @ =gSaveBlock1
 	movs r1, 0x4
 	ldrsb r1, [r0, r1]
 	movs r2, 0x5

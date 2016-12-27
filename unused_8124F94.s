@@ -18,12 +18,12 @@ unref_sub_8124F94: @ 8125314
 	str r1, [r0, 0x4]
 	mov r1, sp
 	strh r3, [r1]
-	ldr r2, _0812534C
+	ldr r2, _0812534C @ =0x040000d4
 	str r1, [r2]
 	adds r1, r0, 0
 	adds r1, 0x8
 	str r1, [r2, 0x4]
-	ldr r1, _08125350
+	ldr r1, _08125350 @ =0x81000040
 	str r1, [r2, 0x8]
 	ldr r1, [r2, 0x8]
 	mov r1, sp
@@ -31,7 +31,7 @@ unref_sub_8124F94: @ 8125314
 	str r1, [r2]
 	adds r0, 0x88
 	str r0, [r2, 0x4]
-	ldr r0, _08125354
+	ldr r0, _08125354 @ =0x810000c0
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
 	add sp, 0x4
@@ -47,7 +47,7 @@ unref_sub_8124FD8: @ 8125358
 	push {r4-r7,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r7, _08125364
+	ldr r7, _08125364 @ =0x040000d4
 	b _0812540A
 	.align 2, 0
 _08125364: .4byte 0x040000d4
@@ -219,7 +219,7 @@ _0812548E:
 	thumb_func_start unref_sub_8125118
 unref_sub_8125118: @ 8125498
 	push {r4-r7,lr}
-	ldr r4, _081254CC
+	ldr r4, _081254CC @ =0xfffffe00
 	add sp, r4
 	adds r5, r0, 0
 	adds r6, r1, 0

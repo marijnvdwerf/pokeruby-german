@@ -9,8 +9,8 @@
 	thumb_func_start sub_80C4BF0
 sub_80C4BF0: @ 80C4E20
 	push {r4,lr}
-	ldr r2, _080C4E4C
-	ldr r1, _080C4E50
+	ldr r2, _080C4E4C @ =gSaveBlock1
+	ldr r1, _080C4E50 @ =gContestMons
 	ldrb r3, [r1, 0x15]
 	movs r4, 0x9B
 	lsls r4, 5
@@ -24,7 +24,7 @@ sub_80C4BF0: @ 80C4E20
 	strh r3, [r0]
 	adds r1, 0x95
 	ldrb r0, [r1]
-	ldr r1, _080C4E54
+	ldr r1, _080C4E54 @ =0x00001364
 	adds r2, r1
 	strh r0, [r2]
 	pop {r4}
@@ -39,7 +39,7 @@ _080C4E54: .4byte 0x00001364
 	thumb_func_start sub_80C4C28
 sub_80C4C28: @ 80C4E58
 	push {lr}
-	ldr r0, _080C4E70
+	ldr r0, _080C4E70 @ =gSpecialVar_0x8005
 	ldrb r0, [r0]
 	adds r1, r0, 0
 	cmp r0, 0x1
@@ -67,7 +67,7 @@ _080C4E82:
 _080C4E86:
 	movs r1, 0x64
 _080C4E88:
-	ldr r0, _080C4E90
+	ldr r0, _080C4E90 @ =gSpecialVar_0x8004
 	strh r1, [r0]
 	pop {r0}
 	bx r0
@@ -88,12 +88,12 @@ sub_80C4C64: @ 80C4E94
 	thumb_func_start sub_80C4C78
 sub_80C4C78: @ 80C4EA8
 	push {lr}
-	ldr r0, _080C4EBC
+	ldr r0, _080C4EBC @ =gScriptContestCategory
 	ldrh r0, [r0]
 	cmp r0, 0x4
 	bhi _080C4EE8
 	lsls r0, 2
-	ldr r1, _080C4EC0
+	ldr r1, _080C4EC0 @ =_080C4EC4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -122,15 +122,15 @@ _080C4EE4:
 _080C4EE8:
 	movs r0, 0xC
 _080C4EEA:
-	ldr r1, _080C4F00
+	ldr r1, _080C4F00 @ =gSaveBlock1
 	lsls r0, 5
 	adds r0, r1
-	ldr r1, _080C4F04
+	ldr r1, _080C4F04 @ =0x00002e04
 	adds r0, r1
 	ldrh r1, [r0]
 	cmp r1, 0
 	bne _080C4F0C
-	ldr r0, _080C4F08
+	ldr r0, _080C4F08 @ =gSpecialVar_0x8004
 	strh r1, [r0]
 	b _080C4F12
 	.align 2, 0
@@ -138,7 +138,7 @@ _080C4F00: .4byte gSaveBlock1
 _080C4F04: .4byte 0x00002e04
 _080C4F08: .4byte gSpecialVar_0x8004
 _080C4F0C:
-	ldr r1, _080C4F18
+	ldr r1, _080C4F18 @ =gSpecialVar_0x8004
 	movs r0, 0x1
 	strh r0, [r1]
 _080C4F12:
@@ -160,26 +160,26 @@ sub_80C4CEC: @ 80C4F1C
 	thumb_func_start sub_80C4CF8
 sub_80C4CF8: @ 80C4F28
 	push {lr}
-	ldr r0, _080C4F58
-	ldr r1, _080C4F5C
+	ldr r0, _080C4F58 @ =gUnknown_02038690
+	ldr r1, _080C4F5C @ =gContestPlayerMonIndex
 	ldrb r2, [r1]
 	adds r0, r2, r0
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _080C4F70
-	ldr r0, _080C4F60
+	ldr r0, _080C4F60 @ =gScriptContestRank
 	ldrh r0, [r0]
 	cmp r0, 0x3
 	bne _080C4F70
-	ldr r1, _080C4F64
+	ldr r1, _080C4F64 @ =gUnknown_02038678
 	lsls r0, r2, 1
 	adds r0, r1
 	movs r2, 0
 	ldrsh r1, [r0, r2]
-	ldr r0, _080C4F68
+	ldr r0, _080C4F68 @ =0x0000031f
 	cmp r1, r0
 	ble _080C4F70
-	ldr r1, _080C4F6C
+	ldr r1, _080C4F6C @ =gSpecialVar_0x8004
 	movs r0, 0x1
 	b _080C4F74
 	.align 2, 0
@@ -190,7 +190,7 @@ _080C4F64: .4byte gUnknown_02038678
 _080C4F68: .4byte 0x0000031f
 _080C4F6C: .4byte gSpecialVar_0x8004
 _080C4F70:
-	ldr r1, _080C4F7C
+	ldr r1, _080C4F7C @ =gSpecialVar_0x8004
 	movs r0, 0
 _080C4F74:
 	strh r0, [r1]
@@ -204,8 +204,8 @@ _080C4F7C: .4byte gSpecialVar_0x8004
 sub_80C4D50: @ 80C4F80
 	push {lr}
 	movs r3, 0
-	ldr r0, _080C4FA8
-	ldr r1, _080C4FAC
+	ldr r0, _080C4FA8 @ =gSaveBlock1
+	ldr r1, _080C4FAC @ =0x00002f04
 	adds r2, r0, r1
 	movs r1, 0x4
 _080C4F8C:
@@ -236,11 +236,11 @@ sub_80C4D80: @ 80C4FB0
 	mov r5, r8
 	push {r5-r7}
 	sub sp, 0x8
-	ldr r0, _080C50D0
+	ldr r0, _080C50D0 @ =gUnknown_02038670
 	mov r12, r0
-	ldr r1, _080C50D4
+	ldr r1, _080C50D4 @ =gSpecialVar_0x8006
 	mov r8, r1
-	ldr r2, _080C50D8
+	ldr r2, _080C50D8 @ =gStringVar1
 	mov r9, r2
 	mov r2, r12
 	mov r1, sp
@@ -370,17 +370,17 @@ _080C50A8:
 	lsrs r1, 24
 	mov r0, r9
 	bl sub_80C4698
-	ldr r0, _080C50DC
+	ldr r0, _080C50DC @ =gUnknown_0203869A
 	ldrb r1, [r0]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	beq _080C50E8
-	ldr r0, _080C50E0
+	ldr r0, _080C50E0 @ =gStringVar2
 	lsls r1, r6, 3
 	subs r1, r6
 	lsls r1, 2
-	ldr r2, _080C50E4
+	ldr r2, _080C50E4 @ =0x03002988
 	adds r1, r2
 	bl sub_80C4674
 	b _080C50F4
@@ -392,9 +392,9 @@ _080C50DC: .4byte gUnknown_0203869A
 _080C50E0: .4byte gStringVar2
 _080C50E4: .4byte 0x03002988
 _080C50E8:
-	ldr r0, _080C5108
+	ldr r0, _080C5108 @ =gStringVar2
 	lsls r1, r6, 6
-	ldr r2, _080C510C
+	ldr r2, _080C510C @ =gUnknown_0203857D
 	adds r1, r2
 	bl sub_80C4674
 _080C50F4:
@@ -405,7 +405,7 @@ _080C50F4:
 	cmp r7, r0
 	bne _080C5114
 _080C5100:
-	ldr r0, _080C5110
+	ldr r0, _080C5110 @ =gSpecialVar_0x8006
 	strh r4, [r0]
 	b _080C511A
 	.align 2, 0
@@ -413,7 +413,7 @@ _080C5108: .4byte gStringVar2
 _080C510C: .4byte gUnknown_0203857D
 _080C5110: .4byte gSpecialVar_0x8006
 _080C5114:
-	ldr r1, _080C512C
+	ldr r1, _080C512C @ =gSpecialVar_0x8006
 	adds r0, r4, 0x4
 	strh r0, [r1]
 _080C511A:
@@ -432,7 +432,7 @@ _080C512C: .4byte gSpecialVar_0x8006
 	thumb_func_start ShowContestWinnerCleanup
 ShowContestWinnerCleanup: @ 80C5130
 	push {lr}
-	ldr r0, _080C513C
+	ldr r0, _080C513C @ =c2_exit_to_overworld_1_continue_scripts_restart_music
 	bl SetMainCallback2
 	pop {r0}
 	bx r0
@@ -443,13 +443,13 @@ _080C513C: .4byte c2_exit_to_overworld_1_continue_scripts_restart_music
 	thumb_func_start ShowContestWinner
 ShowContestWinner: @ 80C5140
 	push {r4-r6,lr}
-	ldr r6, _080C5184
+	ldr r6, _080C5184 @ =gUnknown_0203856C
 	ldrb r0, [r6]
 	cmp r0, 0
 	beq _080C5170
 	bl sub_80AAF30
-	ldr r4, _080C5188
-	ldr r0, _080C518C
+	ldr r4, _080C5188 @ =0x02000000
+	ldr r0, _080C518C @ =0x00015ddf
 	adds r1, r4, r0
 	movs r5, 0
 	movs r0, 0x1
@@ -457,17 +457,17 @@ ShowContestWinner: @ 80C5140
 	movs r0, 0xFE
 	movs r1, 0
 	bl sub_80B2C4C
-	ldr r1, _080C5190
+	ldr r1, _080C5190 @ =0x00015dde
 	adds r4, r1
 	strb r0, [r4]
 	movs r0, 0x3
 	bl sub_80B2A7C
 	strb r5, [r6]
 _080C5170:
-	ldr r0, _080C5194
+	ldr r0, _080C5194 @ =CB2_ContestPainting
 	bl SetMainCallback2
-	ldr r1, _080C5198
-	ldr r0, _080C519C
+	ldr r1, _080C5198 @ =gMain
+	ldr r0, _080C519C @ =ShowContestWinnerCleanup
 	str r0, [r1, 0x8]
 	pop {r4-r6}
 	pop {r0}
@@ -485,21 +485,21 @@ _080C519C: .4byte ShowContestWinnerCleanup
 	thumb_func_start sub_80C4F70
 sub_80C4F70: @ 80C51A0
 	push {r4,lr}
-	ldr r0, _080C51D8
-	ldr r4, _080C51DC
+	ldr r0, _080C51D8 @ =0x00004010
+	ldr r4, _080C51DC @ =gContestMons
 	ldrb r1, [r4, 0x15]
 	bl VarSet
-	ldr r0, _080C51E0
+	ldr r0, _080C51E0 @ =0x00004011
 	adds r1, r4, 0
 	adds r1, 0x55
 	ldrb r1, [r1]
 	bl VarSet
-	ldr r0, _080C51E4
+	ldr r0, _080C51E4 @ =0x00004012
 	adds r1, r4, 0
 	adds r1, 0x95
 	ldrb r1, [r1]
 	bl VarSet
-	ldr r0, _080C51E8
+	ldr r0, _080C51E8 @ =0x00004013
 	adds r1, r4, 0
 	adds r1, 0xD5
 	ldrb r1, [r1]
@@ -519,11 +519,11 @@ _080C51E8: .4byte 0x00004013
 GiveMonArtistRibbon: @ 80C51EC
 	push {r4-r6,lr}
 	sub sp, 0x4
-	ldr r6, _080C524C
+	ldr r6, _080C524C @ =gUnknown_02038694
 	ldrb r0, [r6]
 	movs r5, 0x64
 	muls r0, r5
-	ldr r4, _080C5250
+	ldr r4, _080C5250 @ =gPlayerParty
 	adds r0, r4
 	movs r1, 0x46
 	bl GetMonData
@@ -533,23 +533,23 @@ GiveMonArtistRibbon: @ 80C51EC
 	strb r0, [r1]
 	cmp r0, 0
 	bne _080C5268
-	ldr r0, _080C5254
-	ldr r1, _080C5258
+	ldr r0, _080C5254 @ =gUnknown_02038690
+	ldr r1, _080C5258 @ =gContestPlayerMonIndex
 	ldrb r2, [r1]
 	adds r0, r2, r0
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _080C5268
-	ldr r0, _080C525C
+	ldr r0, _080C525C @ =gScriptContestRank
 	ldrh r0, [r0]
 	cmp r0, 0x3
 	bne _080C5268
-	ldr r1, _080C5260
+	ldr r1, _080C5260 @ =gUnknown_02038678
 	lsls r0, r2, 1
 	adds r0, r1
 	movs r2, 0
 	ldrsh r1, [r0, r2]
-	ldr r0, _080C5264
+	ldr r0, _080C5264 @ =0x0000031f
 	cmp r1, r0
 	ble _080C5268
 	movs r1, 0x1
@@ -582,7 +582,7 @@ _080C526A:
 
 	thumb_func_start sub_80C5044
 sub_80C5044: @ 80C5274
-	ldr r0, _080C527C
+	ldr r0, _080C527C @ =gUnknown_0203856C
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
@@ -597,7 +597,7 @@ ShowContestEntryMonPic: @ 80C5280
 	mov r5, r8
 	push {r5-r7}
 	sub sp, 0xC
-	ldr r4, _080C536C
+	ldr r4, _080C536C @ =sub_80C5190
 	adds r0, r4, 0
 	bl FindTaskIdByFunc
 	lsls r0, 24
@@ -611,8 +611,8 @@ ShowContestEntryMonPic: @ 80C5280
 	movs r2, 0x13
 	movs r3, 0xD
 	bl MenuDrawTextWindow
-	ldr r2, _080C5370
-	ldr r0, _080C5374
+	ldr r2, _080C5370 @ =gContestMons
+	ldr r0, _080C5374 @ =gSpecialVar_0x8006
 	ldrh r1, [r0]
 	lsls r1, 6
 	adds r0, r1, r2
@@ -631,7 +631,7 @@ ShowContestEntryMonPic: @ 80C5280
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080C5378
+	ldr r1, _080C5378 @ =gTasks
 	lsls r5, r0, 2
 	adds r5, r0
 	lsls r5, 3
@@ -640,14 +640,14 @@ ShowContestEntryMonPic: @ 80C5280
 	strh r0, [r5, 0x8]
 	strh r6, [r5, 0xA]
 	lsls r0, r6, 3
-	ldr r1, _080C537C
+	ldr r1, _080C537C @ =gMonFrontPicTable
 	adds r0, r1
-	ldr r1, _080C5380
+	ldr r1, _080C5380 @ =gMonFrontPicCoords
 	lsls r2, r6, 2
 	adds r2, r1
 	ldrb r1, [r2]
 	ldrb r2, [r2, 0x1]
-	ldr r4, _080C5384
+	ldr r4, _080C5384 @ =gUnknown_081FAF4C
 	ldr r3, [r4]
 	ldr r4, [r4, 0x4]
 	str r4, [sp]
@@ -664,7 +664,7 @@ ShowContestEntryMonPic: @ 80C5280
 	adds r0, r6, 0
 	movs r1, 0x1
 	bl GetMonSpriteTemplate_803C56C
-	ldr r0, _080C5388
+	ldr r0, _080C5388 @ =gUnknown_02024E8C
 	ldrh r1, [r4, 0x4]
 	strh r1, [r0, 0x2]
 	movs r1, 0x78
@@ -677,14 +677,14 @@ ShowContestEntryMonPic: @ 80C5280
 	mov r1, r10
 	strh r1, [r5, 0xE]
 	strh r7, [r5, 0x10]
-	ldr r3, _080C538C
+	ldr r3, _080C538C @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
 	adds r0, r3, 0
 	adds r0, 0x1C
 	adds r0, r1, r0
-	ldr r2, _080C5390
+	ldr r2, _080C5390 @ =SpriteCallbackDummy
 	str r2, [r0]
 	adds r1, r3
 	ldrb r2, [r1, 0x5]
@@ -717,13 +717,13 @@ _080C5390: .4byte SpriteCallbackDummy
 	thumb_func_start sub_80C5164
 sub_80C5164: @ 80C5394
 	push {lr}
-	ldr r0, _080C53B8
+	ldr r0, _080C53B8 @ =sub_80C5190
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0xFF
 	beq _080C53B4
-	ldr r0, _080C53BC
+	ldr r0, _080C53BC @ =gTasks
 	lsls r1, r2, 2
 	adds r1, r2
 	lsls r1, 3
@@ -747,7 +747,7 @@ sub_80C5190: @ 80C53C0
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080C53E4
+	ldr r1, _080C53E4 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -772,7 +772,7 @@ _080C53F2:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080C5430
+	ldr r1, _080C5430 @ =gSprites
 	adds r5, r0, r1
 	ldrb r0, [r5, 0x5]
 	lsrs r0, 4
@@ -821,13 +821,13 @@ _080C5452:
 	thumb_func_start ScriptGetMultiplayerId
 ScriptGetMultiplayerId: @ 80C5458
 	push {r4,lr}
-	ldr r0, _080C5474
+	ldr r0, _080C5474 @ =gUnknown_0203869A
 	ldrb r1, [r0]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	beq _080C547C
-	ldr r4, _080C5478
+	ldr r4, _080C5478 @ =gScriptResult
 	bl GetMultiplayerId
 	lsls r0, 24
 	lsrs r0, 24
@@ -837,7 +837,7 @@ ScriptGetMultiplayerId: @ 80C5458
 _080C5474: .4byte gUnknown_0203869A
 _080C5478: .4byte gScriptResult
 _080C547C:
-	ldr r1, _080C5488
+	ldr r1, _080C5488 @ =gScriptResult
 	movs r0, 0x4
 	strh r0, [r1]
 _080C5482:
@@ -851,21 +851,21 @@ _080C5488: .4byte gScriptResult
 	thumb_func_start ScriptRandom
 ScriptRandom: @ 80C548C
 	push {r4,lr}
-	ldr r0, _080C54B0
+	ldr r0, _080C54B0 @ =gUnknown_0203869A
 	ldrb r1, [r0]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	beq _080C54C4
-	ldr r2, _080C54B4
+	ldr r2, _080C54B4 @ =gUnknown_03005D28
 	ldr r1, [r2]
-	ldr r0, _080C54B8
+	ldr r0, _080C54B8 @ =0x41c64e6d
 	muls r0, r1
-	ldr r1, _080C54BC
+	ldr r1, _080C54BC @ =0x00006073
 	adds r0, r1
 	str r0, [r2]
 	lsrs r0, 16
-	ldr r4, _080C54C0
+	ldr r4, _080C54C0 @ =gScriptResult
 	b _080C54CE
 	.align 2, 0
 _080C54B0: .4byte gUnknown_0203869A
@@ -874,7 +874,7 @@ _080C54B8: .4byte 0x41c64e6d
 _080C54BC: .4byte 0x00006073
 _080C54C0: .4byte gScriptResult
 _080C54C4:
-	ldr r4, _080C54DC
+	ldr r4, _080C54DC @ =gScriptResult
 	bl Random
 	lsls r0, 16
 	lsrs r0, 16
@@ -899,11 +899,11 @@ HealPlayerParty: @ 80C54E0
 	sub sp, 0x4
 	movs r0, 0
 	mov r8, r0
-	ldr r0, _080C559C
+	ldr r0, _080C559C @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r8, r0
 	bcs _080C558C
-	ldr r1, _080C55A0
+	ldr r1, _080C55A0 @ =gPlayerParty
 	mov r10, r1
 	mov r6, sp
 _080C54FE:
@@ -968,7 +968,7 @@ _080C5534:
 	lsls r0, r1, 24
 	lsrs r0, 24
 	mov r8, r0
-	ldr r0, _080C559C
+	ldr r0, _080C559C @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r8, r0
 	bcc _080C54FE
@@ -1092,7 +1092,7 @@ _080C5670:
 	cmp r1, 0x2
 	bne _080C5678
 _080C5674:
-	ldr r0, _080C567C
+	ldr r0, _080C567C @ =gScriptResult
 	strh r1, [r0]
 _080C5678:
 	pop {r0}
@@ -1113,7 +1113,7 @@ _080C568C:
 	movs r0, 0x64
 	adds r1, r5, 0
 	muls r1, r0
-	ldr r0, _080C56BC
+	ldr r0, _080C56BC @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0x41
@@ -1158,7 +1158,7 @@ GetNameOfEnigmaBerryInPlayerParty: @ 80C56D0
 	bl ItemIdToBerryType
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080C56FC
+	ldr r1, _080C56FC @ =gStringVar1
 	bl GetBerryNameByBerryType
 _080C56F2:
 	adds r0, r4, 0
@@ -1184,7 +1184,7 @@ ScriptWildBattle: @ 80C5700
 	lsls r7, r2, 16
 	lsrs r6, r7, 16
 	bl ZeroEnemyPartyMons
-	ldr r0, _080C575C
+	ldr r0, _080C575C @ =gEnemyParty
 	mov r8, r0
 	movs r0, 0
 	str r0, [sp]
@@ -1229,7 +1229,7 @@ ScriptSetMonMoveSlot: @ 80C5760
 	lsrs r2, 24
 	cmp r3, 0x6
 	bls _080C577C
-	ldr r0, _080C5790
+	ldr r0, _080C5790 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	subs r0, 0x1
 	lsls r0, 24
@@ -1237,7 +1237,7 @@ ScriptSetMonMoveSlot: @ 80C5760
 _080C577C:
 	movs r0, 0x64
 	muls r0, r3
-	ldr r1, _080C5794
+	ldr r1, _080C5794 @ =gPlayerParty
 	adds r0, r1
 	adds r1, r4, 0
 	bl SetMonMoveSlot
@@ -1252,8 +1252,8 @@ _080C5794: .4byte gPlayerParty
 	thumb_func_start sub_80C5568
 sub_80C5568: @ 80C5798
 	push {lr}
-	ldr r1, _080C57A8
-	ldr r0, _080C57AC
+	ldr r1, _080C57A8 @ =gMain
+	ldr r0, _080C57AC @ =sub_80C5580
 	str r0, [r1, 0x8]
 	bl sub_8121E10
 	pop {r0}
@@ -1266,22 +1266,22 @@ _080C57AC: .4byte sub_80C5580
 	thumb_func_start sub_80C5580
 sub_80C5580: @ 80C57B0
 	push {lr}
-	ldr r0, _080C57C0
+	ldr r0, _080C57C0 @ =gUnknown_02039270
 	ldrb r1, [r0]
 	cmp r1, 0
 	bne _080C57C8
-	ldr r0, _080C57C4
+	ldr r0, _080C57C4 @ =gScriptResult
 	strh r1, [r0]
 	b _080C57CE
 	.align 2, 0
 _080C57C0: .4byte gUnknown_02039270
 _080C57C4: .4byte gScriptResult
 _080C57C8:
-	ldr r1, _080C57D8
+	ldr r1, _080C57D8 @ =gScriptResult
 	movs r0, 0x1
 	strh r0, [r1]
 _080C57CE:
-	ldr r0, _080C57DC
+	ldr r0, _080C57DC @ =c2_exit_to_overworld_1_continue_scripts_restart_music
 	bl SetMainCallback2
 	pop {r0}
 	bx r0
@@ -1293,8 +1293,8 @@ _080C57DC: .4byte c2_exit_to_overworld_1_continue_scripts_restart_music
 	thumb_func_start ChooseBattleTowerPlayerParty
 ChooseBattleTowerPlayerParty: @ 80C57E0
 	push {lr}
-	ldr r1, _080C57F0
-	ldr r0, _080C57F4
+	ldr r1, _080C57F0 @ =gMain
+	ldr r0, _080C57F4 @ =SetBattleTowerPlayerParty
 	str r0, [r1, 0x8]
 	bl sub_8121E34
 	pop {r0}
@@ -1307,12 +1307,12 @@ _080C57F4: .4byte SetBattleTowerPlayerParty
 	thumb_func_start SetBattleTowerPlayerParty
 SetBattleTowerPlayerParty: @ 80C57F8
 	push {r4,lr}
-	ldr r0, _080C580C
+	ldr r0, _080C580C @ =gUnknown_02039270
 	ldrb r4, [r0]
 	cmp r4, 0
 	bne _080C5814
 	bl LoadPlayerParty
-	ldr r0, _080C5810
+	ldr r0, _080C5810 @ =gScriptResult
 	strh r4, [r0]
 	b _080C581E
 	.align 2, 0
@@ -1320,11 +1320,11 @@ _080C580C: .4byte gUnknown_02039270
 _080C5810: .4byte gScriptResult
 _080C5814:
 	bl ReducePlayerPartyToThree
-	ldr r1, _080C582C
+	ldr r1, _080C582C @ =gScriptResult
 	movs r0, 0x1
 	strh r0, [r1]
 _080C581E:
-	ldr r0, _080C5830
+	ldr r0, _080C5830 @ =c2_exit_to_overworld_1_continue_scripts_restart_music
 	bl SetMainCallback2
 	pop {r4}
 	pop {r0}
@@ -1341,15 +1341,15 @@ ReducePlayerPartyToThree: @ 80C5834
 	add r0, sp, 0x12C
 	movs r1, 0
 	str r1, [r0]
-	ldr r2, _080C58A4
+	ldr r2, _080C58A4 @ =0x0500004b
 	mov r1, sp
 	bl CpuSet
 	movs r5, 0
 	movs r7, 0x64
-	ldr r6, _080C58A8
+	ldr r6, _080C58A8 @ =gPlayerParty
 	mov r4, sp
 _080C584E:
-	ldr r0, _080C58AC
+	ldr r0, _080C58AC @ =gUnknown_02039270
 	adds r1, r5, r0
 	ldrb r0, [r1]
 	cmp r0, 0
@@ -1369,8 +1369,8 @@ _080C5868:
 	add r0, sp, 0x130
 	movs r1, 0
 	str r1, [r0]
-	ldr r4, _080C58A8
-	ldr r2, _080C58B0
+	ldr r4, _080C58A8 @ =gPlayerParty
+	ldr r2, _080C58B0 @ =0x05000096
 	adds r1, r4, 0
 	bl CpuSet
 	mov r5, sp

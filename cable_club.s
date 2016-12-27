@@ -13,7 +13,7 @@ sub_8082CD4: @ 8083108
 	lsrs r6, r0, 24
 	lsls r1, 24
 	lsrs r5, r1, 24
-	ldr r4, _08083144
+	ldr r4, _08083144 @ =sub_8082F20
 	adds r0, r4, 0
 	bl FindTaskIdByFunc
 	lsls r0, 24
@@ -25,7 +25,7 @@ sub_8082CD4: @ 8083108
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08083148
+	ldr r2, _08083148 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -45,7 +45,7 @@ _08083148: .4byte gTasks
 sub_8082D18: @ 808314C
 	push {lr}
 	adds r1, r0, 0
-	ldr r0, _08083178
+	ldr r0, _08083178 @ =gStringVar1
 	movs r2, 0
 	movs r3, 0x1
 	bl ConvertIntToDecimalStringN
@@ -54,7 +54,7 @@ sub_8082D18: @ 808314C
 	movs r2, 0x1C
 	movs r3, 0xD
 	bl MenuDrawTextWindow
-	ldr r0, _0808317C
+	ldr r0, _0808317C @ =gOtherText_PLink
 	movs r1, 0x13
 	movs r2, 0xB
 	movs r3, 0x48
@@ -88,7 +88,7 @@ sub_8082D60: @ 8083194
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080831BC
+	ldr r0, _080831BC @ =0x03004b38
 	adds r1, r0
 	adds r5, r1, 0x6
 	movs r2, 0x6
@@ -144,7 +144,7 @@ _080831F6:
 	movs r0, 0x1
 	b _08083222
 _0808320A:
-	ldr r0, _08083218
+	ldr r0, _08083218 @ =gStringVar1
 	movs r2, 0
 	movs r3, 0x1
 	bl ConvertIntToDecimalStringN
@@ -176,12 +176,12 @@ sub_8082DF4: @ 8083228
 	movs r0, 0
 	b _0808324E
 _0808323E:
-	ldr r0, _08083254
+	ldr r0, _08083254 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08083258
+	ldr r0, _08083258 @ =sub_8083418
 	str r0, [r1]
 	movs r0, 0x1
 _0808324E:
@@ -198,7 +198,7 @@ sub_8082E28: @ 808325C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0808328C
+	ldr r0, _0808328C @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x2
 	ands r0, r1
@@ -208,12 +208,12 @@ sub_8082E28: @ 808325C
 	lsls r0, 24
 	cmp r0, 0
 	bne _08083298
-	ldr r0, _08083290
+	ldr r0, _08083290 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08083294
+	ldr r0, _08083294 @ =sub_80833EC
 	str r0, [r1]
 	movs r0, 0x1
 	b _0808329A
@@ -241,7 +241,7 @@ sub_8082E6C: @ 80832A0
 	movs r0, 0x1
 	bl SetSuppressLinkErrorMessage
 _080832B6:
-	ldr r0, _080832C8
+	ldr r0, _080832C8 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x2
 	ands r0, r1
@@ -252,12 +252,12 @@ _080832B6:
 	.align 2, 0
 _080832C8: .4byte gMain
 _080832CC:
-	ldr r0, _080832E4
+	ldr r0, _080832E4 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _080832E8
+	ldr r0, _080832E8 @ =sub_80833EC
 	str r0, [r1]
 	movs r0, 0x1
 _080832DC:
@@ -282,12 +282,12 @@ sub_8082EB8: @ 80832EC
 	movs r0, 0
 	b _08083312
 _08083302:
-	ldr r0, _08083318
+	ldr r0, _08083318 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0808331C
+	ldr r0, _0808331C @ =sub_8083418
 	str r0, [r1]
 	movs r0, 0x1
 _08083312:
@@ -304,7 +304,7 @@ unref_sub_8082EEC: @ 8083320
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _08083350
+	ldr r0, _08083350 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -336,7 +336,7 @@ sub_8082F20: @ 8083354
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0808337C
+	ldr r0, _0808337C @ =0x03004b38
 	adds r4, r1, r0
 	movs r3, 0
 	ldrsh r2, [r4, r3]
@@ -353,7 +353,7 @@ _08083380:
 	ble _0808338C
 	subs r0, 0x8
 	adds r0, r1, r0
-	ldr r1, _08083398
+	ldr r1, _08083398 @ =sub_8082F68
 	str r1, [r0]
 _0808338C:
 	ldrh r0, [r4]
@@ -386,7 +386,7 @@ sub_8082F68: @ 808339C
 	bls _08083410
 	movs r0, 0x1
 	bl SetSuppressLinkErrorMessage
-	ldr r1, _080833F4
+	ldr r1, _080833F4 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -400,9 +400,9 @@ sub_8082F68: @ 808339C
 	bne _08083400
 	movs r0, 0x15
 	bl PlaySE
-	ldr r0, _080833F8
+	ldr r0, _080833F8 @ =gUnknown_081A4932
 	bl ShowFieldAutoScrollMessage
-	ldr r0, _080833FC
+	ldr r0, _080833FC @ =sub_8082FEC
 	b _0808340E
 	.align 2, 0
 _080833F4: .4byte gTasks
@@ -411,9 +411,9 @@ _080833FC: .4byte sub_8082FEC
 _08083400:
 	movs r0, 0x16
 	bl PlaySE
-	ldr r0, _08083418
+	ldr r0, _08083418 @ =gUnknown_081A49B6
 	bl ShowFieldAutoScrollMessage
-	ldr r0, _0808341C
+	ldr r0, _0808341C @ =sub_80831F8
 _0808340E:
 	str r0, [r4]
 _08083410:
@@ -447,13 +447,13 @@ sub_8082FEC: @ 8083420
 	lsrs r2, r0, 24
 	cmp r2, 0
 	bne _08083460
-	ldr r0, _08083468
+	ldr r0, _08083468 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
 	strh r2, [r1, 0xE]
-	ldr r0, _0808346C
+	ldr r0, _0808346C @ =sub_808303C
 	str r0, [r1]
 _08083460:
 	pop {r4}
@@ -472,7 +472,7 @@ sub_808303C: @ 8083470
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080834CC
+	ldr r1, _080834CC @ =0x03004b38
 	adds r7, r0, r1
 	bl GetLinkPlayerCount_2
 	lsls r0, 24
@@ -493,15 +493,15 @@ sub_808303C: @ 8083470
 	lsrs r1, r4, 24
 	adds r0, r5, 0
 	bl sub_8082D60
-	ldr r0, _080834D0
+	ldr r0, _080834D0 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	beq _0808350E
-	ldr r0, _080834D4
+	ldr r0, _080834D4 @ =gLinkType
 	ldrh r1, [r0]
-	ldr r0, _080834D8
+	ldr r0, _080834D8 @ =0x00002255
 	cmp r1, r0
 	bne _080834DC
 	cmp r6, 0x1
@@ -521,19 +521,19 @@ _080834E4:
 	lsrs r0, r4, 24
 	bl sub_80081C8
 	bl sub_8082D4C
-	ldr r0, _08083514
+	ldr r0, _08083514 @ =gStringVar1
 	adds r1, r6, 0
 	movs r2, 0
 	movs r3, 0x1
 	bl ConvertIntToDecimalStringN
-	ldr r0, _08083518
+	ldr r0, _08083518 @ =gUnknown_081A4975
 	bl ShowFieldAutoScrollMessage
-	ldr r1, _0808351C
+	ldr r1, _0808351C @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08083520
+	ldr r1, _08083520 @ =sub_80830E4
 	str r1, [r0]
 _0808350E:
 	pop {r4-r7}
@@ -575,21 +575,21 @@ sub_80830E4: @ 8083524
 	lsls r0, 24
 	cmp r4, r0
 	bne _08083572
-	ldr r0, _08083588
+	ldr r0, _08083588 @ =gMain
 	ldrh r1, [r0, 0x2C]
 	movs r0, 0x2
 	ands r0, r1
 	cmp r0, 0
 	beq _08083598
 _08083572:
-	ldr r0, _0808358C
+	ldr r0, _0808358C @ =gUnknown_081A4932
 	bl ShowFieldAutoScrollMessage
-	ldr r1, _08083590
+	ldr r1, _08083590 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08083594
+	ldr r1, _08083594 @ =sub_8082FEC
 	str r1, [r0]
 	b _080835B8
 	.align 2, 0
@@ -605,12 +605,12 @@ _08083598:
 	movs r0, 0x5
 	bl PlaySE
 	bl sub_8007F4C
-	ldr r0, _080835C0
+	ldr r0, _080835C0 @ =gTasks
 	lsls r1, r6, 2
 	adds r1, r6
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _080835C4
+	ldr r0, _080835C4 @ =sub_8083188
 	str r0, [r1]
 _080835B8:
 	pop {r4-r6}
@@ -626,7 +626,7 @@ sub_8083188: @ 80835C8
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _0808360C
+	ldr r1, _0808360C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -650,13 +650,13 @@ sub_8083188: @ 80835C8
 	lsls r0, 24
 	cmp r4, r0
 	beq _08083614
-	ldr r0, _08083610
+	ldr r0, _08083610 @ =sub_8083418
 	b _08083628
 	.align 2, 0
 _0808360C: .4byte gTasks
 _08083610: .4byte sub_8083418
 _08083614:
-	ldr r4, _08083630
+	ldr r4, _08083630 @ =gScriptResult
 	adds r0, r7, 0
 	adds r1, r6, 0
 	bl sub_8082D9C
@@ -664,7 +664,7 @@ _08083614:
 	lsls r0, 16
 	cmp r0, 0
 	beq _0808362A
-	ldr r0, _08083634
+	ldr r0, _08083634 @ =sub_8083288
 _08083628:
 	str r0, [r5]
 _0808362A:
@@ -681,7 +681,7 @@ sub_80831F8: @ 8083638
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _08083684
+	ldr r1, _08083684 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -696,7 +696,7 @@ sub_80831F8: @ 8083638
 	bl sub_8082DF4
 	cmp r0, 0x1
 	beq _080836B0
-	ldr r4, _08083688
+	ldr r4, _08083688 @ =gScriptResult
 	adds r0, r7, 0
 	adds r1, r6, 0
 	bl sub_8082D9C
@@ -709,7 +709,7 @@ sub_80831F8: @ 8083638
 	bne _08083690
 	bl sub_800832C
 	bl HideFieldMessageBox
-	ldr r0, _0808368C
+	ldr r0, _0808368C @ =sub_80833C4
 	b _080836AE
 	.align 2, 0
 _08083684: .4byte gTasks
@@ -717,16 +717,16 @@ _08083688: .4byte gScriptResult
 _0808368C: .4byte sub_80833C4
 _08083690:
 	bl GetLinkPlayerCount_2
-	ldr r4, _080836B8
+	ldr r4, _080836B8 @ =gFieldLinkPlayerCount
 	strb r0, [r4]
 	bl GetMultiplayerId
-	ldr r1, _080836BC
+	ldr r1, _080836BC @ =gUnknown_03004860
 	strb r0, [r1]
 	ldrb r0, [r4]
 	bl sub_80081C8
-	ldr r0, _080836C0
+	ldr r0, _080836C0 @ =gBlockSendBuffer
 	bl sub_8093390
-	ldr r0, _080836C4
+	ldr r0, _080836C4 @ =sub_8083314
 _080836AE:
 	str r0, [r5]
 _080836B0:
@@ -750,18 +750,18 @@ sub_8083288: @ 80836C8
 	bl sub_8082DF4
 	cmp r0, 0x1
 	beq _08083738
-	ldr r0, _080836FC
+	ldr r0, _080836FC @ =gScriptResult
 	ldrh r0, [r0]
 	cmp r0, 0x3
 	bne _08083708
 	bl sub_800832C
 	bl HideFieldMessageBox
-	ldr r0, _08083700
+	ldr r0, _08083700 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08083704
+	ldr r0, _08083704 @ =sub_80833C4
 	str r0, [r1]
 	b _08083738
 	.align 2, 0
@@ -770,21 +770,21 @@ _08083700: .4byte gTasks
 _08083704: .4byte sub_80833C4
 _08083708:
 	bl GetLinkPlayerCount_2
-	ldr r4, _08083740
+	ldr r4, _08083740 @ =gFieldLinkPlayerCount
 	strb r0, [r4]
 	bl GetMultiplayerId
-	ldr r1, _08083744
+	ldr r1, _08083744 @ =gUnknown_03004860
 	strb r0, [r1]
 	ldrb r0, [r4]
 	bl sub_80081C8
-	ldr r0, _08083748
+	ldr r0, _08083748 @ =gBlockSendBuffer
 	bl sub_8093390
-	ldr r1, _0808374C
+	ldr r1, _0808374C @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08083750
+	ldr r1, _08083750 @ =sub_8083314
 	str r1, [r0]
 	movs r0, 0x2
 	bl sub_8007E9C
@@ -817,13 +817,13 @@ sub_8083314: @ 8083754
 	cmp r4, r0
 	bne _0808380A
 	movs r4, 0
-	ldr r6, _0808377C
+	ldr r6, _0808377C @ =gTrainerCards
 	b _0808379A
 	.align 2, 0
 _0808377C: .4byte gTrainerCards
 _08083780:
 	lsls r1, r4, 8
-	ldr r0, _080837E0
+	ldr r0, _080837E0 @ =gBlockRecvBuffer
 	adds r1, r0
 	lsls r0, r4, 3
 	subs r0, r4
@@ -844,19 +844,19 @@ _0808379A:
 	bl SetSuppressLinkErrorMessage
 	bl ResetBlockReceivedFlags
 	bl HideFieldMessageBox
-	ldr r0, _080837E4
+	ldr r0, _080837E4 @ =gScriptResult
 	ldrh r2, [r0]
 	cmp r2, 0x1
 	bne _080837F8
-	ldr r0, _080837E8
+	ldr r0, _080837E8 @ =gLinkType
 	ldrh r1, [r0]
-	ldr r0, _080837EC
+	ldr r0, _080837EC @ =0x00004411
 	cmp r1, r0
 	beq _080837D0
-	ldr r0, _080837F0
+	ldr r0, _080837F0 @ =0x00006601
 	cmp r1, r0
 	bne _080837D0
-	ldr r0, _080837F4
+	ldr r0, _080837F4 @ =0x03002970
 	strb r2, [r0]
 _080837D0:
 	bl sub_8082D4C
@@ -873,12 +873,12 @@ _080837F0: .4byte 0x00006601
 _080837F4: .4byte 0x03002970
 _080837F8:
 	bl sub_800832C
-	ldr r0, _08083810
+	ldr r0, _08083810 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08083814
+	ldr r0, _08083814 @ =sub_80833C4
 	str r0, [r1]
 _0808380A:
 	pop {r4-r6}
@@ -894,7 +894,7 @@ sub_80833C4: @ 8083818
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0808383C
+	ldr r0, _0808383C @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08083834
@@ -916,7 +916,7 @@ sub_80833EC: @ 8083840
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r1, _08083868
+	ldr r1, _08083868 @ =gScriptResult
 	movs r0, 0x5
 	strh r0, [r1]
 	bl sub_8082D4C
@@ -937,7 +937,7 @@ sub_8083418: @ 808386C
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r1, _08083894
+	ldr r1, _08083894 @ =gScriptResult
 	movs r0, 0x6
 	strh r0, [r1]
 	bl sub_8082D4C
@@ -957,7 +957,7 @@ sub_8083444: @ 8083898
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080838BC
+	ldr r2, _080838BC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -975,7 +975,7 @@ sub_8083444: @ 8083898
 	.align 2, 0
 _080838BC: .4byte gTasks
 _080838C0:
-	ldr r0, _080838CC
+	ldr r0, _080838CC @ =sub_8083418
 	str r0, [r2]
 	movs r0, 0x1
 _080838C6:
@@ -990,7 +990,7 @@ sub_808347C: @ 80838D0
 	push {r4,lr}
 	movs r3, 0x2
 	movs r2, 0x2
-	ldr r0, _080838E8
+	ldr r0, _080838E8 @ =gSpecialVar_0x8004
 	ldrh r0, [r0]
 	cmp r0, 0x2
 	beq _08083904
@@ -1007,16 +1007,16 @@ _080838EC:
 	b _08083920
 _080838F2:
 	movs r3, 0x2
-	ldr r1, _080838FC
-	ldr r4, _08083900
+	ldr r1, _080838FC @ =gLinkType
+	ldr r4, _08083900 @ =0x00002233
 	b _0808391C
 	.align 2, 0
 _080838FC: .4byte gLinkType
 _08083900: .4byte 0x00002233
 _08083904:
 	movs r3, 0x2
-	ldr r1, _0808390C
-	ldr r4, _08083910
+	ldr r1, _0808390C @ =gLinkType
+	ldr r4, _08083910 @ =0x00002244
 	b _0808391C
 	.align 2, 0
 _0808390C: .4byte gLinkType
@@ -1024,8 +1024,8 @@ _08083910: .4byte 0x00002244
 _08083914:
 	movs r3, 0x4
 	movs r2, 0x4
-	ldr r1, _08083930
-	ldr r4, _08083934
+	ldr r1, _08083930 @ =gLinkType
+	ldr r4, _08083934 @ =0x00002255
 _0808391C:
 	adds r0, r4, 0
 	strh r0, [r1]
@@ -1044,11 +1044,11 @@ _08083934: .4byte 0x00002255
 	thumb_func_start sub_80834E4
 sub_80834E4: @ 8083938
 	push {lr}
-	ldr r1, _08083954
-	ldr r2, _08083958
+	ldr r1, _08083954 @ =gLinkType
+	ldr r2, _08083958 @ =0x00001133
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r1, _0808395C
+	ldr r1, _0808395C @ =gUnknown_020239F8
 	movs r0, 0
 	strh r0, [r1]
 	movs r0, 0x2
@@ -1065,14 +1065,14 @@ _0808395C: .4byte gUnknown_020239F8
 	thumb_func_start sub_808350C
 sub_808350C: @ 8083960
 	push {lr}
-	ldr r0, _08083980
+	ldr r0, _08083980 @ =gScriptResult
 	movs r2, 0
 	strh r2, [r0]
-	ldr r1, _08083984
-	ldr r3, _08083988
+	ldr r1, _08083984 @ =gLinkType
+	ldr r3, _08083988 @ =0x00003311
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _0808398C
+	ldr r0, _0808398C @ =gUnknown_020239F8
 	strh r2, [r0]
 	movs r0, 0x2
 	movs r1, 0x4
@@ -1091,7 +1091,7 @@ sub_808353C: @ 8083990
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _080839B0
+	ldr r1, _080839B0 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -1106,7 +1106,7 @@ sub_808353C: @ 8083990
 	.align 2, 0
 _080839B0: .4byte gTasks
 _080839B4:
-	ldr r0, _080839E8
+	ldr r0, _080839E8 @ =gScriptResult
 	ldrh r0, [r0]
 	cmp r0, 0x1
 	bne _080839DA
@@ -1116,7 +1116,7 @@ _080839B4:
 	movs r1, 0
 	cmp r1, r0
 	bge _080839DA
-	ldr r2, _080839EC
+	ldr r2, _080839EC @ =gLinkPlayers
 _080839CC:
 	ldrh r4, [r2, 0x1A]
 	cmp r4, 0x1
@@ -1134,11 +1134,11 @@ _080839DA:
 _080839E8: .4byte gScriptResult
 _080839EC: .4byte gLinkPlayers
 _080839F0:
-	ldr r1, _08083A08
+	ldr r1, _08083A08 @ =gScriptResult
 	movs r0, 0x7
 	strh r0, [r1]
 	bl sub_8008480
-	ldr r1, _08083A0C
+	ldr r1, _08083A0C @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -1149,7 +1149,7 @@ _080839F0:
 _08083A08: .4byte gScriptResult
 _08083A0C: .4byte gTasks
 _08083A10:
-	ldr r0, _08083A28
+	ldr r0, _08083A28 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08083A22
@@ -1167,7 +1167,7 @@ _08083A28: .4byte gReceivedRemoteLinkPlayers
 	thumb_func_start sub_80835D8
 sub_80835D8: @ 8083A2C
 	push {r4,lr}
-	ldr r4, _08083A60
+	ldr r4, _08083A60 @ =sub_808353C
 	adds r0, r4, 0
 	bl FindTaskIdByFunc
 	lsls r0, 24
@@ -1179,7 +1179,7 @@ sub_80835D8: @ 8083A2C
 	bl CreateTask
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _08083A64
+	ldr r1, _08083A64 @ =gTasks
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
@@ -1198,11 +1198,11 @@ _08083A64: .4byte gTasks
 	thumb_func_start sub_8083614
 sub_8083614: @ 8083A68
 	push {lr}
-	ldr r1, _08083A84
-	ldr r2, _08083A88
+	ldr r1, _08083A84 @ =gLinkType
+	ldr r2, _08083A88 @ =0x00004411
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r1, _08083A8C
+	ldr r1, _08083A8C @ =gUnknown_020239F8
 	movs r0, 0
 	strh r0, [r1]
 	movs r0, 0x2
@@ -1219,11 +1219,11 @@ _08083A8C: .4byte gUnknown_020239F8
 	thumb_func_start sub_808363C
 sub_808363C: @ 8083A90
 	push {lr}
-	ldr r1, _08083AAC
-	ldr r2, _08083AB0
+	ldr r1, _08083AAC @ =gLinkType
+	ldr r2, _08083AB0 @ =0x00006601
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r1, _08083AB4
+	ldr r1, _08083AB4 @ =gUnknown_020239F8
 	movs r0, 0
 	strh r0, [r1]
 	movs r0, 0x4
@@ -1240,7 +1240,7 @@ _08083AB4: .4byte gUnknown_020239F8
 	thumb_func_start sub_8083664
 sub_8083664: @ 8083AB8
 	push {lr}
-	ldr r0, _08083ACC
+	ldr r0, _08083ACC @ =sub_8083710
 	bl FuncIsActiveTask
 	lsls r0, 24
 	cmp r0, 0
@@ -1250,13 +1250,13 @@ sub_8083664: @ 8083AB8
 	.align 2, 0
 _08083ACC: .4byte sub_8083710
 _08083AD0:
-	ldr r0, _08083AE4
+	ldr r0, _08083AE4 @ =gSpecialVar_0x8004
 	ldrh r0, [r0]
 	subs r0, 0x1
 	cmp r0, 0x4
 	bhi _08083B48
 	lsls r0, 2
-	ldr r1, _08083AE8
+	ldr r1, _08083AE8 @ =_08083AEC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1271,41 +1271,41 @@ _08083AEC:
 	.4byte _08083B40
 	.4byte _08083B20
 _08083B00:
-	ldr r1, _08083B08
-	ldr r2, _08083B0C
+	ldr r1, _08083B08 @ =gLinkType
+	ldr r2, _08083B0C @ =0x00002233
 	b _08083B44
 	.align 2, 0
 _08083B08: .4byte gLinkType
 _08083B0C: .4byte 0x00002233
 _08083B10:
-	ldr r1, _08083B18
-	ldr r2, _08083B1C
+	ldr r1, _08083B18 @ =gLinkType
+	ldr r2, _08083B1C @ =0x00002244
 	b _08083B44
 	.align 2, 0
 _08083B18: .4byte gLinkType
 _08083B1C: .4byte 0x00002244
 _08083B20:
-	ldr r1, _08083B28
-	ldr r2, _08083B2C
+	ldr r1, _08083B28 @ =gLinkType
+	ldr r2, _08083B2C @ =0x00002255
 	b _08083B44
 	.align 2, 0
 _08083B28: .4byte gLinkType
 _08083B2C: .4byte 0x00002255
 _08083B30:
-	ldr r1, _08083B38
-	ldr r2, _08083B3C
+	ldr r1, _08083B38 @ =gLinkType
+	ldr r2, _08083B3C @ =0x00001111
 	b _08083B44
 	.align 2, 0
 _08083B38: .4byte gLinkType
 _08083B3C: .4byte 0x00001111
 _08083B40:
-	ldr r1, _08083B58
-	ldr r2, _08083B5C
+	ldr r1, _08083B58 @ =gLinkType
+	ldr r2, _08083B5C @ =0x00003322
 _08083B44:
 	adds r0, r2, 0
 	strh r0, [r1]
 _08083B48:
-	ldr r0, _08083B60
+	ldr r0, _08083B60 @ =sub_8083710
 	movs r1, 0x50
 	bl CreateTask
 	lsls r0, 24
@@ -1327,7 +1327,7 @@ sub_8083710: @ 8083B64
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _08083B90
+	ldr r0, _08083B90 @ =0x03004b38
 	adds r4, r1, r0
 	movs r3, 0
 	ldrsh r2, [r4, r3]
@@ -1335,7 +1335,7 @@ sub_8083710: @ 8083B64
 	bne _08083B98
 	bl OpenLink
 	bl ResetLinkPlayers
-	ldr r0, _08083B94
+	ldr r0, _08083B94 @ =sub_8083C50
 	movs r1, 0x50
 	bl CreateTask
 	b _08083BA4
@@ -1347,7 +1347,7 @@ _08083B98:
 	ble _08083BA4
 	subs r0, 0x8
 	adds r0, r1, r0
-	ldr r1, _08083BB0
+	ldr r1, _08083BB0 @ =sub_8083760
 	str r1, [r0]
 _08083BA4:
 	ldrh r0, [r4]
@@ -1376,23 +1376,23 @@ sub_8083760: @ 8083BB4
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _08083BEC
-	ldr r0, _08083BE4
+	ldr r0, _08083BE4 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08083BE8
+	ldr r0, _08083BE8 @ =sub_80837B4
 	b _08083BF8
 	.align 2, 0
 _08083BE4: .4byte gTasks
 _08083BE8: .4byte sub_80837B4
 _08083BEC:
-	ldr r0, _08083C00
+	ldr r0, _08083C00 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08083C04
+	ldr r0, _08083C04 @ =sub_80837EC
 _08083BF8:
 	str r0, [r1]
 _08083BFA:
@@ -1417,12 +1417,12 @@ sub_80837B4: @ 8083C08
 	cmp r4, r0
 	bne _08083C32
 	bl sub_8007F4C
-	ldr r0, _08083C38
+	ldr r0, _08083C38 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _08083C3C
+	ldr r0, _08083C3C @ =sub_80837EC
 	str r0, [r1]
 _08083C32:
 	pop {r4,r5}
@@ -1438,7 +1438,7 @@ sub_80837EC: @ 8083C40
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _08083C70
+	ldr r0, _08083C70 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0x1
 	bne _08083C68
@@ -1475,7 +1475,7 @@ sub_808382C: @ 8083C80
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08083CA4
+	ldr r1, _08083CA4 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -1484,7 +1484,7 @@ sub_808382C: @ 8083C80
 	b _08083D94
 _08083C9A:
 	lsls r0, 2
-	ldr r1, _08083CA8
+	ldr r1, _08083CA8 @ =_08083CAC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1503,8 +1503,8 @@ _08083CC4:
 	movs r0, 0x1
 	movs r1, 0
 	bl fade_screen
-	ldr r1, _08083CDC
-	ldr r2, _08083CE0
+	ldr r1, _08083CDC @ =gLinkType
+	ldr r2, _08083CE0 @ =0x00002211
 	adds r0, r2, 0
 	strh r0, [r1]
 	bl ClearLinkCallback_2
@@ -1513,7 +1513,7 @@ _08083CC4:
 _08083CDC: .4byte gLinkType
 _08083CE0: .4byte 0x00002211
 _08083CE4:
-	ldr r0, _08083CF0
+	ldr r0, _08083CF0 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -1533,7 +1533,7 @@ _08083D04:
 	bl sub_800832C
 	b _08083D12
 _08083D0A:
-	ldr r0, _08083D1C
+	ldr r0, _08083D1C @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 _08083D0E:
 	cmp r0, 0
@@ -1546,7 +1546,7 @@ _08083D12:
 	.align 2, 0
 _08083D1C: .4byte gReceivedRemoteLinkPlayers
 _08083D20:
-	ldr r0, _08083D38
+	ldr r0, _08083D38 @ =gLinkPlayers
 	ldr r0, [r0, 0x4]
 	movs r1, 0x1
 	ands r0, r1
@@ -1559,10 +1559,10 @@ _08083D20:
 	.align 2, 0
 _08083D38: .4byte gLinkPlayers
 _08083D3C:
-	ldr r0, _08083D54
+	ldr r0, _08083D54 @ =0x000001cb
 	bl current_map_music_set__default_for_battle
 _08083D42:
-	ldr r0, _08083D58
+	ldr r0, _08083D58 @ =gSpecialVar_0x8004
 	ldrh r0, [r0]
 	cmp r0, 0x2
 	beq _08083D6C
@@ -1579,28 +1579,28 @@ _08083D5C:
 	beq _08083D78
 	b _08083D82
 _08083D62:
-	ldr r1, _08083D68
+	ldr r1, _08083D68 @ =gUnknown_020239F8
 	movs r0, 0xA
 	b _08083D80
 	.align 2, 0
 _08083D68: .4byte gUnknown_020239F8
 _08083D6C:
-	ldr r1, _08083D74
+	ldr r1, _08083D74 @ =gUnknown_020239F8
 	movs r0, 0xB
 	b _08083D80
 	.align 2, 0
 _08083D74: .4byte gUnknown_020239F8
 _08083D78:
 	bl ReducePlayerPartyToThree
-	ldr r1, _08083D9C
+	ldr r1, _08083D9C @ =gUnknown_020239F8
 	movs r0, 0x4B
 _08083D80:
 	strh r0, [r1]
 _08083D82:
-	ldr r0, _08083DA0
+	ldr r0, _08083DA0 @ =sub_800E7C4
 	bl SetMainCallback2
-	ldr r1, _08083DA4
-	ldr r0, _08083DA8
+	ldr r1, _08083DA4 @ =gMain
+	ldr r0, _08083DA8 @ =sub_8083958
 	str r0, [r1, 0x8]
 	adds r0, r5, 0
 	bl DestroyTask
@@ -1622,20 +1622,20 @@ sub_8083958: @ 8083DAC
 	bl LoadPlayerParty
 	bl SavePlayerData
 	bl sub_810FEFC
-	ldr r0, _08083DE4
+	ldr r0, _08083DE4 @ =gSpecialVar_0x8004
 	ldrh r0, [r0]
 	cmp r0, 0x5
 	beq _08083DD2
-	ldr r0, _08083DE8
+	ldr r0, _08083DE8 @ =gUnknown_03004860
 	ldrb r1, [r0]
 	movs r0, 0x1
 	eors r0, r1
 	bl sub_8110290
 _08083DD2:
-	ldr r0, _08083DEC
-	ldr r1, _08083DF0
+	ldr r0, _08083DEC @ =gMain
+	ldr r1, _08083DF0 @ =sub_805465C
 	str r1, [r0, 0x8]
-	ldr r0, _08083DF4
+	ldr r0, _08083DF4 @ =sub_8071B28
 	bl SetMainCallback2
 	pop {r0}
 	bx r0
@@ -1650,7 +1650,7 @@ _08083DF4: .4byte sub_8071B28
 	thumb_func_start sub_80839A4
 sub_80839A4: @ 8083DF8
 	push {lr}
-	ldr r0, _08083E20
+	ldr r0, _08083E20 @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	subs r0, r1, 0x1
 	lsls r0, 16
@@ -1687,7 +1687,7 @@ sub_80839DC: @ 8083E30
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _08083E54
+	ldr r1, _08083E54 @ =gTasks
 	adds r5, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r5, r1]
@@ -1707,7 +1707,7 @@ _08083E58:
 	beq _08083EBC
 	b _08083ED2
 _08083E62:
-	ldr r0, _08083E70
+	ldr r0, _08083E70 @ =gUnknown_081A490C
 	bl ShowFieldMessage
 	movs r0, 0x1
 	strh r0, [r5, 0x8]
@@ -1720,7 +1720,7 @@ _08083E74:
 	cmp r0, 0
 	beq _08083ED2
 	bl sub_8055574
-	ldr r0, _08083E90
+	ldr r0, _08083E90 @ =gSpecialVar_0x8005
 	ldrb r0, [r0]
 	bl sub_8007270
 	movs r0, 0x2
@@ -1765,7 +1765,7 @@ _08083ED2:
 sub_8083A84: @ 8083ED8
 	push {r4,r5,lr}
 	adds r5, r0, 0
-	ldr r4, _08083EFC
+	ldr r4, _08083EFC @ =sub_80839DC
 	adds r0, r4, 0
 	movs r1, 0x50
 	bl CreateTask
@@ -1790,7 +1790,7 @@ sub_8083AAC: @ 8083F00
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08083F24
+	ldr r1, _08083F24 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -1817,7 +1817,7 @@ _08083F32:
 	bl ClearLinkCallback_2
 	b _08083F68
 _08083F44:
-	ldr r0, _08083F54
+	ldr r0, _08083F54 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -1827,7 +1827,7 @@ _08083F44:
 	.align 2, 0
 _08083F54: .4byte gPaletteFade
 _08083F58:
-	ldr r1, _08083F70
+	ldr r1, _08083F70 @ =gUnknown_020297D8
 	movs r0, 0
 	strb r0, [r1]
 	strb r0, [r1, 0x1]
@@ -1841,11 +1841,11 @@ _08083F68:
 	.align 2, 0
 _08083F70: .4byte gUnknown_020297D8
 _08083F74:
-	ldr r0, _08083F90
+	ldr r0, _08083F90 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08083F88
-	ldr r0, _08083F94
+	ldr r0, _08083F94 @ =sub_8047CD8
 	bl SetMainCallback2
 	adds r0, r5, 0
 	bl DestroyTask
@@ -1875,7 +1875,7 @@ sub_8083B44: @ 8083F98
 	thumb_func_start sub_8083B5C
 sub_8083B5C: @ 8083FB0
 	push {lr}
-	ldr r0, _08083FBC
+	ldr r0, _08083FBC @ =sub_8083B44
 	bl sub_8083A84
 	pop {r0}
 	bx r0
@@ -1886,7 +1886,7 @@ _08083FBC: .4byte sub_8083B44
 	thumb_func_start sub_8083B6C
 sub_8083B6C: @ 8083FC0
 	push {lr}
-	ldr r0, _08083FD0
+	ldr r0, _08083FD0 @ =sub_8083AAC
 	movs r1, 0x50
 	bl CreateTask
 	pop {r0}
@@ -1907,11 +1907,11 @@ sub_8083B80: @ 8083FD4
 	thumb_func_start sub_8083B90
 sub_8083B90: @ 8083FE4
 	push {lr}
-	ldr r0, _08083FF8
-	ldr r2, _08083FFC
+	ldr r0, _08083FF8 @ =gLinkType
+	ldr r2, _08083FFC @ =0x00002211
 	adds r1, r2, 0
 	strh r1, [r0]
-	ldr r0, _08084000
+	ldr r0, _08084000 @ =sub_808382C
 	bl sub_8083A84
 	pop {r0}
 	bx r0
@@ -1924,13 +1924,13 @@ _08084000: .4byte sub_808382C
 	thumb_func_start unref_sub_8083BB0
 unref_sub_8083BB0: @ 8084004
 	push {r4,lr}
-	ldr r4, _08084028
+	ldr r4, _08084028 @ =sub_80839DC
 	adds r0, r4, 0
 	movs r1, 0x50
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0808402C
+	ldr r2, _0808402C @ =sub_80B9484
 	adds r1, r4, 0
 	bl SetTaskFuncWithFollowupFunc
 	bl ScriptContext1_Stop
@@ -1945,9 +1945,9 @@ _0808402C: .4byte sub_80B9484
 	thumb_func_start sub_8083BDC
 sub_8083BDC: @ 8084030
 	push {lr}
-	ldr r0, _08084040
+	ldr r0, _08084040 @ =gSpecialVar_0x8006
 	ldrb r0, [r0]
-	ldr r1, _08084044
+	ldr r1, _08084044 @ =c2_exit_to_overworld_1_continue_scripts_restart_music
 	bl sub_8093130
 	pop {r0}
 	bx r0
@@ -1962,13 +1962,13 @@ sub_8083BF4: @ 8084048
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _08084088
+	ldr r0, _08084088 @ =gSpecialVar_0x8006
 	strh r4, [r0]
-	ldr r0, _0808408C
+	ldr r0, _0808408C @ =gStringVar1
 	lsls r1, r4, 3
 	subs r1, r4
 	lsls r1, 2
-	ldr r2, _08084090
+	ldr r2, _08084090 @ =0x03002988
 	adds r1, r2
 	bl StringCopy
 	adds r0, r4, 0
@@ -1977,8 +1977,8 @@ sub_8083BF4: @ 8084048
 	lsrs r1, r0, 24
 	cmp r1, 0
 	beq _0808409C
-	ldr r0, _08084094
-	ldr r2, _08084098
+	ldr r0, _08084094 @ =gStringVar2
+	ldr r2, _08084098 @ =gTrainerCardColorNames
 	subs r1, 0x1
 	lsls r1, 2
 	adds r1, r2
@@ -2009,7 +2009,7 @@ sub_8083C50: @ 80840A4
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _080840EC
+	ldr r1, _080840EC @ =gTasks
 	adds r0, r1
 	ldrh r1, [r0, 0x8]
 	adds r1, 0x1
@@ -2020,12 +2020,12 @@ sub_8083C50: @ 80840A4
 	cmp r1, r0
 	ble _080840D6
 	bl CloseLink
-	ldr r0, _080840F0
+	ldr r0, _080840F0 @ =CB2_LinkError
 	bl SetMainCallback2
 	adds r0, r4, 0
 	bl DestroyTask
 _080840D6:
-	ldr r0, _080840F4
+	ldr r0, _080840F4 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _080840E4
@@ -2046,7 +2046,7 @@ sub_8083CA4: @ 80840F8
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _08084118
+	ldr r0, _08084118 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08084110
@@ -2068,12 +2068,12 @@ unref_sub_8083CC8: @ 808411C
 	lsls r4, 24
 	lsrs r4, 24
 	bl sub_800832C
-	ldr r1, _0808413C
+	ldr r1, _0808413C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08084140
+	ldr r1, _08084140 @ =sub_8083CA4
 	str r1, [r0]
 	pop {r4}
 	pop {r0}

@@ -10,13 +10,13 @@
 ClearTilesetAnimDmas: @ 80731B8
 	push {lr}
 	sub sp, 0x4
-	ldr r1, _080731D8
+	ldr r1, _080731D8 @ =0x030006c0
 	movs r0, 0
 	strb r0, [r1]
 	movs r0, 0
 	str r0, [sp]
-	ldr r1, _080731DC
-	ldr r2, _080731E0
+	ldr r1, _080731DC @ =0x0202e9d8
+	ldr r2, _080731E0 @ =0x0500003c
 	mov r0, sp
 	bl CpuSet
 	add sp, 0x4
@@ -35,11 +35,11 @@ QueueTilesetAnimDma: @ 80731E4
 	adds r5, r1, 0
 	lsls r2, 16
 	lsrs r6, r2, 16
-	ldr r3, _0807322C
+	ldr r3, _0807322C @ =0x030006c0
 	ldrb r0, [r3]
 	cmp r0, 0x13
 	bhi _08073224
-	ldr r2, _08073230
+	ldr r2, _08073230 @ =0x0202e9d8
 	adds r1, r0, 0
 	lsls r0, r1, 1
 	adds r0, r1
@@ -75,13 +75,13 @@ _08073230: .4byte 0x0202e9d8
 sub_8072E74: @ 8073234
 	push {r4-r6,lr}
 	movs r3, 0
-	ldr r4, _08073270
+	ldr r4, _08073270 @ =0x030006c0
 	adds r6, r4, 0
 	ldrb r0, [r4]
 	cmp r3, r0
 	bge _08073266
-	ldr r2, _08073274
-	ldr r1, _08073278
+	ldr r2, _08073274 @ =0x040000d4
+	ldr r1, _08073278 @ =0x0202e9d8
 	movs r5, 0x80
 	lsls r5, 24
 _0807324A:
@@ -133,11 +133,11 @@ sub_8072ED0: @ 8073290
 sub_8072EDC: @ 807329C
 	push {r4,lr}
 	bl ClearTilesetAnimDmas
-	ldr r2, _080732F4
+	ldr r2, _080732F4 @ =0x030006c2
 	ldrh r0, [r2]
 	adds r0, 0x1
 	strh r0, [r2]
-	ldr r1, _080732F8
+	ldr r1, _080732F8 @ =0x030006c4
 	lsls r0, 16
 	lsrs r0, 16
 	ldrh r1, [r1]
@@ -146,11 +146,11 @@ sub_8072EDC: @ 807329C
 	movs r0, 0
 	strh r0, [r2]
 _080732BA:
-	ldr r4, _080732FC
+	ldr r4, _080732FC @ =0x030006c6
 	ldrh r0, [r4]
 	adds r0, 0x1
 	strh r0, [r4]
-	ldr r1, _08073300
+	ldr r1, _08073300 @ =0x030006c8
 	lsls r0, 16
 	lsrs r0, 16
 	ldrh r1, [r1]
@@ -159,14 +159,14 @@ _080732BA:
 	movs r0, 0
 	strh r0, [r4]
 _080732D2:
-	ldr r0, _08073304
+	ldr r0, _08073304 @ =0x030006cc
 	ldr r1, [r0]
 	cmp r1, 0
 	beq _080732E0
 	ldrh r0, [r2]
 	bl _call_via_r1
 _080732E0:
-	ldr r0, _08073308
+	ldr r0, _08073308 @ =0x030006d0
 	ldr r1, [r0]
 	cmp r1, 0
 	beq _080732EE
@@ -188,15 +188,15 @@ _08073308: .4byte 0x030006d0
 	thumb_func_start StartTileset1Animation
 StartTileset1Animation: @ 807330C
 	push {lr}
-	ldr r0, _08073338
+	ldr r0, _08073338 @ =0x030006c2
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _0807333C
+	ldr r0, _0807333C @ =0x030006c4
 	strh r1, [r0]
-	ldr r1, _08073340
+	ldr r1, _08073340 @ =0x030006cc
 	movs r0, 0
 	str r0, [r1]
-	ldr r0, _08073344
+	ldr r0, _08073344 @ =gMapHeader
 	ldr r0, [r0]
 	ldr r0, [r0, 0x10]
 	cmp r0, 0
@@ -218,15 +218,15 @@ _08073344: .4byte gMapHeader
 	thumb_func_start StartTileset2Animation
 StartTileset2Animation: @ 8073348
 	push {lr}
-	ldr r0, _08073374
+	ldr r0, _08073374 @ =0x030006c6
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _08073378
+	ldr r0, _08073378 @ =0x030006c8
 	strh r1, [r0]
-	ldr r1, _0807337C
+	ldr r1, _0807337C @ =0x030006d0
 	movs r0, 0
 	str r0, [r1]
-	ldr r0, _08073380
+	ldr r0, _08073380 @ =gMapHeader
 	ldr r0, [r0]
 	ldr r0, [r0, 0x14]
 	cmp r0, 0
@@ -247,16 +247,16 @@ _08073380: .4byte gMapHeader
 
 	thumb_func_start TilesetCB_General
 TilesetCB_General: @ 8073384
-	ldr r1, _0807339C
+	ldr r1, _0807339C @ =0x030006c2
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080733A0
+	ldr r1, _080733A0 @ =0x030006c4
 	movs r2, 0x80
 	lsls r2, 1
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r1, _080733A4
-	ldr r0, _080733A8
+	ldr r1, _080733A4 @ =0x030006cc
+	ldr r0, _080733A8 @ =sub_8073014
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -268,16 +268,16 @@ _080733A8: .4byte sub_8073014
 
 	thumb_func_start TilesetCB_Building
 TilesetCB_Building: @ 80733AC
-	ldr r1, _080733C4
+	ldr r1, _080733C4 @ =0x030006c2
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080733C8
+	ldr r1, _080733C8 @ =0x030006c4
 	movs r2, 0x80
 	lsls r2, 1
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r1, _080733CC
-	ldr r0, _080733D0
+	ldr r1, _080733CC @ =0x030006cc
+	ldr r0, _080733D0 @ =sub_8073058
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -348,11 +348,11 @@ sub_8073070: @ 8073430
 	movs r1, 0xC0
 	lsls r1, 10
 	ands r1, r0
-	ldr r0, _08073450
+	ldr r0, _08073450 @ =gTilesetAnimTable_General_0
 	lsrs r1, 14
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _08073454
+	ldr r1, _08073454 @ =0x06003f80
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
 	pop {r0}
@@ -369,11 +369,11 @@ sub_8073098: @ 8073458
 	lsrs r0, 16
 	movs r1, 0x7
 	ands r0, r1
-	ldr r1, _08073478
+	ldr r1, _08073478 @ =gTilesetAnimTable_General_1
 	lsls r0, 2
 	adds r0, r1
 	ldr r0, [r0]
-	ldr r1, _0807347C
+	ldr r1, _0807347C @ =0x06003600
 	movs r2, 0xF0
 	lsls r2, 2
 	bl QueueTilesetAnimDma
@@ -391,11 +391,11 @@ sub_80730C0: @ 8073480
 	movs r1, 0xE0
 	lsls r1, 11
 	ands r1, r0
-	ldr r0, _080734A0
+	ldr r0, _080734A0 @ =gTilesetAnimTable_General_2
 	lsrs r1, 14
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _080734A4
+	ldr r1, _080734A4 @ =0x06003a00
 	movs r2, 0xA0
 	lsls r2, 1
 	bl QueueTilesetAnimDma
@@ -413,11 +413,11 @@ sub_80730E8: @ 80734A8
 	movs r1, 0xC0
 	lsls r1, 10
 	ands r1, r0
-	ldr r0, _080734C8
+	ldr r0, _080734C8 @ =gTilesetAnimTable_General_3
 	lsrs r1, 14
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _080734CC
+	ldr r1, _080734CC @ =0x06003e00
 	movs r2, 0xC0
 	bl QueueTilesetAnimDma
 	pop {r0}
@@ -429,14 +429,14 @@ _080734CC: .4byte 0x06003e00
 
 	thumb_func_start TilesetCB_Petalburg
 TilesetCB_Petalburg: @ 80734D0
-	ldr r1, _080734E8
+	ldr r1, _080734E8 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080734EC
-	ldr r0, _080734F0
+	ldr r1, _080734EC @ =0x030006c8
+	ldr r0, _080734F0 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _080734F4
+	ldr r1, _080734F4 @ =0x030006d0
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -449,15 +449,15 @@ _080734F4: .4byte 0x030006d0
 
 	thumb_func_start TilesetCB_Rustboro
 TilesetCB_Rustboro: @ 80734F8
-	ldr r1, _08073510
+	ldr r1, _08073510 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08073514
-	ldr r0, _08073518
+	ldr r1, _08073514 @ =0x030006c8
+	ldr r0, _08073518 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _0807351C
-	ldr r0, _08073520
+	ldr r1, _0807351C @ =0x030006d0
+	ldr r0, _08073520 @ =sub_8073424
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -470,14 +470,14 @@ _08073520: .4byte sub_8073424
 
 	thumb_func_start TilesetCB_Dewford
 TilesetCB_Dewford: @ 8073524
-	ldr r1, _0807353C
+	ldr r1, _0807353C @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08073540
-	ldr r0, _08073544
+	ldr r1, _08073540 @ =0x030006c8
+	ldr r0, _08073544 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _08073548
+	ldr r1, _08073548 @ =0x030006d0
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -490,14 +490,14 @@ _08073548: .4byte 0x030006d0
 
 	thumb_func_start TilesetCB_Slateport
 TilesetCB_Slateport: @ 807354C
-	ldr r1, _08073564
+	ldr r1, _08073564 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08073568
-	ldr r0, _0807356C
+	ldr r1, _08073568 @ =0x030006c8
+	ldr r0, _0807356C @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _08073570
+	ldr r1, _08073570 @ =0x030006d0
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -510,16 +510,16 @@ _08073570: .4byte 0x030006d0
 
 	thumb_func_start TilesetCB_Mauville
 TilesetCB_Mauville: @ 8073574
-	ldr r1, _0807358C
-	ldr r0, _08073590
+	ldr r1, _0807358C @ =0x030006c6
+	ldr r0, _08073590 @ =0x030006c2
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _08073594
-	ldr r0, _08073598
+	ldr r1, _08073594 @ =0x030006c8
+	ldr r0, _08073598 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _0807359C
-	ldr r0, _080735A0
+	ldr r1, _0807359C @ =0x030006d0
+	ldr r0, _080735A0 @ =sub_80734A0
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -533,15 +533,15 @@ _080735A0: .4byte sub_80734A0
 
 	thumb_func_start TilesetCB_Lavaridge
 TilesetCB_Lavaridge: @ 80735A4
-	ldr r1, _080735BC
+	ldr r1, _080735BC @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080735C0
-	ldr r0, _080735C4
+	ldr r1, _080735C0 @ =0x030006c8
+	ldr r0, _080735C4 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _080735C8
-	ldr r0, _080735CC
+	ldr r1, _080735C8 @ =0x030006d0
+	ldr r0, _080735CC @ =sub_8073514
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -554,14 +554,14 @@ _080735CC: .4byte sub_8073514
 
 	thumb_func_start TilesetCB_Fallarbor
 TilesetCB_Fallarbor: @ 80735D0
-	ldr r1, _080735E8
+	ldr r1, _080735E8 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080735EC
-	ldr r0, _080735F0
+	ldr r1, _080735EC @ =0x030006c8
+	ldr r0, _080735F0 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _080735F4
+	ldr r1, _080735F4 @ =0x030006d0
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -574,14 +574,14 @@ _080735F4: .4byte 0x030006d0
 
 	thumb_func_start TilesetCB_Fortree
 TilesetCB_Fortree: @ 80735F8
-	ldr r1, _08073610
+	ldr r1, _08073610 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08073614
-	ldr r0, _08073618
+	ldr r1, _08073614 @ =0x030006c8
+	ldr r0, _08073618 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _0807361C
+	ldr r1, _0807361C @ =0x030006d0
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -594,14 +594,14 @@ _0807361C: .4byte 0x030006d0
 
 	thumb_func_start TilesetCB_Lilycove
 TilesetCB_Lilycove: @ 8073620
-	ldr r1, _08073638
+	ldr r1, _08073638 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _0807363C
-	ldr r0, _08073640
+	ldr r1, _0807363C @ =0x030006c8
+	ldr r0, _08073640 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _08073644
+	ldr r1, _08073644 @ =0x030006d0
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -614,14 +614,14 @@ _08073644: .4byte 0x030006d0
 
 	thumb_func_start TilesetCB_Mossdeep
 TilesetCB_Mossdeep: @ 8073648
-	ldr r1, _08073660
+	ldr r1, _08073660 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08073664
-	ldr r0, _08073668
+	ldr r1, _08073664 @ =0x030006c8
+	ldr r0, _08073668 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _0807366C
+	ldr r1, _0807366C @ =0x030006d0
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -634,15 +634,15 @@ _0807366C: .4byte 0x030006d0
 
 	thumb_func_start TilesetCB_EverGrande
 TilesetCB_EverGrande: @ 8073670
-	ldr r1, _08073688
+	ldr r1, _08073688 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _0807368C
-	ldr r0, _08073690
+	ldr r1, _0807368C @ =0x030006c8
+	ldr r0, _08073690 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _08073694
-	ldr r0, _08073698
+	ldr r1, _08073694 @ =0x030006d0
+	ldr r0, _08073698 @ =sub_8073540
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -655,16 +655,16 @@ _08073698: .4byte sub_8073540
 
 	thumb_func_start TilesetCB_Pacifidlog
 TilesetCB_Pacifidlog: @ 807369C
-	ldr r1, _080736B4
-	ldr r0, _080736B8
+	ldr r1, _080736B4 @ =0x030006c6
+	ldr r0, _080736B8 @ =0x030006c2
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _080736BC
-	ldr r0, _080736C0
+	ldr r1, _080736BC @ =0x030006c8
+	ldr r0, _080736C0 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _080736C4
-	ldr r0, _080736C8
+	ldr r1, _080736C4 @ =0x030006d0
+	ldr r0, _080736C8 @ =sub_80735B4
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -678,14 +678,14 @@ _080736C8: .4byte sub_80735B4
 
 	thumb_func_start TilesetCB_Sootopolis
 TilesetCB_Sootopolis: @ 80736CC
-	ldr r1, _080736E4
+	ldr r1, _080736E4 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080736E8
-	ldr r0, _080736EC
+	ldr r1, _080736E8 @ =0x030006c8
+	ldr r0, _080736EC @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _080736F0
+	ldr r1, _080736F0 @ =0x030006d0
 	movs r0, 0
 	str r0, [r1]
 	bx lr
@@ -698,14 +698,14 @@ _080736F0: .4byte 0x030006d0
 
 	thumb_func_start TilesetCB_Underwater
 TilesetCB_Underwater: @ 80736F4
-	ldr r1, _08073708
+	ldr r1, _08073708 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _0807370C
+	ldr r1, _0807370C @ =0x030006c8
 	movs r0, 0x80
 	strh r0, [r1]
-	ldr r1, _08073710
-	ldr r0, _08073714
+	ldr r1, _08073710 @ =0x030006d0
+	ldr r0, _08073714 @ =sub_80735E4
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -717,14 +717,14 @@ _08073714: .4byte sub_80735E4
 
 	thumb_func_start TilesetCB_SootopolisGym
 TilesetCB_SootopolisGym: @ 8073718
-	ldr r1, _0807372C
+	ldr r1, _0807372C @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08073730
+	ldr r1, _08073730 @ =0x030006c8
 	movs r0, 0xF0
 	strh r0, [r1]
-	ldr r1, _08073734
-	ldr r0, _08073738
+	ldr r1, _08073734 @ =0x030006d0
+	ldr r0, _08073738 @ =sub_80738A8
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -736,15 +736,15 @@ _08073738: .4byte sub_80738A8
 
 	thumb_func_start TilesetCB_Cave
 TilesetCB_Cave: @ 807373C
-	ldr r1, _08073754
+	ldr r1, _08073754 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08073758
-	ldr r0, _0807375C
+	ldr r1, _08073758 @ =0x030006c8
+	ldr r0, _0807375C @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _08073760
-	ldr r0, _08073764
+	ldr r1, _08073760 @ =0x030006d0
+	ldr r0, _08073764 @ =sub_8073600
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -757,14 +757,14 @@ _08073764: .4byte sub_8073600
 
 	thumb_func_start TilesetCB_EliteFour
 TilesetCB_EliteFour: @ 8073768
-	ldr r1, _0807377C
+	ldr r1, _0807377C @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08073780
+	ldr r1, _08073780 @ =0x030006c8
 	movs r0, 0x80
 	strh r0, [r1]
-	ldr r1, _08073784
-	ldr r0, _08073788
+	ldr r1, _08073784 @ =0x030006d0
+	ldr r0, _08073788 @ =sub_80738C0
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -776,15 +776,15 @@ _08073788: .4byte sub_80738C0
 
 	thumb_func_start TilesetCB_MauvilleGym
 TilesetCB_MauvilleGym: @ 807378C
-	ldr r1, _080737A4
+	ldr r1, _080737A4 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080737A8
-	ldr r0, _080737AC
+	ldr r1, _080737A8 @ =0x030006c8
+	ldr r0, _080737AC @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _080737B0
-	ldr r0, _080737B4
+	ldr r1, _080737B0 @ =0x030006d0
+	ldr r0, _080737B4 @ =sub_8073890
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -797,15 +797,15 @@ _080737B4: .4byte sub_8073890
 
 	thumb_func_start TilesetCB_BikeShop
 TilesetCB_BikeShop: @ 80737B8
-	ldr r1, _080737D0
+	ldr r1, _080737D0 @ =0x030006c6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080737D4
-	ldr r0, _080737D8
+	ldr r1, _080737D4 @ =0x030006c8
+	ldr r0, _080737D8 @ =0x030006c4
 	ldrh r0, [r0]
 	strh r0, [r1]
-	ldr r1, _080737DC
-	ldr r0, _080737E0
+	ldr r1, _080737DC @ =0x030006d0
+	ldr r0, _080737E0 @ =sub_80738EC
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -1096,11 +1096,11 @@ sub_807361C: @ 80739DC
 	movs r1, 0xC0
 	lsls r1, 10
 	ands r1, r0
-	ldr r0, _080739FC
+	ldr r0, _080739FC @ =gTilesetAnimTable_General_4
 	lsrs r1, 14
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _08073A00
+	ldr r1, _08073A00 @ =0x06003c00
 	movs r2, 0xA0
 	lsls r2, 1
 	bl QueueTilesetAnimDma
@@ -1118,11 +1118,11 @@ sub_8073644: @ 8073A04
 	lsrs r4, r0, 24
 	movs r0, 0x3
 	ands r0, r4
-	ldr r5, _08073A40
+	ldr r5, _08073A40 @ =gTilesetAnimTable_Lavaridge
 	lsls r0, 2
 	adds r0, r5
 	ldr r0, [r0]
-	ldr r1, _08073A44
+	ldr r1, _08073A44 @ =0x06006400
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
 	adds r1, r4, 0x2
@@ -1134,7 +1134,7 @@ sub_8073644: @ 8073A04
 	lsrs r0, 22
 	adds r0, r5
 	ldr r0, [r0]
-	ldr r1, _08073A48
+	ldr r1, _08073A48 @ =0x06006480
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
 	pop {r4,r5}
@@ -1153,11 +1153,11 @@ sub_807368C: @ 8073A4C
 	movs r1, 0xC0
 	lsls r1, 18
 	ands r1, r0
-	ldr r0, _08073A6C
+	ldr r0, _08073A6C @ =gTilesetAnimTable_Pacifidlog_0
 	lsrs r1, 22
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _08073A70
+	ldr r1, _08073A70 @ =0x06007a00
 	movs r2, 0xF0
 	lsls r2, 2
 	bl QueueTilesetAnimDma
@@ -1175,11 +1175,11 @@ sub_80736B4: @ 8073A74
 	movs r1, 0xC0
 	lsls r1, 18
 	ands r1, r0
-	ldr r0, _08073A94
+	ldr r0, _08073A94 @ =gTilesetAnimTable_Underwater
 	lsrs r1, 22
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _08073A98
+	ldr r1, _08073A98 @ =0x06007e00
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
 	pop {r0}
@@ -1196,11 +1196,11 @@ sub_80736DC: @ 8073A9C
 	movs r1, 0xE0
 	lsls r1, 19
 	ands r1, r0
-	ldr r0, _08073ABC
+	ldr r0, _08073ABC @ =gTilesetAnimTable_Pacifidlog_1
 	lsrs r1, 22
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _08073AC0
+	ldr r1, _08073AC0 @ =0x06007e00
 	movs r2, 0x80
 	lsls r2, 1
 	bl QueueTilesetAnimDma
@@ -1228,20 +1228,20 @@ sub_8073704: @ 8073AC4
 	bl __umodsi3
 	adds r4, r0, 0
 	lsls r4, 16
-	ldr r0, _08073B10
+	ldr r0, _08073B10 @ =gTilesetAnimTable_Mauville_0A
 	lsrs r4, 14
 	adds r0, r4, r0
 	ldr r0, [r0]
-	ldr r1, _08073B14
+	ldr r1, _08073B14 @ =gUnknown_0837BAE4
 	lsls r5, r6, 2
 	adds r1, r5, r1
 	ldr r1, [r1]
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
-	ldr r0, _08073B18
+	ldr r0, _08073B18 @ =gTilesetAnimTable_Mauville_1A
 	adds r4, r0
 	ldr r0, [r4]
-	ldr r1, _08073B1C
+	ldr r1, _08073B1C @ =gUnknown_0837BB04
 	adds r5, r1
 	ldr r1, [r5]
 	movs r2, 0x80
@@ -1255,20 +1255,20 @@ _08073B1C: .4byte gUnknown_0837BB04
 _08073B20:
 	movs r0, 0x3
 	ands r5, r0
-	ldr r0, _08073B54
+	ldr r0, _08073B54 @ =gTilesetAnimTable_Mauville_0B
 	lsls r5, 2
 	adds r0, r5, r0
 	ldr r0, [r0]
-	ldr r1, _08073B58
+	ldr r1, _08073B58 @ =gUnknown_0837BAE4
 	lsls r4, r6, 2
 	adds r1, r4, r1
 	ldr r1, [r1]
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
-	ldr r0, _08073B5C
+	ldr r0, _08073B5C @ =gTilesetAnimTable_Mauville_1B
 	adds r5, r0
 	ldr r0, [r5]
-	ldr r1, _08073B60
+	ldr r1, _08073B60 @ =gUnknown_0837BB04
 	adds r4, r1
 	ldr r1, [r4]
 	movs r2, 0x80
@@ -1296,13 +1296,13 @@ sub_80737A4: @ 8073B64
 	movs r1, 0xE0
 	lsls r1, 11
 	ands r1, r0
-	ldr r0, _08073B98
+	ldr r0, _08073B98 @ =gTilesetAnimTable_Rustboro_0
 	lsrs r1, 14
 	adds r1, r0
 	ldr r2, [r1]
 	cmp r2, 0
 	beq _08073B94
-	ldr r0, _08073B9C
+	ldr r0, _08073B9C @ =gUnknown_0837BFA4
 	lsls r1, r3, 2
 	adds r1, r0
 	ldr r1, [r1]
@@ -1324,11 +1324,11 @@ sub_80737E0: @ 8073BA0
 	lsrs r0, 16
 	movs r1, 0x1
 	ands r0, r1
-	ldr r1, _08073BC0
+	ldr r1, _08073BC0 @ =gTilesetAnimTable_Rustboro_1
 	lsls r0, 2
 	adds r0, r1
 	ldr r0, [r0]
-	ldr r1, _08073BC4
+	ldr r1, _08073BC4 @ =0x06007800
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
 	pop {r0}
@@ -1345,11 +1345,11 @@ sub_8073808: @ 8073BC8
 	movs r1, 0xC0
 	lsls r1, 10
 	ands r1, r0
-	ldr r0, _08073BE8
+	ldr r0, _08073BE8 @ =gTilesetAnimTable_Cave
 	lsrs r1, 14
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _08073BEC
+	ldr r1, _08073BEC @ =0x06005400
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
 	pop {r0}
@@ -1371,11 +1371,11 @@ sub_8073830: @ 8073BF0
 	movs r2, 0xE0
 	lsls r2, 11
 	ands r2, r0
-	ldr r0, _08073C20
+	ldr r0, _08073C20 @ =gTilesetAnimTable_EverGrande
 	lsrs r2, 14
 	adds r2, r0
 	ldr r0, [r2]
-	ldr r2, _08073C24
+	ldr r2, _08073C24 @ =gUnknown_0837C93C
 	lsls r1, 2
 	adds r1, r2
 	ldr r1, [r1]
@@ -1395,11 +1395,11 @@ sub_8073868: @ 8073C28
 	movs r1, 0xC0
 	lsls r1, 10
 	ands r1, r0
-	ldr r0, _08073C48
+	ldr r0, _08073C48 @ =gTilesetAnimTable_Cave
 	lsrs r1, 14
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _08073C4C
+	ldr r1, _08073C4C @ =0x06007400
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
 	pop {r0}
@@ -1489,11 +1489,11 @@ sub_8073904: @ 8073CC4
 	lsrs r0, 16
 	movs r1, 0x1
 	ands r0, r1
-	ldr r1, _08073CE4
+	ldr r1, _08073CE4 @ =gTilesetAnimTable_Building
 	lsls r0, 2
 	adds r0, r1
 	ldr r0, [r0]
-	ldr r1, _08073CE8
+	ldr r1, _08073CE8 @ =0x06003e00
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
 	pop {r0}
@@ -1512,18 +1512,18 @@ sub_807392C: @ 8073CEC
 	bl __umodsi3
 	adds r4, r0, 0
 	lsls r4, 16
-	ldr r0, _08073D24
+	ldr r0, _08073D24 @ =gTilesetAnimTable_SootopolisGym_0
 	lsrs r4, 14
 	adds r0, r4, r0
 	ldr r0, [r0]
-	ldr r1, _08073D28
+	ldr r1, _08073D28 @ =0x06007e00
 	movs r2, 0xC0
 	lsls r2, 1
 	bl QueueTilesetAnimDma
-	ldr r0, _08073D2C
+	ldr r0, _08073D2C @ =gTilesetAnimTable_SootopolisGym_1
 	adds r4, r0
 	ldr r0, [r4]
-	ldr r1, _08073D30
+	ldr r1, _08073D30 @ =0x06007a00
 	movs r2, 0xA0
 	lsls r2, 2
 	bl QueueTilesetAnimDma
@@ -1544,11 +1544,11 @@ sub_8073974: @ 8073D34
 	movs r1, 0xC0
 	lsls r1, 10
 	ands r1, r0
-	ldr r0, _08073D54
+	ldr r0, _08073D54 @ =gTilesetAnimTable_EliteFour_0
 	lsrs r1, 14
 	adds r1, r0
 	ldr r0, [r1]
-	ldr r1, _08073D58
+	ldr r1, _08073D58 @ =0x06007f00
 	movs r2, 0x20
 	bl QueueTilesetAnimDma
 	pop {r0}
@@ -1565,11 +1565,11 @@ sub_807399C: @ 8073D5C
 	lsrs r0, 16
 	movs r1, 0x1
 	ands r0, r1
-	ldr r1, _08073D7C
+	ldr r1, _08073D7C @ =gTilesetAnimTable_EliteFour_1
 	lsls r0, 2
 	adds r0, r1
 	ldr r0, [r0]
-	ldr r1, _08073D80
+	ldr r1, _08073D80 @ =0x06007c00
 	movs r2, 0x80
 	bl QueueTilesetAnimDma
 	pop {r0}
@@ -1586,11 +1586,11 @@ sub_80739C4: @ 8073D84
 	lsrs r0, 16
 	movs r1, 0x1
 	ands r0, r1
-	ldr r1, _08073DA4
+	ldr r1, _08073DA4 @ =gTilesetAnimTable_MauvilleGym
 	lsls r0, 2
 	adds r0, r1
 	ldr r0, [r0]
-	ldr r1, _08073DA8
+	ldr r1, _08073DA8 @ =0x06005200
 	movs r2, 0x80
 	lsls r2, 2
 	bl QueueTilesetAnimDma
@@ -1608,11 +1608,11 @@ sub_80739EC: @ 8073DAC
 	lsrs r0, 16
 	movs r1, 0x1
 	ands r0, r1
-	ldr r1, _08073DCC
+	ldr r1, _08073DCC @ =gTilesetAnimTable_BikeShop
 	lsls r0, 2
 	adds r0, r1
 	ldr r0, [r0]
-	ldr r1, _08073DD0
+	ldr r1, _08073DD0 @ =0x06007e00
 	movs r2, 0x90
 	lsls r2, 1
 	bl QueueTilesetAnimDma

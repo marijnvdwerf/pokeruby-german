@@ -27,9 +27,9 @@ BlendPalette: @ 8041534
 	movs r6, 0
 	cmp r6, r12
 	bcs _080415BA
-	ldr r0, _080415CC
+	ldr r0, _080415CC @ =gPlttBufferUnfaded
 	mov r10, r0
-	ldr r1, _080415D0
+	ldr r1, _080415D0 @ =gPlttBufferFaded
 	mov r9, r1
 _08041562:
 	mov r0, r8

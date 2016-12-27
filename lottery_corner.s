@@ -17,7 +17,7 @@ sub_8145A78: @ 8145E30
 	lsls r0, 16
 	orrs r0, r4
 	bl sub_8145D14
-	ldr r0, _08145E58
+	ldr r0, _08145E58 @ =0x00004045
 	movs r1, 0
 	bl VarSet
 	pop {r4}
@@ -38,11 +38,11 @@ sub_8145AA4: @ 8145E5C
 	subs r0, r4, 0x1
 	lsls r0, 16
 	lsrs r4, r0, 16
-	ldr r0, _08145E98
+	ldr r0, _08145E98 @ =0x0000ffff
 	cmp r4, r0
 	beq _08145E8C
-	ldr r5, _08145E9C
-	ldr r3, _08145EA0
+	ldr r5, _08145E9C @ =0x41c64e6d
+	ldr r3, _08145EA0 @ =0x00003039
 	adds r2, r0, 0
 _08145E7C:
 	adds r0, r1, 0
@@ -69,7 +69,7 @@ _08145EA0: .4byte 0x00003039
 sub_8145AEC: @ 8145EA4
 	push {lr}
 	bl sub_8145D3C
-	ldr r1, _08145EB4
+	ldr r1, _08145EB4 @ =gScriptResult
 	strh r0, [r1]
 	pop {r0}
 	bx r0
@@ -84,7 +84,7 @@ PickLotteryCornerTicket: @ 8145EB8
 	mov r6, r9
 	mov r5, r8
 	push {r5-r7}
-	ldr r1, _08145FDC
+	ldr r1, _08145FDC @ =gSpecialVar_0x8004
 	movs r0, 0
 	strh r0, [r1]
 	movs r0, 0
@@ -95,7 +95,7 @@ _08145ED0:
 	movs r0, 0x64
 	adds r1, r6, 0
 	muls r1, r0
-	ldr r0, _08145FE0
+	ldr r0, _08145FE0 @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0xB
@@ -111,14 +111,14 @@ _08145ED0:
 	movs r1, 0x1
 	bl GetMonData
 	adds r1, r0, 0
-	ldr r0, _08145FE4
+	ldr r0, _08145FE4 @ =gScriptResult
 	ldrh r0, [r0]
 	lsls r1, 16
 	lsrs r1, 16
 	bl GetMatchingDigits
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08145FDC
+	ldr r1, _08145FDC @ =gSpecialVar_0x8004
 	ldrh r2, [r1]
 	cmp r0, r2
 	bls _08145F22
@@ -150,7 +150,7 @@ _08145F38:
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 4
-	ldr r1, _08145FE8
+	ldr r1, _08145FE8 @ =gUnknown_020300A4
 	adds r0, r1
 	adds r4, r2, r0
 	adds r0, r4, 0
@@ -167,14 +167,14 @@ _08145F38:
 	movs r1, 0x1
 	bl GetBoxMonData
 	adds r1, r0, 0
-	ldr r0, _08145FE4
+	ldr r0, _08145FE4 @ =gScriptResult
 	ldrh r0, [r0]
 	lsls r1, 16
 	lsrs r1, 16
 	bl GetMatchingDigits
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08145FDC
+	ldr r1, _08145FDC @ =gSpecialVar_0x8004
 	ldrh r2, [r1]
 	cmp r0, r2
 	bls _08145F90
@@ -195,12 +195,12 @@ _08145F90:
 	lsrs r6, r0, 16
 	cmp r6, 0xD
 	bls _08145F2E
-	ldr r3, _08145FDC
+	ldr r3, _08145FDC @ =gSpecialVar_0x8004
 	ldrh r0, [r3]
 	cmp r0, 0
 	beq _0814602A
-	ldr r2, _08145FEC
-	ldr r1, _08145FF0
+	ldr r2, _08145FEC @ =gSpecialVar_0x8005
+	ldr r1, _08145FF0 @ =gUnknown_0840CB04
 	subs r0, 0x1
 	lsls r0, 1
 	adds r0, r1
@@ -209,16 +209,16 @@ _08145F90:
 	mov r2, r9
 	cmp r2, 0xE
 	bne _08145FFC
-	ldr r1, _08145FF4
+	ldr r1, _08145FF4 @ =gSpecialVar_0x8006
 	movs r0, 0
 	strh r0, [r1]
 	movs r0, 0x64
 	mov r1, r10
 	muls r1, r0
 	adds r0, r1, 0
-	ldr r1, _08145FE0
+	ldr r1, _08145FE0 @ =gPlayerParty
 	adds r0, r1
-	ldr r2, _08145FF8
+	ldr r2, _08145FF8 @ =gStringVar1
 	movs r1, 0x2
 	bl GetMonData
 	b _08146024
@@ -232,7 +232,7 @@ _08145FF0: .4byte gUnknown_0840CB04
 _08145FF4: .4byte gSpecialVar_0x8006
 _08145FF8: .4byte gStringVar1
 _08145FFC:
-	ldr r1, _08146038
+	ldr r1, _08146038 @ =gSpecialVar_0x8006
 	movs r0, 0x1
 	strh r0, [r1]
 	mov r2, r9
@@ -245,14 +245,14 @@ _08145FFC:
 	lsls r1, r2, 2
 	add r1, r10
 	lsls r1, 4
-	ldr r2, _0814603C
+	ldr r2, _0814603C @ =gUnknown_020300A4
 	adds r1, r2
 	adds r0, r1
-	ldr r2, _08146040
+	ldr r2, _08146040 @ =gStringVar1
 	movs r1, 0x2
 	bl GetBoxMonData
 _08146024:
-	ldr r0, _08146040
+	ldr r0, _08146040 @ =gStringVar1
 	bl StringGetEnd10
 _0814602A:
 	pop {r3-r5}
@@ -282,9 +282,9 @@ GetMatchingDigits: @ 8146044
 	movs r0, 0
 	mov r8, r0
 	movs r7, 0
-	ldr r1, _081460C4
+	ldr r1, _081460C4 @ =0x02039328
 	mov r10, r1
-	ldr r0, _081460C8
+	ldr r0, _081460C8 @ =0x0203932a
 	mov r9, r0
 _08146064:
 	adds r0, r6, 0
@@ -343,9 +343,9 @@ sub_8145D14: @ 81460CC
 	lsrs r4, r1, 16
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r0, _081460EC
+	ldr r0, _081460EC @ =0x0000404b
 	bl VarSet
-	ldr r0, _081460F0
+	ldr r0, _081460F0 @ =0x0000404c
 	adds r1, r4, 0
 	bl VarSet
 	pop {r4}
@@ -359,12 +359,12 @@ _081460F0: .4byte 0x0000404c
 	thumb_func_start sub_8145D3C
 sub_8145D3C: @ 81460F4
 	push {r4,lr}
-	ldr r0, _08146114
+	ldr r0, _08146114 @ =0x0000404b
 	bl VarGet
 	adds r4, r0, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _08146118
+	ldr r0, _08146118 @ =0x0000404c
 	bl VarGet
 	lsls r0, 16
 	orrs r0, r4

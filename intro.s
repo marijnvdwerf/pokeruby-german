@@ -23,17 +23,17 @@ MainCB2_Intro: @ 813BB74
 	bl AnimateSprites
 	bl BuildOamBuffer
 	bl UpdatePaletteFade
-	ldr r0, _0813BBA4
+	ldr r0, _0813BBA4 @ =gMain
 	ldrh r0, [r0, 0x2E]
 	cmp r0, 0
 	beq _0813BBB0
-	ldr r0, _0813BBA8
+	ldr r0, _0813BBA8 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0813BBB0
-	ldr r0, _0813BBAC
+	ldr r0, _0813BBAC @ =MainCB2_EndIntro
 	bl SetMainCallback2
 	b _0813BBC0
 	.align 2, 0
@@ -41,7 +41,7 @@ _0813BBA4: .4byte gMain
 _0813BBA8: .4byte gPaletteFade
 _0813BBAC: .4byte MainCB2_EndIntro
 _0813BBB0:
-	ldr r2, _0813BBC4
+	ldr r2, _0813BBC4 @ =gIntroFrameCounter
 	ldr r1, [r2]
 	movs r0, 0x1
 	negs r0, r0
@@ -63,7 +63,7 @@ MainCB2_EndIntro: @ 813BBC8
 	lsls r0, 24
 	cmp r0, 0
 	bne _0813BBDA
-	ldr r0, _0813BBE0
+	ldr r0, _0813BBE0 @ =CB2_InitTitleScreen
 	bl SetMainCallback2
 _0813BBDA:
 	pop {r0}
@@ -84,17 +84,17 @@ LoadCopyrightGraphics: @ 813BBE4
 	lsrs r4, 16
 	lsls r5, 16
 	lsrs r5, 16
-	ldr r0, _0813BC24
+	ldr r0, _0813BC24 @ =gIntroCopyright_Gfx
 	movs r6, 0xC0
 	lsls r6, 19
 	adds r3, r6
 	adds r1, r3, 0
 	bl LZ77UnCompVram
-	ldr r0, _0813BC28
+	ldr r0, _0813BC28 @ =gIntroCopyright_Pal
 	adds r1, r5, 0
 	movs r2, 0x20
 	bl LoadPalette
-	ldr r0, _0813BC2C
+	ldr r0, _0813BC2C @ =gIntroCopyright_Tilemap
 	adds r4, r6
 	movs r2, 0xA0
 	lsls r2, 2
@@ -112,7 +112,7 @@ _0813BC2C: .4byte gIntroCopyright_Tilemap
 	thumb_func_start SerialCb_CopyrightScreen
 SerialCb_CopyrightScreen: @ 813BC30
 	push {lr}
-	ldr r0, _0813BC3C
+	ldr r0, _0813BC3C @ =gUnknown_03005EE0
 	bl GameCubeMultiBoot_HandleSerialInterrupt
 	pop {r0}
 	bx r0
@@ -124,8 +124,8 @@ _0813BC3C: .4byte gUnknown_03005EE0
 SetUpCopyrightScreen: @ 813BC40
 	push {r4,r5,lr}
 	sub sp, 0xC
-	ldr r0, _0813BC5C
-	ldr r1, _0813BC60
+	ldr r0, _0813BC5C @ =gMain
+	ldr r1, _0813BC60 @ =0x0000043c
 	adds r5, r0, r1
 	ldrb r4, [r5]
 	cmp r4, 0x8C
@@ -149,7 +149,7 @@ _0813BC6A:
 _0813BC6C:
 	movs r0, 0
 	bl SetVBlankCallback
-	ldr r0, _0813BD58
+	ldr r0, _0813BD58 @ =0x04000050
 	strh r4, [r0]
 	adds r0, 0x2
 	strh r4, [r0]
@@ -157,24 +157,24 @@ _0813BC6C:
 	strh r4, [r0]
 	movs r1, 0xA0
 	lsls r1, 19
-	ldr r2, _0813BD5C
+	ldr r2, _0813BD5C @ =0x00007fff
 	adds r0, r2, 0
 	strh r0, [r1]
 	movs r5, 0x80
 	lsls r5, 19
 	strh r4, [r5]
-	ldr r0, _0813BD60
+	ldr r0, _0813BD60 @ =0x04000010
 	strh r4, [r0]
 	adds r0, 0x2
 	strh r4, [r0]
 	add r0, sp, 0x4
 	strh r4, [r0]
-	ldr r1, _0813BD64
+	ldr r1, _0813BD64 @ =0x040000d4
 	str r0, [r1]
 	movs r0, 0xC0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _0813BD68
+	ldr r0, _0813BD68 @ =0x8100c000
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	str r4, [sp, 0x8]
@@ -183,15 +183,15 @@ _0813BC6C:
 	movs r0, 0xE0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _0813BD6C
+	ldr r0, _0813BD6C @ =0x85000100
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	add r0, sp, 0x4
 	strh r4, [r0]
 	str r0, [r1]
-	ldr r0, _0813BD70
+	ldr r0, _0813BD70 @ =0x05000002
 	str r0, [r1, 0x4]
-	ldr r0, _0813BD74
+	ldr r0, _0813BD74 @ =0x810001ff
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	bl ResetPaletteFade
@@ -206,50 +206,50 @@ _0813BC6C:
 	bl FreeAllSpritePalettes
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0813BD78
+	ldr r1, _0813BD78 @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r1, _0813BD7C
+	ldr r1, _0813BD7C @ =0x04000008
 	movs r2, 0xE0
 	lsls r2, 3
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r3, _0813BD80
+	ldr r3, _0813BD80 @ =0x04000208
 	ldrh r2, [r3]
 	strh r4, [r3]
-	ldr r4, _0813BD84
+	ldr r4, _0813BD84 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0813BD88
+	ldr r2, _0813BD88 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _0813BD8C
+	ldr r0, _0813BD8C @ =VBlankCB_Intro
 	bl SetVBlankCallback
 	movs r1, 0xA0
 	lsls r1, 1
 	adds r0, r1, 0
 	strh r0, [r5]
-	ldr r0, _0813BD90
+	ldr r0, _0813BD90 @ =SerialCb_CopyrightScreen
 	bl SetSerialCallback
-	ldr r0, _0813BD94
+	ldr r0, _0813BD94 @ =gUnknown_03005EE0
 	bl GameCubeMultiBoot_Init
 _0813BD3E:
 	bl UpdatePaletteFade
-	ldr r0, _0813BD98
-	ldr r2, _0813BD9C
+	ldr r0, _0813BD98 @ =gMain
+	ldr r2, _0813BD9C @ =0x0000043c
 	adds r0, r2
 	ldrb r1, [r0]
 	adds r1, 0x1
 	strb r1, [r0]
-	ldr r0, _0813BD94
+	ldr r0, _0813BD94 @ =gUnknown_03005EE0
 	bl GameCubeMultiBoot_Main
 	b _0813BE14
 	.align 2, 0
@@ -272,7 +272,7 @@ _0813BD94: .4byte gUnknown_03005EE0
 _0813BD98: .4byte gMain
 _0813BD9C: .4byte 0x0000043c
 _0813BDA0:
-	ldr r4, _0813BDC8
+	ldr r4, _0813BDC8 @ =gUnknown_03005EE0
 	adds r0, r4, 0
 	bl GameCubeMultiBoot_Main
 	ldrb r0, [r4, 0x2]
@@ -296,12 +296,12 @@ _0813BDCC:
 	lsls r0, 24
 	cmp r0, 0
 	bne _0813BE14
-	ldr r0, _0813BDF4
+	ldr r0, _0813BDF4 @ =Task_IntroLoadPart1Graphics
 	movs r1, 0
 	bl CreateTask
-	ldr r0, _0813BDF8
+	ldr r0, _0813BDF8 @ =MainCB2_Intro
 	bl SetMainCallback2
-	ldr r1, _0813BDFC
+	ldr r1, _0813BDFC @ =gUnknown_03005EE0
 	ldrb r0, [r1, 0x2]
 	cmp r0, 0
 	beq _0813BE00
@@ -314,7 +314,7 @@ _0813BDF8: .4byte MainCB2_Intro
 _0813BDFC: .4byte gUnknown_03005EE0
 _0813BE00:
 	bl GameCubeMultiBoot_Quit
-	ldr r0, _0813BE10
+	ldr r0, _0813BE10 @ =SerialCB
 	bl SetSerialCallback
 _0813BE0A:
 	movs r0, 0
@@ -341,7 +341,7 @@ c2_copyright_1: @ 813BE20
 	bl sub_81251B8
 	movs r0, 0
 	bl sub_8125EC8
-	ldr r0, _0813BE5C
+	ldr r0, _0813BE5C @ =gSaveFileStatus
 	ldrh r0, [r0]
 	cmp r0, 0
 	beq _0813BE46
@@ -350,7 +350,7 @@ c2_copyright_1: @ 813BE20
 _0813BE46:
 	bl ClearSav2
 _0813BE4A:
-	ldr r0, _0813BE60
+	ldr r0, _0813BE60 @ =gSaveBlock2
 	ldrb r0, [r0, 0x15]
 	lsls r0, 31
 	lsrs r0, 31
@@ -383,16 +383,16 @@ Task_IntroLoadPart1Graphics: @ 813BE70
 	mov r8, r0
 	movs r0, 0
 	bl SetVBlankCallback
-	ldr r4, _0813BFF4
+	ldr r4, _0813BFF4 @ =gUnknown_02039318
 	bl Random
 	movs r1, 0x1
 	ands r1, r0
 	strh r1, [r4]
 	bl intro_reset_and_hide_bgs
-	ldr r0, _0813BFF8
+	ldr r0, _0813BFF8 @ =0x0400001e
 	movs r6, 0
 	strh r6, [r0]
-	ldr r1, _0813BFFC
+	ldr r1, _0813BFFC @ =0x0400001a
 	movs r0, 0x50
 	strh r0, [r1]
 	subs r1, 0x4
@@ -401,68 +401,68 @@ Task_IntroLoadPart1Graphics: @ 813BE70
 	subs r1, 0x4
 	movs r0, 0x28
 	strh r0, [r1]
-	ldr r0, _0813C000
+	ldr r0, _0813C000 @ =gUnknown_08407764
 	movs r1, 0xC0
 	lsls r1, 19
 	bl LZ77UnCompVram
-	ldr r0, _0813C004
-	ldr r1, _0813C008
+	ldr r0, _0813C004 @ =gUnknown_08406B74
+	ldr r1, _0813C008 @ =0x06008000
 	bl LZ77UnCompVram
-	ldr r1, _0813C00C
+	ldr r1, _0813C00C @ =0x06008800
 	add r0, sp, 0x8
 	strh r6, [r0]
-	ldr r4, _0813C010
+	ldr r4, _0813C010 @ =0x040000d4
 	str r0, [r4]
 	str r1, [r4, 0x4]
-	ldr r5, _0813C014
+	ldr r5, _0813C014 @ =0x81000400
 	str r5, [r4, 0x8]
 	ldr r0, [r4, 0x8]
-	ldr r0, _0813C018
-	ldr r1, _0813C01C
+	ldr r0, _0813C018 @ =gUnknown_08406F28
+	ldr r1, _0813C01C @ =0x06009000
 	bl LZ77UnCompVram
-	ldr r1, _0813C020
-	add r0, sp, 0x8
-	strh r6, [r0]
-	str r0, [r4]
-	str r1, [r4, 0x4]
-	str r5, [r4, 0x8]
-	ldr r0, [r4, 0x8]
-	ldr r0, _0813C024
-	ldr r1, _0813C028
-	bl LZ77UnCompVram
-	ldr r1, _0813C02C
+	ldr r1, _0813C020 @ =0x06009800
 	add r0, sp, 0x8
 	strh r6, [r0]
 	str r0, [r4]
 	str r1, [r4, 0x4]
 	str r5, [r4, 0x8]
 	ldr r0, [r4, 0x8]
-	ldr r0, _0813C030
-	ldr r1, _0813C034
+	ldr r0, _0813C024 @ =gUnknown_0840725C
+	ldr r1, _0813C028 @ =0x0600a000
 	bl LZ77UnCompVram
-	ldr r1, _0813C038
+	ldr r1, _0813C02C @ =0x0600a800
 	add r0, sp, 0x8
 	strh r6, [r0]
 	str r0, [r4]
 	str r1, [r4, 0x4]
 	str r5, [r4, 0x8]
 	ldr r0, [r4, 0x8]
-	ldr r0, _0813C03C
+	ldr r0, _0813C030 @ =gUnknown_0840754C
+	ldr r1, _0813C034 @ =0x0600b000
+	bl LZ77UnCompVram
+	ldr r1, _0813C038 @ =0x0600b800
+	add r0, sp, 0x8
+	strh r6, [r0]
+	str r0, [r4]
+	str r1, [r4, 0x4]
+	str r5, [r4, 0x8]
+	ldr r0, [r4, 0x8]
+	ldr r0, _0813C03C @ =gUnknown_08406974
 	movs r5, 0x80
 	lsls r5, 2
 	movs r1, 0
 	adds r2, r5, 0
 	bl LoadPalette
-	ldr r1, _0813C040
-	ldr r2, _0813C044
+	ldr r1, _0813C040 @ =0x0400000e
+	ldr r2, _0813C044 @ =0x00009603
 	adds r0, r2, 0
 	strh r0, [r1]
 	subs r1, 0x2
-	ldr r3, _0813C048
+	ldr r3, _0813C048 @ =0x00009402
 	adds r0, r3, 0
 	strh r0, [r1]
 	subs r1, 0x2
-	ldr r2, _0813C04C
+	ldr r2, _0813C04C @ =0x00009201
 	adds r0, r2, 0
 	strh r0, [r1]
 	subs r1, 0x2
@@ -470,13 +470,13 @@ Task_IntroLoadPart1Graphics: @ 813BE70
 	lsls r3, 8
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _0813C050
+	ldr r0, _0813C050 @ =gUnknown_0840B008
 	bl LoadCompressedObjectPic
-	ldr r0, _0813C054
+	ldr r0, _0813C054 @ =gUnknown_0840B018
 	bl LoadCompressedObjectPic
-	ldr r0, _0813C058
+	ldr r0, _0813C058 @ =gUnknown_0840B028
 	bl LoadSpritePalettes
-	ldr r4, _0813C05C
+	ldr r4, _0813C05C @ =0x0202ecc8
 	movs r0, 0xF0
 	lsls r0, 1
 	adds r1, r4, r0
@@ -529,7 +529,7 @@ Task_IntroLoadPart1Graphics: @ 813BE70
 	adds r2, r5, 0
 	movs r3, 0x1
 	bl sub_813D584
-	ldr r2, _0813C060
+	ldr r2, _0813C060 @ =gTasks
 	mov r3, r8
 	lsls r1, r3, 2
 	add r1, r8
@@ -538,7 +538,7 @@ Task_IntroLoadPart1Graphics: @ 813BE70
 	lsls r0, 24
 	lsrs r0, 24
 	strh r0, [r1, 0x8]
-	ldr r0, _0813C064
+	ldr r0, _0813C064 @ =Task_IntroFadeIn
 	str r0, [r1]
 	add sp, 0xC
 	pop {r3}
@@ -593,7 +593,7 @@ Task_IntroFadeIn: @ 813C068
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r0, _0813C0BC
+	ldr r0, _0813C0BC @ =VBlankCB_Intro
 	bl SetVBlankCallback
 	movs r1, 0x80
 	lsls r1, 19
@@ -601,14 +601,14 @@ Task_IntroFadeIn: @ 813C068
 	lsls r2, 5
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r1, _0813C0C0
+	ldr r1, _0813C0C0 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813C0C4
+	ldr r1, _0813C0C4 @ =Task_IntroWaterDrops
 	str r1, [r0]
-	ldr r0, _0813C0C8
+	ldr r0, _0813C0C8 @ =gIntroFrameCounter
 	str r5, [r0]
 	movs r0, 0xCF
 	lsls r0, 1
@@ -632,12 +632,12 @@ Task_IntroWaterDrops: @ 813C0CC
 	lsls r0, 24
 	lsrs r3, r0, 24
 	adds r5, r3, 0
-	ldr r4, _0813C1B0
+	ldr r4, _0813C1B0 @ =gIntroFrameCounter
 	ldr r0, [r4]
 	cmp r0, 0x4C
 	bne _0813C0FA
-	ldr r2, _0813C1B4
-	ldr r1, _0813C1B8
+	ldr r2, _0813C1B4 @ =gSprites
+	ldr r1, _0813C1B8 @ =gTasks
 	lsls r0, r3, 2
 	adds r0, r3
 	lsls r0, 3
@@ -654,8 +654,8 @@ _0813C0FA:
 	ldr r0, [r4]
 	cmp r0, 0xFB
 	bne _0813C11C
-	ldr r2, _0813C1B4
-	ldr r1, _0813C1B8
+	ldr r2, _0813C1B4 @ =gSprites
+	ldr r1, _0813C1B8 @ =gTasks
 	lsls r0, r3, 2
 	adds r0, r3
 	lsls r0, 3
@@ -706,7 +706,7 @@ _0813C15C:
 	lsls r0, 2
 	cmp r1, r0
 	bne _0813C17C
-	ldr r0, _0813C1BC
+	ldr r0, _0813C1BC @ =sub_813CCE8
 	movs r1, 0
 	bl CreateTask
 	adds r2, r0, 0
@@ -717,10 +717,10 @@ _0813C15C:
 	bl sub_813D954
 _0813C17C:
 	ldr r1, [r4]
-	ldr r0, _0813C1C0
+	ldr r0, _0813C1C0 @ =0x000002e3
 	cmp r1, r0
 	bls _0813C1A6
-	ldr r1, _0813C1B8
+	ldr r1, _0813C1B8 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -735,7 +735,7 @@ _0813C17C:
 	movs r1, 0x28
 	strh r1, [r0, 0x12]
 	strh r2, [r0, 0x14]
-	ldr r1, _0813C1C4
+	ldr r1, _0813C1C4 @ =task_intro_4
 	str r1, [r0]
 _0813C1A6:
 	add sp, 0x8
@@ -758,12 +758,12 @@ task_intro_4: @ 813C1C8
 	lsls r0, 24
 	lsrs r2, r0, 24
 	adds r4, r2, 0
-	ldr r0, _0813C25C
+	ldr r0, _0813C25C @ =gIntroFrameCounter
 	ldr r3, [r0]
-	ldr r0, _0813C260
+	ldr r0, _0813C260 @ =0x00000387
 	cmp r3, r0
 	bhi _0813C288
-	ldr r0, _0813C264
+	ldr r0, _0813C264 @ =gTasks
 	lsls r1, r2, 2
 	adds r1, r2
 	lsls r1, 3
@@ -773,49 +773,49 @@ task_intro_4: @ 813C1C8
 	lsls r0, 16
 	ldrh r2, [r1, 0xC]
 	adds r0, r2
-	ldr r2, _0813C268
+	ldr r2, _0813C268 @ =0xffff4000
 	adds r0, r2
 	asrs r2, r0, 16
 	strh r2, [r1, 0xA]
 	strh r0, [r1, 0xC]
-	ldr r0, _0813C26C
+	ldr r0, _0813C26C @ =0x0400001a
 	strh r2, [r0]
 	movs r2, 0xE
 	ldrsh r0, [r1, r2]
 	lsls r0, 16
 	ldrh r2, [r1, 0x10]
 	adds r0, r2
-	ldr r2, _0813C270
+	ldr r2, _0813C270 @ =0xffff0000
 	adds r0, r2
 	asrs r2, r0, 16
 	strh r2, [r1, 0xE]
 	strh r0, [r1, 0x10]
-	ldr r0, _0813C274
+	ldr r0, _0813C274 @ =0x04000016
 	strh r2, [r0]
 	movs r2, 0x12
 	ldrsh r0, [r1, r2]
 	lsls r0, 16
 	ldrh r2, [r1, 0x14]
 	adds r0, r2
-	ldr r2, _0813C278
+	ldr r2, _0813C278 @ =0xfffe8000
 	adds r0, r2
 	asrs r2, r0, 16
 	strh r2, [r1, 0x12]
 	strh r0, [r1, 0x14]
-	ldr r0, _0813C27C
+	ldr r0, _0813C27C @ =0x04000012
 	strh r2, [r0]
 	movs r0, 0xDC
 	lsls r0, 2
 	cmp r3, r0
 	bne _0813C2AE
-	ldr r0, _0813C280
+	ldr r0, _0813C280 @ =gSpriteTemplate_840AFF0
 	movs r1, 0xC8
 	movs r2, 0xA0
 	movs r3, 0xA
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0813C284
+	ldr r2, _0813C284 @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
@@ -839,23 +839,23 @@ _0813C27C: .4byte 0x04000012
 _0813C280: .4byte gSpriteTemplate_840AFF0
 _0813C284: .4byte gSprites
 _0813C288:
-	ldr r0, _0813C2B8
+	ldr r0, _0813C2B8 @ =0x000003ef
 	cmp r3, r0
 	bls _0813C2AE
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0813C2BC
+	ldr r1, _0813C2BC @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _0813C2C0
+	ldr r1, _0813C2C0 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813C2C4
+	ldr r1, _0813C2C4 @ =task_intro_5
 	str r1, [r0]
 _0813C2AE:
 	add sp, 0x4
@@ -874,17 +874,17 @@ task_intro_5: @ 813C2C8
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _0813C2EC
+	ldr r0, _0813C2EC @ =gIntroFrameCounter
 	ldr r1, [r0]
-	ldr r0, _0813C2F0
+	ldr r0, _0813C2F0 @ =0x00000402
 	cmp r1, r0
 	bls _0813C2E6
-	ldr r0, _0813C2F4
+	ldr r0, _0813C2F4 @ =gTasks
 	lsls r1, r2, 2
 	adds r1, r2
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0813C2F8
+	ldr r0, _0813C2F8 @ =Task_IntroLoadPart2Graphics
 	str r0, [r1]
 _0813C2E6:
 	pop {r0}
@@ -907,19 +907,19 @@ Task_IntroLoadPart2Graphics: @ 813C2FC
 	bl SetVBlankCallback
 	bl ResetSpriteData
 	bl FreeAllSpritePalettes
-	ldr r0, _0813C33C
+	ldr r0, _0813C33C @ =gUnknown_02039358
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _0813C340
+	ldr r0, _0813C340 @ =gUnknown_0203935A
 	strh r1, [r0]
 	movs r0, 0x1
 	bl load_intro_part2_graphics
-	ldr r1, _0813C344
+	ldr r1, _0813C344 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813C348
+	ldr r1, _0813C348 @ =Task_IntroStartBikeRide
 	str r1, [r0]
 	pop {r4}
 	pop {r0}
@@ -937,27 +937,27 @@ Task_IntroStartBikeRide: @ 813C34C
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r7, r0, 24
-	ldr r0, _0813C364
+	ldr r0, _0813C364 @ =gUnknown_02039318
 	ldrh r0, [r0]
 	cmp r0, 0
 	bne _0813C36C
-	ldr r0, _0813C368
+	ldr r0, _0813C368 @ =gIntro2BrendanSpriteSheet
 	bl LoadCompressedObjectPic
 	b _0813C372
 	.align 2, 0
 _0813C364: .4byte gUnknown_02039318
 _0813C368: .4byte gIntro2BrendanSpriteSheet
 _0813C36C:
-	ldr r0, _0813C398
+	ldr r0, _0813C398 @ =gIntro2MaySpriteSheet
 	bl LoadCompressedObjectPic
 _0813C372:
-	ldr r0, _0813C39C
+	ldr r0, _0813C39C @ =gIntro2BicycleSpriteSheet
 	bl LoadCompressedObjectPic
-	ldr r0, _0813C3A0
+	ldr r0, _0813C3A0 @ =gIntro2LatiosSpriteSheet
 	bl LoadCompressedObjectPic
-	ldr r0, _0813C3A4
+	ldr r0, _0813C3A4 @ =gIntro2SpritePalettes
 	bl LoadSpritePalettes
-	ldr r0, _0813C3A8
+	ldr r0, _0813C3A8 @ =gUnknown_02039318
 	ldrh r0, [r0]
 	cmp r0, 0
 	bne _0813C3AC
@@ -980,20 +980,20 @@ _0813C3AC:
 _0813C3B6:
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r2, _0813C43C
+	ldr r2, _0813C43C @ =gSprites
 	lsls r0, r6, 4
 	adds r0, r6
 	lsls r0, 2
 	adds r5, r2, 0
 	adds r5, 0x1C
 	adds r3, r0, r5
-	ldr r1, _0813C440
+	ldr r1, _0813C440 @ =sub_813D788
 	str r1, [r3]
 	adds r2, 0x8
 	adds r0, r2
-	ldr r1, _0813C444
+	ldr r1, _0813C444 @ =gUnknown_0840AE80
 	str r1, [r0]
-	ldr r0, _0813C448
+	ldr r0, _0813C448 @ =gTasks
 	lsls r4, r7, 2
 	adds r4, r7
 	lsls r4, 3
@@ -1009,18 +1009,18 @@ _0813C3B6:
 	adds r0, r6
 	lsls r0, 2
 	adds r0, r5
-	ldr r1, _0813C44C
+	ldr r1, _0813C44C @ =sub_813D880
 	str r1, [r0]
 	strh r6, [r4, 0xC]
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0813C450
+	ldr r1, _0813C450 @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r0, _0813C454
+	ldr r0, _0813C454 @ =VBlankCB_Intro
 	bl SetVBlankCallback
 	movs r1, 0x80
 	lsls r1, 7
@@ -1034,7 +1034,7 @@ _0813C3B6:
 	strh r0, [r4, 0x8]
 	movs r0, 0x1
 	bl sub_8148C78
-	ldr r0, _0813C458
+	ldr r0, _0813C458 @ =task_intro_8
 	str r0, [r4]
 	add sp, 0x4
 	pop {r4-r7}
@@ -1058,33 +1058,33 @@ task_intro_8: @ 813C45C
 	lsls r0, 24
 	lsrs r4, r0, 24
 	adds r6, r4, 0
-	ldr r5, _0813C598
+	ldr r5, _0813C598 @ =gIntroFrameCounter
 	ldr r1, [r5]
-	ldr r0, _0813C59C
+	ldr r0, _0813C59C @ =0x0000071f
 	cmp r1, r0
 	bls _0813C490
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0813C5A0
+	ldr r1, _0813C5A0 @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0x10
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _0813C5A4
+	ldr r1, _0813C5A4 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813C5A8
+	ldr r1, _0813C5A8 @ =task_intro_9
 	str r1, [r0]
 _0813C490:
 	ldr r1, [r5]
-	ldr r0, _0813C5AC
-	ldr r3, _0813C5A4
+	ldr r0, _0813C5AC @ =0x00000455
+	ldr r3, _0813C5A4 @ =gTasks
 	cmp r1, r0
 	bne _0813C4B4
-	ldr r2, _0813C5B0
+	ldr r2, _0813C5B0 @ =gSprites
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1099,10 +1099,10 @@ _0813C490:
 	strh r1, [r0, 0x2E]
 _0813C4B4:
 	ldr r1, [r5]
-	ldr r0, _0813C5B4
+	ldr r0, _0813C5B4 @ =0x000004be
 	cmp r1, r0
 	bne _0813C4D6
-	ldr r2, _0813C5B0
+	ldr r2, _0813C5B0 @ =gSprites
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1117,10 +1117,10 @@ _0813C4B4:
 	strh r1, [r0, 0x2E]
 _0813C4D6:
 	ldr r1, [r5]
-	ldr r0, _0813C5B8
+	ldr r0, _0813C5B8 @ =0x00000572
 	cmp r1, r0
 	bne _0813C4F8
-	ldr r2, _0813C5B0
+	ldr r2, _0813C5B0 @ =gSprites
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1135,10 +1135,10 @@ _0813C4D6:
 	strh r1, [r0, 0x2E]
 _0813C4F8:
 	ldr r1, [r5]
-	ldr r0, _0813C5BC
+	ldr r0, _0813C5BC @ =0x00000576
 	cmp r1, r0
 	bne _0813C51A
-	ldr r2, _0813C5B0
+	ldr r2, _0813C5B0 @ =gSprites
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1153,10 +1153,10 @@ _0813C4F8:
 	strh r1, [r0, 0x2E]
 _0813C51A:
 	ldr r1, [r5]
-	ldr r0, _0813C5C0
+	ldr r0, _0813C5C0 @ =0x00000632
 	cmp r1, r0
 	bne _0813C53C
-	ldr r2, _0813C5B0
+	ldr r2, _0813C5B0 @ =gSprites
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1171,10 +1171,10 @@ _0813C51A:
 	strh r1, [r0, 0x2E]
 _0813C53C:
 	ldr r1, [r5]
-	ldr r0, _0813C5C4
+	ldr r0, _0813C5C4 @ =0x000006bf
 	cmp r1, r0
 	bne _0813C55E
-	ldr r2, _0813C5B0
+	ldr r2, _0813C5B0 @ =gSprites
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1199,12 +1199,12 @@ _0813C55E:
 	ands r0, r1
 	movs r1, 0x30
 	bl Sin
-	ldr r1, _0813C5C8
+	ldr r1, _0813C5C8 @ =gUnknown_0203935A
 	strh r0, [r1]
 	ldrh r2, [r4, 0xE]
 	movs r7, 0xE
 	ldrsh r1, [r4, r7]
-	ldr r0, _0813C5CC
+	ldr r0, _0813C5CC @ =0x000001ff
 	cmp r1, r0
 	bgt _0813C58A
 	adds r0, r2, 0x1
@@ -1238,19 +1238,19 @@ task_intro_9: @ 813C5D0
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _0813C5FC
+	ldr r0, _0813C5FC @ =gIntroFrameCounter
 	ldr r1, [r0]
-	ldr r0, _0813C600
+	ldr r0, _0813C600 @ =0x00000814
 	cmp r1, r0
 	bls _0813C5F4
-	ldr r0, _0813C604
+	ldr r0, _0813C604 @ =gTasks
 	lsls r4, r2, 2
 	adds r4, r2
 	lsls r4, 3
 	adds r4, r0
 	ldrb r0, [r4, 0x8]
 	bl DestroyTask
-	ldr r0, _0813C608
+	ldr r0, _0813C608 @ =task_intro_10
 	str r0, [r4]
 _0813C5F4:
 	pop {r4}
@@ -1271,19 +1271,19 @@ task_intro_10: @ 813C60C
 	lsls r5, 24
 	lsrs r5, 24
 	bl intro_reset_and_hide_bgs
-	ldr r0, _0813C69C
+	ldr r0, _0813C69C @ =gUnknown_08409C04
 	movs r1, 0xC0
 	lsls r1, 19
 	bl LZ77UnCompVram
-	ldr r0, _0813C6A0
-	ldr r1, _0813C6A4
+	ldr r0, _0813C6A0 @ =gUnknown_08409AD4
+	ldr r1, _0813C6A4 @ =0x06004000
 	bl LZ77UnCompVram
-	ldr r0, _0813C6A8
+	ldr r0, _0813C6A8 @ =gUnknown_084098D4
 	movs r2, 0x80
 	lsls r2, 2
 	movs r1, 0
 	bl LoadPalette
-	ldr r0, _0813C6AC
+	ldr r0, _0813C6AC @ =gTasks
 	lsls r4, r5, 2
 	adds r4, r5
 	lsls r4, 3
@@ -1302,23 +1302,23 @@ task_intro_10: @ 813C60C
 	bl FreeAllSpritePalettes
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0813C6B0
+	ldr r1, _0813C6B0 @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r1, _0813C6B4
-	ldr r2, _0813C6B8
+	ldr r1, _0813C6B4 @ =0x0400000c
+	ldr r2, _0813C6B8 @ =0x00004883
 	adds r0, r2, 0
 	strh r0, [r1]
 	subs r1, 0xC
-	ldr r2, _0813C6BC
+	ldr r2, _0813C6BC @ =0x00001441
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _0813C6C0
+	ldr r0, _0813C6C0 @ =task_intro_11
 	str r0, [r4]
-	ldr r0, _0813C6C4
+	ldr r0, _0813C6C4 @ =gIntroFrameCounter
 	str r5, [r0]
 	movs r0, 0xDD
 	lsls r0, 1
@@ -1347,7 +1347,7 @@ task_intro_11: @ 813C6C8
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r2, _0813C700
+	ldr r2, _0813C700 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -1361,7 +1361,7 @@ task_intro_11: @ 813C6C8
 	ldrh r4, [r3, 0xA]
 	movs r0, 0xA
 	ldrsh r1, [r3, r0]
-	ldr r0, _0813C704
+	ldr r0, _0813C704 @ =0x000006bf
 	cmp r1, r0
 	bgt _0813C708
 	ldrh r0, [r3, 0xC]
@@ -1374,7 +1374,7 @@ task_intro_11: @ 813C6C8
 _0813C700: .4byte gTasks
 _0813C704: .4byte 0x000006bf
 _0813C708:
-	ldr r0, _0813C754
+	ldr r0, _0813C754 @ =task_intro_12
 	str r0, [r3]
 _0813C70C:
 	lsls r4, r5, 2
@@ -1393,13 +1393,13 @@ _0813C70C:
 	movs r0, 0x78
 	movs r1, 0x50
 	bl sub_813CE30
-	ldr r0, _0813C758
+	ldr r0, _0813C758 @ =gIntroFrameCounter
 	ldr r0, [r0]
 	cmp r0, 0x2C
 	bne _0813C74A
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0813C75C
+	ldr r1, _0813C75C @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0
@@ -1421,16 +1421,16 @@ task_intro_12: @ 813C760
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _0813C780
+	ldr r0, _0813C780 @ =gIntroFrameCounter
 	ldr r0, [r0]
 	cmp r0, 0x3B
 	bls _0813C77C
-	ldr r0, _0813C784
+	ldr r0, _0813C784 @ =gTasks
 	lsls r1, r2, 2
 	adds r1, r2
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0813C788
+	ldr r0, _0813C788 @ =task_intro_13
 	str r0, [r1]
 _0813C77C:
 	pop {r0}
@@ -1451,7 +1451,7 @@ task_intro_13: @ 813C78C
 	mov r8, r0
 	bl intro_reset_and_hide_bgs
 	movs r1, 0
-	ldr r2, _0813C8C0
+	ldr r2, _0813C8C0 @ =0x02000000
 	movs r7, 0
 	adds r6, r2, 0
 	adds r6, 0x20
@@ -1474,22 +1474,22 @@ _0813C7B0:
 	bls _0813C7B0
 	movs r1, 0xC0
 	lsls r1, 19
-	ldr r0, _0813C8C4
+	ldr r0, _0813C8C4 @ =0x040000d4
 	mov r2, r12
 	str r2, [r0]
 	str r1, [r0, 0x4]
-	ldr r1, _0813C8C8
+	ldr r1, _0813C8C8 @ =0x80000030
 	str r1, [r0, 0x8]
 	ldr r0, [r0, 0x8]
 	movs r1, 0
-	ldr r5, _0813C8CC
-	ldr r6, _0813C8D0
+	ldr r5, _0813C8CC @ =gPlttBufferUnfaded
+	ldr r6, _0813C8D0 @ =gPlttBufferFaded
 	mov r0, r8
 	lsls r7, r0, 2
-	ldr r4, _0813C8D4
-	ldr r2, _0813C8D8
+	ldr r4, _0813C8D4 @ =0x06003000
+	ldr r2, _0813C8D8 @ =0x0000f001
 	adds r3, r2, 0
-	ldr r2, _0813C8DC
+	ldr r2, _0813C8DC @ =0x0000027f
 _0813C7EA:
 	lsls r0, r1, 1
 	adds r0, r4
@@ -1500,8 +1500,8 @@ _0813C7EA:
 	cmp r1, r2
 	bls _0813C7EA
 	movs r1, 0
-	ldr r3, _0813C8E0
-	ldr r0, _0813C8E4
+	ldr r3, _0813C8E0 @ =0x06003800
+	ldr r0, _0813C8E4 @ =0x0000f002
 	adds r2, r0, 0
 _0813C802:
 	lsls r0, r1, 1
@@ -1513,11 +1513,11 @@ _0813C802:
 	cmp r1, 0x7F
 	bls _0813C802
 	movs r1, 0
-	ldr r4, _0813C8E8
+	ldr r4, _0813C8E8 @ =0x06003900
 	movs r2, 0xF0
 	lsls r2, 8
 	adds r3, r2, 0
-	ldr r2, _0813C8EC
+	ldr r2, _0813C8EC @ =0x0000017f
 _0813C81E:
 	lsls r0, r1, 1
 	adds r0, r4
@@ -1528,8 +1528,8 @@ _0813C81E:
 	cmp r1, r2
 	bls _0813C81E
 	movs r1, 0
-	ldr r3, _0813C8F0
-	ldr r0, _0813C8E4
+	ldr r3, _0813C8F0 @ =0x06003c00
+	ldr r0, _0813C8E4 @ =0x0000f002
 	adds r2, r0, 0
 _0813C836:
 	lsls r0, r1, 1
@@ -1544,7 +1544,7 @@ _0813C836:
 	lsls r0, 1
 	adds r2, r5, r0
 	movs r4, 0
-	ldr r1, _0813C8F4
+	ldr r1, _0813C8F4 @ =0x00007fff
 	strh r1, [r2]
 	adds r0, r6, r0
 	strh r1, [r0]
@@ -1556,35 +1556,35 @@ _0813C836:
 	strh r4, [r1]
 	adds r0, r6, r0
 	strh r4, [r0]
-	ldr r0, _0813C8F8
-	ldr r1, _0813C8FC
+	ldr r0, _0813C8F8 @ =gUnknown_0840A778
+	ldr r1, _0813C8FC @ =0x06004000
 	bl LZ77UnCompVram
-	ldr r0, _0813C900
-	ldr r1, _0813C904
+	ldr r0, _0813C900 @ =gUnknown_0840A7E4
+	ldr r1, _0813C904 @ =0x06007000
 	bl LZ77UnCompVram
-	ldr r0, _0813C908
+	ldr r0, _0813C908 @ =gUnknown_0840A758
 	movs r1, 0
 	movs r2, 0x20
 	bl LoadPalette
 	bl ResetSpriteData
 	bl FreeAllSpritePalettes
-	ldr r1, _0813C90C
+	ldr r1, _0813C90C @ =gReservedSpritePaletteCount
 	movs r0, 0x8
 	strb r0, [r1]
-	ldr r0, _0813C910
+	ldr r0, _0813C910 @ =gUnknown_0840B20C
 	bl LoadCompressedObjectPic
-	ldr r0, _0813C914
+	ldr r0, _0813C914 @ =gUnknown_0840B21C
 	bl LoadCompressedObjectPic
-	ldr r0, _0813C918
+	ldr r0, _0813C918 @ =gUnknown_0840B22C
 	bl LoadCompressedObjectPalette
-	ldr r0, _0813C91C
+	ldr r0, _0813C91C @ =gUnknown_0840B23C
 	bl LoadSpritePalettes
-	ldr r1, _0813C920
+	ldr r1, _0813C920 @ =gTasks
 	mov r2, r8
 	adds r0, r7, r2
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813C924
+	ldr r1, _0813C924 @ =task_intro_14
 	str r1, [r0]
 	pop {r3}
 	mov r8, r3
@@ -1626,7 +1626,7 @@ task_intro_14: @ 813C928
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r1, _0813C998
+	ldr r1, _0813C998 @ =0x04000040
 	movs r0, 0xF0
 	strh r0, [r1]
 	adds r1, 0x4
@@ -1639,7 +1639,7 @@ task_intro_14: @ 813C928
 	movs r0, 0x1D
 	strh r0, [r1]
 	subs r1, 0x3C
-	ldr r2, _0813C99C
+	ldr r2, _0813C99C @ =0x00000603
 	adds r0, r2, 0
 	strh r0, [r1]
 	subs r1, 0x6
@@ -1651,10 +1651,10 @@ task_intro_14: @ 813C928
 	lsls r2, 6
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _0813C9A0
+	ldr r0, _0813C9A0 @ =sub_813CAF4
 	movs r1, 0
 	bl CreateTask
-	ldr r5, _0813C9A4
+	ldr r5, _0813C9A4 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -1671,7 +1671,7 @@ task_intro_14: @ 813C928
 	adds r0, r5
 	strh r3, [r0, 0x8]
 	strh r3, [r1, 0x8]
-	ldr r0, _0813C9A8
+	ldr r0, _0813C9A8 @ =task_intro_15
 	str r0, [r1]
 	pop {r4,r5}
 	pop {r0}
@@ -1689,7 +1689,7 @@ task_intro_15: @ 813C9AC
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0813C9DC
+	ldr r2, _0813C9DC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1701,7 +1701,7 @@ task_intro_15: @ 813C9AC
 	beq _0813C9E4
 	adds r0, r1, 0x4
 	strh r0, [r3, 0x8]
-	ldr r2, _0813C9E0
+	ldr r2, _0813C9E0 @ =0x04000044
 	movs r4, 0x8
 	ldrsh r0, [r3, r4]
 	lsls r0, 8
@@ -1713,12 +1713,12 @@ task_intro_15: @ 813C9AC
 _0813C9DC: .4byte gTasks
 _0813C9E0: .4byte 0x04000044
 _0813C9E4:
-	ldr r0, _0813C9F8
+	ldr r0, _0813C9F8 @ =0x04000044
 	movs r2, 0x82
 	lsls r2, 6
 	adds r1, r2, 0
 	strh r1, [r0]
-	ldr r0, _0813C9FC
+	ldr r0, _0813C9FC @ =task_intro_16
 	str r0, [r3]
 _0813C9F2:
 	pop {r4}
@@ -1733,12 +1733,12 @@ _0813C9FC: .4byte task_intro_16
 task_intro_16: @ 813CA00
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0813CA14
+	ldr r2, _0813CA14 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r0, _0813CA18
+	ldr r0, _0813CA18 @ =task_intro_17
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -1750,15 +1750,15 @@ _0813CA18: .4byte task_intro_17
 task_intro_17: @ 813CA1C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0813CA38
+	ldr r2, _0813CA38 @ =gUnknown_0203931A
 	movs r1, 0
 	strh r1, [r2]
-	ldr r2, _0813CA3C
+	ldr r2, _0813CA3C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r0, _0813CA40
+	ldr r0, _0813CA40 @ =Task_IntroPokemonBattle
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -1775,12 +1775,12 @@ Task_IntroPokemonBattle: @ 813CA44
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r7, r0, 24
-	ldr r0, _0813CE00
+	ldr r0, _0813CE00 @ =gIntroFrameCounter
 	mov r8, r0
 	ldr r0, [r0]
 	cmp r0, 0x50
 	bne _0813CA88
-	ldr r0, _0813CE04
+	ldr r0, _0813CE04 @ =0x0000014b
 	movs r4, 0x1
 	str r4, [sp]
 	movs r1, 0xF0
@@ -1789,14 +1789,14 @@ Task_IntroPokemonBattle: @ 813CA44
 	bl sub_813CE88
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r3, _0813CE08
+	ldr r3, _0813CE08 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
 	adds r1, r3, 0
 	adds r1, 0x1C
 	adds r1, r0, r1
-	ldr r2, _0813CE0C
+	ldr r2, _0813CE0C @ =sub_813DB9C
 	str r2, [r1]
 	adds r0, r3
 	movs r1, 0
@@ -1807,7 +1807,7 @@ _0813CA88:
 	ldr r0, [r1]
 	cmp r0, 0x98
 	bne _0813CABE
-	ldr r0, _0813CE10
+	ldr r0, _0813CE10 @ =0x00000169
 	movs r4, 0x1
 	str r4, [sp]
 	movs r1, 0
@@ -1816,14 +1816,14 @@ _0813CA88:
 	bl sub_813CE88
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r3, _0813CE08
+	ldr r3, _0813CE08 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
 	adds r1, r3, 0
 	adds r1, 0x1C
 	adds r1, r0, r1
-	ldr r2, _0813CE0C
+	ldr r2, _0813CE0C @ =sub_813DB9C
 	str r2, [r1]
 	adds r0, r3
 	movs r1, 0x2
@@ -1836,7 +1836,7 @@ _0813CABE:
 	bne _0813CAFC
 	movs r0, 0
 	bl sub_813D084
-	ldr r0, _0813CE14
+	ldr r0, _0813CE14 @ =gUnknown_02039318
 	ldrh r0, [r0]
 	movs r1, 0x88
 	lsls r1, 1
@@ -1845,15 +1845,15 @@ _0813CABE:
 	bl sub_813CFA8
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _0813CE08
+	ldr r1, _0813CE08 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
 	adds r1, 0x1C
 	adds r0, r1
-	ldr r1, _0813CE18
+	ldr r1, _0813CE18 @ =sub_813DE70
 	str r1, [r0]
-	ldr r1, _0813CE1C
+	ldr r1, _0813CE1C @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
@@ -1866,7 +1866,7 @@ _0813CAFC:
 	lsls r0, 1
 	cmp r1, r0
 	bne _0813CB34
-	ldr r3, _0813CE1C
+	ldr r3, _0813CE1C @ =gTasks
 	lsls r1, r7, 2
 	adds r1, r7
 	lsls r1, 3
@@ -1879,7 +1879,7 @@ _0813CAFC:
 	adds r0, r3
 	movs r2, 0x4
 	strh r2, [r0, 0x8]
-	ldr r2, _0813CE08
+	ldr r2, _0813CE08 @ =gSprites
 	movs r3, 0xA
 	ldrsh r1, [r1, r3]
 	lsls r0, r1, 4
@@ -1895,7 +1895,7 @@ _0813CB34:
 	lsls r0, 1
 	cmp r1, r0
 	bne _0813CB6C
-	ldr r3, _0813CE1C
+	ldr r3, _0813CE1C @ =gTasks
 	lsls r1, r7, 2
 	adds r1, r7
 	lsls r1, 3
@@ -1908,7 +1908,7 @@ _0813CB34:
 	adds r0, r3
 	movs r2, 0
 	strh r2, [r0, 0x8]
-	ldr r2, _0813CE08
+	ldr r2, _0813CE08 @ =gSprites
 	movs r3, 0xA
 	ldrsh r1, [r1, r3]
 	lsls r0, r1, 4
@@ -1926,7 +1926,7 @@ _0813CB6C:
 	bne _0813CB8A
 	movs r0, 0xFF
 	lsls r0, 16
-	ldr r1, _0813CE20
+	ldr r1, _0813CE20 @ =0x00007eff
 	str r1, [sp]
 	movs r1, 0
 	movs r2, 0x10
@@ -1939,8 +1939,8 @@ _0813CB8A:
 	lsls r0, 1
 	cmp r1, r0
 	bne _0813CBB2
-	ldr r2, _0813CE08
-	ldr r1, _0813CE1C
+	ldr r2, _0813CE08 @ =gSprites
+	ldr r1, _0813CE1C @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
@@ -1960,8 +1960,8 @@ _0813CBB2:
 	lsls r0, 1
 	cmp r1, r0
 	bne _0813CBEA
-	ldr r3, _0813CE08
-	ldr r4, _0813CE1C
+	ldr r3, _0813CE08 @ =gSprites
+	ldr r4, _0813CE1C @ =gTasks
 	lsls r1, r7, 2
 	adds r1, r7
 	lsls r1, 3
@@ -1985,12 +1985,12 @@ _0813CBB2:
 _0813CBEA:
 	mov r0, r8
 	ldr r1, [r0]
-	ldr r0, _0813CE24
+	ldr r0, _0813CE24 @ =0x000001cf
 	cmp r1, r0
 	bne _0813CC30
 	movs r0, 0x1
 	bl sub_813D084
-	ldr r0, _0813CE04
+	ldr r0, _0813CE04 @ =0x0000014b
 	movs r1, 0x1
 	str r1, [sp]
 	movs r1, 0xD0
@@ -1999,15 +1999,15 @@ _0813CBEA:
 	bl sub_813CE88
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _0813CE08
+	ldr r1, _0813CE08 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
 	adds r1, 0x1C
 	adds r0, r1
-	ldr r1, _0813CE28
+	ldr r1, _0813CE28 @ =sub_813E10C
 	str r1, [r0]
-	ldr r1, _0813CE1C
+	ldr r1, _0813CE1C @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
@@ -2018,7 +2018,7 @@ _0813CBEA:
 _0813CC30:
 	mov r3, r8
 	ldr r1, [r3]
-	ldr r0, _0813CE2C
+	ldr r0, _0813CE2C @ =0x0000021b
 	cmp r1, r0
 	bne _0813CC70
 	subs r0, 0xB2
@@ -2030,15 +2030,15 @@ _0813CC30:
 	bl sub_813CE88
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _0813CE08
+	ldr r1, _0813CE08 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
 	adds r1, 0x1C
 	adds r0, r1
-	ldr r1, _0813CE28
+	ldr r1, _0813CE28 @ =sub_813E10C
 	str r1, [r0]
-	ldr r1, _0813CE1C
+	ldr r1, _0813CE1C @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
@@ -2049,11 +2049,11 @@ _0813CC30:
 _0813CC70:
 	mov r0, r8
 	ldr r1, [r0]
-	ldr r0, _0813CE30
+	ldr r0, _0813CE30 @ =0x0000026f
 	cmp r1, r0
 	bne _0813CCB4
-	ldr r4, _0813CE08
-	ldr r5, _0813CE1C
+	ldr r4, _0813CE08 @ =gSprites
+	ldr r5, _0813CE1C @ =gTasks
 	lsls r1, r7, 2
 	adds r1, r7
 	lsls r1, 3
@@ -2090,7 +2090,7 @@ _0813CCB4:
 	bne _0813CCFC
 	movs r0, 0
 	bl sub_813D084
-	ldr r0, _0813CE34
+	ldr r0, _0813CE34 @ =0x0000011b
 	movs r1, 0
 	str r1, [sp]
 	movs r1, 0x20
@@ -2099,15 +2099,15 @@ _0813CCB4:
 	bl sub_813CE88
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _0813CE08
+	ldr r1, _0813CE08 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
 	adds r1, 0x1C
 	adds r0, r1
-	ldr r1, _0813CE38
+	ldr r1, _0813CE38 @ =sub_813E210
 	str r1, [r0]
-	ldr r1, _0813CE1C
+	ldr r1, _0813CE1C @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
@@ -2133,15 +2133,15 @@ _0813CCFC:
 	bl sub_813CE88
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _0813CE08
+	ldr r1, _0813CE08 @ =gSprites
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
 	adds r1, 0x1C
 	adds r0, r1
-	ldr r1, _0813CE38
+	ldr r1, _0813CE38 @ =sub_813E210
 	str r1, [r0]
-	ldr r1, _0813CE1C
+	ldr r1, _0813CE1C @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
@@ -2156,11 +2156,11 @@ _0813CD42:
 	lsls r0, 2
 	cmp r1, r0
 	bne _0813CD8E
-	ldr r1, _0813CE3C
+	ldr r1, _0813CE3C @ =gUnknown_0203931A
 	movs r0, 0x1
 	strh r0, [r1]
-	ldr r4, _0813CE08
-	ldr r6, _0813CE1C
+	ldr r4, _0813CE08 @ =gSprites
+	ldr r6, _0813CE1C @ =gTasks
 	lsls r1, r7, 2
 	adds r1, r7
 	lsls r1, 3
@@ -2191,13 +2191,13 @@ _0813CD42:
 _0813CD8E:
 	mov r0, r8
 	ldr r1, [r0]
-	ldr r0, _0813CE40
+	ldr r0, _0813CE40 @ =0x0000030d
 	cmp r1, r0
 	bne _0813CE52
 	movs r0, 0x2
 	bl sub_813D084
-	ldr r4, _0813CE08
-	ldr r0, _0813CE1C
+	ldr r4, _0813CE08 @ =gSprites
+	ldr r0, _0813CE1C @ =gTasks
 	lsls r2, r7, 2
 	adds r2, r7
 	lsls r2, 3
@@ -2231,7 +2231,7 @@ _0813CD8E:
 	lsls r0, 2
 	adds r0, r4
 	strh r3, [r0, 0x2E]
-	ldr r0, _0813CE44
+	ldr r0, _0813CE44 @ =gSpriteTemplate_840B1F4
 	movs r1, 0x78
 	movs r2, 0x50
 	movs r3, 0xF
@@ -2280,12 +2280,12 @@ _0813CE52:
 _0813CE64:
 	mov r0, r8
 	ldr r1, [r0]
-	ldr r0, _0813CEA4
+	ldr r0, _0813CEA4 @ =0x00000352
 	cmp r1, r0
 	bne _0813CE80
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0813CEA8
+	ldr r1, _0813CEA8 @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0x4
 	movs r2, 0
@@ -2294,15 +2294,15 @@ _0813CE64:
 _0813CE80:
 	mov r3, r8
 	ldr r1, [r3]
-	ldr r0, _0813CEAC
+	ldr r0, _0813CEAC @ =0x000003b2
 	cmp r1, r0
 	bne _0813CE98
-	ldr r0, _0813CEB0
+	ldr r0, _0813CEB0 @ =gTasks
 	lsls r1, r7, 2
 	adds r1, r7
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0813CEB4
+	ldr r0, _0813CEB4 @ =task_intro_19
 	str r0, [r1]
 _0813CE98:
 	add sp, 0x4
@@ -2325,7 +2325,7 @@ task_intro_19: @ 813CEB8
 	lsls r0, 24
 	lsrs r0, 24
 	bl DestroyTask
-	ldr r0, _0813CECC
+	ldr r0, _0813CECC @ =MainCB2_EndIntro
 	bl SetMainCallback2
 	pop {r0}
 	bx r0

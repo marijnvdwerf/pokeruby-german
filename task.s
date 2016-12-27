@@ -10,7 +10,7 @@
 ResetTasks: @ 807ADE8
 	push {r4-r7,lr}
 	movs r4, 0
-	ldr r6, _0807AE3C
+	ldr r6, _0807AE3C @ =gTasks
 	adds r7, r6, 0
 	adds r7, 0x8
 _0807ADF2:
@@ -20,7 +20,7 @@ _0807ADF2:
 	adds r2, r0, r6
 	movs r1, 0
 	strb r1, [r2, 0x4]
-	ldr r1, _0807AE40
+	ldr r1, _0807AE40 @ =TaskDummy
 	str r1, [r2]
 	strb r4, [r2, 0x5]
 	adds r4, 0x1
@@ -38,10 +38,10 @@ _0807ADF2:
 	lsrs r4, 24
 	cmp r4, 0xF
 	bls _0807ADF2
-	ldr r0, _0807AE3C
+	ldr r0, _0807AE3C @ =gTasks
 	movs r1, 0xFE
 	strb r1, [r0, 0x5]
-	ldr r1, _0807AE44
+	ldr r1, _0807AE44 @ =0x0000025e
 	adds r0, r1
 	ldrb r1, [r0]
 	orrs r1, r5
@@ -62,7 +62,7 @@ CreateTask: @ 807AE48
 	lsls r1, 24
 	lsrs r1, 24
 	movs r6, 0
-	ldr r7, _0807AE84
+	ldr r7, _0807AE84 @ =gTasks
 _0807AE54:
 	lsls r0, r6, 2
 	adds r0, r6
@@ -112,7 +112,7 @@ InsertTask: @ 807AE9C
 	lsrs r1, r0, 24
 	cmp r1, 0x10
 	bne _0807AECC
-	ldr r1, _0807AEC8
+	ldr r1, _0807AEC8 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -125,7 +125,7 @@ InsertTask: @ 807AE9C
 	.align 2, 0
 _0807AEC8: .4byte gTasks
 _0807AECC:
-	ldr r6, _0807AF08
+	ldr r6, _0807AF08 @ =gTasks
 	lsls r0, r4, 2
 	mov r12, r0
 	mov r8, r6
@@ -188,7 +188,7 @@ DestroyTask: @ 807AF34
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r4, _0807AF68
+	ldr r4, _0807AF68 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -254,7 +254,7 @@ RunTasks: @ 807AFA4
 	lsrs r0, 24
 	cmp r0, 0x10
 	beq _0807AFC8
-	ldr r5, _0807AFD0
+	ldr r5, _0807AFD0 @ =gTasks
 _0807AFB4:
 	lsls r4, r0, 2
 	adds r4, r0
@@ -277,7 +277,7 @@ _0807AFD0: .4byte gTasks
 FindFirstActiveTask: @ 807AFD4
 	push {lr}
 	movs r2, 0
-	ldr r0, _0807B00C
+	ldr r0, _0807B00C @ =gTasks
 	ldrb r1, [r0, 0x4]
 	adds r3, r0, 0
 	cmp r1, 0x1
@@ -319,7 +319,7 @@ SetTaskFuncWithFollowupFunc: @ 807B014
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0807B044
+	ldr r5, _0807B044 @ =gTasks
 	lsls r3, r0, 2
 	adds r3, r0
 	lsls r3, 3
@@ -348,7 +348,7 @@ SwitchTaskToFollowupFunc: @ 807B048
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r3, _0807B078
+	ldr r3, _0807B078 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -377,7 +377,7 @@ FuncIsActiveTask: @ 807B07C
 	push {r4,lr}
 	adds r3, r0, 0
 	movs r2, 0
-	ldr r4, _0807B09C
+	ldr r4, _0807B09C @ =gTasks
 _0807B084:
 	lsls r0, r2, 2
 	adds r0, r2
@@ -411,7 +411,7 @@ FindTaskIdByFunc: @ 807B0B4
 	push {lr}
 	adds r3, r0, 0
 	movs r2, 0
-	ldr r1, _0807B0D0
+	ldr r1, _0807B0D0 @ =gTasks
 _0807B0BC:
 	ldrb r0, [r1, 0x4]
 	cmp r0, 0x1
@@ -440,7 +440,7 @@ GetTaskCount: @ 807B0E4
 	push {lr}
 	movs r2, 0
 	movs r1, 0
-	ldr r3, _0807B110
+	ldr r3, _0807B110 @ =gTasks
 _0807B0EC:
 	lsls r0, r1, 2
 	adds r0, r1

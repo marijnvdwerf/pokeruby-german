@@ -9,14 +9,14 @@
 	thumb_func_start sub_800B858
 sub_800B858: @ 800BA2C
 	push {lr}
-	ldr r0, _0800BA50
+	ldr r0, _0800BA50 @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	movs r0, 0x2
 	ands r0, r1
 	cmp r0, 0
 	beq _0800BA4A
 	bl OpenLink
-	ldr r0, _0800BA54
+	ldr r0, _0800BA54 @ =sub_8083C50
 	movs r1, 0
 	bl CreateTask
 	bl sub_800BF28
@@ -32,18 +32,18 @@ _0800BA54: .4byte sub_8083C50
 sub_800B884: @ 800BA58
 	push {r4-r7,lr}
 	sub sp, 0x14
-	ldr r0, _0800BAF4
-	ldr r1, _0800BAF8
+	ldr r0, _0800BAF4 @ =gUnknown_030042D4
+	ldr r1, _0800BAF8 @ =nullsub_41
 	str r1, [r0]
 	movs r0, 0
 	str r0, [sp, 0x10]
 	movs r1, 0
-	ldr r7, _0800BAFC
-	ldr r6, _0800BB00
+	ldr r7, _0800BAFC @ =gUnknown_03004330
+	ldr r6, _0800BB00 @ =gUnknown_02024E60
 	movs r2, 0
-	ldr r5, _0800BB04
-	ldr r4, _0800BB08
-	ldr r3, _0800BB0C
+	ldr r5, _0800BB04 @ =gUnknown_02024E64
+	ldr r4, _0800BB08 @ =nullsub_91
+	ldr r3, _0800BB0C @ =gUnknown_02024A72
 _0800BA74:
 	lsls r0, r1, 2
 	adds r0, r7
@@ -64,20 +64,20 @@ _0800BA74:
 	cmp r1, 0x3
 	ble _0800BA74
 	bl sub_800B858
-	ldr r0, _0800BB10
+	ldr r0, _0800BB10 @ =gUnknown_02024A64
 	movs r5, 0
 	str r5, [r0]
 	bl sub_8075624
 	bl sub_8040710
 	bl sub_81070D4
-	ldr r0, _0800BB14
+	ldr r0, _0800BB14 @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	movs r0, 0x10
 	ands r0, r1
 	cmp r0, 0
 	beq _0800BAE2
 	bl ZeroEnemyPartyMons
-	ldr r4, _0800BB18
+	ldr r4, _0800BB18 @ =gEnemyParty
 	movs r1, 0x8F
 	lsls r1, 1
 	str r5, [sp]
@@ -94,9 +94,9 @@ _0800BA74:
 	add r2, sp, 0x10
 	bl SetMonData
 _0800BAE2:
-	ldr r0, _0800BB1C
+	ldr r0, _0800BB1C @ =gUnknown_020239FC
 	str r5, [r0]
-	ldr r0, _0800BB20
+	ldr r0, _0800BB20 @ =gUnknown_02024C78
 	strb r5, [r0]
 	add sp, 0x14
 	pop {r4-r7}
@@ -120,7 +120,7 @@ _0800BB20: .4byte gUnknown_02024C78
 	thumb_func_start sub_800B950
 sub_800B950: @ 800BB24
 	push {r4,r5,lr}
-	ldr r0, _0800BB38
+	ldr r0, _0800BB38 @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	movs r0, 0x2
 	ands r0, r1
@@ -134,14 +134,14 @@ _0800BB3C:
 	bl sub_800B9A8
 _0800BB40:
 	bl sub_800BD54
-	ldr r0, _0800BB74
+	ldr r0, _0800BB74 @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	movs r0, 0x40
 	ands r0, r1
 	cmp r0, 0
 	bne _0800BB6E
 	movs r4, 0
-	ldr r0, _0800BB78
+	ldr r0, _0800BB78 @ =gUnknown_02024A68
 	ldrb r1, [r0]
 	cmp r4, r1
 	bge _0800BB6E
@@ -167,21 +167,21 @@ _0800BB78: .4byte gUnknown_02024A68
 	thumb_func_start sub_800B9A8
 sub_800B9A8: @ 800BB7C
 	push {r4,lr}
-	ldr r0, _0800BBA0
+	ldr r0, _0800BBA0 @ =gUnknown_020239F8
 	ldrh r2, [r0]
 	movs r0, 0x1
 	ands r0, r2
 	cmp r0, 0
 	bne _0800BBFC
-	ldr r1, _0800BBA4
-	ldr r0, _0800BBA8
+	ldr r1, _0800BBA4 @ =gUnknown_030042D4
+	ldr r0, _0800BBA8 @ =sub_8010800
 	str r0, [r1]
 	movs r0, 0x80
 	ands r0, r2
 	cmp r0, 0
 	beq _0800BBB4
-	ldr r1, _0800BBAC
-	ldr r0, _0800BBB0
+	ldr r1, _0800BBAC @ =gUnknown_03004330
+	ldr r0, _0800BBB0 @ =sub_812B468
 	b _0800BBD0
 	.align 2, 0
 _0800BBA0: .4byte gUnknown_020239F8
@@ -195,26 +195,26 @@ _0800BBB4:
 	ands r0, r2
 	cmp r0, 0
 	beq _0800BBCC
-	ldr r1, _0800BBC4
-	ldr r0, _0800BBC8
+	ldr r1, _0800BBC4 @ =gUnknown_03004330
+	ldr r0, _0800BBC8 @ =sub_8137224
 	b _0800BBD0
 	.align 2, 0
 _0800BBC4: .4byte gUnknown_03004330
 _0800BBC8: .4byte sub_8137224
 _0800BBCC:
-	ldr r1, _0800BBE8
-	ldr r0, _0800BBEC
+	ldr r1, _0800BBE8 @ =gUnknown_03004330
+	ldr r0, _0800BBEC @ =sub_802BF74
 _0800BBD0:
 	str r0, [r1]
 	adds r2, r1, 0
-	ldr r1, _0800BBF0
+	ldr r1, _0800BBF0 @ =gUnknown_02024A72
 	movs r0, 0
 	strb r0, [r1]
-	ldr r0, _0800BBF4
+	ldr r0, _0800BBF4 @ =sub_8032AE0
 	str r0, [r2, 0x4]
 	movs r0, 0x1
 	strb r0, [r1, 0x1]
-	ldr r1, _0800BBF8
+	ldr r1, _0800BBF8 @ =gUnknown_02024A68
 	movs r0, 0x2
 	b _0800BC26
 	.align 2, 0
@@ -224,16 +224,16 @@ _0800BBF0: .4byte gUnknown_02024A72
 _0800BBF4: .4byte sub_8032AE0
 _0800BBF8: .4byte gUnknown_02024A68
 _0800BBFC:
-	ldr r1, _0800BC30
-	ldr r0, _0800BC34
+	ldr r1, _0800BC30 @ =gUnknown_030042D4
+	ldr r0, _0800BC34 @ =sub_8010800
 	str r0, [r1]
-	ldr r2, _0800BC38
-	ldr r4, _0800BC3C
+	ldr r2, _0800BC38 @ =gUnknown_03004330
+	ldr r4, _0800BC3C @ =sub_802BF74
 	str r4, [r2]
-	ldr r1, _0800BC40
+	ldr r1, _0800BC40 @ =gUnknown_02024A72
 	movs r0, 0
 	strb r0, [r1]
-	ldr r3, _0800BC44
+	ldr r3, _0800BC44 @ =sub_8032AE0
 	str r3, [r2, 0x4]
 	movs r0, 0x1
 	strb r0, [r1, 0x1]
@@ -243,7 +243,7 @@ _0800BBFC:
 	str r3, [r2, 0xC]
 	movs r0, 0x3
 	strb r0, [r1, 0x3]
-	ldr r1, _0800BC48
+	ldr r1, _0800BC48 @ =gUnknown_02024A68
 	movs r0, 0x4
 _0800BC26:
 	strb r0, [r1]
@@ -267,7 +267,7 @@ sub_800BA78: @ 800BC4C
 	mov r6, r9
 	mov r5, r8
 	push {r5-r7}
-	ldr r6, _0800BC8C
+	ldr r6, _0800BC8C @ =gUnknown_020239F8
 	ldrh r1, [r6]
 	movs r5, 0x1
 	movs r4, 0x1
@@ -280,18 +280,18 @@ sub_800BA78: @ 800BC4C
 	lsrs r3, r0, 16
 	cmp r3, 0
 	beq _0800BCAC
-	ldr r1, _0800BC90
-	ldr r0, _0800BC94
+	ldr r1, _0800BC90 @ =gUnknown_030042D4
+	ldr r0, _0800BC94 @ =sub_8010800
 	str r0, [r1]
-	ldr r2, _0800BC98
-	ldr r0, _0800BC9C
+	ldr r2, _0800BC98 @ =gUnknown_03004330
+	ldr r0, _0800BC9C @ =sub_802BF74
 	str r0, [r2]
-	ldr r1, _0800BCA0
+	ldr r1, _0800BCA0 @ =gUnknown_02024A72
 	strb r4, [r1]
-	ldr r0, _0800BCA4
+	ldr r0, _0800BCA4 @ =sub_8037510
 	str r0, [r2, 0x4]
 	strb r5, [r1, 0x1]
-	ldr r1, _0800BCA8
+	ldr r1, _0800BCA8 @ =gUnknown_02024A68
 	movs r0, 0x2
 	b _0800BF12
 	.align 2, 0
@@ -304,15 +304,15 @@ _0800BCA0: .4byte gUnknown_02024A72
 _0800BCA4: .4byte sub_8037510
 _0800BCA8: .4byte gUnknown_02024A68
 _0800BCAC:
-	ldr r2, _0800BCC4
-	ldr r0, _0800BCC8
+	ldr r2, _0800BCC4 @ =gUnknown_03004330
+	ldr r0, _0800BCC8 @ =sub_802BF74
 	str r0, [r2, 0x4]
-	ldr r1, _0800BCCC
+	ldr r1, _0800BCCC @ =gUnknown_02024A72
 	strb r3, [r1, 0x1]
-	ldr r0, _0800BCD0
+	ldr r0, _0800BCD0 @ =sub_8037510
 	str r0, [r2]
 	strb r5, [r1]
-	ldr r1, _0800BCD4
+	ldr r1, _0800BCD4 @ =gUnknown_02024A68
 	movs r0, 0x2
 	b _0800BF12
 	.align 2, 0
@@ -333,16 +333,16 @@ _0800BCD8:
 	lsrs r3, r0, 16
 	cmp r3, 0
 	beq _0800BD2C
-	ldr r1, _0800BD14
-	ldr r0, _0800BD18
+	ldr r1, _0800BD14 @ =gUnknown_030042D4
+	ldr r0, _0800BD18 @ =sub_8010800
 	str r0, [r1]
-	ldr r2, _0800BD1C
-	ldr r4, _0800BD20
+	ldr r2, _0800BD1C @ =gUnknown_03004330
+	ldr r4, _0800BD20 @ =sub_802BF74
 	str r4, [r2]
-	ldr r1, _0800BD24
+	ldr r1, _0800BD24 @ =gUnknown_02024A72
 	movs r0, 0
 	strb r0, [r1]
-	ldr r3, _0800BD28
+	ldr r3, _0800BD28 @ =sub_8037510
 	str r3, [r2, 0x4]
 	strb r5, [r1, 0x1]
 	str r4, [r2, 0x8]
@@ -360,12 +360,12 @@ _0800BD20: .4byte sub_802BF74
 _0800BD24: .4byte gUnknown_02024A72
 _0800BD28: .4byte sub_8037510
 _0800BD2C:
-	ldr r2, _0800BD50
-	ldr r0, _0800BD54
+	ldr r2, _0800BD50 @ =gUnknown_03004330
+	ldr r0, _0800BD54 @ =sub_802BF74
 	str r0, [r2, 0x4]
-	ldr r1, _0800BD58
+	ldr r1, _0800BD58 @ =gUnknown_02024A72
 	strb r3, [r1, 0x1]
-	ldr r3, _0800BD5C
+	ldr r3, _0800BD5C @ =sub_8037510
 	str r3, [r2]
 	strb r5, [r1]
 	str r0, [r2, 0xC]
@@ -375,7 +375,7 @@ _0800BD2C:
 	movs r0, 0x3
 	strb r0, [r1, 0x2]
 _0800BD48:
-	ldr r0, _0800BD60
+	ldr r0, _0800BD60 @ =gUnknown_02024A68
 	strb r6, [r0]
 	b _0800BF14
 	.align 2, 0
@@ -393,17 +393,17 @@ _0800BD64:
 	ands r0, r1
 	cmp r0, 0
 	beq _0800BD7C
-	ldr r1, _0800BDA4
-	ldr r0, _0800BDA8
+	ldr r1, _0800BDA4 @ =gUnknown_030042D4
+	ldr r0, _0800BDA8 @ =sub_8010800
 	str r0, [r1]
 _0800BD7C:
 	movs r0, 0
 	mov r10, r0
-	ldr r1, _0800BDAC
+	ldr r1, _0800BDAC @ =gLinkPlayers
 	mov r12, r1
-	ldr r7, _0800BDB0
+	ldr r7, _0800BDB0 @ =gUnknown_02024A72
 	mov r8, r0
-	ldr r6, _0800BDB4
+	ldr r6, _0800BDB4 @ =gUnknown_02024A6A
 	movs r4, 0
 	movs r2, 0x3
 	mov r9, r2
@@ -428,7 +428,7 @@ _0800BDB8:
 	cmp r0, 0x3
 	bne _0800BDDA
 _0800BDBC:
-	ldr r0, _0800BDCC
+	ldr r0, _0800BDCC @ =gLinkPlayers
 	adds r0, r4, r0
 	ldrb r0, [r0, 0x18]
 	movs r1, 0
@@ -444,13 +444,13 @@ _0800BDD0:
 _0800BDDA:
 	cmp r10, r5
 	bne _0800BE2A
-	ldr r0, _0800BE00
+	ldr r0, _0800BE00 @ =gLinkPlayers
 	adds r3, r4, r0
 	ldrh r1, [r3, 0x18]
 	lsls r1, 2
-	ldr r2, _0800BE04
+	ldr r2, _0800BE04 @ =gUnknown_03004330
 	adds r1, r2
-	ldr r2, _0800BE08
+	ldr r2, _0800BE08 @ =sub_802BF74
 	str r2, [r1]
 	ldrh r1, [r3, 0x18]
 	mov r12, r0
@@ -484,7 +484,7 @@ _0800BE20:
 	ldrh r0, [r3, 0x18]
 	b _0800BEF8
 _0800BE2A:
-	ldr r2, _0800BE50
+	ldr r2, _0800BE50 @ =gLinkPlayers
 	adds r0, r4, r2
 	ldrh r1, [r0, 0x18]
 	movs r3, 0x1
@@ -520,9 +520,9 @@ _0800BE66:
 	adds r2, r4, r0
 	ldrh r0, [r2, 0x18]
 	lsls r0, 2
-	ldr r1, _0800BE88
+	ldr r1, _0800BE88 @ =gUnknown_03004330
 	adds r0, r1
-	ldr r1, _0800BE8C
+	ldr r1, _0800BE8C @ =sub_811DA78
 	str r1, [r0]
 	ldrh r1, [r2, 0x18]
 	cmp r1, 0x2
@@ -557,9 +557,9 @@ _0800BEAC:
 	adds r2, r4, r0
 	ldrh r0, [r2, 0x18]
 	lsls r0, 2
-	ldr r1, _0800BECC
+	ldr r1, _0800BECC @ =gUnknown_03004330
 	adds r0, r1
-	ldr r1, _0800BED0
+	ldr r1, _0800BED0 @ =sub_8037510
 	str r1, [r0]
 	ldrh r0, [r2, 0x18]
 	cmp r0, 0x2
@@ -609,7 +609,7 @@ _0800BF00:
 	bgt _0800BF0E
 	b _0800BD90
 _0800BF0E:
-	ldr r1, _0800BF24
+	ldr r1, _0800BF24 @ =gUnknown_02024A68
 	movs r0, 0x4
 _0800BF12:
 	strb r0, [r1]
@@ -632,7 +632,7 @@ sub_800BD54: @ 800BF28
 	mov r6, r9
 	mov r5, r8
 	push {r5-r7}
-	ldr r0, _0800BF48
+	ldr r0, _0800BF48 @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	movs r0, 0x40
 	ands r0, r1
@@ -650,7 +650,7 @@ _0800BF4C:
 	movs r0, 0x1
 	add r0, r8
 	mov r10, r0
-	ldr r0, _0800BF78
+	ldr r0, _0800BF78 @ =gUnknown_02024A72
 	add r0, r8
 	mov r9, r0
 	mov r0, r8
@@ -666,13 +666,13 @@ _0800BF60:
 	ands r0, r1
 	cmp r0, 0
 	bne _0800BF80
-	ldr r0, _0800BF7C
+	ldr r0, _0800BF7C @ =gPlayerParty
 	b _0800BF82
 	.align 2, 0
 _0800BF78: .4byte gUnknown_02024A72
 _0800BF7C: .4byte gPlayerParty
 _0800BF80:
-	ldr r0, _0800BFC0
+	ldr r0, _0800BFC0 @ =gEnemyParty
 _0800BF82:
 	adds r4, r7, r0
 	adds r0, r4, 0
@@ -697,7 +697,7 @@ _0800BF82:
 	bl GetMonData
 	cmp r0, 0
 	bne _0800C048
-	ldr r0, _0800BFC4
+	ldr r0, _0800BFC4 @ =gUnknown_02024A6A
 	adds r0, r6, r0
 	strh r5, [r0]
 	b _0800C050
@@ -711,7 +711,7 @@ _0800BFC8:
 	ands r0, r1
 	cmp r0, 0
 	bne _0800BFF0
-	ldr r0, _0800BFEC
+	ldr r0, _0800BFEC @ =gPlayerParty
 	adds r4, r7, r0
 	adds r0, r4, 0
 	movs r1, 0x39
@@ -724,7 +724,7 @@ _0800BFC8:
 	.align 2, 0
 _0800BFEC: .4byte gPlayerParty
 _0800BFF0:
-	ldr r0, _0800C040
+	ldr r0, _0800C040 @ =gEnemyParty
 	adds r4, r7, r0
 	adds r0, r4, 0
 	movs r1, 0x39
@@ -749,7 +749,7 @@ _0800C004:
 	bl GetMonData
 	cmp r0, 0
 	bne _0800C048
-	ldr r1, _0800C044
+	ldr r1, _0800C044 @ =gUnknown_02024A6A
 	mov r0, r8
 	subs r0, 0x2
 	lsls r0, 1
@@ -771,7 +771,7 @@ _0800C048:
 _0800C050:
 	mov r8, r10
 _0800C052:
-	ldr r0, _0800C06C
+	ldr r0, _0800C06C @ =gUnknown_02024A68
 	ldrb r0, [r0]
 	cmp r8, r0
 	bge _0800C05C
@@ -797,7 +797,7 @@ dp01_prepare_buffer: @ 800C070
 	adds r5, r3, 0
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r0, _0800C098
+	ldr r0, _0800C098 @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	movs r0, 0x2
 	ands r0, r1
@@ -820,8 +820,8 @@ _0800C0A6:
 	movs r3, 0
 	cmp r3, r2
 	bge _0800C0EE
-	ldr r6, _0800C0C8
-	ldr r5, _0800C0CC
+	ldr r6, _0800C0C8 @ =gUnknown_02023A60
+	ldr r5, _0800C0CC @ =gUnknown_02024A60
 _0800C0B0:
 	ldrb r0, [r5]
 	lsls r0, 9
@@ -841,8 +841,8 @@ _0800C0D0:
 	movs r3, 0
 	cmp r3, r2
 	bge _0800C0EE
-	ldr r6, _0800C0F4
-	ldr r5, _0800C0F8
+	ldr r6, _0800C0F4 @ =gUnknown_02024260
+	ldr r5, _0800C0F8 @ =gUnknown_02024A60
 _0800C0DA:
 	ldrb r0, [r5]
 	lsls r0, 9
@@ -867,12 +867,12 @@ _0800C0F8: .4byte gUnknown_02024A60
 sub_800BF28: @ 800C0FC
 	push {r4-r6,lr}
 	sub sp, 0x4
-	ldr r0, _0800C1A4
+	ldr r0, _0800C1A4 @ =sub_800C1A8
 	movs r1, 0
 	bl CreateTask
-	ldr r2, _0800C1A8
+	ldr r2, _0800C1A8 @ =gUnknown_020238C4
 	strb r0, [r2]
-	ldr r5, _0800C1AC
+	ldr r5, _0800C1AC @ =gTasks
 	ldrb r1, [r2]
 	lsls r0, r1, 2
 	adds r0, r1
@@ -905,10 +905,10 @@ sub_800BF28: @ 800C0FC
 	lsls r0, 3
 	adds r0, r5
 	strh r4, [r0, 0x26]
-	ldr r0, _0800C1B0
+	ldr r0, _0800C1B0 @ =sub_800C47C
 	movs r1, 0
 	bl CreateTask
-	ldr r2, _0800C1B4
+	ldr r2, _0800C1B4 @ =gUnknown_020238C5
 	strb r0, [r2]
 	ldrb r1, [r2]
 	lsls r0, r1, 2
@@ -934,12 +934,12 @@ sub_800BF28: @ 800C0FC
 	lsls r0, 3
 	adds r0, r5
 	strh r4, [r0, 0x26]
-	ldr r0, _0800C1B8
+	ldr r0, _0800C1B8 @ =gUnknown_020238C6
 	strb r6, [r0]
 	mov r0, sp
 	strh r4, [r0]
-	ldr r1, _0800C1BC
-	ldr r2, _0800C1C0
+	ldr r1, _0800C1BC @ =0x02014000
+	ldr r2, _0800C1C0 @ =0x01001000
 	bl CpuSet
 	add sp, 0x4
 	pop {r4-r6}
@@ -974,8 +974,8 @@ dp01_prepare_buffer_wireless_probably: @ 800C1C4
 	bics r0, r1
 	adds r0, 0x4
 	mov r9, r0
-	ldr r2, _0800C33C
-	ldr r3, _0800C340
+	ldr r2, _0800C33C @ =gTasks
+	ldr r3, _0800C340 @ =gUnknown_020238C4
 	ldrb r1, [r3]
 	lsls r0, r1, 2
 	adds r0, r1
@@ -1000,7 +1000,7 @@ dp01_prepare_buffer_wireless_probably: @ 800C1C4
 	adds r0, r5
 	strh r2, [r0, 0x24]
 _0800C216:
-	ldr r4, _0800C344
+	ldr r4, _0800C344 @ =0x02000000
 	ldrb r1, [r3]
 	lsls r0, r1, 2
 	adds r0, r1
@@ -1020,10 +1020,10 @@ _0800C216:
 	adds r0, r5
 	movs r1, 0x24
 	ldrsh r0, [r0, r1]
-	ldr r2, _0800C348
+	ldr r2, _0800C348 @ =0x00014001
 	adds r0, r2
 	adds r0, r4
-	ldr r1, _0800C34C
+	ldr r1, _0800C34C @ =gUnknown_02024A60
 	ldrb r1, [r1]
 	strb r1, [r0]
 	ldrb r1, [r3]
@@ -1033,10 +1033,10 @@ _0800C216:
 	adds r0, r5
 	movs r7, 0x24
 	ldrsh r0, [r0, r7]
-	ldr r1, _0800C350
+	ldr r1, _0800C350 @ =0x00014002
 	adds r0, r1
 	adds r0, r4
-	ldr r1, _0800C354
+	ldr r1, _0800C354 @ =gUnknown_02024C07
 	ldrb r1, [r1]
 	strb r1, [r0]
 	ldrb r1, [r3]
@@ -1046,10 +1046,10 @@ _0800C216:
 	adds r0, r5
 	movs r2, 0x24
 	ldrsh r0, [r0, r2]
-	ldr r7, _0800C358
+	ldr r7, _0800C358 @ =0x00014003
 	adds r0, r7
 	adds r0, r4
-	ldr r1, _0800C35C
+	ldr r1, _0800C35C @ =gUnknown_02024C08
 	ldrb r1, [r1]
 	strb r1, [r0]
 	ldrb r1, [r3]
@@ -1059,7 +1059,7 @@ _0800C216:
 	adds r0, r5
 	movs r1, 0x24
 	ldrsh r0, [r0, r1]
-	ldr r2, _0800C360
+	ldr r2, _0800C360 @ =0x00014004
 	adds r0, r2
 	adds r0, r4
 	mov r7, r9
@@ -1071,7 +1071,7 @@ _0800C216:
 	adds r0, r5
 	movs r2, 0x24
 	ldrsh r1, [r0, r2]
-	ldr r7, _0800C364
+	ldr r7, _0800C364 @ =0x00014005
 	adds r1, r7
 	adds r1, r4
 	movs r0, 0xFF
@@ -1087,10 +1087,10 @@ _0800C216:
 	adds r0, r5
 	movs r7, 0x24
 	ldrsh r0, [r0, r7]
-	ldr r1, _0800C368
+	ldr r1, _0800C368 @ =0x00014006
 	adds r0, r1
 	adds r0, r4
-	ldr r1, _0800C36C
+	ldr r1, _0800C36C @ =gUnknown_02024C0C
 	ldrb r1, [r1]
 	strb r1, [r0]
 	ldrb r1, [r3]
@@ -1100,10 +1100,10 @@ _0800C216:
 	adds r0, r5
 	movs r2, 0x24
 	ldrsh r0, [r0, r2]
-	ldr r7, _0800C370
+	ldr r7, _0800C370 @ =0x00014007
 	adds r0, r7
 	adds r0, r4
-	ldr r1, _0800C374
+	ldr r1, _0800C374 @ =gUnknown_02024C0A
 	ldrb r1, [r1]
 	strb r1, [r0]
 	movs r2, 0
@@ -1111,13 +1111,13 @@ _0800C216:
 	bge _0800C31A
 	mov r12, r4
 	adds r6, r3, 0
-	ldr r4, _0800C378
+	ldr r4, _0800C378 @ =0x00014008
 _0800C2F6:
 	ldrb r1, [r6]
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _0800C33C
+	ldr r1, _0800C33C @ =gTasks
 	adds r0, r1
 	movs r7, 0x24
 	ldrsh r1, [r0, r7]
@@ -1172,7 +1172,7 @@ sub_800C1A8: @ 800C37C
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _0800C3A4
+	ldr r1, _0800C3A4 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1185,7 +1185,7 @@ sub_800C1A8: @ 800C37C
 	b _0800C528
 _0800C398:
 	lsls r0, 2
-	ldr r1, _0800C3A8
+	ldr r1, _0800C3A8 @ =_0800C3AC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1234,7 +1234,7 @@ _0800C3F4:
 	cmp r0, 0
 	beq _0800C41C
 	bl sub_8007F4C
-	ldr r0, _0800C418
+	ldr r0, _0800C418 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -1245,7 +1245,7 @@ _0800C3F4:
 	.align 2, 0
 _0800C418: .4byte gTasks
 _0800C41C:
-	ldr r0, _0800C42C
+	ldr r0, _0800C42C @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -1281,17 +1281,17 @@ _0800C430:
 	strh r5, [r2, 0x20]
 	strh r5, [r2, 0x26]
 _0800C460:
-	ldr r5, _0800C4A8
+	ldr r5, _0800C4A8 @ =0x02000000
 	adds r4, r1, r4
 	lsls r4, 3
 	adds r4, r7
 	movs r0, 0x26
 	ldrsh r2, [r4, r0]
-	ldr r1, _0800C4AC
+	ldr r1, _0800C4AC @ =0x00014004
 	adds r0, r2, r1
 	adds r0, r5
 	ldrb r1, [r0]
-	ldr r6, _0800C4B0
+	ldr r6, _0800C4B0 @ =0x00014005
 	adds r2, r6
 	adds r2, r5
 	ldrb r0, [r2]
@@ -1328,19 +1328,19 @@ _0800C4BA:
 	lsls r0, 24
 	cmp r0, 0
 	beq _0800C528
-	ldr r2, _0800C4FC
-	ldr r0, _0800C500
+	ldr r2, _0800C4FC @ =0x02000000
+	ldr r0, _0800C500 @ =gTasks
 	lsls r3, r4, 2
 	adds r3, r4
 	lsls r3, 3
 	adds r3, r0
 	movs r4, 0x26
 	ldrsh r1, [r3, r4]
-	ldr r5, _0800C504
+	ldr r5, _0800C504 @ =0x00014004
 	adds r0, r1, r5
 	adds r0, r2
 	ldrb r0, [r0]
-	ldr r6, _0800C508
+	ldr r6, _0800C508 @ =0x00014005
 	adds r1, r6
 	adds r1, r2
 	ldrb r1, [r1]
@@ -1389,23 +1389,23 @@ sub_800C35C: @ 800C530
 	mov r6, r9
 	mov r5, r8
 	push {r5-r7}
-	ldr r0, _0800C560
+	ldr r0, _0800C560 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _0800C62C
-	ldr r0, _0800C564
+	ldr r0, _0800C564 @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	movs r0, 0x20
 	ands r0, r1
 	cmp r0, 0
 	beq _0800C62C
-	ldr r0, _0800C568
+	ldr r0, _0800C568 @ =gLinkPlayers
 	ldr r1, [r0, 0x14]
-	ldr r0, _0800C56C
+	ldr r0, _0800C56C @ =0x00002211
 	cmp r1, r0
 	bne _0800C62C
 	movs r4, 0
-	ldr r0, _0800C570
+	ldr r0, _0800C570 @ =gBlockRecvBuffer
 	mov r10, r0
 	b _0800C620
 	.align 2, 0
@@ -1418,7 +1418,7 @@ _0800C574:
 	bl GetBlockReceivedStatus
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0800C63C
+	ldr r2, _0800C63C @ =gBitTable
 	lsls r1, r4, 2
 	adds r1, r2
 	ldr r1, [r1]
@@ -1432,11 +1432,11 @@ _0800C574:
 	lsls r0, r4, 8
 	mov r2, r10
 	adds r3, r0, r2
-	ldr r1, _0800C640
+	ldr r1, _0800C640 @ =0x03002b94
 	adds r0, r1
 	ldrh r6, [r0]
-	ldr r7, _0800C644
-	ldr r2, _0800C648
+	ldr r7, _0800C644 @ =gTasks
+	ldr r2, _0800C648 @ =gUnknown_020238C5
 	mov r12, r2
 	ldrb r1, [r2]
 	lsls r0, r1, 2
@@ -1471,7 +1471,7 @@ _0800C5D6:
 	adds r0, r7
 	movs r2, 0x24
 	ldrsh r1, [r0, r2]
-	ldr r0, _0800C64C
+	ldr r0, _0800C64C @ =0x02015000
 	adds r5, r1, r0
 	adds r4, r3, 0
 	movs r2, 0
@@ -1534,7 +1534,7 @@ sub_800C47C: @ 800C650
 	lsls r0, 24
 	lsrs r0, 24
 	mov r8, r0
-	ldr r1, _0800C6D0
+	ldr r1, _0800C6D0 @ =gTasks
 	lsls r0, 2
 	add r0, r8
 	lsls r0, 3
@@ -1558,7 +1558,7 @@ _0800C678:
 	strh r0, [r3, 0x20]
 	strh r0, [r3, 0x26]
 _0800C68A:
-	ldr r5, _0800C6D4
+	ldr r5, _0800C6D4 @ =0x02000000
 	mov r2, r8
 	lsls r1, r2, 2
 	adds r0, r1, r2
@@ -1566,7 +1566,7 @@ _0800C68A:
 	adds r6, r0, r4
 	movs r4, 0x26
 	ldrsh r3, [r6, r4]
-	ldr r2, _0800C6D8
+	ldr r2, _0800C6D8 @ =0x00015001
 	adds r0, r3, r2
 	adds r0, r5
 	ldrb r4, [r0]
@@ -1601,8 +1601,8 @@ _0800C6DC:
 	beq _0800C7A0
 	b _0800C7BC
 _0800C6E2:
-	ldr r2, _0800C75C
-	ldr r1, _0800C760
+	ldr r2, _0800C75C @ =gUnknown_02024A64
+	ldr r1, _0800C760 @ =gBitTable
 	lsls r0, r4, 2
 	adds r0, r1
 	ldr r1, [r2]
@@ -1611,30 +1611,30 @@ _0800C6E2:
 	cmp r1, 0
 	bne _0800C7CE
 	lsls r0, r4, 9
-	ldr r1, _0800C764
+	ldr r1, _0800C764 @ =gUnknown_02023A60
 	adds r0, r1
-	ldr r2, _0800C768
+	ldr r2, _0800C768 @ =0x00015008
 	adds r1, r5, r2
 	adds r1, r3, r1
 	adds r2, r7, 0
 	bl memcpy
 	adds r0, r4, 0
 	bl sub_80155A4
-	ldr r0, _0800C76C
+	ldr r0, _0800C76C @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	movs r0, 0x4
 	ands r0, r1
 	cmp r0, 0
 	bne _0800C7BC
-	ldr r1, _0800C770
+	ldr r1, _0800C770 @ =gUnknown_02024C07
 	movs r4, 0x26
 	ldrsh r0, [r6, r4]
-	ldr r2, _0800C774
+	ldr r2, _0800C774 @ =0x00015002
 	adds r0, r2
 	adds r0, r5
 	ldrb r0, [r0]
 	strb r0, [r1]
-	ldr r1, _0800C778
+	ldr r1, _0800C778 @ =gUnknown_02024C08
 	movs r4, 0x26
 	ldrsh r0, [r6, r4]
 	adds r2, 0x1
@@ -1642,7 +1642,7 @@ _0800C6E2:
 	adds r0, r5
 	ldrb r0, [r0]
 	strb r0, [r1]
-	ldr r1, _0800C77C
+	ldr r1, _0800C77C @ =gUnknown_02024C0C
 	movs r4, 0x26
 	ldrsh r0, [r6, r4]
 	adds r2, 0x3
@@ -1650,7 +1650,7 @@ _0800C6E2:
 	adds r0, r5
 	ldrb r0, [r0]
 	strb r0, [r1]
-	ldr r1, _0800C780
+	ldr r1, _0800C780 @ =gUnknown_02024C0A
 	movs r4, 0x26
 	ldrsh r0, [r6, r4]
 	adds r2, 0x1
@@ -1672,9 +1672,9 @@ _0800C77C: .4byte gUnknown_02024C0C
 _0800C780: .4byte gUnknown_02024C0A
 _0800C784:
 	lsls r0, r4, 9
-	ldr r1, _0800C798
+	ldr r1, _0800C798 @ =gUnknown_02024260
 	adds r0, r1
-	ldr r4, _0800C79C
+	ldr r4, _0800C79C @ =0x00015008
 	adds r1, r5, r4
 	adds r1, r3, r1
 	adds r2, r7, 0
@@ -1684,12 +1684,12 @@ _0800C784:
 _0800C798: .4byte gUnknown_02024260
 _0800C79C: .4byte 0x00015008
 _0800C7A0:
-	ldr r1, _0800C7DC
+	ldr r1, _0800C7DC @ =0x00015008
 	adds r0, r3, r1
 	adds r0, r5
 	ldrb r2, [r0]
-	ldr r3, _0800C7E0
-	ldr r1, _0800C7E4
+	ldr r3, _0800C7E0 @ =gUnknown_02024A64
+	ldr r1, _0800C7E4 @ =gBitTable
 	lsls r0, r4, 2
 	adds r0, r1
 	lsls r2, 2
@@ -1699,7 +1699,7 @@ _0800C7A0:
 	bics r0, r1
 	str r0, [r3]
 _0800C7BC:
-	ldr r0, _0800C7E8
+	ldr r0, _0800C7E8 @ =gTasks
 	mov r1, r9
 	add r1, r8
 	lsls r1, 3
@@ -1728,7 +1728,7 @@ dp01_build_cmdbuf_x00_a_b_0: @ 800C7EC
 	adds r4, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C80C
+	ldr r1, _0800C80C @ =gUnknown_03004040
 	movs r3, 0
 	strb r3, [r1]
 	strb r4, [r1, 0x1]
@@ -1749,7 +1749,7 @@ dp01_build_cmdbuf_x01_a_b_0: @ 800C810
 	adds r5, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C834
+	ldr r1, _0800C834 @ =gUnknown_03004040
 	movs r4, 0
 	movs r3, 0x1
 	strb r3, [r1]
@@ -1773,7 +1773,7 @@ dp01_build_cmdbuf_x02_a_b_varargs: @ 800C838
 	lsrs r6, r0, 24
 	lsls r3, 24
 	lsrs r5, r3, 24
-	ldr r0, _0800C874
+	ldr r0, _0800C874 @ =gUnknown_03004040
 	movs r3, 0x2
 	strb r3, [r0]
 	strb r1, [r0, 0x1]
@@ -1809,7 +1809,7 @@ unref_sub_800C6A4: @ 800C878
 	lsrs r6, r0, 24
 	lsls r2, 24
 	lsrs r4, r2, 24
-	ldr r0, _0800C8B4
+	ldr r0, _0800C8B4 @ =gUnknown_03004040
 	movs r2, 0x3
 	strb r2, [r0]
 	strb r1, [r0, 0x1]
@@ -1844,7 +1844,7 @@ dp01_build_cmdbuf_x04_4_4_4: @ 800C8B8
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C8D4
+	ldr r1, _0800C8D4 @ =gUnknown_03004040
 	movs r2, 0x4
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -1863,7 +1863,7 @@ sub_800C704: @ 800C8D8
 	adds r4, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C8F8
+	ldr r1, _0800C8F8 @ =gUnknown_03004040
 	movs r3, 0x5
 	strb r3, [r1]
 	strb r4, [r1, 0x1]
@@ -1884,7 +1884,7 @@ dp01_build_cmdbuf_x06_a: @ 800C8FC
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C918
+	ldr r1, _0800C918 @ =gUnknown_03004040
 	movs r2, 0x6
 	strb r2, [r1]
 	strb r3, [r1, 0x1]
@@ -1901,7 +1901,7 @@ dp01_build_cmdbuf_x07_7_7_7: @ 800C91C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C938
+	ldr r1, _0800C938 @ =gUnknown_03004040
 	movs r2, 0x7
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -1920,7 +1920,7 @@ dp01_build_cmdbuf_x08_8_8_8: @ 800C93C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C958
+	ldr r1, _0800C958 @ =gUnknown_03004040
 	movs r2, 0x8
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -1939,7 +1939,7 @@ dp01_build_cmdbuf_x09_9_9_9: @ 800C95C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C978
+	ldr r1, _0800C978 @ =gUnknown_03004040
 	movs r2, 0x9
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -1958,7 +1958,7 @@ dp01_build_cmdbuf_x0A_A_A_A: @ 800C97C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C998
+	ldr r1, _0800C998 @ =gUnknown_03004040
 	movs r2, 0xA
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -1977,7 +1977,7 @@ dp01_build_cmdbuf_x0B_B_B_B: @ 800C99C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C9B8
+	ldr r1, _0800C9B8 @ =gUnknown_03004040
 	movs r2, 0xB
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -1996,7 +1996,7 @@ dp01_build_cmdbuf_x0C_C_C_C: @ 800C9BC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C9D8
+	ldr r1, _0800C9D8 @ =gUnknown_03004040
 	movs r2, 0xC
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -2016,7 +2016,7 @@ dp01_build_cmdbuf_x0D_a: @ 800C9DC
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800C9F8
+	ldr r1, _0800C9F8 @ =gUnknown_03004040
 	movs r2, 0xD
 	strb r2, [r1]
 	strb r3, [r1, 0x1]
@@ -2035,7 +2035,7 @@ unref_sub_800C828: @ 800C9FC
 	lsrs r6, r0, 24
 	lsls r1, 24
 	lsrs r4, r1, 24
-	ldr r1, _0800CA40
+	ldr r1, _0800CA40 @ =gUnknown_03004040
 	movs r0, 0xE
 	strb r0, [r1]
 	strb r4, [r1, 0x1]
@@ -2083,7 +2083,7 @@ dp01_build_cmdbuf_x0F_aa_b_cc_dddd_e_mlc_weather_00_x1Cbytes: @ 800CA44
 	lsrs r1, 16
 	lsls r3, 16
 	lsrs r3, 16
-	ldr r7, _0800CAD8
+	ldr r7, _0800CAD8 @ =gUnknown_03004040
 	movs r0, 0
 	mov r12, r0
 	movs r0, 0xF
@@ -2110,7 +2110,7 @@ dp01_build_cmdbuf_x0F_aa_b_cc_dddd_e_mlc_weather_00_x1Cbytes: @ 800CA44
 	lsrs r4, 24
 	strb r4, [r7, 0x9]
 	strb r5, [r7, 0xA]
-	ldr r0, _0800CADC
+	ldr r0, _0800CADC @ =gUnknown_02024C0E
 	ldrb r0, [r0]
 	strb r0, [r7, 0xB]
 	mov r0, r12
@@ -2133,7 +2133,7 @@ dp01_build_cmdbuf_x0F_aa_b_cc_dddd_e_mlc_weather_00_x1Cbytes: @ 800CA44
 	lsls r0, 24
 	cmp r0, 0
 	bne _0800CAE4
-	ldr r0, _0800CAE0
+	ldr r0, _0800CAE0 @ =word_2024DB8
 	ldrh r0, [r0]
 	strb r0, [r7, 0xC]
 	ands r6, r0
@@ -2146,7 +2146,7 @@ _0800CAD8: .4byte gUnknown_03004040
 _0800CADC: .4byte gUnknown_02024C0E
 _0800CAE0: .4byte word_2024DB8
 _0800CAE4:
-	ldr r0, _0800CB18
+	ldr r0, _0800CB18 @ =gUnknown_03004040
 	movs r1, 0
 	strb r1, [r0, 0xC]
 	strb r1, [r0, 0xD]
@@ -2186,10 +2186,10 @@ dp01_build_cmdbuf_x10_TODO: @ 800CB1C
 	mov r10, r0
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r2, _0800CC00
+	ldr r2, _0800CC00 @ =gUnknown_03004040
 	movs r0, 0x10
 	strb r0, [r2]
-	ldr r0, _0800CC04
+	ldr r0, _0800CC04 @ =gUnknown_02024D26
 	ldrb r0, [r0]
 	strb r0, [r2, 0x1]
 	strb r1, [r2, 0x2]
@@ -2197,21 +2197,21 @@ dp01_build_cmdbuf_x10_TODO: @ 800CB1C
 	strb r1, [r2, 0x3]
 	adds r0, r2, 0x4
 	mov r12, r0
-	ldr r4, _0800CC08
+	ldr r4, _0800CC08 @ =gUnknown_02024BE6
 	ldrh r0, [r4]
 	strh r0, [r2, 0x4]
-	ldr r0, _0800CC0C
+	ldr r0, _0800CC0C @ =gUnknown_02024BE8
 	ldrh r0, [r0]
 	mov r1, r12
 	strh r0, [r1, 0x2]
-	ldr r0, _0800CC10
+	ldr r0, _0800CC10 @ =gUnknown_02024C04
 	ldrh r0, [r0]
 	strh r0, [r1, 0x4]
-	ldr r0, _0800CC14
+	ldr r0, _0800CC14 @ =byte_2024C06
 	ldrb r0, [r0]
 	strb r0, [r1, 0x6]
-	ldr r1, _0800CC18
-	ldr r3, _0800CC1C
+	ldr r1, _0800CC18 @ =0x02000000
+	ldr r3, _0800CC1C @ =0x00016003
 	adds r0, r1, r3
 	ldrb r0, [r0]
 	mov r7, r12
@@ -2220,15 +2220,15 @@ dp01_build_cmdbuf_x10_TODO: @ 800CB1C
 	adds r0, r1, r3
 	ldrb r0, [r0]
 	strb r0, [r7, 0x8]
-	ldr r7, _0800CC20
+	ldr r7, _0800CC20 @ =0x000160c1
 	adds r1, r7
 	ldrb r0, [r1]
 	mov r1, r12
 	strb r0, [r1, 0x9]
-	ldr r0, _0800CC24
+	ldr r0, _0800CC24 @ =gUnknown_02024C0B
 	ldrb r0, [r0]
 	strb r0, [r1, 0xA]
-	ldr r3, _0800CC28
+	ldr r3, _0800CC28 @ =gBattleMoves
 	ldrh r1, [r4]
 	lsls r0, r1, 1
 	adds r0, r1
@@ -2239,10 +2239,10 @@ dp01_build_cmdbuf_x10_TODO: @ 800CB1C
 	strb r0, [r3, 0xB]
 	movs r3, 0
 	mov r9, r2
-	ldr r7, _0800CC2C
+	ldr r7, _0800CC2C @ =gUnknown_030042B0
 	mov r8, r7
 	adds r2, 0x10
-	ldr r0, _0800CC30
+	ldr r0, _0800CC30 @ =gBattleMons
 	adds r4, r0, 0
 	adds r4, 0x20
 _0800CBA6:
@@ -2258,12 +2258,12 @@ _0800CBA6:
 	adds r5, 0x10
 	mov r4, r12
 	adds r4, 0x20
-	ldr r6, _0800CC34
+	ldr r6, _0800CC34 @ =gUnknown_03004290
 	mov r2, r12
 	adds r2, 0x30
 _0800CBC4:
 	adds r1, r5, r3
-	ldr r7, _0800CC38
+	ldr r7, _0800CC38 @ =gUnknown_030041C0
 	adds r0, r3, r7
 	ldrb r0, [r0]
 	strb r0, [r1]
@@ -2320,7 +2320,7 @@ dp01_build_cmdbuf_x11_TODO: @ 800CC3C
 	mov r10, r0
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r2, _0800CCFC
+	ldr r2, _0800CCFC @ =gUnknown_03004040
 	movs r0, 0x11
 	strb r0, [r2]
 	strb r0, [r2, 0x1]
@@ -2329,36 +2329,36 @@ dp01_build_cmdbuf_x11_TODO: @ 800CC3C
 	strb r1, [r2, 0x3]
 	adds r0, r2, 0x4
 	mov r12, r0
-	ldr r0, _0800CD00
+	ldr r0, _0800CD00 @ =gUnknown_02024BE6
 	ldrh r0, [r0]
 	strh r0, [r2, 0x4]
-	ldr r0, _0800CD04
+	ldr r0, _0800CD04 @ =gUnknown_02024BE8
 	ldrh r0, [r0]
 	mov r1, r12
 	strh r0, [r1, 0x2]
-	ldr r0, _0800CD08
+	ldr r0, _0800CD08 @ =gUnknown_02024C04
 	ldrh r0, [r0]
 	strh r0, [r1, 0x4]
-	ldr r0, _0800CD0C
+	ldr r0, _0800CD0C @ =byte_2024C06
 	ldrb r0, [r0]
 	strb r0, [r1, 0x6]
-	ldr r0, _0800CD10
-	ldr r3, _0800CD14
+	ldr r0, _0800CD10 @ =0x02000000
+	ldr r3, _0800CD14 @ =0x00016003
 	adds r1, r0, r3
 	ldrb r1, [r1]
 	mov r7, r12
 	strb r1, [r7, 0x7]
-	ldr r1, _0800CD18
+	ldr r1, _0800CD18 @ =0x0001605e
 	adds r0, r1
 	ldrb r0, [r0]
 	strb r0, [r7, 0x8]
 	movs r3, 0
 	mov r9, r2
-	ldr r7, _0800CD1C
+	ldr r7, _0800CD1C @ =gUnknown_030042B0
 	mov r8, r7
 	mov r4, r9
 	adds r4, 0x10
-	ldr r0, _0800CD20
+	ldr r0, _0800CD20 @ =gBattleMons
 	adds r2, r0, 0
 	adds r2, 0x20
 _0800CCA2:
@@ -2374,12 +2374,12 @@ _0800CCA2:
 	adds r5, 0x10
 	mov r4, r12
 	adds r4, 0x20
-	ldr r6, _0800CD24
+	ldr r6, _0800CD24 @ =gUnknown_03004290
 	mov r2, r12
 	adds r2, 0x30
 _0800CCC0:
 	adds r1, r5, r3
-	ldr r7, _0800CD28
+	ldr r7, _0800CD28 @ =gUnknown_030041C0
 	adds r0, r3, r7
 	ldrb r0, [r0]
 	strb r0, [r1]
@@ -2429,7 +2429,7 @@ dp01_build_cmdbuf_x12_a_bb: @ 800CD2C
 	lsrs r0, 24
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r1, _0800CD54
+	ldr r1, _0800CD54 @ =gUnknown_03004040
 	movs r3, 0x12
 	strb r3, [r1]
 	strb r4, [r1, 0x1]
@@ -2451,7 +2451,7 @@ unref_sub_800CB84: @ 800CD58
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800CD74
+	ldr r1, _0800CD74 @ =gUnknown_03004040
 	movs r2, 0x13
 	strb r2, [r1]
 	strb r3, [r1, 0x1]
@@ -2469,7 +2469,7 @@ sub_800CBA4: @ 800CD78
 	adds r5, r3, 0
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r3, _0800CDB0
+	ldr r3, _0800CDB0 @ =gUnknown_03004040
 	movs r4, 0
 	movs r0, 0x14
 	strb r0, [r3]
@@ -2503,7 +2503,7 @@ sub_800CBE0: @ 800CDB4
 	adds r4, r1, 0
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _0800CDE4
+	ldr r1, _0800CDE4 @ =gUnknown_03004040
 	movs r0, 0x15
 	strb r0, [r1]
 	movs r2, 0
@@ -2532,7 +2532,7 @@ dp01_build_cmdbuf_x16_a_b_c_ptr_d_e_f: @ 800CDE8
 	ldr r6, [sp, 0x10]
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r4, _0800CE20
+	ldr r4, _0800CE20 @ =gUnknown_03004040
 	movs r0, 0x16
 	strb r0, [r4]
 	strb r1, [r4, 0x1]
@@ -2564,7 +2564,7 @@ dp01_build_cmdbuf_x17_17_17_17: @ 800CE24
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800CE40
+	ldr r1, _0800CE40 @ =gUnknown_03004040
 	movs r2, 0x17
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -2585,7 +2585,7 @@ dp01_build_cmdbuf_x18_0_aa_health_bar_update: @ 800CE44
 	lsrs r0, 24
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r3, _0800CE78
+	ldr r3, _0800CE78 @ =gUnknown_03004040
 	movs r4, 0
 	movs r2, 0x18
 	strb r2, [r3]
@@ -2616,7 +2616,7 @@ dp01_build_cmdbuf_x19_a_bb: @ 800CE7C
 	lsrs r0, 24
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r1, _0800CEAC
+	ldr r1, _0800CEAC @ =gUnknown_03004040
 	movs r3, 0x19
 	strb r3, [r1]
 	strb r4, [r1, 0x1]
@@ -2643,7 +2643,7 @@ dp01_build_cmdbuf_x1A_aaaa_bbbb: @ 800CEB0
 	adds r4, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800CF00
+	ldr r1, _0800CF00 @ =gUnknown_03004040
 	movs r3, 0x1A
 	strb r3, [r1]
 	strb r4, [r1, 0x1]
@@ -2687,7 +2687,7 @@ dp01_build_cmdbuf_x1B_aaaa_b: @ 800CF04
 	adds r4, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800CF3C
+	ldr r1, _0800CF3C @ =gUnknown_03004040
 	movs r3, 0x1B
 	strb r3, [r1]
 	strb r4, [r1, 0x1]
@@ -2719,7 +2719,7 @@ dp01_build_cmdbuf_x1C_a: @ 800CF40
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800CF5C
+	ldr r1, _0800CF5C @ =gUnknown_03004040
 	movs r2, 0x1C
 	strb r2, [r1]
 	strb r3, [r1, 0x1]
@@ -2738,7 +2738,7 @@ dp01_build_cmdbuf_x1D_1D_numargs_varargs: @ 800CF60
 	lsrs r6, r0, 24
 	lsls r1, 16
 	lsrs r4, r1, 16
-	ldr r1, _0800CFA4
+	ldr r1, _0800CFA4 @ =gUnknown_03004040
 	movs r0, 0x1D
 	strb r0, [r1]
 	strb r0, [r1, 0x1]
@@ -2780,7 +2780,7 @@ unref_sub_800CDD4: @ 800CFA8
 	lsrs r6, r0, 24
 	lsls r2, 16
 	lsrs r5, r2, 16
-	ldr r2, _0800D00C
+	ldr r2, _0800D00C @ =gUnknown_03004040
 	movs r0, 0x1E
 	strb r0, [r2]
 	strb r1, [r2, 0x1]
@@ -2835,7 +2835,7 @@ unref_sub_800CE3C: @ 800D010
 	lsrs r6, r0, 24
 	lsls r1, 16
 	lsrs r4, r1, 16
-	ldr r1, _0800D054
+	ldr r1, _0800D054 @ =gUnknown_03004040
 	movs r0, 0x1F
 	strb r0, [r1]
 	strb r4, [r1, 0x1]
@@ -2875,7 +2875,7 @@ unref_sub_800CE84: @ 800D058
 	lsrs r6, r0, 24
 	lsls r1, 16
 	lsrs r4, r1, 16
-	ldr r1, _0800D09C
+	ldr r1, _0800D09C @ =gUnknown_03004040
 	movs r0, 0x20
 	strb r0, [r1]
 	strb r4, [r1, 0x1]
@@ -2916,7 +2916,7 @@ dp01_build_cmdbuf_x21_a_bb: @ 800D0A0
 	lsrs r0, 24
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r1, _0800D0C8
+	ldr r1, _0800D0C8 @ =gUnknown_03004040
 	movs r3, 0x21
 	strb r3, [r1]
 	strb r4, [r1, 0x1]
@@ -2938,7 +2938,7 @@ dp01_build_cmdbuf_x22_a_three_bytes: @ 800D0CC
 	adds r4, r2, 0
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r2, _0800D100
+	ldr r2, _0800D100 @ =gUnknown_03004040
 	movs r0, 0x22
 	strb r0, [r2]
 	strb r1, [r2, 0x1]
@@ -2970,7 +2970,7 @@ dp01_build_cmdbuf_x23_aa_0: @ 800D104
 	lsrs r0, 24
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r3, _0800D12C
+	ldr r3, _0800D12C @ =gUnknown_03004040
 	movs r4, 0
 	movs r2, 0x23
 	strb r2, [r3]
@@ -2995,7 +2995,7 @@ dp01_build_cmdbuf_x24_aa_0: @ 800D130
 	lsrs r0, 24
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r3, _0800D158
+	ldr r3, _0800D158 @ =gUnknown_03004040
 	movs r4, 0
 	movs r2, 0x24
 	strb r2, [r3]
@@ -3018,7 +3018,7 @@ dp01_build_cmdbuf_x25_25_25_25: @ 800D15C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D178
+	ldr r1, _0800D178 @ =gUnknown_03004040
 	movs r2, 0x25
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -3038,7 +3038,7 @@ dp01_build_cmdbuf_x26_a: @ 800D17C
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D198
+	ldr r1, _0800D198 @ =gUnknown_03004040
 	movs r2, 0x26
 	strb r2, [r1]
 	strb r3, [r1, 0x1]
@@ -3055,7 +3055,7 @@ dp01_build_cmdbuf_x27_27_27_27: @ 800D19C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D1B8
+	ldr r1, _0800D1B8 @ =gUnknown_03004040
 	movs r2, 0x27
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -3074,7 +3074,7 @@ dp01_build_cmdbuf_x28_28_28_28: @ 800D1BC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D1D8
+	ldr r1, _0800D1D8 @ =gUnknown_03004040
 	movs r2, 0x28
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -3093,7 +3093,7 @@ dp01_build_cmdbuf_x29_29_29_29: @ 800D1DC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D1F8
+	ldr r1, _0800D1F8 @ =gUnknown_03004040
 	movs r2, 0x29
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -3112,7 +3112,7 @@ dp01_build_cmdbuf_x2A_2A_2A_2A: @ 800D1FC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D218
+	ldr r1, _0800D218 @ =gUnknown_03004040
 	movs r2, 0x2A
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -3133,7 +3133,7 @@ dp01_build_cmdbuf_x2B_aa_0: @ 800D21C
 	lsrs r0, 24
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r3, _0800D244
+	ldr r3, _0800D244 @ =gUnknown_03004040
 	movs r4, 0
 	movs r2, 0x2B
 	strb r2, [r3]
@@ -3158,7 +3158,7 @@ sub_800D074: @ 800D248
 	lsrs r0, 24
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r3, _0800D270
+	ldr r3, _0800D270 @ =gUnknown_03004040
 	movs r4, 0
 	movs r2, 0x2C
 	strb r2, [r3]
@@ -3181,7 +3181,7 @@ dp01_build_cmdbuf_x2D_2D_2D_2D: @ 800D274
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D290
+	ldr r1, _0800D290 @ =gUnknown_03004040
 	movs r2, 0x2D
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -3201,7 +3201,7 @@ dp01_build_cmdbuf_x2E_a: @ 800D294
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D2B0
+	ldr r1, _0800D2B0 @ =gUnknown_03004040
 	movs r2, 0x2E
 	strb r2, [r1]
 	strb r3, [r1, 0x1]
@@ -3218,7 +3218,7 @@ dp01_build_cmdbuf_x2F_2F_2F_2F: @ 800D2B4
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D2D0
+	ldr r1, _0800D2D0 @ =gUnknown_03004040
 	movs r2, 0x2F
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -3240,7 +3240,7 @@ dp01_build_cmdbuf_x30_TODO: @ 800D2D4
 	lsrs r5, r0, 24
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r1, _0800D318
+	ldr r1, _0800D318 @ =gUnknown_03004040
 	movs r3, 0x30
 	strb r3, [r1]
 	movs r0, 0x7F
@@ -3277,7 +3277,7 @@ dp01_build_cmdbuf_x31_31_31_31: @ 800D31C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D338
+	ldr r1, _0800D338 @ =gUnknown_03004040
 	movs r2, 0x31
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -3296,7 +3296,7 @@ dp01_build_cmdbuf_x32_32_32_32: @ 800D33C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D358
+	ldr r1, _0800D358 @ =gUnknown_03004040
 	movs r2, 0x32
 	strb r2, [r1]
 	strb r2, [r1, 0x1]
@@ -3316,7 +3316,7 @@ dp01_build_cmdbuf_x33_a_33_33: @ 800D35C
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D37C
+	ldr r1, _0800D37C @ =gUnknown_03004040
 	movs r2, 0x33
 	strb r2, [r1]
 	strb r3, [r1, 0x1]
@@ -3338,7 +3338,7 @@ dp01_build_cmdbuf_x34_a_bb_aka_battle_anim: @ 800D380
 	lsrs r0, 24
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r1, _0800D3A8
+	ldr r1, _0800D3A8 @ =gUnknown_03004040
 	movs r3, 0x34
 	strb r3, [r1]
 	strb r4, [r1, 0x1]
@@ -3360,7 +3360,7 @@ sub_800D1D8: @ 800D3AC
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D3C8
+	ldr r1, _0800D3C8 @ =gUnknown_03004040
 	movs r2, 0x35
 	strb r2, [r1]
 	strb r3, [r1, 0x1]
@@ -3378,7 +3378,7 @@ dp01_build_cmdbuf_x38_a: @ 800D3CC
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D3E8
+	ldr r1, _0800D3E8 @ =gUnknown_03004040
 	movs r2, 0x36
 	strb r2, [r1]
 	strb r3, [r1, 0x1]
@@ -3396,7 +3396,7 @@ dp01_build_cmdbuf_x37_a: @ 800D3EC
 	adds r3, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0800D408
+	ldr r1, _0800D408 @ =gUnknown_03004040
 	movs r2, 0x37
 	strb r2, [r1]
 	strb r3, [r1, 0x1]

@@ -10,9 +10,9 @@
 sub_8093110: @ 8093260
 	push {lr}
 	bl sub_80932AC
-	ldr r0, _08093278
+	ldr r0, _08093278 @ =sub_8093174
 	bl SetMainCallback2
-	ldr r0, _0809327C
+	ldr r0, _0809327C @ =0x02000000
 	adds r0, 0x9C
 	movs r1, 0x5
 	strb r1, [r0]
@@ -31,11 +31,11 @@ sub_8093130: @ 8093280
 	lsrs r4, 24
 	adds r0, r4, 0
 	bl sub_80932E4
-	ldr r0, _080932B4
+	ldr r0, _080932B4 @ =sub_8093174
 	bl SetMainCallback2
-	ldr r2, _080932B8
-	ldr r3, _080932BC
-	ldr r0, _080932C0
+	ldr r2, _080932B8 @ =0x02000000
+	ldr r3, _080932BC @ =gLinkPlayers
+	ldr r0, _080932C0 @ =gLinkPlayerMapObjects
 	lsls r4, 2
 	adds r4, r0
 	ldrb r1, [r4, 0x1]
@@ -59,14 +59,14 @@ _080932C0: .4byte gLinkPlayerMapObjects
 	thumb_func_start sub_8093174
 sub_8093174: @ 80932C4
 	push {lr}
-	ldr r0, _080932DC
-	ldr r1, _080932E0
+	ldr r0, _080932DC @ =gMain
+	ldr r1, _080932E0 @ =0x0000043c
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0x8
 	bhi _08093382
 	lsls r0, 2
-	ldr r1, _080932E4
+	ldr r1, _080932E4 @ =_080932E8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -101,8 +101,8 @@ _08093322:
 	b _0809335A
 _0809332C:
 	bl sub_80937BC
-	ldr r1, _08093348
-	ldr r0, _0809334C
+	ldr r1, _08093348 @ =gMain
+	ldr r0, _0809334C @ =0x0000043c
 	adds r1, r0
 	ldrb r0, [r1]
 	adds r0, 0x1
@@ -121,8 +121,8 @@ _08093350:
 _08093356:
 	bl sub_80937D8
 _0809335A:
-	ldr r1, _08093368
-	ldr r0, _0809336C
+	ldr r1, _08093368 @ =gMain
+	ldr r0, _0809336C @ =0x0000043c
 	adds r1, r0
 	ldrb r0, [r1]
 	adds r0, 0x1
@@ -135,7 +135,7 @@ _08093370:
 	bl nullsub_15
 	bl sub_8093800
 	bl sub_8093550
-	ldr r0, _08093388
+	ldr r0, _08093388 @ =sub_809323C
 	bl SetMainCallback2
 _08093382:
 	pop {r0}
@@ -161,7 +161,7 @@ sub_8093254: @ 80933A4
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r2, _080933EC
+	ldr r2, _080933EC @ =0x02000000
 	ldrb r0, [r2, 0x6]
 	adds r0, 0x1
 	strb r0, [r2, 0x6]
@@ -179,14 +179,14 @@ _080933CE:
 	ldrb r0, [r2, 0x4]
 	cmp r0, 0
 	beq _080933E8
-	ldr r1, _080933F0
-	ldr r0, _080933F4
+	ldr r1, _080933F0 @ =0x040000d4
+	ldr r0, _080933F4 @ =gUnknown_03004DE0
 	str r0, [r1]
 	movs r2, 0xF0
 	lsls r2, 3
 	adds r0, r2
 	str r0, [r1, 0x4]
-	ldr r0, _080933F8
+	ldr r0, _080933F8 @ =0x800000a0
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 _080933E8:
@@ -203,7 +203,7 @@ _080933F8: .4byte 0x800000a0
 sub_80932AC: @ 80933FC
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r0, _0809342C
+	ldr r0, _0809342C @ =nullsub_60
 	movs r1, 0xFF
 	bl CreateTask
 	adds r1, r0, 0
@@ -212,7 +212,7 @@ sub_80932AC: @ 80933FC
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _08093430
+	ldr r1, _08093430 @ =gTasks
 	adds r0, r1
 	movs r1, 0
 	strh r1, [r0, 0x8]
@@ -234,7 +234,7 @@ sub_80932E4: @ 8093434
 	adds r5, r1, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _0809346C
+	ldr r0, _0809346C @ =nullsub_60
 	movs r1, 0xFF
 	bl CreateTask
 	adds r1, r0, 0
@@ -243,7 +243,7 @@ sub_80932E4: @ 8093434
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _08093470
+	ldr r1, _08093470 @ =gTasks
 	adds r0, r1
 	movs r1, 0x1
 	strh r1, [r0, 0x8]
@@ -262,16 +262,16 @@ _08093470: .4byte gTasks
 	thumb_func_start sub_8093324
 sub_8093324: @ 8093474
 	push {r4,r5,lr}
-	ldr r0, _080934BC
+	ldr r0, _080934BC @ =nullsub_60
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080934C0
+	ldr r0, _080934C0 @ =gTasks
 	adds r4, r1, r0
-	ldr r5, _080934C4
+	ldr r5, _080934C4 @ =0x02000000
 	ldrh r0, [r4, 0x8]
 	strb r0, [r5, 0x1]
 	adds r0, r4, 0
@@ -282,7 +282,7 @@ sub_8093324: @ 8093474
 	ldrb r0, [r5, 0x1]
 	cmp r0, 0
 	beq _080934CC
-	ldr r2, _080934C8
+	ldr r2, _080934C8 @ =gTrainerCards
 	movs r1, 0xA
 	ldrsh r0, [r4, r1]
 	lsls r1, r0, 3
@@ -318,7 +318,7 @@ nullsub_60: @ 80934DC
 sub_8093390: @ 80934E0
 	push {r4-r7,lr}
 	adds r5, r0, 0
-	ldr r6, _080935F4
+	ldr r6, _080935F4 @ =gSaveBlock2
 	ldrb r0, [r6, 0x8]
 	strb r0, [r5]
 	ldrh r0, [r6, 0xE]
@@ -342,7 +342,7 @@ _08093506:
 	strh r0, [r5, 0x8]
 	ands r4, r1
 	strh r4, [r5, 0xA]
-	ldr r0, _080935F8
+	ldr r0, _080935F8 @ =0x00000801
 	bl FlagGet
 	strb r0, [r5, 0x2]
 	bl sub_8090FC0
@@ -354,7 +354,7 @@ _08093506:
 	ldrb r0, [r6, 0xA]
 	orrs r0, r1
 	strh r0, [r5, 0xE]
-	ldr r7, _080935FC
+	ldr r7, _080935FC @ =0x0000270f
 	movs r0, 0x17
 	adds r1, r7, 0
 	bl sav12_xor_get_clamped_above
@@ -363,11 +363,11 @@ _08093506:
 	adds r1, r7, 0
 	bl sav12_xor_get_clamped_above
 	strh r0, [r5, 0x16]
-	ldr r1, _08093600
+	ldr r1, _08093600 @ =0x000003e7
 	movs r0, 0x23
 	bl sav12_xor_get_clamped_above
 	strh r0, [r5, 0x1C]
-	ldr r4, _08093604
+	ldr r4, _08093604 @ =0x0000ffff
 	movs r0, 0x22
 	adds r1, r4, 0
 	bl sav12_xor_get_clamped_above
@@ -381,7 +381,7 @@ _08093506:
 	adds r0, r6, r1
 	ldrh r0, [r0]
 	strh r0, [r5, 0x18]
-	ldr r2, _08093608
+	ldr r2, _08093608 @ =0x00000572
 	adds r1, r6, r2
 	ldrh r1, [r1]
 	strh r1, [r5, 0x1A]
@@ -405,7 +405,7 @@ _0809358E:
 	movs r4, 0x1
 _0809359E:
 	strb r4, [r5, 0x4]
-	ldr r0, _0809360C
+	ldr r0, _0809360C @ =gSaveBlock1
 	movs r2, 0x92
 	lsls r2, 3
 	adds r1, r0, r2
@@ -416,7 +416,7 @@ _0809359E:
 	adds r6, 0x30
 	adds r3, r5, 0
 	adds r3, 0x28
-	ldr r1, _08093610
+	ldr r1, _08093610 @ =0x00002b1c
 	adds r4, r0, r1
 _080935BA:
 	lsls r0, r2, 1
@@ -431,7 +431,7 @@ _080935BA:
 	bls _080935BA
 	movs r2, 0
 	adds r3, r6, 0
-	ldr r4, _080935F4
+	ldr r4, _080935F4 @ =gSaveBlock2
 _080935D4:
 	adds r1, r3, r2
 	adds r0, r2, r4
@@ -463,7 +463,7 @@ _08093610: .4byte 0x00002b1c
 sub_80934C4: @ 8093614
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08093628
+	ldr r2, _08093628 @ =gTrainerCards
 	lsls r1, r0, 3
 	subs r1, r0
 	lsls r1, 3
@@ -548,19 +548,19 @@ sub_8093534: @ 8093684
 	thumb_func_start sub_8093550
 sub_8093550: @ 80936A0
 	push {r4,lr}
-	ldr r0, _080936D8
+	ldr r0, _080936D8 @ =sub_8093254
 	bl SetVBlankCallback
-	ldr r3, _080936DC
+	ldr r3, _080936DC @ =0x04000208
 	ldrh r2, [r3]
 	movs r0, 0
 	strh r0, [r3]
-	ldr r4, _080936E0
+	ldr r4, _080936E0 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x3
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _080936E4
+	ldr r2, _080936E4 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x18
 	orrs r0, r1
@@ -591,10 +591,10 @@ sub_8093598: @ 80936E8
 	lsls r3, 9
 	mov r4, sp
 	movs r6, 0
-	ldr r1, _08093734
+	ldr r1, _08093734 @ =0x040000d4
 	movs r5, 0x80
 	lsls r5, 5
-	ldr r7, _08093738
+	ldr r7, _08093738 @ =0x81000800
 	movs r0, 0x81
 	lsls r0, 24
 	mov r12, r0
@@ -635,10 +635,10 @@ sub_80935EC: @ 809373C
 	mov r1, sp
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _08093758
+	ldr r0, _08093758 @ =0x040000d4
 	str r1, [r0]
 	str r2, [r0, 0x4]
-	ldr r1, _0809375C
+	ldr r1, _0809375C @ =0x81000200
 	str r1, [r0, 0x8]
 	ldr r0, [r0, 0x8]
 	add sp, 0x4
@@ -651,16 +651,16 @@ _0809375C: .4byte 0x81000200
 	thumb_func_start sub_8093610
 sub_8093610: @ 8093760
 	push {r4,r5,lr}
-	ldr r5, _080937B4
+	ldr r5, _080937B4 @ =0x04000008
 	movs r1, 0
 	strh r1, [r5]
-	ldr r2, _080937B8
+	ldr r2, _080937B8 @ =0x0400000a
 	strh r1, [r2]
-	ldr r3, _080937BC
+	ldr r3, _080937BC @ =0x0400000c
 	strh r1, [r3]
-	ldr r4, _080937C0
+	ldr r4, _080937C0 @ =0x0400000e
 	strh r1, [r4]
-	ldr r0, _080937C4
+	ldr r0, _080937C4 @ =0x04000010
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
@@ -676,16 +676,16 @@ sub_8093610: @ 8093760
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
-	ldr r1, _080937C8
+	ldr r1, _080937C8 @ =0x00001e08
 	adds r0, r1, 0
 	strh r0, [r5]
-	ldr r1, _080937CC
+	ldr r1, _080937CC @ =0x00000801
 	adds r0, r1, 0
 	strh r0, [r2]
-	ldr r1, _080937D0
+	ldr r1, _080937D0 @ =0x00000902
 	adds r0, r1, 0
 	strh r0, [r3]
-	ldr r1, _080937D4
+	ldr r1, _080937D4 @ =0x00000a03
 	adds r0, r1, 0
 	strh r0, [r4]
 	pop {r4,r5}
@@ -707,7 +707,7 @@ _080937D4: .4byte 0x00000a03
 sub_8093688: @ 80937D8
 	push {r4-r6,lr}
 	bl sub_8093324
-	ldr r2, _08093820
+	ldr r2, _08093820 @ =0x02000000
 	movs r1, 0
 	strb r1, [r2]
 	strb r1, [r2, 0x3]
@@ -746,7 +746,7 @@ _08093820: .4byte 0x02000000
 	thumb_func_start sub_80936D4
 sub_80936D4: @ 8093824
 	push {r4-r6,lr}
-	ldr r4, _080938E8
+	ldr r4, _080938E8 @ =0x02000000
 	movs r0, 0
 	strb r0, [r4, 0x7]
 	strb r0, [r4, 0x8]
@@ -782,7 +782,7 @@ _08093864:
 	adds r0, 0x1
 	strb r0, [r4, 0x8]
 _0809386A:
-	ldr r1, _080938E8
+	ldr r1, _080938E8 @ =0x02000000
 	ldr r0, [r1, 0x78]
 	cmp r0, 0
 	beq _08093878
@@ -828,7 +828,7 @@ _080938B4:
 	cmp r0, 0
 	bne _080938E2
 	movs r5, 0
-	ldr r4, _080938EC
+	ldr r4, _080938EC @ =0x00000807
 	adds r6, r1, 0
 	adds r6, 0xE
 _080938C2:
@@ -845,7 +845,7 @@ _080938C2:
 _080938D8:
 	adds r4, 0x1
 	adds r5, 0x1
-	ldr r0, _080938F0
+	ldr r0, _080938F0 @ =0x0000080e
 	cmp r4, r0
 	bls _080938C2
 _080938E2:
@@ -872,7 +872,7 @@ sub_80937A4: @ 80938F4
 	thumb_func_start sub_80937BC
 sub_80937BC: @ 809390C
 	push {r4,lr}
-	ldr r4, _08093924
+	ldr r4, _08093924 @ =WindowConfig_TrainerCard_Back_Values
 	adds r0, r4, 0
 	bl SetUpWindowConfig
 	adds r0, r4, 0
@@ -919,7 +919,7 @@ sub_8093800: @ 8093950
 	thumb_func_start sub_809380C
 sub_809380C: @ 809395C
 	push {r4,lr}
-	ldr r4, _08093978
+	ldr r4, _08093978 @ =sub_809382C
 	adds r0, r4, 0
 	movs r1, 0
 	bl CreateTask
@@ -938,12 +938,12 @@ sub_809382C: @ 809397C
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r7, _080939A8
+	ldr r7, _080939A8 @ =gUnknown_083B5EBC
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r4, r1, 3
-	ldr r6, _080939AC
-	ldr r5, _080939B0
+	ldr r6, _080939AC @ =0x02000000
+	ldr r5, _080939B0 @ =gTasks
 _0809398E:
 	ldrb r0, [r6]
 	lsls r0, 2
@@ -967,8 +967,8 @@ _080939B0: .4byte gTasks
 sub_8093864: @ 80939B4
 	push {r4,r5,lr}
 	sub sp, 0x4
-	ldr r4, _080939F0
-	ldr r2, _080939F4
+	ldr r4, _080939F0 @ =0x02000000
+	ldr r2, _080939F4 @ =gSaveBlock2
 	ldrb r1, [r2, 0x11]
 	movs r0, 0x1
 	ands r0, r1
@@ -1000,13 +1000,13 @@ _080939F4: .4byte gSaveBlock2
 	thumb_func_start sub_80938A8
 sub_80938A8: @ 80939F8
 	push {lr}
-	ldr r0, _08093A14
+	ldr r0, _08093A14 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _08093A0E
-	ldr r1, _08093A18
+	ldr r1, _08093A18 @ =0x02000000
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
@@ -1022,13 +1022,13 @@ _08093A18: .4byte 0x02000000
 	thumb_func_start sub_80938CC
 sub_80938CC: @ 8093A1C
 	push {lr}
-	ldr r0, _08093A34
+	ldr r0, _08093A34 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x2
 	ands r0, r1
 	cmp r0, 0
 	beq _08093A3C
-	ldr r1, _08093A38
+	ldr r1, _08093A38 @ =0x02000000
 	movs r0, 0x5
 	strb r0, [r1]
 	movs r0, 0x1
@@ -1041,7 +1041,7 @@ _08093A3C:
 	ands r0, r1
 	cmp r0, 0
 	beq _08093A62
-	ldr r2, _08093A50
+	ldr r2, _08093A50 @ =0x02000000
 	ldrb r1, [r2, 0x3]
 	cmp r1, 0
 	beq _08093A54
@@ -1071,7 +1071,7 @@ sub_8093918: @ 8093A68
 	bl sub_8093A28
 	movs r0, 0x36
 	bl PlaySE
-	ldr r1, _08093A84
+	ldr r1, _08093A84 @ =0x02000000
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
@@ -1089,7 +1089,7 @@ sub_8093938: @ 8093A88
 	lsls r0, 24
 	cmp r0, 0
 	beq _08093A9A
-	ldr r1, _08093AA0
+	ldr r1, _08093AA0 @ =0x02000000
 	movs r0, 0x2
 	strb r0, [r1]
 _08093A9A:
@@ -1112,7 +1112,7 @@ sub_8093954: @ 8093AA4
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _08093ACC
+	ldr r1, _08093ACC @ =0x02000000
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
@@ -1127,13 +1127,13 @@ _08093ACC: .4byte 0x02000000
 	thumb_func_start sub_8093980
 sub_8093980: @ 8093AD0
 	push {lr}
-	ldr r0, _08093AEC
+	ldr r0, _08093AEC @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _08093AE6
-	ldr r0, _08093AF0
+	ldr r0, _08093AF0 @ =0x02000000
 	ldr r0, [r0, 0x60]
 	bl SetMainCallback2
 _08093AE6:
@@ -1148,10 +1148,10 @@ _08093AF0: .4byte 0x02000000
 	thumb_func_start sub_80939A4
 sub_80939A4: @ 8093AF4
 	push {lr}
-	ldr r0, _08093B08
+	ldr r0, _08093B08 @ =sub_80939DC
 	movs r1, 0
 	bl CreateTask
-	ldr r0, _08093B0C
+	ldr r0, _08093B0C @ =WindowConfig_TrainerCard_Back_Values
 	bl BasicInitMenuWindow
 	pop {r0}
 	bx r0
@@ -1163,7 +1163,7 @@ _08093B0C: .4byte WindowConfig_TrainerCard_Back_Values
 	thumb_func_start sub_80939C0
 sub_80939C0: @ 8093B10
 	push {lr}
-	ldr r0, _08093B28
+	ldr r0, _08093B28 @ =sub_80939DC
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -1186,9 +1186,9 @@ sub_80939DC: @ 8093B2C
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _08093B70
+	ldr r0, _08093B70 @ =gTasks
 	adds r2, r1, r0
-	ldr r0, _08093B74
+	ldr r0, _08093B74 @ =0x02000000
 	ldrb r1, [r0, 0x5]
 	movs r3, 0xA
 	ldrsh r0, [r2, r3]
@@ -1219,7 +1219,7 @@ _08093B74: .4byte 0x02000000
 	thumb_func_start sub_8093A28
 sub_8093A28: @ 8093B78
 	push {r4,lr}
-	ldr r4, _08093B94
+	ldr r4, _08093B94 @ =sub_8093A68
 	adds r0, r4, 0
 	movs r1, 0
 	bl CreateTask
@@ -1236,7 +1236,7 @@ _08093B94: .4byte sub_8093A68
 	thumb_func_start sub_8093A48
 sub_8093A48: @ 8093B98
 	push {lr}
-	ldr r0, _08093BAC
+	ldr r0, _08093BAC @ =sub_8093A68
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -1258,8 +1258,8 @@ sub_8093A68: @ 8093BB8
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _08093BE8
-	ldr r2, _08093BEC
+	ldr r5, _08093BE8 @ =gUnknown_083B5ED8
+	ldr r2, _08093BEC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1287,13 +1287,13 @@ _08093BEC: .4byte gTasks
 sub_8093AA0: @ 8093BF0
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r0, _08093C30
+	ldr r0, _08093C30 @ =0x02000000
 	movs r1, 0
 	strb r1, [r0, 0x4]
 	bl dp12_8087EA4
 	movs r1, 0
-	ldr r0, _08093C34
-	ldr r2, _08093C38
+	ldr r0, _08093C34 @ =gUnknown_03004DE0
+	ldr r2, _08093C38 @ =0x0000fffc
 	movs r3, 0xF0
 	lsls r3, 3
 	adds r0, r3
@@ -1303,9 +1303,9 @@ _08093C0A:
 	adds r1, 0x1
 	cmp r1, 0x9F
 	bls _08093C0A
-	ldr r0, _08093C3C
+	ldr r0, _08093C3C @ =sub_8093D7C
 	bl SetHBlankCallback
-	ldr r1, _08093C30
+	ldr r1, _08093C30 @ =0x02000000
 	movs r0, 0x1
 	strb r0, [r1, 0x4]
 	ldrh r0, [r4, 0x8]
@@ -1331,7 +1331,7 @@ sub_8093AF0: @ 8093C40
 	push {r5-r7}
 	sub sp, 0x4
 	mov r8, r0
-	ldr r1, _08093D4C
+	ldr r1, _08093D4C @ =0x02000000
 	movs r0, 0
 	strb r0, [r1, 0x4]
 	mov r2, r8
@@ -1359,7 +1359,7 @@ _08093C68:
 	adds r1, r4, 0
 	bl __udivsi3
 	adds r5, r0, 0
-	ldr r1, _08093D50
+	ldr r1, _08093D50 @ =0xffff0000
 	adds r5, r1
 	adds r0, r5, 0
 	muls r0, r4
@@ -1373,9 +1373,9 @@ _08093C68:
 	movs r3, 0
 	cmp r3, r7
 	bcs _08093CC4
-	ldr r2, _08093D54
+	ldr r2, _08093D54 @ =gUnknown_03004DE0
 	mov r12, r2
-	ldr r0, _08093D58
+	ldr r0, _08093D58 @ =0x0000fffc
 	adds r4, r0, 0
 _08093CAC:
 	lsls r0, r3, 16
@@ -1399,9 +1399,9 @@ _08093CC4:
 	lsrs r7, r4, 16
 	cmp r2, r0
 	bge _08093CFE
-	ldr r0, _08093D54
+	ldr r0, _08093D54 @ =gUnknown_03004DE0
 	mov r9, r0
-	ldr r4, _08093D58
+	ldr r4, _08093D58 @ =0x0000fffc
 	mov r12, r4
 	adds r4, r1, 0
 _08093CDE:
@@ -1427,8 +1427,8 @@ _08093CFE:
 	asrs r0, 16
 	cmp r0, 0x9F
 	bgt _08093D24
-	ldr r4, _08093D54
-	ldr r0, _08093D58
+	ldr r4, _08093D54 @ =gUnknown_03004DE0
+	ldr r0, _08093D58 @ =0x0000fffc
 	adds r2, r1, r0
 _08093D0E:
 	lsls r1, r3, 16
@@ -1444,7 +1444,7 @@ _08093D0E:
 	ble _08093D0E
 _08093D24:
 	movs r0, 0x1
-	ldr r1, _08093D4C
+	ldr r1, _08093D4C @ =0x02000000
 	strb r0, [r1, 0x4]
 	mov r2, r8
 	movs r4, 0xA
@@ -1477,7 +1477,7 @@ sub_8093C0C: @ 8093D5C
 	adds r4, r0, 0
 	bl sub_80939C0
 	bl sub_8093DAC
-	ldr r0, _08093D84
+	ldr r0, _08093D84 @ =0x02000000
 	ldrb r0, [r0, 0x3]
 	cmp r0, 0
 	bne _08093D74
@@ -1503,7 +1503,7 @@ sub_8093C38: @ 8093D88
 	push {r5-r7}
 	sub sp, 0x4
 	mov r8, r0
-	ldr r1, _08093E90
+	ldr r1, _08093E90 @ =0x02000000
 	movs r2, 0
 	strb r2, [r1, 0x4]
 	ldrh r0, [r0, 0xA]
@@ -1529,7 +1529,7 @@ _08093DAC:
 	adds r1, r4, 0
 	bl __udivsi3
 	adds r5, r0, 0
-	ldr r1, _08093E94
+	ldr r1, _08093E94 @ =0xffff0000
 	adds r5, r1
 	adds r0, r5, 0
 	muls r0, r4
@@ -1543,9 +1543,9 @@ _08093DAC:
 	movs r3, 0
 	cmp r3, r7
 	bcs _08093E08
-	ldr r2, _08093E98
+	ldr r2, _08093E98 @ =gUnknown_03004DE0
 	mov r12, r2
-	ldr r0, _08093E9C
+	ldr r0, _08093E9C @ =0x0000fffc
 	adds r4, r0, 0
 _08093DF0:
 	lsls r0, r3, 16
@@ -1569,9 +1569,9 @@ _08093E08:
 	lsrs r7, r4, 16
 	cmp r2, r0
 	bge _08093E42
-	ldr r0, _08093E98
+	ldr r0, _08093E98 @ =gUnknown_03004DE0
 	mov r9, r0
-	ldr r3, _08093E9C
+	ldr r3, _08093E9C @ =0x0000fffc
 	mov r12, r3
 	adds r4, r1, 0
 _08093E22:
@@ -1597,8 +1597,8 @@ _08093E42:
 	asrs r0, 16
 	cmp r0, 0x9F
 	bgt _08093E68
-	ldr r4, _08093E98
-	ldr r0, _08093E9C
+	ldr r4, _08093E98 @ =gUnknown_03004DE0
+	ldr r0, _08093E9C @ =0x0000fffc
 	adds r2, r1, r0
 _08093E52:
 	lsls r1, r3, 16
@@ -1614,7 +1614,7 @@ _08093E52:
 	ble _08093E52
 _08093E68:
 	movs r0, 0x1
-	ldr r1, _08093E90
+	ldr r1, _08093E90 @ =0x02000000
 	strb r0, [r1, 0x4]
 	mov r2, r8
 	movs r3, 0xA
@@ -1644,12 +1644,12 @@ _08093E9C: .4byte 0x0000fffc
 	thumb_func_start sub_8093D50
 sub_8093D50: @ 8093EA0
 	push {lr}
-	ldr r1, _08093EC4
+	ldr r1, _08093EC4 @ =0x02000000
 	movs r0, 0
 	strb r0, [r1, 0x4]
 	bl SetHBlankCallback
 	bl sub_8093E04
-	ldr r0, _08093EC8
+	ldr r0, _08093EC8 @ =sub_8093A68
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -1664,8 +1664,8 @@ _08093EC8: .4byte sub_8093A68
 
 	thumb_func_start sub_8093D7C
 sub_8093D7C: @ 8093ECC
-	ldr r1, _08093EF0
-	ldr r0, _08093EF4
+	ldr r1, _08093EF0 @ =gUnknown_03004DE0
+	ldr r0, _08093EF4 @ =0x04000006
 	ldrh r2, [r0]
 	movs r0, 0xFF
 	ands r0, r2
@@ -1675,7 +1675,7 @@ sub_8093D7C: @ 8093ECC
 	adds r1, r2
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _08093EF8
+	ldr r0, _08093EF8 @ =0x04000012
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
@@ -1691,7 +1691,7 @@ _08093EF8: .4byte 0x04000012
 	thumb_func_start sub_8093DAC
 sub_8093DAC: @ 8093EFC
 	push {lr}
-	ldr r0, _08093F0C
+	ldr r0, _08093F0C @ =0x02000000
 	ldrb r0, [r0, 0x3]
 	cmp r0, 0
 	beq _08093F10
@@ -1733,8 +1733,8 @@ sub_8093DEC: @ 8093F3C
 
 	thumb_func_start sub_8093E04
 sub_8093E04: @ 8093F54
-	ldr r0, _08093F70
-	ldr r2, _08093F74
+	ldr r0, _08093F70 @ =0x04000012
+	ldr r2, _08093F74 @ =0x0000fffc
 	adds r1, r2, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -1756,17 +1756,17 @@ _08093F74: .4byte 0x0000fffc
 sub_8093E28: @ 8093F78
 	push {r4-r7,lr}
 	bl sub_8093EA0
-	ldr r0, _08093FD4
+	ldr r0, _08093FD4 @ =gUnknown_083B5F6C
 	movs r1, 0xE0
 	movs r2, 0x20
 	bl LoadPalette
-	ldr r3, _08093FD8
+	ldr r3, _08093FD8 @ =gMenuTrainerCard_Gfx
 	movs r4, 0xC0
 	lsls r4, 19
 	movs r5, 0xA4
 	lsls r5, 5
-	ldr r1, _08093FDC
-	ldr r6, _08093FE0
+	ldr r1, _08093FDC @ =0x040000d4
+	ldr r6, _08093FE0 @ =0x80000800
 	movs r2, 0x80
 	lsls r2, 5
 	movs r7, 0x80
@@ -1787,12 +1787,12 @@ _08093F9E:
 	orrs r0, r7
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
-	ldr r1, _08093FE4
-	ldr r2, _08093FE8
-	ldr r0, _08093FDC
+	ldr r1, _08093FE4 @ =gBadgesTiles
+	ldr r2, _08093FE8 @ =0x06001480
+	ldr r0, _08093FDC @ =0x040000d4
 	str r1, [r0]
 	str r2, [r0, 0x4]
-	ldr r1, _08093FEC
+	ldr r1, _08093FEC @ =0x80000200
 	str r1, [r0, 0x8]
 	ldr r0, [r0, 0x8]
 	pop {r4-r7}
@@ -1811,8 +1811,8 @@ _08093FEC: .4byte 0x80000200
 	thumb_func_start sub_8093EA0
 sub_8093EA0: @ 8093FF0
 	push {r4,lr}
-	ldr r1, _08094034
-	ldr r4, _08094038
+	ldr r1, _08094034 @ =gUnknown_083B5EF8
+	ldr r4, _08094038 @ =0x02000000
 	ldrb r0, [r4, 0x2]
 	lsls r0, 2
 	adds r0, r1
@@ -1820,11 +1820,11 @@ sub_8093EA0: @ 8093FF0
 	movs r1, 0
 	movs r2, 0x60
 	bl LoadPalette
-	ldr r0, _0809403C
+	ldr r0, _0809403C @ =gBadgesPalette
 	movs r1, 0x30
 	movs r2, 0x20
 	bl LoadPalette
-	ldr r0, _08094040
+	ldr r0, _08094040 @ =gUnknown_083B5F4C
 	movs r1, 0x40
 	movs r2, 0x20
 	bl LoadPalette
@@ -1832,7 +1832,7 @@ sub_8093EA0: @ 8093FF0
 	ldrb r0, [r4]
 	cmp r0, 0
 	beq _0809402C
-	ldr r0, _08094044
+	ldr r0, _08094044 @ =gUnknown_083B5F0C
 	movs r1, 0x10
 	movs r2, 0x20
 	bl LoadPalette
@@ -1851,10 +1851,10 @@ _08094044: .4byte gUnknown_083B5F0C
 	thumb_func_start sub_8093EF8
 sub_8093EF8: @ 8094048
 	push {lr}
-	ldr r0, _0809405C
+	ldr r0, _0809405C @ =0x02000000
 	adds r0, 0x64
 	ldrb r0, [r0]
-	ldr r2, _08094060
+	ldr r2, _08094060 @ =0x06001880
 	movs r1, 0x50
 	bl LoadTrainerGfx_TrainerCard
 	pop {r0}
@@ -1868,17 +1868,17 @@ _08094060: .4byte 0x06001880
 sub_8093F14: @ 8094064
 	push {lr}
 	sub sp, 0x8
-	ldr r0, _0809408C
+	ldr r0, _0809408C @ =gUnknown_083B5EEC
 	ldr r1, [r0, 0x4]
 	ldr r0, [r0]
 	str r0, [sp]
 	str r1, [sp, 0x4]
-	ldr r0, _08094090
+	ldr r0, _08094090 @ =0x02000000
 	ldrb r0, [r0, 0x1]
 	lsls r0, 2
 	add r0, sp
 	ldr r0, [r0]
-	ldr r1, _08094094
+	ldr r1, _08094094 @ =0x06004800
 	movs r2, 0xA0
 	lsls r2, 1
 	bl CpuFastSet
@@ -1894,8 +1894,8 @@ _08094094: .4byte 0x06004800
 	thumb_func_start sub_8093F48
 sub_8093F48: @ 8094098
 	push {lr}
-	ldr r0, _080940AC
-	ldr r1, _080940B0
+	ldr r0, _080940AC @ =gUnknown_08E8CFC0
+	ldr r1, _080940B0 @ =0x06004800
 	movs r2, 0xA0
 	lsls r2, 1
 	bl CpuFastSet
@@ -1909,8 +1909,8 @@ _080940B0: .4byte 0x06004800
 	thumb_func_start sub_8093F64
 sub_8093F64: @ 80940B4
 	push {lr}
-	ldr r0, _080940C8
-	ldr r1, _080940CC
+	ldr r0, _080940C8 @ =gUnknown_08E8D9C0
+	ldr r1, _080940CC @ =0x06005000
 	movs r2, 0xA0
 	lsls r2, 1
 	bl CpuFastSet
@@ -1925,7 +1925,7 @@ _080940CC: .4byte 0x06005000
 sub_8093F80: @ 80940D0
 	push {r4-r7,lr}
 	movs r5, 0xC4
-	ldr r7, _0809411C
+	ldr r7, _0809411C @ =0x06004000
 	movs r1, 0x5
 	movs r0, 0xA0
 	lsls r0, 7
@@ -1969,16 +1969,16 @@ _0809411C: .4byte 0x06004000
 	thumb_func_start sub_8093FD0
 sub_8093FD0: @ 8094120
 	push {r4-r6,lr}
-	ldr r4, _0809417C
+	ldr r4, _0809417C @ =0x06004000
 	movs r2, 0xF
-	ldr r0, _08094180
+	ldr r0, _08094180 @ =0x02000000
 	ldrb r0, [r0, 0x2]
 	adds r0, 0xF
 	cmp r2, r0
 	bge _08094152
 	movs r6, 0xC0
 	lsls r6, 1
-	ldr r1, _08094184
+	ldr r1, _08094184 @ =0x0000408f
 	adds r5, r1, 0
 	adds r3, r0, 0
 _0809413A:
@@ -2029,17 +2029,17 @@ sub_8094038: @ 8094188
 	mov r7, r9
 	mov r6, r8
 	push {r6,r7}
-	ldr r1, _08094220
+	ldr r1, _08094220 @ =0x02000000
 	ldrb r0, [r1, 0x1]
 	cmp r0, 0
 	bne _08094212
-	ldr r0, _08094224
+	ldr r0, _08094224 @ =0x06004000
 	mov r9, r0
 	movs r0, 0
 	movs r2, 0x4
 	adds r1, 0xE
 	mov r8, r1
-	ldr r7, _08094228
+	ldr r7, _08094228 @ =gUnknown_083B5F8C
 	movs r1, 0xC0
 	lsls r1, 6
 	adds r6, r1, 0
@@ -2064,7 +2064,7 @@ _080941B0:
 	ldrh r0, [r0]
 	orrs r0, r6
 	strh r0, [r3]
-	ldr r0, _0809422C
+	ldr r0, _0809422C @ =0x000003c2
 	adds r3, r1, r0
 	adds r0, r7, 0x2
 	adds r0, r2, r0
@@ -2079,7 +2079,7 @@ _080941B0:
 	ldrh r0, [r0]
 	orrs r0, r6
 	strh r0, [r3]
-	ldr r0, _08094230
+	ldr r0, _08094230 @ =0x00000402
 	adds r1, r0
 	add r2, r12
 	ldrh r0, [r2]
@@ -2115,9 +2115,9 @@ _08094230: .4byte 0x00000402
 sub_80940E4: @ 8094234
 	push {r4,lr}
 	movs r2, 0
-	ldr r1, _08094258
+	ldr r1, _08094258 @ =0x06004000
 	movs r4, 0
-	ldr r3, _0809425C
+	ldr r3, _0809425C @ =0x000003ff
 _0809423E:
 	strh r4, [r1]
 	lsls r0, r2, 16
@@ -2140,7 +2140,7 @@ _0809425C: .4byte 0x000003ff
 	thumb_func_start sub_8094110
 sub_8094110: @ 8094260
 	push {r4-r6,lr}
-	ldr r6, _0809428C
+	ldr r6, _0809428C @ =0x06004800
 	movs r2, 0x3
 	movs r5, 0xA0
 	lsls r5, 2
@@ -2169,10 +2169,10 @@ _0809428C: .4byte 0x06004800
 	thumb_func_start sub_8094140
 sub_8094140: @ 8094290
 	push {r4,r5,lr}
-	ldr r0, _080942CC
+	ldr r0, _080942CC @ =WindowConfig_TrainerCard_Back_Values
 	bl BasicInitMenuWindow
-	ldr r4, _080942D0
-	ldr r5, _080942D4
+	ldr r4, _080942D0 @ =gStringVar1
+	ldr r5, _080942D4 @ =0x02000094
 	adds r0, r4, 0
 	adds r1, r5, 0
 	bl StringCopy
@@ -2199,7 +2199,7 @@ _080942D4: .4byte 0x02000094
 	thumb_func_start sub_8094188
 sub_8094188: @ 80942D8
 	push {lr}
-	ldr r0, _08094320
+	ldr r0, _08094320 @ =WindowConfig_TrainerCard_Back_Values
 	bl BasicInitMenuWindow
 	bl TrainerCard_Back_PrintName
 	bl TrainerCard_Back_PrintHallOfFameTime_Label
@@ -2208,7 +2208,7 @@ sub_8094188: @ 80942D8
 	bl TrainerCard_Back_PrintLinkContests_Label
 	bl TrainerCard_Back_PrintLinkPokeblocks_Label
 	bl TrainerCard_Back_PrintPokemonTrades_Label
-	ldr r0, _08094324
+	ldr r0, _08094324 @ =WindowConfig_TrainerCard_Back_Labels
 	bl BasicInitMenuWindow
 	bl TrainerCard_Back_PrintHallOfFameTime
 	bl TrainerCard_Back_PrintLinkBattles
@@ -2227,7 +2227,7 @@ _08094324: .4byte WindowConfig_TrainerCard_Back_Labels
 TrainerCard_Front_PrintTrainerID: @ 8094328
 	push {lr}
 	sub sp, 0x8
-	ldr r0, _0809434C
+	ldr r0, _0809434C @ =0x02000000
 	adds r0, 0x72
 	ldrh r1, [r0]
 	mov r0, sp
@@ -2248,7 +2248,7 @@ _0809434C: .4byte 0x02000000
 	thumb_func_start TrainerCard_Front_PrintMoney
 TrainerCard_Front_PrintMoney: @ 8094350
 	push {lr}
-	ldr r0, _08094364
+	ldr r0, _08094364 @ =0x02000000
 	adds r0, 0x88
 	ldr r0, [r0]
 	movs r1, 0x10
@@ -2264,7 +2264,7 @@ _08094364: .4byte 0x02000000
 TrainerCard_Front_PrintPokedexCount: @ 8094368
 	push {lr}
 	sub sp, 0x10
-	ldr r1, _0809437C
+	ldr r1, _0809437C @ =0x02000000
 	ldrb r0, [r1, 0x7]
 	cmp r0, 0
 	bne _08094380
@@ -2297,10 +2297,10 @@ TrainerCard_Front_PrintPlayTime: @ 80943A0
 	adds r5, r0, 0
 	lsls r1, 16
 	lsrs r3, r1, 16
-	ldr r0, _080943E4
+	ldr r0, _080943E4 @ =gSaveBlock2
 	ldrh r4, [r0, 0xE]
 	ldrb r2, [r0, 0x10]
-	ldr r1, _080943E8
+	ldr r1, _080943E8 @ =0x02000000
 	ldrb r0, [r1, 0x1]
 	cmp r0, 0
 	beq _080943C2
@@ -2332,11 +2332,11 @@ _080943E8: .4byte 0x02000000
 	thumb_func_start sub_809429C
 sub_809429C: @ 80943EC
 	push {r4-r6,lr}
-	ldr r6, _08094440
+	ldr r6, _08094440 @ =0x02000000
 	ldrb r0, [r6, 0x1]
 	cmp r0, 0
 	beq _0809443A
-	ldr r0, _08094444
+	ldr r0, _08094444 @ =gStringVar1
 	adds r1, r6, 0
 	adds r1, 0x20
 	bl StringCopy
@@ -2346,7 +2346,7 @@ sub_809429C: @ 80943EC
 	adds r1, r6, 0
 	adds r1, 0x30
 	bl StringCopy
-	ldr r4, _08094444
+	ldr r4, _08094444 @ =gStringVar1
 	adds r0, r4, 0
 	movs r1, 0x2
 	movs r2, 0xE
@@ -2376,15 +2376,15 @@ _08094444: .4byte gStringVar1
 	thumb_func_start TrainerCard_Back_PrintName
 TrainerCard_Back_PrintName: @ 8094448
 	push {r4,r5,lr}
-	ldr r4, _08094478
-	ldr r5, _0809447C
+	ldr r4, _08094478 @ =gStringVar1
+	ldr r5, _0809447C @ =0x02000094
 	adds r0, r4, 0
 	adds r1, r5, 0
 	bl StringCopy
 	ldrb r1, [r5, 0x8]
 	adds r0, r4, 0
 	bl ConvertInternationalString
-	ldr r1, _08094480
+	ldr r1, _08094480 @ =gOtherText_TrainersTrainerCard
 	adds r0, r4, 0
 	bl de_sub_8073174
 	adds r0, r4, 0
@@ -2403,11 +2403,11 @@ _08094480: .4byte gOtherText_TrainersTrainerCard
 	thumb_func_start TrainerCard_Back_PrintHallOfFameTime_Label
 TrainerCard_Back_PrintHallOfFameTime_Label: @ 8094484
 	push {lr}
-	ldr r0, _0809449C
+	ldr r0, _0809449C @ =0x02000000
 	ldrb r0, [r0, 0x8]
 	cmp r0, 0
 	beq _08094498
-	ldr r0, _080944A0
+	ldr r0, _080944A0 @ =gOtherText_FirstHOF
 	movs r1, 0x3
 	movs r2, 0x5
 	bl MenuPrint
@@ -2422,11 +2422,11 @@ _080944A0: .4byte gOtherText_FirstHOF
 	thumb_func_start TrainerCard_Back_PrintHallOfFameTime
 TrainerCard_Back_PrintHallOfFameTime: @ 80944A4
 	push {r4,r5,lr}
-	ldr r5, _08094508
+	ldr r5, _08094508 @ =0x02000000
 	ldrb r0, [r5, 0x8]
 	cmp r0, 0
 	beq _08094500
-	ldr r2, _0809450C
+	ldr r2, _0809450C @ =gStringVar1
 	adds r0, r5, 0
 	adds r0, 0x6A
 	ldrh r1, [r0]
@@ -2435,7 +2435,7 @@ TrainerCard_Back_PrintHallOfFameTime: @ 80944A4
 	movs r3, 0x3
 	bl ConvertIntToDecimalStringN
 	adds r2, r0, 0
-	ldr r4, _08094510
+	ldr r4, _08094510 @ =gUnknown_083B5EF4
 	adds r1, r4, 0
 	bl StringCopy
 	adds r2, r0, 0
@@ -2457,7 +2457,7 @@ TrainerCard_Back_PrintHallOfFameTime: @ 80944A4
 	movs r2, 0x2
 	movs r3, 0x2
 	bl ConvertIntToDecimalStringN
-	ldr r0, _0809450C
+	ldr r0, _0809450C @ =gStringVar1
 	movs r1, 0x1C
 	movs r2, 0x5
 	bl MenuPrint_RightAligned
@@ -2474,11 +2474,11 @@ _08094510: .4byte gUnknown_083B5EF4
 	thumb_func_start TrainerCard_Back_PrintLinkBattlesLabel
 TrainerCard_Back_PrintLinkBattlesLabel: @ 8094514
 	push {lr}
-	ldr r0, _0809452C
+	ldr r0, _0809452C @ =0x02000000
 	ldrb r0, [r0, 0x9]
 	cmp r0, 0
 	beq _08094528
-	ldr r0, _08094530
+	ldr r0, _08094530 @ =gOtherText_LinkCableBattles
 	movs r1, 0x3
 	movs r2, 0x7
 	bl MenuPrint
@@ -2494,7 +2494,7 @@ _08094530: .4byte gOtherText_LinkCableBattles
 TrainerCard_Back_PrintLinkBattles: @ 8094534
 	push {r4,lr}
 	sub sp, 0x10
-	ldr r4, _08094574
+	ldr r4, _08094574 @ =0x02000000
 	ldrb r0, [r4, 0x9]
 	cmp r0, 0
 	beq _0809456C
@@ -2528,11 +2528,11 @@ _08094574: .4byte 0x02000000
 	thumb_func_start TrainerCard_Back_PrintBattleTower_Label
 TrainerCard_Back_PrintBattleTower_Label: @ 8094578
 	push {lr}
-	ldr r0, _08094590
+	ldr r0, _08094590 @ =0x02000000
 	ldrb r0, [r0, 0xA]
 	cmp r0, 0
 	beq _0809458C
-	ldr r0, _08094594
+	ldr r0, _08094594 @ =gOtherText_BattleTowerWinRecord
 	movs r1, 0x3
 	movs r2, 0xF
 	bl MenuPrint
@@ -2548,7 +2548,7 @@ _08094594: .4byte gOtherText_BattleTowerWinRecord
 TrainerCard_Back_PrintBattleTower: @ 8094598
 	push {r4,lr}
 	sub sp, 0x10
-	ldr r4, _080945E4
+	ldr r4, _080945E4 @ =0x02000000
 	ldrb r0, [r4, 0xA]
 	cmp r0, 0
 	beq _080945DC
@@ -2588,11 +2588,11 @@ _080945E4: .4byte 0x02000000
 	thumb_func_start TrainerCard_Back_PrintLinkContests_Label
 TrainerCard_Back_PrintLinkContests_Label: @ 80945E8
 	push {lr}
-	ldr r0, _08094600
+	ldr r0, _08094600 @ =0x02000000
 	ldrb r0, [r0, 0xB]
 	cmp r0, 0
 	beq _080945FC
-	ldr r0, _08094604
+	ldr r0, _08094604 @ =gOtherText_ContestRecord
 	movs r1, 0x3
 	movs r2, 0xD
 	bl MenuPrint
@@ -2608,7 +2608,7 @@ _08094604: .4byte gOtherText_ContestRecord
 TrainerCard_Back_PrintLinkContests: @ 8094608
 	push {lr}
 	sub sp, 0x8
-	ldr r1, _08094634
+	ldr r1, _08094634 @ =0x02000000
 	ldrb r0, [r1, 0xB]
 	cmp r0, 0
 	beq _0809462E
@@ -2634,11 +2634,11 @@ _08094634: .4byte 0x02000000
 	thumb_func_start TrainerCard_Back_PrintLinkPokeblocks_Label
 TrainerCard_Back_PrintLinkPokeblocks_Label: @ 8094638
 	push {lr}
-	ldr r0, _08094650
+	ldr r0, _08094650 @ =0x02000000
 	ldrb r0, [r0, 0xC]
 	cmp r0, 0
 	beq _0809464C
-	ldr r0, _08094654
+	ldr r0, _08094654 @ =gOtherText_MixingRecord
 	movs r1, 0x3
 	movs r2, 0xB
 	bl MenuPrint
@@ -2654,7 +2654,7 @@ _08094654: .4byte gOtherText_MixingRecord
 TrainerCard_Back_PrintLinkPokeblocks: @ 8094658
 	push {lr}
 	sub sp, 0x8
-	ldr r1, _08094684
+	ldr r1, _08094684 @ =0x02000000
 	ldrb r0, [r1, 0xC]
 	cmp r0, 0
 	beq _0809467E
@@ -2680,11 +2680,11 @@ _08094684: .4byte 0x02000000
 	thumb_func_start TrainerCard_Back_PrintPokemonTrades_Label
 TrainerCard_Back_PrintPokemonTrades_Label: @ 8094688
 	push {lr}
-	ldr r0, _080946A0
+	ldr r0, _080946A0 @ =0x02000000
 	ldrb r0, [r0, 0xD]
 	cmp r0, 0
 	beq _0809469C
-	ldr r0, _080946A4
+	ldr r0, _080946A4 @ =gOtherText_TradeRecord
 	movs r1, 0x3
 	movs r2, 0x9
 	bl MenuPrint
@@ -2700,7 +2700,7 @@ _080946A4: .4byte gOtherText_TradeRecord
 TrainerCard_Back_PrintPokemonTrades: @ 80946A8
 	push {lr}
 	sub sp, 0x8
-	ldr r1, _080946D4
+	ldr r1, _080946D4 @ =0x02000000
 	ldrb r0, [r1, 0xD]
 	cmp r0, 0
 	beq _080946CE
@@ -2730,12 +2730,12 @@ unref_sub_8094588: @ 80946D8
 	lsrs r3, r0, 16
 	lsls r1, 16
 	lsrs r2, r1, 16
-	ldr r4, _08094704
-	ldr r0, _08094708
+	ldr r4, _08094704 @ =gOtherText_Boy
+	ldr r0, _08094708 @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
 	cmp r0, 0x1
 	bne _080946EE
-	ldr r4, _0809470C
+	ldr r4, _0809470C @ =gOtherText_Girl
 _080946EE:
 	lsls r1, r3, 24
 	lsrs r1, 24

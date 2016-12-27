@@ -17,7 +17,7 @@ sub_813A584: @ 813A960
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r7, r0, 3
-	ldr r0, _0813A9AC
+	ldr r0, _0813A9AC @ =0x03004b38
 	mov r8, r0
 	adds r4, r7, r0
 	ldrb r0, [r4, 0x2]
@@ -26,7 +26,7 @@ sub_813A584: @ 813A960
 	lsls r0, 24
 	lsrs r3, r0, 24
 	adds r6, r3, 0
-	ldr r2, _0813A9B0
+	ldr r2, _0813A9B0 @ =gMain
 	ldrh r1, [r2, 0x30]
 	movs r0, 0x40
 	ands r0, r1
@@ -34,10 +34,10 @@ sub_813A584: @ 813A960
 	beq _0813A9C0
 	movs r0, 0x6
 	ldrsh r2, [r4, r0]
-	ldr r1, _0813A9B4
+	ldr r1, _0813A9B4 @ =gSaveBlock1
 	lsls r0, r3, 2
 	adds r0, r1
-	ldr r1, _0813A9B8
+	ldr r1, _0813A9B8 @ =0x0000049a
 	adds r0, r1
 	ldrh r0, [r0]
 	cmp r2, r0
@@ -66,10 +66,10 @@ _0813A9C0:
 	subs r0, r1, 0x1
 	b _0813AA26
 _0813A9D6:
-	ldr r0, _0813A9E4
+	ldr r0, _0813A9E4 @ =gSaveBlock1
 	lsls r1, r3, 2
 	adds r1, r0
-	ldr r3, _0813A9E8
+	ldr r3, _0813A9E8 @ =0x0000049a
 	adds r1, r3
 	ldrh r0, [r1]
 	b _0813AA26
@@ -99,10 +99,10 @@ _0813AA04:
 	strh r0, [r4, 0x6]
 	movs r0, 0x6
 	ldrsh r2, [r4, r0]
-	ldr r1, _0813AA3C
+	ldr r1, _0813AA3C @ =gSaveBlock1
 	lsls r0, r6, 2
 	adds r0, r1
-	ldr r1, _0813AA40
+	ldr r1, _0813AA40 @ =0x0000049a
 	adds r0, r1
 	ldrh r0, [r0]
 	cmp r2, r0
@@ -161,7 +161,7 @@ _0813AA78:
 	bl sub_80F98DC
 	movs r0, 0x1
 	bl sub_80F98DC
-	ldr r2, _0813AAD0
+	ldr r2, _0813AAD0 @ =gSaveBlock1
 	movs r3, 0x2
 	ldrsh r0, [r4, r3]
 	movs r3, 0
@@ -177,7 +177,7 @@ _0813AA78:
 	mov r0, r8
 	subs r0, 0x8
 	adds r0, r7, r0
-	ldr r1, _0813AAD4
+	ldr r1, _0813AAD4 @ =sub_813A280
 	str r1, [r0]
 _0813AAC4:
 	add sp, 0x4
@@ -199,13 +199,13 @@ sub_813A6FC: @ 813AAD8
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r6, r1, 3
-	ldr r7, _0813AB34
+	ldr r7, _0813AB34 @ =0x03004b38
 	adds r4, r6, r7
 	ldrb r0, [r4, 0x2]
 	ldrb r1, [r4]
 	adds r0, r1
 	lsls r0, 24
-	ldr r1, _0813AB38
+	ldr r1, _0813AB38 @ =gSaveBlock1
 	lsrs r0, 22
 	adds r0, r1
 	movs r2, 0x93
@@ -219,20 +219,20 @@ sub_813A6FC: @ 813AAD8
 	cmp r0, 0x1
 	bne _0813AB4C
 	ldrh r0, [r5]
-	ldr r1, _0813AB3C
+	ldr r1, _0813AB3C @ =gStringVar1
 	bl CopyItemName
-	ldr r0, _0813AB40
+	ldr r0, _0813AB40 @ =gStringVar2
 	movs r2, 0x6
 	ldrsh r1, [r4, r2]
 	movs r2, 0
 	movs r3, 0x3
 	bl ConvertIntToDecimalStringN
-	ldr r0, _0813AB44
+	ldr r0, _0813AB44 @ =0x0000fffd
 	bl sub_813AD58
 	adds r0, r7, 0
 	subs r0, 0x8
 	adds r0, r6, r0
-	ldr r1, _0813AB48
+	ldr r1, _0813AB48 @ =sub_813A8F0
 	b _0813AB5E
 	.align 2, 0
 _0813AB34: .4byte 0x03004b38
@@ -244,12 +244,12 @@ _0813AB48: .4byte sub_813A8F0
 _0813AB4C:
 	movs r0, 0
 	strh r0, [r4, 0x6]
-	ldr r0, _0813AB68
+	ldr r0, _0813AB68 @ =0x0000fffa
 	bl sub_813AD58
 	adds r0, r7, 0
 	subs r0, 0x8
 	adds r0, r6, r0
-	ldr r1, _0813AB6C
+	ldr r1, _0813AB6C @ =sub_813A984
 _0813AB5E:
 	str r1, [r0]
 	pop {r4-r7}
@@ -270,14 +270,14 @@ sub_813A794: @ 813AB70
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r7, r0, 3
-	ldr r0, _0813ABD8
+	ldr r0, _0813ABD8 @ =0x03004b38
 	mov r8, r0
 	adds r4, r7, r0
 	ldrb r0, [r4, 0x2]
 	ldrb r1, [r4]
 	adds r0, r1
 	lsls r0, 24
-	ldr r1, _0813ABDC
+	ldr r1, _0813ABDC @ =gSaveBlock1
 	lsrs r0, 22
 	adds r0, r1
 	movs r2, 0x93
@@ -289,21 +289,21 @@ sub_813A794: @ 813AB70
 	cmp r0, 0
 	bne _0813ABF0
 	ldrh r0, [r5]
-	ldr r1, _0813ABE0
+	ldr r1, _0813ABE0 @ =gStringVar1
 	bl CopyItemName
-	ldr r0, _0813ABE4
+	ldr r0, _0813ABE4 @ =gStringVar2
 	movs r2, 0x6
 	ldrsh r1, [r4, r2]
 	movs r2, 0
 	movs r3, 0x3
 	bl ConvertIntToDecimalStringN
-	ldr r0, _0813ABE8
+	ldr r0, _0813ABE8 @ =0x0000fff8
 	bl sub_813AD58
 	movs r0, 0x7
 	movs r1, 0x6
 	movs r2, 0x1
 	bl DisplayYesNoMenu
-	ldr r1, _0813ABEC
+	ldr r1, _0813ABEC @ =gUnknown_084062E0
 	adds r0, r6, 0
 	bl sub_80F914C
 	b _0813AC04
@@ -317,12 +317,12 @@ _0813ABEC: .4byte gUnknown_084062E0
 _0813ABF0:
 	movs r0, 0
 	strh r0, [r4, 0x6]
-	ldr r0, _0813AC10
+	ldr r0, _0813AC10 @ =0x0000fff9
 	bl sub_813AD58
 	mov r0, r8
 	subs r0, 0x8
 	adds r0, r7, r0
-	ldr r1, _0813AC14
+	ldr r1, _0813AC14 @ =sub_813A8F0
 	str r1, [r0]
 _0813AC04:
 	pop {r3}
@@ -346,14 +346,14 @@ sub_813A83C: @ 813AC18
 	movs r2, 0xD
 	movs r3, 0xB
 	bl MenuZeroFillWindowRect
-	ldr r0, _0813AC48
+	ldr r0, _0813AC48 @ =0x0000fffb
 	bl sub_813AD58
-	ldr r1, _0813AC4C
+	ldr r1, _0813AC4C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813AC50
+	ldr r1, _0813AC50 @ =sub_813A8F0
 	str r1, [r0]
 	pop {r4}
 	pop {r0}
@@ -373,7 +373,7 @@ sub_813A878: @ 813AC54
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
-	ldr r6, _0813ACC0
+	ldr r6, _0813ACC0 @ =0x03004b38
 	adds r5, r4, r6
 	movs r0, 0x6
 	movs r1, 0x6
@@ -393,7 +393,7 @@ sub_813A878: @ 813AC54
 	bl sub_80F98DC
 	movs r0, 0x1
 	bl sub_80F98DC
-	ldr r2, _0813ACC4
+	ldr r2, _0813ACC4 @ =gSaveBlock1
 	movs r1, 0x2
 	ldrsh r0, [r5, r1]
 	movs r3, 0
@@ -408,7 +408,7 @@ sub_813A878: @ 813AC54
 	bl sub_813AD58
 	subs r6, 0x8
 	adds r4, r6
-	ldr r0, _0813ACC8
+	ldr r0, _0813ACC8 @ =sub_813A280
 	str r0, [r4]
 	add sp, 0x8
 	pop {r4-r6}
@@ -429,9 +429,9 @@ sub_813A8F0: @ 813ACCC
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
-	ldr r1, _0813AD58
+	ldr r1, _0813AD58 @ =0x03004b38
 	adds r5, r0, r1
-	ldr r0, _0813AD5C
+	ldr r0, _0813AD5C @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -502,9 +502,9 @@ sub_813A984: @ 813AD60
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r4, r1, 3
-	ldr r5, _0813ADB8
+	ldr r5, _0813ADB8 @ =0x03004b38
 	adds r3, r4, r5
-	ldr r0, _0813ADBC
+	ldr r0, _0813ADBC @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -513,7 +513,7 @@ sub_813A984: @ 813AD60
 	cmp r1, 0x2
 	bne _0813ADB2
 _0813AD80:
-	ldr r2, _0813ADC0
+	ldr r2, _0813ADC0 @ =gSaveBlock1
 	movs r1, 0x2
 	ldrsh r0, [r3, r1]
 	movs r6, 0
@@ -533,7 +533,7 @@ _0813AD80:
 	adds r0, r5, 0
 	subs r0, 0x8
 	adds r0, r4, r0
-	ldr r1, _0813ADC4
+	ldr r1, _0813ADC4 @ =sub_813A280
 	str r1, [r0]
 _0813ADB2:
 	pop {r4-r6}
@@ -563,12 +563,12 @@ sub_813A9EC: @ 813ADC8
 	bl sub_80F98DC
 	adds r0, r4, 0
 	bl sub_813AE0C
-	ldr r1, _0813AE04
+	ldr r1, _0813AE04 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813AE08
+	ldr r1, _0813AE08 @ =sub_813A280
 	str r1, [r0]
 	pop {r4}
 	pop {r0}
@@ -588,7 +588,7 @@ sub_813AA30: @ 813AE0C
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0813AE5C
+	ldr r0, _0813AE5C @ =0x03004b38
 	adds r4, r1, r0
 	ldrb r0, [r4]
 	ldrb r1, [r4, 0x2]
@@ -605,7 +605,7 @@ sub_813AA30: @ 813AE0C
 	beq _0813AE64
 	cmp r2, 0
 	bne _0813AE64
-	ldr r1, _0813AE60
+	ldr r1, _0813AE60 @ =gSaveBlock1
 	movs r0, 0x10
 	ldrsh r2, [r4, r0]
 	lsls r2, 2
@@ -628,13 +628,13 @@ _0813AE64:
 	ldrsh r0, [r4, r1]
 	cmp r5, r0
 	bne _0813AE78
-	ldr r0, _0813AE74
+	ldr r0, _0813AE74 @ =0x0000ffff
 	bl sub_813AD58
 	b _0813AE8A
 	.align 2, 0
 _0813AE74: .4byte 0x0000ffff
 _0813AE78:
-	ldr r0, _0813AE9C
+	ldr r0, _0813AE9C @ =gSaveBlock1
 	lsls r1, r5, 2
 	adds r1, r0
 	movs r2, 0x93
@@ -668,13 +668,13 @@ sub_813AAC4: @ 813AEA0
 	lsrs r7, r2, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r0, _0813AED0
+	ldr r0, _0813AED0 @ =gStringVar1
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl sub_80A4164
 	cmp r6, 0
 	beq _0813AED8
-	ldr r0, _0813AED4
+	ldr r0, _0813AED4 @ =gUnknown_0840632A
 	movs r1, 0x1A
 	adds r2, r7, 0
 	bl MenuPrint
@@ -683,7 +683,7 @@ sub_813AAC4: @ 813AEA0
 _0813AED0: .4byte gStringVar1
 _0813AED4: .4byte gUnknown_0840632A
 _0813AED8:
-	ldr r0, _0813AEE8
+	ldr r0, _0813AEE8 @ =gUnknown_08406327
 	movs r1, 0x1A
 	adds r2, r7, 0
 	bl MenuPrint
@@ -701,7 +701,7 @@ sub_813AB10: @ 813AEEC
 	adds r2, r0, 0
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r0, _0813AF00
+	ldr r0, _0813AF00 @ =gUnknown_08406330
 	movs r1, 0x19
 	bl MenuPrint
 	pop {r0}
@@ -717,11 +717,11 @@ sub_813AB28: @ 813AF04
 	lsls r1, 24
 	lsrs r5, r1, 24
 	ldrh r0, [r0]
-	ldr r1, _0813AF24
+	ldr r1, _0813AF24 @ =gStringVar1
 	bl CopyItemName
 	cmp r4, 0
 	beq _0813AF2C
-	ldr r0, _0813AF28
+	ldr r0, _0813AF28 @ =gUnknown_0840631E
 	movs r1, 0x10
 	adds r2, r5, 0
 	bl MenuPrint
@@ -730,7 +730,7 @@ sub_813AB28: @ 813AF04
 _0813AF24: .4byte gStringVar1
 _0813AF28: .4byte gUnknown_0840631E
 _0813AF2C:
-	ldr r0, _0813AF3C
+	ldr r0, _0813AF3C @ =gUnknown_08406318
 	movs r1, 0x10
 	adds r2, r5, 0
 	bl MenuPrint
@@ -823,7 +823,7 @@ sub_813ABE8: @ 813AFC4
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0813AFE8
+	ldr r0, _0813AFE8 @ =0x03004b38
 	adds r6, r1, r0
 	movs r0, 0
 	mov r8, r0
@@ -853,7 +853,7 @@ _0813AFEC:
 	bne _0813B010
 	movs r7, 0x1
 _0813B010:
-	ldr r0, _0813B038
+	ldr r0, _0813B038 @ =gSaveBlock1
 	lsls r4, r5, 2
 	adds r0, r4, r0
 	movs r2, 0x93
@@ -867,7 +867,7 @@ _0813B010:
 	cmp r0, 0x4
 	bhi _0813B096
 	lsls r0, 2
-	ldr r1, _0813B03C
+	ldr r1, _0813B03C @ =_0813B040
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -882,7 +882,7 @@ _0813B040:
 	.4byte _0813B054
 	.4byte _0813B06C
 _0813B054:
-	ldr r0, _0813B068
+	ldr r0, _0813B068 @ =0x02025bcc
 	adds r0, r4, r0
 	mov r1, r8
 	adds r1, 0x2
@@ -894,7 +894,7 @@ _0813B054:
 	.align 2, 0
 _0813B068: .4byte 0x02025bcc
 _0813B06C:
-	ldr r0, _0813B080
+	ldr r0, _0813B080 @ =0x02025bcc
 	adds r0, r4, r0
 	mov r1, r8
 	adds r1, 0x2
@@ -906,7 +906,7 @@ _0813B06C:
 	.align 2, 0
 _0813B080: .4byte 0x02025bcc
 _0813B084:
-	ldr r0, _0813B0DC
+	ldr r0, _0813B0DC @ =0x02025bcc
 	adds r0, r4, r0
 	mov r1, r8
 	adds r1, 0x2
@@ -953,7 +953,7 @@ _0813B0C6:
 	.align 2, 0
 _0813B0DC: .4byte 0x02025bcc
 _0813B0E0:
-	ldr r0, _0813B0F8
+	ldr r0, _0813B0F8 @ =gOtherText_CancelNoTerminator
 	mov r2, r8
 	adds r2, 0x2
 	lsls r2, 19
@@ -1002,12 +1002,12 @@ sub_813AD58: @ 813B134
 	sub sp, 0x8
 	lsls r0, 16
 	lsrs r1, r0, 16
-	ldr r2, _0813B150
+	ldr r2, _0813B150 @ =0xffff0009
 	adds r0, r1, r2
 	cmp r0, 0x8
 	bhi _0813B1C4
 	lsls r0, 2
-	ldr r1, _0813B154
+	ldr r1, _0813B154 @ =_0813B158
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1026,47 +1026,47 @@ _0813B158:
 	.4byte _0813B184
 	.4byte _0813B17C
 _0813B17C:
-	ldr r1, _0813B180
+	ldr r1, _0813B180 @ =gMenuText_GoBackToPrev
 	b _0813B1CC
 	.align 2, 0
 _0813B180: .4byte gMenuText_GoBackToPrev
 _0813B184:
-	ldr r1, _0813B188
+	ldr r1, _0813B188 @ =gOtherText_HowManyToWithdraw
 	b _0813B1CC
 	.align 2, 0
 _0813B188: .4byte gOtherText_HowManyToWithdraw
 _0813B18C:
-	ldr r1, _0813B190
+	ldr r1, _0813B190 @ =gOtherText_WithdrewThing
 	b _0813B1CC
 	.align 2, 0
 _0813B190: .4byte gOtherText_WithdrewThing
 _0813B194:
-	ldr r1, _0813B198
+	ldr r1, _0813B198 @ =gOtherText_HowManyToToss
 	b _0813B1CC
 	.align 2, 0
 _0813B198: .4byte gOtherText_HowManyToToss
 _0813B19C:
-	ldr r1, _0813B1A0
+	ldr r1, _0813B1A0 @ =gOtherText_ThrewAwayItem
 	b _0813B1CC
 	.align 2, 0
 _0813B1A0: .4byte gOtherText_ThrewAwayItem
 _0813B1A4:
-	ldr r1, _0813B1A8
+	ldr r1, _0813B1A8 @ =gOtherText_NoMoreRoom
 	b _0813B1CC
 	.align 2, 0
 _0813B1A8: .4byte gOtherText_NoMoreRoom
 _0813B1AC:
-	ldr r1, _0813B1B0
+	ldr r1, _0813B1B0 @ =gOtherText_TooImportant
 	b _0813B1CC
 	.align 2, 0
 _0813B1B0: .4byte gOtherText_TooImportant
 _0813B1B4:
-	ldr r1, _0813B1B8
+	ldr r1, _0813B1B8 @ =gOtherText_OkayToThrowAwayPrompt
 	b _0813B1CC
 	.align 2, 0
 _0813B1B8: .4byte gOtherText_OkayToThrowAwayPrompt
 _0813B1BC:
-	ldr r1, _0813B1C0
+	ldr r1, _0813B1C0 @ =gOtherText_SwitchWhichItem
 	b _0813B1CC
 	.align 2, 0
 _0813B1C0: .4byte gOtherText_SwitchWhichItem
@@ -1097,7 +1097,7 @@ sub_813AE0C: @ 813B1E8
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r2, _0813B224
+	ldr r2, _0813B224 @ =0x03004b38
 	adds r4, r1, r2
 	ldrh r1, [r4]
 	ldrh r2, [r4, 0x2]
@@ -1115,14 +1115,14 @@ sub_813AE0C: @ 813B1E8
 	ldrsh r0, [r4, r2]
 	cmp r1, r0
 	bne _0813B22C
-	ldr r0, _0813B228
+	ldr r0, _0813B228 @ =0x0000ffff
 	bl sub_813AD58
 	b _0813B23E
 	.align 2, 0
 _0813B224: .4byte 0x03004b38
 _0813B228: .4byte 0x0000ffff
 _0813B22C:
-	ldr r0, _0813B244
+	ldr r0, _0813B244 @ =gSaveBlock1
 	lsls r1, 2
 	adds r1, r0
 	movs r0, 0x93
@@ -1151,7 +1151,7 @@ sub_813AE6C: @ 813B248
 	lsls r5, r6, 2
 	adds r5, r6
 	lsls r5, 3
-	ldr r0, _0813B2D4
+	ldr r0, _0813B2D4 @ =0x03004b38
 	adds r5, r0
 	bl sub_80F944C
 	bl LoadScrollIndicatorPalette
@@ -1171,13 +1171,13 @@ sub_813AE6C: @ 813B248
 	movs r2, 0xB
 	movs r3, 0x3
 	bl MenuDrawTextWindow
-	ldr r0, _0813B2D8
+	ldr r0, _0813B2D8 @ =gSaveBlock1
 	movs r1, 0x93
 	lsls r1, 3
 	adds r0, r1
 	ldrh r0, [r0]
 	bl sub_813AD58
-	ldr r0, _0813B2DC
+	ldr r0, _0813B2DC @ =gUnknown_084062C0
 	lsls r4, 3
 	adds r4, r0
 	ldr r0, [r4]
@@ -1209,7 +1209,7 @@ _0813B2DC: .4byte gUnknown_084062C0
 sub_813AF04: @ 813B2E0
 	push {lr}
 	sub sp, 0x8
-	ldr r1, _0813B314
+	ldr r1, _0813B314 @ =gUnknown_08406334
 	mov r0, sp
 	movs r2, 0x6
 	bl memcpy
@@ -1238,8 +1238,8 @@ sub_813AF3C: @ 813B318
 	push {r4,lr}
 	movs r2, 0
 	movs r1, 0x6
-	ldr r4, _0813B34C
-	ldr r3, _0813B350
+	ldr r4, _0813B34C @ =gSaveBlock1
+	ldr r3, _0813B350 @ =0x00002b6c
 _0813B322:
 	lsls r0, r1, 3
 	adds r0, r1
@@ -1283,16 +1283,16 @@ _0813B362:
 	mov r10, r1
 	cmp r3, 0xF
 	bhi _0813B3D0
-	ldr r0, _0813B3EC
+	ldr r0, _0813B3EC @ =gSaveBlock1
 	mov r12, r0
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
 	add r0, r12
-	ldr r1, _0813B3F0
+	ldr r1, _0813B3F0 @ =0x00002b6c
 	adds r1, r0
 	mov r8, r1
-	ldr r2, _0813B3F4
+	ldr r2, _0813B3F4 @ =0x00002b4c
 	mov r9, r2
 	adds r4, r0, r2
 _0813B386:
@@ -1360,14 +1360,14 @@ sub_813B01C: @ 813B3F8
 	mov r7, r8
 	push {r7}
 	movs r7, 0
-	ldr r1, _0813B494
+	ldr r1, _0813B494 @ =0x0201fe00
 	ldrb r4, [r1, 0x2]
 	ldrb r0, [r1, 0x1]
 	adds r0, r4, r0
 	cmp r4, r0
 	bge _0813B466
 	adds r6, r1, 0
-	ldr r0, _0813B498
+	ldr r0, _0813B498 @ =gStringVar1
 	mov r8, r0
 _0813B412:
 	ldrb r0, [r6, 0x2]
@@ -1390,7 +1390,7 @@ _0813B412:
 	lsls r1, r4, 3
 	adds r1, r4
 	lsls r1, 2
-	ldr r0, _0813B49C
+	ldr r0, _0813B49C @ =0x0202836a
 	adds r1, r0
 	mov r0, r8
 	bl StringCopy
@@ -1409,7 +1409,7 @@ _0813B412:
 	cmp r4, r0
 	blt _0813B412
 _0813B466:
-	ldr r5, _0813B494
+	ldr r5, _0813B494 @ =0x0201fe00
 	ldrb r0, [r5, 0x2]
 	subs r0, r4, r0
 	cmp r0, 0x8
@@ -1435,7 +1435,7 @@ _0813B494: .4byte 0x0201fe00
 _0813B498: .4byte gStringVar1
 _0813B49C: .4byte 0x0202836a
 _0813B4A0:
-	ldr r0, _0813B4AC
+	ldr r0, _0813B4AC @ =gOtherText_CancelNoTerminator
 	movs r1, 0x15
 	adds r2, r5, 0
 	bl MenuPrint
@@ -1446,7 +1446,7 @@ _0813B4B0:
 	movs r0, 0
 	bl DestroyVerticalScrollIndicator
 _0813B4B6:
-	ldr r0, _0813B4D0
+	ldr r0, _0813B4D0 @ =0x0201fe00
 	ldrb r1, [r0, 0x2]
 	ldrb r2, [r0, 0x1]
 	adds r1, r2
@@ -1490,7 +1490,7 @@ sub_813B108: @ 813B4E4
 	movs r2, 0x8
 	movs r3, 0x3
 	bl MenuDrawTextWindow
-	ldr r0, _0813B548
+	ldr r0, _0813B548 @ =gPCText_Mailbox
 	movs r1, 0x1
 	movs r2, 0x1
 	bl MenuPrint
@@ -1501,7 +1501,7 @@ sub_813B108: @ 813B4E4
 	bl MenuDrawTextWindow
 	adds r0, r4, 0
 	bl sub_813B01C
-	ldr r0, _0813B54C
+	ldr r0, _0813B54C @ =0x0201fe00
 	ldrb r3, [r0, 0x1]
 	ldrb r0, [r0]
 	str r0, [sp]
@@ -1526,20 +1526,20 @@ sub_813B174: @ 813B550
 	lsls r0, 24
 	lsrs r5, r0, 24
 	adds r4, r5, 0
-	ldr r0, _0813B588
+	ldr r0, _0813B588 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r3, 0x80
 	adds r0, r3, 0
 	ands r0, r1
 	cmp r0, 0
 	bne _0813B650
-	ldr r2, _0813B58C
+	ldr r2, _0813B58C @ =gMain
 	ldrh r1, [r2, 0x30]
 	movs r0, 0x40
 	ands r0, r1
 	cmp r0, 0
 	beq _0813B5A6
-	ldr r4, _0813B590
+	ldr r4, _0813B590 @ =0x0201fe00
 	ldrb r0, [r4]
 	cmp r0, 0
 	beq _0813B594
@@ -1566,7 +1566,7 @@ _0813B5A6:
 	ands r0, r1
 	cmp r0, 0
 	beq _0813B5EE
-	ldr r4, _0813B5CC
+	ldr r4, _0813B5CC @ =0x0201fe00
 	ldrb r1, [r4]
 	ldrb r0, [r4, 0x1]
 	subs r0, 0x1
@@ -1605,7 +1605,7 @@ _0813B5EE:
 	bl sub_8072DEC
 	movs r0, 0x5
 	bl PlaySE
-	ldr r0, _0813B618
+	ldr r0, _0813B618 @ =0x0201fe00
 	ldrb r1, [r0, 0x2]
 	ldrb r2, [r0]
 	adds r1, r2
@@ -1619,12 +1619,12 @@ _0813B5EE:
 _0813B618: .4byte 0x0201fe00
 _0813B61C:
 	bl sub_813B27C
-	ldr r0, _0813B630
+	ldr r0, _0813B630 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0813B634
+	ldr r0, _0813B634 @ =sub_813B294
 	str r0, [r1]
 	b _0813B650
 	.align 2, 0
@@ -1669,8 +1669,8 @@ sub_813B294: @ 813B670
 	movs r2, 0x1D
 	movs r3, 0x13
 	bl MenuZeroFillWindowRect
-	ldr r4, _0813B6C4
-	ldr r1, _0813B6C8
+	ldr r4, _0813B6C4 @ =gStringVar1
+	ldr r1, _0813B6C8 @ =0x0201fe00
 	ldrb r0, [r1]
 	adds r0, 0x6
 	ldrb r1, [r1, 0x2]
@@ -1678,17 +1678,17 @@ sub_813B294: @ 813B670
 	lsls r1, r0, 3
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _0813B6CC
+	ldr r0, _0813B6CC @ =0x02028292
 	adds r1, r0
 	adds r0, r4, 0
 	bl StringCopy
 	adds r0, r4, 0
 	bl sub_814A568
-	ldr r4, _0813B6D0
-	ldr r1, _0813B6D4
+	ldr r4, _0813B6D0 @ =gStringVar4
+	ldr r1, _0813B6D4 @ =gOtherText_WhatWillYouDoMail
 	adds r0, r4, 0
 	bl StringExpandPlaceholders
-	ldr r2, _0813B6D8
+	ldr r2, _0813B6D8 @ =sub_813B348
 	adds r0, r5, 0
 	adds r1, r4, 0
 	movs r3, 0
@@ -1730,12 +1730,12 @@ sub_813B320: @ 813B6FC
 	lsls r4, 24
 	lsrs r4, 24
 	bl sub_813B27C
-	ldr r1, _0813B71C
+	ldr r1, _0813B71C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813B720
+	ldr r1, _0813B720 @ =sub_813B300
 	str r1, [r0]
 	pop {r4}
 	pop {r0}
@@ -1757,7 +1757,7 @@ sub_813B348: @ 813B724
 	movs r2, 0xC
 	movs r3, 0x9
 	bl MenuDrawTextWindow
-	ldr r3, _0813B770
+	ldr r3, _0813B770 @ =gUnknown_084062F8
 	movs r0, 0x1
 	movs r1, 0x1
 	movs r2, 0x4
@@ -1771,12 +1771,12 @@ sub_813B348: @ 813B724
 	movs r2, 0x1
 	movs r3, 0x4
 	bl InitMenu
-	ldr r1, _0813B774
+	ldr r1, _0813B774 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813B778
+	ldr r1, _0813B778 @ =sub_813B3A0
 	str r1, [r0]
 	add sp, 0x8
 	pop {r4}
@@ -1794,7 +1794,7 @@ sub_813B3A0: @ 813B77C
 	lsls r0, 24
 	lsrs r5, r0, 24
 	adds r4, r5, 0
-	ldr r2, _0813B7A0
+	ldr r2, _0813B7A0 @ =gMain
 	ldrh r1, [r2, 0x30]
 	movs r0, 0x40
 	ands r0, r1
@@ -1826,7 +1826,7 @@ _0813B7BA:
 	beq _0813B7E8
 	movs r0, 0x5
 	bl PlaySE
-	ldr r4, _0813B7E4
+	ldr r4, _0813B7E4 @ =gUnknown_084062F8
 	bl GetMenuCursorPos
 	lsls r0, 24
 	lsrs r0, 21
@@ -1862,12 +1862,12 @@ Mailbox_Read: @ 813B804
 	movs r0, 0x1
 	movs r1, 0
 	bl fade_screen
-	ldr r1, _0813B828
+	ldr r1, _0813B828 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813B82C
+	ldr r1, _0813B82C @ =sub_813B454
 	str r1, [r0]
 	pop {r4}
 	pop {r0}
@@ -1882,13 +1882,13 @@ sub_813B454: @ 813B830
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0813B86C
+	ldr r0, _0813B86C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0813B864
-	ldr r0, _0813B870
+	ldr r0, _0813B870 @ =0x0201fe00
 	ldrb r1, [r0]
 	adds r1, 0x6
 	ldrb r0, [r0, 0x2]
@@ -1896,9 +1896,9 @@ sub_813B454: @ 813B830
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _0813B874
+	ldr r1, _0813B874 @ =0x02028280
 	adds r0, r1
-	ldr r1, _0813B878
+	ldr r1, _0813B878 @ =sub_813B4F0
 	movs r2, 0x1
 	bl sub_80F890C
 	adds r0, r4, 0
@@ -1924,12 +1924,12 @@ sub_813B4A0: @ 813B87C
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _0813B89C
-	ldr r0, _0813B8A4
+	ldr r0, _0813B8A4 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0813B8A8
+	ldr r0, _0813B8A8 @ =sub_813B174
 	str r0, [r1]
 _0813B89C:
 	pop {r4}
@@ -1943,7 +1943,7 @@ _0813B8A8: .4byte sub_813B174
 	thumb_func_start sub_813B4D0
 sub_813B4D0: @ 813B8AC
 	push {lr}
-	ldr r0, _0813B8C8
+	ldr r0, _0813B8C8 @ =sub_813B4A0
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
@@ -1959,10 +1959,10 @@ _0813B8C8: .4byte sub_813B4A0
 	thumb_func_start sub_813B4F0
 sub_813B4F0: @ 813B8CC
 	push {lr}
-	ldr r0, _0813B8E0
-	ldr r1, _0813B8E4
+	ldr r0, _0813B8E0 @ =gUnknown_0300485C
+	ldr r1, _0813B8E4 @ =sub_813B4D0
 	str r1, [r0]
-	ldr r0, _0813B8E8
+	ldr r0, _0813B8E8 @ =c2_exit_to_overworld_2_switch
 	bl SetMainCallback2
 	pop {r0}
 	bx r0
@@ -1979,15 +1979,15 @@ Mailbox_MoveToBag: @ 813B8EC
 	lsls r4, 24
 	lsrs r4, 24
 	bl sub_8072DEC
-	ldr r0, _0813B91C
-	ldr r1, _0813B920
+	ldr r0, _0813B91C @ =gStringVar1
+	ldr r1, _0813B920 @ =gOtherText_MoveToBag
 	bl StringCopy
-	ldr r0, _0813B924
+	ldr r0, _0813B924 @ =gUnknown_0840633A
 	movs r1, 0x1
 	movs r2, 0x3
 	bl MenuPrint
-	ldr r1, _0813B928
-	ldr r2, _0813B92C
+	ldr r1, _0813B928 @ =gOtherText_MessageWillBeLost
+	ldr r2, _0813B92C @ =sub_813B554
 	adds r0, r4, 0
 	movs r3, 0
 	bl DisplayItemMessageOnField
@@ -2012,7 +2012,7 @@ sub_813B554: @ 813B930
 	movs r1, 0x8
 	movs r2, 0x1
 	bl DisplayYesNoMenu
-	ldr r1, _0813B950
+	ldr r1, _0813B950 @ =gUnknown_084062E8
 	adds r0, r4, 0
 	bl sub_80F914C
 	pop {r4}
@@ -2027,7 +2027,7 @@ sub_813B578: @ 813B954
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r4, _0813B998
+	ldr r4, _0813B998 @ =0x0201fe00
 	ldrb r0, [r4]
 	adds r0, 0x6
 	ldrb r1, [r4, 0x2]
@@ -2035,7 +2035,7 @@ sub_813B578: @ 813B954
 	lsls r1, r0, 3
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _0813B99C
+	ldr r0, _0813B99C @ =0x02028280
 	adds r6, r1, r0
 	movs r0, 0x14
 	movs r1, 0x8
@@ -2048,8 +2048,8 @@ sub_813B578: @ 813B954
 	lsls r0, 24
 	cmp r0, 0
 	bne _0813B9A8
-	ldr r1, _0813B9A0
-	ldr r2, _0813B9A4
+	ldr r1, _0813B9A0 @ =gOtherText_BagIsFull
+	ldr r2, _0813B9A4 @ =sub_813B758
 	adds r0, r5, 0
 	movs r3, 0
 	bl DisplayItemMessageOnField
@@ -2060,8 +2060,8 @@ _0813B99C: .4byte 0x02028280
 _0813B9A0: .4byte gOtherText_BagIsFull
 _0813B9A4: .4byte sub_813B758
 _0813B9A8:
-	ldr r1, _0813B9E4
-	ldr r2, _0813B9E8
+	ldr r1, _0813B9E4 @ =gOtherText_MailWasReturned
+	ldr r2, _0813B9E8 @ =sub_813B758
 	adds r0, r5, 0
 	movs r3, 0
 	bl DisplayItemMessageOnField
@@ -2127,12 +2127,12 @@ _0813BA24:
 	movs r0, 0x1
 	movs r1, 0
 	bl fade_screen
-	ldr r0, _0813BA40
+	ldr r0, _0813BA40 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _0813BA44
+	ldr r0, _0813BA44 @ =sub_813B66C
 	str r0, [r1]
 _0813BA3A:
 	pop {r4}
@@ -2148,15 +2148,15 @@ sub_813B66C: @ 813BA48
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0813BA74
+	ldr r0, _0813BA74 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _0813BA6C
-	ldr r0, _0813BA78
+	ldr r0, _0813BA78 @ =sub_808B020
 	bl SetMainCallback2
-	ldr r1, _0813BA7C
+	ldr r1, _0813BA7C @ =gUnknown_02038561
 	movs r0, 0x3
 	strb r0, [r1]
 	adds r0, r4, 0
@@ -2174,12 +2174,12 @@ _0813BA7C: .4byte gUnknown_02038561
 	thumb_func_start sub_813B6A4
 sub_813B6A4: @ 813BA80
 	push {r4-r6,lr}
-	ldr r0, _0813BACC
+	ldr r0, _0813BACC @ =sub_813B4A0
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r5, _0813BAD0
+	ldr r5, _0813BAD0 @ =0x0201fe00
 	ldrb r4, [r5, 0x3]
 	bl sub_813AF3C
 	strb r0, [r5, 0x3]
@@ -2214,10 +2214,10 @@ _0813BAD0: .4byte 0x0201fe00
 	thumb_func_start sub_813B6F8
 sub_813B6F8: @ 813BAD4
 	push {lr}
-	ldr r0, _0813BAE8
-	ldr r1, _0813BAEC
+	ldr r0, _0813BAE8 @ =gUnknown_0300485C
+	ldr r1, _0813BAEC @ =sub_813B6A4
 	str r1, [r0]
-	ldr r0, _0813BAF0
+	ldr r0, _0813BAF0 @ =c2_exit_to_overworld_2_switch
 	bl SetMainCallback2
 	pop {r0}
 	bx r0
@@ -2232,8 +2232,8 @@ sub_813B718: @ 813BAF4
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0813BB08
-	ldr r2, _0813BB0C
+	ldr r1, _0813BB08 @ =gOtherText_NoPokemon
+	ldr r2, _0813BB0C @ =sub_813B758
 	movs r3, 0
 	bl DisplayItemMessageOnField
 	pop {r0}
@@ -2270,12 +2270,12 @@ sub_813B758: @ 813BB34
 	lsrs r4, 24
 	adds r0, r4, 0
 	bl sub_813B108
-	ldr r1, _0813BB58
+	ldr r1, _0813BB58 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _0813BB5C
+	ldr r1, _0813BB5C @ =sub_813B174
 	str r1, [r0]
 	pop {r4}
 	pop {r0}

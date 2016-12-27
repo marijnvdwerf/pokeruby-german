@@ -19,7 +19,7 @@ CopyItemName: @ 80A9374
 	adds r1, r0, 0
 	adds r0, r4, 0
 	bl StringCopy
-	ldr r1, _080A9398
+	ldr r1, _080A9398 @ =gOtherText_Berry2
 	adds r0, r4, 0
 	bl StringAppend
 	b _080A93A8
@@ -41,7 +41,7 @@ CountUsedBagPocketSlots: @ 80A93B0
 	push {lr}
 	lsls r0, 24
 	movs r2, 0
-	ldr r1, _080A93D4
+	ldr r1, _080A93D4 @ =gBagPockets
 	lsrs r0, 21
 	adds r0, r1
 	ldrb r1, [r0, 0x4]
@@ -78,7 +78,7 @@ IsBagPocketNonEmpty: @ 80A93EC
 	push {lr}
 	lsls r0, 24
 	movs r2, 0
-	ldr r1, _080A9410
+	ldr r1, _080A9410 @ =gBagPockets
 	lsrs r0, 21
 	subs r0, 0x8
 	adds r0, r1
@@ -131,7 +131,7 @@ _080A9440:
 	subs r0, 0x1
 	lsls r0, 24
 	movs r3, 0
-	ldr r6, _080A9490
+	ldr r6, _080A9490 @ =gBagPockets
 	lsrs r2, r0, 21
 	adds r0, r2, r6
 	ldrb r0, [r0, 0x4]
@@ -193,13 +193,13 @@ CheckBagHasSpace: @ 80A9494
 	subs r0, 0x1
 	lsls r0, 24
 	lsrs r1, r0, 24
-	ldr r5, _080A955C
+	ldr r5, _080A955C @ =0x000003e7
 	cmp r1, 0x3
 	beq _080A94C6
 	movs r5, 0x63
 _080A94C6:
 	movs r3, 0
-	ldr r0, _080A9560
+	ldr r0, _080A9560 @ =gBagPockets
 	mov r8, r0
 	lsls r2, r1, 3
 	adds r0, r2, r0
@@ -316,7 +316,7 @@ AddBagItem: @ 80A9574
 	subs r0, 0x1
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r1, _080A9648
+	ldr r1, _080A9648 @ =gBagPockets
 	lsls r0, r6, 3
 	adds r5, r0, r1
 	ldr r1, [r5]
@@ -324,7 +324,7 @@ AddBagItem: @ 80A9574
 	lsls r2, 2
 	mov r0, sp
 	bl memcpy
-	ldr r7, _080A964C
+	ldr r7, _080A964C @ =0x000003e7
 	cmp r6, 0x3
 	beq _080A95B8
 	movs r7, 0x63
@@ -356,7 +356,7 @@ _080A95C8:
 	lsls r0, 16
 	lsrs r4, r0, 16
 	strh r7, [r3, 0x2]
-	ldr r2, _080A9648
+	ldr r2, _080A9648 @ =gBagPockets
 	mov r9, r2
 	lsls r3, r6, 3
 	cmp r4, 0
@@ -369,7 +369,7 @@ _080A95F6:
 	cmp r1, r0
 	bcc _080A95C8
 _080A9602:
-	ldr r2, _080A9648
+	ldr r2, _080A9648 @ =gBagPockets
 	mov r9, r2
 	lsls r3, r6, 3
 	cmp r4, 0
@@ -412,7 +412,7 @@ _080A9648: .4byte gBagPockets
 _080A964C: .4byte 0x000003e7
 _080A9650:
 	strh r0, [r3, 0x2]
-	ldr r0, _080A965C
+	ldr r0, _080A965C @ =gBagPockets
 	lsls r1, r6, 3
 	adds r1, r0
 	b _080A966A
@@ -467,7 +467,7 @@ RemoveBagItem: @ 80A9688
 	lsrs r0, 24
 	mov r12, r0
 	movs r5, 0
-	ldr r1, _080A96F4
+	ldr r1, _080A96F4 @ =gBagPockets
 	lsls r2, r0, 3
 	adds r0, r2, r1
 	ldrb r0, [r0, 0x4]
@@ -503,11 +503,11 @@ _080A96EE:
 	.align 2, 0
 _080A96F4: .4byte gBagPockets
 _080A96F8:
-	ldr r0, _080A972C
+	ldr r0, _080A972C @ =gBagPockets
 	mov r2, r12
 	lsls r1, r2, 3
 	adds r5, r1, r0
-	ldr r2, _080A9730
+	ldr r2, _080A9730 @ =gUnknown_02038560
 	ldrb r3, [r5, 0x4]
 	mov r8, r0
 	adds r7, r1, 0
@@ -655,7 +655,7 @@ _080A97F6:
 FindFreePCItemSlot: @ 80A97FC
 	push {lr}
 	movs r1, 0
-	ldr r3, _080A981C
+	ldr r3, _080A981C @ =gSaveBlock1
 	movs r2, 0x93
 	lsls r2, 3
 _080A9806:
@@ -690,7 +690,7 @@ CountUsedPCItemSlots: @ 80A9834
 	push {r4,lr}
 	movs r2, 0
 	movs r1, 0
-	ldr r4, _080A9864
+	ldr r4, _080A9864 @ =gSaveBlock1
 	movs r3, 0x93
 	lsls r3, 3
 _080A9840:
@@ -725,10 +725,10 @@ CheckPCHasItem: @ 80A9868
 	lsls r1, 16
 	lsrs r1, 16
 	movs r3, 0
-	ldr r7, _080A9894
+	ldr r7, _080A9894 @ =gSaveBlock1
 	movs r6, 0x93
 	lsls r6, 3
-	ldr r5, _080A9898
+	ldr r5, _080A9898 @ =0x0000049a
 _080A987C:
 	lsls r0, r3, 2
 	adds r2, r0, r7
@@ -766,12 +766,12 @@ AddPCItem: @ 80A98B0
 	lsrs r6, r0, 16
 	lsls r1, 16
 	lsrs r4, r1, 16
-	ldr r1, _080A9914
+	ldr r1, _080A9914 @ =0x02025bcc
 	mov r0, sp
 	movs r2, 0xC8
 	bl memcpy
 	movs r5, 0
-	ldr r0, _080A9918
+	ldr r0, _080A9918 @ =0x0000fc19
 	adds r7, r0, 0
 _080A98CC:
 	lsls r0, r5, 2
@@ -782,7 +782,7 @@ _080A98CC:
 	bne _080A98F0
 	ldrh r1, [r2, 0x2]
 	adds r0, r1, r4
-	ldr r3, _080A991C
+	ldr r3, _080A991C @ =0x000003e7
 	cmp r0, r3
 	ble _080A9920
 	adds r0, r4, r7
@@ -822,7 +822,7 @@ _080A9924:
 	strh r6, [r0]
 	strh r4, [r0, 0x2]
 _080A992C:
-	ldr r0, _080A9940
+	ldr r0, _080A9940 @ =0x02025bcc
 	mov r1, sp
 	movs r2, 0xC8
 	bl memcpy
@@ -842,10 +842,10 @@ RemovePCItem: @ 80A9944
 	lsls r0, 24
 	lsls r1, 16
 	lsrs r1, 16
-	ldr r2, _080A9974
+	ldr r2, _080A9974 @ =gSaveBlock1
 	lsrs r0, 22
 	adds r3, r0, r2
-	ldr r0, _080A9978
+	ldr r0, _080A9978 @ =0x0000049a
 	adds r2, r3, r0
 	ldrh r0, [r2]
 	subs r0, r1
@@ -871,7 +871,7 @@ _080A9978: .4byte 0x0000049a
 CompactPCItems: @ 80A997C
 	push {r4-r7,lr}
 	movs r2, 0
-	ldr r0, _080A99CC
+	ldr r0, _080A99CC @ =gSaveBlock1
 	mov r12, r0
 _080A9984:
 	adds r1, r2, 0x1
@@ -886,7 +886,7 @@ _080A9984:
 	movs r2, 0x93
 	lsls r2, 3
 	adds r5, r0, r2
-	ldr r6, _080A99D0
+	ldr r6, _080A99D0 @ =0x02025bcc
 	adds r4, r1, r6
 _080A99A0:
 	ldrh r0, [r5]
@@ -920,11 +920,11 @@ _080A99D0: .4byte 0x02025bcc
 	thumb_func_start SwapRegisteredBike
 SwapRegisteredBike: @ 80A99D4
 	push {lr}
-	ldr r0, _080A99F0
-	ldr r1, _080A99F4
+	ldr r0, _080A99F0 @ =gSaveBlock1
+	ldr r1, _080A99F4 @ =0x00000496
 	adds r2, r0, r1
 	ldrh r1, [r2]
-	ldr r3, _080A99F8
+	ldr r3, _080A99F8 @ =0x00000103
 	cmp r1, r3
 	beq _080A99FC
 	movs r0, 0x88
@@ -976,7 +976,7 @@ ItemId_GetItem: @ 80A9A24
 	lsrs r0, 16
 	movs r1, 0x2C
 	muls r0, r1
-	ldr r1, _080A9A40
+	ldr r1, _080A9A40 @ =gItems
 	adds r0, r1
 	pop {r1}
 	bx r1
@@ -989,7 +989,7 @@ ItemId_GetId: @ 80A9A44
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9A64
+	ldr r4, _080A9A64 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1009,7 +1009,7 @@ ItemId_GetPrice: @ 80A9A68
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9A88
+	ldr r4, _080A9A88 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1029,7 +1029,7 @@ ItemId_GetHoldEffect: @ 80A9A8C
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9AAC
+	ldr r4, _080A9AAC @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1049,7 +1049,7 @@ ItemId_GetHoldEffectParam: @ 80A9AB0
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9AD0
+	ldr r4, _080A9AD0 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1069,7 +1069,7 @@ ItemId_GetDescription: @ 80A9AD4
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9AF4
+	ldr r4, _080A9AF4 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1091,7 +1091,7 @@ ItemId_CopyDescription: @ 80A9AF8
 	adds r6, r0, 0
 	adds r0, r1, 0
 	adds r5, r2, 0x1
-	ldr r4, _080A9B34
+	ldr r4, _080A9B34 @ =gItems
 	lsls r0, 16
 	lsrs r0, 16
 	bl SanitizeItemId
@@ -1146,7 +1146,7 @@ ItemId_GetImportance: @ 80A9B58
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9B78
+	ldr r4, _080A9B78 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1166,7 +1166,7 @@ ItemId_GetUnknownValue: @ 80A9B7C
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9B9C
+	ldr r4, _080A9B9C @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1186,7 +1186,7 @@ ItemId_GetPocket: @ 80A9BA0
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9BC0
+	ldr r4, _080A9BC0 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1206,7 +1206,7 @@ ItemId_GetType: @ 80A9BC4
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9BE4
+	ldr r4, _080A9BE4 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1226,7 +1226,7 @@ ItemId_GetFieldFunc: @ 80A9BE8
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9C08
+	ldr r4, _080A9C08 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1247,7 +1247,7 @@ ItemId_GetBattleUsage: @ 80A9C0C
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9C2C
+	ldr r4, _080A9C2C @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1268,7 +1268,7 @@ ItemId_GetBattleFunc: @ 80A9C30
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9C50
+	ldr r4, _080A9C50 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16
@@ -1289,7 +1289,7 @@ ItemId_GetSecondaryId: @ 80A9C54
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _080A9C74
+	ldr r4, _080A9C74 @ =gItems
 	bl SanitizeItemId
 	lsls r0, 16
 	lsrs r0, 16

@@ -14,7 +14,7 @@ CreateShopMenu: @ 80B2EA4
 	lsls r4, 24
 	lsrs r4, 24
 	bl ScriptContext2_Enable
-	ldr r1, _080B2EE0
+	ldr r1, _080B2EE0 @ =gUnknown_03000708
 	movs r0, 0
 	strb r4, [r1, 0xC]
 	strb r0, [r1, 0x9]
@@ -27,8 +27,8 @@ CreateShopMenu: @ 80B2EA4
 	movs r2, 0xA
 	movs r3, 0x7
 	bl MenuDrawTextWindow
-	ldr r3, _080B2EE4
-	ldr r0, _080B2EE8
+	ldr r3, _080B2EE4 @ =gUnknown_083CC6D0
+	ldr r0, _080B2EE8 @ =gUnknown_083CC6E8
 	str r0, [sp]
 	movs r0, 0x1
 	movs r1, 0x1
@@ -47,15 +47,15 @@ _080B2EEC:
 	movs r2, 0xA
 	movs r3, 0x5
 	bl MenuDrawTextWindow
-	ldr r3, _080B2F3C
-	ldr r0, _080B2F40
+	ldr r3, _080B2F3C @ =gUnknown_083CC6D0
+	ldr r0, _080B2F40 @ =gUnknown_083CC6EB
 	str r0, [sp]
 	movs r0, 0x1
 	movs r1, 0x1
 	movs r2, 0x2
 	bl PrintMenuItemsReordered
 _080B2F0C:
-	ldr r0, _080B2F44
+	ldr r0, _080B2F44 @ =gUnknown_03000708
 	ldrb r3, [r0, 0xA]
 	adds r3, 0x1
 	lsls r3, 24
@@ -68,7 +68,7 @@ _080B2F0C:
 	movs r1, 0x1
 	movs r2, 0x1
 	bl InitMenu
-	ldr r0, _080B2F48
+	ldr r0, _080B2F48 @ =sub_80B2E38
 	movs r1, 0x8
 	bl CreateTask
 	lsls r0, 24
@@ -86,7 +86,7 @@ _080B2F48: .4byte sub_80B2E38
 
 	thumb_func_start SetShopMenuCallback
 SetShopMenuCallback: @ 80B2F4C
-	ldr r1, _080B2F54
+	ldr r1, _080B2F54 @ =gUnknown_03000708
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -98,7 +98,7 @@ SetShopItemsForSale: @ 80B2F58
 	push {lr}
 	adds r1, r0, 0
 	movs r2, 0
-	ldr r3, _080B2F84
+	ldr r3, _080B2F84 @ =gUnknown_03000708
 	str r1, [r3, 0x4]
 	strb r2, [r3, 0x8]
 	ldrh r0, [r1]
@@ -128,13 +128,13 @@ sub_80B2E38: @ 80B2F88
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r2, _080B2FB0
+	ldr r2, _080B2FB0 @ =gMain
 	ldrh r1, [r2, 0x30]
 	movs r0, 0x40
 	ands r0, r1
 	cmp r0, 0
 	beq _080B2FB8
-	ldr r4, _080B2FB4
+	ldr r4, _080B2FB4 @ =gUnknown_03000708
 	ldrb r0, [r4, 0x9]
 	cmp r0, 0
 	beq _080B3044
@@ -151,7 +151,7 @@ _080B2FB8:
 	ands r0, r1
 	cmp r0, 0
 	beq _080B2FE0
-	ldr r4, _080B2FDC
+	ldr r4, _080B2FDC @ =gUnknown_03000708
 	ldrb r0, [r4, 0x9]
 	ldrb r1, [r4, 0xA]
 	cmp r0, r1
@@ -173,20 +173,20 @@ _080B2FE0:
 	beq _080B3030
 	movs r0, 0x5
 	bl PlaySE
-	ldr r3, _080B3000
+	ldr r3, _080B3000 @ =gUnknown_03000708
 	ldrb r0, [r3, 0xC]
 	cmp r0, 0
 	bne _080B300C
-	ldr r1, _080B3004
-	ldr r2, _080B3008
+	ldr r1, _080B3004 @ =gUnknown_083CC6D0
+	ldr r2, _080B3008 @ =gUnknown_083CC6E8
 	b _080B3010
 	.align 2, 0
 _080B3000: .4byte gUnknown_03000708
 _080B3004: .4byte gUnknown_083CC6D0
 _080B3008: .4byte gUnknown_083CC6E8
 _080B300C:
-	ldr r1, _080B3028
-	ldr r2, _080B302C
+	ldr r1, _080B3028 @ =gUnknown_083CC6D0
+	ldr r2, _080B302C @ =gUnknown_083CC6EB
 _080B3010:
 	ldrb r0, [r3, 0x9]
 	adds r0, r2
@@ -221,16 +221,16 @@ sub_80B2EFC: @ 80B304C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B3074
+	ldr r2, _080B3074 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r2, _080B3078
+	ldr r2, _080B3078 @ =BuyMenuDrawGraphics
 	lsrs r0, r2, 16
 	strh r0, [r1, 0x18]
 	strh r2, [r1, 0x1A]
-	ldr r0, _080B307C
+	ldr r0, _080B307C @ =sub_80B2FA0
 	str r0, [r1]
 	movs r0, 0x1
 	movs r1, 0
@@ -248,16 +248,16 @@ sub_80B2F30: @ 80B3080
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B30A8
+	ldr r2, _080B30A8 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r2, _080B30AC
+	ldr r2, _080B30AC @ =sub_80A6300
 	lsrs r0, r2, 16
 	strh r0, [r1, 0x18]
 	strh r2, [r1, 0x1A]
-	ldr r0, _080B30B0
+	ldr r0, _080B30B0 @ =sub_80B2FA0
 	str r0, [r1]
 	movs r0, 0x1
 	movs r1, 0
@@ -286,7 +286,7 @@ HandleShopMenuQuit: @ 80B30B4
 	bl ScriptContext2_Disable
 	adds r0, r4, 0
 	bl DestroyTask
-	ldr r0, _080B30EC
+	ldr r0, _080B30EC @ =gUnknown_03000708
 	ldr r0, [r0]
 	cmp r0, 0
 	beq _080B30E6
@@ -304,13 +304,13 @@ sub_80B2FA0: @ 80B30F0
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080B3124
+	ldr r0, _080B3124 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _080B311E
-	ldr r0, _080B3128
+	ldr r0, _080B3128 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -337,7 +337,7 @@ ReturnToShopMenuAfterExitingSellMenu: @ 80B312C
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _080B3148
+	ldr r0, _080B3148 @ =gUnknown_03000708
 	ldrb r0, [r0, 0xC]
 	bl CreateShopMenu
 	adds r0, r4, 0
@@ -360,12 +360,12 @@ Task_ExitSellMenu: @ 80B314C
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _080B3190
-	ldr r0, _080B3178
+	ldr r0, _080B3178 @ =gUnknown_03000708
 	ldrb r0, [r0, 0xC]
 	cmp r0, 0x2
 	bne _080B3184
-	ldr r1, _080B317C
-	ldr r2, _080B3180
+	ldr r1, _080B317C @ =gOtherText_CanIHelpYou
+	ldr r2, _080B3180 @ =ReturnToShopMenuAfterExitingSellMenu
 	adds r0, r4, 0
 	movs r3, 0
 	bl DisplayItemMessageOnField
@@ -375,8 +375,8 @@ _080B3178: .4byte gUnknown_03000708
 _080B317C: .4byte gOtherText_CanIHelpYou
 _080B3180: .4byte ReturnToShopMenuAfterExitingSellMenu
 _080B3184:
-	ldr r1, _080B3198
-	ldr r2, _080B319C
+	ldr r1, _080B3198 @ =gOtherText_AnythingElse
+	ldr r2, _080B319C @ =ReturnToShopMenuAfterExitingSellMenu
 	adds r0, r5, 0
 	movs r3, 0
 	bl DisplayItemMessageOnField
@@ -393,7 +393,7 @@ _080B319C: .4byte ReturnToShopMenuAfterExitingSellMenu
 sub_80B3050: @ 80B31A0
 	push {lr}
 	bl pal_fill_black
-	ldr r0, _080B31B4
+	ldr r0, _080B31B4 @ =Task_ExitSellMenu
 	movs r1, 0x8
 	bl CreateTask
 	pop {r0}
@@ -416,12 +416,12 @@ sub_80B3068: @ 80B31B8
 unref_sub_80B3078: @ 80B31C8
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B31DC
+	ldr r2, _080B31DC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r1, r2
-	ldr r0, _080B31E0
+	ldr r0, _080B31E0 @ =Task_ExitSellMenu
 	str r0, [r1]
 	bx lr
 	.align 2, 0
@@ -446,18 +446,18 @@ sub_80B30AC: @ 80B31FC
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r3, _080B3240
-	ldr r1, _080B3244
-	ldr r0, _080B3248
+	ldr r3, _080B3240 @ =0x020219cc
+	ldr r1, _080B3244 @ =0x0600e800
+	ldr r0, _080B3248 @ =0x040000d4
 	str r3, [r0]
 	str r1, [r0, 0x4]
-	ldr r4, _080B324C
+	ldr r4, _080B324C @ =0x80000400
 	str r4, [r0, 0x8]
 	ldr r1, [r0, 0x8]
 	movs r2, 0x80
 	lsls r2, 4
 	adds r1, r3, r2
-	ldr r2, _080B3250
+	ldr r2, _080B3250 @ =0x0600e000
 	str r1, [r0]
 	str r2, [r0, 0x4]
 	str r4, [r0, 0x8]
@@ -465,7 +465,7 @@ sub_80B30AC: @ 80B31FC
 	movs r1, 0x80
 	lsls r1, 5
 	adds r3, r1
-	ldr r1, _080B3254
+	ldr r1, _080B3254 @ =0x0600f000
 	str r3, [r0]
 	str r1, [r0, 0x4]
 	str r4, [r0, 0x8]
@@ -490,7 +490,7 @@ BuyMenuDrawGraphics: @ 80B3258
 	sub sp, 0x8
 	bl sub_80F9438
 	bl remove_some_task
-	ldr r0, _080B3354
+	ldr r0, _080B3354 @ =0x04000014
 	movs r5, 0
 	strh r5, [r0]
 	adds r0, 0x2
@@ -503,7 +503,7 @@ BuyMenuDrawGraphics: @ 80B3258
 	strh r5, [r0]
 	adds r0, 0x2
 	strh r5, [r0]
-	ldr r0, _080B3358
+	ldr r0, _080B3358 @ =gPaletteFade
 	mov r8, r0
 	ldrb r0, [r0, 0x8]
 	movs r1, 0x80
@@ -514,20 +514,20 @@ BuyMenuDrawGraphics: @ 80B3258
 	lsls r1, 19
 	movs r6, 0
 	str r6, [sp, 0x4]
-	ldr r0, _080B335C
+	ldr r0, _080B335C @ =0x040000d4
 	add r2, sp, 0x4
 	str r2, [r0]
 	str r1, [r0, 0x4]
-	ldr r1, _080B3360
+	ldr r1, _080B3360 @ =0x85000100
 	str r1, [r0, 0x8]
 	ldr r0, [r0, 0x8]
-	ldr r0, _080B3364
-	ldr r1, _080B3368
+	ldr r0, _080B3364 @ =gBuyMenuFrame_Gfx
+	ldr r1, _080B3368 @ =0x06007c00
 	bl LZDecompressVram
-	ldr r0, _080B336C
-	ldr r1, _080B3370
+	ldr r0, _080B336C @ =gBuyMenuFrame_Tilemap
+	ldr r1, _080B3370 @ =0x02018000
 	bl sub_800D238
-	ldr r0, _080B3374
+	ldr r0, _080B3374 @ =gMenuMoneyPal
 	movs r1, 0xC0
 	movs r2, 0x20
 	bl LoadCompressedPalette
@@ -535,13 +535,13 @@ BuyMenuDrawGraphics: @ 80B3258
 	bl ResetPaletteFade
 	bl ResetSpriteData
 	bl ResetTasks
-	ldr r4, _080B3378
+	ldr r4, _080B3378 @ =gWindowConfig_81E6DFC
 	adds r0, r4, 0
 	bl SetUpWindowConfig
 	adds r0, r4, 0
 	bl InitMenuWindow
 	bl BuyMenuDrawMapGraphics
-	ldr r0, _080B337C
+	ldr r0, _080B337C @ =gUnknown_03000708
 	strb r6, [r0, 0x9]
 	strb r5, [r0, 0xB]
 	movs r0, 0
@@ -549,7 +549,7 @@ BuyMenuDrawGraphics: @ 80B3258
 	movs r2, 0x20
 	movs r3, 0x20
 	bl MenuZeroFillWindowRect
-	ldr r0, _080B3380
+	ldr r0, _080B3380 @ =gSaveBlock1
 	movs r1, 0x92
 	lsls r1, 3
 	adds r0, r1
@@ -562,7 +562,7 @@ BuyMenuDrawGraphics: @ 80B3258
 	bl sub_80B3764
 	bl sub_80B37EC
 	bl sub_80B3270
-	ldr r0, _080B3384
+	ldr r0, _080B3384 @ =sub_80B40E8
 	movs r1, 0x8
 	bl CreateTask
 	bl sub_80B3240
@@ -578,9 +578,9 @@ BuyMenuDrawGraphics: @ 80B3258
 	movs r0, 0x7F
 	ands r0, r1
 	strb r0, [r2, 0x8]
-	ldr r0, _080B3388
+	ldr r0, _080B3388 @ =sub_80B30AC
 	bl SetVBlankCallback
-	ldr r0, _080B338C
+	ldr r0, _080B338C @ =sub_80B3094
 	bl SetMainCallback2
 	add sp, 0x8
 	pop {r3}
@@ -610,7 +610,7 @@ _080B338C: .4byte sub_80B3094
 sub_80B3240: @ 80B3390
 	push {lr}
 	sub sp, 0x4
-	ldr r1, _080B33BC
+	ldr r1, _080B33BC @ =gUnknown_083CC710
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -634,7 +634,7 @@ _080B33BC: .4byte gUnknown_083CC710
 sub_80B3270: @ 80B33C0
 	push {lr}
 	bl sub_80F944C
-	ldr r0, _080B33F0
+	ldr r0, _080B33F0 @ =gUnknown_03000708
 	ldrb r0, [r0, 0x8]
 	cmp r0, 0x7
 	bls _080B33EA
@@ -659,7 +659,7 @@ _080B33F0: .4byte gUnknown_03000708
 	thumb_func_start sub_80B32A4
 sub_80B32A4: @ 80B33F4
 	push {lr}
-	ldr r0, _080B3408
+	ldr r0, _080B3408 @ =gUnknown_03000708
 	ldrb r0, [r0, 0xB]
 	cmp r0, 0
 	bne _080B340C
@@ -674,7 +674,7 @@ _080B340C:
 	movs r1, 0
 	bl sub_80F979C
 _080B3414:
-	ldr r1, _080B342C
+	ldr r1, _080B342C @ =gUnknown_03000708
 	ldrb r0, [r1, 0xB]
 	adds r0, 0x7
 	ldrb r1, [r1, 0x8]
@@ -704,7 +704,7 @@ sub_80B32EC: @ 80B343C
 	adds r1, r2
 	lsls r1, 1
 	adds r1, r0
-	ldr r2, _080B3454
+	ldr r2, _080B3454 @ =0x0000c3e1
 	adds r0, r2, 0
 	strh r0, [r1]
 	strh r0, [r1, 0x2]
@@ -762,12 +762,12 @@ _080B34A6:
 	beq _080B34E8
 	b _080B3510
 _080B34AC:
-	ldr r5, _080B34B0
+	ldr r5, _080B34B0 @ =0x020221cc
 	b _080B34B6
 	.align 2, 0
 _080B34B0: .4byte 0x020221cc
 _080B34B4:
-	ldr r5, _080B34E0
+	ldr r5, _080B34E0 @ =0x020229cc
 _080B34B6:
 	lsls r6, r0, 16
 	asrs r6, 16
@@ -778,7 +778,7 @@ _080B34B6:
 	adds r2, r4, 0
 	adds r3, r7, 0
 	bl BuyMenuDrawMapMetatileLayer
-	ldr r0, _080B34E4
+	ldr r0, _080B34E4 @ =0xfffff800
 	adds r5, r0
 	adds r3, r7, 0
 	adds r3, 0x8
@@ -791,7 +791,7 @@ _080B34B6:
 _080B34E0: .4byte 0x020229cc
 _080B34E4: .4byte 0xfffff800
 _080B34E8:
-	ldr r5, _080B3518
+	ldr r5, _080B3518 @ =0x020229cc
 	lsls r6, r0, 16
 	asrs r6, 16
 	lsls r4, r1, 16
@@ -801,7 +801,7 @@ _080B34E8:
 	adds r2, r4, 0
 	adds r3, r7, 0
 	bl BuyMenuDrawMapMetatileLayer
-	ldr r0, _080B351C
+	ldr r0, _080B351C @ =0xfffff000
 	adds r5, r0
 	adds r3, r7, 0
 	adds r3, 0x8
@@ -827,7 +827,7 @@ sub_80B33D0: @ 80B3520
 	adds r4, r1, 0
 	mov r8, r2
 	lsls r4, 22
-	ldr r5, _080B3568
+	ldr r5, _080B3568 @ =0x020229cc
 	lsls r6, 17
 	asrs r6, 16
 	movs r0, 0x80
@@ -839,7 +839,7 @@ sub_80B33D0: @ 80B3520
 	adds r2, r4, 0
 	mov r3, r8
 	bl BuyMenuDrawMapMetatileLayer
-	ldr r0, _080B356C
+	ldr r0, _080B356C @ =0xfffff800
 	adds r5, r0
 	movs r0, 0x8
 	add r8, r0
@@ -880,9 +880,9 @@ sub_80B3420: @ 80B3570
 	subs r0, 0x3
 	strh r0, [r4]
 	movs r1, 0
-	ldr r0, _080B35F8
+	ldr r0, _080B35F8 @ =0x000001ff
 	mov r10, r0
-	ldr r2, _080B35FC
+	ldr r2, _080B35FC @ =gMapHeader
 	mov r9, r2
 _080B35A2:
 	movs r4, 0
@@ -934,7 +934,7 @@ _080B3600:
 	mov r2, r9
 	ldr r0, [r2]
 	ldr r1, [r0, 0x14]
-	ldr r2, _080B361C
+	ldr r2, _080B361C @ =0xfffffe00
 	adds r0, r5, r2
 	lsls r0, 4
 	ldr r2, [r1, 0xC]
@@ -965,7 +965,7 @@ _080B363C:
 	mov r2, r9
 	ldr r1, [r2]
 	ldr r2, [r1, 0x14]
-	ldr r3, _080B369C
+	ldr r3, _080B369C @ =0xfffffe00
 	adds r1, r5, r3
 	lsls r1, 4
 	ldr r2, [r2, 0xC]
@@ -983,7 +983,7 @@ _080B3656:
 	beq _080B3670
 	lsls r1, 17
 	asrs r1, 16
-	ldr r0, _080B36A0
+	ldr r0, _080B36A0 @ =0x020219cc
 	movs r2, 0x40
 	bl sub_80B32EC
 _080B3670:
@@ -1044,7 +1044,7 @@ sub_80B356C: @ 80B36BC
 	lsrs r0, 24
 	str r0, [sp, 0x4]
 	movs r5, 0
-	ldr r2, _080B37C4
+	ldr r2, _080B37C4 @ =gUnknown_020386A4
 	movs r1, 0x10
 _080B36E8:
 	lsls r0, r5, 3
@@ -1056,7 +1056,7 @@ _080B36E8:
 	cmp r5, 0xF
 	bls _080B36E8
 	movs r5, 0
-	ldr r7, _080B37C8
+	ldr r7, _080B37C8 @ =gUnknown_020386AA
 	subs r1, r7, 0x6
 	mov r9, r1
 _080B3700:
@@ -1065,14 +1065,14 @@ _080B3700:
 	mov r10, r2
 _080B3706:
 	mov r1, sp
-	ldr r3, _080B37CC
+	ldr r3, _080B37CC @ =0x0000fffd
 	adds r0, r3, 0
 	ldrh r1, [r1]
 	adds r0, r1
 	adds r0, r4
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r2, _080B37D0
+	ldr r2, _080B37D0 @ =0x0000fffe
 	adds r1, r2, 0
 	mov r3, sp
 	ldrh r3, [r3, 0x2]
@@ -1096,10 +1096,10 @@ _080B3706:
 	adds r0, 0x2
 	adds r0, r3, r0
 	strh r4, [r0]
-	ldr r1, _080B37D4
+	ldr r1, _080B37D4 @ =gUnknown_020386A8
 	adds r0, r3, r1
 	strh r5, [r0]
-	ldr r1, _080B37D8
+	ldr r1, _080B37D8 @ =gMapObjects
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
@@ -1179,10 +1179,10 @@ sub_80B368C: @ 80B37DC
 	push {r7}
 	sub sp, 0x4
 	movs r5, 0
-	ldr r6, _080B3860
+	ldr r6, _080B3860 @ =gUnknown_020386A4
 	adds r0, r6, 0x6
 	mov r8, r0
-	ldr r7, _080B3864
+	ldr r7, _080B3864 @ =gMapObjects
 _080B37EE:
 	lsls r4, r5, 3
 	adds r1, r4, r6
@@ -1213,14 +1213,14 @@ _080B37EE:
 	asrs r3, 16
 	movs r1, 0x2
 	str r1, [sp]
-	ldr r1, _080B3868
+	ldr r1, _080B3868 @ =SpriteCallbackDummy
 	bl AddPseudoFieldObject
 	lsls r0, 24
 	lsrs r0, 24
 	lsls r2, r0, 4
 	adds r2, r0
 	lsls r2, 2
-	ldr r0, _080B386C
+	ldr r0, _080B386C @ =gSprites
 	adds r2, r0
 	mov r1, r8
 	adds r0, r4, r1
@@ -1250,10 +1250,10 @@ _080B386C: .4byte gSprites
 sub_80B3720: @ 80B3870
 	push {r4-r6,lr}
 	movs r1, 0
-	ldr r6, _080B38A4
-	ldr r5, _080B38A8
-	ldr r4, _080B38AC
-	ldr r0, _080B38B0
+	ldr r6, _080B38A4 @ =0x020219cc
+	ldr r5, _080B38A8 @ =0x000003ff
+	ldr r4, _080B38AC @ =0x02018000
+	ldr r0, _080B38B0 @ =0x0000c3e0
 	adds r3, r0, 0
 _080B387E:
 	lsls r0, r1, 16
@@ -1294,7 +1294,7 @@ sub_80B3764: @ 80B38B4
 	adds r1, r5, 0
 	movs r2, 0
 	bl sub_80B39D0
-	ldr r0, _080B38E8
+	ldr r0, _080B38E8 @ =gUnknown_03000708
 	ldrb r0, [r0, 0x9]
 	str r0, [sp]
 	movs r0, 0xF
@@ -1316,10 +1316,10 @@ _080B38E8: .4byte gUnknown_03000708
 sub_80B379C: @ 80B38EC
 	push {r4-r7,lr}
 	movs r1, 0
-	ldr r0, _080B3930
+	ldr r0, _080B3930 @ =0x020219cc
 	mov r12, r0
-	ldr r7, _080B3934
-	ldr r0, _080B3938
+	ldr r7, _080B3934 @ =0x02018300
+	ldr r0, _080B3938 @ =0x0000c3e0
 	adds r6, r0, 0
 _080B38FA:
 	movs r2, 0
@@ -1371,7 +1371,7 @@ sub_80B37F8: @ 80B3948
 	adds r6, r0, 0
 	lsls r6, 24
 	lsrs r6, 24
-	ldr r1, _080B39D4
+	ldr r1, _080B39D4 @ =gUnknown_03000708
 	ldrb r0, [r1, 0xB]
 	ldrb r2, [r1, 0x9]
 	adds r0, r2
@@ -1388,7 +1388,7 @@ sub_80B37F8: @ 80B3948
 	lsls r0, 24
 	lsrs r0, 24
 	asrs r4, r0
-	ldr r0, _080B39D8
+	ldr r0, _080B39D8 @ =gTasks
 	lsls r5, r6, 2
 	adds r5, r6
 	lsls r5, 3
@@ -1400,7 +1400,7 @@ sub_80B37F8: @ 80B3948
 	movs r2, 0x6
 	movs r3, 0xB
 	bl sub_80B7A94
-	ldr r0, _080B39DC
+	ldr r0, _080B39DC @ =gStringVar1
 	movs r1, 0xFC
 	strb r1, [r0]
 	movs r1, 0x14
@@ -1413,14 +1413,14 @@ sub_80B37F8: @ 80B3948
 	movs r2, 0x1
 	movs r3, 0x2
 	bl ConvertIntToDecimalStringN
-	ldr r0, _080B39E0
+	ldr r0, _080B39E0 @ =gOtherText_xString1
 	movs r1, 0x1
 	movs r2, 0xB
 	bl MenuPrint
-	ldr r0, _080B39E4
+	ldr r0, _080B39E4 @ =0x020219cc
 	movs r1, 0x2
 	str r1, [sp]
-	ldr r1, _080B39E8
+	ldr r1, _080B39E8 @ =0x0000c3e1
 	str r1, [sp, 0x4]
 	movs r1, 0x1
 	movs r2, 0xB
@@ -1452,7 +1452,7 @@ sub_80B389C: @ 80B39EC
 	mov r9, r2
 	lsls r1, 24
 	lsrs r4, r1, 24
-	ldr r5, _080B3A7C
+	ldr r5, _080B3A7C @ =gStringVar1
 	mov r0, r8
 	cmp r0, 0
 	beq _080B3A18
@@ -1467,7 +1467,7 @@ _080B3A18:
 	adds r0, r2, 0
 	adds r1, r5, 0
 	bl CopyItemName
-	ldr r6, _080B3A7C
+	ldr r6, _080B3A7C @ =gStringVar1
 	lsls r7, r4, 3
 	movs r0, 0x1
 	str r0, [sp]
@@ -1525,7 +1525,7 @@ sub_80B3930: @ 80B3A80
 	lsls r1, 24
 	lsrs r1, 24
 	mov r9, r1
-	ldr r2, _080B3AF0
+	ldr r2, _080B3AF0 @ =gStringVar1
 	cmp r4, 0
 	beq _080B3AAA
 	movs r0, 0xFC
@@ -1537,12 +1537,12 @@ sub_80B3930: @ 80B3A80
 	adds r2, 0x3
 _080B3AAA:
 	lsls r6, r3, 5
-	ldr r0, _080B3AF4
+	ldr r0, _080B3AF4 @ =0x083f7bf1
 	mov r8, r0
 	adds r1, r6, r0
 	adds r0, r2, 0
 	bl StringCopy
-	ldr r5, _080B3AF0
+	ldr r5, _080B3AF0 @ =gStringVar1
 	mov r0, r9
 	lsls r7, r0, 3
 	movs r0, 0x1
@@ -1561,7 +1561,7 @@ _080B3AD6:
 	subs r0, 0x1
 	adds r3, r6, r0
 	ldrh r1, [r3, 0x14]
-	ldr r0, _080B3AF8
+	ldr r0, _080B3AF8 @ =0x00002710
 	cmp r1, r0
 	bne _080B3AFC
 	movs r0, 0x19
@@ -1638,7 +1638,7 @@ _080B3B6A:
 	lsrs r4, r0, 24
 	cmp r4, r6
 	bgt _080B3B7E
-	ldr r1, _080B3BB8
+	ldr r1, _080B3BB8 @ =gUnknown_03000708
 	ldrb r0, [r1, 0xB]
 	adds r0, r4
 	ldrb r2, [r1, 0x8]
@@ -1647,7 +1647,7 @@ _080B3B6A:
 _080B3B7E:
 	cmp r4, 0x8
 	beq _080B3BB0
-	ldr r1, _080B3BB8
+	ldr r1, _080B3BB8 @ =gUnknown_03000708
 	ldrb r0, [r1, 0xB]
 	adds r0, r4
 	ldrb r1, [r1, 0x8]
@@ -1664,7 +1664,7 @@ _080B3B7E:
 	adds r1, r4, 0
 	movs r2, 0x1C
 	bl MenuFillWindowRectWithBlankTile
-	ldr r0, _080B3BBC
+	ldr r0, _080B3BBC @ =gOtherText_CancelNoTerminator
 	movs r1, 0xE
 	adds r2, r4, 0
 	bl MenuPrint
@@ -1681,7 +1681,7 @@ _080B3BBC: .4byte gOtherText_CancelNoTerminator
 sub_80B3A70: @ 80B3BC0
 	push {r4,lr}
 	sub sp, 0x8
-	ldr r2, _080B3BEC
+	ldr r2, _080B3BEC @ =gUnknown_03000708
 	ldrb r1, [r2, 0xB]
 	ldrb r0, [r2, 0x9]
 	adds r0, r1, r0
@@ -1703,7 +1703,7 @@ sub_80B3A70: @ 80B3BC0
 	.align 2, 0
 _080B3BEC: .4byte gUnknown_03000708
 _080B3BF0:
-	ldr r1, _080B3C18
+	ldr r1, _080B3C18 @ =gDecorations
 	ldr r2, [r2, 0x4]
 	lsls r0, 1
 	adds r0, r2
@@ -1725,7 +1725,7 @@ _080B3C0A:
 	.align 2, 0
 _080B3C18: .4byte gDecorations
 _080B3C1C:
-	ldr r0, _080B3C38
+	ldr r0, _080B3C38 @ =gOtherText_QuitShopping
 	movs r1, 0x30
 	str r1, [sp]
 	movs r1, 0
@@ -1748,7 +1748,7 @@ sub_80B3AEC: @ 80B3C3C
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r0, _080B3CAC
+	ldr r0, _080B3CAC @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -1759,7 +1759,7 @@ sub_80B3AEC: @ 80B3C3C
 	cmp r0, 0
 	beq _080B3CCA
 _080B3C56:
-	ldr r4, _080B3CB0
+	ldr r4, _080B3CB0 @ =gUnknown_03000708
 	ldrb r1, [r4, 0x9]
 	adds r0, r1, 0
 	movs r2, 0
@@ -1775,7 +1775,7 @@ _080B3C56:
 	ldrh r0, [r0]
 	cmp r0, 0x4
 	bne _080B3CC4
-	ldr r0, _080B3CB4
+	ldr r0, _080B3CB4 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
@@ -1791,9 +1791,9 @@ _080B3C56:
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _080B3CC4
-	ldr r1, _080B3CB8
-	ldr r2, _080B3CBC
-	ldr r3, _080B3CC0
+	ldr r1, _080B3CB8 @ =gOtherText_FreePremierBall
+	ldr r2, _080B3CBC @ =sub_80B4378
+	ldr r3, _080B3CC0 @ =0x0000c3e1
 	adds r0, r5, 0
 	bl DisplayItemMessageOnField
 	b _080B3CCA
@@ -1821,8 +1821,8 @@ sub_80B3B80: @ 80B3CD0
 	lsrs r4, 24
 	movs r0, 0x26
 	bl sav12_xor_increment
-	ldr r5, _080B3D10
-	ldr r0, _080B3D14
+	ldr r5, _080B3D10 @ =0x02025bc4
+	ldr r0, _080B3D14 @ =gUnknown_020386A0
 	ldr r1, [r0]
 	adds r0, r5, 0
 	bl sub_80B79E0
@@ -1832,12 +1832,12 @@ sub_80B3B80: @ 80B3CD0
 	movs r1, 0
 	movs r2, 0
 	bl sub_80B7BEC
-	ldr r1, _080B3D18
+	ldr r1, _080B3D18 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _080B3D1C
+	ldr r1, _080B3D1C @ =sub_80B3AEC
 	str r1, [r0]
 	pop {r4,r5}
 	pop {r0}
@@ -1855,7 +1855,7 @@ sub_80B3BD0: @ 80B3D20
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _080B3D40
+	ldr r0, _080B3D40 @ =gUnknown_03000708
 	ldrb r1, [r0, 0x9]
 	adds r0, r1, 0
 	movs r2, 0
@@ -1880,7 +1880,7 @@ sub_80B3BF4: @ 80B3D44
 	movs r2, 0xD
 	movs r3, 0xD
 	bl MenuZeroFillWindowRect
-	ldr r0, _080B3DCC
+	ldr r0, _080B3DCC @ =0x020219cc
 	movs r1, 0x4
 	str r1, [sp]
 	movs r1, 0
@@ -1891,18 +1891,18 @@ sub_80B3BF4: @ 80B3D44
 	bl sub_80A3FA0
 	bl sub_80B379C
 	bl sub_80B3420
-	ldr r0, _080B3DD0
+	ldr r0, _080B3DD0 @ =gSaveBlock1
 	movs r1, 0x92
 	lsls r1, 3
 	adds r0, r1
 	ldr r0, [r0]
-	ldr r1, _080B3DD4
+	ldr r1, _080B3DD4 @ =gUnknown_020386A0
 	ldr r1, [r1]
 	bl IsEnoughMoney
 	lsls r0, 24
 	cmp r0, 0
 	beq _080B3E68
-	ldr r4, _080B3DD8
+	ldr r4, _080B3DD8 @ =gUnknown_03000708
 	ldrb r0, [r4, 0xC]
 	cmp r0, 0
 	bne _080B3DFC
@@ -1913,7 +1913,7 @@ sub_80B3BF4: @ 80B3D44
 	lsls r0, 1
 	adds r0, r1
 	ldrh r0, [r0]
-	ldr r2, _080B3DDC
+	ldr r2, _080B3DDC @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
@@ -1923,9 +1923,9 @@ sub_80B3BF4: @ 80B3D44
 	lsls r0, 24
 	cmp r0, 0
 	beq _080B3DEC
-	ldr r1, _080B3DE0
-	ldr r2, _080B3DE4
-	ldr r3, _080B3DE8
+	ldr r1, _080B3DE0 @ =gOtherText_HereYouGo
+	ldr r2, _080B3DE4 @ =sub_80B3B80
+	ldr r3, _080B3DE8 @ =0x0000c3e1
 	adds r0, r5, 0
 	bl DisplayItemMessageOnField
 	adds r0, r5, 0
@@ -1941,8 +1941,8 @@ _080B3DE0: .4byte gOtherText_HereYouGo
 _080B3DE4: .4byte sub_80B3B80
 _080B3DE8: .4byte 0x0000c3e1
 _080B3DEC:
-	ldr r1, _080B3DF4
-	ldr r2, _080B3DF8
+	ldr r1, _080B3DF4 @ =gOtherText_NoRoomFor
+	ldr r2, _080B3DF8 @ =sub_80B3BD0
 	b _080B3E28
 	.align 2, 0
 _080B3DF4: .4byte gOtherText_NoRoomFor
@@ -1962,16 +1962,16 @@ _080B3DFC:
 	ldrb r0, [r4, 0xC]
 	cmp r0, 0x1
 	bne _080B3E24
-	ldr r1, _080B3E20
+	ldr r1, _080B3E20 @ =gOtherText_HereYouGo2
 	b _080B3E26
 	.align 2, 0
 _080B3E20: .4byte gOtherText_HereYouGo2
 _080B3E24:
-	ldr r1, _080B3E34
+	ldr r1, _080B3E34 @ =gOtherText_HereYouGo3
 _080B3E26:
-	ldr r2, _080B3E38
+	ldr r2, _080B3E38 @ =sub_80B3B80
 _080B3E28:
-	ldr r3, _080B3E3C
+	ldr r3, _080B3E3C @ =0x0000c3e1
 	adds r0, r5, 0
 	bl DisplayItemMessageOnField
 	b _080B3E74
@@ -1980,12 +1980,12 @@ _080B3E34: .4byte gOtherText_HereYouGo3
 _080B3E38: .4byte sub_80B3B80
 _080B3E3C: .4byte 0x0000c3e1
 _080B3E40:
-	ldr r4, _080B3E58
-	ldr r1, _080B3E5C
+	ldr r4, _080B3E58 @ =gStringVar4
+	ldr r1, _080B3E5C @ =gOtherText_SpaceForIsFull
 	adds r0, r4, 0
 	bl StringExpandPlaceholders
-	ldr r2, _080B3E60
-	ldr r3, _080B3E64
+	ldr r2, _080B3E60 @ =sub_80B3BD0
+	ldr r3, _080B3E64 @ =0x0000c3e1
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl DisplayItemMessageOnField
@@ -1996,9 +1996,9 @@ _080B3E5C: .4byte gOtherText_SpaceForIsFull
 _080B3E60: .4byte sub_80B3BD0
 _080B3E64: .4byte 0x0000c3e1
 _080B3E68:
-	ldr r1, _080B3E7C
-	ldr r2, _080B3E80
-	ldr r3, _080B3E84
+	ldr r1, _080B3E7C @ =gOtherText_NotEnoughMoney
+	ldr r2, _080B3E80 @ =sub_80B3BD0
+	ldr r3, _080B3E84 @ =0x0000c3e1
 	adds r0, r5, 0
 	bl DisplayItemMessageOnField
 _080B3E74:
@@ -2023,16 +2023,16 @@ sub_80B3D38: @ 80B3E88
 	movs r1, 0x8
 	movs r2, 0x1
 	bl DisplayYesNoMenu
-	ldr r0, _080B3EC0
+	ldr r0, _080B3EC0 @ =0x020219cc
 	movs r1, 0x4
 	str r1, [sp]
-	ldr r1, _080B3EC4
+	ldr r1, _080B3EC4 @ =0x0000c3e1
 	str r1, [sp, 0x4]
 	movs r1, 0x8
 	movs r2, 0x9
 	movs r3, 0x4
 	bl sub_80A3FA0
-	ldr r1, _080B3EC8
+	ldr r1, _080B3EC8 @ =gUnknown_083CC708
 	adds r0, r4, 0
 	bl sub_80F914C
 	add sp, 0x8
@@ -2052,7 +2052,7 @@ sub_80B3D7C: @ 80B3ECC
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _080B3F10
+	ldr r0, _080B3F10 @ =gUnknown_03000708
 	ldrb r1, [r0, 0x9]
 	adds r0, r1, 0
 	movs r2, 0
@@ -2062,7 +2062,7 @@ sub_80B3D7C: @ 80B3ECC
 	movs r2, 0xD
 	movs r3, 0xD
 	bl MenuZeroFillWindowRect
-	ldr r0, _080B3F14
+	ldr r0, _080B3F14 @ =0x020219cc
 	movs r1, 0x4
 	str r1, [sp]
 	movs r1, 0
@@ -2091,7 +2091,7 @@ sub_80B3DC8: @ 80B3F18
 	lsls r0, 24
 	lsrs r6, r0, 24
 	adds r4, r6, 0
-	ldr r7, _080B3FF8
+	ldr r7, _080B3FF8 @ =gUnknown_03000708
 	ldrb r1, [r7, 0xD]
 	adds r0, r6, 0
 	bl sub_80A52C4
@@ -2102,13 +2102,13 @@ sub_80B3DC8: @ 80B3F18
 	adds r0, r6, 0
 	bl sub_80B37F8
 _080B3F3E:
-	ldr r0, _080B3FFC
+	ldr r0, _080B3FFC @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
 	beq _080B4028
-	ldr r0, _080B4000
+	ldr r0, _080B4000 @ =gUnknown_020386A0
 	mov r8, r0
 	ldrb r0, [r7, 0xB]
 	ldrb r1, [r7, 0x9]
@@ -2126,7 +2126,7 @@ _080B3F3E:
 	lsls r0, 24
 	lsrs r0, 24
 	asrs r4, r0
-	ldr r0, _080B4004
+	ldr r0, _080B4004 @ =gTasks
 	lsls r5, r6, 2
 	adds r5, r6
 	lsls r5, 3
@@ -2141,7 +2141,7 @@ _080B3F3E:
 	movs r2, 0xD
 	movs r3, 0xD
 	bl MenuZeroFillWindowRect
-	ldr r0, _080B4008
+	ldr r0, _080B4008 @ =0x020219cc
 	movs r1, 0x2
 	str r1, [sp]
 	movs r1, 0
@@ -2159,26 +2159,26 @@ _080B3F3E:
 	lsls r0, 1
 	adds r0, r1
 	ldrh r0, [r0]
-	ldr r1, _080B400C
+	ldr r1, _080B400C @ =gStringVar1
 	bl CopyItemName
-	ldr r0, _080B4010
+	ldr r0, _080B4010 @ =gStringVar2
 	movs r2, 0xA
 	ldrsh r1, [r5, r2]
 	movs r2, 0
 	movs r3, 0x2
 	bl ConvertIntToDecimalStringN
-	ldr r0, _080B4014
+	ldr r0, _080B4014 @ =gStringVar3
 	mov r2, r8
 	ldr r1, [r2]
 	movs r2, 0
 	movs r3, 0x8
 	bl ConvertIntToDecimalStringN
-	ldr r4, _080B4018
-	ldr r1, _080B401C
+	ldr r4, _080B4018 @ =gStringVar4
+	ldr r1, _080B401C @ =gOtherText_ThatWillBe
 	adds r0, r4, 0
 	bl StringExpandPlaceholders
-	ldr r2, _080B4020
-	ldr r3, _080B4024
+	ldr r2, _080B4020 @ =sub_80B3D38
+	ldr r3, _080B4024 @ =0x0000c3e1
 	adds r0, r6, 0
 	adds r1, r4, 0
 	bl DisplayItemMessageOnField
@@ -2221,7 +2221,7 @@ sub_80B3EFC: @ 80B404C
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _080B40C8
+	ldr r1, _080B40C8 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -2235,7 +2235,7 @@ sub_80B3EFC: @ 80B404C
 	bl MenuDrawTextWindow
 	adds r0, r5, 0
 	bl sub_80B37F8
-	ldr r6, _080B40CC
+	ldr r6, _080B40CC @ =gUnknown_03000708
 	ldrb r0, [r6, 0xB]
 	ldrb r1, [r6, 0x9]
 	adds r0, r1
@@ -2247,7 +2247,7 @@ sub_80B3EFC: @ 80B404C
 	adds r4, r0, 0
 	movs r0, 0x1
 	bl GetPriceReduction
-	ldr r1, _080B40D0
+	ldr r1, _080B40D0 @ =gSaveBlock1
 	movs r2, 0x92
 	lsls r2, 3
 	adds r1, r2
@@ -2266,12 +2266,12 @@ sub_80B3EFC: @ 80B404C
 	movs r0, 0x63
 _080B40B2:
 	strb r0, [r6, 0xD]
-	ldr r0, _080B40C8
+	ldr r0, _080B40C8 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _080B40D4
+	ldr r0, _080B40D4 @ =sub_80B3DC8
 	str r0, [r1]
 	pop {r4-r6}
 	pop {r0}
@@ -2291,16 +2291,16 @@ sub_80B3F88: @ 80B40D8
 	mov r5, r8
 	push {r5-r7}
 	sub sp, 0x4
-	ldr r0, _080B4170
+	ldr r0, _080B4170 @ =gMenuWindow
 	mov r8, r0
 	ldr r1, [r0, 0x28]
-	ldr r3, _080B4174
+	ldr r3, _080B4174 @ =0x000003de
 	adds r1, r3
 	adds r2, r1, 0
 	adds r2, 0x80
 	ldr r7, [r0, 0x24]
 	mov r10, r7
-	ldr r0, _080B4178
+	ldr r0, _080B4178 @ =0x000003ff
 	mov r9, r0
 	movs r6, 0xD
 _080B40FC:
@@ -2337,14 +2337,14 @@ _080B4124:
 	subs r6, 0x1
 	cmp r6, 0
 	bge _080B40FC
-	ldr r1, _080B417C
+	ldr r1, _080B417C @ =0x00003a20
 	add r1, r10
 	movs r0, 0xF0
 	lsls r0, 3
 	adds r2, r1, r0
-	ldr r3, _080B4180
-	ldr r5, _080B4184
-	ldr r4, _080B4188
+	ldr r3, _080B4180 @ =0x040000d4
+	ldr r5, _080B4184 @ =0x800000f0
+	ldr r4, _080B4188 @ =0xfffffc40
 	movs r6, 0xD
 _080B414C:
 	str r1, [r3]
@@ -2382,7 +2382,7 @@ sub_80B403C: @ 80B418C
 	mov r5, r8
 	push {r5-r7}
 	sub sp, 0x4
-	ldr r0, _080B4228
+	ldr r0, _080B4228 @ =gMenuWindow
 	mov r8, r0
 	ldr r2, [r0, 0x28]
 	adds r1, r2, 0
@@ -2391,7 +2391,7 @@ sub_80B403C: @ 80B418C
 	adds r1, 0x80
 	ldr r3, [r0, 0x24]
 	mov r10, r3
-	ldr r7, _080B422C
+	ldr r7, _080B422C @ =0x000003ff
 	mov r9, r7
 	movs r6, 0xD
 _080B41B0:
@@ -2434,8 +2434,8 @@ _080B41D6:
 	movs r0, 0xF0
 	lsls r0, 3
 	adds r1, r0
-	ldr r3, _080B4230
-	ldr r5, _080B4234
+	ldr r3, _080B4230 @ =0x040000d4
+	ldr r5, _080B4234 @ =0x800000f0
 	movs r4, 0xF0
 	lsls r4, 2
 	movs r6, 0xD
@@ -2472,7 +2472,7 @@ sub_80B40E8: @ 80B4238
 	lsls r0, 24
 	lsrs r7, r0, 24
 	mov r8, r7
-	ldr r0, _080B4284
+	ldr r0, _080B4284 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -2480,13 +2480,13 @@ sub_80B40E8: @ 80B4238
 	beq _080B4252
 	b _080B44BC
 _080B4252:
-	ldr r2, _080B4288
+	ldr r2, _080B4288 @ =gMain
 	ldrh r0, [r2, 0x30]
 	movs r1, 0xF0
 	ands r1, r0
 	cmp r1, 0x40
 	bne _080B429C
-	ldr r4, _080B428C
+	ldr r4, _080B428C @ =gUnknown_03000708
 	ldrb r0, [r4, 0x9]
 	cmp r0, 0
 	bne _080B4290
@@ -2517,7 +2517,7 @@ _080B4290:
 _080B429C:
 	cmp r1, 0x80
 	bne _080B42FC
-	ldr r4, _080B42DC
+	ldr r4, _080B42DC @ =gUnknown_03000708
 	ldrb r0, [r4, 0x9]
 	cmp r0, 0x7
 	bne _080B42E0
@@ -2569,7 +2569,7 @@ _080B42FC:
 _080B4308:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r6, _080B43BC
+	ldr r6, _080B43BC @ =gUnknown_03000708
 	ldrb r0, [r6, 0xB]
 	ldrb r1, [r6, 0x9]
 	adds r0, r1
@@ -2598,7 +2598,7 @@ _080B431E:
 	ldrb r0, [r6, 0xC]
 	cmp r0, 0
 	bne _080B43DC
-	ldr r5, _080B43C0
+	ldr r5, _080B43C0 @ =gUnknown_020386A0
 	ldrb r0, [r6, 0xB]
 	ldrb r1, [r6, 0x9]
 	adds r0, r1
@@ -2616,7 +2616,7 @@ _080B431E:
 	lsrs r0, 24
 	asrs r4, r0
 	str r4, [r5]
-	ldr r0, _080B43C4
+	ldr r0, _080B43C4 @ =gSaveBlock1
 	movs r2, 0x92
 	lsls r2, 3
 	adds r0, r2
@@ -2633,14 +2633,14 @@ _080B431E:
 	lsls r0, 1
 	adds r0, r1
 	ldrh r0, [r0]
-	ldr r1, _080B43C8
+	ldr r1, _080B43C8 @ =gStringVar1
 	bl CopyItemName
-	ldr r4, _080B43CC
-	ldr r1, _080B43D0
+	ldr r4, _080B43CC @ =gStringVar4
+	ldr r1, _080B43D0 @ =gOtherText_HowManyYouWant
 	adds r0, r4, 0
 	bl StringExpandPlaceholders
-	ldr r2, _080B43D4
-	ldr r3, _080B43D8
+	ldr r2, _080B43D4 @ =sub_80B3EFC
+	ldr r3, _080B43D8 @ =0x0000c3e1
 	adds r0, r7, 0
 	adds r1, r4, 0
 	bl DisplayItemMessageOnField
@@ -2655,8 +2655,8 @@ _080B43D0: .4byte gOtherText_HowManyYouWant
 _080B43D4: .4byte sub_80B3EFC
 _080B43D8: .4byte 0x0000c3e1
 _080B43DC:
-	ldr r5, _080B4418
-	ldr r4, _080B441C
+	ldr r5, _080B4418 @ =gUnknown_020386A0
+	ldr r4, _080B441C @ =gDecorations
 	ldrb r0, [r6, 0xB]
 	ldrb r1, [r6, 0x9]
 	adds r0, r1
@@ -2668,7 +2668,7 @@ _080B43DC:
 	adds r0, r4
 	ldrh r1, [r0, 0x14]
 	str r1, [r5]
-	ldr r0, _080B4420
+	ldr r0, _080B4420 @ =gSaveBlock1
 	movs r2, 0x92
 	lsls r2, 3
 	adds r0, r2
@@ -2678,9 +2678,9 @@ _080B43DC:
 	cmp r0, 0
 	bne _080B4430
 _080B440A:
-	ldr r1, _080B4424
-	ldr r2, _080B4428
-	ldr r3, _080B442C
+	ldr r1, _080B4424 @ =gOtherText_NotEnoughMoney
+	ldr r2, _080B4428 @ =sub_80B3BD0
+	ldr r3, _080B442C @ =0x0000c3e1
 	adds r0, r7, 0
 	bl DisplayItemMessageOnField
 	b _080B44BC
@@ -2692,7 +2692,7 @@ _080B4424: .4byte gOtherText_NotEnoughMoney
 _080B4428: .4byte sub_80B3BD0
 _080B442C: .4byte 0x0000c3e1
 _080B4430:
-	ldr r0, _080B4468
+	ldr r0, _080B4468 @ =gStringVar1
 	ldrb r1, [r6, 0xB]
 	ldrb r2, [r6, 0x9]
 	adds r1, r2
@@ -2704,7 +2704,7 @@ _080B4430:
 	adds r2, r4, 0x1
 	adds r1, r2
 	bl StringCopy
-	ldr r0, _080B446C
+	ldr r0, _080B446C @ =gStringVar2
 	ldr r1, [r5]
 	movs r2, 0
 	movs r3, 0x8
@@ -2712,8 +2712,8 @@ _080B4430:
 	ldrb r0, [r6, 0xC]
 	cmp r0, 0x1
 	bne _080B4478
-	ldr r0, _080B4470
-	ldr r1, _080B4474
+	ldr r0, _080B4470 @ =gStringVar4
+	ldr r1, _080B4474 @ =gOtherText_ThatWillBe2
 	bl StringExpandPlaceholders
 	b _080B4480
 	.align 2, 0
@@ -2722,13 +2722,13 @@ _080B446C: .4byte gStringVar2
 _080B4470: .4byte gStringVar4
 _080B4474: .4byte gOtherText_ThatWillBe2
 _080B4478:
-	ldr r0, _080B4490
-	ldr r1, _080B4494
+	ldr r0, _080B4490 @ =gStringVar4
+	ldr r1, _080B4494 @ =gOtherText_ThatWillBe3
 	bl StringExpandPlaceholders
 _080B4480:
-	ldr r1, _080B4490
-	ldr r2, _080B4498
-	ldr r3, _080B449C
+	ldr r1, _080B4490 @ =gStringVar4
+	ldr r2, _080B4498 @ =sub_80B3D38
+	ldr r3, _080B449C @ =0x0000c3e1
 	mov r0, r8
 	bl DisplayItemMessageOnField
 	b _080B44BC
@@ -2775,7 +2775,7 @@ sub_80B4378: @ 80B44C8
 	movs r2, 0xD
 	movs r3, 0xD
 	bl MenuZeroFillWindowRect
-	ldr r0, _080B4534
+	ldr r0, _080B4534 @ =0x020219cc
 	movs r1, 0x2
 	str r1, [sp]
 	movs r1, 0
@@ -2794,12 +2794,12 @@ sub_80B4378: @ 80B44C8
 	movs r0, 0x1
 	bl sub_80F98DC
 	bl sub_80B32A4
-	ldr r1, _080B4538
+	ldr r1, _080B4538 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _080B453C
+	ldr r1, _080B453C @ =sub_80B40E8
 	str r1, [r0]
 	add sp, 0x8
 	pop {r4}
@@ -2818,8 +2818,8 @@ sub_80B43F0: @ 80B4540
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r1, _080B4578
-	ldr r0, _080B457C
+	ldr r1, _080B4578 @ =gUnknown_0300485C
+	ldr r0, _080B457C @ =sub_80B3050
 	str r0, [r1]
 	movs r0, 0x1
 	negs r0, r0
@@ -2828,12 +2828,12 @@ sub_80B43F0: @ 80B4540
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _080B4580
+	ldr r1, _080B4580 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _080B4584
+	ldr r1, _080B4584 @ =Task_ExitBuyMenu
 	str r1, [r0]
 	add sp, 0x4
 	pop {r4}
@@ -2851,7 +2851,7 @@ Task_ExitBuyMenu: @ 80B4588
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080B45B8
+	ldr r0, _080B45B8 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -2861,7 +2861,7 @@ Task_ExitBuyMenu: @ 80B4588
 	movs r1, 0
 	bl RemoveMoneyLabelObject
 	bl BuyMenuFreeMemory
-	ldr r0, _080B45BC
+	ldr r0, _080B45BC @ =c2_exit_to_overworld_2_switch
 	bl SetMainCallback2
 	adds r0, r4, 0
 	bl DestroyTask
@@ -2883,12 +2883,12 @@ sub_80B4470: @ 80B45C0
 	lsls r0, 24
 	lsrs r5, r0, 24
 	movs r2, 0
-	ldr r0, _080B4618
+	ldr r0, _080B4618 @ =gUnknown_02038724
 	mov r12, r0
-	ldr r6, _080B461C
+	ldr r6, _080B461C @ =gUnknown_03000708
 	mov r8, r12
 	adds r4, r6, 0
-	ldr r1, _080B4620
+	ldr r1, _080B4620 @ =gTasks
 	mov r9, r1
 	lsls r0, r5, 2
 	adds r0, r5
@@ -2936,7 +2936,7 @@ _080B462C:
 	lsrs r2, r0, 16
 	cmp r2, 0x2
 	bls _080B45E2
-	ldr r3, _080B467C
+	ldr r3, _080B467C @ =gUnknown_02038730
 	ldrb r0, [r3]
 	cmp r0, 0x2
 	bhi _080B466E
@@ -2954,7 +2954,7 @@ _080B462C:
 	ldrb r1, [r3]
 	lsls r1, 2
 	add r1, r12
-	ldr r2, _080B4680
+	ldr r2, _080B4680 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -2979,10 +2979,10 @@ _080B4680: .4byte gTasks
 	thumb_func_start ClearItemPurchases
 ClearItemPurchases: @ 80B4684
 	push {lr}
-	ldr r0, _080B4698
+	ldr r0, _080B4698 @ =gUnknown_02038730
 	movs r1, 0
 	strb r1, [r0]
-	ldr r0, _080B469C
+	ldr r0, _080B469C @ =gUnknown_02038724
 	movs r1, 0x3
 	bl ClearItemSlots
 	pop {r0}
@@ -3001,7 +3001,7 @@ CreatePokemartMenu: @ 80B46A0
 	adds r0, r4, 0
 	bl SetShopItemsForSale
 	bl ClearItemPurchases
-	ldr r0, _080B46C0
+	ldr r0, _080B46C0 @ =EnableBothScriptContexts
 	bl SetShopMenuCallback
 	pop {r4}
 	pop {r0}
@@ -3018,7 +3018,7 @@ CreateDecorationShop1Menu: @ 80B46C4
 	bl CreateShopMenu
 	adds r0, r4, 0
 	bl SetShopItemsForSale
-	ldr r0, _080B46E0
+	ldr r0, _080B46E0 @ =EnableBothScriptContexts
 	bl SetShopMenuCallback
 	pop {r4}
 	pop {r0}
@@ -3035,7 +3035,7 @@ CreateDecorationShop2Menu: @ 80B46E4
 	bl CreateShopMenu
 	adds r0, r4, 0
 	bl SetShopItemsForSale
-	ldr r0, _080B4700
+	ldr r0, _080B4700 @ =EnableBothScriptContexts
 	bl SetShopMenuCallback
 	pop {r4}
 	pop {r0}
@@ -3058,7 +3058,7 @@ sub_80B45B4: @ 80B4704
 	lsls r2, 16
 	lsrs r2, 16
 	mov r10, r2
-	ldr r2, _080B4798
+	ldr r2, _080B4798 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -3234,7 +3234,7 @@ sub_80B4710: @ 80B4860
 	lsls r0, r3, 2
 	adds r0, r3
 	lsls r0, 3
-	ldr r1, _080B4888
+	ldr r1, _080B4888 @ =0x03004b38
 	adds r4, r0, r1
 	movs r0, 0x1
 	strh r0, [r4, 0x6]
@@ -3243,7 +3243,7 @@ sub_80B4710: @ 80B4860
 	cmp r0, 0x6
 	bhi _080B48FA
 	lsls r0, 2
-	ldr r1, _080B488C
+	ldr r1, _080B488C @ =_080B4890
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -3260,27 +3260,27 @@ _080B4890:
 	.4byte _080B48E0
 	.4byte _080B48F0
 _080B48AC:
-	ldr r1, _080B48B0
+	ldr r1, _080B48B0 @ =gUnknown_083CC714
 	b _080B48E2
 	.align 2, 0
 _080B48B0: .4byte gUnknown_083CC714
 _080B48B4:
-	ldr r1, _080B48B8
+	ldr r1, _080B48B8 @ =gUnknown_083CC71A
 	b _080B48E2
 	.align 2, 0
 _080B48B8: .4byte gUnknown_083CC71A
 _080B48BC:
-	ldr r1, _080B48C0
+	ldr r1, _080B48C0 @ =gUnknown_083CC720
 	b _080B48CE
 	.align 2, 0
 _080B48C0: .4byte gUnknown_083CC720
 _080B48C4:
-	ldr r1, _080B48C8
+	ldr r1, _080B48C8 @ =gUnknown_083CC726
 	b _080B48E2
 	.align 2, 0
 _080B48C8: .4byte gUnknown_083CC726
 _080B48CC:
-	ldr r1, _080B48DC
+	ldr r1, _080B48DC @ =gUnknown_083CC72C
 _080B48CE:
 	movs r2, 0xC0
 	lsls r2, 4
@@ -3290,7 +3290,7 @@ _080B48CE:
 	.align 2, 0
 _080B48DC: .4byte gUnknown_083CC72C
 _080B48E0:
-	ldr r1, _080B48EC
+	ldr r1, _080B48EC @ =gUnknown_083CC732
 _080B48E2:
 	adds r0, r3, 0
 	movs r2, 0
@@ -3299,7 +3299,7 @@ _080B48E2:
 	.align 2, 0
 _080B48EC: .4byte gUnknown_083CC732
 _080B48F0:
-	ldr r1, _080B4924
+	ldr r1, _080B4924 @ =gUnknown_083CC738
 	adds r0, r3, 0
 	movs r2, 0
 	bl sub_80B45B4
@@ -3334,7 +3334,7 @@ sub_80B47D8: @ 80B4928
 	adds r5, r0, 0
 	lsls r5, 16
 	lsrs r5, 16
-	ldr r6, _080B496C
+	ldr r6, _080B496C @ =sub_80B4710
 	adds r0, r6, 0
 	movs r1, 0
 	bl CreateTask
@@ -3344,7 +3344,7 @@ sub_80B47D8: @ 80B4928
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _080B4970
+	ldr r1, _080B4970 @ =0x03004b38
 	adds r7, r0, r1
 	adds r0, r7, 0
 	adds r0, 0x8
@@ -3372,7 +3372,7 @@ sub_80B4824: @ 80B4974
 	lsls r0, 24
 	lsrs r0, 24
 	bl sub_80B47D8
-	ldr r1, _080B4988
+	ldr r1, _080B4988 @ =gUnknown_02038731
 	strb r0, [r1]
 	pop {r0}
 	bx r0
@@ -3383,7 +3383,7 @@ _080B4988: .4byte gUnknown_02038731
 	thumb_func_start sub_80B483C
 sub_80B483C: @ 80B498C
 	push {lr}
-	ldr r0, _080B499C
+	ldr r0, _080B499C @ =gUnknown_02038731
 	ldrb r0, [r0]
 	bl DestroyTask
 	pop {r0}
@@ -3395,8 +3395,8 @@ _080B499C: .4byte gUnknown_02038731
 	thumb_func_start sub_80B4850
 sub_80B4850: @ 80B49A0
 	push {lr}
-	ldr r2, _080B49C4
-	ldr r0, _080B49C8
+	ldr r2, _080B49C4 @ =gTasks
+	ldr r0, _080B49C8 @ =gUnknown_02038731
 	ldrb r1, [r0]
 	lsls r0, r1, 2
 	adds r0, r1

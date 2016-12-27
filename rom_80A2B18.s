@@ -10,7 +10,7 @@
 sub_80A2B18: @ 80A2C68
 	push {r4,r5,lr}
 	movs r4, 0
-	ldr r5, _080A2C8C
+	ldr r5, _080A2C8C @ =0x02028280
 _080A2C6E:
 	lsls r0, r4, 3
 	adds r0, r4
@@ -33,7 +33,7 @@ _080A2C8C: .4byte 0x02028280
 sub_80A2B40: @ 80A2C90
 	push {r4-r6,lr}
 	adds r3, r0, 0
-	ldr r0, _080A2CE0
+	ldr r0, _080A2CE0 @ =0x0000ffff
 	adds r4, r0, 0
 	adds r1, r3, 0
 	movs r2, 0x8
@@ -126,7 +126,7 @@ sub_80A2BC4: @ 80A2D14
 	add r3, sp, 0x4
 	strb r2, [r3]
 	mov r10, r3
-	ldr r4, _080A2E50
+	ldr r4, _080A2E50 @ =gSaveBlock1
 	mov r9, r4
 	mov r8, r3
 	adds r2, r3, 0
@@ -136,7 +136,7 @@ _080A2D42:
 	adds r0, r1
 	lsls r0, 2
 	add r0, r9
-	ldr r5, _080A2E54
+	ldr r5, _080A2E54 @ =0x00002b6c
 	adds r0, r5
 	ldrh r0, [r0]
 	cmp r0, 0
@@ -144,11 +144,11 @@ _080A2D42:
 	b _080A2E74
 _080A2D58:
 	movs r3, 0
-	ldr r0, _080A2E58
+	ldr r0, _080A2E58 @ =gSaveBlock2
 	mov r12, r0
 	mov r4, r10
-	ldr r6, _080A2E5C
-	ldr r1, _080A2E60
+	ldr r6, _080A2E5C @ =0x02028280
+	ldr r1, _080A2E60 @ =0x0000ffff
 	adds r5, r1, 0
 _080A2D66:
 	lsls r2, r3, 1
@@ -168,7 +168,7 @@ _080A2D66:
 	bls _080A2D66
 	movs r3, 0
 	mov r2, r10
-	ldr r4, _080A2E64
+	ldr r4, _080A2E64 @ =0x02028292
 _080A2D8A:
 	ldrb r1, [r2]
 	lsls r0, r1, 3
@@ -191,7 +191,7 @@ _080A2D8A:
 	adds r0, r1
 	lsls r0, 2
 	adds r0, r3, r0
-	ldr r1, _080A2E64
+	ldr r1, _080A2E64 @ =0x02028292
 	adds r0, r1
 	movs r1, 0xFF
 	strb r1, [r0]
@@ -200,14 +200,14 @@ _080A2D8A:
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r3, _080A2E64
+	ldr r3, _080A2E64 @ =0x02028292
 	adds r0, r3
 	movs r1, 0
 	bl sub_814A518
 	movs r3, 0
 	mov r2, r10
-	ldr r5, _080A2E68
-	ldr r4, _080A2E6C
+	ldr r5, _080A2E68 @ =0x0202829a
+	ldr r4, _080A2E6C @ =0x02024eae
 _080A2DD8:
 	ldrb r1, [r2]
 	lsls r0, r1, 3
@@ -241,7 +241,7 @@ _080A2DD8:
 	adds r1, r2
 	lsls r1, 2
 	add r1, r9
-	ldr r5, _080A2E70
+	ldr r5, _080A2E70 @ =0x00002b6a
 	adds r1, r5
 	strh r0, [r1]
 	ldrb r1, [r4]
@@ -249,7 +249,7 @@ _080A2DD8:
 	adds r0, r1
 	lsls r0, 2
 	add r0, r9
-	ldr r1, _080A2E54
+	ldr r1, _080A2E54 @ =0x00002b6c
 	adds r0, r1
 	mov r2, sp
 	ldrh r2, [r2, 0x8]
@@ -304,7 +304,7 @@ sub_80A2D44: @ 80A2E94
 	adds r0, r1, 0
 	bl sub_809D474
 	lsls r0, 16
-	ldr r1, _080A2EB0
+	ldr r1, _080A2EB0 @ =0x75300000
 	adds r0, r1
 	lsrs r0, 16
 _080A2EAC:
@@ -319,7 +319,7 @@ sub_80A2D64: @ 80A2EB4
 	push {lr}
 	lsls r0, 16
 	lsrs r3, r0, 16
-	ldr r0, _080A2ECC
+	ldr r0, _080A2ECC @ =0xffff8ad0
 	adds r2, r3, r0
 	lsls r0, r2, 16
 	lsrs r0, 16
@@ -351,12 +351,12 @@ sub_80A2D88: @ 80A2ED8
 	ldrb r2, [r4]
 	cmp r2, 0xFF
 	beq _080A2F38
-	ldr r0, _080A2F30
+	ldr r0, _080A2F30 @ =gSaveBlock1
 	lsls r1, r2, 3
 	adds r1, r2
 	lsls r1, 2
 	adds r1, r0
-	ldr r0, _080A2F34
+	ldr r0, _080A2F34 @ =0x00002b4c
 	adds r1, r0
 	adds r0, r7, 0
 	ldm r0!, {r2,r3,r7}
@@ -412,13 +412,13 @@ sub_80A2DF8: @ 80A2F48
 	bl GetMonData
 	add r2, sp, 0x4
 	strb r0, [r2]
-	ldr r3, _080A2FA0
+	ldr r3, _080A2FA0 @ =gSaveBlock1
 	ldrb r1, [r2]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
 	adds r0, r3
-	ldr r1, _080A2FA4
+	ldr r1, _080A2FA4 @ =0x00002b6c
 	adds r0, r1
 	movs r3, 0
 	movs r1, 0
@@ -449,12 +449,12 @@ _080A2FA4: .4byte 0x00002b6c
 unref_sub_80A2E58: @ 80A2FA8
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080A2FC0
+	ldr r2, _080A2FC0 @ =gSaveBlock1
 	lsls r1, r0, 3
 	adds r1, r0
 	lsls r1, 2
 	adds r1, r2
-	ldr r0, _080A2FC4
+	ldr r0, _080A2FC4 @ =0x00002b6c
 	adds r1, r0
 	movs r0, 0
 	strh r0, [r1]
@@ -481,9 +481,9 @@ sub_80A2E78: @ 80A2FC8
 	strb r0, [r1]
 	movs r7, 0x6
 	mov r9, r1
-	ldr r0, _080A3054
+	ldr r0, _080A3054 @ =gSaveBlock1
 	mov r8, r0
-	ldr r2, _080A3058
+	ldr r2, _080A3058 @ =0x00002b4c
 	add r2, r8
 _080A2FEE:
 	lsls r0, r7, 3
@@ -491,7 +491,7 @@ _080A2FEE:
 	lsls r4, r0, 2
 	mov r1, r8
 	adds r0, r4, r1
-	ldr r3, _080A305C
+	ldr r3, _080A305C @ =0x00002b6c
 	adds r0, r3
 	ldrh r6, [r0]
 	cmp r6, 0
@@ -519,7 +519,7 @@ _080A2FEE:
 	adds r1, r0
 	lsls r1, 2
 	add r1, r8
-	ldr r0, _080A305C
+	ldr r0, _080A305C @ =0x00002b6c
 	adds r1, r0
 	strh r6, [r1]
 	adds r0, r5, 0
@@ -591,7 +591,7 @@ AddMapNamePopUpWindowTask: @ 80A30A4
 	lsrs r0, 24
 	cmp r0, 0x1
 	beq _080A3134
-	ldr r4, _080A30FC
+	ldr r4, _080A30FC @ =sub_80A2FF4
 	adds r0, r4, 0
 	bl FuncIsActiveTask
 	lsls r0, 24
@@ -601,13 +601,13 @@ AddMapNamePopUpWindowTask: @ 80A30A4
 	adds r0, r4, 0
 	movs r1, 0x5A
 	bl CreateTask
-	ldr r4, _080A3100
+	ldr r4, _080A3100 @ =gUnknown_02038538
 	strb r0, [r4]
-	ldr r1, _080A3104
+	ldr r1, _080A3104 @ =0x04000012
 	movs r0, 0x20
 	strh r0, [r1]
 	bl sub_80A30E0
-	ldr r2, _080A3108
+	ldr r2, _080A3108 @ =gTasks
 	ldrb r1, [r4]
 	lsls r0, r1, 2
 	adds r0, r1
@@ -628,8 +628,8 @@ _080A3100: .4byte gUnknown_02038538
 _080A3104: .4byte 0x04000012
 _080A3108: .4byte gTasks
 _080A310C:
-	ldr r3, _080A313C
-	ldr r2, _080A3140
+	ldr r3, _080A313C @ =gTasks
+	ldr r2, _080A3140 @ =gUnknown_02038538
 	ldrb r0, [r2]
 	lsls r1, r0, 2
 	adds r1, r0
@@ -666,7 +666,7 @@ sub_80A2FF4: @ 80A3144
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r3, _080A3168
+	ldr r3, _080A3168 @ =gTasks
 	adds r4, r1, r3
 	movs r0, 0x8
 	ldrsh r2, [r4, r0]
@@ -694,7 +694,7 @@ _080A3176:
 	bgt _080A31E2
 	movs r0, 0x1
 	strh r0, [r4, 0x8]
-	ldr r0, _080A3198
+	ldr r0, _080A3198 @ =gUnknown_02038538
 	ldrb r1, [r0]
 	lsls r0, r1, 2
 	adds r0, r1
@@ -742,7 +742,7 @@ _080A31DC:
 	bl HideMapNamePopUpWindow
 	b _080A31E8
 _080A31E2:
-	ldr r1, _080A31F0
+	ldr r1, _080A31F0 @ =0x04000012
 	ldrh r0, [r4, 0xC]
 	strh r0, [r1]
 _080A31E8:
@@ -756,7 +756,7 @@ _080A31F0: .4byte 0x04000012
 	thumb_func_start HideMapNamePopUpWindow
 HideMapNamePopUpWindow: @ 80A31F4
 	push {lr}
-	ldr r0, _080A3224
+	ldr r0, _080A3224 @ =sub_80A2FF4
 	bl FuncIsActiveTask
 	lsls r0, 24
 	cmp r0, 0
@@ -767,10 +767,10 @@ HideMapNamePopUpWindow: @ 80A31F4
 	movs r2, 0xD
 	movs r3, 0x3
 	bl MenuZeroFillWindowRect
-	ldr r1, _080A3228
+	ldr r1, _080A3228 @ =0x04000012
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _080A322C
+	ldr r0, _080A322C @ =gUnknown_02038538
 	ldrb r0, [r0]
 	bl DestroyTask
 _080A3220:
@@ -788,7 +788,7 @@ sub_80A30E0: @ 80A3230
 	sub sp, 0x14
 	movs r0, 0
 	bl MenuLoadTextWindowGraphics_OverrideFrameType
-	ldr r0, _080A3264
+	ldr r0, _080A3264 @ =gMapHeader
 	ldrb r1, [r0, 0x14]
 	mov r0, sp
 	movs r2, 0

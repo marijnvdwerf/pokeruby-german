@@ -8,11 +8,11 @@
 
 	thumb_func_start Random
 Random: @ 80411A8
-	ldr r2, _080411BC
+	ldr r2, _080411BC @ =gRngValue
 	ldr r1, [r2]
-	ldr r0, _080411C0
+	ldr r0, _080411C0 @ =0x41c64e6d
 	muls r0, r1
-	ldr r1, _080411C4
+	ldr r1, _080411C4 @ =0x00006073
 	adds r0, r1
 	str r0, [r2]
 	lsrs r0, 16
@@ -27,7 +27,7 @@ _080411C4: .4byte 0x00006073
 SeedRng: @ 80411C8
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _080411D4
+	ldr r1, _080411D4 @ =gRngValue
 	str r0, [r1]
 	bx lr
 	.align 2, 0

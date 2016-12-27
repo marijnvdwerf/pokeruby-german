@@ -28,13 +28,13 @@ sub_80B79B8: @ 80B7B60
 	adds r1, r0, r1
 	cmp r0, r1
 	bls _080B7B74
-	ldr r0, _080B7B70
+	ldr r0, _080B7B70 @ =0x000f423f
 	b _080B7B7C
 	.align 2, 0
 _080B7B70: .4byte 0x000f423f
 _080B7B74:
 	str r1, [r2]
-	ldr r0, _080B7B84
+	ldr r0, _080B7B84 @ =0x000f423f
 	cmp r1, r0
 	bls _080B7B7E
 _080B7B7C:
@@ -69,7 +69,7 @@ sub_80B79F8: @ 80B7BA0
 	adds r3, r0, 0
 	lsls r2, 24
 	lsrs r4, r2, 24
-	ldr r0, _080B7BB4
+	ldr r0, _080B7BB4 @ =0x000f423f
 	cmp r1, r0
 	bls _080B7BB8
 	movs r2, 0x7
@@ -77,7 +77,7 @@ sub_80B79F8: @ 80B7BA0
 	.align 2, 0
 _080B7BB4: .4byte 0x000f423f
 _080B7BB8:
-	ldr r0, _080B7BC4
+	ldr r0, _080B7BC4 @ =0x0001869f
 	cmp r1, r0
 	bls _080B7BC8
 	movs r2, 0x6
@@ -85,7 +85,7 @@ _080B7BB8:
 	.align 2, 0
 _080B7BC4: .4byte 0x0001869f
 _080B7BC8:
-	ldr r0, _080B7BD4
+	ldr r0, _080B7BD4 @ =0x00002710
 	cmp r1, r0
 	bls _080B7BD8
 	movs r2, 0x5
@@ -93,7 +93,7 @@ _080B7BC8:
 	.align 2, 0
 _080B7BD4: .4byte 0x00002710
 _080B7BD8:
-	ldr r0, _080B7C38
+	ldr r0, _080B7C38 @ =0x000003e7
 	movs r2, 0x4
 	cmp r1, r0
 	bhi _080B7BEE
@@ -239,7 +239,7 @@ sub_80B7B34: @ 80B7CC8
 	mov r1, r9
 	lsls r1, 8
 	mov r9, r1
-	ldr r4, _080B7D6C
+	ldr r4, _080B7D6C @ =gDecoration10000_Gfx
 	adds r0, r1, r4
 	lsls r6, r5, 4
 	subs r6, r5
@@ -247,7 +247,7 @@ sub_80B7B34: @ 80B7CC8
 	mov r3, r8
 	adds r3, 0x1
 	lsls r3, 5
-	ldr r2, _080B7D70
+	ldr r2, _080B7D70 @ =0x06008000
 	adds r3, r2
 	adds r1, r3
 	movs r2, 0x20
@@ -271,11 +271,11 @@ sub_80B7B34: @ 80B7CC8
 	lsls r6, 1
 	adds r6, 0x1
 	add r6, r8
-	ldr r1, _080B7D74
+	ldr r1, _080B7D74 @ =0xfffff000
 	adds r5, r1, 0
-	ldr r0, _080B7D78
+	ldr r0, _080B7D78 @ =0x0600f800
 	mov r12, r0
-	ldr r1, _080B7D7C
+	ldr r1, _080B7D7C @ =0x0600f840
 	mov r9, r1
 	lsls r4, 1
 	adds r4, 0x1
@@ -363,11 +363,11 @@ sub_80B7C14: @ 80B7DA8
 	adds r1, r6, 0
 	adds r2, r5, 0
 	bl sub_80B7BEC
-	ldr r0, _080B7E1C
+	ldr r0, _080B7E1C @ =gUnknown_083CF584
 	bl LoadCompressedObjectPic
-	ldr r0, _080B7E20
+	ldr r0, _080B7E20 @ =gUnknown_083CF58C
 	bl LoadCompressedObjectPalette
-	ldr r0, _080B7E24
+	ldr r0, _080B7E24 @ =gSpriteTemplate_83CF56C
 	lsls r6, 19
 	movs r1, 0x98
 	lsls r1, 13
@@ -382,7 +382,7 @@ sub_80B7C14: @ 80B7DA8
 	adds r2, r5, 0
 	movs r3, 0
 	bl CreateSprite
-	ldr r1, _080B7E28
+	ldr r1, _080B7E28 @ =gUnknown_02038734
 	strb r0, [r1]
 	pop {r3}
 	mov r8, r3
@@ -405,15 +405,15 @@ RemoveMoneyLabelObject: @ 80B7E2C
 	lsrs r4, 24
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r0, _080B7E70
+	ldr r0, _080B7E70 @ =gUnknown_02038734
 	ldrb r1, [r0]
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080B7E74
+	ldr r1, _080B7E74 @ =gSprites
 	adds r0, r1
 	bl DestroySpriteAndFreeResources
-	ldr r0, _080B7E78
+	ldr r0, _080B7E78 @ =0x00002722
 	bl FreeSpritePaletteByTag
 	adds r2, r4, 0
 	adds r2, 0xD
@@ -437,12 +437,12 @@ _080B7E78: .4byte 0x00002722
 	thumb_func_start sub_80B7CE8
 sub_80B7CE8: @ 80B7E7C
 	push {lr}
-	ldr r0, _080B7E98
+	ldr r0, _080B7E98 @ =gSaveBlock1
 	movs r1, 0x92
 	lsls r1, 3
 	adds r0, r1
 	ldr r0, [r0]
-	ldr r1, _080B7E9C
+	ldr r1, _080B7E9C @ =gSpecialVar_0x8005
 	ldrh r1, [r1]
 	bl IsEnoughMoney
 	lsls r0, 24
@@ -457,8 +457,8 @@ _080B7E9C: .4byte gSpecialVar_0x8005
 	thumb_func_start sub_80B7D0C
 sub_80B7D0C: @ 80B7EA0
 	push {lr}
-	ldr r0, _080B7EB0
-	ldr r1, _080B7EB4
+	ldr r0, _080B7EB0 @ =0x02025bc4
+	ldr r1, _080B7EB4 @ =gSpecialVar_0x8005
 	ldrh r1, [r1]
 	bl sub_80B79E0
 	pop {r0}

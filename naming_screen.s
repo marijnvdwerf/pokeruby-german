@@ -21,7 +21,7 @@ DoNamingScreen: @ 80B5B74
 	str r4, [sp]
 	str r5, [sp, 0x4]
 	bl AddNamingScreenTask
-	ldr r0, _080B5BA0
+	ldr r0, _080B5BA0 @ =C2_NamingScreen
 	bl SetMainCallback2
 	add sp, 0x8
 	pop {r4,r5}
@@ -34,14 +34,14 @@ _080B5BA0: .4byte C2_NamingScreen
 	thumb_func_start C2_NamingScreen
 C2_NamingScreen: @ 80B5BA4
 	push {lr}
-	ldr r0, _080B5BBC
-	ldr r1, _080B5BC0
+	ldr r0, _080B5BBC @ =gMain
+	ldr r1, _080B5BC0 @ =0x0000043c
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0x7
 	bhi _080B5C3E
 	lsls r0, 2
-	ldr r1, _080B5BC4
+	ldr r1, _080B5BC4 @ =_080B5BC8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -81,8 +81,8 @@ _080B5C0A:
 _080B5C10:
 	bl sub_80B5DFC
 _080B5C14:
-	ldr r1, _080B5C24
-	ldr r0, _080B5C28
+	ldr r1, _080B5C24 @ =gMain
+	ldr r0, _080B5C28 @ =0x0000043c
 	adds r1, r0
 	ldrb r0, [r1]
 	adds r0, 0x1
@@ -95,7 +95,7 @@ _080B5C2C:
 	bl sub_80B5E20
 	bl sub_80B5E3C
 	bl sub_80B5C04
-	ldr r0, _080B5C44
+	ldr r0, _080B5C44 @ =sub_80B5AA0
 	bl SetMainCallback2
 _080B5C3E:
 	pop {r0}
@@ -121,16 +121,16 @@ sub_80B5AB8: @ 80B5C60
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r1, _080B5CA8
-	ldr r4, _080B5CAC
+	ldr r1, _080B5CA8 @ =0x04000016
+	ldr r4, _080B5CAC @ =0x02000000
 	ldrh r0, [r4, 0x4]
 	strh r0, [r1]
 	adds r1, 0x4
 	ldrh r0, [r4, 0x6]
 	strh r0, [r1]
-	ldr r2, _080B5CB0
+	ldr r2, _080B5CB0 @ =0x0400000a
 	ldrh r1, [r2]
-	ldr r3, _080B5CB4
+	ldr r3, _080B5CB4 @ =0x0000fffc
 	adds r0, r3, 0
 	ands r0, r1
 	strh r0, [r2]
@@ -174,7 +174,7 @@ AddNamingScreenTask: @ 80B5CB8
 	lsrs r5, 16
 	lsls r6, 16
 	lsrs r6, 16
-	ldr r0, _080B5D1C
+	ldr r0, _080B5D1C @ =NamingScreenDummyTask
 	movs r1, 0xFF
 	bl CreateTask
 	lsls r0, 24
@@ -182,7 +182,7 @@ AddNamingScreenTask: @ 80B5CB8
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
-	ldr r0, _080B5D20
+	ldr r0, _080B5D20 @ =gTasks
 	adds r4, r0
 	mov r0, r8
 	strh r0, [r4, 0x8]
@@ -213,7 +213,7 @@ _080B5D20: .4byte gTasks
 	thumb_func_start GetNamingScreenParameters
 GetNamingScreenParameters: @ 80B5D24
 	push {r4-r6,lr}
-	ldr r0, _080B5D80
+	ldr r0, _080B5D80 @ =NamingScreenDummyTask
 	bl FindTaskIdByFunc
 	adds r5, r0, 0
 	lsls r5, 24
@@ -221,9 +221,9 @@ GetNamingScreenParameters: @ 80B5D24
 	lsls r4, r5, 2
 	adds r4, r5
 	lsls r4, 3
-	ldr r0, _080B5D84
+	ldr r0, _080B5D84 @ =gTasks
 	adds r4, r0
-	ldr r6, _080B5D88
+	ldr r6, _080B5D88 @ =0x02000000
 	ldrh r0, [r4, 0x8]
 	strb r0, [r6, 0x1]
 	ldrh r0, [r4, 0xA]
@@ -282,19 +282,19 @@ NamingScreen_TurnOffScreen: @ 80B5D90
 	thumb_func_start sub_80B5C04
 sub_80B5C04: @ 80B5DAC
 	push {r4,lr}
-	ldr r0, _080B5DE4
+	ldr r0, _080B5DE4 @ =sub_80B5AB8
 	bl SetVBlankCallback
-	ldr r3, _080B5DE8
+	ldr r3, _080B5DE8 @ =0x04000208
 	ldrh r2, [r3]
 	movs r0, 0
 	strh r0, [r3]
-	ldr r4, _080B5DEC
+	ldr r4, _080B5DEC @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _080B5DF0
+	ldr r2, _080B5DF0 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -325,10 +325,10 @@ NamingScreen_ClearVram: @ 80B5DF4
 	lsls r3, 9
 	mov r4, sp
 	movs r6, 0
-	ldr r1, _080B5E40
+	ldr r1, _080B5E40 @ =0x040000d4
 	movs r5, 0x80
 	lsls r5, 5
-	ldr r7, _080B5E44
+	ldr r7, _080B5E44 @ =0x81000800
 	movs r0, 0x81
 	lsls r0, 24
 	mov r12, r0
@@ -369,10 +369,10 @@ NamingScreen_ClearOam: @ 80B5E48
 	mov r1, sp
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _080B5E64
+	ldr r0, _080B5E64 @ =0x040000d4
 	str r1, [r0]
 	str r2, [r0, 0x4]
-	ldr r1, _080B5E68
+	ldr r1, _080B5E68 @ =0x81000200
 	str r1, [r0, 0x8]
 	ldr r0, [r0, 0x8]
 	add sp, 0x4
@@ -385,16 +385,16 @@ _080B5E68: .4byte 0x81000200
 	thumb_func_start NamingScreen_SetUpVideoRegs
 NamingScreen_SetUpVideoRegs: @ 80B5E6C
 	push {r4,r5,lr}
-	ldr r5, _080B5ED4
+	ldr r5, _080B5ED4 @ =0x04000008
 	movs r1, 0
 	strh r1, [r5]
-	ldr r2, _080B5ED8
+	ldr r2, _080B5ED8 @ =0x0400000a
 	strh r1, [r2]
-	ldr r3, _080B5EDC
+	ldr r3, _080B5EDC @ =0x0400000c
 	strh r1, [r3]
-	ldr r4, _080B5EE0
+	ldr r4, _080B5EE0 @ =0x0400000e
 	strh r1, [r4]
-	ldr r0, _080B5EE4
+	ldr r0, _080B5EE4 @ =0x04000010
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
@@ -414,22 +414,22 @@ NamingScreen_SetUpVideoRegs: @ 80B5E6C
 	lsls r1, 5
 	adds r0, r1, 0
 	strh r0, [r5]
-	ldr r1, _080B5EE8
+	ldr r1, _080B5EE8 @ =0x00001c01
 	adds r0, r1, 0
 	strh r0, [r2]
-	ldr r2, _080B5EEC
+	ldr r2, _080B5EEC @ =0x00001d0a
 	adds r0, r2, 0
 	strh r0, [r3]
-	ldr r1, _080B5EF0
+	ldr r1, _080B5EF0 @ =0x00001e03
 	adds r0, r1, 0
 	strh r0, [r4]
-	ldr r1, _080B5EF4
+	ldr r1, _080B5EF4 @ =0x04000050
 	movs r2, 0xC8
 	lsls r2, 3
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r2, _080B5EF8
+	ldr r2, _080B5EF8 @ =0x0000080c
 	adds r0, r2, 0
 	strh r0, [r1]
 	pop {r4,r5}
@@ -452,7 +452,7 @@ _080B5EF8: .4byte 0x0000080c
 NamingScreen_Init: @ 80B5EFC
 	push {r4-r6,lr}
 	bl GetNamingScreenParameters
-	ldr r4, _080B5F64
+	ldr r4, _080B5F64 @ =0x02000000
 	movs r0, 0
 	strb r0, [r4]
 	movs r2, 0
@@ -465,7 +465,7 @@ NamingScreen_Init: @ 80B5EFC
 	strh r0, [r4, 0xA]
 	strb r2, [r4, 0xC]
 	strb r1, [r4, 0xD]
-	ldr r1, _080B5F68
+	ldr r1, _080B5F68 @ =gUnknown_083CE398
 	ldrb r0, [r4, 0x1]
 	lsls r0, 2
 	adds r0, r1
@@ -478,7 +478,7 @@ NamingScreen_Init: @ 80B5EFC
 	movs r0, 0xE
 	subs r0, r1
 	strh r0, [r4, 0x2]
-	ldr r6, _080B5F6C
+	ldr r6, _080B5F6C @ =gKeyRepeatStartDelay
 	ldrh r0, [r6]
 	strh r0, [r4, 0x3C]
 	adds r5, r4, 0
@@ -509,7 +509,7 @@ _080B5F6C: .4byte gKeyRepeatStartDelay
 	thumb_func_start sub_80B5DC8
 sub_80B5DC8: @ 80B5F70
 	push {r4,lr}
-	ldr r4, _080B5F88
+	ldr r4, _080B5F88 @ =gWindowConfig_81E6E88
 	adds r0, r4, 0
 	bl SetUpWindowConfig
 	adds r0, r4, 0
@@ -571,7 +571,7 @@ sub_80B5E3C: @ 80B5FE4
 	thumb_func_start sub_80B5E50
 sub_80B5E50: @ 80B5FF8
 	push {r4,lr}
-	ldr r4, _080B6014
+	ldr r4, _080B6014 @ =sub_80B5E70
 	adds r0, r4, 0
 	movs r1, 0x2
 	bl CreateTask
@@ -590,12 +590,12 @@ sub_80B5E70: @ 80B6018
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r7, _080B6044
+	ldr r7, _080B6044 @ =gUnknown_083CE218
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r4, r1, 3
-	ldr r6, _080B6048
-	ldr r5, _080B604C
+	ldr r6, _080B6048 @ =0x02000000
+	ldr r5, _080B604C @ =gTasks
 _080B602A:
 	ldrb r0, [r6]
 	lsls r0, 2
@@ -626,7 +626,7 @@ sub_80B5EA8: @ 80B6050
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r1, _080B6074
+	ldr r1, _080B6074 @ =0x02000000
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
@@ -641,7 +641,7 @@ _080B6074: .4byte 0x02000000
 	thumb_func_start sub_80B5ED0
 sub_80B5ED0: @ 80B6078
 	push {lr}
-	ldr r0, _080B60A0
+	ldr r0, _080B60A0 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -651,7 +651,7 @@ sub_80B5ED0: @ 80B6078
 	bl sub_80B6210
 	movs r0, 0x1
 	bl sub_80B68D8
-	ldr r1, _080B60A4
+	ldr r1, _080B60A4 @ =0x02000000
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
@@ -684,7 +684,7 @@ sub_80B5F10: @ 80B60B8
 	movs r0, 0x1
 	bl sub_80B6210
 	bl sub_80B6878
-	ldr r1, _080B60DC
+	ldr r1, _080B60DC @ =0x02000000
 	movs r0, 0x2
 	strb r0, [r1]
 _080B60D4:
@@ -710,7 +710,7 @@ sub_80B5F38: @ 80B60E0
 	bl sub_80B6460
 	movs r0, 0x6
 	bl PlaySE
-	ldr r1, _080B6114
+	ldr r1, _080B6114 @ =0x02000000
 	movs r0, 0x5
 	strb r0, [r1]
 	movs r0, 0
@@ -728,7 +728,7 @@ sub_80B5F70: @ 80B6118
 	lsls r0, 24
 	cmp r0, 0
 	beq _080B6184
-	ldr r4, _080B6190
+	ldr r4, _080B6190 @ =0x02000000
 	movs r0, 0x2
 	strb r0, [r4]
 	ldrb r0, [r4, 0xE]
@@ -791,8 +791,8 @@ pokemon_store: @ 80B6194
 	movs r1, 0
 	movs r2, 0x1
 	bl sub_80B6460
-	ldr r0, _080B61D8
-	ldr r4, _080B61DC
+	ldr r0, _080B61D8 @ =gKeyRepeatStartDelay
+	ldr r4, _080B61DC @ =0x02000000
 	ldrh r1, [r4, 0x3C]
 	strh r1, [r0]
 	ldrb r0, [r4, 0x1]
@@ -812,7 +812,7 @@ pokemon_store: @ 80B6194
 _080B61D8: .4byte gKeyRepeatStartDelay
 _080B61DC: .4byte 0x02000000
 _080B61E0:
-	ldr r1, _080B61F0
+	ldr r1, _080B61F0 @ =0x02000000
 	movs r0, 0x8
 	strb r0, [r1]
 	movs r0, 0x1
@@ -831,7 +831,7 @@ sub_80B604C: @ 80B61F4
 	lsls r0, 24
 	cmp r0, 0
 	beq _080B6208
-	ldr r1, _080B6210
+	ldr r1, _080B6210 @ =0x02000000
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
@@ -854,7 +854,7 @@ sub_80B606C: @ 80B6214
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _080B6238
+	ldr r1, _080B6238 @ =0x02000000
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
@@ -869,13 +869,13 @@ _080B6238: .4byte 0x02000000
 	thumb_func_start sub_80B6094
 sub_80B6094: @ 80B623C
 	push {lr}
-	ldr r0, _080B6258
+	ldr r0, _080B6258 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _080B6252
-	ldr r0, _080B625C
+	ldr r0, _080B625C @ =0x02000000
 	ldr r0, [r0, 0x48]
 	bl SetMainCallback2
 _080B6252:
@@ -909,7 +909,7 @@ _080B627E:
 _080B6288:
 	cmp r5, 0x7
 	beq _080B62A4
-	ldr r1, _080B62A0
+	ldr r1, _080B62A0 @ =gUnknown_083CE240
 	lsls r0, 2
 	adds r0, r1
 	ldr r1, [r0]
@@ -952,7 +952,7 @@ sub_80B6108: @ 80B62B0
 	beq _080B62E4
 	movs r0, 0
 	bl sub_80B6210
-	ldr r1, _080B62EC
+	ldr r1, _080B62EC @ =0x02000000
 	movs r0, 0x3
 	strb r0, [r1]
 _080B62E4:
@@ -1025,7 +1025,7 @@ sub_80B6194: @ 80B633C
 _080B6356:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _080B636C
+	ldr r1, _080B636C @ =0x02000000
 	movs r0, 0x6
 	strb r0, [r1]
 	movs r0, 0x1
@@ -1039,7 +1039,7 @@ _080B636C: .4byte 0x02000000
 
 	thumb_func_start sub_80B61C8
 sub_80B61C8: @ 80B6370
-	ldr r1, _080B637C
+	ldr r1, _080B637C @ =0x02000000
 	movs r0, 0x4
 	strb r0, [r1]
 	movs r0, 0x1
@@ -1051,7 +1051,7 @@ _080B637C: .4byte 0x02000000
 	thumb_func_start sub_80B61D8
 sub_80B61D8: @ 80B6380
 	push {lr}
-	ldr r0, _080B6390
+	ldr r0, _080B6390 @ =sub_80B623C
 	movs r1, 0x1
 	bl CreateTask
 	pop {r0}
@@ -1063,11 +1063,11 @@ _080B6390: .4byte sub_80B623C
 	thumb_func_start sub_80B61EC
 sub_80B61EC: @ 80B6394
 	push {lr}
-	ldr r0, _080B63B0
+	ldr r0, _080B63B0 @ =sub_80B623C
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B63B4
+	ldr r2, _080B63B4 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1086,11 +1086,11 @@ sub_80B6210: @ 80B63B8
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _080B63DC
+	ldr r0, _080B63DC @ =sub_80B623C
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B63E0
+	ldr r2, _080B63E0 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1110,8 +1110,8 @@ sub_80B623C: @ 80B63E4
 	adds r1, r0, 0
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r3, _080B640C
-	ldr r2, _080B6410
+	ldr r3, _080B640C @ =gUnknown_083CE250
+	ldr r2, _080B6410 @ =gTasks
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
@@ -1142,7 +1142,7 @@ sub_80B6274: @ 80B641C
 	adds r2, r0, 0
 	movs r0, 0
 	strh r0, [r2, 0xA]
-	ldr r0, _080B6438
+	ldr r0, _080B6438 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -1196,7 +1196,7 @@ sub_80B62CC: @ 80B6474
 	mov r0, sp
 	adds r1, r4, 0
 	bl sub_80B6858
-	ldr r0, _080B651C
+	ldr r0, _080B651C @ =gMain
 	ldrh r2, [r0, 0x30]
 	movs r0, 0x40
 	ands r0, r2
@@ -1225,13 +1225,13 @@ _080B64B4:
 	mov r0, sp
 	ldrh r6, [r0]
 	mov r2, sp
-	ldr r0, _080B6520
+	ldr r0, _080B6520 @ =gUnknown_083CE258
 	lsls r1, 1
 	adds r0, r1, r0
 	ldrh r3, [r0]
 	adds r0, r6, r3
 	strh r0, [r2]
-	ldr r0, _080B6524
+	ldr r0, _080B6524 @ =gUnknown_083CE262
 	adds r1, r0
 	ldrh r0, [r1]
 	ldrh r1, [r4]
@@ -1259,7 +1259,7 @@ _080B64F2:
 	asrs r1, r0, 16
 	cmp r1, 0
 	beq _080B6572
-	ldr r0, _080B6528
+	ldr r0, _080B6528 @ =0x02000000
 	ldrb r0, [r0, 0xE]
 	cmp r0, 0x2
 	bne _080B6532
@@ -1293,7 +1293,7 @@ _080B6532:
 	bne _080B6554
 	ldrh r0, [r4]
 	strh r0, [r5, 0xC]
-	ldr r1, _080B6550
+	ldr r1, _080B6550 @ =gUnknown_083CE26C
 	movs r2, 0
 	ldrsh r0, [r4, r2]
 	lsls r0, 1
@@ -1312,7 +1312,7 @@ _080B6554:
 	ldrh r0, [r5, 0xC]
 	b _080B6570
 _080B6564:
-	ldr r0, _080B65A4
+	ldr r0, _080B65A4 @ =gUnknown_083CE274
 	movs r2, 0
 	ldrsh r1, [r4, r2]
 	lsls r1, 1
@@ -1384,12 +1384,12 @@ _080B65C8:
 	thumb_func_start sub_80B6438
 sub_80B6438: @ 80B65E0
 	push {lr}
-	ldr r0, _080B6600
+	ldr r0, _080B6600 @ =sub_80B64D4
 	movs r1, 0x3
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B6604
+	ldr r2, _080B6604 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1412,14 +1412,14 @@ sub_80B6460: @ 80B6608
 	lsrs r7, r1, 24
 	lsls r2, 24
 	lsrs r6, r2, 24
-	ldr r0, _080B6640
+	ldr r0, _080B6640 @ =sub_80B64D4
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080B6644
+	ldr r0, _080B6644 @ =gTasks
 	adds r4, r1, r0
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -1471,7 +1471,7 @@ sub_80B64D4: @ 80B667C
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080B66F0
+	ldr r0, _080B66F0 @ =gTasks
 	adds r4, r1, r0
 	ldrh r1, [r4, 0x8]
 	movs r2, 0x8
@@ -1582,10 +1582,10 @@ sub_80B65AC: @ 80B6754
 	lsrs r0, 24
 	bl sub_80B654C
 	lsls r0, 16
-	ldr r2, _080B6774
+	ldr r2, _080B6774 @ =gPlttBufferFaded
 	lsrs r0, 15
 	adds r2, r0, r2
-	ldr r1, _080B6778
+	ldr r1, _080B6778 @ =gPlttBufferUnfaded
 	adds r0, r1
 	ldrh r0, [r0]
 	strh r0, [r2]
@@ -1617,7 +1617,7 @@ sub_80B65D4: @ 80B677C
 	thumb_func_start sub_80B65F0
 sub_80B65F0: @ 80B6798
 	push {r4,lr}
-	ldr r4, _080B67B4
+	ldr r4, _080B67B4 @ =sub_80B6630
 	adds r0, r4, 0
 	movs r1, 0
 	bl CreateTask
@@ -1634,7 +1634,7 @@ _080B67B4: .4byte sub_80B6630
 	thumb_func_start sub_80B6610
 sub_80B6610: @ 80B67B8
 	push {lr}
-	ldr r0, _080B67CC
+	ldr r0, _080B67CC @ =sub_80B6630
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -1656,8 +1656,8 @@ sub_80B6630: @ 80B67D8
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _080B6808
-	ldr r2, _080B680C
+	ldr r5, _080B6808 @ =gUnknown_083CE27C
+	ldr r2, _080B680C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1683,7 +1683,7 @@ _080B680C: .4byte gTasks
 
 	thumb_func_start sub_80B6668
 sub_80B6668: @ 80B6810
-	ldr r2, _080B6824
+	ldr r2, _080B6824 @ =0x02000000
 	movs r1, 0
 	strh r1, [r2, 0x4]
 	strh r1, [r2, 0x6]
@@ -1701,7 +1701,7 @@ sub_80B6680: @ 80B6828
 	push {r4,r5,lr}
 	sub sp, 0x8
 	adds r4, r0, 0
-	ldr r0, _080B688C
+	ldr r0, _080B688C @ =gUnknown_083CE28C
 	ldr r1, [r0, 0x4]
 	ldr r0, [r0]
 	str r0, [sp]
@@ -1713,7 +1713,7 @@ sub_80B6680: @ 80B6828
 	ldrsh r0, [r4, r1]
 	movs r1, 0x28
 	bl Sin
-	ldr r5, _080B6890
+	ldr r5, _080B6890 @ =0x02000000
 	ldrb r1, [r5, 0xC]
 	lsls r1, 2
 	add r1, sp
@@ -1757,7 +1757,7 @@ sub_80B66EC: @ 80B6894
 	push {r4,r5,lr}
 	sub sp, 0x8
 	adds r4, r0, 0
-	ldr r0, _080B68F8
+	ldr r0, _080B68F8 @ =gUnknown_083CE28C
 	ldr r1, [r0, 0x4]
 	ldr r0, [r0]
 	str r0, [sp]
@@ -1769,7 +1769,7 @@ sub_80B66EC: @ 80B6894
 	ldrsh r0, [r4, r1]
 	movs r1, 0x28
 	bl Sin
-	ldr r5, _080B68FC
+	ldr r5, _080B68FC @ =0x02000000
 	ldrb r1, [r5, 0xC]
 	lsls r1, 2
 	add r1, sp
@@ -1811,7 +1811,7 @@ _080B68FC: .4byte 0x02000000
 	thumb_func_start sub_80B6758
 sub_80B6758: @ 80B6900
 	push {lr}
-	ldr r0, _080B6918
+	ldr r0, _080B6918 @ =sub_80B6630
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
@@ -1826,14 +1826,14 @@ _080B6918: .4byte sub_80B6630
 	thumb_func_start sub_80B6774
 sub_80B6774: @ 80B691C
 	push {r4,r5,lr}
-	ldr r0, _080B6988
+	ldr r0, _080B6988 @ =gSpriteTemplate_83CE640
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0
 	bl CreateSprite
-	ldr r4, _080B698C
+	ldr r4, _080B698C @ =0x02000000
 	strb r0, [r4, 0xF]
-	ldr r5, _080B6990
+	ldr r5, _080B6990 @ =gSprites
 	ldrb r0, [r4, 0xF]
 	lsls r1, r0, 4
 	adds r1, r0
@@ -1884,10 +1884,10 @@ _080B6990: .4byte gSprites
 
 	thumb_func_start sub_80B67EC
 sub_80B67EC: @ 80B6994
-	ldr r3, _080B69AC
+	ldr r3, _080B69AC @ =gUnknown_083CE294
 	lsls r0, 16
 	asrs r0, 16
-	ldr r1, _080B69B0
+	ldr r1, _080B69B0 @ =0x02000000
 	ldrb r2, [r1, 0xE]
 	lsls r1, r2, 2
 	adds r1, r2
@@ -1908,12 +1908,12 @@ sub_80B680C: @ 80B69B4
 	lsls r0, 16
 	lsls r5, 16
 	lsrs r5, 16
-	ldr r1, _080B69F8
+	ldr r1, _080B69F8 @ =0x02000000
 	ldrb r1, [r1, 0xF]
 	lsls r4, r1, 4
 	adds r4, r1
 	lsls r4, 2
-	ldr r1, _080B69FC
+	ldr r1, _080B69FC @ =gSprites
 	adds r4, r1
 	lsrs r6, r0, 16
 	asrs r0, 16
@@ -1942,12 +1942,12 @@ _080B69FC: .4byte gSprites
 
 	thumb_func_start sub_80B6858
 sub_80B6858: @ 80B6A00
-	ldr r2, _080B6A18
+	ldr r2, _080B6A18 @ =0x02000000
 	ldrb r3, [r2, 0xF]
 	lsls r2, r3, 4
 	adds r2, r3
 	lsls r2, 2
-	ldr r3, _080B6A1C
+	ldr r3, _080B6A1C @ =gSprites
 	adds r2, r3
 	ldrh r3, [r2, 0x2E]
 	strh r3, [r0]
@@ -1974,15 +1974,15 @@ sub_80B6888: @ 80B6A30
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _080B6A74
-	ldr r4, _080B6A78
+	ldr r5, _080B6A74 @ =gSprites
+	ldr r4, _080B6A78 @ =0x02000000
 	ldrb r1, [r4, 0xF]
 	lsls r2, r1, 4
 	adds r2, r1
 	lsls r2, 2
 	adds r2, r5
 	ldrh r3, [r2, 0x36]
-	ldr r1, _080B6A7C
+	ldr r1, _080B6A7C @ =0xffffff00
 	ands r1, r3
 	strh r1, [r2, 0x36]
 	ldrb r2, [r4, 0xF]
@@ -2013,8 +2013,8 @@ _080B6A7C: .4byte 0xffffff00
 sub_80B68D8: @ 80B6A80
 	push {r4,r5,lr}
 	lsls r0, 24
-	ldr r5, _080B6AB4
-	ldr r4, _080B6AB8
+	ldr r5, _080B6AB4 @ =gSprites
+	ldr r4, _080B6AB8 @ =0x02000000
 	ldrb r1, [r4, 0xF]
 	lsls r2, r1, 4
 	adds r2, r1
@@ -2044,12 +2044,12 @@ _080B6AB8: .4byte 0x02000000
 	thumb_func_start sub_80B6914
 sub_80B6914: @ 80B6ABC
 	push {lr}
-	ldr r0, _080B6AD8
+	ldr r0, _080B6AD8 @ =0x02000000
 	ldrb r1, [r0, 0xF]
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080B6ADC
+	ldr r1, _080B6ADC @ =gSprites
 	adds r0, r1
 	movs r1, 0x1
 	bl StartSpriteAnim
@@ -2062,8 +2062,8 @@ _080B6ADC: .4byte gSprites
 
 	thumb_func_start sub_80B6938
 sub_80B6938: @ 80B6AE0
-	ldr r2, _080B6AF8
-	ldr r0, _080B6AFC
+	ldr r2, _080B6AF8 @ =gSprites
+	ldr r0, _080B6AFC @ =0x02000000
 	ldrb r1, [r0, 0xF]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -2083,7 +2083,7 @@ _080B6AFC: .4byte 0x02000000
 sub_80B6958: @ 80B6B00
 	push {r4,r5,lr}
 	sub sp, 0x8
-	ldr r1, _080B6B30
+	ldr r1, _080B6B30 @ =gUnknown_083CE2AF
 	mov r0, sp
 	movs r2, 0x3
 	bl memcpy
@@ -2222,7 +2222,7 @@ _080B6BE6:
 	bl IndexOfSpritePaletteTag
 	lsls r0, 24
 	lsrs r0, 4
-	ldr r2, _080B6C24
+	ldr r2, _080B6C24 @ =0x01010000
 	adds r0, r2
 	lsrs r0, 16
 	adds r1, r4, 0
@@ -2240,24 +2240,24 @@ _080B6C24: .4byte 0x01010000
 	thumb_func_start sub_80B6A80
 sub_80B6A80: @ 80B6C28
 	push {r4,r5,lr}
-	ldr r0, _080B6CA0
+	ldr r0, _080B6CA0 @ =gSpriteTemplate_83CE5C8
 	movs r1, 0xCC
 	movs r2, 0x50
 	movs r3, 0
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080B6CA4
+	ldr r1, _080B6CA4 @ =0x02000000
 	strb r0, [r1, 0x10]
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r5, _080B6CA8
+	ldr r5, _080B6CA8 @ =gSprites
 	adds r4, r5
-	ldr r1, _080B6CAC
+	ldr r1, _080B6CAC @ =gUnknown_083CE558
 	adds r0, r4, 0
 	bl SetSubspriteTables
-	ldr r0, _080B6CB0
+	ldr r0, _080B6CB0 @ =gSpriteTemplate_83CE5F8
 	movs r1, 0xCC
 	movs r2, 0x4C
 	movs r3, 0x1
@@ -2269,10 +2269,10 @@ sub_80B6A80: @ 80B6C28
 	adds r2, r0
 	lsls r2, 2
 	adds r2, r5
-	ldr r1, _080B6CB4
+	ldr r1, _080B6CB4 @ =gUnknown_083CE560
 	adds r0, r2, 0
 	bl SetSubspriteTables
-	ldr r0, _080B6CB8
+	ldr r0, _080B6CB8 @ =gSpriteTemplate_83CE5E0
 	movs r1, 0xCC
 	movs r2, 0x4B
 	movs r3, 0x2
@@ -2306,12 +2306,12 @@ _080B6CB8: .4byte gSpriteTemplate_83CE5E0
 
 	thumb_func_start sub_80B6B14
 sub_80B6B14: @ 80B6CBC
-	ldr r2, _080B6CD4
+	ldr r2, _080B6CD4 @ =0x02000000
 	ldrb r1, [r2, 0x10]
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080B6CD8
+	ldr r1, _080B6CD8 @ =gSprites
 	adds r0, r1
 	movs r1, 0x2
 	strh r1, [r0, 0x2E]
@@ -2327,7 +2327,7 @@ _080B6CD8: .4byte gSprites
 sub_80B6B34: @ 80B6CDC
 	push {r4,r5,lr}
 	adds r4, r0, 0
-	ldr r5, _080B6D00
+	ldr r5, _080B6D00 @ =gUnknown_083CE2B4
 _080B6CE2:
 	movs r1, 0x2E
 	ldrsh r0, [r4, r1]
@@ -2355,7 +2355,7 @@ sub_80B6B5C: @ 80B6D04
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
-	ldr r3, _080B6D38
+	ldr r3, _080B6D38 @ =gSprites
 	adds r1, r3
 	movs r2, 0x3C
 	ldrsh r0, [r4, r2]
@@ -2363,7 +2363,7 @@ sub_80B6B5C: @ 80B6D04
 	adds r2, r0
 	lsls r2, 2
 	adds r2, r3
-	ldr r0, _080B6D3C
+	ldr r0, _080B6D3C @ =0x02000000
 	ldrb r0, [r0, 0xE]
 	bl sub_80B6C48
 	ldrh r0, [r4, 0x2E]
@@ -2393,7 +2393,7 @@ sub_80B6B9C: @ 80B6D44
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r2, _080B6DA8
+	ldr r2, _080B6DA8 @ =gSprites
 	adds r4, r0, r2
 	movs r0, 0x3C
 	ldrsh r1, [r3, r0]
@@ -2411,7 +2411,7 @@ sub_80B6B9C: @ 80B6D44
 	ldrh r0, [r3, 0x2E]
 	adds r0, 0x1
 	strh r0, [r3, 0x2E]
-	ldr r0, _080B6DAC
+	ldr r0, _080B6DAC @ =0x0000fffc
 	strh r0, [r4, 0x26]
 	adds r2, r4, 0
 	adds r2, 0x3E
@@ -2449,7 +2449,7 @@ sub_80B6C08: @ 80B6DB0
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080B6DEC
+	ldr r1, _080B6DEC @ =gSprites
 	adds r2, r0, r1
 	adds r3, r2, 0
 	adds r3, 0x3E
@@ -2487,7 +2487,7 @@ sub_80B6C48: @ 80B6DF0
 	mov r8, r2
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r0, _080B6E48
+	ldr r0, _080B6E48 @ =gUnknown_083CE2C4
 	lsls r4, r5, 1
 	adds r0, r4, r0
 	ldrh r0, [r0]
@@ -2500,7 +2500,7 @@ sub_80B6C48: @ 80B6DF0
 	orrs r1, r0
 	mov r0, r8
 	strb r1, [r0, 0x5]
-	ldr r0, _080B6E4C
+	ldr r0, _080B6E4C @ =gUnknown_083CE2CA
 	adds r4, r0
 	ldrh r0, [r4]
 	bl GetSpriteTileStartByTag
@@ -2529,7 +2529,7 @@ _080B6E4C: .4byte gUnknown_083CE2CA
 	thumb_func_start sub_80B6CA8
 sub_80B6CA8: @ 80B6E50
 	push {r4,r5,lr}
-	ldr r0, _080B6E9C
+	ldr r0, _080B6E9C @ =gSpriteTemplate_83CE610
 	movs r1, 0xCC
 	movs r2, 0x6C
 	movs r3, 0
@@ -2540,12 +2540,12 @@ sub_80B6CA8: @ 80B6E50
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r4, _080B6EA0
+	ldr r4, _080B6EA0 @ =gSprites
 	adds r0, r4
-	ldr r5, _080B6EA4
+	ldr r5, _080B6EA4 @ =gUnknown_083CE578
 	adds r1, r5, 0
 	bl SetSubspriteTables
-	ldr r0, _080B6EA8
+	ldr r0, _080B6EA8 @ =gSpriteTemplate_83CE628
 	movs r1, 0xCC
 	movs r2, 0x84
 	movs r3, 0
@@ -2572,12 +2572,12 @@ _080B6EA8: .4byte gSpriteTemplate_83CE628
 	thumb_func_start sub_80B6D04
 sub_80B6D04: @ 80B6EAC
 	push {r4-r6,lr}
-	ldr r4, _080B6F34
+	ldr r4, _080B6F34 @ =0x02000000
 	ldrh r1, [r4, 0x2]
 	subs r1, 0x1
 	lsls r1, 3
 	adds r1, 0x4
-	ldr r0, _080B6F38
+	ldr r0, _080B6F38 @ =gSpriteTemplate_83CE658
 	lsls r1, 16
 	asrs r1, 16
 	movs r2, 0x28
@@ -2585,7 +2585,7 @@ sub_80B6D04: @ 80B6EAC
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r1, r0, 24
-	ldr r3, _080B6F3C
+	ldr r3, _080B6F3C @ =gSprites
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
@@ -2608,7 +2608,7 @@ sub_80B6D04: @ 80B6EAC
 _080B6EF2:
 	lsls r4, r1, 16
 	asrs r4, 16
-	ldr r0, _080B6F40
+	ldr r0, _080B6F40 @ =gSpriteTemplate_83CE670
 	adds r1, r4, 0
 	movs r2, 0x2C
 	movs r3, 0
@@ -2630,7 +2630,7 @@ _080B6EF2:
 	adds r4, 0x8
 	lsls r4, 16
 	lsrs r1, r4, 16
-	ldr r0, _080B6F34
+	ldr r0, _080B6F34 @ =0x02000000
 	ldr r0, [r0, 0x34]
 	ldrb r0, [r0, 0x1]
 	cmp r5, r0
@@ -2651,7 +2651,7 @@ sub_80B6D9C: @ 80B6F44
 	push {r4,lr}
 	sub sp, 0x8
 	adds r4, r0, 0
-	ldr r1, _080B6F8C
+	ldr r1, _080B6F8C @ =gUnknown_083CE2D0
 	mov r0, sp
 	movs r2, 0x8
 	bl memcpy
@@ -2693,7 +2693,7 @@ sub_80B6DE8: @ 80B6F90
 	push {r4,lr}
 	sub sp, 0x8
 	adds r4, r0, 0
-	ldr r1, _080B6FB8
+	ldr r1, _080B6FB8 @ =gUnknown_083CE2D8
 	mov r0, sp
 	movs r2, 0x8
 	bl memcpy
@@ -2741,8 +2741,8 @@ _080B6FE4:
 	thumb_func_start sub_80B6E44
 sub_80B6E44: @ 80B6FEC
 	push {lr}
-	ldr r1, _080B7004
-	ldr r0, _080B7008
+	ldr r1, _080B7004 @ =gUnknown_083CE2E0
+	ldr r0, _080B7008 @ =0x02000000
 	ldr r0, [r0, 0x34]
 	ldrb r0, [r0, 0x2]
 	lsls r0, 2
@@ -2765,7 +2765,7 @@ nullsub_40: @ 80B700C
 sub_80B6E68: @ 80B7010
 	push {lr}
 	sub sp, 0x4
-	ldr r0, _080B7058
+	ldr r0, _080B7058 @ =0x02000000
 	ldrh r1, [r0, 0x3E]
 	lsls r1, 24
 	lsrs r1, 24
@@ -2773,7 +2773,7 @@ sub_80B6E68: @ 80B7010
 	bl sub_805983C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080B705C
+	ldr r1, _080B705C @ =SpriteCallbackDummy
 	movs r2, 0
 	str r2, [sp]
 	movs r2, 0x38
@@ -2782,7 +2782,7 @@ sub_80B6E68: @ 80B7010
 	adds r1, r0, 0
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r2, _080B7060
+	ldr r2, _080B7060 @ =gSprites
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
@@ -2805,7 +2805,7 @@ _080B7060: .4byte gSprites
 	thumb_func_start sub_80B6EBC
 sub_80B6EBC: @ 80B7064
 	push {r4,lr}
-	ldr r0, _080B7098
+	ldr r0, _080B7098 @ =gSpriteTemplate_83CE688
 	movs r1, 0x34
 	movs r2, 0x18
 	movs r3, 0
@@ -2815,9 +2815,9 @@ sub_80B6EBC: @ 80B7064
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _080B709C
+	ldr r0, _080B709C @ =gSprites
 	adds r4, r0
-	ldr r1, _080B70A0
+	ldr r1, _080B70A0 @ =gUnknown_083CE580
 	adds r0, r4, 0
 	bl SetSubspriteTables
 	ldrb r0, [r4, 0x5]
@@ -2838,9 +2838,9 @@ sub_80B6EFC: @ 80B70A4
 	push {lr}
 	sub sp, 0x8
 	bl sub_809D51C
-	ldr r3, _080B70E0
+	ldr r3, _080B70E0 @ =0x02000000
 	ldrh r0, [r3, 0x3E]
-	ldr r1, _080B70E4
+	ldr r1, _080B70E4 @ =SpriteCallbackDummy
 	movs r2, 0
 	str r2, [sp]
 	ldr r2, [r3, 0x44]
@@ -2850,7 +2850,7 @@ sub_80B6EFC: @ 80B70A4
 	bl sub_809D2FC
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B70E8
+	ldr r2, _080B70E8 @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
@@ -2872,7 +2872,7 @@ _080B70E8: .4byte gSprites
 sub_80B6F44: @ 80B70EC
 	push {r4,lr}
 	movs r2, 0
-	ldr r1, _080B710C
+	ldr r1, _080B710C @ =0x02000000
 	ldr r0, [r1, 0x34]
 	ldrb r0, [r0, 0x1]
 	adds r4, r1, 0
@@ -2910,7 +2910,7 @@ _080B7124:
 	thumb_func_start sub_80B6F84
 sub_80B6F84: @ 80B712C
 	push {lr}
-	ldr r2, _080B7150
+	ldr r2, _080B7150 @ =0x02000000
 	ldr r0, [r2, 0x34]
 	ldrb r0, [r0, 0x1]
 	subs r0, 0x1
@@ -2948,7 +2948,7 @@ sub_80B6FBC: @ 80B7164
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _080B71A8
+	ldr r0, _080B71A8 @ =0x02000000
 	adds r0, 0x11
 	adds r4, r0
 	movs r0, 0
@@ -3029,7 +3029,7 @@ _080B7202:
 	bl sub_80B6F84
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080B7228
+	ldr r1, _080B7228 @ =0x02000000
 	ldr r1, [r1, 0x34]
 	ldrb r1, [r1, 0x1]
 	subs r1, 0x1
@@ -3055,7 +3055,7 @@ sub_80B7090: @ 80B7238
 	lsls r0, 24
 	lsrs r5, r0, 24
 	adds r7, r5, 0
-	ldr r0, _080B7270
+	ldr r0, _080B7270 @ =0x02000000
 	adds r0, 0x11
 	adds r0, r5, r0
 	ldrb r4, [r0]
@@ -3110,7 +3110,7 @@ sub_80B7104: @ 80B72AC
 	bl sub_80B6F84
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r0, _080B72D0
+	ldr r0, _080B72D0 @ =0x02000000
 	adds r0, 0x11
 	adds r0, r5, r0
 	ldrb r4, [r0]
@@ -3140,7 +3140,7 @@ sub_80B713C: @ 80B72E4
 	bl sub_80B6F84
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r0, _080B7308
+	ldr r0, _080B7308 @ =0x02000000
 	adds r0, 0x11
 	adds r0, r5, r0
 	ldrb r4, [r0]
@@ -3173,7 +3173,7 @@ sub_80B7174: @ 80B731C
 	bl sub_80B6F44
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080B733C
+	ldr r1, _080B733C @ =0x02000000
 	adds r1, 0x11
 	adds r0, r1
 	strb r4, [r0]
@@ -3452,7 +3452,7 @@ _080B7502:
 	lsls r0, 24
 	lsrs r2, r0, 24
 _080B7506:
-	ldr r0, _080B7514
+	ldr r0, _080B7514 @ =0x02000000
 	adds r0, 0x11
 	adds r0, r1, r0
 	strb r2, [r0]
@@ -3507,7 +3507,7 @@ _080B7560:
 	lsls r0, 24
 	lsrs r2, r0, 24
 _080B7564:
-	ldr r0, _080B7570
+	ldr r0, _080B7570 @ =0x02000000
 	adds r0, 0x11
 	adds r0, r1, r0
 	strb r2, [r0]
@@ -3603,7 +3603,7 @@ _080B7606:
 	lsls r0, 24
 	lsrs r2, r0, 24
 _080B760A:
-	ldr r0, _080B7618
+	ldr r0, _080B7618 @ =0x02000000
 	adds r0, 0x11
 	adds r0, r1, r0
 	strb r2, [r0]
@@ -3638,7 +3638,7 @@ _080B763E:
 	lsls r0, 24
 	lsrs r2, r0, 24
 _080B7646:
-	ldr r0, _080B7654
+	ldr r0, _080B7654 @ =0x02000000
 	adds r0, 0x11
 	adds r0, r1, r0
 	strb r2, [r0]
@@ -3652,7 +3652,7 @@ _080B7654: .4byte 0x02000000
 sub_80B74B0: @ 80B7658
 	push {r4,lr}
 	movs r1, 0
-	ldr r3, _080B768C
+	ldr r3, _080B768C @ =0x02000000
 	ldr r0, [r3, 0x34]
 	ldrb r0, [r0, 0x1]
 	cmp r1, r0
@@ -3695,15 +3695,15 @@ _080B769E:
 	thumb_func_start sub_80B74FC
 sub_80B74FC: @ 80B76A4
 	push {r4,lr}
-	ldr r0, _080B76D0
-	ldr r1, _080B76D4
+	ldr r0, _080B76D0 @ =gStringVar1
+	ldr r1, _080B76D4 @ =0x02000000
 	ldr r1, [r1, 0x38]
 	bl StringCopy
-	ldr r4, _080B76D8
-	ldr r1, _080B76DC
+	ldr r4, _080B76D8 @ =gStringVar4
+	ldr r1, _080B76DC @ =gOtherText_SentToPC
 	adds r0, r4, 0
 	bl StringExpandPlaceholders
-	ldr r0, _080B76E0
+	ldr r0, _080B76E0 @ =gWindowConfig_81E6E88
 	bl BasicInitMenuWindow
 	bl MenuDisplayMessageBox
 	adds r0, r4, 0
@@ -3722,9 +3722,9 @@ _080B76E0: .4byte gWindowConfig_81E6E88
 	thumb_func_start sub_80B753C
 sub_80B753C: @ 80B76E4
 	push {lr}
-	ldr r0, _080B76F8
+	ldr r0, _080B76F8 @ =gUnknown_083CE6A0
 	bl LoadSpriteSheets
-	ldr r0, _080B76FC
+	ldr r0, _080B76FC @ =gUnknown_083CE708
 	bl LoadSpritePalettes
 	pop {r0}
 	bx r0
@@ -3745,22 +3745,22 @@ sub_80B7558: @ 80B7700
 	thumb_func_start sub_80B7568
 sub_80B7568: @ 80B7710
 	push {r4,lr}
-	ldr r4, _080B7744
-	ldr r3, _080B7748
+	ldr r4, _080B7744 @ =gNamingScreenMenu_Gfx
+	ldr r3, _080B7748 @ =gMenuMessageBoxContentTileOffset
 	ldrh r0, [r3]
 	lsls r0, 5
 	movs r1, 0xC0
 	lsls r1, 19
 	adds r0, r1
-	ldr r1, _080B774C
+	ldr r1, _080B774C @ =0x040000d4
 	str r4, [r1]
 	str r0, [r1, 0x4]
-	ldr r2, _080B7750
+	ldr r2, _080B7750 @ =0x80000400
 	str r2, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	ldrh r0, [r3]
 	lsls r0, 5
-	ldr r3, _080B7754
+	ldr r3, _080B7754 @ =0x06008000
 	adds r0, r3
 	str r4, [r1]
 	str r0, [r1, 0x4]
@@ -3780,7 +3780,7 @@ _080B7754: .4byte 0x06008000
 	thumb_func_start sub_80B75B0
 sub_80B75B0: @ 80B7758
 	push {lr}
-	ldr r0, _080B7768
+	ldr r0, _080B7768 @ =gNamingScreenPalettes
 	movs r1, 0
 	movs r2, 0x80
 	bl LoadPalette
@@ -3794,13 +3794,13 @@ _080B7768: .4byte gNamingScreenPalettes
 sub_80B75C4: @ 80B776C
 	push {r4,r5,lr}
 	sub sp, 0x8
-	ldr r0, _080B77B0
+	ldr r0, _080B77B0 @ =gUnknown_083CE308
 	ldr r1, [r0, 0x4]
 	ldr r0, [r0]
 	str r0, [sp]
 	str r1, [sp, 0x4]
-	ldr r4, _080B77B4
-	ldr r5, _080B77B8
+	ldr r4, _080B77B4 @ =gUnknown_083CE2F0
+	ldr r5, _080B77B8 @ =0x02000000
 	ldrb r1, [r5, 0xE]
 	lsls r1, 3
 	adds r1, r4
@@ -3834,13 +3834,13 @@ _080B77B8: .4byte 0x02000000
 sub_80B7614: @ 80B77BC
 	push {lr}
 	sub sp, 0x8
-	ldr r0, _080B77EC
+	ldr r0, _080B77EC @ =gUnknown_083CE308
 	ldr r1, [r0, 0x4]
 	ldr r0, [r0]
 	str r0, [sp]
 	str r1, [sp, 0x4]
-	ldr r0, _080B77F0
-	ldr r2, _080B77F4
+	ldr r0, _080B77F0 @ =gUnknown_083CE2F0
+	ldr r2, _080B77F4 @ =0x02000000
 	ldrb r1, [r2, 0xE]
 	lsls r1, 3
 	adds r0, 0x4
@@ -3863,7 +3863,7 @@ _080B77F4: .4byte 0x02000000
 	thumb_func_start sub_80B7650
 sub_80B7650: @ 80B77F8
 	push {lr}
-	ldr r1, _080B7804
+	ldr r1, _080B7804 @ =gUnknown_083CE748
 	bl sub_80B7698
 	pop {r0}
 	bx r0
@@ -3874,7 +3874,7 @@ _080B7804: .4byte gUnknown_083CE748
 	thumb_func_start sub_80B7660
 sub_80B7660: @ 80B7808
 	push {lr}
-	ldr r1, _080B7814
+	ldr r1, _080B7814 @ =gUnknown_083CEBF8
 	bl sub_80B7698
 	pop {r0}
 	bx r0
@@ -3885,7 +3885,7 @@ _080B7814: .4byte gUnknown_083CEBF8
 	thumb_func_start sub_80B7670
 sub_80B7670: @ 80B7818
 	push {lr}
-	ldr r1, _080B7824
+	ldr r1, _080B7824 @ =gUnknown_083CF0A8
 	bl sub_80B7698
 	pop {r0}
 	bx r0
@@ -3896,8 +3896,8 @@ _080B7824: .4byte gUnknown_083CF0A8
 	thumb_func_start sub_80B7680
 sub_80B7680: @ 80B7828
 	push {lr}
-	ldr r0, _080B7838
-	ldr r1, _080B783C
+	ldr r0, _080B7838 @ =0x0600f000
+	ldr r1, _080B783C @ =gUnknown_08E86258
 	bl sub_80B76E0
 	pop {r0}
 	bx r0
@@ -3912,7 +3912,7 @@ sub_80B7698: @ 80B7840
 	mov r12, r0
 	adds r3, r1, 0
 	movs r4, 0
-	ldr r0, _080B7884
+	ldr r0, _080B7884 @ =gMenuMessageBoxContentTileOffset
 	ldrh r6, [r0]
 _080B784C:
 	movs r1, 0
@@ -3954,7 +3954,7 @@ sub_80B76E0: @ 80B7888
 	mov r12, r0
 	adds r3, r1, 0
 	movs r4, 0
-	ldr r0, _080B78D0
+	ldr r0, _080B78D0 @ =gMenuMessageBoxContentTileOffset
 	ldrh r6, [r0]
 _080B7894:
 	movs r1, 0
@@ -3994,7 +3994,7 @@ _080B78D0: .4byte gMenuMessageBoxContentTileOffset
 	thumb_func_start sub_80B772C
 sub_80B772C: @ 80B78D4
 	push {lr}
-	ldr r1, _080B78E4
+	ldr r1, _080B78E4 @ =0x02000000
 	ldrb r0, [r1, 0xE]
 	ldrb r1, [r1, 0xC]
 	bl nullsub_20
@@ -4007,7 +4007,7 @@ _080B78E4: .4byte 0x02000000
 	thumb_func_start sub_80B7740
 sub_80B7740: @ 80B78E8
 	push {r4,lr}
-	ldr r4, _080B7908
+	ldr r4, _080B7908 @ =0x02000000
 	ldrb r0, [r4, 0xE]
 	adds r0, 0x1
 	movs r1, 0x3
@@ -4030,7 +4030,7 @@ nullsub_20: @ 80B790C
 
 	thumb_func_start sub_80B7768
 sub_80B7768: @ 80B7910
-	ldr r3, _080B7934
+	ldr r3, _080B7934 @ =gUnknown_083CE3A8
 	lsls r0, 16
 	asrs r0, 16
 	lsls r1, 16
@@ -4039,7 +4039,7 @@ sub_80B7768: @ 80B7910
 	adds r2, r1
 	lsls r2, 2
 	adds r0, r2
-	ldr r1, _080B7938
+	ldr r1, _080B7938 @ =0x02000000
 	ldrb r2, [r1, 0xE]
 	lsls r1, r2, 2
 	adds r1, r2
@@ -4056,8 +4056,8 @@ _080B7938: .4byte 0x02000000
 	thumb_func_start sub_80B7794
 sub_80B7794: @ 80B793C
 	push {r4-r6,lr}
-	ldr r6, _080B7994
-	ldr r4, _080B7998
+	ldr r6, _080B7994 @ =gUnknown_083CE328
+	ldr r4, _080B7998 @ =0x02000000
 	ldrb r0, [r4, 0xC]
 	lsls r0, 2
 	ldrb r1, [r4, 0xE]
@@ -4066,7 +4066,7 @@ sub_80B7794: @ 80B793C
 	adds r0, r6
 	ldr r0, [r0]
 	bl BasicInitMenuWindow
-	ldr r5, _080B799C
+	ldr r5, _080B799C @ =gUnknown_083CE310
 	ldrb r0, [r4, 0xE]
 	lsls r0, 3
 	adds r0, r5
@@ -4101,8 +4101,8 @@ _080B799C: .4byte gUnknown_083CE310
 	thumb_func_start sub_80B77F8
 sub_80B77F8: @ 80B79A0
 	push {r4,lr}
-	ldr r2, _080B79D4
-	ldr r4, _080B79D8
+	ldr r2, _080B79D4 @ =gUnknown_083CE328
+	ldr r4, _080B79D8 @ =0x02000000
 	ldrb r1, [r4, 0xD]
 	lsls r1, 2
 	ldrb r0, [r4, 0xE]
@@ -4112,7 +4112,7 @@ sub_80B77F8: @ 80B79A0
 	adds r1, r2
 	ldr r0, [r1]
 	bl BasicInitMenuWindow
-	ldr r1, _080B79DC
+	ldr r1, _080B79DC @ =gUnknown_083CE310
 	ldrb r0, [r4, 0xE]
 	lsls r0, 3
 	adds r1, 0x4
@@ -4172,7 +4172,7 @@ _080B7A14:
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 2
-	ldr r1, _080B7A4C
+	ldr r1, _080B7A4C @ =gUnknown_083CE3A8
 	adds r0, r1
 	adds r0, r6, r0
 	lsls r2, r5, 24
@@ -4200,16 +4200,16 @@ _080B7A4C: .4byte gUnknown_083CE3A8
 	thumb_func_start sub_80B78A8
 sub_80B78A8: @ 80B7A50
 	push {r4,lr}
-	ldr r0, _080B7A8C
+	ldr r0, _080B7A8C @ =gWindowConfig_81E6F4C
 	bl BasicInitMenuWindow
-	ldr r1, _080B7A90
-	ldr r4, _080B7A94
+	ldr r1, _080B7A90 @ =gUnknown_083CE358
+	ldr r4, _080B7A94 @ =0x02000000
 	ldrb r0, [r4, 0x1]
 	lsls r0, 2
 	adds r0, r1
 	ldr r0, [r0]
 	bl _call_via_r0
-	ldr r1, _080B7A98
+	ldr r1, _080B7A98 @ =gUnknown_083CE368
 	ldr r0, [r4, 0x34]
 	ldrb r0, [r0, 0x3]
 	lsls r0, 2
@@ -4239,13 +4239,13 @@ nullsub_61: @ 80B7A9C
 	thumb_func_start sub_80B78F8
 sub_80B78F8: @ 80B7AA0
 	push {lr}
-	ldr r0, _080B7ABC
-	ldr r1, _080B7AC0
+	ldr r0, _080B7ABC @ =gStringVar1
+	ldr r1, _080B7AC0 @ =0x02000000
 	movs r3, 0x3E
 	ldrsh r2, [r1, r3]
 	movs r1, 0xB
 	muls r1, r2
-	ldr r2, _080B7AC4
+	ldr r2, _080B7AC4 @ =gSpeciesNames
 	adds r1, r2
 	bl StringCopy
 	pop {r0}
@@ -4265,11 +4265,11 @@ nullsub_62: @ 80B7AC8
 sub_80B7924: @ 80B7ACC
 	push {lr}
 	sub sp, 0x4
-	ldr r1, _080B7B00
+	ldr r1, _080B7B00 @ =gUnknown_083CE370
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
-	ldr r0, _080B7B04
+	ldr r0, _080B7B04 @ =0x02000000
 	adds r0, 0x40
 	movs r1, 0
 	ldrsh r0, [r0, r1]
@@ -4297,7 +4297,7 @@ _080B7B04: .4byte 0x02000000
 	thumb_func_start sub_80B7960
 sub_80B7960: @ 80B7B08
 	push {r4,lr}
-	ldr r0, _080B7B44
+	ldr r0, _080B7B44 @ =gStringVar1
 	movs r2, 0xFC
 	strb r2, [r0]
 	movs r1, 0x14
@@ -4310,12 +4310,12 @@ sub_80B7960: @ 80B7B08
 	movs r1, 0x1
 	strb r1, [r0, 0x5]
 	adds r0, 0x6
-	ldr r4, _080B7B48
+	ldr r4, _080B7B48 @ =0x02000011
 	adds r1, r4, 0
 	bl StringCopy
-	ldr r0, _080B7B4C
+	ldr r0, _080B7B4C @ =gWindowConfig_81E6F4C
 	bl BasicInitMenuWindow
-	ldr r0, _080B7B44
+	ldr r0, _080B7B44 @ =gStringVar1
 	subs r4, 0x11
 	ldrb r1, [r4, 0x2]
 	movs r2, 0x4

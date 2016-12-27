@@ -10,10 +10,10 @@
 palette_bg_faded_fill_black: @ 8080CA8
 	push {lr}
 	sub sp, 0x4
-	ldr r0, _08080CC0
+	ldr r0, _08080CC0 @ =0x7fff7fff
 	str r0, [sp]
-	ldr r1, _08080CC4
-	ldr r2, _08080CC8
+	ldr r1, _08080CC4 @ =gPlttBufferFaded
+	ldr r2, _08080CC8 @ =0x01000100
 	mov r0, sp
 	bl CpuFastSet
 	add sp, 0x4
@@ -31,8 +31,8 @@ palette_bg_faded_fill_white: @ 8080CCC
 	sub sp, 0x4
 	movs r0, 0
 	str r0, [sp]
-	ldr r1, _08080CE4
-	ldr r2, _08080CE8
+	ldr r1, _08080CE4 @ =gPlttBufferFaded
+	ldr r2, _08080CE8 @ =0x01000100
 	mov r0, sp
 	bl CpuFastSet
 	add sp, 0x4
@@ -162,7 +162,7 @@ sub_8080990: @ 8080DC4
 	bl ScriptContext2_Enable
 	bl sub_8053E90
 	bl pal_fill_black
-	ldr r0, _08080DE0
+	ldr r0, _08080DE0 @ =task0A_asap_script_env_2_enable_and_set_ctx_running
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -176,7 +176,7 @@ sub_80809B0: @ 8080DE4
 	push {lr}
 	bl ScriptContext2_Enable
 	bl pal_fill_black
-	ldr r0, _08080DFC
+	ldr r0, _08080DFC @ =task0A_asap_script_env_2_enable_and_set_ctx_running
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -193,7 +193,7 @@ task_mpl_807DD60: @ 8080E00
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r2, _08080E24
+	ldr r2, _08080E24 @ =gTasks
 	adds r4, r0, r2
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -251,7 +251,7 @@ sub_8080A3C: @ 8080E70
 	bl ScriptContext2_Enable
 	bl sub_8053E90
 	bl palette_bg_faded_fill_white
-	ldr r0, _08080E8C
+	ldr r0, _08080E8C @ =task_mpl_807DD60
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -268,7 +268,7 @@ sub_8080A5C: @ 8080E90
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08080EB4
+	ldr r1, _08080EB4 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -319,7 +319,7 @@ sub_8080AC4: @ 8080EF8
 	bl ScriptContext2_Enable
 	bl sub_8053E90
 	bl palette_bg_faded_fill_white
-	ldr r0, _08080F14
+	ldr r0, _08080F14 @ =sub_8080A5C
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -351,7 +351,7 @@ sub_8080AE4: @ 8080F18
 	lsrs r0, 24
 	cmp r0, 0x1
 	bne _08080F50
-	ldr r1, _08080F4C
+	ldr r1, _08080F4C @ =sub_8080B9C
 	b _08080F62
 	.align 2, 0
 _08080F4C: .4byte sub_8080B9C
@@ -360,10 +360,10 @@ _08080F50:
 	bl sub_8056F08
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08080F74
+	ldr r1, _08080F74 @ =task_map_chg_seq_0807E2CC
 	cmp r0, 0x1
 	bne _08080F62
-	ldr r1, _08080F78
+	ldr r1, _08080F78 @ =task_map_chg_seq_0807E20C
 _08080F62:
 	adds r0, r1, 0
 	movs r1, 0xA
@@ -406,7 +406,7 @@ sub_8080B78: @ 8080FAC
 	bl pal_fill_for_maplights
 	movs r0, 0x2E
 	bl PlaySE
-	ldr r0, _08080FCC
+	ldr r0, _08080FCC @ =task_map_chg_seq_0807E2CC
 	movs r1, 0xA
 	bl CreateTask
 	bl ScriptContext2_Enable
@@ -424,7 +424,7 @@ sub_8080B9C: @ 8080FD0
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _08080FFC
+	ldr r1, _08080FFC @ =gTasks
 	adds r5, r0, r1
 	adds r6, r5, 0
 	adds r6, 0xC
@@ -436,7 +436,7 @@ sub_8080B9C: @ 8080FD0
 	cmp r0, 0x4
 	bhi _080810E2
 	lsls r0, 2
-	ldr r1, _08081000
+	ldr r1, _08081000 @ =_08081004
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -481,7 +481,7 @@ _0808103C:
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08081070
+	ldr r1, _08081070 @ =gMapObjects
 	adds r0, r1
 	movs r1, 0x8
 	bl FieldObjectSetSpecialAnim
@@ -513,7 +513,7 @@ _08081074:
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080810B4
+	ldr r1, _080810B4 @ =gMapObjects
 	adds r0, r1
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	movs r0, 0x3
@@ -556,7 +556,7 @@ task_map_chg_seq_0807E20C: @ 80810E8
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _08081114
+	ldr r1, _08081114 @ =gTasks
 	adds r5, r0, r1
 	adds r6, r5, 0
 	adds r6, 0xC
@@ -604,7 +604,7 @@ _0808113A:
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _08081180
+	ldr r0, _08081180 @ =gMapObjects
 	adds r4, r0
 	bl player_get_direction_lower_nybble
 	lsls r0, 24
@@ -644,7 +644,7 @@ task_map_chg_seq_0807E2CC: @ 80811A8
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r1, _080811C8
+	ldr r1, _080811C8 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
@@ -689,7 +689,7 @@ sub_8080DC4: @ 80811F8
 	bne _08081214
 	adds r0, r4, 0
 	bl DestroyTask
-	ldr r0, _0808121C
+	ldr r0, _0808121C @ =sub_80712B4
 	movs r1, 0x50
 	bl CreateTask
 _08081214:
@@ -704,7 +704,7 @@ _0808121C: .4byte sub_80712B4
 atk17_seteffectuser: @ 8081220
 	push {lr}
 	bl pal_fill_black
-	ldr r0, _08081234
+	ldr r0, _08081234 @ =sub_8080DC4
 	bl CreateStartMenuTask
 	bl ScriptContext2_Enable
 	pop {r0}
@@ -736,7 +736,7 @@ sub_8080E28: @ 808125C
 	push {lr}
 	bl ScriptContext2_Enable
 	bl pal_fill_black
-	ldr r0, _08081274
+	ldr r0, _08081274 @ =task_mpl_807E3C8
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -751,7 +751,7 @@ sub_8080E44: @ 8081278
 	bl ScriptContext2_Enable
 	bl sub_8053E90
 	bl pal_fill_black
-	ldr r0, _08081294
+	ldr r0, _08081294 @ =task_mpl_807E3C8
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -762,7 +762,7 @@ _08081294: .4byte task_mpl_807E3C8
 
 	thumb_func_start sub_8080E64
 sub_8080E64: @ 8081298
-	ldr r0, _080812A0
+	ldr r0, _080812A0 @ =gPaletteFade
 	ldrb r0, [r0, 0x7]
 	lsrs r0, 7
 	bx lr
@@ -796,10 +796,10 @@ sub_8080E88: @ 80812BC
 	bl PlayRainSoundEffect
 	movs r0, 0x9
 	bl PlaySE
-	ldr r0, _080812E8
-	ldr r1, _080812EC
+	ldr r0, _080812E8 @ =gUnknown_0300485C
+	ldr r1, _080812EC @ =mapldr_default
 	str r1, [r0]
-	ldr r0, _080812F0
+	ldr r0, _080812F0 @ =task0A_fade_n_map_maybe
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -817,10 +817,10 @@ sp13E_warp_to_last_warp: @ 80812F4
 	bl sub_8053FF8
 	bl sub_8080918
 	bl PlayRainSoundEffect
-	ldr r0, _08081318
-	ldr r1, _0808131C
+	ldr r0, _08081318 @ =gUnknown_0300485C
+	ldr r1, _0808131C @ =mapldr_default
 	str r1, [r0]
-	ldr r0, _08081320
+	ldr r0, _08081320 @ =task0A_fade_n_map_maybe
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -835,10 +835,10 @@ _08081320: .4byte task0A_fade_n_map_maybe
 sub_8080EF0: @ 8081324
 	push {lr}
 	bl ScriptContext2_Enable
-	ldr r0, _0808133C
-	ldr r1, _08081340
+	ldr r0, _0808133C @ =gUnknown_0300485C
+	ldr r1, _08081340 @ =mapldr_default
 	str r1, [r0]
-	ldr r0, _08081344
+	ldr r0, _08081344 @ =sub_808115C
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -853,8 +853,8 @@ _08081344: .4byte sub_808115C
 sp13F_fall_to_last_warp: @ 8081348
 	push {lr}
 	bl sp13E_warp_to_last_warp
-	ldr r1, _08081358
-	ldr r0, _0808135C
+	ldr r1, _08081358 @ =gUnknown_0300485C
+	ldr r0, _0808135C @ =sub_8086748
 	str r0, [r1]
 	pop {r0}
 	bx r0
@@ -906,11 +906,11 @@ sub_8080F68: @ 808139C
 	bl sub_8080918
 	movs r0, 0x2D
 	bl PlaySE
-	ldr r0, _080813C4
+	ldr r0, _080813C4 @ =task0A_fade_n_map_maybe
 	movs r1, 0xA
 	bl CreateTask
-	ldr r1, _080813C8
-	ldr r0, _080813CC
+	ldr r1, _080813C8 @ =gUnknown_0300485C
+	ldr r0, _080813CC @ =sub_8080B78
 	str r0, [r1]
 	pop {r0}
 	bx r0
@@ -925,11 +925,11 @@ sub_8080F9C: @ 80813D0
 	push {lr}
 	bl ScriptContext2_Enable
 	bl sub_8080918
-	ldr r0, _080813EC
+	ldr r0, _080813EC @ =task0A_fade_n_map_maybe
 	movs r1, 0xA
 	bl CreateTask
-	ldr r1, _080813F0
-	ldr r0, _080813F4
+	ldr r1, _080813F0 @ =gUnknown_0300485C
+	ldr r0, _080813F4 @ =sub_80C791C
 	str r0, [r1]
 	pop {r0}
 	bx r0
@@ -947,7 +947,7 @@ sub_8080FC4: @ 80813F8
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _0808141C
+	ldr r1, _0808141C @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -982,7 +982,7 @@ _0808143E:
 	b _08081456
 _08081446:
 	bl warp_in
-	ldr r0, _0808145C
+	ldr r0, _0808145C @ =sub_8054588
 	bl SetMainCallback2
 	adds r0, r5, 0
 	bl DestroyTask
@@ -1002,7 +1002,7 @@ sub_808102C: @ 8081460
 	bl sub_8080918
 	movs r0, 0x9
 	bl PlaySE
-	ldr r0, _08081480
+	ldr r0, _08081480 @ =sub_8080FC4
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -1019,7 +1019,7 @@ sub_8081050: @ 8081484
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080814A8
+	ldr r1, _080814A8 @ =0x03004b38
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -1060,12 +1060,12 @@ _080814E0:
 	strh r0, [r4]
 	b _08081500
 _080814E8:
-	ldr r0, _08081508
+	ldr r0, _08081508 @ =gReceivedRemoteLinkPlayers
 	ldrb r0, [r0]
 	cmp r0, 0
 	bne _08081500
 	bl warp_in
-	ldr r0, _0808150C
+	ldr r0, _0808150C @ =CB2_LoadMap
 	bl SetMainCallback2
 	adds r0, r5, 0
 	bl DestroyTask
@@ -1081,7 +1081,7 @@ _0808150C: .4byte CB2_LoadMap
 	thumb_func_start sub_80810DC
 sub_80810DC: @ 8081510
 	push {lr}
-	ldr r0, _08081520
+	ldr r0, _08081520 @ =sub_8081050
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -1098,7 +1098,7 @@ task0A_fade_n_map_maybe: @ 8081524
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08081548
+	ldr r1, _08081548 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -1134,7 +1134,7 @@ _0808156E:
 	b _08081586
 _08081576:
 	bl warp_in
-	ldr r0, _0808158C
+	ldr r0, _0808158C @ =CB2_LoadMap
 	bl SetMainCallback2
 	adds r0, r5, 0
 	bl DestroyTask
@@ -1154,7 +1154,7 @@ sub_808115C: @ 8081590
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080815C0
+	ldr r0, _080815C0 @ =gTasks
 	adds r5, r1, r0
 	adds r4, r5, 0
 	adds r4, 0xC
@@ -1168,7 +1168,7 @@ sub_808115C: @ 8081590
 	b _080816F0
 _080815B4:
 	lsls r0, r1, 2
-	ldr r1, _080815C4
+	ldr r1, _080815C4 @ =_080815C8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1231,7 +1231,7 @@ _0808162E:
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r4, _08081670
+	ldr r4, _08081670 @ =gMapObjects
 	adds r0, r4
 	bl FieldObjectClearAnimIfSpecialAnimActive
 	movs r0, 0xFF
@@ -1276,7 +1276,7 @@ _08081674:
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080816BC
+	ldr r1, _080816BC @ =gMapObjects
 	adds r0, r1
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	movs r0, 0
@@ -1308,7 +1308,7 @@ _080816DC:
 	bl PlayRainSoundEffect
 	movs r0, 0
 	strh r0, [r5, 0x8]
-	ldr r0, _080816F8
+	ldr r0, _080816F8 @ =task0A_fade_n_map_maybe
 	str r0, [r5]
 _080816F0:
 	pop {r4-r6}
@@ -1326,7 +1326,7 @@ sub_80812C8: @ 80816FC
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08081720
+	ldr r1, _08081720 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -1362,7 +1362,7 @@ _08081746:
 	b _0808175E
 _0808174E:
 	bl warp_in
-	ldr r0, _08081764
+	ldr r0, _08081764 @ =sub_8054534
 	bl SetMainCallback2
 	adds r0, r5, 0
 	bl DestroyTask
@@ -1383,10 +1383,10 @@ sub_8081334: @ 8081768
 	bl PlayRainSoundEffect
 	movs r0, 0x9
 	bl PlaySE
-	ldr r0, _08081794
-	ldr r1, _08081798
+	ldr r0, _08081794 @ =gUnknown_0300485C
+	ldr r1, _08081798 @ =sub_8080B60
 	str r1, [r0]
-	ldr r0, _0808179C
+	ldr r0, _0808179C @ =sub_80812C8
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}
@@ -1509,7 +1509,7 @@ sub_8081424: @ 8081858
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _0808187C
+	ldr r1, _0808187C @ =0x03004b38
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -1527,12 +1527,12 @@ _08081880:
 	beq _0808190C
 	b _08081916
 _08081886:
-	ldr r0, _080818AC
+	ldr r0, _080818AC @ =gUnknown_03004DC0
 	ldrb r1, [r0, 0x14]
 	lsls r0, r1, 4
 	subs r0, r1
 	lsls r0, 7
-	ldr r1, _080818B0
+	ldr r1, _080818B0 @ =gUnknown_03004DE0
 	adds r0, r1
 	movs r2, 0x2
 	ldrsh r1, [r4, r2]
@@ -1548,12 +1548,12 @@ _08081886:
 _080818AC: .4byte gUnknown_03004DC0
 _080818B0: .4byte gUnknown_03004DE0
 _080818B4:
-	ldr r0, _080818FC
+	ldr r0, _080818FC @ =gUnknown_03004DC0
 	ldrb r1, [r0, 0x14]
 	lsls r0, r1, 4
 	subs r0, r1
 	lsls r0, 7
-	ldr r1, _08081900
+	ldr r1, _08081900 @ =gUnknown_03004DE0
 	adds r0, r1
 	movs r6, 0x2
 	ldrsh r1, [r4, r6]
@@ -1604,7 +1604,7 @@ sub_80814E8: @ 808191C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _08081940
+	ldr r0, _08081940 @ =sub_8081424
 	bl FuncIsActiveTask
 	lsls r0, 24
 	cmp r0, 0
@@ -1623,7 +1623,7 @@ _08081940: .4byte sub_8081424
 	thumb_func_start sub_8081510
 sub_8081510: @ 8081944
 	push {r4,lr}
-	ldr r4, _08081964
+	ldr r4, _08081964 @ =sub_80814E8
 	adds r0, r4, 0
 	bl FuncIsActiveTask
 	lsls r0, 24
@@ -1654,7 +1654,7 @@ sub_8081534: @ 8081968
 	ldr r0, [sp, 0x20]
 	lsls r0, 24
 	lsrs r7, r0, 24
-	ldr r0, _080819AC
+	ldr r0, _080819AC @ =sub_8081424
 	movs r1, 0x50
 	bl CreateTask
 	lsls r0, 24
@@ -1662,7 +1662,7 @@ sub_8081534: @ 8081968
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
-	ldr r1, _080819B0
+	ldr r1, _080819B0 @ =0x03004b38
 	adds r1, r0, r1
 	strh r5, [r1, 0x6]
 	strh r4, [r1, 0x8]
@@ -1706,7 +1706,7 @@ sub_8081594: @ 80819C8
 	bne _080819E2
 	movs r5, 0x1
 _080819E2:
-	ldr r1, _08081A10
+	ldr r1, _08081A10 @ =gUnknown_0839ACDC
 	lsls r0, 1
 	adds r0, r1
 	ldrh r2, [r0]
@@ -1736,8 +1736,8 @@ sub_80815E0: @ 8081A14
 	lsrs r0, 24
 	cmp r0, 0
 	beq _08081A42
-	ldr r4, _08081A48
-	ldr r1, _08081A4C
+	ldr r4, _08081A48 @ =gUnknown_03004DE0
+	ldr r1, _08081A4C @ =gUnknown_0839ACDC
 	lsls r0, 1
 	adds r0, r1
 	ldrh r3, [r0]
@@ -1801,7 +1801,7 @@ _08081A6E:
 sub_8081658: @ 8081A8C
 	push {lr}
 	lsls r0, 16
-	ldr r2, _08081AAC
+	ldr r2, _08081AAC @ =0x04000052
 	ldrh r1, [r2]
 	lsls r1, 24
 	lsrs r3, r1, 24
@@ -1824,7 +1824,7 @@ _08081AB0:
 	lsls r0, 24
 	lsrs r2, r0, 24
 _08081ABA:
-	ldr r1, _08081AD0
+	ldr r1, _08081AD0 @ =0x04000052
 	lsls r0, r2, 8
 	orrs r0, r3
 	strh r0, [r1]
@@ -1852,7 +1852,7 @@ sub_80816A8: @ 8081ADC
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _08081B04
+	ldr r1, _08081B04 @ =0x03004b38
 	adds r7, r0, r1
 	movs r1, 0
 	ldrsh r0, [r7, r1]
@@ -1861,7 +1861,7 @@ sub_80816A8: @ 8081ADC
 	b _08081CC6
 _08081AF8:
 	lsls r0, 2
-	ldr r1, _08081B08
+	ldr r1, _08081B08 @ =_08081B0C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1883,35 +1883,35 @@ _08081B2C:
 	lsls r2, 19
 	ldrh r0, [r2]
 	strh r0, [r7, 0xC]
-	ldr r3, _08081BA0
+	ldr r3, _08081BA0 @ =0x04000050
 	ldrh r0, [r3]
 	strh r0, [r7, 0xE]
-	ldr r6, _08081BA4
+	ldr r6, _08081BA4 @ =0x04000052
 	ldrh r0, [r6]
 	strh r0, [r7, 0x10]
-	ldr r5, _08081BA8
+	ldr r5, _08081BA8 @ =0x04000048
 	ldrh r0, [r5]
 	strh r0, [r7, 0x12]
-	ldr r4, _08081BAC
+	ldr r4, _08081BAC @ =0x0400004a
 	ldrh r0, [r4]
 	strh r0, [r7, 0x14]
 	ldrh r1, [r2]
-	ldr r0, _08081BB0
+	ldr r0, _08081BB0 @ =0x0000bfff
 	ands r0, r1
 	strh r0, [r2]
-	ldr r1, _08081BB4
+	ldr r1, _08081BB4 @ =gUnknown_081E29E8
 	ldrh r0, [r3]
 	ldrh r1, [r1]
 	orrs r0, r1
 	strh r0, [r3]
-	ldr r2, _08081BB8
+	ldr r2, _08081BB8 @ =0x0000070c
 	adds r0, r2, 0
 	strh r0, [r6]
 	movs r0, 0x3F
 	strh r0, [r5]
 	movs r0, 0x1E
 	strh r0, [r4]
-	ldr r4, _08081BBC
+	ldr r4, _08081BBC @ =gUnknown_03004DE0
 	movs r0, 0x4
 	ldrsh r1, [r7, r0]
 	movs r0, 0x6
@@ -1926,7 +1926,7 @@ _08081B2C:
 	lsls r2, 1
 	adds r0, r4, 0
 	bl CpuFastSet
-	ldr r2, _08081BC0
+	ldr r2, _08081BC0 @ =gUnknown_0839ACEC
 	ldr r0, [r2]
 	ldr r1, [r2, 0x4]
 	ldr r2, [r2, 0x8]
@@ -1965,7 +1965,7 @@ _08081BC4:
 	strh r4, [r7]
 	b _08081CC6
 _08081BF0:
-	ldr r0, _08081C08
+	ldr r0, _08081C08 @ =sub_8081424
 	bl FuncIsActiveTask
 	lsls r0, 24
 	cmp r0, 0
@@ -2043,9 +2043,9 @@ _08081C86:
 	movs r2, 0x1D
 	movs r3, 0x13
 	bl MenuZeroFillWindowRect
-	ldr r0, _08081CD0
+	ldr r0, _08081CD0 @ =gWindowConfig_81E6CE4
 	bl LoadFontDefaultPalette
-	ldr r1, _08081CD4
+	ldr r1, _08081CD4 @ =0x04000040
 	movs r0, 0xFF
 	strh r0, [r1]
 	subs r1, 0x40
@@ -2079,7 +2079,7 @@ _08081CD4: .4byte 0x04000040
 	thumb_func_start sub_80818A4
 sub_80818A4: @ 8081CD8
 	push {lr}
-	ldr r0, _08081D00
+	ldr r0, _08081D00 @ =sub_80816A8
 	movs r1, 0x50
 	bl CreateTask
 	lsls r0, 24
@@ -2087,9 +2087,9 @@ sub_80818A4: @ 8081CD8
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _08081D04
+	ldr r0, _08081D04 @ =0x03004b38
 	adds r1, r0
-	ldr r0, _08081D08
+	ldr r0, _08081D08 @ =gScriptResult
 	ldrh r0, [r0]
 	cmp r0, 0
 	bne _08081D0C
@@ -2127,11 +2127,11 @@ _08081D24:
 	thumb_func_start sub_80818FC
 sub_80818FC: @ 8081D30
 	push {lr}
-	ldr r0, _08081D50
+	ldr r0, _08081D50 @ =sub_80816A8
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08081D54
+	ldr r2, _08081D54 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -2149,7 +2149,7 @@ _08081D54: .4byte gTasks
 sub_8081924: @ 8081D58
 	push {lr}
 	bl sub_8054044
-	ldr r0, _08081D6C
+	ldr r0, _08081D6C @ =task50_0807F0C8
 	movs r1, 0x50
 	bl CreateTask
 	pop {r0}

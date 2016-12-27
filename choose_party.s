@@ -10,8 +10,8 @@
 sub_8121E10: @ 8122190
 	push {lr}
 	bl sub_8121E58
-	ldr r0, _081221AC
-	ldr r1, _081221B0
+	ldr r0, _081221AC @ =0x0201b000
+	ldr r1, _081221B0 @ =0x00000263
 	adds r0, r1
 	movs r1, 0
 	strb r1, [r0]
@@ -28,8 +28,8 @@ _081221B0: .4byte 0x00000263
 sub_8121E34: @ 81221B4
 	push {lr}
 	bl sub_8121E58
-	ldr r0, _081221D0
-	ldr r1, _081221D4
+	ldr r0, _081221D0 @ =0x0201b000
+	ldr r1, _081221D4 @ =0x00000263
 	adds r0, r1
 	movs r1, 0x1
 	strb r1, [r0]
@@ -47,7 +47,7 @@ _081221D4: .4byte 0x00000263
 sub_8121E58: @ 81221D8
 	push {lr}
 	movs r1, 0
-	ldr r3, _081221F4
+	ldr r3, _081221F4 @ =gUnknown_02039270
 	movs r2, 0
 _081221E0:
 	adds r0, r1, r3
@@ -66,7 +66,7 @@ _081221F4: .4byte gUnknown_02039270
 	thumb_func_start sub_8121E78
 sub_8121E78: @ 81221F8
 	push {r4-r6,lr}
-	ldr r1, _08122218
+	ldr r1, _08122218 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r0, r1, r2
@@ -78,7 +78,7 @@ sub_8121E78: @ 81221F8
 	b _081223A6
 _0812220E:
 	lsls r0, 2
-	ldr r1, _0812221C
+	ldr r1, _0812221C @ =_08122220
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -96,11 +96,11 @@ _08122220:
 	.4byte _081222EE
 	.4byte _08122378
 _08122240:
-	ldr r0, _08122268
+	ldr r0, _08122268 @ =0x00000266
 	adds r5, r4, r0
 	movs r1, 0
 	ldrsh r3, [r5, r1]
-	ldr r0, _0812226C
+	ldr r0, _0812226C @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r3, r0
 	bge _08122274
@@ -111,7 +111,7 @@ _08122240:
 	ldrb r1, [r5]
 	movs r2, 0x64
 	muls r2, r3
-	ldr r3, _08122270
+	ldr r3, _08122270 @ =gPlayerParty
 	adds r2, r3
 	bl sub_806D90C
 	b _081223A0
@@ -128,7 +128,7 @@ _08122274:
 	b _08122368
 _08122280:
 	bl sub_806DA98
-	ldr r1, _08122290
+	ldr r1, _08122290 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r1, r2
@@ -150,7 +150,7 @@ _081222A8:
 	lsls r1, 2
 	adds r0, r4, r1
 	ldrb r0, [r0]
-	ldr r2, _081222D0
+	ldr r2, _081222D0 @ =0x00000266
 	adds r5, r4, r2
 	ldrb r1, [r5]
 	bl sub_806BD58
@@ -168,7 +168,7 @@ _081222A8:
 _081222D0: .4byte 0x00000266
 _081222D4:
 	bl sub_806E334
-	ldr r1, _081222E4
+	ldr r1, _081222E4 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r1, r2
@@ -192,7 +192,7 @@ _081222F8:
 _081222FE:
 	cmp r4, 0x2
 	bhi _08122320
-	ldr r0, _08122344
+	ldr r0, _08122344 @ =gUnknown_02039270
 	adds r0, r4, r0
 	ldrb r0, [r0]
 	cmp r0, r6
@@ -211,7 +211,7 @@ _08122320:
 	bne _08122354
 	movs r0, 0x64
 	muls r0, r5
-	ldr r1, _08122348
+	ldr r1, _08122348 @ =gPlayerParty
 	adds r0, r1
 	bl sub_8122030
 	lsls r0, 24
@@ -233,12 +233,12 @@ _08122354:
 	lsls r0, r6, 24
 	lsrs r5, r0, 24
 _08122358:
-	ldr r0, _08122370
+	ldr r0, _08122370 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r5, r0
 	bcc _081222F2
 _08122360:
-	ldr r1, _08122374
+	ldr r1, _08122374 @ =0x0201b000
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r0
@@ -251,7 +251,7 @@ _08122368:
 _08122370: .4byte gPlayerPartyCount
 _08122374: .4byte 0x0201b000
 _08122378:
-	ldr r1, _0812239C
+	ldr r1, _0812239C @ =0x00000266
 	adds r5, r4, r1
 	ldrb r0, [r5]
 	bl sub_806B58C
@@ -289,8 +289,8 @@ sub_8122030: @ 81223B0
 	bl GetMonData
 	cmp r0, 0
 	bne _081223FC
-	ldr r0, _081223D8
-	ldr r1, _081223DC
+	ldr r0, _081223D8 @ =0x0201b000
+	ldr r1, _081223DC @ =0x00000263
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0
@@ -305,8 +305,8 @@ sub_8122030: @ 81223B0
 _081223D8: .4byte 0x0201b000
 _081223DC: .4byte 0x00000263
 _081223E0:
-	ldr r0, _08122400
-	ldr r1, _08122404
+	ldr r0, _08122400 @ =gSaveBlock2
+	ldr r1, _08122404 @ =0x00000554
 	adds r0, r1
 	ldrb r1, [r0]
 	movs r0, 0x1
@@ -330,12 +330,12 @@ _08122408:
 	bl GetMonData
 	lsls r0, 16
 	lsrs r3, r0, 16
-	ldr r1, _08122440
+	ldr r1, _08122440 @ =gBattleTowerBanlist
 	movs r0, 0
 	lsls r0, 1
 	adds r2, r0, r1
 	ldrh r0, [r2]
-	ldr r1, _08122444
+	ldr r1, _08122444 @ =0x0000ffff
 	cmp r0, r1
 	beq _08122436
 	adds r4, r1, 0
@@ -366,13 +366,13 @@ sub_81220C8: @ 8122448
 	mov r6, r9
 	mov r5, r8
 	push {r5-r7}
-	ldr r1, _0812246C
-	ldr r2, _08122470
+	ldr r1, _0812246C @ =0x0201b000
+	ldr r2, _08122470 @ =0x00000263
 	adds r0, r1, r2
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _08122522
-	ldr r0, _08122474
+	ldr r0, _08122474 @ =gUnknown_02039270
 	ldrb r0, [r0, 0x2]
 	cmp r0, 0
 	bne _08122480
@@ -391,27 +391,27 @@ _0812247C:
 _08122480:
 	movs r5, 0
 _08122482:
-	ldr r4, _08122534
+	ldr r4, _08122534 @ =gUnknown_02039270
 	adds r4, r5, r4
 	ldrb r0, [r4]
 	movs r1, 0x64
 	muls r0, r1
-	ldr r2, _08122538
+	ldr r2, _08122538 @ =gUnknown_030042FC
 	adds r0, r2
 	movs r1, 0xB
 	bl GetMonData
-	ldr r1, _0812253C
-	ldr r2, _08122540
+	ldr r1, _0812253C @ =0x0201b000
+	ldr r2, _08122540 @ =0x00000282
 	adds r6, r1, r2
 	strh r0, [r6]
 	ldrb r0, [r4]
 	movs r1, 0x64
 	muls r0, r1
-	ldr r2, _08122538
+	ldr r2, _08122538 @ =gUnknown_030042FC
 	adds r0, r2
 	movs r1, 0xC
 	bl GetMonData
-	ldr r1, _08122544
+	ldr r1, _08122544 @ =0x0201b280
 	strh r0, [r1]
 	adds r1, r5, 0x1
 	lsls r0, r1, 24
@@ -419,18 +419,18 @@ _08122482:
 	mov r10, r1
 	cmp r5, 0x2
 	bhi _08122518
-	ldr r2, _08122548
+	ldr r2, _08122548 @ =0xfffffd7e
 	adds r2, r6
 	mov r9, r2
 	movs r0, 0x64
 	mov r8, r0
-	ldr r7, _08122538
+	ldr r7, _08122538 @ =gUnknown_030042FC
 _081224CA:
-	ldr r0, _08122540
+	ldr r0, _08122540 @ =0x00000282
 	add r0, r9
 	movs r1, 0
 	ldrsh r4, [r0, r1]
-	ldr r0, _08122534
+	ldr r0, _08122534 @ =gUnknown_02039270
 	adds r6, r5, r0
 	ldrb r0, [r6]
 	mov r2, r8
@@ -495,7 +495,7 @@ sub_81221CC: @ 812254C
 	lsls r0, 24
 	lsrs r2, r0, 24
 	movs r1, 0
-	ldr r3, _08122564
+	ldr r3, _08122564 @ =gUnknown_02039270
 _08122556:
 	adds r0, r1, r3
 	ldrb r0, [r0]
@@ -525,11 +525,11 @@ sub_81221F8: @ 8122578
 	movs r0, 0x5
 	movs r1, 0x1
 	bl sub_806D538
-	ldr r5, _081225C8
+	ldr r5, _081225C8 @ =gUnknown_03005CE0
 	ldrb r1, [r5]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _081225CC
+	ldr r1, _081225CC @ =gPlayerParty
 	adds r0, r1
 	bl sub_8122030
 	lsls r0, 24
@@ -545,14 +545,14 @@ sub_81221F8: @ 8122578
 	lsrs r2, r0, 24
 	cmp r2, 0x1
 	bne _081225DC
-	ldr r1, _081225D0
+	ldr r1, _081225D0 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
 	strh r2, [r0, 0x10]
-	ldr r1, _081225D4
-	ldr r2, _081225D8
+	ldr r1, _081225D4 @ =gUnknown_084017D8
+	ldr r2, _081225D8 @ =gUnknown_084017B0
 	movs r0, 0x1
 	b _081225F0
 	.align 2, 0
@@ -562,15 +562,15 @@ _081225D0: .4byte gTasks
 _081225D4: .4byte gUnknown_084017D8
 _081225D8: .4byte gUnknown_084017B0
 _081225DC:
-	ldr r1, _081225F8
+	ldr r1, _081225F8 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
 	movs r1, 0
 	strh r1, [r0, 0x10]
-	ldr r1, _081225FC
-	ldr r2, _08122600
+	ldr r1, _081225FC @ =gUnknown_084017D8
+	ldr r2, _08122600 @ =gUnknown_084017B0
 	movs r0, 0
 _081225F0:
 	movs r3, 0
@@ -581,15 +581,15 @@ _081225F8: .4byte gTasks
 _081225FC: .4byte gUnknown_084017D8
 _08122600: .4byte gUnknown_084017B0
 _08122604:
-	ldr r1, _08122624
+	ldr r1, _08122624 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
 	movs r1, 0x2
 	strh r1, [r0, 0x10]
-	ldr r1, _08122628
-	ldr r2, _0812262C
+	ldr r1, _08122628 @ =gUnknown_084017D8
+	ldr r2, _0812262C @ =gUnknown_084017B0
 	movs r0, 0x2
 	movs r3, 0
 	bl sub_806E750
@@ -609,7 +609,7 @@ sub_81222B0: @ 8122630
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0812265C
+	ldr r0, _0812265C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -633,7 +633,7 @@ _08122660:
 	bl PlaySE
 	adds r0, r4, 0
 	bl sub_806CA38
-	ldr r1, _081226A0
+	ldr r1, _081226A0 @ =gUnknown_03005CE0
 	strb r0, [r1]
 	lsls r0, 24
 	lsrs r0, 24
@@ -642,18 +642,18 @@ _08122660:
 	ldrb r1, [r1]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _081226A4
+	ldr r1, _081226A4 @ =gPlayerParty
 	adds r0, r1
-	ldr r1, _081226A8
+	ldr r1, _081226A8 @ =gStringVar1
 	bl GetMonNickname
 	adds r0, r4, 0
 	bl sub_81221F8
-	ldr r1, _081226AC
+	ldr r1, _081226AC @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _081226B0
+	ldr r1, _081226B0 @ =sub_812238C
 	str r1, [r0]
 	b _081226C2
 	.align 2, 0
@@ -663,12 +663,12 @@ _081226A8: .4byte gStringVar1
 _081226AC: .4byte gTasks
 _081226B0: .4byte sub_812238C
 _081226B4:
-	ldr r0, _081226CC
+	ldr r0, _081226CC @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _081226D0
+	ldr r0, _081226D0 @ =sub_81224A8
 	str r0, [r1]
 _081226C2:
 	adds r0, r4, 0
@@ -688,12 +688,12 @@ _081226D4:
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _08122704
+	ldr r1, _08122704 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08122708
+	ldr r1, _08122708 @ =sub_8122450
 	str r1, [r0]
 _081226FC:
 	add sp, 0x4
@@ -711,14 +711,14 @@ sub_812238C: @ 812270C
 	lsls r0, 24
 	lsrs r7, r0, 24
 	adds r4, r7, 0
-	ldr r0, _08122748
+	ldr r0, _08122748 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r3, 0x80
 	adds r0, r3, 0
 	ands r0, r1
 	cmp r0, 0
 	bne _081227CA
-	ldr r2, _0812274C
+	ldr r2, _0812274C @ =gMain
 	ldrh r1, [r2, 0x30]
 	movs r0, 0x40
 	ands r0, r1
@@ -760,14 +760,14 @@ _08122772:
 	beq _081227BC
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _081227B0
+	ldr r1, _081227B0 @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
 	adds r0, r1
 	ldrb r4, [r0, 0x10]
-	ldr r5, _081227B4
-	ldr r6, _081227B8
+	ldr r5, _081227B4 @ =gUnknown_084017D8
+	ldr r6, _081227B8 @ =gUnknown_084017B0
 	bl GetMenuCursorPos
 	adds r3, r0, 0
 	lsls r3, 24
@@ -802,13 +802,13 @@ sub_8122450: @ 81227D0
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _081227F8
+	ldr r0, _081227F8 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _081227F0
-	ldr r0, _081227FC
+	ldr r0, _081227FC @ =gMain
 	ldr r0, [r0, 0x8]
 	bl SetMainCallback2
 	adds r0, r4, 0
@@ -827,7 +827,7 @@ sub_8122480: @ 8122800
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _08122824
+	ldr r0, _08122824 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -861,14 +861,14 @@ sub_81224A8: @ 8122828
 	beq _08122850
 	movs r1, 0
 	bl sub_806D538
-	ldr r0, _0812284C
+	ldr r0, _0812284C @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	b _08122898
 	.align 2, 0
 _0812284C: .4byte gTasks
 _08122850:
-	ldr r0, _08122878
+	ldr r0, _08122878 @ =gUnknown_02039270
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _08122884
@@ -879,12 +879,12 @@ _08122850:
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _0812287C
+	ldr r1, _0812287C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08122880
+	ldr r1, _08122880 @ =sub_8122450
 	str r1, [r0]
 	b _081228A0
 	.align 2, 0
@@ -897,13 +897,13 @@ _08122884:
 	movs r0, 0xE
 	movs r1, 0
 	bl sub_806D538
-	ldr r0, _081228A8
+	ldr r0, _081228A8 @ =gTasks
 	lsls r1, r5, 2
 	adds r1, r5
 _08122898:
 	lsls r1, 3
 	adds r1, r0
-	ldr r0, _081228AC
+	ldr r0, _081228AC @ =sub_8122480
 	str r0, [r1]
 _081228A0:
 	add sp, 0x4
@@ -918,8 +918,8 @@ _081228AC: .4byte sub_8122480
 	thumb_func_start sub_8122530
 sub_8122530: @ 81228B0
 	push {r4,r5,lr}
-	ldr r5, _081228F8
-	ldr r4, _081228FC
+	ldr r5, _081228F8 @ =0x0201b260
+	ldr r4, _081228FC @ =gUnknown_020384F0
 _081228B6:
 	bl sub_806B124
 	lsls r0, 24
@@ -935,16 +935,16 @@ _081228B6:
 	ldrb r1, [r4]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _08122900
+	ldr r1, _08122900 @ =gPlayerParty
 	adds r0, r1
-	ldr r1, _08122904
+	ldr r1, _08122904 @ =gStringVar1
 	bl GetMonNickname
-	ldr r1, _08122908
+	ldr r1, _08122908 @ =gUnknown_03005CE0
 	ldrb r0, [r4]
 	strb r0, [r1]
 	ldrb r0, [r5]
 	bl sub_81221F8
-	ldr r0, _0812290C
+	ldr r0, _0812290C @ =sub_806AEDC
 	bl SetMainCallback2
 	b _0812291C
 	.align 2, 0
@@ -969,17 +969,17 @@ _0812291C:
 	thumb_func_start sub_81225A4
 sub_81225A4: @ 8122924
 	push {lr}
-	ldr r2, _08122948
+	ldr r2, _08122948 @ =gPaletteFade
 	ldrb r0, [r2, 0x8]
 	movs r1, 0x80
 	orrs r0, r1
 	strb r0, [r2, 0x8]
-	ldr r2, _0812294C
+	ldr r2, _0812294C @ =sub_812238C
 	movs r0, 0x4
 	movs r1, 0xFF
 	movs r3, 0x5
 	bl sub_806AF4C
-	ldr r0, _08122950
+	ldr r0, _08122950 @ =sub_8122530
 	bl SetMainCallback2
 	pop {r0}
 	bx r0
@@ -995,7 +995,7 @@ sub_81225D4: @ 8122954
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r3, r0, 24
-	ldr r0, _081229BC
+	ldr r0, _081229BC @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -1003,8 +1003,8 @@ sub_81225D4: @ 8122954
 	lsrs r5, r0, 24
 	cmp r5, 0
 	bne _081229B2
-	ldr r2, _081229C0
-	ldr r1, _081229C4
+	ldr r2, _081229C0 @ =gSprites
+	ldr r1, _081229C4 @ =gTasks
 	lsls r0, r3, 2
 	adds r0, r3
 	lsls r0, 3
@@ -1021,18 +1021,18 @@ sub_81225D4: @ 8122954
 	lsrs r4, 24
 	adds r0, r3, 0
 	bl DestroyTask
-	ldr r0, _081229C8
-	ldr r1, _081229CC
+	ldr r0, _081229C8 @ =0x0201b000
+	ldr r1, _081229CC @ =0x00000262
 	adds r0, r1
 	movs r1, 0x1
 	strb r1, [r0]
-	ldr r0, _081229D0
-	ldr r1, _081229D4
+	ldr r0, _081229D0 @ =gPlayerParty
+	ldr r1, _081229D4 @ =gPlayerPartyCount
 	ldrb r2, [r1]
 	subs r2, 0x1
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r3, _081229D8
+	ldr r3, _081229D8 @ =sub_81225A4
 	str r5, [sp]
 	adds r1, r4, 0
 	bl sub_809D8BC
@@ -1066,12 +1066,12 @@ sub_812265C: @ 81229DC
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _08122A0C
+	ldr r1, _08122A0C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08122A10
+	ldr r1, _08122A10 @ =sub_81225D4
 	str r1, [r0]
 	add sp, 0x4
 	pop {r4}
@@ -1088,8 +1088,8 @@ sub_8122694: @ 8122A14
 	lsls r0, 24
 	lsrs r5, r0, 24
 	movs r4, 0
-	ldr r3, _08122A54
-	ldr r2, _08122A58
+	ldr r3, _08122A54 @ =gUnknown_02039270
+	ldr r2, _08122A58 @ =gUnknown_03005CE0
 _08122A20:
 	adds r1, r4, r3
 	ldrb r0, [r1]
@@ -1133,15 +1133,15 @@ _08122A5C:
 	bl MenuZeroFillWindowRect
 	bl sub_8072DEC
 	bl sub_806D5A4
-	ldr r0, _08122A9C
+	ldr r0, _08122A9C @ =gOtherText_NoMoreThreePoke
 	movs r1, 0x1
 	bl sub_806E834
-	ldr r1, _08122AA0
+	ldr r1, _08122AA0 @ =gTasks
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08122AA4
+	ldr r1, _08122AA4 @ =sub_8122728
 	str r1, [r0]
 _08122A96:
 	pop {r4,r5}
@@ -1158,11 +1158,11 @@ sub_8122728: @ 8122AA8
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _08122AE8
+	ldr r0, _08122AE8 @ =gUnknown_0202E8F6
 	ldrb r0, [r0]
 	cmp r0, 0x1
 	beq _08122AE0
-	ldr r0, _08122AEC
+	ldr r0, _08122AEC @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -1196,8 +1196,8 @@ sub_8122770: @ 8122AF0
 	lsls r0, 24
 	lsrs r6, r0, 24
 	movs r4, 0
-	ldr r5, _08122B18
-	ldr r3, _08122B1C
+	ldr r5, _08122B18 @ =gUnknown_03005CE0
+	ldr r3, _08122B1C @ =gUnknown_02039270
 _08122AFC:
 	adds r2, r4, r3
 	ldrb r1, [r2]
@@ -1237,7 +1237,7 @@ _08122B3E:
 	ldrb r0, [r5]
 	movs r1, 0x70
 	bl sub_806BC3C
-	ldr r4, _08122B78
+	ldr r4, _08122B78 @ =gUnknown_02039270
 	ldrb r0, [r4]
 	cmp r0, 0
 	beq _08122B5A
@@ -1280,12 +1280,12 @@ sub_81227FC: @ 8122B7C
 	movs r0, 0
 	movs r1, 0
 	bl sub_806D538
-	ldr r1, _08122BB0
+	ldr r1, _08122BB0 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08122BB4
+	ldr r1, _08122BB4 @ =sub_81222B0
 	str r1, [r0]
 	pop {r4}
 	pop {r0}
@@ -1313,7 +1313,7 @@ sub_8122838: @ 8122BB8
 	thumb_func_start sub_8122854
 sub_8122854: @ 8122BD4
 	push {r4,lr}
-	ldr r1, _08122BF4
+	ldr r1, _08122BF4 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r0, r1, r2
@@ -1323,7 +1323,7 @@ sub_8122854: @ 8122BD4
 	cmp r0, 0x4
 	bhi _08122C60
 	lsls r0, 2
-	ldr r1, _08122BF8
+	ldr r1, _08122BF8 @ =_08122BFC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1363,7 +1363,7 @@ _08122C2A:
 _08122C3E:
 	bl sub_81229B8
 _08122C42:
-	ldr r1, _08122C54
+	ldr r1, _08122C54 @ =0x0201b000
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r0
@@ -1396,7 +1396,7 @@ _08122C70:
 	movs r0, 0x64
 	adds r1, r5, 0
 	muls r1, r0
-	ldr r0, _08122CC8
+	ldr r0, _08122CC8 @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0xB
@@ -1409,7 +1409,7 @@ _08122C70:
 	adds r3, r4, 0
 	bl sub_806D880
 _08122C92:
-	ldr r0, _08122CCC
+	ldr r0, _08122CCC @ =gUnknown_02023A00
 	lsls r1, r5, 5
 	adds r3, r1, r0
 	ldrh r0, [r3]
@@ -1449,7 +1449,7 @@ _08122CD8:
 	movs r0, 0x64
 	adds r1, r5, 0
 	muls r1, r0
-	ldr r0, _08122D30
+	ldr r0, _08122D30 @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0xB
@@ -1466,7 +1466,7 @@ _08122CD8:
 	adds r1, r5, 0
 	bl sub_806DCD4
 _08122D04:
-	ldr r0, _08122D34
+	ldr r0, _08122D34 @ =gUnknown_02023A00
 	lsls r1, r5, 5
 	adds r2, r1, r0
 	ldrh r0, [r2]
@@ -1497,7 +1497,7 @@ sub_81229B8: @ 8122D38
 	push {r4-r7,lr}
 	movs r5, 0
 	movs r7, 0x64
-	ldr r6, _08122D80
+	ldr r6, _08122D80 @ =gPlayerParty
 _08122D40:
 	adds r0, r5, 0
 	muls r0, r7
@@ -1567,20 +1567,20 @@ sub_8122A48: @ 8122DC8
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r0, _08122E20
+	ldr r0, _08122E20 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _08122E18
-	ldr r0, _08122E24
+	ldr r0, _08122E24 @ =gTasks
 	lsls r4, r6, 2
 	adds r4, r6
 	lsls r4, 3
 	adds r4, r0
 	movs r0, 0x1E
 	strh r0, [r4, 0x8]
-	ldr r5, _08122E28
+	ldr r5, _08122E28 @ =gUnknown_02023A00
 	ldrh r1, [r5]
 	adds r0, r6, 0
 	movs r2, 0
@@ -1594,10 +1594,10 @@ sub_8122A48: @ 8122DC8
 	adds r0, r6, 0
 	movs r2, 0x2
 	bl sub_806D4AC
-	ldr r0, _08122E2C
+	ldr r0, _08122E2C @ =sub_8122AB8
 	str r0, [r4]
-	ldr r0, _08122E30
-	ldr r1, _08122E34
+	ldr r0, _08122E30 @ =0x0201b000
+	ldr r1, _08122E34 @ =0x00000261
 	adds r0, r1
 	movs r1, 0x1
 	strb r1, [r0]
@@ -1620,13 +1620,13 @@ sub_8122AB8: @ 8122E38
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _08122E7C
+	ldr r0, _08122E7C @ =gUnknown_02023A00
 	ldrh r1, [r0, 0x20]
 	adds r0, 0x40
 	ldrh r2, [r0]
 	adds r0, r4, 0
 	bl sub_806D3B4
-	ldr r1, _08122E80
+	ldr r1, _08122E80 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -1635,10 +1635,10 @@ sub_8122AB8: @ 8122E38
 	ldrsh r0, [r1, r2]
 	cmp r0, 0
 	bne _08122E74
-	ldr r0, _08122E84
+	ldr r0, _08122E84 @ =sub_8122B10
 	str r0, [r1]
-	ldr r0, _08122E88
-	ldr r1, _08122E8C
+	ldr r0, _08122E88 @ =0x0201b000
+	ldr r1, _08122E8C @ =0x00000261
 	adds r0, r1
 	movs r1, 0x2
 	strb r1, [r0]
@@ -1669,9 +1669,9 @@ sub_8122B10: @ 8122E90
 	str r0, [sp, 0x4]
 	movs r0, 0
 	mov r8, r0
-	ldr r1, _08122EDC
+	ldr r1, _08122EDC @ =gUnknown_02023A00
 	mov r10, r1
-	ldr r2, _08122EE0
+	ldr r2, _08122EE0 @ =gStringVar1
 	mov r9, r2
 _08122EAE:
 	mov r1, r8
@@ -1700,7 +1700,7 @@ _08122EAE:
 _08122EDC: .4byte gUnknown_02023A00
 _08122EE0: .4byte gStringVar1
 _08122EE4:
-	ldr r1, _08122F08
+	ldr r1, _08122F08 @ =gUnknown_02023A14
 	adds r0, r7, r1
 	ldr r0, [r0]
 	bl pokemon_ailments_get_primary
@@ -1731,7 +1731,7 @@ _08122F16:
 	ldrb r1, [r6, 0x1C]
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r2, _08122F8C
+	ldr r2, _08122F8C @ =gUnknown_02023A04
 	adds r5, r7, r2
 	str r5, [sp]
 	movs r2, 0x3
@@ -1761,13 +1761,13 @@ _08122F5A:
 	mov r8, r0
 	cmp r0, 0x2
 	bls _08122EAE
-	ldr r1, _08122F90
+	ldr r1, _08122F90 @ =gTasks
 	ldr r2, [sp, 0x4]
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08122F94
+	ldr r1, _08122F94 @ =sub_8122C18
 	str r1, [r0]
 	movs r1, 0
 	strh r1, [r0, 0x8]
@@ -1791,7 +1791,7 @@ sub_8122C18: @ 8122F98
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08122FD8
+	ldr r2, _08122FD8 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -1811,7 +1811,7 @@ sub_8122C18: @ 8122F98
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r0, _08122FDC
+	ldr r0, _08122FDC @ =sub_8122450
 	str r0, [r4]
 _08122FCE:
 	add sp, 0x4
@@ -1826,7 +1826,7 @@ _08122FDC: .4byte sub_8122450
 	thumb_func_start unref_sub_8122C60
 unref_sub_8122C60: @ 8122FE0
 	push {r4,r5,lr}
-	ldr r1, _08123000
+	ldr r1, _08123000 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r0, r1, r2
@@ -1838,7 +1838,7 @@ unref_sub_8122C60: @ 8122FE0
 	b _0812310A
 _08122FF6:
 	lsls r0, 2
-	ldr r1, _08123004
+	ldr r1, _08123004 @ =_08123008
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1856,11 +1856,11 @@ _08123008:
 	.4byte _081230C4
 	.4byte _081230DC
 _08123028:
-	ldr r0, _08123050
+	ldr r0, _08123050 @ =0x00000266
 	adds r5, r4, r0
 	movs r1, 0
 	ldrsh r3, [r5, r1]
-	ldr r0, _08123054
+	ldr r0, _08123054 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r3, r0
 	bge _0812305C
@@ -1871,7 +1871,7 @@ _08123028:
 	ldrb r1, [r5]
 	movs r2, 0x64
 	muls r2, r3
-	ldr r3, _08123058
+	ldr r3, _08123058 @ =gPlayerParty
 	adds r2, r3
 	bl sub_806D90C
 	b _08123104
@@ -1904,7 +1904,7 @@ _08123082:
 	lsls r1, 2
 	adds r0, r4, r1
 	ldrb r0, [r0]
-	ldr r2, _081230A8
+	ldr r2, _081230A8 @ =0x00000266
 	adds r5, r4, r2
 	ldrb r1, [r5]
 	bl sub_806BD58
@@ -1925,7 +1925,7 @@ _081230AC:
 	b _081230C8
 _081230B2:
 	bl sub_806E0C4
-	ldr r1, _081230C0
+	ldr r1, _081230C0 @ =0x0201b000
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r0
@@ -1935,7 +1935,7 @@ _081230C0: .4byte 0x0201b000
 _081230C4:
 	bl sub_806BCE8
 _081230C8:
-	ldr r1, _081230D8
+	ldr r1, _081230D8 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r1, r2
@@ -1947,7 +1947,7 @@ _081230D0:
 	.align 2, 0
 _081230D8: .4byte 0x0201b000
 _081230DC:
-	ldr r0, _08123100
+	ldr r0, _08123100 @ =0x00000266
 	adds r5, r4, r0
 	ldrb r0, [r5]
 	bl sub_806B58C
@@ -1982,25 +1982,25 @@ sub_8122D94: @ 8123114
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0812314C
+	ldr r0, _0812314C @ =gUnknown_03005CE0
 	ldrb r1, [r0]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _08123150
+	ldr r1, _08123150 @ =gPlayerParty
 	adds r0, r1
 	movs r1, 0x2D
 	bl GetMonData
 	adds r2, r0, 0
 	cmp r2, 0
 	bne _08123160
-	ldr r1, _08123154
+	ldr r1, _08123154 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
 	strh r2, [r0, 0x10]
-	ldr r1, _08123158
-	ldr r2, _0812315C
+	ldr r1, _08123158 @ =gUnknown_08401810
+	ldr r2, _0812315C @ =gUnknown_084017F0
 	movs r0, 0
 	movs r3, 0
 	bl sub_806E750
@@ -2012,15 +2012,15 @@ _08123154: .4byte gTasks
 _08123158: .4byte gUnknown_08401810
 _0812315C: .4byte gUnknown_084017F0
 _08123160:
-	ldr r1, _08123180
+	ldr r1, _08123180 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
 	movs r1, 0x1
 	strh r1, [r0, 0x10]
-	ldr r1, _08123184
-	ldr r2, _08123188
+	ldr r1, _08123184 @ =gUnknown_08401810
+	ldr r2, _08123188 @ =gUnknown_084017F0
 	movs r0, 0x1
 	movs r3, 0
 	bl sub_806E750
@@ -2039,7 +2039,7 @@ sub_8122E0C: @ 812318C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _081231B4
+	ldr r0, _081231B4 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -2061,23 +2061,23 @@ _081231B8:
 	bl PlaySE
 	adds r0, r4, 0
 	bl sub_806CA38
-	ldr r1, _081231F0
+	ldr r1, _081231F0 @ =gUnknown_03005CE0
 	strb r0, [r1]
 	ldrb r1, [r1]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _081231F4
+	ldr r1, _081231F4 @ =gPlayerParty
 	adds r0, r1
-	ldr r1, _081231F8
+	ldr r1, _081231F8 @ =gStringVar1
 	bl GetMonNickname
 	adds r0, r4, 0
 	bl sub_8122D94
-	ldr r1, _081231FC
+	ldr r1, _081231FC @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08123200
+	ldr r1, _08123200 @ =sub_8122EAC
 	str r1, [r0]
 	b _0812321C
 	.align 2, 0
@@ -2089,10 +2089,10 @@ _08123200: .4byte sub_8122EAC
 _08123204:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _08123224
+	ldr r1, _08123224 @ =gUnknown_03005CE0
 	movs r0, 0xFF
 	strb r0, [r1]
-	ldr r1, _08123228
+	ldr r1, _08123228 @ =gSpecialVar_0x8004
 	movs r0, 0xFF
 	strh r0, [r1]
 	adds r0, r4, 0
@@ -2112,14 +2112,14 @@ sub_8122EAC: @ 812322C
 	lsls r0, 24
 	lsrs r7, r0, 24
 	adds r4, r7, 0
-	ldr r0, _08123268
+	ldr r0, _08123268 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r3, 0x80
 	adds r0, r3, 0
 	ands r0, r1
 	cmp r0, 0
 	bne _081232EA
-	ldr r2, _0812326C
+	ldr r2, _0812326C @ =gMain
 	ldrh r1, [r2, 0x30]
 	movs r0, 0x40
 	ands r0, r1
@@ -2161,14 +2161,14 @@ _08123292:
 	beq _081232DC
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _081232D0
+	ldr r1, _081232D0 @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
 	adds r0, r1
 	ldrb r4, [r0, 0x10]
-	ldr r5, _081232D4
-	ldr r6, _081232D8
+	ldr r5, _081232D4 @ =gUnknown_08401810
+	ldr r6, _081232D8 @ =gUnknown_084017F0
 	bl GetMenuCursorPos
 	adds r3, r0, 0
 	lsls r3, 24
@@ -2203,8 +2203,8 @@ sub_8122F70: @ 81232F0
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08123308
-	ldr r1, _0812330C
+	ldr r2, _08123308 @ =gSpecialVar_0x8004
+	ldr r1, _0812330C @ =gUnknown_03005CE0
 	ldrb r1, [r1]
 	strh r1, [r2]
 	bl sub_8123138
@@ -2218,8 +2218,8 @@ _0812330C: .4byte gUnknown_03005CE0
 	thumb_func_start sub_8122F90
 sub_8122F90: @ 8123310
 	push {r4,r5,lr}
-	ldr r5, _08123358
-	ldr r4, _0812335C
+	ldr r5, _08123358 @ =0x0201b260
+	ldr r4, _0812335C @ =gUnknown_020384F0
 _08123316:
 	bl sub_806B124
 	lsls r0, 24
@@ -2235,16 +2235,16 @@ _08123316:
 	ldrb r1, [r4]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _08123360
+	ldr r1, _08123360 @ =gPlayerParty
 	adds r0, r1
-	ldr r1, _08123364
+	ldr r1, _08123364 @ =gStringVar1
 	bl GetMonNickname
-	ldr r1, _08123368
+	ldr r1, _08123368 @ =gUnknown_03005CE0
 	ldrb r0, [r4]
 	strb r0, [r1]
 	ldrb r0, [r5]
 	bl sub_8122D94
-	ldr r0, _0812336C
+	ldr r0, _0812336C @ =sub_806AEDC
 	bl SetMainCallback2
 	b _0812337C
 	.align 2, 0
@@ -2269,17 +2269,17 @@ _0812337C:
 	thumb_func_start sub_8123004
 sub_8123004: @ 8123384
 	push {lr}
-	ldr r2, _081233A8
+	ldr r2, _081233A8 @ =gPaletteFade
 	ldrb r0, [r2, 0x8]
 	movs r1, 0x80
 	orrs r0, r1
 	strb r0, [r2, 0x8]
-	ldr r2, _081233AC
+	ldr r2, _081233AC @ =sub_8122EAC
 	movs r0, 0x6
 	movs r1, 0xFF
 	movs r3, 0x5
 	bl sub_806AF4C
-	ldr r0, _081233B0
+	ldr r0, _081233B0 @ =sub_8122F90
 	bl SetMainCallback2
 	pop {r0}
 	bx r0
@@ -2295,7 +2295,7 @@ sub_8123034: @ 81233B4
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r3, r0, 24
-	ldr r0, _0812341C
+	ldr r0, _0812341C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
@@ -2303,8 +2303,8 @@ sub_8123034: @ 81233B4
 	lsrs r5, r0, 24
 	cmp r5, 0
 	bne _08123412
-	ldr r2, _08123420
-	ldr r1, _08123424
+	ldr r2, _08123420 @ =gSprites
+	ldr r1, _08123424 @ =gTasks
 	lsls r0, r3, 2
 	adds r0, r3
 	lsls r0, 3
@@ -2321,18 +2321,18 @@ sub_8123034: @ 81233B4
 	lsrs r4, 24
 	adds r0, r3, 0
 	bl DestroyTask
-	ldr r0, _08123428
-	ldr r1, _0812342C
+	ldr r0, _08123428 @ =0x0201b000
+	ldr r1, _0812342C @ =0x00000262
 	adds r0, r1
 	movs r1, 0x1
 	strb r1, [r0]
-	ldr r0, _08123430
-	ldr r1, _08123434
+	ldr r0, _08123430 @ =gPlayerParty
+	ldr r1, _08123434 @ =gPlayerPartyCount
 	ldrb r2, [r1]
 	subs r2, 0x1
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r3, _08123438
+	ldr r3, _08123438 @ =sub_8123004
 	str r5, [sp]
 	adds r1, r4, 0
 	bl sub_809D8BC
@@ -2366,12 +2366,12 @@ sub_81230BC: @ 812343C
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _0812346C
+	ldr r1, _0812346C @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _08123470
+	ldr r1, _08123470 @ =sub_8123034
 	str r1, [r0]
 	add sp, 0x4
 	pop {r4}
@@ -2399,12 +2399,12 @@ sub_81230F4: @ 8123474
 	movs r0, 0xF
 	movs r1, 0
 	bl sub_806D538
-	ldr r1, _081234B0
+	ldr r1, _081234B0 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _081234B4
+	ldr r1, _081234B4 @ =sub_8122E0C
 	str r1, [r0]
 	pop {r4}
 	pop {r0}
@@ -2428,12 +2428,12 @@ sub_8123138: @ 81234B8
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _081234E8
+	ldr r1, _081234E8 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r0, r1
-	ldr r1, _081234EC
+	ldr r1, _081234EC @ =sub_8123170
 	str r1, [r0]
 	add sp, 0x4
 	pop {r4}
@@ -2449,16 +2449,16 @@ sub_8123170: @ 81234F0
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _0812351C
+	ldr r0, _0812351C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _08123514
-	ldr r0, _08123520
-	ldr r1, _08123524
+	ldr r0, _08123520 @ =gUnknown_0300485C
+	ldr r1, _08123524 @ =sub_81231AC
 	str r1, [r0]
-	ldr r0, _08123528
+	ldr r0, _08123528 @ =c2_exit_to_overworld_2_switch
 	bl SetMainCallback2
 	adds r0, r4, 0
 	bl DestroyTask
@@ -2477,7 +2477,7 @@ _08123528: .4byte c2_exit_to_overworld_2_switch
 sub_81231AC: @ 812352C
 	push {lr}
 	bl pal_fill_black
-	ldr r0, _08123540
+	ldr r0, _08123540 @ =sub_81231C4
 	movs r1, 0xA
 	bl CreateTask
 	pop {r0}

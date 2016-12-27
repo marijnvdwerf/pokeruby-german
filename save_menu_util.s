@@ -20,7 +20,7 @@ HandleDrawSaveWindowInfo: @ 8094710
 	beq _08094728
 	movs r6, 0xD
 _08094728:
-	ldr r0, _080947A8
+	ldr r0, _080947A8 @ =0x00000801
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
@@ -150,7 +150,7 @@ sub_80946C8: @ 8094818
 	beq _08094838
 	movs r6, 0xD
 _08094838:
-	ldr r0, _08094860
+	ldr r0, _08094860 @ =0x00000801
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
@@ -205,14 +205,14 @@ PrintSavePlayerName: @ 8094890
 	adds r5, r1, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _080948C0
+	ldr r0, _080948C0 @ =gOtherText_Player
 	lsls r1, r4, 24
 	lsrs r1, 24
 	lsls r5, 24
 	lsrs r5, 24
 	adds r2, r5, 0
 	bl MenuPrint
-	ldr r0, _080948C4
+	ldr r0, _080948C4 @ =gSaveBlock2
 	adds r4, 0xC
 	lsls r4, 24
 	lsrs r4, 24
@@ -237,7 +237,7 @@ PrintSaveMapName: @ 80948C8
 	lsrs r4, 16
 	lsls r5, 16
 	lsrs r5, 16
-	ldr r0, _080948FC
+	ldr r0, _080948FC @ =gMapHeader
 	ldrb r1, [r0, 0x14]
 	mov r0, sp
 	bl CopyMapName
@@ -265,7 +265,7 @@ PrintSaveBadges: @ 8094900
 	adds r5, r1, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _08094944
+	ldr r0, _08094944 @ =gOtherText_Badges
 	lsls r1, r4, 24
 	lsrs r1, 24
 	lsls r5, 24
@@ -301,7 +301,7 @@ PrintSavePokedexCount: @ 8094948
 	adds r5, r1, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _08094990
+	ldr r0, _08094990 @ =gOtherText_Pokedex
 	lsls r1, r4, 24
 	lsrs r1, 24
 	lsls r5, 24
@@ -339,14 +339,14 @@ PrintSavePlayTime: @ 8094994
 	adds r5, r1, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _080949D8
+	ldr r0, _080949D8 @ =gOtherText_PlayTime
 	lsls r1, r4, 24
 	lsrs r1, 24
 	lsls r5, 24
 	lsrs r5, 24
 	adds r2, r5, 0
 	bl MenuPrint
-	ldr r0, _080949DC
+	ldr r0, _080949DC @ =gSaveBlock2
 	ldrh r1, [r0, 0xE]
 	ldrb r2, [r0, 0x10]
 	mov r0, sp
@@ -372,7 +372,7 @@ _080949DC: .4byte gSaveBlock2
 GetBadgeCount: @ 80949E0
 	push {r4,r5,lr}
 	movs r5, 0
-	ldr r4, _08094A0C
+	ldr r4, _08094A0C @ =0x00000807
 _080949E6:
 	lsls r0, r4, 16
 	lsrs r0, 16
@@ -385,7 +385,7 @@ _080949E6:
 	lsrs r5, r0, 24
 _080949FA:
 	adds r4, 0x1
-	ldr r0, _08094A10
+	ldr r0, _08094A10 @ =0x0000080e
 	cmp r4, r0
 	ble _080949E6
 	adds r0, r5, 0

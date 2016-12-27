@@ -13,8 +13,8 @@ sub_80FA17C: @ 80FA52C
 	mov r6, r8
 	push {r6,r7}
 	movs r6, 0
-	ldr r7, _080FA564
-	ldr r0, _080FA568
+	ldr r7, _080FA564 @ =gSaveBlock1
+	ldr r0, _080FA568 @ =0x00002dd4
 	adds r0, r7
 	mov r9, r0
 	movs r1, 0x1
@@ -24,7 +24,7 @@ _080FA542:
 	bl sub_80EB72C
 	lsls r4, r6, 3
 	adds r5, r4, r7
-	ldr r2, _080FA56C
+	ldr r2, _080FA56C @ =0x00002dd8
 	adds r1, r5, r2
 	strh r0, [r1]
 	bl Random
@@ -42,14 +42,14 @@ _080FA570:
 	movs r0, 0xD
 _080FA572:
 	bl sub_80EB72C
-	ldr r2, _080FA5C4
+	ldr r2, _080FA5C4 @ =0x00002dda
 	adds r1, r5, r2
 	strh r0, [r1]
 	bl Random
 	adds r3, r4, r7
 	mov r2, r8
 	ands r2, r0
-	ldr r5, _080FA5C8
+	ldr r5, _080FA5C8 @ =0x00002dd5
 	adds r3, r5
 	lsls r2, 6
 	ldrb r0, [r3]
@@ -67,7 +67,7 @@ _080FA572:
 	lsrs r6, r0, 16
 	cmp r6, 0x4
 	bls _080FA542
-	ldr r0, _080FA5CC
+	ldr r0, _080FA5CC @ =0x02028508
 	movs r1, 0x5
 	movs r2, 0
 	bl sub_80FA46C
@@ -111,7 +111,7 @@ _080FA5FA:
 	ldr r2, [sp]
 	mov r4, r10
 	lsls r0, r4, 3
-	ldr r1, _080FA63C
+	ldr r1, _080FA63C @ =0x02028508
 	adds r5, r0, r1
 	ldrb r6, [r5, 0x1]
 	movs r0, 0x40
@@ -236,7 +236,7 @@ _080FA6E6:
 	mov r10, r0
 	cmp r0, 0x4
 	bls _080FA5FA
-	ldr r0, _080FA710
+	ldr r0, _080FA710 @ =0x02028508
 	movs r1, 0x5
 	movs r2, 0
 	bl sub_80FA46C
@@ -267,7 +267,7 @@ sub_80FA364: @ 80FA714
 	lsls r0, 24
 	cmp r0, 0
 	bne _080FA812
-	ldr r5, _080FA764
+	ldr r5, _080FA764 @ =0x00000833
 	adds r0, r5, 0
 	bl FlagGet
 	lsls r0, 24
@@ -275,18 +275,18 @@ sub_80FA364: @ 80FA714
 	bne _080FA778
 	adds r0, r5, 0
 	bl FlagSet
-	ldr r0, _080FA768
+	ldr r0, _080FA768 @ =0x00000834
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
 	bne _080FA778
-	ldr r1, _080FA76C
+	ldr r1, _080FA76C @ =gSaveBlock1
 	ldrh r2, [r4]
-	ldr r3, _080FA770
+	ldr r3, _080FA770 @ =0x00002dd8
 	adds r0, r1, r3
 	strh r2, [r0]
 	ldrh r0, [r4, 0x2]
-	ldr r2, _080FA774
+	ldr r2, _080FA774 @ =0x00002dda
 	adds r1, r2
 	strh r0, [r1]
 	movs r0, 0x1
@@ -313,7 +313,7 @@ _080FA778:
 	movs r6, 0
 _080FA794:
 	lsls r4, r6, 3
-	ldr r5, _080FA7F4
+	ldr r5, _080FA7F4 @ =0x02028508
 	adds r1, r4, r5
 	mov r0, sp
 	movs r2, 0
@@ -323,13 +323,13 @@ _080FA794:
 	cmp r0, 0
 	beq _080FA800
 	movs r3, 0x4
-	ldr r0, _080FA7F8
+	ldr r0, _080FA7F8 @ =0xffffd22c
 	adds r0, r5
 	mov r12, r0
 	cmp r3, r6
 	bls _080FA7D8
 	mov r5, r12
-	ldr r4, _080FA7FC
+	ldr r4, _080FA7FC @ =0x00002dd4
 _080FA7BA:
 	lsls r2, r3, 3
 	adds r2, r5
@@ -349,7 +349,7 @@ _080FA7BA:
 _080FA7D8:
 	mov r3, r12
 	adds r2, r7, r3
-	ldr r0, _080FA7FC
+	ldr r0, _080FA7FC @ =0x00002dd4
 	adds r2, r0
 	ldr r0, [sp]
 	ldr r1, [sp, 0x4]
@@ -469,7 +469,7 @@ _080FA8B0:
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _080FA904
+	ldr r1, _080FA904 @ =0x02007800
 	adds r0, r1
 	adds r1, r4, 0
 	muls r1, r5
@@ -482,7 +482,7 @@ _080FA8B0:
 	cmp r4, r8
 	bcc _080FA8B0
 _080FA8D0:
-	ldr r5, _080FA904
+	ldr r5, _080FA904 @ =0x02007800
 	movs r0, 0x80
 	lsls r0, 1
 	adds r3, r5, r0
@@ -513,7 +513,7 @@ _080FA8E2:
 _080FA904: .4byte 0x02007800
 _080FA908:
 	lsls r1, r0, 3
-	ldr r0, _080FA964
+	ldr r0, _080FA964 @ =0x02007900
 	adds r2, r1, r0
 	ldrb r1, [r2]
 	lsls r1, 25
@@ -538,13 +538,13 @@ _080FA922:
 	cmp r4, r8
 	bcc _080FA8E0
 _080FA938:
-	ldr r4, _080FA964
+	ldr r4, _080FA964 @ =0x02007900
 	adds r0, r4, 0
 	adds r1, r7, 0
 	movs r2, 0x2
 	bl sub_80FA46C
 	adds r5, r4, 0
-	ldr r3, _080FA968
+	ldr r3, _080FA968 @ =0x02028508
 	movs r4, 0
 _080FA94A:
 	ldm r5!, {r0,r1}
@@ -568,12 +568,12 @@ _080FA968: .4byte 0x02028508
 	thumb_func_start sub_80FA5BC
 sub_80FA5BC: @ 80FA96C
 	push {lr}
-	ldr r0, _080FA988
+	ldr r0, _080FA988 @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	lsls r1, 3
-	ldr r0, _080FA98C
+	ldr r0, _080FA98C @ =0x02028508
 	adds r1, r0
-	ldr r0, _080FA990
+	ldr r0, _080FA990 @ =gStringVar1
 	adds r1, 0x4
 	movs r2, 0x2
 	movs r3, 0x1
@@ -590,13 +590,13 @@ _080FA990: .4byte gStringVar1
 sub_80FA5E4: @ 80FA994
 	push {r4,lr}
 	movs r4, 0
-	ldr r3, _080FA9E0
-	ldr r1, _080FA9E4
+	ldr r3, _080FA9E0 @ =gSaveBlock1
+	ldr r1, _080FA9E4 @ =0x00002dd4
 	adds r0, r3, r1
 	ldrb r1, [r0]
 	lsls r1, 25
 	lsrs r1, 25
-	ldr r2, _080FA9E8
+	ldr r2, _080FA9E8 @ =0x00002ddc
 	adds r0, r3, r2
 	ldrb r0, [r0]
 	lsls r0, 25
@@ -604,7 +604,7 @@ sub_80FA5E4: @ 80FA994
 	subs r1, r0
 	cmp r1, 0x1
 	bgt _080FA9D6
-	ldr r1, _080FA9EC
+	ldr r1, _080FA9EC @ =0x00002dd5
 	adds r0, r3, r1
 	ldrb r1, [r0]
 	movs r2, 0x40
@@ -612,7 +612,7 @@ sub_80FA5E4: @ 80FA994
 	ands r0, r1
 	cmp r0, 0
 	bne _080FA9D6
-	ldr r1, _080FA9F0
+	ldr r1, _080FA9F0 @ =0x00002ddd
 	adds r0, r3, r1
 	ldrb r1, [r0]
 	adds r0, r2, 0
@@ -622,7 +622,7 @@ sub_80FA5E4: @ 80FA994
 	negs r0, r0
 	lsrs r4, r0, 31
 _080FA9D6:
-	ldr r0, _080FA9F4
+	ldr r0, _080FA9F4 @ =gScriptResult
 	strh r4, [r0]
 	pop {r4}
 	pop {r0}
@@ -638,9 +638,9 @@ _080FA9F4: .4byte gScriptResult
 
 	thumb_func_start sub_80FA648
 sub_80FA648: @ 80FA9F8
-	ldr r2, _080FAA14
-	ldr r0, _080FAA18
-	ldr r3, _080FAA1C
+	ldr r2, _080FAA14 @ =gScriptResult
+	ldr r0, _080FAA18 @ =gSaveBlock1
+	ldr r3, _080FAA1C @ =0x00002dd8
 	adds r1, r0, r3
 	adds r3, 0x2
 	adds r0, r3
@@ -809,7 +809,7 @@ _080FAB32:
 	ands r1, r0
 	lsls r1, 7
 	ldrh r2, [r5]
-	ldr r0, _080FAB74
+	ldr r0, _080FAB74 @ =0xffffc07f
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r5]
@@ -843,7 +843,7 @@ SB1ContainsWords: @ 80FAB78
 	movs r4, 0
 _080FAB7E:
 	lsls r1, r4, 3
-	ldr r0, _080FAB94
+	ldr r0, _080FAB94 @ =0x0202850c
 	adds r1, r0
 	adds r0, r5, 0
 	bl IsEasyChatPairEqual
@@ -901,7 +901,7 @@ sub_80FA828: @ 80FABD8
 	adds r7, r0, 0
 	lsls r1, 16
 	lsrs r5, r1, 16
-	ldr r6, _080FABFC
+	ldr r6, _080FABFC @ =0x02007900
 	movs r4, 0
 	cmp r4, r5
 	bge _080FAC12

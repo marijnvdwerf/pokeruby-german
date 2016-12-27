@@ -15,7 +15,7 @@ MovePlayerOnBike: @ 80E53E4
 	lsrs r4, r1, 16
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r0, _080E5408
+	ldr r0, _080E5408 @ =gPlayerAvatar
 	ldrb r1, [r0]
 	movs r0, 0x2
 	ands r0, r1
@@ -43,7 +43,7 @@ MovePlayerOnMachBike: @ 80E541C
 	sub sp, 0x4
 	mov r1, sp
 	strb r0, [r1]
-	ldr r4, _080E5448
+	ldr r4, _080E5448 @ =gUnknown_083DB594
 	mov r0, sp
 	bl CheckMovementInputMachBike
 	lsls r0, 24
@@ -74,7 +74,7 @@ CheckMovementInputMachBike: @ 80E544C
 	cmp r1, 0
 	bne _080E5474
 	strb r0, [r4]
-	ldr r2, _080E5470
+	ldr r2, _080E5470 @ =gPlayerAvatar
 	ldrb r0, [r2, 0xB]
 	cmp r0, 0
 	bne _080E5488
@@ -84,7 +84,7 @@ CheckMovementInputMachBike: @ 80E544C
 	.align 2, 0
 _080E5470: .4byte gPlayerAvatar
 _080E5474:
-	ldr r2, _080E5490
+	ldr r2, _080E5490 @ =gPlayerAvatar
 	cmp r1, r3
 	beq _080E5498
 	ldrb r0, [r2, 0x2]
@@ -130,12 +130,12 @@ sub_80E517C: @ 80E54B8
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r0, _080E54E8
+	ldr r0, _080E54E8 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E54EC
+	ldr r1, _080E54EC @ =gMapObjects
 	adds r4, r0, r1
 	ldrb r1, [r4, 0x1E]
 	adds r0, r5, 0
@@ -167,12 +167,12 @@ sub_80E51C4: @ 80E5500
 	lsls r0, 24
 	lsrs r5, r0, 24
 	adds r7, r5, 0
-	ldr r6, _080E5534
+	ldr r6, _080E5534 @ =gPlayerAvatar
 	ldrb r1, [r6, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5538
+	ldr r1, _080E5538 @ =gMapObjects
 	adds r4, r0, r1
 	ldrb r1, [r4, 0x1E]
 	adds r0, r5, 0
@@ -222,7 +222,7 @@ _080E5568:
 	bl PlayerOnBikeCollide
 	b _080E55A2
 _080E557E:
-	ldr r1, _080E55A8
+	ldr r1, _080E55A8 @ =gUnknown_083DB5A4
 	ldrb r0, [r6, 0xA]
 	lsls r0, 2
 	adds r0, r1
@@ -253,7 +253,7 @@ sub_80E5270: @ 80E55AC
 	lsls r0, 24
 	lsrs r4, r0, 24
 	adds r7, r4, 0
-	ldr r6, _080E55E4
+	ldr r6, _080E55E4 @ =gPlayerAvatar
 	ldrb r0, [r6, 0xB]
 	cmp r0, 0
 	beq _080E55C2
@@ -289,7 +289,7 @@ _080E55E8:
 	bl PlayerOnBikeCollide
 	b _080E560E
 _080E55FE:
-	ldr r0, _080E5614
+	ldr r0, _080E5614 @ =gUnknown_083DB5A4
 	ldrb r1, [r6, 0xA]
 	lsls r1, 2
 	adds r1, r0
@@ -314,7 +314,7 @@ MovePlayerOnAcroBike: @ 80E5618
 	lsrs r1, 16
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r4, _080E564C
+	ldr r4, _080E564C @ =gUnknown_083DB5B0
 	mov r0, sp
 	bl CheckMovementInputAcroBike
 	lsls r0, 24
@@ -340,8 +340,8 @@ CheckMovementInputAcroBike: @ 80E5650
 	lsrs r1, 16
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r4, _080E5674
-	ldr r3, _080E5678
+	ldr r4, _080E5674 @ =gUnknown_083DB5E4
+	ldr r3, _080E5678 @ =gPlayerAvatar
 	ldrb r3, [r3, 0x8]
 	lsls r3, 2
 	adds r3, r4
@@ -368,7 +368,7 @@ CheckMovementInputAcroBikeNormal: @ 80E567C
 	bl player_get_direction_upper_nybble
 	lsls r0, 24
 	lsrs r3, r0, 24
-	ldr r2, _080E56B0
+	ldr r2, _080E56B0 @ =gPlayerAvatar
 	movs r0, 0
 	strb r0, [r2, 0xA]
 	ldrb r1, [r4]
@@ -409,11 +409,11 @@ _080E56BC:
 	b _080E5710
 _080E56DA:
 	ldrb r0, [r4]
-	ldr r2, _080E5708
+	ldr r2, _080E5708 @ =gPlayerAvatar
 	cmp r0, r3
 	beq _080E570C
 _080E56E2:
-	ldr r0, _080E5708
+	ldr r0, _080E5708 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x2]
 	adds r2, r0, 0
 	cmp r1, 0x2
@@ -446,7 +446,7 @@ _080E5710:
 CheckMovementInputAcroBikeChangingDirection: @ 80E5718
 	push {r4-r6,lr}
 	adds r5, r0, 0
-	ldr r4, _080E5740
+	ldr r4, _080E5740 @ =gPlayerAvatar
 	ldrb r0, [r4, 0x9]
 	strb r0, [r5]
 	ldrb r0, [r4, 0xA]
@@ -514,12 +514,12 @@ CheckMovementInputAcroBikeStandingWheelie: @ 80E5790
 	bl player_get_direction_upper_nybble
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r5, _080E57DC
+	ldr r5, _080E57DC @ =gPlayerAvatar
 	ldrb r1, [r5, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E57E0
+	ldr r1, _080E57E0 @ =gMapObjects
 	adds r1, r0, r1
 	movs r0, 0
 	strb r0, [r5, 0x2]
@@ -549,7 +549,7 @@ _080E57E4:
 	adds r0, 0x1
 	strb r0, [r5, 0xA]
 _080E57EA:
-	ldr r1, _080E5800
+	ldr r1, _080E5800 @ =gPlayerAvatar
 	ldrb r0, [r1, 0xA]
 	cmp r0, 0x27
 	bls _080E5804
@@ -605,12 +605,12 @@ CheckMovementInputAcroBikeBunnyHop: @ 80E5830
 	lsls r0, 24
 	lsrs r5, r0, 24
 	adds r2, r5, 0
-	ldr r4, _080E5890
+	ldr r4, _080E5890 @ =gPlayerAvatar
 	ldrb r1, [r4, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5894
+	ldr r1, _080E5894 @ =gMapObjects
 	adds r7, r0, r1
 	movs r0, 0x2
 	mov r1, r8
@@ -660,7 +660,7 @@ _080E58B8:
 	movs r0, 0x6
 	b _080E58C6
 _080E58BE:
-	ldr r1, _080E58D4
+	ldr r1, _080E58D4 @ =gPlayerAvatar
 	movs r0, 0x2
 	strb r0, [r1, 0x2]
 	movs r0, 0x7
@@ -693,12 +693,12 @@ CheckMovementInputAcroBikeMovingWheelie: @ 80E58D8
 	lsls r0, 24
 	lsrs r5, r0, 24
 	adds r2, r5, 0
-	ldr r4, _080E5934
+	ldr r4, _080E5934 @ =gPlayerAvatar
 	ldrb r1, [r4, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5938
+	ldr r1, _080E5938 @ =gMapObjects
 	adds r7, r0, r1
 	movs r0, 0x2
 	mov r9, r0
@@ -734,7 +734,7 @@ _080E5946:
 	movs r0, 0x4
 	b _080E59A0
 _080E594C:
-	ldr r1, _080E5958
+	ldr r1, _080E5958 @ =gPlayerAvatar
 	movs r0, 0x2
 	strb r0, [r1, 0x2]
 	movs r0, 0xC
@@ -773,7 +773,7 @@ _080E5986:
 	movs r0, 0x5
 	b _080E59A0
 _080E5998:
-	ldr r1, _080E59B0
+	ldr r1, _080E59B0 @ =gPlayerAvatar
 	movs r0, 0x2
 	strb r0, [r1, 0x2]
 	movs r0, 0xA
@@ -801,12 +801,12 @@ CheckMovementInputAcroBikeUnknownMode5: @ 80E59B4
 	lsrs r4, 16
 	lsls r5, 16
 	lsrs r5, 16
-	ldr r6, _080E5A08
+	ldr r6, _080E5A08 @ =gPlayerAvatar
 	ldrb r1, [r6, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5A0C
+	ldr r1, _080E5A0C @ =gMapObjects
 	adds r0, r1
 	ldrb r2, [r0, 0x1]
 	movs r1, 0x3
@@ -842,7 +842,7 @@ CheckMovementInputAcroBikeUnknownMode6: @ 80E5A10
 	lsrs r1, 16
 	lsls r2, 16
 	lsrs r2, 16
-	ldr r4, _080E5A30
+	ldr r4, _080E5A30 @ =gPlayerAvatar
 	movs r3, 0
 	strb r3, [r4, 0x8]
 	bl CheckMovementInputAcroBike
@@ -870,12 +870,12 @@ sub_80E5708: @ 80E5A44
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080E5A78
+	ldr r0, _080E5A78 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5A7C
+	ldr r1, _080E5A7C @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -902,12 +902,12 @@ sub_80E5744: @ 80E5A80
 	lsls r0, 24
 	lsrs r4, r0, 24
 	adds r6, r4, 0
-	ldr r0, _080E5AB0
+	ldr r0, _080E5AB0 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5AB4
+	ldr r1, _080E5AB4 @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -961,12 +961,12 @@ sub_80E57BC: @ 80E5AF8
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080E5B2C
+	ldr r0, _080E5B2C @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5B30
+	ldr r1, _080E5B30 @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -992,12 +992,12 @@ sub_80E57F8: @ 80E5B34
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080E5B68
+	ldr r0, _080E5B68 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5B6C
+	ldr r1, _080E5B6C @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -1023,12 +1023,12 @@ sub_80E5834: @ 80E5B70
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080E5BA4
+	ldr r0, _080E5BA4 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5BA8
+	ldr r1, _080E5BA8 @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -1054,12 +1054,12 @@ sub_80E5870: @ 80E5BAC
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080E5BE0
+	ldr r0, _080E5BE0 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5BE4
+	ldr r1, _080E5BE4 @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -1085,12 +1085,12 @@ sub_80E58AC: @ 80E5BE8
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080E5C14
+	ldr r0, _080E5C14 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5C18
+	ldr r1, _080E5C18 @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -1166,12 +1166,12 @@ _080E5C88:
 	bl sub_80E5708
 	b _080E5CBC
 _080E5C90:
-	ldr r0, _080E5CC4
+	ldr r0, _080E5CC4 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _080E5CC8
+	ldr r0, _080E5CC8 @ =gMapObjects
 	adds r4, r0
 	movs r0, 0x22
 	bl PlaySE
@@ -1210,12 +1210,12 @@ sub_80E59A0: @ 80E5CDC
 	lsls r0, 24
 	lsrs r4, r0, 24
 	adds r6, r4, 0
-	ldr r7, _080E5D0C
+	ldr r7, _080E5D0C @ =gPlayerAvatar
 	ldrb r1, [r7, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5D10
+	ldr r1, _080E5D10 @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -1281,12 +1281,12 @@ sub_80E5A30: @ 80E5D6C
 	lsls r0, 24
 	lsrs r4, r0, 24
 	adds r6, r4, 0
-	ldr r7, _080E5D9C
+	ldr r7, _080E5D9C @ =gPlayerAvatar
 	ldrb r1, [r7, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5DA0
+	ldr r1, _080E5DA0 @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -1352,12 +1352,12 @@ sub_80E5AC0: @ 80E5DFC
 	lsls r0, 24
 	lsrs r4, r0, 24
 	adds r6, r4, 0
-	ldr r0, _080E5E2C
+	ldr r0, _080E5E2C @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080E5E30
+	ldr r1, _080E5E30 @ =gMapObjects
 	adds r5, r0, r1
 	ldrb r1, [r5, 0x1E]
 	adds r0, r4, 0
@@ -1413,7 +1413,7 @@ sub_80E5B38: @ 80E5E74
 	lsrs r3, r0, 16
 	lsls r1, 16
 	lsrs r2, r1, 16
-	ldr r0, _080E5E98
+	ldr r0, _080E5E98 @ =gPlayerAvatar
 	ldrb r1, [r0]
 	movs r0, 0x4
 	ands r0, r1
@@ -1438,7 +1438,7 @@ sub_80E5B60: @ 80E5E9C
 	bl sub_80E5CF4
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r4, _080E5EC4
+	ldr r4, _080E5EC4 @ =gPlayerAvatar
 	ldr r0, [r4, 0xC]
 	movs r1, 0xF
 	ands r0, r1
@@ -1461,7 +1461,7 @@ _080E5ED2:
 	movs r0, 0xF
 	adds r2, r5, 0
 	ands r2, r0
-	ldr r4, _080E5EF0
+	ldr r4, _080E5EF0 @ =gPlayerAvatar
 	ldr r0, [r4, 0x10]
 	movs r1, 0xF
 	ands r0, r1
@@ -1495,7 +1495,7 @@ sub_80E5BC8: @ 80E5F04
 	ldrb r0, [r3]
 	cmp r0, 0
 	beq _080E5F2E
-	ldr r5, _080E5F48
+	ldr r5, _080E5F48 @ =gUnknown_0202E86C
 _080E5F14:
 	adds r0, r2, r5
 	adds r1, r3, r2
@@ -1515,7 +1515,7 @@ _080E5F2E:
 	ldrb r0, [r4]
 	cmp r0, 0
 	beq _080E5F5E
-	ldr r3, _080E5F4C
+	ldr r3, _080E5F4C @ =gUnknown_0202E874
 _080E5F38:
 	adds r0, r2, r3
 	adds r1, r4, r2
@@ -1551,9 +1551,9 @@ sub_80E5C2C: @ 80E5F68
 	movs r6, 0
 	movs r5, 0
 _080E5F6E:
-	ldr r0, _080E5FA0
+	ldr r0, _080E5FA0 @ =gUnknown_083DB608
 	adds r4, r5, r0
-	ldr r0, _080E5FA4
+	ldr r0, _080E5FA4 @ =gPlayerAvatar
 	ldr r1, [r0, 0xC]
 	ldr r2, [r0, 0x10]
 	ldr r0, [r4, 0x8]
@@ -1593,7 +1593,7 @@ _080E5FB2:
 sub_80E5C7C: @ 80E5FB8
 	push {r4,lr}
 	lsls r0, 24
-	ldr r3, _080E5FF0
+	ldr r3, _080E5FF0 @ =gPlayerAvatar
 	ldr r2, [r3, 0xC]
 	lsls r2, 4
 	movs r1, 0xF0
@@ -1628,7 +1628,7 @@ _080E5FF0: .4byte gPlayerAvatar
 sub_80E5CB8: @ 80E5FF4
 	push {r4,lr}
 	lsls r0, 24
-	ldr r3, _080E602C
+	ldr r3, _080E602C @ =gPlayerAvatar
 	ldr r2, [r3, 0x10]
 	lsls r2, 4
 	movs r1, 0xF0
@@ -1706,12 +1706,12 @@ sub_80E5D34: @ 80E6070
 	adds r6, r0, 0
 	lsls r6, 24
 	lsrs r6, 24
-	ldr r0, _080E60D4
+	ldr r0, _080E60D4 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _080E60D8
+	ldr r0, _080E60D8 @ =gMapObjects
 	adds r4, r0
 	ldrh r1, [r4, 0x10]
 	add r0, sp, 0x4
@@ -1802,7 +1802,7 @@ sub_80E5DEC: @ 80E6128
 	lsls r0, 24
 	cmp r0, 0
 	bne _080E6140
-	ldr r0, _080E6144
+	ldr r0, _080E6144 @ =gMapHeader
 	ldrb r0, [r0, 0x17]
 	cmp r0, 0x8
 	bne _080E6148
@@ -1852,11 +1852,11 @@ _080E6180:
 	thumb_func_start sub_80E5E4C
 sub_80E5E4C: @ 80E6188
 	push {lr}
-	ldr r0, _080E61A4
+	ldr r0, _080E61A4 @ =gUnknown_02039250
 	ldrb r0, [r0]
 	cmp r0, 0
 	beq _080E619E
-	ldr r1, _080E61A8
+	ldr r1, _080E61A8 @ =gUnknown_02039251
 	ldrb r0, [r1]
 	cmp r0, 0x63
 	bhi _080E619E
@@ -1951,7 +1951,7 @@ _080E622A:
 sub_80E5EF4: @ 80E6230
 	push {r4,lr}
 	sub sp, 0x4
-	ldr r0, _080E626C
+	ldr r0, _080E626C @ =gPlayerAvatar
 	ldrb r1, [r0]
 	movs r0, 0x18
 	ands r0, r1
@@ -1995,8 +1995,8 @@ player_should_look_direction_be_enforced_upon_movement: @ 80E627C
 	lsls r0, 24
 	cmp r0, 0
 	beq _080E62B0
-	ldr r2, _080E62A8
-	ldr r0, _080E62AC
+	ldr r2, _080E62A8 @ =gMapObjects
+	ldr r0, _080E62AC @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -2024,10 +2024,10 @@ GetOnOffBike: @ 80E62B8
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r1, _080E62E0
+	ldr r1, _080E62E0 @ =gUnknown_0202E854
 	movs r0, 0
 	strb r0, [r1]
-	ldr r0, _080E62E4
+	ldr r0, _080E62E4 @ =gPlayerAvatar
 	ldrb r1, [r0]
 	movs r0, 0x6
 	ands r0, r1
@@ -2044,7 +2044,7 @@ _080E62E4: .4byte gPlayerAvatar
 _080E62E8:
 	adds r0, r2, 0
 	bl SetPlayerAvatarTransitionFlags
-	ldr r4, _080E6304
+	ldr r4, _080E6304 @ =0x00000193
 	adds r0, r4, 0
 	bl sav1_set_battle_music_maybe
 	adds r0, r4, 0
@@ -2060,7 +2060,7 @@ _080E6304: .4byte 0x00000193
 	thumb_func_start sub_80E5FCC
 sub_80E5FCC: @ 80E6308
 	push {lr}
-	ldr r2, _080E6344
+	ldr r2, _080E6344 @ =gPlayerAvatar
 	movs r3, 0
 	strb r3, [r2, 0x8]
 	strb r3, [r2, 0x9]
@@ -2079,7 +2079,7 @@ _080E631E:
 	cmp r1, 0x7
 	bls _080E631E
 	movs r1, 0
-	ldr r3, _080E6348
+	ldr r3, _080E6348 @ =gUnknown_0202E874
 	movs r2, 0
 _080E6332:
 	adds r0, r1, r3
@@ -2100,7 +2100,7 @@ _080E6348: .4byte gUnknown_0202E874
 sub_80E6010: @ 80E634C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080E635C
+	ldr r2, _080E635C @ =gPlayerAvatar
 	strb r0, [r2, 0xA]
 	lsrs r1, r0, 1
 	adds r0, r1
@@ -2112,7 +2112,7 @@ _080E635C: .4byte gPlayerAvatar
 
 	thumb_func_start sub_80E6024
 sub_80E6024: @ 80E6360
-	ldr r1, _080E636C
+	ldr r1, _080E636C @ =gPlayerAvatar
 	movs r0, 0
 	strb r0, [r1, 0xA]
 	strb r0, [r1, 0xB]
@@ -2125,11 +2125,11 @@ _080E636C: .4byte gPlayerAvatar
 sub_80E6034: @ 80E6370
 	push {lr}
 	sub sp, 0x8
-	ldr r1, _080E6398
+	ldr r1, _080E6398 @ =gUnknown_083DB600
 	mov r0, sp
 	movs r2, 0x6
 	bl memcpy
-	ldr r2, _080E639C
+	ldr r2, _080E639C @ =gPlayerAvatar
 	ldrb r1, [r2]
 	movs r0, 0x2
 	ands r0, r1
@@ -2170,7 +2170,7 @@ _080E63BA:
 sub_80E6084: @ 80E63C0
 	push {r4,r5,lr}
 	sub sp, 0x4
-	ldr r5, _080E6410
+	ldr r5, _080E6410 @ =gPlayerAvatar
 	ldrb r1, [r5]
 	movs r0, 0x4
 	ands r0, r1

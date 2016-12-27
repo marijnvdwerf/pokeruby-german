@@ -12,11 +12,11 @@ fullscreen_save_activate: @ 81471C0
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _081471E0
+	ldr r0, _081471E0 @ =sub_8146E50
 	bl SetMainCallback2
-	ldr r0, _081471E4
+	ldr r0, _081471E4 @ =gUnknown_0203933C
 	strh r4, [r0]
-	ldr r1, _081471E8
+	ldr r1, _081471E8 @ =gUnknown_0203933E
 	movs r0, 0
 	strh r0, [r1]
 	pop {r4}
@@ -45,8 +45,8 @@ sub_8146E50: @ 8147200
 	mov r6, r8
 	push {r6,r7}
 	sub sp, 0xC
-	ldr r0, _08147360
-	ldr r1, _08147364
+	ldr r0, _08147360 @ =gMain
+	ldr r1, _08147364 @ =0x0000043c
 	adds r7, r0, r1
 	ldrb r0, [r7]
 	cmp r0, 0
@@ -62,14 +62,14 @@ _0814721C:
 	mov r9, r0
 	movs r1, 0
 	strh r1, [r0]
-	ldr r6, _08147368
+	ldr r6, _08147368 @ =0x0400000e
 	strh r1, [r6]
 	adds r0, 0xC
 	mov r8, r0
 	strh r1, [r0]
 	subs r0, 0x2
 	strh r1, [r0]
-	ldr r5, _0814736C
+	ldr r5, _0814736C @ =0x04000008
 	strh r1, [r5]
 	adds r0, 0x12
 	strh r1, [r0]
@@ -89,12 +89,12 @@ _0814721C:
 	strh r1, [r0]
 	add r0, sp, 0x4
 	strh r1, [r0]
-	ldr r2, _08147370
+	ldr r2, _08147370 @ =0x040000d4
 	str r0, [r2]
 	movs r1, 0xC0
 	lsls r1, 19
 	str r1, [r2, 0x4]
-	ldr r0, _08147374
+	ldr r0, _08147374 @ =0x8100c000
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
 	movs r4, 0
@@ -104,7 +104,7 @@ _0814721C:
 	movs r0, 0xE0
 	lsls r0, 19
 	str r0, [r2, 0x4]
-	ldr r0, _08147378
+	ldr r0, _08147378 @ =0x85000100
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
 	add r0, sp, 0x4
@@ -113,35 +113,35 @@ _0814721C:
 	movs r0, 0xA0
 	lsls r0, 19
 	str r0, [r2, 0x4]
-	ldr r0, _0814737C
+	ldr r0, _0814737C @ =0x81000200
 	str r0, [r2, 0x8]
 	ldr r0, [r2, 0x8]
-	ldr r0, _08147380
+	ldr r0, _08147380 @ =gBirchHelpGfx
 	bl LZ77UnCompVram
-	ldr r0, _08147384
-	ldr r1, _08147388
+	ldr r0, _08147384 @ =gBirchBagTilemap
+	ldr r1, _08147388 @ =0x06003000
 	bl LZ77UnCompVram
-	ldr r0, _0814738C
-	ldr r1, _08147390
+	ldr r0, _0814738C @ =gBirchGrassTilemap
+	ldr r1, _08147390 @ =0x06003800
 	bl LZ77UnCompVram
-	ldr r0, _08147394
-	ldr r1, _08147398
+	ldr r0, _08147394 @ =gSaveFailedClockGfx
+	ldr r1, _08147398 @ =0x06010020
 	bl LZ77UnCompVram
 	bl ResetSpriteData
 	bl ResetTasks
 	bl ResetPaletteFade
-	ldr r0, _0814739C
+	ldr r0, _0814739C @ =gBirchBagGrassPal
 	movs r1, 0
 	movs r2, 0x40
 	bl LoadPalette
-	ldr r0, _081473A0
+	ldr r0, _081473A0 @ =gSaveFailedClockPal
 	movs r1, 0x80
 	lsls r1, 1
 	movs r2, 0x20
 	bl LoadPalette
-	ldr r0, _081473A4
+	ldr r0, _081473A4 @ =gWindowConfig_81E6C3C
 	bl SetUpWindowConfig
-	ldr r0, _081473A8
+	ldr r0, _081473A8 @ =gWindowConfig_81E6CE4
 	bl InitMenuWindow
 	movs r0, 0xD
 	movs r1, 0x6
@@ -153,7 +153,7 @@ _0814721C:
 	movs r2, 0x1C
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _081473AC
+	ldr r0, _081473AC @ =gSystemText_SaveFailedBackupCheck
 	movs r1, 0x2
 	movs r2, 0xB
 	bl MenuPrint
@@ -164,30 +164,30 @@ _0814721C:
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r3, _081473B0
+	ldr r3, _081473B0 @ =0x04000208
 	ldrh r2, [r3]
 	strh r4, [r3]
-	ldr r4, _081473B4
+	ldr r4, _081473B4 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _081473B8
+	ldr r2, _081473B8 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _081473BC
+	ldr r0, _081473BC @ =sub_8146E3C
 	bl SetVBlankCallback
-	ldr r1, _081473C0
+	ldr r1, _081473C0 @ =0x00000703
 	adds r0, r1, 0
 	strh r0, [r6]
-	ldr r1, _081473C4
+	ldr r1, _081473C4 @ =0x00000602
 	adds r0, r1, 0
 	mov r1, r8
 	strh r0, [r1]
-	ldr r1, _081473C8
+	ldr r1, _081473C8 @ =0x00001f08
 	adds r0, r1, 0
 	strh r0, [r5]
 	movs r1, 0xEA
@@ -232,9 +232,9 @@ _081473CC:
 	lsls r0, 24
 	cmp r0, 0
 	bne _081473E2
-	ldr r0, _081473F0
+	ldr r0, _081473F0 @ =sub_8147048
 	bl SetMainCallback2
-	ldr r0, _081473F4
+	ldr r0, _081473F4 @ =sub_8147218
 	bl SetVBlankCallback
 _081473E2:
 	add sp, 0xC
@@ -253,10 +253,10 @@ _081473F4: .4byte sub_8147218
 sub_8147048: @ 81473F8
 	push {r4,r5,lr}
 	movs r4, 0
-	ldr r0, _08147484
+	ldr r0, _08147484 @ =gUnknown_0203933E
 	movs r1, 0x1
 	strh r1, [r0]
-	ldr r1, _08147488
+	ldr r1, _08147488 @ =gUnknown_03005EA8
 	ldr r0, [r1]
 	cmp r0, 0
 	beq _08147462
@@ -272,11 +272,11 @@ _0814740C:
 	movs r2, 0x1C
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _0814748C
+	ldr r0, _0814748C @ =gSystemText_CheckCompleteSaveAttempt
 	movs r1, 0x2
 	movs r2, 0xB
 	bl MenuPrint
-	ldr r0, _08147490
+	ldr r0, _08147490 @ =gUnknown_0203933C
 	ldrb r0, [r0]
 	bl sub_8125C3C
 	ldr r0, [r5]
@@ -287,7 +287,7 @@ _0814740C:
 	movs r2, 0x1C
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _08147494
+	ldr r0, _08147494 @ =gSystemText_SaveFailedBackupCheck
 	movs r1, 0x2
 	movs r2, 0xB
 	bl MenuPrint
@@ -308,11 +308,11 @@ _08147462:
 	movs r2, 0x1C
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _08147498
+	ldr r0, _08147498 @ =gSystemText_BackupDamagedGameContinue
 	movs r1, 0x2
 	movs r2, 0xB
 	bl MenuPrint
-	ldr r0, _0814749C
+	ldr r0, _0814749C @ =sub_81471A4
 	bl SetMainCallback2
 	b _081474FA
 	.align 2, 0
@@ -329,11 +329,11 @@ _081474A0:
 	movs r2, 0x1C
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _081474C0
+	ldr r0, _081474C0 @ =gUnknown_03005EBC
 	ldr r0, [r0]
 	cmp r0, 0
 	bne _081474F0
-	ldr r0, _081474C4
+	ldr r0, _081474C4 @ =gSystemText_SaveCompletedGameEnd
 	movs r1, 0x2
 	movs r2, 0xB
 	bl MenuPrint
@@ -347,23 +347,23 @@ _081474C8:
 	movs r2, 0x1C
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _081474E8
+	ldr r0, _081474E8 @ =gSystemText_BackupDamagedGameContinue
 	movs r1, 0x2
 	movs r2, 0xB
 	bl MenuPrint
-	ldr r0, _081474EC
+	ldr r0, _081474EC @ =sub_8147154
 	bl SetMainCallback2
 	b _08147500
 	.align 2, 0
 _081474E8: .4byte gSystemText_BackupDamagedGameContinue
 _081474EC: .4byte sub_8147154
 _081474F0:
-	ldr r0, _08147508
+	ldr r0, _08147508 @ =gSystemText_SaveCompletedPressA
 	movs r1, 0x2
 	movs r2, 0xB
 	bl MenuPrint
 _081474FA:
-	ldr r0, _0814750C
+	ldr r0, _0814750C @ =sub_81471A4
 	bl SetMainCallback2
 _08147500:
 	pop {r4,r5}
@@ -377,10 +377,10 @@ _0814750C: .4byte sub_81471A4
 	thumb_func_start sub_8147154
 sub_8147154: @ 8147510
 	push {lr}
-	ldr r1, _0814754C
+	ldr r1, _0814754C @ =gUnknown_0203933E
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _08147550
+	ldr r0, _08147550 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -391,13 +391,13 @@ sub_8147154: @ 8147510
 	movs r2, 0x1C
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _08147554
+	ldr r0, _08147554 @ =gSystemText_GameplayEnded
 	movs r1, 0x2
 	movs r2, 0xB
 	bl MenuPrint
-	ldr r0, _08147558
+	ldr r0, _08147558 @ =sub_8146E3C
 	bl SetVBlankCallback
-	ldr r0, _0814755C
+	ldr r0, _0814755C @ =sub_81471A4
 	bl SetMainCallback2
 _08147546:
 	pop {r0}
@@ -414,10 +414,10 @@ _0814755C: .4byte sub_81471A4
 sub_81471A4: @ 8147560
 	push {lr}
 	sub sp, 0x4
-	ldr r0, _08147598
+	ldr r0, _08147598 @ =gUnknown_0203933E
 	movs r2, 0
 	strh r2, [r0]
-	ldr r0, _0814759C
+	ldr r0, _0814759C @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
@@ -429,9 +429,9 @@ sub_81471A4: @ 8147560
 	movs r1, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r0, _081475A0
+	ldr r0, _081475A0 @ =sub_8146E3C
 	bl SetVBlankCallback
-	ldr r0, _081475A4
+	ldr r0, _081475A4 @ =sub_81471EC
 	bl SetMainCallback2
 _08147590:
 	add sp, 0x4
@@ -452,7 +452,7 @@ sub_81471EC: @ 81475A8
 	lsrs r4, r0, 24
 	cmp r4, 0
 	bne _081475CE
-	ldr r5, _081475C4
+	ldr r5, _081475C4 @ =gUnknown_03005EBC
 	ldr r0, [r5]
 	cmp r0, 0
 	bne _081475C8
@@ -472,20 +472,20 @@ _081475CE:
 	thumb_func_start sub_8147218
 sub_8147218: @ 81475D4
 	push {r4,r5,lr}
-	ldr r0, _0814764C
+	ldr r0, _0814764C @ =gMain
 	mov r12, r0
 	ldr r0, [r0, 0x24]
 	lsrs r4, r0, 3
 	movs r0, 0x7
 	ands r4, r0
-	ldr r0, _08147650
+	ldr r0, _08147650 @ =gUnknown_08411940
 	ldr r1, [r0, 0x4]
 	ldr r0, [r0]
 	mov r2, r12
 	str r0, [r2, 0x3C]
 	str r1, [r2, 0x40]
 	ldrh r1, [r2, 0x3E]
-	ldr r0, _08147654
+	ldr r0, _08147654 @ =0xfffffe00
 	ands r0, r1
 	movs r1, 0x70
 	orrs r0, r1
@@ -494,11 +494,11 @@ sub_8147218: @ 81475D4
 	adds r1, 0x3C
 	movs r0, 0x38
 	strb r0, [r1]
-	ldr r0, _08147658
+	ldr r0, _08147658 @ =gUnknown_0203933E
 	ldrh r0, [r0]
 	cmp r0, 0
 	beq _08147664
-	ldr r3, _0814765C
+	ldr r3, _0814765C @ =gUnknown_08411948
 	lsls r2, r4, 1
 	adds r2, r4
 	adds r0, r2, r3
@@ -506,7 +506,7 @@ sub_8147218: @ 81475D4
 	adds r4, 0x40
 	ldrb r5, [r0]
 	ldrh r1, [r4]
-	ldr r0, _08147660
+	ldr r0, _08147660 @ =0xfffffc00
 	ands r0, r1
 	orrs r0, r5
 	strh r0, [r4]
@@ -542,18 +542,18 @@ _08147664:
 	mov r2, r12
 	adds r2, 0x40
 	ldrh r1, [r2]
-	ldr r0, _08147694
+	ldr r0, _08147694 @ =0xfffffc00
 	ands r0, r1
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r2]
 _08147674:
-	ldr r0, _08147698
+	ldr r0, _08147698 @ =0x030017ac
 	movs r1, 0xE0
 	lsls r1, 19
 	movs r2, 0x1
 	bl CpuFastSet
-	ldr r1, _0814769C
+	ldr r1, _0814769C @ =gUnknown_0203933E
 	ldrh r0, [r1, 0x2]
 	cmp r0, 0
 	beq _0814768C
@@ -574,14 +574,14 @@ sub_81472E4: @ 81476A0
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r4, _081476C4
+	ldr r4, _081476C4 @ =0x02000000
 	movs r3, 0x80
 	lsls r3, 5
 	movs r1, 0
 	adds r2, r4, 0
 	bl ReadFlash
 	movs r1, 0
-	ldr r2, _081476C8
+	ldr r2, _081476C8 @ =0x000003ff
 _081476B8:
 	ldr r0, [r4]
 	cmp r0, 0
@@ -613,9 +613,9 @@ sub_8147324: @ 81476E0
 	lsls r0, 16
 	lsrs r6, r0, 16
 	movs r0, 0
-	ldr r1, _08147730
+	ldr r1, _08147730 @ =0x00000fff
 	mov r8, r1
-	ldr r7, _08147734
+	ldr r7, _08147734 @ =ProgramFlashByte
 _081476F2:
 	movs r4, 0
 	adds r5, r0, 0x1

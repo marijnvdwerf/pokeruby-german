@@ -80,7 +80,7 @@ LoadCompressedObjectPalette: @ 800D478
 	bl LZ77UnCompWram
 	str r4, [sp]
 	ldrh r2, [r5, 0x4]
-	ldr r1, _0800D4A8
+	ldr r1, _0800D4A8 @ =0xffff0000
 	ldr r0, [sp, 0x4]
 	ands r0, r1
 	orrs r0, r2
@@ -105,7 +105,7 @@ LoadCompressedObjectPaletteOverrideBuffer: @ 800D4AC
 	bl LZ77UnCompWram
 	str r4, [sp]
 	ldrh r2, [r5, 0x4]
-	ldr r1, _0800D4D8
+	ldr r1, _0800D4D8 @ =0xffff0000
 	ldr r0, [sp, 0x4]
 	ands r0, r1
 	orrs r0, r2
@@ -130,7 +130,7 @@ DecompressPicFromTable_2: @ 800D4DC
 	lsls r0, 1
 	cmp r1, r0
 	ble _0800D4FC
-	ldr r0, _0800D4F8
+	ldr r0, _0800D4F8 @ =gMonFrontPicTable
 	ldr r0, [r0]
 	adds r1, r3, 0
 	bl LZ77UnCompWram
@@ -154,7 +154,7 @@ sub_800D334: @ 800D508
 	adds r5, r1, 0
 	adds r6, r2, 0
 	ldr r2, [sp, 0x20]
-	ldr r1, _0800D528
+	ldr r1, _0800D528 @ =gUnknown_081FAF4C
 	ldr r0, [r1]
 	cmp r2, r0
 	beq _0800D522
@@ -231,7 +231,7 @@ _0800D594:
 _0800D59E:
 	cmp r7, 0
 	bne _0800D5B0
-	ldr r0, _0800D5AC
+	ldr r0, _0800D5AC @ =gMonBackPicTable
 	lsls r1, 3
 	adds r1, r0
 	ldr r0, [r1]
@@ -239,7 +239,7 @@ _0800D59E:
 	.align 2, 0
 _0800D5AC: .4byte gMonBackPicTable
 _0800D5B0:
-	ldr r0, _0800D5BC
+	ldr r0, _0800D5BC @ =gMonFrontPicTable
 	lsls r1, 3
 	adds r1, r0
 	ldr r0, [r1]
@@ -251,7 +251,7 @@ _0800D5C0:
 	lsls r0, 1
 	cmp r6, r0
 	ble _0800D5D8
-	ldr r0, _0800D5D4
+	ldr r0, _0800D5D4 @ =gMonFrontPicTable
 	ldr r0, [r0]
 _0800D5CC:
 	adds r1, r5, 0

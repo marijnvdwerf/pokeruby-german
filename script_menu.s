@@ -18,16 +18,16 @@ sub_80B5054: @ 80B51A4
 	lsrs r4, r2, 24
 	lsls r3, 24
 	lsrs r5, r3, 24
-	ldr r0, _080B51E8
+	ldr r0, _080B51E8 @ =sub_80B52B4
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
 	beq _080B51F4
-	ldr r1, _080B51EC
+	ldr r1, _080B51EC @ =gScriptResult
 	movs r0, 0xFF
 	strh r0, [r1]
-	ldr r1, _080B51F0
+	ldr r1, _080B51F0 @ =gMultichoiceLists
 	lsls r0, r4, 3
 	adds r0, r1
 	ldrb r2, [r0, 0x4]
@@ -71,16 +71,16 @@ sub_80B50B0: @ 80B5200
 	lsrs r6, r3, 24
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _080B5250
+	ldr r0, _080B5250 @ =sub_80B52B4
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
 	beq _080B525C
-	ldr r1, _080B5254
+	ldr r1, _080B5254 @ =gScriptResult
 	movs r0, 0xFF
 	strh r0, [r1]
-	ldr r1, _080B5258
+	ldr r1, _080B5258 @ =gMultichoiceLists
 	lsls r0, r5, 3
 	adds r0, r1
 	ldrb r2, [r0, 0x4]
@@ -111,7 +111,7 @@ _080B525E:
 GetStringWidthInTilesForScriptMenu: @ 80B526C
 	push {lr}
 	adds r1, r0, 0
-	ldr r0, _080B5284
+	ldr r0, _080B5284 @ =gWindowConfig_81E6CE4
 	bl GetStringWidthGivenWindowConfig
 	lsls r0, 24
 	lsrs r0, 24
@@ -279,13 +279,13 @@ sub_80B5230: @ 80B5380
 	lsls r0, 24
 	lsrs r0, 24
 	mov r9, r0
-	ldr r0, _080B53E8
+	ldr r0, _080B53E8 @ =sub_80B52B4
 	movs r1, 0x50
 	str r3, [sp]
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B53EC
+	ldr r2, _080B53EC @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -323,13 +323,13 @@ sub_80B52B4: @ 80B5404
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080B5430
+	ldr r0, _080B5430 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
 	bne _080B549E
-	ldr r2, _080B5434
+	ldr r2, _080B5434 @ =gTasks
 	lsls r1, r4, 2
 	adds r0, r1, r4
 	lsls r0, 3
@@ -358,7 +358,7 @@ _080B543C:
 	adds r0, 0x1
 	cmp r1, r0
 	bne _080B5478
-	ldr r0, _080B5470
+	ldr r0, _080B5470 @ =gTasks
 	adds r1, r5, r4
 	lsls r1, 3
 	adds r1, r0
@@ -368,7 +368,7 @@ _080B543C:
 	bne _080B549E
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _080B5474
+	ldr r1, _080B5474 @ =gScriptResult
 	movs r0, 0x7F
 	strh r0, [r1]
 	b _080B547C
@@ -376,11 +376,11 @@ _080B543C:
 _080B5470: .4byte gTasks
 _080B5474: .4byte gScriptResult
 _080B5478:
-	ldr r0, _080B54A4
+	ldr r0, _080B54A4 @ =gScriptResult
 	strh r1, [r0]
 _080B547C:
 	bl sub_8072DEC
-	ldr r0, _080B54A8
+	ldr r0, _080B54A8 @ =gTasks
 	adds r3, r5, r4
 	lsls r3, 3
 	adds r3, r0
@@ -413,16 +413,16 @@ Multichoice: @ 80B54AC
 	lsrs r4, r2, 24
 	lsls r3, 24
 	lsrs r5, r3, 24
-	ldr r0, _080B54EC
+	ldr r0, _080B54EC @ =sub_80B52B4
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
 	beq _080B54F8
-	ldr r1, _080B54F0
+	ldr r1, _080B54F0 @ =gScriptResult
 	movs r0, 0xFF
 	strh r0, [r1]
-	ldr r1, _080B54F4
+	ldr r1, _080B54F4 @ =gMultichoiceLists
 	lsls r0, r4, 3
 	adds r0, r1
 	ldrb r2, [r0, 0x4]
@@ -546,14 +546,14 @@ yes_no_box: @ 80B55BC
 	lsrs r5, r0, 24
 	lsls r1, 24
 	lsrs r4, r1, 24
-	ldr r6, _080B5604
+	ldr r6, _080B5604 @ =task_yes_no_maybe
 	adds r0, r6, 0
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
 	beq _080B5610
-	ldr r1, _080B5608
+	ldr r1, _080B5608 @ =gScriptResult
 	movs r0, 0xFF
 	strh r0, [r1]
 	adds r0, r5, 0
@@ -565,7 +565,7 @@ yes_no_box: @ 80B55BC
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B560C
+	ldr r2, _080B560C @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -589,7 +589,7 @@ _080B5612:
 	thumb_func_start unref_sub_80B54C8
 unref_sub_80B54C8: @ 80B5618
 	push {lr}
-	ldr r0, _080B5628
+	ldr r0, _080B5628 @ =gScriptResult
 	ldrh r0, [r0]
 	cmp r0, 0xFF
 	beq _080B562C
@@ -609,7 +609,7 @@ task_yes_no_maybe: @ 80B5634
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r1, _080B5654
+	ldr r1, _080B5654 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -646,18 +646,18 @@ _080B5674:
 _080B567C:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _080B5688
+	ldr r1, _080B5688 @ =gScriptResult
 	movs r0, 0
 	b _080B5690
 	.align 2, 0
 _080B5688: .4byte gScriptResult
 _080B568C:
-	ldr r1, _080B56C0
+	ldr r1, _080B56C0 @ =gScriptResult
 	movs r0, 0x1
 _080B5690:
 	strh r0, [r1]
 _080B5692:
-	ldr r0, _080B56C4
+	ldr r0, _080B56C4 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -706,7 +706,7 @@ sub_80B5578: @ 80B56C8
 	lsls r4, 24
 	lsrs r5, r4, 24
 	movs r7, 0
-	ldr r0, _080B5708
+	ldr r0, _080B5708 @ =sub_80B5684
 	mov r10, r0
 	bl FuncIsActiveTask
 	lsls r0, 24
@@ -718,10 +718,10 @@ sub_80B5578: @ 80B56C8
 	.align 2, 0
 _080B5708: .4byte sub_80B5684
 _080B570C:
-	ldr r1, _080B5770
+	ldr r1, _080B5770 @ =gScriptResult
 	movs r0, 0xFF
 	strh r0, [r1]
-	ldr r0, _080B5774
+	ldr r0, _080B5774 @ =gMultichoiceLists
 	lsls r4, r6, 3
 	adds r0, r4, r0
 	ldrb r6, [r0, 0x4]
@@ -755,7 +755,7 @@ _080B574E:
 	cmp r1, r5
 	bne _080B5778
 _080B5756:
-	ldr r0, _080B5774
+	ldr r0, _080B5774 @ =gMultichoiceLists
 	adds r0, r4, r0
 	ldrb r0, [r0, 0x4]
 	adds r1, r5, 0
@@ -787,7 +787,7 @@ _080B578A:
 	bl sub_807288C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080B57D0
+	ldr r2, _080B57D0 @ =gTasks
 	mov r3, r10
 	lsls r1, r3, 2
 	add r1, r10
@@ -833,7 +833,7 @@ sub_80B5684: @ 80B57D4
 	adds r0, 0x1
 	cmp r1, r0
 	bne _080B581C
-	ldr r2, _080B5814
+	ldr r2, _080B5814 @ =gTasks
 	lsls r1, r5, 2
 	adds r0, r1, r5
 	lsls r0, 3
@@ -845,7 +845,7 @@ sub_80B5684: @ 80B57D4
 	bne _080B5844
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _080B5818
+	ldr r1, _080B5818 @ =gScriptResult
 	movs r0, 0x7F
 	strh r0, [r1]
 	b _080B5822
@@ -853,12 +853,12 @@ sub_80B5684: @ 80B57D4
 _080B5814: .4byte gTasks
 _080B5818: .4byte gScriptResult
 _080B581C:
-	ldr r0, _080B584C
+	ldr r0, _080B584C @ =gScriptResult
 	strh r1, [r0]
 	lsls r4, r5, 2
 _080B5822:
 	bl sub_8072DEC
-	ldr r0, _080B5850
+	ldr r0, _080B5850 @ =gTasks
 	adds r3, r4, r5
 	lsls r3, 3
 	adds r3, r0
@@ -882,13 +882,13 @@ _080B5850: .4byte gTasks
 	thumb_func_start sp109_CreatePCMenu
 sp109_CreatePCMenu: @ 80B5854
 	push {lr}
-	ldr r0, _080B5874
+	ldr r0, _080B5874 @ =sub_80B52B4
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
 	beq _080B587C
-	ldr r1, _080B5878
+	ldr r1, _080B5878 @ =gScriptResult
 	movs r0, 0xFF
 	strh r0, [r1]
 	bl CreatePCMenu
@@ -908,25 +908,25 @@ _080B587E:
 CreatePCMenu: @ 80B5884
 	push {r4-r7,lr}
 	sub sp, 0x18
-	ldr r0, _080B5898
+	ldr r0, _080B5898 @ =0x0000084b
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
 	beq _080B58A0
-	ldr r0, _080B589C
+	ldr r0, _080B589C @ =gPCText_LanettesPC
 	b _080B58A2
 	.align 2, 0
 _080B5898: .4byte 0x0000084b
 _080B589C: .4byte gPCText_LanettesPC
 _080B58A0:
-	ldr r0, _080B5938
+	ldr r0, _080B5938 @ =gPCText_SomeonesPC
 _080B58A2:
 	bl GetStringWidthInTilesForScriptMenu
 	lsls r0, 16
 	lsrs r0, 16
 	str r0, [sp, 0x8]
 	movs r4, 0x1
-	ldr r0, _080B593C
+	ldr r0, _080B593C @ =gPCText_PlayersPC
 	bl GetStringWidthInTilesForScriptMenu
 	lsls r1, r4, 2
 	add r1, sp
@@ -934,18 +934,18 @@ _080B58A2:
 	lsls r0, 16
 	lsrs r0, 16
 	str r0, [r1]
-	ldr r0, _080B5940
+	ldr r0, _080B5940 @ =gPCText_LogOff
 	bl GetStringWidthInTilesForScriptMenu
 	lsls r0, 16
 	lsrs r0, 16
 	str r0, [sp, 0x10]
 	movs r4, 0x3
-	ldr r0, _080B5944
+	ldr r0, _080B5944 @ =0x00000804
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
 	beq _080B58E8
-	ldr r0, _080B5948
+	ldr r0, _080B5948 @ =gPCText_HallOfFame
 	bl GetStringWidthInTilesForScriptMenu
 	lsls r0, 16
 	lsrs r0, 16
@@ -969,7 +969,7 @@ _080B58FC:
 	cmp r1, 0
 	bne _080B58F2
 _080B5904:
-	ldr r0, _080B5944
+	ldr r0, _080B5944 @ =0x00000804
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
@@ -982,11 +982,11 @@ _080B5904:
 	movs r1, 0
 	movs r3, 0x9
 	bl MenuDrawTextWindow
-	ldr r0, _080B5948
+	ldr r0, _080B5948 @ =gPCText_HallOfFame
 	movs r1, 0x1
 	movs r2, 0x5
 	bl MenuPrint
-	ldr r0, _080B5940
+	ldr r0, _080B5940 @ =gPCText_LogOff
 	movs r1, 0x1
 	movs r2, 0x7
 	bl MenuPrint
@@ -1006,18 +1006,18 @@ _080B594C:
 	movs r1, 0
 	movs r3, 0x7
 	bl MenuDrawTextWindow
-	ldr r0, _080B5984
+	ldr r0, _080B5984 @ =gPCText_LogOff
 	movs r1, 0x1
 	movs r2, 0x5
 	bl MenuPrint
 _080B5968:
 	adds r6, r4, 0
-	ldr r0, _080B5988
+	ldr r0, _080B5988 @ =0x0000084b
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
 	beq _080B5990
-	ldr r0, _080B598C
+	ldr r0, _080B598C @ =gPCText_LanettesPC
 	movs r1, 0x1
 	movs r2, 0x1
 	bl MenuPrint
@@ -1027,12 +1027,12 @@ _080B5984: .4byte gPCText_LogOff
 _080B5988: .4byte 0x0000084b
 _080B598C: .4byte gPCText_LanettesPC
 _080B5990:
-	ldr r0, _080B59D8
+	ldr r0, _080B59D8 @ =gPCText_SomeonesPC
 	movs r1, 0x1
 	movs r2, 0x1
 	bl MenuPrint
 _080B599A:
-	ldr r0, _080B59DC
+	ldr r0, _080B59DC @ =gPCText_PlayersPC
 	movs r1, 0x1
 	movs r2, 0x3
 	bl MenuPrint
@@ -1069,7 +1069,7 @@ _080B59DC: .4byte gPCText_PlayersPC
 sub_80B5838: @ 80B59E0
 	push {lr}
 	bl MenuDisplayMessageBox
-	ldr r0, _080B59F4
+	ldr r0, _080B59F4 @ =gUnknown_081A0A01
 	movs r1, 0x2
 	movs r2, 0xF
 	bl MenuPrint
@@ -1087,7 +1087,7 @@ task_picbox: @ 80B59F8
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080B5A1C
+	ldr r1, _080B5A1C @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
@@ -1112,7 +1112,7 @@ _080B5A2A:
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080B5A44
+	ldr r1, _080B5A44 @ =gSprites
 	adds r0, r1
 	bl FreeResourcesAndDestroySprite
 _080B5A3C:
@@ -1151,7 +1151,7 @@ sub_80B58C4: @ 80B5A6C
 	lsrs r6, r1, 24
 	lsls r2, 24
 	lsrs r5, r2, 24
-	ldr r4, _080B5B04
+	ldr r4, _080B5B04 @ =task_picbox
 	adds r0, r4, 0
 	bl FindTaskIdByFunc
 	lsls r0, 24
@@ -1174,7 +1174,7 @@ sub_80B58C4: @ 80B5A6C
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _080B5B08
+	ldr r1, _080B5B08 @ =gTasks
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
@@ -1198,14 +1198,14 @@ sub_80B58C4: @ 80B5A6C
 	strh r0, [r4, 0xC]
 	strh r6, [r4, 0xE]
 	strh r5, [r4, 0x10]
-	ldr r3, _080B5B0C
+	ldr r3, _080B5B0C @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
 	adds r0, r3, 0
 	adds r0, 0x1C
 	adds r0, r1, r0
-	ldr r2, _080B5B10
+	ldr r2, _080B5B10 @ =SpriteCallbackDummy
 	str r2, [r0]
 	adds r1, r3
 	ldrb r2, [r1, 0x5]
@@ -1231,13 +1231,13 @@ _080B5B16:
 	thumb_func_start picbox_close
 picbox_close: @ 80B5B1C
 	push {lr}
-	ldr r0, _080B5B40
+	ldr r0, _080B5B40 @ =task_picbox
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0xFF
 	beq _080B5B4C
-	ldr r0, _080B5B44
+	ldr r0, _080B5B44 @ =gTasks
 	lsls r1, r2, 2
 	adds r1, r2
 	lsls r1, 3
@@ -1245,7 +1245,7 @@ picbox_close: @ 80B5B1C
 	ldrh r0, [r1, 0x8]
 	adds r0, 0x1
 	strh r0, [r1, 0x8]
-	ldr r0, _080B5B48
+	ldr r0, _080B5B48 @ =sub_80B59AC
 	b _080B5B4E
 	.align 2, 0
 _080B5B40: .4byte task_picbox
@@ -1261,7 +1261,7 @@ _080B5B4E:
 	thumb_func_start sub_80B59AC
 sub_80B59AC: @ 80B5B54
 	push {lr}
-	ldr r0, _080B5B68
+	ldr r0, _080B5B68 @ =task_picbox
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24

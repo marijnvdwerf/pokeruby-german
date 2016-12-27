@@ -23,7 +23,7 @@ _0811ACD8:
 	movs r0, 0
 	b _0811AD0E
 _0811ACDC:
-	ldr r6, _0811ACE0
+	ldr r6, _0811ACE0 @ =0x0000ffff
 	b _0811ACF2
 	.align 2, 0
 _0811ACE0: .4byte 0x0000ffff
@@ -65,7 +65,7 @@ GetLandmarks: @ 811AD14
 	lsls r1, 24
 	lsrs r6, r1, 24
 	movs r2, 0
-	ldr r0, _0811AD58
+	ldr r0, _0811AD58 @ =gLandmarkLists
 	ldrb r1, [r0]
 	adds r4, r0, 0
 	cmp r1, 0x58
@@ -104,7 +104,7 @@ _0811AD5C:
 _0811AD64:
 	cmp r0, r3
 	bne _0811AD84
-	ldr r5, _0811AD8C
+	ldr r5, _0811AD8C @ =gLandmarkLists
 _0811AD6A:
 	lsls r1, r2, 3
 	adds r0, r1, r5

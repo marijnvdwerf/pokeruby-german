@@ -47,7 +47,7 @@ set_player_trainer_id: @ 805306C
 	lsls r0, 16
 	lsrs r0, 16
 	orrs r4, r0
-	ldr r1, _08053090
+	ldr r1, _08053090 @ =0x02024eae
 	adds r0, r4, 0
 	bl write_word_to_mem
 	pop {r4}
@@ -59,7 +59,7 @@ _08053090: .4byte 0x02024eae
 
 	thumb_func_start SetDefaultOptions
 SetDefaultOptions: @ 8053094
-	ldr r2, _080530B4
+	ldr r2, _080530B4 @ =gSaveBlock2
 	movs r0, 0x1
 	strb r0, [r2, 0x14]
 	ldrb r1, [r2, 0x15]
@@ -81,10 +81,10 @@ _080530B4: .4byte gSaveBlock2
 	thumb_func_start sub_8052D78
 sub_8052D78: @ 80530B8
 	push {r4,lr}
-	ldr r0, _080530E0
+	ldr r0, _080530E0 @ =gUnknown_03005CE8
 	movs r1, 0
 	strb r1, [r0]
-	ldr r4, _080530E4
+	ldr r4, _080530E4 @ =0x02024ecc
 	adds r0, r4, 0
 	movs r1, 0
 	movs r2, 0x34
@@ -106,9 +106,9 @@ _080530E4: .4byte 0x02024ecc
 sub_8052DA8: @ 80530E8
 	push {r4-r7,lr}
 	bl sub_80B2D1C
-	ldr r0, _08053118
-	ldr r4, _0805311C
-	ldr r1, _08053120
+	ldr r0, _08053118 @ =gSaveBlock1
+	ldr r4, _0805311C @ =gUnknown_08216604
+	ldr r1, _08053120 @ =0x00002efc
 	adds r3, r0, r1
 	movs r2, 0x4
 _080530F8:
@@ -139,8 +139,8 @@ sub_8052DE4: @ 8053124
 	sub sp, 0x4
 	movs r0, 0
 	str r0, [sp]
-	ldr r1, _0805313C
-	ldr r2, _08053140
+	ldr r1, _0805313C @ =0x02024f4c
+	ldr r2, _08053140 @ =0x050001fa
 	mov r0, sp
 	bl CpuSet
 	add sp, 0x4
@@ -175,8 +175,8 @@ ClearSav2: @ 8053164
 	mov r1, sp
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08053184
-	ldr r2, _08053188
+	ldr r1, _08053184 @ =gSaveBlock2
+	ldr r2, _08053188 @ =0x01000448
 	mov r0, sp
 	bl CpuSet
 	bl SetDefaultOptions
@@ -191,7 +191,7 @@ _08053188: .4byte 0x01000448
 	thumb_func_start sub_8052E4C
 sub_8052E4C: @ 805318C
 	push {lr}
-	ldr r1, _080531A8
+	ldr r1, _080531A8 @ =gUnknown_020297EC
 	movs r0, 0
 	strb r0, [r1]
 	bl sub_808C0A0
@@ -207,7 +207,7 @@ _080531A8: .4byte gUnknown_020297EC
 	thumb_func_start NewGameInitData
 NewGameInitData: @ 80531AC
 	push {r4,r5,lr}
-	ldr r0, _0805327C
+	ldr r0, _0805327C @ =gSaveFileStatus
 	ldrh r0, [r0]
 	cmp r0, 0
 	beq _080531BA
@@ -216,21 +216,21 @@ NewGameInitData: @ 80531AC
 _080531BA:
 	bl RtcReset
 _080531BE:
-	ldr r1, _08053280
+	ldr r1, _08053280 @ =gUnknown_020297EC
 	movs r0, 0x1
 	strb r0, [r1]
 	bl ZeroPlayerPartyMons
 	bl ZeroEnemyPartyMons
 	bl sub_808C02C
 	bl sub_8052DE4
-	ldr r4, _08053284
+	ldr r4, _08053284 @ =gSaveBlock1
 	movs r2, 0xEB
 	lsls r2, 6
 	adds r0, r4, 0
 	movs r1, 0
 	bl memset
 	bl sub_80A2B18
-	ldr r0, _08053288
+	ldr r0, _08053288 @ =gSaveBlock2
 	movs r5, 0
 	strb r5, [r0, 0x9]
 	bl set_player_trainer_id
@@ -244,7 +244,7 @@ _080531BE:
 	movs r0, 0x92
 	lsls r0, 3
 	adds r1, r4, r0
-	ldr r0, _0805328C
+	ldr r0, _0805328C @ =0x00000bb8
 	str r0, [r1]
 	bl sub_80AB1B0
 	bl sub_80530AC
@@ -252,13 +252,13 @@ _080531BE:
 	bl InitLinkBattleRecords
 	bl InitShroomishSizeRecord
 	bl InitBarboachSizeRecord
-	ldr r0, _08053290
+	ldr r0, _08053290 @ =gPlayerPartyCount
 	strb r5, [r0]
 	bl ZeroPlayerPartyMons
 	bl sub_80961D8
 	bl sub_81341F8
 	bl sub_813420C
-	ldr r0, _08053294
+	ldr r0, _08053294 @ =0x00000496
 	adds r4, r0
 	strh r5, [r4]
 	bl sub_80A3714
@@ -271,7 +271,7 @@ _080531BE:
 	bl sub_810FA54
 	bl sub_8145A78
 	bl sub_8052E04
-	ldr r0, _08053298
+	ldr r0, _08053298 @ =gUnknown_0819FA81
 	bl ScriptContext2_RunNewScript
 	pop {r4,r5}
 	pop {r0}
