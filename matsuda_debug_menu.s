@@ -547,7 +547,7 @@ unref_sub_80AB084: @ 80AB084
 	push {r7}
 	sub sp, 0x8
 	mov r8, r0
-	ldr r0, _080AB160 @ =0x04000010
+	ldr r0, _080AB160 @ =REG_BG0HOFS
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -587,7 +587,7 @@ unref_sub_80AB084: @ 80AB084
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r1, _080AB16C @ =0x04000004
+	ldr r1, _080AB16C @ =REG_DISPSTAT
 	movs r0, 0x8
 	strh r0, [r1]
 	bl ResetTasks
@@ -647,10 +647,10 @@ _080AB108:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AB160: .4byte 0x04000010
+_080AB160: .4byte REG_BG0HOFS
 _080AB164: .4byte 0x04000208
 _080AB168: .4byte 0x04000200
-_080AB16C: .4byte 0x04000004
+_080AB16C: .4byte REG_DISPSTAT
 _080AB170: .4byte sub_80AB184
 _080AB174: .4byte 0x040000d4
 _080AB178: .4byte 0x85000400
@@ -660,7 +660,7 @@ _080AB180: .4byte gUnknown_03004210
 
 	thumb_func_start sub_80AB184
 sub_80AB184: @ 80AB184
-	ldr r0, _080AB1A8 @ =0x04000010
+	ldr r0, _080AB1A8 @ =REG_BG0HOFS
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -679,7 +679,7 @@ sub_80AB184: @ 80AB184
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
-_080AB1A8: .4byte 0x04000010
+_080AB1A8: .4byte REG_BG0HOFS
 	thumb_func_end sub_80AB184
 
 	.align 2, 0 @ Don't pad with nop.

@@ -20,11 +20,11 @@ sub_8146014: @ 81463CC
 	thumb_func_start sub_814602C
 sub_814602C: @ 81463E4
 	push {lr}
-	ldr r2, _08146404 @ =0x04000012
+	ldr r2, _08146404 @ =REG_BG0VOFS
 	ldr r0, _08146408 @ =gUnknown_030041B4
 	ldrh r1, [r0]
 	strh r1, [r2]
-	ldr r0, _0814640C @ =0x04000016
+	ldr r0, _0814640C @ =REG_BG1VOFS
 	strh r1, [r0]
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
@@ -32,9 +32,9 @@ sub_814602C: @ 81463E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08146404: .4byte 0x04000012
+_08146404: .4byte REG_BG0VOFS
 _08146408: .4byte gUnknown_030041B4
-_0814640C: .4byte 0x04000016
+_0814640C: .4byte REG_BG1VOFS
 	thumb_func_end sub_814602C
 
 	thumb_func_start sub_8146058
@@ -77,12 +77,12 @@ _0814646C:
 	bl sub_80F9438
 	bl sub_80F9368
 	bl sub_8146288
-	ldr r1, _08146480 @ =0x04000050
+	ldr r1, _08146480 @ =REG_BLDCNT
 	movs r0, 0
 	strh r0, [r1]
 	b _081465C4
 	.align 2, 0
-_08146480: .4byte 0x04000050
+_08146480: .4byte REG_BLDCNT
 _08146484:
 	bl ResetPaletteFade
 	ldr r2, _0814649C @ =gPaletteFade
@@ -199,7 +199,7 @@ _0814656C:
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _081465AC @ =0x04000004
+	ldr r2, _081465AC @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -219,7 +219,7 @@ _0814656C:
 	.align 2, 0
 _081465A4: .4byte 0x04000208
 _081465A8: .4byte 0x04000200
-_081465AC: .4byte 0x04000004
+_081465AC: .4byte REG_DISPSTAT
 _081465B0: .4byte sub_814602C
 _081465B4: .4byte gMain
 _081465B8: .4byte 0x0000043c
@@ -296,7 +296,7 @@ _08146284:
 
 	thumb_func_start sub_8146288
 sub_8146288: @ 8146640
-	ldr r1, _08146660 @ =0x0400000a
+	ldr r1, _08146660 @ =REG_BG1CNT
 	ldr r2, _08146664 @ =0x00000502
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -313,7 +313,7 @@ sub_8146288: @ 8146640
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_08146660: .4byte 0x0400000a
+_08146660: .4byte REG_BG1CNT
 _08146664: .4byte 0x00000502
 _08146668: .4byte 0x00000703
 _0814666C: .4byte gUnknown_030041B4
@@ -380,7 +380,7 @@ _081466F0: .4byte gUnknown_08E78A84
 _081466F4: .4byte 0x06003000
 _081466F8:
 	movs r1, 0
-	ldr r7, _08146714 @ =0x020221cc
+	ldr r7, _08146714 @ =gBGTilemapBuffers + 0x1000
 	adds r2, r7, 0
 	ldr r6, _08146718 @ =0x00004042
 	ldr r5, _0814671C @ =gSaveBlock2
@@ -395,7 +395,7 @@ _08146706:
 	strh r6, [r0]
 	b _0814672E
 	.align 2, 0
-_08146714: .4byte 0x020221cc
+_08146714: .4byte gBGTilemapBuffers + 0x1000
 _08146718: .4byte 0x00004042
 _0814671C: .4byte gSaveBlock2
 _08146720: .4byte 0x00005042
@@ -841,7 +841,7 @@ sub_81466E8: @ 8146A98
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
-	ldr r1, _08146AF8 @ =0x03004b38
+	ldr r1, _08146AF8 @ =gTasks + 0x8
 	adds r6, r0, r1
 	ldr r4, _08146AFC @ =gUnknown_03005D10
 	movs r0, 0xC
@@ -880,7 +880,7 @@ _08146AD8:
 	strh r0, [r6, 0x2]
 	b _08146B16
 	.align 2, 0
-_08146AF8: .4byte 0x03004b38
+_08146AF8: .4byte gTasks + 0x8
 _08146AFC: .4byte gUnknown_03005D10
 _08146B00:
 	mov r4, r8
@@ -932,7 +932,7 @@ sub_8146798: @ 8146798
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _08146800 @ =0x03004b38
+	ldr r1, _08146800 @ =gTasks + 0x8
 	adds r0, r1
 	ldr r2, _08146804 @ =gUnknown_030041B4
 	ldrh r1, [r0]
@@ -981,7 +981,7 @@ _081467FA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08146800: .4byte 0x03004b38
+_08146800: .4byte gTasks + 0x8
 _08146804: .4byte gUnknown_030041B4
 _08146808: .4byte gTasks
 _0814680C: .4byte sub_8146480

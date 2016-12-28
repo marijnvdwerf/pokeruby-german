@@ -23,7 +23,7 @@ sub_807AD58: @ 807AD58
 	bl SetHBlankCallback
 	movs r0, 0
 	bl SetVBlankCallback
-	ldr r0, _0807AD94 @ =0x0400004c
+	ldr r0, _0807AD94 @ =REG_MOSAIC
 	movs r2, 0
 	strh r2, [r0]
 	ldr r0, _0807AD98 @ =0x02000000
@@ -39,7 +39,7 @@ sub_807AD58: @ 807AD58
 	bx r0
 	.align 2, 0
 _0807AD90: .4byte gPaletteFade
-_0807AD94: .4byte 0x0400004c
+_0807AD94: .4byte REG_MOSAIC
 _0807AD98: .4byte 0x02000000
 _0807AD9C: .4byte 0x0001ffff
 _0807ADA0: .4byte 0x0001fffe
@@ -358,22 +358,22 @@ _0807B068: .4byte 0x0001ffff
 sub_807B06C: @ 807B06C
 	push {lr}
 	bl sub_800D6D4
-	ldr r3, _0807B08C @ =0x0400000a
+	ldr r3, _0807B08C @ =REG_BG1CNT
 	ldrb r2, [r3]
 	movs r1, 0xD
 	negs r1, r1
 	adds r0, r1, 0
 	ands r0, r2
 	strb r0, [r3]
-	ldr r2, _0807B090 @ =0x0400000c
+	ldr r2, _0807B090 @ =REG_BG2CNT
 	ldrb r0, [r2]
 	ands r1, r0
 	strb r1, [r2]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807B08C: .4byte 0x0400000a
-_0807B090: .4byte 0x0400000c
+_0807B08C: .4byte REG_BG1CNT
+_0807B090: .4byte REG_BG2CNT
 	thumb_func_end sub_807B06C
 
 	thumb_func_start sub_807B094
@@ -1456,7 +1456,7 @@ sub_807B920: @ 807B920
 	adds r0, r1
 	lsrs r5, r0, 16
 _0807B95E:
-	ldr r1, _0807B9C0 @ =0x04000050
+	ldr r1, _0807B9C0 @ =REG_BLDCNT
 	movs r2, 0xFD
 	lsls r2, 6
 	adds r0, r2, 0
@@ -1499,7 +1499,7 @@ _0807B9B0: .4byte gUnknown_0202F7C9
 _0807B9B4: .4byte 0xffe00000
 _0807B9B8: .4byte 0xffdc0000
 _0807B9BC: .4byte 0xfffa0000
-_0807B9C0: .4byte 0x04000050
+_0807B9C0: .4byte REG_BLDCNT
 _0807B9C4: .4byte gSpriteTemplate_83931E0
 _0807B9C8: .4byte gSprites
 _0807B9CC: .4byte gUnknown_083931D8
@@ -1536,7 +1536,7 @@ _0807BA08: .4byte sub_807BA24
 _0807BA0C:
 	lsls r0, r2, 24
 	lsrs r0, 24
-	ldr r2, _0807BA20 @ =0x04000052
+	ldr r2, _0807BA20 @ =REG_BLDALPHA
 	movs r1, 0x10
 	subs r1, r0
 	lsls r1, 8
@@ -1546,7 +1546,7 @@ _0807BA1C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BA20: .4byte 0x04000052
+_0807BA20: .4byte REG_BLDALPHA
 	thumb_func_end sub_807B9D8
 
 	thumb_func_start sub_807BA24
@@ -1666,7 +1666,7 @@ _0807BB08: .4byte sub_807BB24
 _0807BB0C:
 	lsls r0, r3, 24
 	lsrs r0, 24
-	ldr r2, _0807BB20 @ =0x04000052
+	ldr r2, _0807BB20 @ =REG_BLDALPHA
 	movs r1, 0x10
 	subs r1, r0
 	lsls r1, 8
@@ -1676,7 +1676,7 @@ _0807BB1C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BB20: .4byte 0x04000052
+_0807BB20: .4byte REG_BLDALPHA
 	thumb_func_end sub_807BAD4
 
 	thumb_func_start sub_807BB24
@@ -1717,7 +1717,7 @@ _0807BB68: .4byte gSprites
 _0807BB6C:
 	cmp r0, 0x27
 	bne _0807BB7E
-	ldr r0, _0807BB84 @ =0x04000050
+	ldr r0, _0807BB84 @ =REG_BLDCNT
 	strh r3, [r0]
 	adds r0, 0x2
 	strh r3, [r0]
@@ -1728,7 +1728,7 @@ _0807BB7E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BB84: .4byte 0x04000050
+_0807BB84: .4byte REG_BLDCNT
 	thumb_func_end sub_807BB24
 
 	thumb_func_start sub_807BB88

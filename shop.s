@@ -446,7 +446,7 @@ sub_80B30AC: @ 80B30AC
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r3, _080B30F0 @ =0x020219cc
+	ldr r3, _080B30F0 @ =gBGTilemapBuffers + 0x800
 	ldr r1, _080B30F4 @ =0x0600e800
 	ldr r0, _080B30F8 @ =0x040000d4
 	str r3, [r0]
@@ -474,7 +474,7 @@ sub_80B30AC: @ 80B30AC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B30F0: .4byte 0x020219cc
+_080B30F0: .4byte gBGTilemapBuffers + 0x800
 _080B30F4: .4byte 0x0600e800
 _080B30F8: .4byte 0x040000d4
 _080B30FC: .4byte 0x80000400
@@ -490,7 +490,7 @@ BuyMenuDrawGraphics: @ 80B3108
 	sub sp, 0x8
 	bl sub_80F9438
 	bl remove_some_task
-	ldr r0, _080B3204 @ =0x04000014
+	ldr r0, _080B3204 @ =REG_BG1HOFS
 	movs r5, 0
 	strh r5, [r0]
 	adds r0, 0x2
@@ -589,7 +589,7 @@ BuyMenuDrawGraphics: @ 80B3108
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B3204: .4byte 0x04000014
+_080B3204: .4byte REG_BG1HOFS
 _080B3208: .4byte gPaletteFade
 _080B320C: .4byte 0x040000d4
 _080B3210: .4byte 0x85000100
@@ -762,12 +762,12 @@ _080B3356:
 	beq _080B3398
 	b _080B33C0
 _080B335C:
-	ldr r5, _080B3360 @ =0x020221cc
+	ldr r5, _080B3360 @ =gBGTilemapBuffers + 0x1000
 	b _080B3366
 	.align 2, 0
-_080B3360: .4byte 0x020221cc
+_080B3360: .4byte gBGTilemapBuffers + 0x1000
 _080B3364:
-	ldr r5, _080B3390 @ =0x020229cc
+	ldr r5, _080B3390 @ =gBGTilemapBuffers + 0x1800
 _080B3366:
 	lsls r6, r0, 16
 	asrs r6, 16
@@ -788,10 +788,10 @@ _080B3366:
 	bl BuyMenuDrawMapMetatileLayer
 	b _080B33C0
 	.align 2, 0
-_080B3390: .4byte 0x020229cc
+_080B3390: .4byte gBGTilemapBuffers + 0x1800
 _080B3394: .4byte 0xfffff800
 _080B3398:
-	ldr r5, _080B33C8 @ =0x020229cc
+	ldr r5, _080B33C8 @ =gBGTilemapBuffers + 0x1800
 	lsls r6, r0, 16
 	asrs r6, 16
 	lsls r4, r1, 16
@@ -814,7 +814,7 @@ _080B33C0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B33C8: .4byte 0x020229cc
+_080B33C8: .4byte gBGTilemapBuffers + 0x1800
 _080B33CC: .4byte 0xfffff000
 	thumb_func_end BuyMenuDrawMapMetatile
 
@@ -827,7 +827,7 @@ sub_80B33D0: @ 80B33D0
 	adds r4, r1, 0
 	mov r8, r2
 	lsls r4, 22
-	ldr r5, _080B3418 @ =0x020229cc
+	ldr r5, _080B3418 @ =gBGTilemapBuffers + 0x1800
 	lsls r6, 17
 	asrs r6, 16
 	movs r0, 0x80
@@ -854,7 +854,7 @@ sub_80B33D0: @ 80B33D0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B3418: .4byte 0x020229cc
+_080B3418: .4byte gBGTilemapBuffers + 0x1800
 _080B341C: .4byte 0xfffff800
 	thumb_func_end sub_80B33D0
 
@@ -983,7 +983,7 @@ _080B3506:
 	beq _080B3520
 	lsls r1, 17
 	asrs r1, 16
-	ldr r0, _080B3550 @ =0x020219cc
+	ldr r0, _080B3550 @ =gBGTilemapBuffers + 0x800
 	movs r2, 0x40
 	bl sub_80B32EC
 _080B3520:
@@ -1010,7 +1010,7 @@ _080B3520:
 	bx r0
 	.align 2, 0
 _080B354C: .4byte 0xfffffe00
-_080B3550: .4byte 0x020219cc
+_080B3550: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80B3420
 
 	thumb_func_start BuyMenuDrawMapGraphics
@@ -1250,7 +1250,7 @@ _080B371C: .4byte gSprites
 sub_80B3720: @ 80B3720
 	push {r4-r6,lr}
 	movs r1, 0
-	ldr r6, _080B3754 @ =0x020219cc
+	ldr r6, _080B3754 @ =gBGTilemapBuffers + 0x800
 	ldr r5, _080B3758 @ =0x000003ff
 	ldr r4, _080B375C @ =0x02018000
 	ldr r0, _080B3760 @ =0x0000c3e0
@@ -1277,7 +1277,7 @@ _080B3742:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B3754: .4byte 0x020219cc
+_080B3754: .4byte gBGTilemapBuffers + 0x800
 _080B3758: .4byte 0x000003ff
 _080B375C: .4byte 0x02018000
 _080B3760: .4byte 0x0000c3e0
@@ -1316,7 +1316,7 @@ _080B3798: .4byte gUnknown_03000708
 sub_80B379C: @ 80B379C
 	push {r4-r7,lr}
 	movs r1, 0
-	ldr r0, _080B37E0 @ =0x020219cc
+	ldr r0, _080B37E0 @ =gBGTilemapBuffers + 0x800
 	mov r12, r0
 	ldr r7, _080B37E4 @ =0x02018300
 	ldr r0, _080B37E8 @ =0x0000c3e0
@@ -1351,7 +1351,7 @@ _080B37B6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B37E0: .4byte 0x020219cc
+_080B37E0: .4byte gBGTilemapBuffers + 0x800
 _080B37E4: .4byte 0x02018300
 _080B37E8: .4byte 0x0000c3e0
 	thumb_func_end sub_80B379C
@@ -1417,7 +1417,7 @@ sub_80B37F8: @ 80B37F8
 	movs r1, 0x1
 	movs r2, 0xB
 	bl MenuPrint
-	ldr r0, _080B3894 @ =0x020219cc
+	ldr r0, _080B3894 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x2
 	str r1, [sp]
 	ldr r1, _080B3898 @ =0x0000c3e1
@@ -1435,7 +1435,7 @@ _080B3884: .4byte gUnknown_03000708
 _080B3888: .4byte gTasks
 _080B388C: .4byte gStringVar1
 _080B3890: .4byte gOtherText_xString1
-_080B3894: .4byte 0x020219cc
+_080B3894: .4byte gBGTilemapBuffers + 0x800
 _080B3898: .4byte 0x0000c3e1
 	thumb_func_end sub_80B37F8
 
@@ -1537,7 +1537,7 @@ sub_80B3930: @ 80B3930
 	adds r2, 0x3
 _080B395A:
 	lsls r6, r3, 5
-	ldr r0, _080B39A4 @ =0x083f7bf1
+	ldr r0, _080B39A4 @ =gDecorations + 0x1
 	mov r8, r0
 	adds r1, r6, r0
 	adds r0, r2, 0
@@ -1571,7 +1571,7 @@ _080B3986:
 	b _080B39C2
 	.align 2, 0
 _080B39A0: .4byte gStringVar1
-_080B39A4: .4byte 0x083f7bf1
+_080B39A4: .4byte gDecorations + 0x1
 _080B39A8: .4byte 0x00002710
 _080B39AC:
 	ldrh r1, [r3, 0x14]
@@ -1821,7 +1821,7 @@ sub_80B3B80: @ 80B3B80
 	lsrs r4, 24
 	movs r0, 0x26
 	bl sav12_xor_increment
-	ldr r5, _080B3BC0 @ =0x02025bc4
+	ldr r5, _080B3BC0 @ =gSaveBlock1 + 0x490
 	ldr r0, _080B3BC4 @ =gUnknown_020386A0
 	ldr r1, [r0]
 	adds r0, r5, 0
@@ -1843,7 +1843,7 @@ sub_80B3B80: @ 80B3B80
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B3BC0: .4byte 0x02025bc4
+_080B3BC0: .4byte gSaveBlock1 + 0x490
 _080B3BC4: .4byte gUnknown_020386A0
 _080B3BC8: .4byte gTasks
 _080B3BCC: .4byte sub_80B3AEC
@@ -1880,7 +1880,7 @@ sub_80B3BF4: @ 80B3BF4
 	movs r2, 0xD
 	movs r3, 0xD
 	bl MenuZeroFillWindowRect
-	ldr r0, _080B3C7C @ =0x020219cc
+	ldr r0, _080B3C7C @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x4
 	str r1, [sp]
 	movs r1, 0
@@ -1932,7 +1932,7 @@ sub_80B3BF4: @ 80B3BF4
 	bl sub_80B4470
 	b _080B3D24
 	.align 2, 0
-_080B3C7C: .4byte 0x020219cc
+_080B3C7C: .4byte gBGTilemapBuffers + 0x800
 _080B3C80: .4byte gSaveBlock1
 _080B3C84: .4byte gUnknown_020386A0
 _080B3C88: .4byte gUnknown_03000708
@@ -2023,7 +2023,7 @@ sub_80B3D38: @ 80B3D38
 	movs r1, 0x8
 	movs r2, 0x1
 	bl DisplayYesNoMenu
-	ldr r0, _080B3D70 @ =0x020219cc
+	ldr r0, _080B3D70 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x4
 	str r1, [sp]
 	ldr r1, _080B3D74 @ =0x0000c3e1
@@ -2040,7 +2040,7 @@ sub_80B3D38: @ 80B3D38
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B3D70: .4byte 0x020219cc
+_080B3D70: .4byte gBGTilemapBuffers + 0x800
 _080B3D74: .4byte 0x0000c3e1
 _080B3D78: .4byte gUnknown_083CC708
 	thumb_func_end sub_80B3D38
@@ -2062,7 +2062,7 @@ sub_80B3D7C: @ 80B3D7C
 	movs r2, 0xD
 	movs r3, 0xD
 	bl MenuZeroFillWindowRect
-	ldr r0, _080B3DC4 @ =0x020219cc
+	ldr r0, _080B3DC4 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x4
 	str r1, [sp]
 	movs r1, 0
@@ -2079,7 +2079,7 @@ sub_80B3D7C: @ 80B3D7C
 	bx r0
 	.align 2, 0
 _080B3DC0: .4byte gUnknown_03000708
-_080B3DC4: .4byte 0x020219cc
+_080B3DC4: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80B3D7C
 
 	thumb_func_start sub_80B3DC8
@@ -2141,7 +2141,7 @@ _080B3DEE:
 	movs r2, 0xD
 	movs r3, 0xD
 	bl MenuZeroFillWindowRect
-	ldr r0, _080B3EB8 @ =0x020219cc
+	ldr r0, _080B3EB8 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x2
 	str r1, [sp]
 	movs r1, 0
@@ -2188,7 +2188,7 @@ _080B3EA8: .4byte gUnknown_03000708
 _080B3EAC: .4byte gMain
 _080B3EB0: .4byte gUnknown_020386A0
 _080B3EB4: .4byte gTasks
-_080B3EB8: .4byte 0x020219cc
+_080B3EB8: .4byte gBGTilemapBuffers + 0x800
 _080B3EBC: .4byte gStringVar1
 _080B3EC0: .4byte gStringVar2
 _080B3EC4: .4byte gStringVar3
@@ -2775,7 +2775,7 @@ sub_80B4378: @ 80B4378
 	movs r2, 0xD
 	movs r3, 0xD
 	bl MenuZeroFillWindowRect
-	ldr r0, _080B43E4 @ =0x020219cc
+	ldr r0, _080B43E4 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x2
 	str r1, [sp]
 	movs r1, 0
@@ -2806,7 +2806,7 @@ sub_80B4378: @ 80B4378
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B43E4: .4byte 0x020219cc
+_080B43E4: .4byte gBGTilemapBuffers + 0x800
 _080B43E8: .4byte gTasks
 _080B43EC: .4byte sub_80B40E8
 	thumb_func_end sub_80B4378
@@ -3234,7 +3234,7 @@ sub_80B4710: @ 80B4710
 	lsls r0, r3, 2
 	adds r0, r3
 	lsls r0, 3
-	ldr r1, _080B4738 @ =0x03004b38
+	ldr r1, _080B4738 @ =gTasks + 0x8
 	adds r4, r0, r1
 	movs r0, 0x1
 	strh r0, [r4, 0x6]
@@ -3248,7 +3248,7 @@ sub_80B4710: @ 80B4710
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080B4738: .4byte 0x03004b38
+_080B4738: .4byte gTasks + 0x8
 _080B473C: .4byte _080B4740
 	.align 2, 0
 _080B4740:
@@ -3344,7 +3344,7 @@ sub_80B47D8: @ 80B47D8
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _080B4820 @ =0x03004b38
+	ldr r1, _080B4820 @ =gTasks + 0x8
 	adds r7, r0, r1
 	adds r0, r7, 0
 	adds r0, 0x8
@@ -3363,7 +3363,7 @@ sub_80B47D8: @ 80B47D8
 	bx r1
 	.align 2, 0
 _080B481C: .4byte sub_80B4710
-_080B4820: .4byte 0x03004b38
+_080B4820: .4byte gTasks + 0x8
 	thumb_func_end sub_80B47D8
 
 	thumb_func_start sub_80B4824

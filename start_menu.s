@@ -344,7 +344,7 @@ Task_StartMenu: @ 8071570
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _0807159C @ =0x03004b38
+	ldr r1, _0807159C @ =gTasks + 0x8
 	adds r4, r0, r1
 	adds r1, r4, 0x2
 	adds r0, r4, 0
@@ -360,7 +360,7 @@ _08071596:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807159C: .4byte 0x03004b38
+_0807159C: .4byte gTasks + 0x8
 	thumb_func_end Task_StartMenu
 
 	thumb_func_start CreateStartMenuTask
@@ -1562,7 +1562,7 @@ Task_8071B64: @ 8071E80
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08071EB0 @ =0x03004b38
+	ldr r1, _08071EB0 @ =gTasks + 0x8
 	adds r4, r0, r1
 	ldr r0, _08071EB4 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
@@ -1580,7 +1580,7 @@ Task_8071B64: @ 8071E80
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08071EB0: .4byte 0x03004b38
+_08071EB0: .4byte gTasks + 0x8
 _08071EB4: .4byte gPaletteFade
 _08071EB8: .4byte _08071EBC
 	.align 2, 0

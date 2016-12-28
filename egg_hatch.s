@@ -324,7 +324,7 @@ _08042B42:
 	thumb_func_start sub_8042B4C
 sub_8042B4C: @ 8042B4C
 	push {lr}
-	ldr r0, _08042B60 @ =0x020286d0
+	ldr r0, _08042B60 @ =gSaveBlock1 + 0x2F9C
 	ldr r1, _08042B64 @ =gSpecialVar_0x8004
 	ldrb r1, [r1]
 	bl sub_8042ABC
@@ -333,7 +333,7 @@ sub_8042B4C: @ 8042B4C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08042B60: .4byte 0x020286d0
+_08042B60: .4byte gSaveBlock1 + 0x2F9C
 _08042B64: .4byte gSpecialVar_0x8004
 	thumb_func_end sub_8042B4C
 
@@ -708,7 +708,7 @@ _08042EA4: .4byte gUnknown_0300481C
 _08042EA8: .4byte gMain
 _08042EAC: .4byte 0x0000043c
 _08042EB0:
-	ldr r0, _08042F14 @ =0x0400000c
+	ldr r0, _08042F14 @ =REG_BG2CNT
 	ldr r2, _08042F18 @ =0x00004c06
 	adds r1, r2, 0
 	strh r1, [r0]
@@ -760,7 +760,7 @@ _08042F0A:
 	strb r0, [r1]
 	b _08042F6E
 	.align 2, 0
-_08042F14: .4byte 0x0400000c
+_08042F14: .4byte REG_BG2CNT
 _08042F18: .4byte 0x00004c06
 _08042F1C: .4byte gUnknown_0820C9F8
 _08042F20: .4byte gUnknown_0820CA98
@@ -772,11 +772,11 @@ _08042F34: .4byte 0x06006000
 _08042F38: .4byte gMain
 _08042F3C: .4byte 0x0000043c
 _08042F40:
-	ldr r1, _08042F74 @ =0x0400000a
+	ldr r1, _08042F74 @ =REG_BG1CNT
 	ldr r2, _08042F78 @ =0x00000501
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _08042F7C @ =0x04000010
+	ldr r0, _08042F7C @ =REG_BG0HOFS
 	movs r4, 0
 	strh r4, [r0]
 	adds r0, 0x2
@@ -799,9 +799,9 @@ _08042F6E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08042F74: .4byte 0x0400000a
+_08042F74: .4byte REG_BG1CNT
 _08042F78: .4byte 0x00000501
-_08042F7C: .4byte 0x04000010
+_08042F7C: .4byte REG_BG0HOFS
 _08042F80: .4byte CB2_EggHatch_1
 _08042F84: .4byte gUnknown_0300481C
 	thumb_func_end CB2_EggHatch_0

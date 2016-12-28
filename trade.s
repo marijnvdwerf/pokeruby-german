@@ -1616,7 +1616,7 @@ sub_8048AB4: @ 8048AB4
 	bl sub_8049ED4
 	movs r0, 0x1
 	bl sub_8049ED4
-	ldr r4, _08048B04 @ =0x04000018
+	ldr r4, _08048B04 @ =REG_BG2HOFS
 	ldr r3, _08048B08 @ =gUnknown_03004824
 	ldr r2, [r3]
 	ldrb r0, [r2]
@@ -1642,7 +1642,7 @@ sub_8048AB4: @ 8048AB4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08048B04: .4byte 0x04000018
+_08048B04: .4byte REG_BG2HOFS
 _08048B08: .4byte gUnknown_03004824
 	thumb_func_end sub_8048AB4
 
@@ -1756,12 +1756,12 @@ _08048BD0:
 	ldr r0, [r0]
 	adds r0, 0xC8
 	bl sub_804A938
-	ldr r2, _08048C54 @ =0x04000008
+	ldr r2, _08048C54 @ =REG_BG0CNT
 	ldrh r1, [r2]
 	ldr r0, _08048C58 @ =0x0000fffc
 	ands r0, r1
 	strh r0, [r2]
-	ldr r1, _08048C5C @ =0x0400000a
+	ldr r1, _08048C5C @ =REG_BG1CNT
 	ldr r2, _08048C60 @ =0x00000501
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -1773,7 +1773,7 @@ _08048BD0:
 	ldr r2, _08048C68 @ =0x00000703
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _08048C6C @ =0x04000010
+	ldr r0, _08048C6C @ =REG_BG0HOFS
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
@@ -1800,13 +1800,13 @@ _08048C44: .4byte 0x06003800
 _08048C48: .4byte 0x040000d4
 _08048C4C: .4byte 0x80000400
 _08048C50: .4byte gUnknown_03004824
-_08048C54: .4byte 0x04000008
+_08048C54: .4byte REG_BG0CNT
 _08048C58: .4byte 0x0000fffc
-_08048C5C: .4byte 0x0400000a
+_08048C5C: .4byte REG_BG1CNT
 _08048C60: .4byte 0x00000501
 _08048C64: .4byte 0x00000602
 _08048C68: .4byte 0x00000703
-_08048C6C: .4byte 0x04000010
+_08048C6C: .4byte REG_BG0HOFS
 	thumb_func_end sub_8048B0C
 
 	thumb_func_start sub_8048C70
@@ -2159,7 +2159,7 @@ _08048F3C: .4byte gBlockRecvBuffer
 _08048F40: .4byte gUnknown_03004824
 _08048F44:
 	ldr r0, _08048F54 @ =gBlockSendBuffer
-	ldr r1, _08048F58 @ =0x02028280
+	ldr r1, _08048F58 @ =gSaveBlock1 + 0x2B4C
 	movs r2, 0xDC
 	bl sub_8048D24
 	ldr r0, _08048F5C @ =gUnknown_03004824
@@ -2167,7 +2167,7 @@ _08048F44:
 	b _08049006
 	.align 2, 0
 _08048F54: .4byte gBlockSendBuffer
-_08048F58: .4byte 0x02028280
+_08048F58: .4byte gSaveBlock1 + 0x2B4C
 _08048F5C: .4byte gUnknown_03004824
 _08048F60:
 	cmp r7, 0
@@ -2207,7 +2207,7 @@ _08048FA4: .4byte gBlockRecvBuffer
 _08048FA8: .4byte gUnknown_03004824
 _08048FAC:
 	ldr r0, _08048FBC @ =gBlockSendBuffer
-	ldr r1, _08048FC0 @ =0x02028844
+	ldr r1, _08048FC0 @ =gSaveBlock1 + 0x3110
 	movs r2, 0xB
 	bl sub_8048D24
 	ldr r0, _08048FC4 @ =gUnknown_03004824
@@ -2215,7 +2215,7 @@ _08048FAC:
 	b _08049006
 	.align 2, 0
 _08048FBC: .4byte gBlockSendBuffer
-_08048FC0: .4byte 0x02028844
+_08048FC0: .4byte gSaveBlock1 + 0x3110
 _08048FC4: .4byte gUnknown_03004824
 _08048FC8:
 	cmp r7, 0
@@ -6304,7 +6304,7 @@ _0804AF80: .4byte gSprites
 sub_804AF84: @ 804AF84
 	push {r4,lr}
 	movs r2, 0
-	ldr r4, _0804AFB0 @ =0x02028844
+	ldr r4, _0804AFB0 @ =gSaveBlock1 + 0x3110
 	ldr r3, _0804AFB4 @ =gUnknown_03004824
 _0804AF8C:
 	adds r1, r2, r4
@@ -6326,7 +6326,7 @@ _0804AFA2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804AFB0: .4byte 0x02028844
+_0804AFB0: .4byte gSaveBlock1 + 0x3110
 _0804AFB4: .4byte gUnknown_03004824
 	thumb_func_end sub_804AF84
 
@@ -6574,7 +6574,7 @@ sub_804B128: @ 804B128
 	str r0, [sp, 0xC]
 	add r0, sp, 0x10
 	bl sub_8040F34
-	ldr r1, _0804B1B8 @ =0x04000020
+	ldr r1, _0804B1B8 @ =REG_BG2PA
 	add r0, sp, 0x10
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -6602,13 +6602,13 @@ sub_804B128: @ 804B128
 	bx r0
 	.align 2, 0
 _0804B1B4: .4byte gUnknown_03004828
-_0804B1B8: .4byte 0x04000020
+_0804B1B8: .4byte REG_BG2PA
 	thumb_func_end sub_804B128
 
 	thumb_func_start sub_804B1BC
 sub_804B1BC: @ 804B1BC
 	push {lr}
-	ldr r1, _0804B1FC @ =0x04000016
+	ldr r1, _0804B1FC @ =REG_BG1VOFS
 	ldr r0, _0804B200 @ =gUnknown_03004828
 	ldr r2, [r0]
 	movs r3, 0x88
@@ -6628,7 +6628,7 @@ sub_804B1BC: @ 804B1BC
 	ands r0, r1
 	cmp r0, 0
 	bne _0804B208
-	ldr r1, _0804B204 @ =0x0400001a
+	ldr r1, _0804B204 @ =REG_BG2VOFS
 	adds r3, 0x2
 	adds r0, r2, r3
 	ldrh r0, [r0]
@@ -6640,9 +6640,9 @@ sub_804B1BC: @ 804B1BC
 	strh r0, [r1]
 	b _0804B20C
 	.align 2, 0
-_0804B1FC: .4byte 0x04000016
+_0804B1FC: .4byte REG_BG1VOFS
 _0804B200: .4byte gUnknown_03004828
-_0804B204: .4byte 0x0400001a
+_0804B204: .4byte REG_BG2VOFS
 _0804B208:
 	bl sub_804B128
 _0804B20C:
@@ -7226,7 +7226,7 @@ _0804B6E4:
 	bl LoadSpriteSheet
 	ldr r0, _0804B708 @ =gUnknown_08215954
 	bl LoadSpritePalette
-	ldr r1, _0804B70C @ =0x0400000a
+	ldr r1, _0804B70C @ =REG_BG1CNT
 	ldr r2, _0804B710 @ =0x00000502
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -7237,7 +7237,7 @@ _0804B6E4:
 	.align 2, 0
 _0804B704: .4byte gUnknown_0821594C
 _0804B708: .4byte gUnknown_08215954
-_0804B70C: .4byte 0x0400000a
+_0804B70C: .4byte REG_BG1CNT
 _0804B710: .4byte 0x00000502
 _0804B714: .4byte gMain
 _0804B718: .4byte 0x0000043c
@@ -7497,7 +7497,7 @@ _0804B968:
 	bl LoadSpriteSheet
 	ldr r0, _0804B98C @ =gUnknown_08215954
 	bl LoadSpritePalette
-	ldr r1, _0804B990 @ =0x0400000a
+	ldr r1, _0804B990 @ =REG_BG1CNT
 	ldr r2, _0804B994 @ =0x00000502
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -7508,7 +7508,7 @@ _0804B968:
 	.align 2, 0
 _0804B988: .4byte gUnknown_0821594C
 _0804B98C: .4byte gUnknown_08215954
-_0804B990: .4byte 0x0400000a
+_0804B990: .4byte REG_BG1CNT
 _0804B994: .4byte 0x00000502
 _0804B998: .4byte gMain
 _0804B99C: .4byte 0x0000043c
@@ -7671,7 +7671,7 @@ sub_804BA94: @ 804BA94
 	lsls r0, r6, 3
 	adds r0, r6
 	lsls r0, 2
-	ldr r1, _0804BB68 @ =0x02028280
+	ldr r1, _0804BB68 @ =gSaveBlock1 + 0x2B4C
 	adds r0, r1
 	bl sub_80A2B40
 _0804BAE8:
@@ -7732,7 +7732,7 @@ _0804BB50:
 	.align 2, 0
 _0804BB60: .4byte gPlayerParty
 _0804BB64: .4byte gEnemyParty
-_0804BB68: .4byte 0x02028280
+_0804BB68: .4byte gSaveBlock1 + 0x2B4C
 _0804BB6C: .4byte gUnknown_03004828
 _0804BB70: .4byte gUnknown_02029700
 _0804BB74: .4byte gReceivedRemoteLinkPlayers
@@ -7907,9 +7907,9 @@ _0804BCC4:
 	movs r1, 0xAE
 	lsls r1, 1
 	strh r1, [r0]
-	ldr r0, _0804BD40 @ =0x04000016
+	ldr r0, _0804BD40 @ =REG_BG1VOFS
 	strh r1, [r0]
-	ldr r1, _0804BD44 @ =0x0400000a
+	ldr r1, _0804BD44 @ =REG_BG1CNT
 	ldr r2, _0804BD48 @ =0x00008502
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -7956,8 +7956,8 @@ _0804BD10:
 	b _0804C0CA
 	.align 2, 0
 _0804BD3C: .4byte gUnknown_03004828
-_0804BD40: .4byte 0x04000016
-_0804BD44: .4byte 0x0400000a
+_0804BD40: .4byte REG_BG1VOFS
+_0804BD44: .4byte REG_BG1CNT
 _0804BD48: .4byte 0x00008502
 _0804BD4C: .4byte gUnknown_08210798
 _0804BD50: .4byte 0x06002800
@@ -8162,7 +8162,7 @@ _0804BEF8:
 	lsls r3, 1
 	adds r0, r2, r3
 	strh r1, [r0]
-	ldr r1, _0804BF7C @ =0x0400000a
+	ldr r1, _0804BF7C @ =REG_BG1CNT
 	ldr r4, _0804BF80 @ =0x00000502
 	adds r0, r4, 0
 	strh r0, [r1]
@@ -8213,7 +8213,7 @@ _0804BF4C:
 	b _0804C0CA
 	.align 2, 0
 _0804BF78: .4byte gUnknown_03004828
-_0804BF7C: .4byte 0x0400000a
+_0804BF7C: .4byte REG_BG1CNT
 _0804BF80: .4byte 0x00000502
 _0804BF84: .4byte gUnknown_08D00000
 _0804BF88: .4byte gUnknown_08D00524
@@ -8322,7 +8322,7 @@ _0804C060:
 	lsls r3, 1
 	adds r0, r2, r3
 	strh r1, [r0]
-	ldr r1, _0804C0D4 @ =0x0400000c
+	ldr r1, _0804C0D4 @ =REG_BG2CNT
 	ldr r4, _0804C0D8 @ =0x00005206
 	adds r0, r4, 0
 	strh r0, [r1]
@@ -8371,7 +8371,7 @@ _0804C0CA:
 	bx r0
 	.align 2, 0
 _0804C0D0: .4byte gUnknown_03004828
-_0804C0D4: .4byte 0x0400000c
+_0804C0D4: .4byte REG_BG2CNT
 _0804C0D8: .4byte 0x00005206
 _0804C0DC: .4byte gUnknown_0820C9F8
 _0804C0E0: .4byte gUnknown_0820CA98
@@ -9196,7 +9196,7 @@ _0804C92C:
 _0804C94C:
 	adds r0, r1, 0
 	bl DestroySprite
-	ldr r1, _0804C970 @ =0x04000050
+	ldr r1, _0804C970 @ =REG_BLDCNT
 	movs r3, 0xC8
 	lsls r3, 3
 	adds r0, r3, 0
@@ -9209,7 +9209,7 @@ _0804C94C:
 	bl _0804D53C
 	.align 2, 0
 _0804C96C: .4byte gSprites
-_0804C970: .4byte 0x04000050
+_0804C970: .4byte REG_BLDCNT
 _0804C974: .4byte 0x0000040c
 _0804C978:
 	ldr r2, [r6]
@@ -12170,7 +12170,7 @@ sub_804E22C: @ 804E22C
 	movs r1, 0
 	movs r2, 0x20
 	bl LoadCompressedPalette
-	ldr r1, _0804E288 @ =0x0400000a
+	ldr r1, _0804E288 @ =REG_BG1CNT
 	ldr r2, _0804E28C @ =0x00000502
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -12185,7 +12185,7 @@ _0804E278: .4byte 0x06002800
 _0804E27C: .4byte 0x040000d4
 _0804E280: .4byte 0x80000280
 _0804E284: .4byte gUnknown_08D004E0
-_0804E288: .4byte 0x0400000a
+_0804E288: .4byte REG_BG1CNT
 _0804E28C: .4byte 0x00000502
 	thumb_func_end sub_804E22C
 

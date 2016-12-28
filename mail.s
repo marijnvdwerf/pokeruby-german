@@ -224,7 +224,7 @@ _080F8E84:
 	b _080F90E0
 _080F8E8A:
 	bl FreeAllSpritePalettes
-	ldr r0, _080F8EBC @ =0x04000010
+	ldr r0, _080F8EBC @ =REG_BG0HOFS
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -247,7 +247,7 @@ _080F8E8A:
 	strh r1, [r0]
 	b _080F90E0
 	.align 2, 0
-_080F8EBC: .4byte 0x04000010
+_080F8EBC: .4byte REG_BG0HOFS
 _080F8EC0:
 	ldr r0, _080F8EC8 @ =gWindowConfig_81E6DFC
 	bl SetUpWindowConfig
@@ -456,7 +456,7 @@ _080F906C:
 	bne _080F90E0
 	b _080F90EC
 _080F9076:
-	ldr r1, _080F90C4 @ =0x04000008
+	ldr r1, _080F90C4 @ =REG_BG0CNT
 	ldr r2, _080F90C8 @ =0x00009f08
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -495,7 +495,7 @@ _080F9076:
 	movs r0, 0x1
 	b _080F90EE
 	.align 2, 0
-_080F90C4: .4byte 0x04000008
+_080F90C4: .4byte REG_BG0CNT
 _080F90C8: .4byte 0x00009f08
 _080F90CC: .4byte 0x00000801
 _080F90D0: .4byte 0x00000902

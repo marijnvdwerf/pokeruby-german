@@ -56,12 +56,12 @@ sub_80C77A0: @ 80C77A0
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080C77CC @ =0x03004b38
+	ldr r1, _080C77CC @ =gTasks + 0x8
 	adds r4, r0, r1
 	ldr r0, _080C77D0 @ =0x000040b4
 	bl GetVarPointer
 	adds r6, r0, 0
-	ldr r7, _080C77D4 @ =0x02025738
+	ldr r7, _080C77D4 @ =gSaveBlock1 + 0x4
 	movs r0, 0
 	ldrsh r2, [r4, r0]
 	cmp r2, 0x1
@@ -72,9 +72,9 @@ sub_80C77A0: @ 80C77A0
 	beq _080C77E2
 	b _080C7896
 	.align 2, 0
-_080C77CC: .4byte 0x03004b38
+_080C77CC: .4byte gTasks + 0x8
 _080C77D0: .4byte 0x000040b4
-_080C77D4: .4byte 0x02025738
+_080C77D4: .4byte gSaveBlock1 + 0x4
 _080C77D8:
 	cmp r2, 0x2
 	beq _080C783E

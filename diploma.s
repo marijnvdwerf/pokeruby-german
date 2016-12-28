@@ -29,7 +29,7 @@ sub_8145D88: @ 8145D88
 	mov r8, r0
 	movs r1, 0
 	strh r1, [r0]
-	ldr r6, _08145EB0 @ =0x0400000e
+	ldr r6, _08145EB0 @ =REG_BG3CNT
 	strh r1, [r6]
 	adds r0, 0xC
 	strh r1, [r0]
@@ -117,7 +117,7 @@ sub_8145D88: @ 8145D88
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _08145EE4 @ =0x04000004
+	ldr r2, _08145EE4 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -126,7 +126,7 @@ sub_8145D88: @ 8145D88
 	bl SetVBlankCallback
 	ldr r0, _08145EEC @ =MainCB2
 	bl SetMainCallback2
-	ldr r0, _08145EF0 @ =0x04000050
+	ldr r0, _08145EF0 @ =REG_BLDCNT
 	strh r5, [r0]
 	adds r0, 0x2
 	strh r5, [r0]
@@ -150,7 +150,7 @@ sub_8145D88: @ 8145D88
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08145EB0: .4byte 0x0400000e
+_08145EB0: .4byte REG_BG3CNT
 _08145EB4: .4byte 0x040000d4
 _08145EB8: .4byte 0x8100c000
 _08145EBC: .4byte 0x85000100
@@ -163,10 +163,10 @@ _08145ED4: .4byte gWindowConfig_81E6C3C
 _08145ED8: .4byte gWindowConfig_81E6CE4
 _08145EDC: .4byte 0x04000208
 _08145EE0: .4byte 0x04000200
-_08145EE4: .4byte 0x04000004
+_08145EE4: .4byte REG_DISPSTAT
 _08145EE8: .4byte VBlankCB
 _08145EEC: .4byte MainCB2
-_08145EF0: .4byte 0x04000050
+_08145EF0: .4byte REG_BLDCNT
 _08145EF4: .4byte 0x00004603
 _08145EF8: .4byte Task_DiplomaFadeIn
 	thumb_func_end sub_8145D88
@@ -277,7 +277,7 @@ DisplayDiplomaText: @ 8146370
 	lsrs r1, r0, 16
 	cmp r1, 0
 	beq _081463A0
-	ldr r1, _08146394 @ =0x0400001c
+	ldr r1, _08146394 @ =REG_BG3HOFS
 	movs r2, 0x80
 	lsls r2, 1
 	adds r0, r2, 0
@@ -287,11 +287,11 @@ DisplayDiplomaText: @ 8146370
 	bl StringCopy
 	b _081463AC
 	.align 2, 0
-_08146394: .4byte 0x0400001c
+_08146394: .4byte REG_BG3HOFS
 _08146398: .4byte gStringVar1
 _0814639C: .4byte gOtherText_NationalDex
 _081463A0:
-	ldr r0, _081463BC @ =0x0400001c
+	ldr r0, _081463BC @ =REG_BG3HOFS
 	strh r1, [r0]
 	ldr r0, _081463C0 @ =gStringVar1
 	ldr r1, _081463C4 @ =gOtherText_HoennDex
@@ -304,7 +304,7 @@ _081463AC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_081463BC: .4byte 0x0400001c
+_081463BC: .4byte REG_BG3HOFS
 _081463C0: .4byte gStringVar1
 _081463C4: .4byte gOtherText_HoennDex
 _081463C8: .4byte gOtherText_DiplomaCertificationGameFreak

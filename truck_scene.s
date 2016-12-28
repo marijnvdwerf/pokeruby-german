@@ -60,7 +60,7 @@ Task_Truck1: @ 80C72C4
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080C7364 @ =0x03004b38
+	ldr r0, _080C7364 @ =gTasks + 0x8
 	adds r5, r1, r0
 	movs r1, 0
 	ldrsh r0, [r5, r1]
@@ -126,7 +126,7 @@ _080C7346:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C7364: .4byte 0x03004b38
+_080C7364: .4byte gTasks + 0x8
 _080C7368: .4byte gSaveBlock1
 _080C736C: .4byte 0xfffd0000
 _080C7370: .4byte 0x75300000
@@ -141,7 +141,7 @@ Task_Truck2: @ 80C7374
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r3, r0, 3
-	ldr r4, _080C73B4 @ =0x03004b38
+	ldr r4, _080C73B4 @ =gTasks + 0x8
 	adds r7, r3, r4
 	ldrh r1, [r7]
 	adds r1, 0x1
@@ -166,7 +166,7 @@ _080C73A4:
 	bl DestroyTask
 	b _080C746A
 	.align 2, 0
-_080C73B4: .4byte 0x03004b38
+_080C73B4: .4byte gTasks + 0x8
 _080C73B8:
 	ldr r2, _080C7474 @ =gTruckCamera_HorizontalTable
 	movs r1, 0x2
@@ -274,7 +274,7 @@ Task_Truck3: @ 80C7484
 	lsls r0, r3, 2
 	adds r0, r3
 	lsls r0, 3
-	ldr r1, _080C74C4 @ =0x03004b38
+	ldr r1, _080C74C4 @ =gTasks + 0x8
 	adds r2, r0, r1
 	ldrh r0, [r2]
 	adds r0, 0x1
@@ -296,7 +296,7 @@ _080C74B4:
 	bl DestroyTask
 	b _080C7516
 	.align 2, 0
-_080C74C4: .4byte 0x03004b38
+_080C74C4: .4byte gTasks + 0x8
 _080C74C8:
 	ldr r1, _080C7524 @ =gTruckCamera_HorizontalTable
 	movs r3, 0x2
@@ -353,7 +353,7 @@ Task_HandleTruckSequence: @ 80C752C
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080C7550 @ =0x03004b38
+	ldr r1, _080C7550 @ =gTasks + 0x8
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -367,7 +367,7 @@ _080C7546:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080C7550: .4byte 0x03004b38
+_080C7550: .4byte gTasks + 0x8
 _080C7554: .4byte _080C7558
 	.align 2, 0
 _080C7558:

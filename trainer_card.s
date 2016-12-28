@@ -560,7 +560,7 @@ sub_8093550: @ 80936A0
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _080936E4 @ =0x04000004
+	ldr r2, _080936E4 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x18
 	orrs r0, r1
@@ -578,7 +578,7 @@ sub_8093550: @ 80936A0
 _080936D8: .4byte sub_8093254
 _080936DC: .4byte 0x04000208
 _080936E0: .4byte 0x04000200
-_080936E4: .4byte 0x04000004
+_080936E4: .4byte REG_DISPSTAT
 	thumb_func_end sub_8093550
 
 	thumb_func_start sub_8093598
@@ -651,16 +651,16 @@ _0809375C: .4byte 0x81000200
 	thumb_func_start sub_8093610
 sub_8093610: @ 8093760
 	push {r4,r5,lr}
-	ldr r5, _080937B4 @ =0x04000008
+	ldr r5, _080937B4 @ =REG_BG0CNT
 	movs r1, 0
 	strh r1, [r5]
-	ldr r2, _080937B8 @ =0x0400000a
+	ldr r2, _080937B8 @ =REG_BG1CNT
 	strh r1, [r2]
-	ldr r3, _080937BC @ =0x0400000c
+	ldr r3, _080937BC @ =REG_BG2CNT
 	strh r1, [r3]
-	ldr r4, _080937C0 @ =0x0400000e
+	ldr r4, _080937C0 @ =REG_BG3CNT
 	strh r1, [r4]
-	ldr r0, _080937C4 @ =0x04000010
+	ldr r0, _080937C4 @ =REG_BG0HOFS
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
@@ -692,11 +692,11 @@ sub_8093610: @ 8093760
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080937B4: .4byte 0x04000008
-_080937B8: .4byte 0x0400000a
-_080937BC: .4byte 0x0400000c
-_080937C0: .4byte 0x0400000e
-_080937C4: .4byte 0x04000010
+_080937B4: .4byte REG_BG0CNT
+_080937B8: .4byte REG_BG1CNT
+_080937BC: .4byte REG_BG2CNT
+_080937C0: .4byte REG_BG3CNT
+_080937C4: .4byte REG_BG0HOFS
 _080937C8: .4byte 0x00001e08
 _080937CC: .4byte 0x00000801
 _080937D0: .4byte 0x00000902
@@ -1665,7 +1665,7 @@ _08093D78: .4byte sub_8093A68
 	thumb_func_start sub_8093D7C
 sub_8093D7C: @ 8093D7C
 	ldr r1, _08093DA0 @ =gUnknown_03004DE0
-	ldr r0, _08093DA4 @ =0x04000006
+	ldr r0, _08093DA4 @ =REG_VCOUNT
 	ldrh r2, [r0]
 	movs r0, 0xFF
 	ands r0, r2
@@ -1675,7 +1675,7 @@ sub_8093D7C: @ 8093D7C
 	adds r1, r2
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _08093DA8 @ =0x04000012
+	ldr r0, _08093DA8 @ =REG_BG0VOFS
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
@@ -1684,8 +1684,8 @@ sub_8093D7C: @ 8093D7C
 	bx lr
 	.align 2, 0
 _08093DA0: .4byte gUnknown_03004DE0
-_08093DA4: .4byte 0x04000006
-_08093DA8: .4byte 0x04000012
+_08093DA4: .4byte REG_VCOUNT
+_08093DA8: .4byte REG_BG0VOFS
 	thumb_func_end sub_8093D7C
 
 	thumb_func_start sub_8093DAC
@@ -1733,7 +1733,7 @@ sub_8093DEC: @ 8093F3C
 
 	thumb_func_start sub_8093E04
 sub_8093E04: @ 8093F54
-	ldr r0, _08093F70 @ =0x04000012
+	ldr r0, _08093F70 @ =REG_BG0VOFS
 	ldr r2, _08093F74 @ =0x0000fffc
 	adds r1, r2, 0
 	strh r1, [r0]
@@ -1748,7 +1748,7 @@ sub_8093E04: @ 8093F54
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
-_08093F70: .4byte 0x04000012
+_08093F70: .4byte REG_BG0VOFS
 _08093F74: .4byte 0x0000fffc
 	thumb_func_end sub_8093E04
 

@@ -4126,7 +4126,7 @@ ScrCmd_givemoney: @ 806775C
 	str r0, [r4, 0x8]
 	cmp r1, 0
 	bne _0806777A
-	ldr r0, _08067784 @ =0x02025bc4
+	ldr r0, _08067784 @ =gSaveBlock1 + 0x490
 	adds r1, r2, 0
 	bl sub_80B79B8
 _0806777A:
@@ -4135,7 +4135,7 @@ _0806777A:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08067784: .4byte 0x02025bc4
+_08067784: .4byte gSaveBlock1 + 0x490
 	thumb_func_end ScrCmd_givemoney
 
 	thumb_func_start ScrCmd_paymoney
@@ -4150,7 +4150,7 @@ ScrCmd_paymoney: @ 8067788
 	str r0, [r4, 0x8]
 	cmp r1, 0
 	bne _080677A6
-	ldr r0, _080677B0 @ =0x02025bc4
+	ldr r0, _080677B0 @ =gSaveBlock1 + 0x490
 	adds r1, r2, 0
 	bl sub_80B79E0
 _080677A6:
@@ -4159,7 +4159,7 @@ _080677A6:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080677B0: .4byte 0x02025bc4
+_080677B0: .4byte gSaveBlock1 + 0x490
 	thumb_func_end ScrCmd_paymoney
 
 	thumb_func_start ScrCmd_checkmoney

@@ -1019,7 +1019,7 @@ sub_8081050: @ 8081050
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08081074 @ =0x03004b38
+	ldr r1, _08081074 @ =gTasks + 0x8
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -1031,7 +1031,7 @@ sub_8081050: @ 8081050
 	beq _0808107E
 	b _080810CC
 	.align 2, 0
-_08081074: .4byte 0x03004b38
+_08081074: .4byte gTasks + 0x8
 _08081078:
 	cmp r0, 0x2
 	beq _080810B4
@@ -1509,7 +1509,7 @@ sub_8081424: @ 8081424
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08081448 @ =0x03004b38
+	ldr r1, _08081448 @ =gTasks + 0x8
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -1521,7 +1521,7 @@ sub_8081424: @ 8081424
 	beq _08081452
 	b _080814E2
 	.align 2, 0
-_08081448: .4byte 0x03004b38
+_08081448: .4byte gTasks + 0x8
 _0808144C:
 	cmp r0, 0x2
 	beq _080814D8
@@ -1662,7 +1662,7 @@ sub_8081534: @ 8081534
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
-	ldr r1, _0808157C @ =0x03004b38
+	ldr r1, _0808157C @ =gTasks + 0x8
 	adds r1, r0, r1
 	strh r5, [r1, 0x6]
 	strh r4, [r1, 0x8]
@@ -1677,7 +1677,7 @@ sub_8081534: @ 8081534
 	b _08081584
 	.align 2, 0
 _08081578: .4byte sub_8081424
-_0808157C: .4byte 0x03004b38
+_0808157C: .4byte gTasks + 0x8
 _08081580:
 	negs r0, r7
 	strh r0, [r1, 0xA]
@@ -1801,7 +1801,7 @@ _0808163A:
 sub_8081658: @ 8081658
 	push {lr}
 	lsls r0, 16
-	ldr r2, _08081678 @ =0x04000052
+	ldr r2, _08081678 @ =REG_BLDALPHA
 	ldrh r1, [r2]
 	lsls r1, 24
 	lsrs r3, r1, 24
@@ -1816,7 +1816,7 @@ sub_8081658: @ 8081658
 	lsrs r3, r0, 24
 	b _08081686
 	.align 2, 0
-_08081678: .4byte 0x04000052
+_08081678: .4byte REG_BLDALPHA
 _0808167C:
 	cmp r2, 0xF
 	bhi _08081686
@@ -1824,7 +1824,7 @@ _0808167C:
 	lsls r0, 24
 	lsrs r2, r0, 24
 _08081686:
-	ldr r1, _0808169C @ =0x04000052
+	ldr r1, _0808169C @ =REG_BLDALPHA
 	lsls r0, r2, 8
 	orrs r0, r3
 	strh r0, [r1]
@@ -1835,7 +1835,7 @@ _08081686:
 	movs r0, 0x1
 	b _080816A2
 	.align 2, 0
-_0808169C: .4byte 0x04000052
+_0808169C: .4byte REG_BLDALPHA
 _080816A0:
 	movs r0, 0
 _080816A2:
@@ -1852,7 +1852,7 @@ sub_80816A8: @ 80816A8
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _080816D0 @ =0x03004b38
+	ldr r1, _080816D0 @ =gTasks + 0x8
 	adds r7, r0, r1
 	movs r1, 0
 	ldrsh r0, [r7, r1]
@@ -1866,7 +1866,7 @@ _080816C4:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080816D0: .4byte 0x03004b38
+_080816D0: .4byte gTasks + 0x8
 _080816D4: .4byte _080816D8
 	.align 2, 0
 _080816D8:
@@ -1883,16 +1883,16 @@ _080816F8:
 	lsls r2, 19
 	ldrh r0, [r2]
 	strh r0, [r7, 0xC]
-	ldr r3, _0808176C @ =0x04000050
+	ldr r3, _0808176C @ =REG_BLDCNT
 	ldrh r0, [r3]
 	strh r0, [r7, 0xE]
-	ldr r6, _08081770 @ =0x04000052
+	ldr r6, _08081770 @ =REG_BLDALPHA
 	ldrh r0, [r6]
 	strh r0, [r7, 0x10]
-	ldr r5, _08081774 @ =0x04000048
+	ldr r5, _08081774 @ =REG_WININ
 	ldrh r0, [r5]
 	strh r0, [r7, 0x12]
-	ldr r4, _08081778 @ =0x0400004a
+	ldr r4, _08081778 @ =REG_WINOUT
 	ldrh r0, [r4]
 	strh r0, [r7, 0x14]
 	ldrh r1, [r2]
@@ -1935,10 +1935,10 @@ _080816F8:
 	strh r0, [r7]
 	b _08081892
 	.align 2, 0
-_0808176C: .4byte 0x04000050
-_08081770: .4byte 0x04000052
-_08081774: .4byte 0x04000048
-_08081778: .4byte 0x0400004a
+_0808176C: .4byte REG_BLDCNT
+_08081770: .4byte REG_BLDALPHA
+_08081774: .4byte REG_WININ
+_08081778: .4byte REG_WINOUT
 _0808177C: .4byte 0x0000bfff
 _08081780: .4byte gUnknown_081E29E8
 _08081784: .4byte 0x0000070c
@@ -2045,7 +2045,7 @@ _08081852:
 	bl MenuZeroFillWindowRect
 	ldr r0, _0808189C @ =gWindowConfig_81E6CE4
 	bl LoadFontDefaultPalette
-	ldr r1, _080818A0 @ =0x04000040
+	ldr r1, _080818A0 @ =REG_WIN0H
 	movs r0, 0xFF
 	strh r0, [r1]
 	subs r1, 0x40
@@ -2073,7 +2073,7 @@ _08081892:
 	bx r0
 	.align 2, 0
 _0808189C: .4byte gWindowConfig_81E6CE4
-_080818A0: .4byte 0x04000040
+_080818A0: .4byte REG_WIN0H
 	thumb_func_end sub_80816A8
 
 	thumb_func_start sub_80818A4
@@ -2087,7 +2087,7 @@ sub_80818A4: @ 80818A4
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080818D0 @ =0x03004b38
+	ldr r0, _080818D0 @ =gTasks + 0x8
 	adds r1, r0
 	ldr r0, _080818D4 @ =gScriptResult
 	ldrh r0, [r0]
@@ -2098,7 +2098,7 @@ sub_80818A4: @ 80818A4
 	b _080818F0
 	.align 2, 0
 _080818CC: .4byte sub_80816A8
-_080818D0: .4byte 0x03004b38
+_080818D0: .4byte gTasks + 0x8
 _080818D4: .4byte gScriptResult
 _080818D8:
 	cmp r0, 0x1

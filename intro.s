@@ -149,7 +149,7 @@ _0813BC6A:
 _0813BC6C:
 	movs r0, 0
 	bl SetVBlankCallback
-	ldr r0, _0813BD58 @ =0x04000050
+	ldr r0, _0813BD58 @ =REG_BLDCNT
 	strh r4, [r0]
 	adds r0, 0x2
 	strh r4, [r0]
@@ -163,7 +163,7 @@ _0813BC6C:
 	movs r5, 0x80
 	lsls r5, 19
 	strh r4, [r5]
-	ldr r0, _0813BD60 @ =0x04000010
+	ldr r0, _0813BD60 @ =REG_BG0HOFS
 	strh r4, [r0]
 	adds r0, 0x2
 	strh r4, [r0]
@@ -212,7 +212,7 @@ _0813BC6C:
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r1, _0813BD7C @ =0x04000008
+	ldr r1, _0813BD7C @ =REG_BG0CNT
 	movs r2, 0xE0
 	lsls r2, 3
 	adds r0, r2, 0
@@ -226,7 +226,7 @@ _0813BC6C:
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0813BD88 @ =0x04000004
+	ldr r2, _0813BD88 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -253,19 +253,19 @@ _0813BD3E:
 	bl GameCubeMultiBoot_Main
 	b _0813BE14
 	.align 2, 0
-_0813BD58: .4byte 0x04000050
+_0813BD58: .4byte REG_BLDCNT
 _0813BD5C: .4byte 0x00007fff
-_0813BD60: .4byte 0x04000010
+_0813BD60: .4byte REG_BG0HOFS
 _0813BD64: .4byte 0x040000d4
 _0813BD68: .4byte 0x8100c000
 _0813BD6C: .4byte 0x85000100
 _0813BD70: .4byte 0x05000002
 _0813BD74: .4byte 0x810001ff
 _0813BD78: .4byte 0x0000ffff
-_0813BD7C: .4byte 0x04000008
+_0813BD7C: .4byte REG_BG0CNT
 _0813BD80: .4byte 0x04000208
 _0813BD84: .4byte 0x04000200
-_0813BD88: .4byte 0x04000004
+_0813BD88: .4byte REG_DISPSTAT
 _0813BD8C: .4byte VBlankCB_Intro
 _0813BD90: .4byte SerialCb_CopyrightScreen
 _0813BD94: .4byte gUnknown_03005EE0
@@ -389,10 +389,10 @@ Task_IntroLoadPart1Graphics: @ 813BE70
 	ands r1, r0
 	strh r1, [r4]
 	bl intro_reset_and_hide_bgs
-	ldr r0, _0813BFF8 @ =0x0400001e
+	ldr r0, _0813BFF8 @ =REG_BG3VOFS
 	movs r6, 0
 	strh r6, [r0]
-	ldr r1, _0813BFFC @ =0x0400001a
+	ldr r1, _0813BFFC @ =REG_BG2VOFS
 	movs r0, 0x50
 	strh r0, [r1]
 	subs r1, 0x4
@@ -453,7 +453,7 @@ Task_IntroLoadPart1Graphics: @ 813BE70
 	movs r1, 0
 	adds r2, r5, 0
 	bl LoadPalette
-	ldr r1, _0813C040 @ =0x0400000e
+	ldr r1, _0813C040 @ =REG_BG3CNT
 	ldr r2, _0813C044 @ =0x00009603
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -548,8 +548,8 @@ Task_IntroLoadPart1Graphics: @ 813BE70
 	bx r0
 	.align 2, 0
 _0813BFF4: .4byte gUnknown_02039318
-_0813BFF8: .4byte 0x0400001e
-_0813BFFC: .4byte 0x0400001a
+_0813BFF8: .4byte REG_BG3VOFS
+_0813BFFC: .4byte REG_BG2VOFS
 _0813C000: .4byte gUnknown_08407764
 _0813C004: .4byte gUnknown_08406B74
 _0813C008: .4byte 0x06008000
@@ -566,7 +566,7 @@ _0813C030: .4byte gUnknown_0840754C
 _0813C034: .4byte 0x0600b000
 _0813C038: .4byte 0x0600b800
 _0813C03C: .4byte gUnknown_08406974
-_0813C040: .4byte 0x0400000e
+_0813C040: .4byte REG_BG3CNT
 _0813C044: .4byte 0x00009603
 _0813C048: .4byte 0x00009402
 _0813C04C: .4byte 0x00009201
@@ -778,7 +778,7 @@ task_intro_4: @ 813C1C8
 	asrs r2, r0, 16
 	strh r2, [r1, 0xA]
 	strh r0, [r1, 0xC]
-	ldr r0, _0813C26C @ =0x0400001a
+	ldr r0, _0813C26C @ =REG_BG2VOFS
 	strh r2, [r0]
 	movs r2, 0xE
 	ldrsh r0, [r1, r2]
@@ -790,7 +790,7 @@ task_intro_4: @ 813C1C8
 	asrs r2, r0, 16
 	strh r2, [r1, 0xE]
 	strh r0, [r1, 0x10]
-	ldr r0, _0813C274 @ =0x04000016
+	ldr r0, _0813C274 @ =REG_BG1VOFS
 	strh r2, [r0]
 	movs r2, 0x12
 	ldrsh r0, [r1, r2]
@@ -802,7 +802,7 @@ task_intro_4: @ 813C1C8
 	asrs r2, r0, 16
 	strh r2, [r1, 0x12]
 	strh r0, [r1, 0x14]
-	ldr r0, _0813C27C @ =0x04000012
+	ldr r0, _0813C27C @ =REG_BG0VOFS
 	strh r2, [r0]
 	movs r0, 0xDC
 	lsls r0, 2
@@ -831,11 +831,11 @@ _0813C25C: .4byte gIntroFrameCounter
 _0813C260: .4byte 0x00000387
 _0813C264: .4byte gTasks
 _0813C268: .4byte 0xffff4000
-_0813C26C: .4byte 0x0400001a
+_0813C26C: .4byte REG_BG2VOFS
 _0813C270: .4byte 0xffff0000
-_0813C274: .4byte 0x04000016
+_0813C274: .4byte REG_BG1VOFS
 _0813C278: .4byte 0xfffe8000
-_0813C27C: .4byte 0x04000012
+_0813C27C: .4byte REG_BG0VOFS
 _0813C280: .4byte gSpriteTemplate_840AFF0
 _0813C284: .4byte gSprites
 _0813C288:
@@ -1308,7 +1308,7 @@ task_intro_10: @ 813C60C
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r1, _0813C6B4 @ =0x0400000c
+	ldr r1, _0813C6B4 @ =REG_BG2CNT
 	ldr r2, _0813C6B8 @ =0x00004883
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -1334,7 +1334,7 @@ _0813C6A4: .4byte 0x06004000
 _0813C6A8: .4byte gUnknown_084098D4
 _0813C6AC: .4byte gTasks
 _0813C6B0: .4byte 0x0000ffff
-_0813C6B4: .4byte 0x0400000c
+_0813C6B4: .4byte REG_BG2CNT
 _0813C6B8: .4byte 0x00004883
 _0813C6BC: .4byte 0x00001441
 _0813C6C0: .4byte task_intro_11
@@ -1626,7 +1626,7 @@ task_intro_14: @ 813C928
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r1, _0813C998 @ =0x04000040
+	ldr r1, _0813C998 @ =REG_WIN0H
 	movs r0, 0xF0
 	strh r0, [r1]
 	adds r1, 0x4
@@ -1677,7 +1677,7 @@ task_intro_14: @ 813C928
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0813C998: .4byte 0x04000040
+_0813C998: .4byte REG_WIN0H
 _0813C99C: .4byte 0x00000603
 _0813C9A0: .4byte sub_813CAF4
 _0813C9A4: .4byte gTasks
@@ -1701,7 +1701,7 @@ task_intro_15: @ 813C9AC
 	beq _0813C9E4
 	adds r0, r1, 0x4
 	strh r0, [r3, 0x8]
-	ldr r2, _0813C9E0 @ =0x04000044
+	ldr r2, _0813C9E0 @ =REG_WIN0V
 	movs r4, 0x8
 	ldrsh r0, [r3, r4]
 	lsls r0, 8
@@ -1711,9 +1711,9 @@ task_intro_15: @ 813C9AC
 	b _0813C9F2
 	.align 2, 0
 _0813C9DC: .4byte gTasks
-_0813C9E0: .4byte 0x04000044
+_0813C9E0: .4byte REG_WIN0V
 _0813C9E4:
-	ldr r0, _0813C9F8 @ =0x04000044
+	ldr r0, _0813C9F8 @ =REG_WIN0V
 	movs r2, 0x82
 	lsls r2, 6
 	adds r1, r2, 0
@@ -1725,7 +1725,7 @@ _0813C9F2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0813C9F8: .4byte 0x04000044
+_0813C9F8: .4byte REG_WIN0V
 _0813C9FC: .4byte task_intro_16
 	thumb_func_end task_intro_15
 

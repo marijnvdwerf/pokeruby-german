@@ -274,7 +274,7 @@ _08126262:
 sub_8126268: @ 8126268
 	push {lr}
 	movs r2, 0
-	ldr r3, _08126284 @ =0x020291b4
+	ldr r3, _08126284 @ =gSaveBlock1 + 0x3A80
 	movs r1, 0
 _08126270:
 	adds r0, r3, r1
@@ -287,13 +287,13 @@ _08126270:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08126284: .4byte 0x020291b4
+_08126284: .4byte gSaveBlock1 + 0x3A80
 	thumb_func_end sub_8126268
 
 	thumb_func_start sub_8126288
 sub_8126288: @ 8126288
 	push {r4,lr}
-	ldr r4, _081262B4 @ =0x020291b4
+	ldr r4, _081262B4 @ =gSaveBlock1 + 0x3A80
 	bl sub_8126268
 	adds r1, r0, 0
 	ldrb r0, [r4]
@@ -315,7 +315,7 @@ _081262B0:
 	movs r0, 0
 	b _081262BA
 	.align 2, 0
-_081262B4: .4byte 0x020291b4
+_081262B4: .4byte gSaveBlock1 + 0x3A80
 _081262B8:
 	movs r0, 0x1
 _081262BA:
@@ -331,7 +331,7 @@ sub_81262C0: @ 81262C0
 	mov r1, sp
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _081262DC @ =0x020291b0
+	ldr r1, _081262DC @ =gSaveBlock1 + 0x3A7C
 	ldr r2, _081262E0 @ =0x01000008
 	mov r0, sp
 	bl CpuSet
@@ -339,7 +339,7 @@ sub_81262C0: @ 81262C0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_081262DC: .4byte 0x020291b0
+_081262DC: .4byte gSaveBlock1 + 0x3A7C
 _081262E0: .4byte 0x01000008
 	thumb_func_end sub_81262C0
 
@@ -392,7 +392,7 @@ _08126334: .4byte 0x00003a7c
 	thumb_func_start sub_8126338
 sub_8126338: @ 8126338
 	push {r4,r5,lr}
-	ldr r4, _0812634C @ =0x020291b4
+	ldr r4, _0812634C @ =gSaveBlock1 + 0x3A80
 	bl sub_8126288
 	cmp r0, 0
 	bne _08126350
@@ -400,7 +400,7 @@ sub_8126338: @ 8126338
 	movs r0, 0
 	b _0812636E
 	.align 2, 0
-_0812634C: .4byte 0x020291b4
+_0812634C: .4byte gSaveBlock1 + 0x3A80
 _08126350:
 	ldrh r5, [r4, 0x2]
 	ldrb r0, [r4, 0x1]
@@ -551,7 +551,7 @@ sub_8126438: @ 8126438
 	ldr r0, [r7, 0x64]
 	adds r4, r0
 	ldr r6, _08126484 @ =gStringVar1
-	ldr r5, _08126488 @ =0x02028894
+	ldr r5, _08126488 @ =gSaveBlock1 + 0x3160
 	adds r0, r6, 0
 	adds r1, r5, 0
 	movs r2, 0x7
@@ -571,7 +571,7 @@ sub_8126438: @ 8126438
 	b _081264B8
 	.align 2, 0
 _08126484: .4byte gStringVar1
-_08126488: .4byte 0x02028894
+_08126488: .4byte gSaveBlock1 + 0x3160
 _0812648C: .4byte gStringVar2
 _08126490: .4byte gStringVar4
 _08126494: .4byte gOtherText_BerryObtainedDadHasIt

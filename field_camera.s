@@ -56,7 +56,7 @@ move_tilemap_camera_to_upper_left_corner: @ 80579F8
 	mov r0, sp
 	movs r6, 0
 	strh r6, [r0]
-	ldr r4, _08057A48 @ =0x020221cc
+	ldr r4, _08057A48 @ =gBGTilemapBuffers + 0x1000
 	ldr r5, _08057A4C @ =0x01000400
 	adds r1, r4, 0
 	adds r2, r5, 0
@@ -84,7 +84,7 @@ move_tilemap_camera_to_upper_left_corner: @ 80579F8
 	bx r0
 	.align 2, 0
 _08057A44: .4byte gUnknown_03000590
-_08057A48: .4byte 0x020221cc
+_08057A48: .4byte gBGTilemapBuffers + 0x1000
 _08057A4C: .4byte 0x01000400
 _08057A50: .4byte 0xfffff800
 _08057A54: .4byte 0x00003014
@@ -135,7 +135,7 @@ sub_8057A58: @ 8057A58
 	cmp r0, 0
 	beq _08057AE0
 	ldr r0, _08057AFC @ =0x040000d4
-	ldr r2, _08057B00 @ =0x020219cc
+	ldr r2, _08057B00 @ =gBGTilemapBuffers + 0x800
 	str r2, [r0]
 	ldr r1, _08057B04 @ =0x0600e800
 	str r1, [r0, 0x4]
@@ -171,7 +171,7 @@ _08057AF0: .4byte gUnknown_03000598
 _08057AF4: .4byte gBGVOffsetRegs
 _08057AF8: .4byte gUnknown_0300059A
 _08057AFC: .4byte 0x040000d4
-_08057B00: .4byte 0x020219cc
+_08057B00: .4byte gBGTilemapBuffers + 0x800
 _08057B04: .4byte 0x0600e800
 _08057B08: .4byte 0x80000400
 _08057B0C: .4byte 0x0600e000
@@ -789,7 +789,7 @@ _08058268:
 	adds r1, r3, r1
 	ldrh r0, [r7, 0xE]
 	strh r0, [r1]
-	ldr r1, _080582DC @ =0x020219cc
+	ldr r1, _080582DC @ =gBGTilemapBuffers + 0x800
 	add r8, r1
 	mov r0, r9
 	mov r2, r8
@@ -802,7 +802,7 @@ _08058268:
 	b _0805834E
 	.align 2, 0
 _080582D8: .4byte gBGTilemapBuffers
-_080582DC: .4byte 0x020219cc
+_080582DC: .4byte gBGTilemapBuffers + 0x800
 _080582E0:
 	ldr r1, _0805835C @ =gBGTilemapBuffers
 	mov r9, r1

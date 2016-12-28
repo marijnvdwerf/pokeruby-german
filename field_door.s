@@ -199,7 +199,7 @@ Task_AnimateDoor: @ 8058808
 	lsls r2, r4, 2
 	adds r2, r4
 	lsls r2, 3
-	ldr r0, _0805883C @ =0x03004b38
+	ldr r0, _0805883C @ =gTasks + 0x8
 	adds r2, r0
 	ldrh r1, [r2]
 	lsls r1, 16
@@ -219,7 +219,7 @@ _08058836:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805883C: .4byte 0x03004b38
+_0805883C: .4byte gTasks + 0x8
 	thumb_func_end Task_AnimateDoor
 
 	thumb_func_start GetLastDoorFrame
@@ -287,7 +287,7 @@ StartDoorAnimationTask: @ 8058878
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r2, _080588C8 @ =0x03004b38
+	ldr r2, _080588C8 @ =gTasks + 0x8
 	adds r1, r2
 	strh r7, [r1, 0xC]
 	mov r2, r8
@@ -303,7 +303,7 @@ StartDoorAnimationTask: @ 8058878
 	b _080588D0
 	.align 2, 0
 _080588C4: .4byte Task_AnimateDoor
-_080588C8: .4byte 0x03004b38
+_080588C8: .4byte gTasks + 0x8
 _080588CC:
 	movs r0, 0x1
 	negs r0, r0

@@ -68,17 +68,17 @@ _08007254:
 	beq _0800726C
 	b _0800727A
 _0800725C:
-	ldr r2, _08007260 @ =0x0400000a
+	ldr r2, _08007260 @ =REG_BG1CNT
 	b _0800726E
 	.align 2, 0
-_08007260: .4byte 0x0400000a
+_08007260: .4byte REG_BG1CNT
 _08007264:
-	ldr r2, _08007268 @ =0x0400000c
+	ldr r2, _08007268 @ =REG_BG2CNT
 	b _0800726E
 	.align 2, 0
-_08007268: .4byte 0x0400000c
+_08007268: .4byte REG_BG2CNT
 _0800726C:
-	ldr r2, _08007284 @ =0x0400000e
+	ldr r2, _08007284 @ =REG_BG3CNT
 _0800726E:
 	lsls r0, r6, 8
 	movs r1, 0x1
@@ -93,7 +93,7 @@ _0800727A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08007284: .4byte 0x0400000e
+_08007284: .4byte REG_BG3CNT
 	thumb_func_end InitLinkTestBG
 
 	thumb_func_start InitLinkTestBG_Unused
@@ -2907,7 +2907,7 @@ CB2_LinkError: @ 80085BC
 	adds r0, r4, 0
 	bl InitMenuWindow
 	bl MenuZeroFillScreen
-	ldr r0, _08008640 @ =0x04000052
+	ldr r0, _08008640 @ =REG_BLDALPHA
 	movs r1, 0
 	strh r1, [r0]
 	subs r0, 0x40
@@ -2938,7 +2938,7 @@ CB2_LinkError: @ 80085BC
 	.align 2, 0
 _08008638: .4byte VBlankCB_LinkTest
 _0800863C: .4byte gWindowConfig_81E7198
-_08008640: .4byte 0x04000052
+_08008640: .4byte REG_BLDALPHA
 _08008644: .4byte gUnknown_3001BB4
 _08008648: .4byte Task_DestroySelf
 _0800864C: .4byte CB2_PrintErrorMessage

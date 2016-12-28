@@ -2682,7 +2682,7 @@ sub_806EC44: @ 806EC44
 	lsls r2, r1, 3
 	adds r2, r1
 	lsls r2, 2
-	ldr r1, _0806ECB0 @ =0x02028280
+	ldr r1, _0806ECB0 @ =gSaveBlock1 + 0x2B4C
 	adds r4, r2, r1
 	cmp r0, 0
 	beq _0806ECBC
@@ -2698,7 +2698,7 @@ _0806ECA0: .4byte gTasks
 _0806ECA4: .4byte TaskDummy
 _0806ECA8: .4byte 0x0201c000
 _0806ECAC: .4byte gUnknown_0202E8F4
-_0806ECB0: .4byte 0x02028280
+_0806ECB0: .4byte gSaveBlock1 + 0x2B4C
 _0806ECB4: .4byte gOtherText_PokeHoldingItemCantMail
 _0806ECB8: .4byte party_menu_link_mon_held_item_object
 _0806ECBC:
@@ -4060,7 +4060,7 @@ sub_806F7E8: @ 806F7E8
 	lsls r3, r0, 2
 	adds r3, r0
 	lsls r3, 3
-	ldr r0, _0806F898 @ =0x03004b38
+	ldr r0, _0806F898 @ =gTasks + 0x8
 	adds r3, r0
 	movs r0, 0x14
 	ldrsh r1, [r3, r0]
@@ -4142,7 +4142,7 @@ _0806F862:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0806F898: .4byte 0x03004b38
+_0806F898: .4byte gTasks + 0x8
 _0806F89C: .4byte 0x0201b000
 _0806F8A0: .4byte 0x00000282
 _0806F8A4: .4byte gUnknown_08376858
@@ -4491,10 +4491,10 @@ sub_806FB7C: @ 806FB7C
 	lsrs r0, 16
 	cmp r0, 0xAF
 	bne _0806FB90
-	ldr r0, _0806FB8C @ =0x02028daa
+	ldr r0, _0806FB8C @ =gSaveBlock1 + 0x3676
 	b _0806FB9A
 	.align 2, 0
-_0806FB8C: .4byte 0x02028daa
+_0806FB8C: .4byte gSaveBlock1 + 0x3676
 _0806FB90:
 	ldr r1, _0806FBA8 @ =gItemEffectTable
 	subs r0, 0xD
@@ -5508,10 +5508,10 @@ dp05_ether: @ 80703F0
 	lsrs r5, r1, 16
 	cmp r5, 0xAF
 	bne _08070410
-	ldr r0, _0807040C @ =0x02028daa
+	ldr r0, _0807040C @ =gSaveBlock1 + 0x3676
 	b _0807041C
 	.align 2, 0
-_0807040C: .4byte 0x02028daa
+_0807040C: .4byte gSaveBlock1 + 0x3676
 _08070410:
 	ldr r1, _08070464 @ =gItemEffectTable
 	adds r0, r5, 0
@@ -6691,10 +6691,10 @@ sub_8070E48: @ 8070E48
 	lsrs r0, 16
 	cmp r0, 0xAF
 	bne _08070E5C
-	ldr r4, _08070E58 @ =0x02028daa
+	ldr r4, _08070E58 @ =gSaveBlock1 + 0x3676
 	b _08070E66
 	.align 2, 0
-_08070E58: .4byte 0x02028daa
+_08070E58: .4byte gSaveBlock1 + 0x3676
 _08070E5C:
 	ldr r1, _08070E8C @ =gItemEffectTable
 	subs r0, 0xD

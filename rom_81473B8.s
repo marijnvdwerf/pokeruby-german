@@ -370,7 +370,7 @@ sub_81476B0: @ 81476B0
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _081476D4 @ =0x03004b38
+	ldr r1, _081476D4 @ =gTasks + 0x8
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -382,7 +382,7 @@ sub_81476B0: @ 81476B0
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_081476D4: .4byte 0x03004b38
+_081476D4: .4byte gTasks + 0x8
 _081476D8: .4byte _081476DC
 	.align 2, 0
 _081476DC:
@@ -816,7 +816,7 @@ _08147A5C:
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _08147AB8 @ =0x04000004
+	ldr r2, _08147AB8 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -849,7 +849,7 @@ _08147A8C:
 	.align 2, 0
 _08147AB0: .4byte 0x04000208
 _08147AB4: .4byte 0x04000200
-_08147AB8: .4byte 0x04000004
+_08147AB8: .4byte REG_DISPSTAT
 _08147ABC: .4byte sub_81478A8
 _08147AC0: .4byte gMain
 _08147AC4: .4byte 0x0000043c
@@ -889,7 +889,7 @@ _08147AFE:
 
 	thumb_func_start sub_8147B04
 sub_8147B04: @ 8147B04
-	ldr r1, _08147B18 @ =0x0400000a
+	ldr r1, _08147B18 @ =REG_BG1CNT
 	ldr r2, _08147B1C @ =0x00001d02
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -900,7 +900,7 @@ sub_8147B04: @ 8147B04
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_08147B18: .4byte 0x0400000a
+_08147B18: .4byte REG_BG1CNT
 _08147B1C: .4byte 0x00001d02
 	thumb_func_end sub_8147B04
 
@@ -1074,7 +1074,7 @@ sub_8147C90: @ 8147C90
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 21
-	ldr r1, _08147CB8 @ =0x02025f2c
+	ldr r1, _08147CB8 @ =gSaveBlock1 + 0x7F8
 	adds r0, r1
 	movs r1, 0
 	bl sub_810CA9C
@@ -1091,7 +1091,7 @@ sub_8147C90: @ 8147C90
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08147CB8: .4byte 0x02025f2c
+_08147CB8: .4byte gSaveBlock1 + 0x7F8
 _08147CBC: .4byte gUnknown_02039350
 _08147CC0: .4byte gUnknown_084120A4
 _08147CC4: .4byte 0x000039e2
@@ -1299,7 +1299,7 @@ sub_8147E40: @ 8147E40
 	ldr r0, _08147E9C @ =gScriptItemId
 	ldrh r4, [r0]
 	lsls r4, 3
-	ldr r0, _08147EA0 @ =0x02025f2c
+	ldr r0, _08147EA0 @ =gSaveBlock1 + 0x7F8
 	adds r4, r0
 	adds r0, r5, 0
 	bl GetNature
@@ -1327,7 +1327,7 @@ sub_8147E40: @ 8147E40
 _08147E94: .4byte gUnknown_02039310
 _08147E98: .4byte gPlayerParty
 _08147E9C: .4byte gScriptItemId
-_08147EA0: .4byte 0x02025f2c
+_08147EA0: .4byte gSaveBlock1 + 0x7F8
 _08147EA4: .4byte gUnknown_02039312
 _08147EA8: .4byte gStringVar1
 _08147EAC: .4byte gStringVar2

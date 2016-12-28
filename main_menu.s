@@ -146,7 +146,7 @@ _080099A8:
 	movs r3, 0
 	bl BeginNormalPaletteFade
 _080099BA:
-	ldr r0, _08009A28 @ =0x04000040
+	ldr r0, _08009A28 @ =REG_WIN0H
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
@@ -198,7 +198,7 @@ _080099BA:
 	bx r1
 	.align 2, 0
 _08009A24: .4byte 0x0000ffff
-_08009A28: .4byte 0x04000040
+_08009A28: .4byte REG_WIN0H
 _08009A2C: .4byte 0x04000208
 _08009A30: .4byte 0x04000200
 _08009A34: .4byte VBlankCB_MainMenu
@@ -224,12 +224,12 @@ Task_MainMenuCheckSave: @ 8009A44
 	beq _08009A60
 	b _08009BC8
 _08009A60:
-	ldr r7, _08009AA4 @ =0x04000040
+	ldr r7, _08009AA4 @ =REG_WIN0H
 	strh r6, [r7]
-	ldr r0, _08009AA8 @ =0x04000044
+	ldr r0, _08009AA8 @ =REG_WIN0V
 	mov r8, r0
 	strh r6, [r0]
-	ldr r1, _08009AAC @ =0x04000048
+	ldr r1, _08009AAC @ =REG_WININ
 	ldr r2, _08009AB0 @ =0x00001111
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -239,7 +239,7 @@ _08009A60:
 	adds r1, 0x6
 	movs r0, 0xF1
 	strh r0, [r1]
-	ldr r0, _08009AB4 @ =0x04000052
+	ldr r0, _08009AB4 @ =REG_BLDALPHA
 	strh r6, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
@@ -257,11 +257,11 @@ _08009A60:
 	b _08009B78
 	.align 2, 0
 _08009AA0: .4byte gPaletteFade
-_08009AA4: .4byte 0x04000040
-_08009AA8: .4byte 0x04000044
-_08009AAC: .4byte 0x04000048
+_08009AA4: .4byte REG_WIN0H
+_08009AA8: .4byte REG_WIN0V
+_08009AAC: .4byte REG_WININ
 _08009AB0: .4byte 0x00001111
-_08009AB4: .4byte 0x04000052
+_08009AB4: .4byte REG_BLDALPHA
 _08009AB8: .4byte gSaveFileStatus
 _08009ABC:
 	cmp r4, 0x4
@@ -458,11 +458,11 @@ Task_MainMenuCheckRtc: @ 8009C30
 	lsrs r2, r0, 24
 	cmp r2, 0
 	bne _08009CDC
-	ldr r6, _08009C90 @ =0x04000040
+	ldr r6, _08009C90 @ =REG_WIN0H
 	strh r2, [r6]
-	ldr r7, _08009C94 @ =0x04000044
+	ldr r7, _08009C94 @ =REG_WIN0V
 	strh r2, [r7]
-	ldr r1, _08009C98 @ =0x04000048
+	ldr r1, _08009C98 @ =REG_WININ
 	ldr r3, _08009C9C @ =0x00001111
 	adds r0, r3, 0
 	strh r0, [r1]
@@ -472,7 +472,7 @@ Task_MainMenuCheckRtc: @ 8009C30
 	adds r1, 0x6
 	movs r0, 0xF1
 	strh r0, [r1]
-	ldr r0, _08009CA0 @ =0x04000052
+	ldr r0, _08009CA0 @ =REG_BLDALPHA
 	strh r2, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
@@ -493,11 +493,11 @@ Task_MainMenuCheckRtc: @ 8009C30
 	b _08009CDC
 	.align 2, 0
 _08009C8C: .4byte gPaletteFade
-_08009C90: .4byte 0x04000040
-_08009C94: .4byte 0x04000044
-_08009C98: .4byte 0x04000048
+_08009C90: .4byte REG_WIN0H
+_08009C94: .4byte REG_WIN0V
+_08009C98: .4byte REG_WININ
 _08009C9C: .4byte 0x00001111
-_08009CA0: .4byte 0x04000052
+_08009CA0: .4byte REG_BLDALPHA
 _08009CA4: .4byte gTasks
 _08009CA8: .4byte Task_MainMenuDraw
 _08009CAC:
@@ -588,11 +588,11 @@ Task_MainMenuDraw: @ 8009D40
 	beq _08009D5A
 	b _08009EEC
 _08009D5A:
-	ldr r0, _08009DAC @ =0x04000040
+	ldr r0, _08009DAC @ =REG_WIN0H
 	strh r2, [r0]
 	adds r0, 0x4
 	strh r2, [r0]
-	ldr r1, _08009DB0 @ =0x04000048
+	ldr r1, _08009DB0 @ =REG_WININ
 	ldr r3, _08009DB4 @ =0x00001111
 	adds r0, r3, 0
 	strh r0, [r1]
@@ -602,7 +602,7 @@ _08009D5A:
 	adds r1, 0x6
 	movs r0, 0xF1
 	strh r0, [r1]
-	ldr r0, _08009DB8 @ =0x04000052
+	ldr r0, _08009DB8 @ =REG_BLDALPHA
 	strh r2, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
@@ -627,10 +627,10 @@ _08009D5A:
 	b _08009DD6
 	.align 2, 0
 _08009DA8: .4byte gPaletteFade
-_08009DAC: .4byte 0x04000040
-_08009DB0: .4byte 0x04000048
+_08009DAC: .4byte REG_WIN0H
+_08009DB0: .4byte REG_WININ
 _08009DB4: .4byte 0x00001111
-_08009DB8: .4byte 0x04000052
+_08009DB8: .4byte REG_BLDALPHA
 _08009DBC: .4byte gSaveBlock2
 _08009DC0: .4byte 0x00007e04
 _08009DC4:
@@ -847,7 +847,7 @@ _08009F80:
 	movs r2, 0
 	movs r3, 0x10
 	bl BeginNormalPaletteFade
-	ldr r1, _08009FC0 @ =0x04000040
+	ldr r1, _08009FC0 @ =REG_WIN0H
 	movs r0, 0xF0
 	strh r0, [r1]
 	adds r1, 0x4
@@ -863,7 +863,7 @@ _08009F80:
 	b _0800A040
 	.align 2, 0
 _08009FBC: .4byte 0x0000ffff
-_08009FC0: .4byte 0x04000040
+_08009FC0: .4byte REG_WIN0H
 _08009FC4: .4byte gTasks
 _08009FC8: .4byte Task_MainMenuPressedB
 _08009FCC:
@@ -1128,7 +1128,7 @@ HighlightCurrentMenuItem: @ 800A1A8
 	lsrs r3, r0, 24
 	lsls r1, 24
 	lsrs r2, r1, 24
-	ldr r1, _0800A1D4 @ =0x04000040
+	ldr r1, _0800A1D4 @ =REG_WIN0H
 	ldr r4, _0800A1D8 @ =0x000009e7
 	adds r0, r4, 0
 	strh r0, [r1]
@@ -1144,21 +1144,21 @@ _0800A1C6:
 	cmp r2, 0x1
 	beq _0800A1E4
 _0800A1CE:
-	ldr r1, _0800A1DC @ =0x04000044
+	ldr r1, _0800A1DC @ =REG_WIN0V
 	ldr r2, _0800A1E0 @ =0x0000011f
 	b _0800A274
 	.align 2, 0
-_0800A1D4: .4byte 0x04000040
+_0800A1D4: .4byte REG_WIN0H
 _0800A1D8: .4byte 0x000009e7
-_0800A1DC: .4byte 0x04000044
+_0800A1DC: .4byte REG_WIN0V
 _0800A1E0: .4byte 0x0000011f
 _0800A1E4:
-	ldr r1, _0800A1EC @ =0x04000044
+	ldr r1, _0800A1EC @ =REG_WIN0V
 	ldr r4, _0800A1F0 @ =0x0000213f
 	adds r0, r4, 0
 	b _0800A276
 	.align 2, 0
-_0800A1EC: .4byte 0x04000044
+_0800A1EC: .4byte REG_WIN0V
 _0800A1F0: .4byte 0x0000213f
 _0800A1F4:
 	cmp r2, 0x1
@@ -1168,26 +1168,26 @@ _0800A1F4:
 	cmp r2, 0x2
 	beq _0800A220
 _0800A200:
-	ldr r1, _0800A208 @ =0x04000044
+	ldr r1, _0800A208 @ =REG_WIN0V
 	ldr r2, _0800A20C @ =0x0000013f
 	b _0800A274
 	.align 2, 0
-_0800A208: .4byte 0x04000044
+_0800A208: .4byte REG_WIN0V
 _0800A20C: .4byte 0x0000013f
 _0800A210:
-	ldr r1, _0800A218 @ =0x04000044
+	ldr r1, _0800A218 @ =REG_WIN0V
 	ldr r4, _0800A21C @ =0x0000415f
 	adds r0, r4, 0
 	b _0800A276
 	.align 2, 0
-_0800A218: .4byte 0x04000044
+_0800A218: .4byte REG_WIN0V
 _0800A21C: .4byte 0x0000415f
 _0800A220:
-	ldr r1, _0800A228 @ =0x04000044
+	ldr r1, _0800A228 @ =REG_WIN0V
 	ldr r2, _0800A22C @ =0x0000617f
 	b _0800A274
 	.align 2, 0
-_0800A228: .4byte 0x04000044
+_0800A228: .4byte REG_WIN0V
 _0800A22C: .4byte 0x0000617f
 _0800A230:
 	cmp r2, 0x1
@@ -1199,30 +1199,30 @@ _0800A230:
 	cmp r2, 0x3
 	beq _0800A270
 _0800A240:
-	ldr r1, _0800A248 @ =0x04000044
+	ldr r1, _0800A248 @ =REG_WIN0V
 	ldr r4, _0800A24C @ =0x0000013f
 	adds r0, r4, 0
 	b _0800A276
 	.align 2, 0
-_0800A248: .4byte 0x04000044
+_0800A248: .4byte REG_WIN0V
 _0800A24C: .4byte 0x0000013f
 _0800A250:
-	ldr r1, _0800A258 @ =0x04000044
+	ldr r1, _0800A258 @ =REG_WIN0V
 	ldr r2, _0800A25C @ =0x0000415f
 	b _0800A274
 	.align 2, 0
-_0800A258: .4byte 0x04000044
+_0800A258: .4byte REG_WIN0V
 _0800A25C: .4byte 0x0000415f
 _0800A260:
-	ldr r1, _0800A268 @ =0x04000044
+	ldr r1, _0800A268 @ =REG_WIN0V
 	ldr r4, _0800A26C @ =0x0000617f
 	adds r0, r4, 0
 	b _0800A276
 	.align 2, 0
-_0800A268: .4byte 0x04000044
+_0800A268: .4byte REG_WIN0V
 _0800A26C: .4byte 0x0000617f
 _0800A270:
-	ldr r1, _0800A280 @ =0x04000044
+	ldr r1, _0800A280 @ =REG_WIN0V
 	ldr r2, _0800A284 @ =0x0000819f
 _0800A274:
 	adds r0, r2, 0
@@ -1232,7 +1232,7 @@ _0800A276:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800A280: .4byte 0x04000044
+_0800A280: .4byte REG_WIN0V
 _0800A284: .4byte 0x0000819f
 	thumb_func_end HighlightCurrentMenuItem
 
@@ -1405,7 +1405,7 @@ Task_NewGameSpeech1: @ 800A3C8
 	bl SetUpWindowConfig
 	ldr r0, _0800A488 @ =gWindowConfig_81E6CE4
 	bl InitMenuWindow
-	ldr r0, _0800A48C @ =0x04000040
+	ldr r0, _0800A48C @ =REG_WIN0H
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
@@ -1448,7 +1448,7 @@ Task_NewGameSpeech1: @ 800A3C8
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r1, _0800A4A4 @ =0x0400000a
+	ldr r1, _0800A4A4 @ =REG_BG1CNT
 	ldr r2, _0800A4A8 @ =0x00000703
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -1480,13 +1480,13 @@ Task_NewGameSpeech1: @ 800A3C8
 	.align 2, 0
 _0800A484: .4byte gWindowConfig_81E6C3C
 _0800A488: .4byte gWindowConfig_81E6CE4
-_0800A48C: .4byte 0x04000040
+_0800A48C: .4byte REG_WIN0H
 _0800A490: .4byte gUnknown_081E768C
 _0800A494: .4byte gUnknown_081E7834
 _0800A498: .4byte 0x06003800
 _0800A49C: .4byte gUnknown_081E764C
 _0800A4A0: .4byte gUnknown_081E796C
-_0800A4A4: .4byte 0x0400000a
+_0800A4A4: .4byte REG_BG1CNT
 _0800A4A8: .4byte 0x00000703
 _0800A4AC: .4byte gTasks
 _0800A4B0: .4byte Task_NewGameSpeech2
@@ -1935,12 +1935,12 @@ Task_NewGameSpeech11: @ 800A7F8
 	beq _0800A828
 	subs r1, r3, 0x2
 	strh r1, [r2, 0x10]
-	ldr r0, _0800A824 @ =0x04000014
+	ldr r0, _0800A824 @ =REG_BG1HOFS
 	strh r1, [r0]
 	b _0800A830
 	.align 2, 0
 _0800A820: .4byte gTasks
-_0800A824: .4byte 0x04000014
+_0800A824: .4byte REG_BG1HOFS
 _0800A828:
 	ldr r0, _0800A834 @ =0x0000ffc4
 	strh r0, [r2, 0x10]
@@ -2706,12 +2706,12 @@ Task_NewGameSpeech26: @ 800ADF4
 	beq _0800AE20
 	adds r1, 0x2
 	strh r1, [r2, 0x10]
-	ldr r0, _0800AE1C @ =0x04000014
+	ldr r0, _0800AE1C @ =REG_BG1HOFS
 	strh r1, [r0]
 	b _0800AE24
 	.align 2, 0
 _0800AE18: .4byte gTasks
-_0800AE1C: .4byte 0x04000014
+_0800AE1C: .4byte REG_BG1HOFS
 _0800AE20:
 	ldr r0, _0800AE28 @ =Task_NewGameSpeech27
 	str r0, [r2]
@@ -3367,7 +3367,7 @@ _0800B34C:
 	lsls r0, 3
 	adds r0, r1
 	strh r3, [r0, 0xC]
-	ldr r1, _0800B3EC @ =0x04000014
+	ldr r1, _0800B3EC @ =REG_BG1HOFS
 	ldr r2, _0800B3F0 @ =0x0000ffc4
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -3378,7 +3378,7 @@ _0800B34C:
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r0, _0800B3F4 @ =0x04000040
+	ldr r0, _0800B3F4 @ =REG_WIN0H
 	strh r4, [r0]
 	adds r0, 0x4
 	strh r4, [r0]
@@ -3405,7 +3405,7 @@ _0800B34C:
 	bl SetVBlankCallback
 	ldr r0, _0800B404 @ =CB2_MainMenu
 	bl SetMainCallback2
-	ldr r1, _0800B408 @ =0x0400000a
+	ldr r1, _0800B408 @ =REG_BG1CNT
 	ldr r2, _0800B40C @ =0x00000703
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -3421,14 +3421,14 @@ _0800B34C:
 	.align 2, 0
 _0800B3E4: .4byte gSprites
 _0800B3E8: .4byte gTasks
-_0800B3EC: .4byte 0x04000014
+_0800B3EC: .4byte REG_BG1HOFS
 _0800B3F0: .4byte 0x0000ffc4
-_0800B3F4: .4byte 0x04000040
+_0800B3F4: .4byte REG_WIN0H
 _0800B3F8: .4byte 0x04000208
 _0800B3FC: .4byte 0x04000200
 _0800B400: .4byte VBlankCB_MainMenu
 _0800B404: .4byte CB2_MainMenu
-_0800B408: .4byte 0x0400000a
+_0800B408: .4byte REG_BG1CNT
 _0800B40C: .4byte 0x00000703
 	thumb_func_end CB_ContinueNewGameSpeechPart2
 
@@ -3691,7 +3691,7 @@ _0800B608:
 	ldrh r0, [r3, 0xC]
 	adds r0, 0x1
 	strh r0, [r3, 0xC]
-	ldr r2, _0800B628 @ =0x04000052
+	ldr r2, _0800B628 @ =REG_BLDALPHA
 	movs r5, 0xC
 	ldrsh r0, [r3, r5]
 	lsls r0, 8
@@ -3702,7 +3702,7 @@ _0800B622:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800B628: .4byte 0x04000052
+_0800B628: .4byte REG_BLDALPHA
 	thumb_func_end Task_SpriteFadeOut
 
 	thumb_func_start StartSpriteFadeOut
@@ -3716,7 +3716,7 @@ StartSpriteFadeOut: @ 800B62C
 	lsrs r4, 24
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r1, _0800B690 @ =0x04000050
+	ldr r1, _0800B690 @ =REG_BLDCNT
 	movs r2, 0x94
 	lsls r2, 2
 	adds r0, r2, 0
@@ -3756,7 +3756,7 @@ StartSpriteFadeOut: @ 800B62C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800B690: .4byte 0x04000050
+_0800B690: .4byte REG_BLDCNT
 _0800B694: .4byte gTasks
 _0800B698: .4byte Task_SpriteFadeOut
 	thumb_func_end StartSpriteFadeOut
@@ -3806,7 +3806,7 @@ _0800B6E4:
 	ldrh r0, [r3, 0xC]
 	subs r0, 0x1
 	strh r0, [r3, 0xC]
-	ldr r2, _0800B704 @ =0x04000052
+	ldr r2, _0800B704 @ =REG_BLDALPHA
 	movs r5, 0xC
 	ldrsh r0, [r3, r5]
 	lsls r0, 8
@@ -3817,7 +3817,7 @@ _0800B6FE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800B704: .4byte 0x04000052
+_0800B704: .4byte REG_BLDALPHA
 	thumb_func_end Task_SpriteFadeIn
 
 	thumb_func_start StartSpriteFadeIn
@@ -3831,7 +3831,7 @@ StartSpriteFadeIn: @ 800B708
 	lsrs r4, 24
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r1, _0800B770 @ =0x04000050
+	ldr r1, _0800B770 @ =REG_BLDCNT
 	movs r2, 0x94
 	lsls r2, 2
 	adds r0, r2, 0
@@ -3873,7 +3873,7 @@ StartSpriteFadeIn: @ 800B708
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800B770: .4byte 0x04000050
+_0800B770: .4byte REG_BLDCNT
 _0800B774: .4byte gTasks
 _0800B778: .4byte Task_SpriteFadeIn
 	thumb_func_end StartSpriteFadeIn

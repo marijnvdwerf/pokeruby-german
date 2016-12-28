@@ -13,7 +13,7 @@ unref_sub_80B4884: @ 80B4884
 	mov r1, sp
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080B48A0 @ =0x02028894
+	ldr r1, _080B48A0 @ =gSaveBlock1 + 0x3160
 	ldr r2, _080B48A4 @ =0x01000298
 	mov r0, sp
 	bl CpuSet
@@ -21,7 +21,7 @@ unref_sub_80B4884: @ 80B4884
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B48A0: .4byte 0x02028894
+_080B48A0: .4byte gSaveBlock1 + 0x3160
 _080B48A4: .4byte 0x01000298
 	thumb_func_end unref_sub_80B4884
 
@@ -29,7 +29,7 @@ _080B48A4: .4byte 0x01000298
 sub_80B48A8: @ 80B48A8
 	push {r4-r6,lr}
 	adds r5, r0, 0
-	ldr r3, _080B48E0 @ =0x02028894
+	ldr r3, _080B48E0 @ =gSaveBlock1 + 0x3160
 	movs r2, 0
 	ldr r6, _080B48E4 @ =0x0000052f
 	ldr r0, _080B48E8 @ =0xffffcea0
@@ -56,7 +56,7 @@ _080B48B6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B48E0: .4byte 0x02028894
+_080B48E0: .4byte gSaveBlock1 + 0x3160
 _080B48E4: .4byte 0x0000052f
 _080B48E8: .4byte 0xffffcea0
 _080B48EC: .4byte 0x0000316c
@@ -151,10 +151,10 @@ GetBerryInfo: @ 80B498C
 	bl sub_80B4940
 	cmp r0, 0
 	beq _080B49A8
-	ldr r0, _080B49A4 @ =0x02028894
+	ldr r0, _080B49A4 @ =gSaveBlock1 + 0x3160
 	b _080B49BE
 	.align 2, 0
-_080B49A4: .4byte 0x02028894
+_080B49A4: .4byte gSaveBlock1 + 0x3160
 _080B49A8:
 	subs r0, r4, 0x1
 	lsls r0, 24
@@ -180,11 +180,11 @@ _080B49C4: .4byte 0x083d92b0
 GetBerryTreeInfo: @ 80B49C8
 	lsls r0, 24
 	lsrs r0, 21
-	ldr r1, _080B49D4 @ =0x02026d3c
+	ldr r1, _080B49D4 @ =gSaveBlock1 + 0x1608
 	adds r0, r1
 	bx lr
 	.align 2, 0
-_080B49D4: .4byte 0x02026d3c
+_080B49D4: .4byte gSaveBlock1 + 0x1608
 	thumb_func_end GetBerryTreeInfo
 
 	thumb_func_start FieldObjectInteractionWaterBerryTree
@@ -415,7 +415,7 @@ BerryTreeTimeUpdate: @ 80B4B64
 	movs r2, 0
 _080B4B6A:
 	lsls r0, r2, 3
-	ldr r1, _080B4BAC @ =0x02026d3c
+	ldr r1, _080B4BAC @ =gSaveBlock1 + 0x1608
 	adds r4, r0, r1
 	ldrb r0, [r4]
 	adds r7, r2, 0x1
@@ -447,7 +447,7 @@ _080B4B6A:
 	str r1, [r4, 0x4]
 	b _080B4BF8
 	.align 2, 0
-_080B4BAC: .4byte 0x02026d3c
+_080B4BAC: .4byte gSaveBlock1 + 0x1608
 _080B4BB0: .4byte gUnknown_083CD780
 _080B4BB4:
 	adds r5, r6, 0

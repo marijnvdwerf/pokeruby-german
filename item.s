@@ -766,7 +766,7 @@ AddPCItem: @ 80A9760
 	lsrs r6, r0, 16
 	lsls r1, 16
 	lsrs r4, r1, 16
-	ldr r1, _080A97C4 @ =0x02025bcc
+	ldr r1, _080A97C4 @ =gSaveBlock1 + 0x498
 	mov r0, sp
 	movs r2, 0xC8
 	bl memcpy
@@ -810,7 +810,7 @@ _080A97A0:
 	movs r0, 0
 	b _080A97E8
 	.align 2, 0
-_080A97C4: .4byte 0x02025bcc
+_080A97C4: .4byte gSaveBlock1 + 0x498
 _080A97C8: .4byte 0x0000fc19
 _080A97CC: .4byte 0x000003e7
 _080A97D0:
@@ -822,7 +822,7 @@ _080A97D4:
 	strh r6, [r0]
 	strh r4, [r0, 0x2]
 _080A97DC:
-	ldr r0, _080A97F0 @ =0x02025bcc
+	ldr r0, _080A97F0 @ =gSaveBlock1 + 0x498
 	mov r1, sp
 	movs r2, 0xC8
 	bl memcpy
@@ -833,7 +833,7 @@ _080A97E8:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080A97F0: .4byte 0x02025bcc
+_080A97F0: .4byte gSaveBlock1 + 0x498
 	thumb_func_end AddPCItem
 
 	thumb_func_start RemovePCItem
@@ -886,7 +886,7 @@ _080A9984:
 	movs r2, 0x93
 	lsls r2, 3
 	adds r5, r0, r2
-	ldr r6, _080A99D0 @ =0x02025bcc
+	ldr r6, _080A99D0 @ =gSaveBlock1 + 0x498
 	adds r4, r1, r6
 _080A99A0:
 	ldrh r0, [r5]
@@ -914,7 +914,7 @@ _080A99BC:
 	bx r0
 	.align 2, 0
 _080A99CC: .4byte gSaveBlock1
-_080A99D0: .4byte 0x02025bcc
+_080A99D0: .4byte gSaveBlock1 + 0x498
 	thumb_func_end CompactPCItems
 
 	thumb_func_start SwapRegisteredBike

@@ -353,12 +353,12 @@ _081101CC:
 	thumb_func_start InitLinkBattleRecords
 InitLinkBattleRecords: @ 81101EC
 	push {lr}
-	ldr r0, _081101F8 @ =0x020287ec
+	ldr r0, _081101F8 @ =gSaveBlock1 + 0x30B8
 	bl InitLinkBattleRecords_
 	pop {r0}
 	bx r0
 	.align 2, 0
-_081101F8: .4byte 0x020287ec
+_081101F8: .4byte gSaveBlock1 + 0x30B8
 	thumb_func_end InitLinkBattleRecords
 
 	thumb_func_start sub_81101FC
@@ -448,7 +448,7 @@ sub_8110290: @ 8110290
 	sub sp, 0x4
 	adds r4, r0, 0
 	bl sub_8110254
-	ldr r0, _081102D4 @ =0x020287ec
+	ldr r0, _081102D4 @ =gSaveBlock1 + 0x30B8
 	lsls r2, r4, 3
 	subs r2, r4
 	lsls r2, 3
@@ -476,7 +476,7 @@ sub_8110290: @ 8110290
 	pop {r0}
 	bx r0
 	.align 2, 0
-_081102D4: .4byte 0x020287ec
+_081102D4: .4byte gSaveBlock1 + 0x30B8
 _081102D8: .4byte 0x0202fff0
 _081102DC: .4byte gUnknown_02024D26
 _081102E0: .4byte gLinkPlayers
@@ -648,7 +648,7 @@ ShowLinkBattleRecords: @ 811043C
 	movs r2, 0x1
 	movs r3, 0xF0
 	bl sub_8072BD8
-	ldr r0, _08110490 @ =0x020287ec
+	ldr r0, _08110490 @ =gSaveBlock1 + 0x30B8
 	bl PrintLinkBattleWinsLossesDraws
 	ldr r0, _08110494 @ =gOtherText_WinLoseDraw
 	movs r1, 0x58
@@ -658,7 +658,7 @@ ShowLinkBattleRecords: @ 811043C
 	movs r4, 0
 _0811046A:
 	lsls r0, r4, 4
-	ldr r1, _08110490 @ =0x020287ec
+	ldr r1, _08110490 @ =gSaveBlock1 + 0x30B8
 	adds r0, r1
 	adds r4, 0x1
 	lsls r1, r4, 25
@@ -674,7 +674,7 @@ _0811046A:
 	bx r0
 	.align 2, 0
 _0811048C: .4byte gOtherText_BattleResults
-_08110490: .4byte 0x020287ec
+_08110490: .4byte gSaveBlock1 + 0x30B8
 _08110494: .4byte gOtherText_WinLoseDraw
 	thumb_func_end ShowLinkBattleRecords
 

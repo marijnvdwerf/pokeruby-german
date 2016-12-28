@@ -88,7 +88,7 @@ sub_8082D60: @ 8082D60
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _08082D88 @ =0x03004b38
+	ldr r0, _08082D88 @ =gTasks + 0x8
 	adds r1, r0
 	adds r5, r1, 0x6
 	movs r2, 0x6
@@ -100,7 +100,7 @@ sub_8082D60: @ 8082D60
 	bl sub_8082D4C
 	b _08082D92
 	.align 2, 0
-_08082D88: .4byte 0x03004b38
+_08082D88: .4byte gTasks + 0x8
 _08082D8C:
 	adds r0, r4, 0
 	bl sub_8082D18
@@ -336,7 +336,7 @@ sub_8082F20: @ 8082F20
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _08082F48 @ =0x03004b38
+	ldr r0, _08082F48 @ =gTasks + 0x8
 	adds r4, r1, r0
 	movs r3, 0
 	ldrsh r2, [r4, r3]
@@ -347,7 +347,7 @@ sub_8082F20: @ 8082F20
 	bl ResetLinkPlayers
 	b _08082F58
 	.align 2, 0
-_08082F48: .4byte 0x03004b38
+_08082F48: .4byte gTasks + 0x8
 _08082F4C:
 	cmp r2, 0x9
 	ble _08082F58
@@ -472,7 +472,7 @@ sub_808303C: @ 808303C
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08083098 @ =0x03004b38
+	ldr r1, _08083098 @ =gTasks + 0x8
 	adds r7, r0, r1
 	bl GetLinkPlayerCount_2
 	lsls r0, 24
@@ -508,7 +508,7 @@ sub_808303C: @ 808303C
 	bhi _080830B0
 	b _080830DA
 	.align 2, 0
-_08083098: .4byte 0x03004b38
+_08083098: .4byte gTasks + 0x8
 _0808309C: .4byte gMain
 _080830A0: .4byte gLinkType
 _080830A4: .4byte 0x00002255
@@ -1327,7 +1327,7 @@ sub_8083710: @ 8083710
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0808373C @ =0x03004b38
+	ldr r0, _0808373C @ =gTasks + 0x8
 	adds r4, r1, r0
 	movs r3, 0
 	ldrsh r2, [r4, r3]
@@ -1340,7 +1340,7 @@ sub_8083710: @ 8083710
 	bl CreateTask
 	b _08083750
 	.align 2, 0
-_0808373C: .4byte 0x03004b38
+_0808373C: .4byte gTasks + 0x8
 _08083740: .4byte sub_8083C50
 _08083744:
 	cmp r2, 0x9

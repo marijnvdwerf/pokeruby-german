@@ -529,7 +529,7 @@ _0805AE10:
 	movs r5, 0
 	cmp r5, r6
 	bcs _0805AE3E
-	ldr r7, _0805AE4C @ =0x02026354
+	ldr r7, _0805AE4C @ =gSaveBlock1 + 0xC20
 _0805AE1A:
 	lsls r0, r5, 1
 	adds r0, r5
@@ -558,7 +558,7 @@ _0805AE40:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805AE4C: .4byte 0x02026354
+_0805AE4C: .4byte gSaveBlock1 + 0xC20
 	thumb_func_end sub_805ADDC
 
 	thumb_func_start GetAvailableFieldObjectSlot
@@ -1537,7 +1537,7 @@ _0805B5B2:
 	lsls r0, r5, 1
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _0805B630 @ =0x02026354
+	ldr r1, _0805B630 @ =gSaveBlock1 + 0xC20
 	adds r4, r0, r1
 	ldrh r0, [r4, 0x4]
 	adds r0, 0x7
@@ -1596,7 +1596,7 @@ _0805B618:
 	.align 2, 0
 _0805B628: .4byte gMapHeader
 _0805B62C: .4byte gSaveBlock1
-_0805B630: .4byte 0x02026354
+_0805B630: .4byte gSaveBlock1 + 0xC20
 	thumb_func_end sub_805B55C
 
 	thumb_func_start RemoveFieldObjectsOutsideView

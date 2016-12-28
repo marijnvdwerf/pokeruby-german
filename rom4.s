@@ -249,7 +249,7 @@ sub_8053154: @ 8053154
 	sub sp, 0x4
 	movs r0, 0
 	str r0, [sp]
-	ldr r4, _0805318C @ =0x02026354
+	ldr r4, _0805318C @ =gSaveBlock1 + 0xC20
 	ldr r2, _08053190 @ =0x05000180
 	mov r0, sp
 	adds r1, r4, 0
@@ -271,7 +271,7 @@ sub_8053154: @ 8053154
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805318C: .4byte 0x02026354
+_0805318C: .4byte gSaveBlock1 + 0xC20
 _08053190: .4byte 0x05000180
 _08053194: .4byte gMapHeader
 	thumb_func_end sub_8053154
@@ -282,7 +282,7 @@ sub_8053198: @ 8053198
 	ldr r0, _080531B8 @ =gMapHeader
 	ldr r0, [r0, 0x4]
 	ldr r1, [r0, 0x4]
-	ldr r3, _080531BC @ =0x02026354
+	ldr r3, _080531BC @ =gSaveBlock1 + 0xC20
 	movs r2, 0x3F
 _080531A4:
 	ldr r0, [r1, 0x10]
@@ -296,7 +296,7 @@ _080531A4:
 	bx r0
 	.align 2, 0
 _080531B8: .4byte gMapHeader
-_080531BC: .4byte 0x02026354
+_080531BC: .4byte gSaveBlock1 + 0xC20
 	thumb_func_end sub_8053198
 
 	thumb_func_start update_saveblock1_field_object_coords
@@ -309,7 +309,7 @@ update_saveblock1_field_object_coords: @ 80531C0
 	lsls r2, 16
 	lsrs r2, 16
 	movs r1, 0
-	ldr r3, _080531E0 @ =0x02026354
+	ldr r3, _080531E0 @ =gSaveBlock1 + 0xC20
 _080531D2:
 	ldrb r0, [r3]
 	cmp r0, r5
@@ -318,7 +318,7 @@ _080531D2:
 	strh r2, [r3, 0x6]
 	b _080531EC
 	.align 2, 0
-_080531E0: .4byte 0x02026354
+_080531E0: .4byte gSaveBlock1 + 0xC20
 _080531E4:
 	adds r3, 0x18
 	adds r1, 0x1
@@ -338,7 +338,7 @@ update_saveblock1_field_object_movement_behavior: @ 80531F4
 	lsls r1, 24
 	lsrs r1, 24
 	movs r3, 0
-	ldr r2, _0805320C @ =0x02026354
+	ldr r2, _0805320C @ =gSaveBlock1 + 0xC20
 _08053202:
 	ldrb r0, [r2]
 	cmp r0, r4
@@ -346,7 +346,7 @@ _08053202:
 	strb r1, [r2, 0x9]
 	b _08053218
 	.align 2, 0
-_0805320C: .4byte 0x02026354
+_0805320C: .4byte gSaveBlock1 + 0xC20
 _08053210:
 	adds r2, 0x18
 	adds r3, 0x1
@@ -717,7 +717,7 @@ warp1_set_2: @ 8053490
 saved_warp2_set: @ 80534B0
 	push {r4,r5,lr}
 	sub sp, 0x8
-	ldr r0, _080534E8 @ =0x02025748
+	ldr r0, _080534E8 @ =gSaveBlock1 + 0x14
 	lsls r1, 24
 	asrs r1, 24
 	lsls r2, 24
@@ -742,7 +742,7 @@ saved_warp2_set: @ 80534B0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080534E8: .4byte 0x02025748
+_080534E8: .4byte gSaveBlock1 + 0x14
 	thumb_func_end saved_warp2_set
 
 	thumb_func_start saved_warp2_set_2
@@ -751,7 +751,7 @@ saved_warp2_set_2: @ 80534EC
 	sub sp, 0x8
 	ldr r4, [sp, 0x14]
 	ldr r5, [sp, 0x18]
-	ldr r0, _0805351C @ =0x02025748
+	ldr r0, _0805351C @ =gSaveBlock1 + 0x14
 	lsls r1, 24
 	asrs r1, 24
 	lsls r2, 24
@@ -770,7 +770,7 @@ saved_warp2_set_2: @ 80534EC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805351C: .4byte 0x02025748
+_0805351C: .4byte gSaveBlock1 + 0x14
 	thumb_func_end saved_warp2_set_2
 
 	thumb_func_start copy_saved_warp2_bank_and_enter_x_to_warp1
@@ -841,7 +841,7 @@ sub_8053588: @ 8053588
 	adds r5, r0, 0
 	cmp r5, 0
 	beq _080535B8
-	ldr r0, _080535C0 @ =0x02025750
+	ldr r0, _080535C0 @ =gSaveBlock1 + 0x1C
 	movs r1, 0
 	ldrsb r1, [r5, r1]
 	movs r2, 0x1
@@ -861,7 +861,7 @@ _080535B8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080535C0: .4byte 0x02025750
+_080535C0: .4byte gSaveBlock1 + 0x1C
 	thumb_func_end sub_8053588
 
 	thumb_func_start sub_80535C4
@@ -930,7 +930,7 @@ sub_805363C: @ 805363C
 	adds r5, r1, 0
 	adds r6, r2, 0
 	ldr r1, [sp, 0x18]
-	ldr r0, _08053674 @ =0x02025758
+	ldr r0, _08053674 @ =gSaveBlock1 + 0x24
 	lsls r4, 24
 	asrs r4, 24
 	lsls r5, 24
@@ -952,7 +952,7 @@ sub_805363C: @ 805363C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08053674: .4byte 0x02025758
+_08053674: .4byte gSaveBlock1 + 0x24
 	thumb_func_end sub_805363C
 
 	thumb_func_start sub_8053678
@@ -1115,7 +1115,7 @@ unref_sub_8053790: @ 8053790
 	adds r5, r1, 0
 	adds r6, r2, 0
 	ldr r1, [sp, 0x18]
-	ldr r0, _080537C8 @ =0x02025740
+	ldr r0, _080537C8 @ =gSaveBlock1 + 0xC
 	lsls r4, 24
 	asrs r4, 24
 	lsls r5, 24
@@ -1137,7 +1137,7 @@ unref_sub_8053790: @ 8053790
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080537C8: .4byte 0x02025740
+_080537C8: .4byte gSaveBlock1 + 0xC
 	thumb_func_end unref_sub_8053790
 
 	thumb_func_start sub_80537CC
@@ -1150,7 +1150,7 @@ sub_80537CC: @ 80537CC
 	adds r5, r0, 0
 	cmp r5, 0
 	beq _080537FC
-	ldr r0, _08053804 @ =0x02025740
+	ldr r0, _08053804 @ =gSaveBlock1 + 0xC
 	movs r1, 0
 	ldrsb r1, [r5, r1]
 	movs r2, 0x1
@@ -1170,7 +1170,7 @@ _080537FC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08053804: .4byte 0x02025740
+_08053804: .4byte gSaveBlock1 + 0xC
 	thumb_func_end sub_80537CC
 
 	thumb_func_start gpu_sync_bg_hide
@@ -1969,7 +1969,7 @@ sav1_map_get_music: @ 8053DE4
 _08053E04: .4byte gSaveBlock1
 _08053E08: .4byte 0x00000199
 _08053E0C:
-	ldr r4, _08053E24 @ =0x02025738
+	ldr r4, _08053E24 @ =gSaveBlock1 + 0x4
 	adds r0, r4, 0
 	bl sub_8053D9C
 	lsls r0, 16
@@ -1980,7 +1980,7 @@ _08053E0C:
 	adds r0, r1, 0
 	b _08053E40
 	.align 2, 0
-_08053E24: .4byte 0x02025738
+_08053E24: .4byte gSaveBlock1 + 0x4
 _08053E28: .4byte 0x00007fff
 _08053E2C:
 	subs r0, r4, 0x4
@@ -2487,14 +2487,14 @@ get_map_light_level_from_warp: @ 80541C0
 	thumb_func_start sav1_map_get_light_level
 sav1_map_get_light_level: @ 80541D8
 	push {lr}
-	ldr r0, _080541E8 @ =0x02025738
+	ldr r0, _080541E8 @ =gSaveBlock1 + 0x4
 	bl get_map_light_level_from_warp
 	lsls r0, 24
 	lsrs r0, 24
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080541E8: .4byte 0x02025738
+_080541E8: .4byte gSaveBlock1 + 0x4
 	thumb_func_end sav1_map_get_light_level
 
 	thumb_func_start get_map_light_from_warp0
@@ -3777,10 +3777,10 @@ _08054C50: .4byte gWindowConfig_81E6CE4
 	thumb_func_start sub_8054C54
 sub_8054C54: @ 8054C54
 	push {r4-r6,lr}
-	ldr r0, _08054D08 @ =0x0400004c
+	ldr r0, _08054D08 @ =REG_MOSAIC
 	movs r3, 0
 	strh r3, [r0]
-	ldr r1, _08054D0C @ =0x04000048
+	ldr r1, _08054D0C @ =REG_WININ
 	ldr r2, _08054D10 @ =0x00001f1f
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -3788,7 +3788,7 @@ sub_8054C54: @ 8054C54
 	ldr r4, _08054D14 @ =0x00000101
 	adds r0, r4, 0
 	strh r0, [r1]
-	ldr r0, _08054D18 @ =0x04000040
+	ldr r0, _08054D18 @ =REG_WIN0H
 	movs r1, 0xFF
 	strh r1, [r0]
 	adds r0, 0x4
@@ -3799,7 +3799,7 @@ sub_8054C54: @ 8054C54
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
-	ldr r4, _08054D20 @ =0x04000050
+	ldr r4, _08054D20 @ =REG_BLDCNT
 	ldr r1, _08054D24 @ =gUnknown_081E29E0
 	ldrh r0, [r1, 0x2]
 	ldrh r2, [r1, 0x4]
@@ -3811,7 +3811,7 @@ sub_8054C54: @ 8054C54
 	adds r1, r2, 0
 	orrs r0, r1
 	strh r0, [r4]
-	ldr r1, _08054D28 @ =0x04000052
+	ldr r1, _08054D28 @ =REG_BLDALPHA
 	ldr r4, _08054D2C @ =0x0000070d
 	adds r0, r4, 0
 	strh r0, [r1]
@@ -3866,15 +3866,15 @@ sub_8054C54: @ 8054C54
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08054D08: .4byte 0x0400004c
-_08054D0C: .4byte 0x04000048
+_08054D08: .4byte REG_MOSAIC
+_08054D0C: .4byte REG_WININ
 _08054D10: .4byte 0x00001f1f
 _08054D14: .4byte 0x00000101
-_08054D18: .4byte 0x04000040
+_08054D18: .4byte REG_WIN0H
 _08054D1C: .4byte 0x0000ffff
-_08054D20: .4byte 0x04000050
+_08054D20: .4byte REG_BLDCNT
 _08054D24: .4byte gUnknown_081E29E0
-_08054D28: .4byte 0x04000052
+_08054D28: .4byte REG_BLDALPHA
 _08054D2C: .4byte 0x0000070d
 _08054D30: .4byte gBGHOffsetRegs
 _08054D34: .4byte gBGVOffsetRegs

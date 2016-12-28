@@ -83,7 +83,7 @@ Task_SecretBasePC_Decoration: @ 80FE264
 	lsrs r0, 24
 	bl DecorationPC
 	ldr r1, _080FE284 @ =0x0201f000
-	ldr r0, _080FE288 @ =0x0202714e
+	ldr r0, _080FE288 @ =gSaveBlock1 + 0x1A1A
 	str r0, [r1]
 	adds r0, 0x10
 	str r0, [r1, 0x4]
@@ -95,7 +95,7 @@ Task_SecretBasePC_Decoration: @ 80FE264
 	bx r0
 	.align 2, 0
 _080FE284: .4byte 0x0201f000
-_080FE288: .4byte 0x0202714e
+_080FE288: .4byte gSaveBlock1 + 0x1A1A
 	thumb_func_end Task_SecretBasePC_Decoration
 
 	thumb_func_start DoPlayerPCDecoration
@@ -105,7 +105,7 @@ DoPlayerPCDecoration: @ 80FE28C
 	lsrs r0, 24
 	bl DecorationPC
 	ldr r1, _080FE2AC @ =0x0201f000
-	ldr r0, _080FE2B0 @ =0x02027dbc
+	ldr r0, _080FE2B0 @ =gSaveBlock1 + 0x2688
 	str r0, [r1]
 	adds r0, 0xC
 	str r0, [r1, 0x4]
@@ -117,7 +117,7 @@ DoPlayerPCDecoration: @ 80FE28C
 	bx r0
 	.align 2, 0
 _080FE2AC: .4byte 0x0201f000
-_080FE2B0: .4byte 0x02027dbc
+_080FE2B0: .4byte gSaveBlock1 + 0x2688
 	thumb_func_end DoPlayerPCDecoration
 
 	thumb_func_start sub_80FE2B4
@@ -1520,7 +1520,7 @@ _080FEDB0:
 	cmp r3, 0xF
 	bls _080FEDA4
 	movs r3, 0
-	ldr r0, _080FEE38 @ =0x0202714e
+	ldr r0, _080FEE38 @ =gSaveBlock1 + 0x1A1A
 	mov r10, r0
 	ldr r1, _080FEE3C @ =gDecorationInventories
 	mov r9, r1
@@ -1540,7 +1540,7 @@ _080FEDC8:
 	ldrb r0, [r0, 0x4]
 	cmp r1, r0
 	bcs _080FEE5A
-	ldr r0, _080FEE38 @ =0x0202714e
+	ldr r0, _080FEE38 @ =gSaveBlock1 + 0x1A1A
 	adds r0, r3
 	mov r12, r0
 	ldr r7, _080FEE30 @ =gUnknown_020388D6
@@ -1584,7 +1584,7 @@ _080FEE1E:
 	.align 2, 0
 _080FEE30: .4byte gUnknown_020388D6
 _080FEE34: .4byte gUnknown_020388E6
-_080FEE38: .4byte 0x0202714e
+_080FEE38: .4byte gSaveBlock1 + 0x1A1A
 _080FEE3C: .4byte gDecorationInventories
 _080FEE40: .4byte gUnknown_020388F6
 _080FEE44: .4byte gUnknown_020388D0
@@ -4318,7 +4318,7 @@ sub_810038C: @ 810038C
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _081003BC @ =0x03004b38
+	ldr r0, _081003BC @ =gTasks + 0x8
 	adds r2, r1, r0
 	ldr r0, _081003C0 @ =gUnknown_020391AA
 	ldrb r1, [r0]
@@ -4337,7 +4337,7 @@ sub_810038C: @ 810038C
 	adds r0, 0x1
 	b _081003DE
 	.align 2, 0
-_081003BC: .4byte 0x03004b38
+_081003BC: .4byte gTasks + 0x8
 _081003C0: .4byte gUnknown_020391AA
 _081003C4:
 	ldrb r0, [r3]
@@ -5785,7 +5785,7 @@ sub_8100E70: @ 8100E70
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08100E94 @ =0x03004b38
+	ldr r1, _08100E94 @ =gTasks + 0x8
 	adds r4, r0, r1
 	movs r1, 0x4
 	ldrsh r0, [r4, r1]
@@ -5797,7 +5797,7 @@ sub_8100E70: @ 8100E70
 	beq _08100E9E
 	b _08100EE6
 	.align 2, 0
-_08100E94: .4byte 0x03004b38
+_08100E94: .4byte gTasks + 0x8
 _08100E98:
 	cmp r0, 0x2
 	beq _08100ED2
@@ -6012,7 +6012,7 @@ _0810104C:
 	lsls r1, r5, 2
 	adds r1, r5
 	lsls r1, 3
-	ldr r0, _081010BC @ =0x03004b38
+	ldr r0, _081010BC @ =gTasks + 0x8
 	adds r1, r0
 	movs r2, 0
 	ldrsh r0, [r1, r2]
@@ -6063,7 +6063,7 @@ _081010B0:
 	bl DisplayItemMessageOnField
 	b _081010E0
 	.align 2, 0
-_081010BC: .4byte 0x03004b38
+_081010BC: .4byte gTasks + 0x8
 _081010C0: .4byte gSprites
 _081010C4: .4byte gUnknown_020391A8
 _081010C8: .4byte SpriteCallbackDummy

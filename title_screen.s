@@ -64,7 +64,7 @@ _0807BE46:
 	adds r0, r1, 0x1
 	strh r0, [r2, 0x22]
 _0807BE6A:
-	ldr r3, _0807BE88 @ =0x04000052
+	ldr r3, _0807BE88 @ =REG_BLDALPHA
 	ldr r2, _0807BE8C @ =gUnknown_08393E64
 	movs r1, 0x12
 	ldrsh r0, [r4, r1]
@@ -80,7 +80,7 @@ _0807BE80:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BE88: .4byte 0x04000052
+_0807BE88: .4byte REG_BLDALPHA
 _0807BE8C: .4byte gUnknown_08393E64
 	thumb_func_end SpriteCallback_VersionBannerLeft
 
@@ -446,14 +446,14 @@ _0807C4FC:
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r0, _0807C51C @ =0x04000016
+	ldr r0, _0807C51C @ =REG_BG1VOFS
 	ldr r1, _0807C520 @ =gUnknown_030041B4
 	ldrh r1, [r1]
 	strh r1, [r0]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C51C: .4byte 0x04000016
+_0807C51C: .4byte REG_BG1VOFS
 _0807C520: .4byte gUnknown_030041B4
 	thumb_func_end StartPokemonLogoShine
 
@@ -487,7 +487,7 @@ _0807C118:
 _0807C130:
 	movs r0, 0
 	bl SetVBlankCallback
-	ldr r0, _0807C1C0 @ =0x04000050
+	ldr r0, _0807C1C0 @ =REG_BLDCNT
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -556,7 +556,7 @@ _0807C130:
 	strb r1, [r0]
 	b _0807C446
 	.align 2, 0
-_0807C1C0: .4byte 0x04000050
+_0807C1C0: .4byte REG_BLDCNT
 _0807C1C4: .4byte 0x00007fff
 _0807C1C8: .4byte 0x040000d4
 _0807C1CC: .4byte 0x8100c000
@@ -702,13 +702,13 @@ _0807C33C:
 	movs r1, 0x50
 	movs r3, 0
 	bl sub_813CE30
-	ldr r1, _0807C3D4 @ =0x04000028
+	ldr r1, _0807C3D4 @ =REG_BG2X_L
 	ldr r0, _0807C3D8 @ =0xffffe300
 	str r0, [r1]
 	adds r1, 0x4
 	ldr r0, _0807C3DC @ =0xffffdf00
 	str r0, [r1]
-	ldr r0, _0807C3E0 @ =0x04000040
+	ldr r0, _0807C3E0 @ =REG_WIN0H
 	movs r4, 0
 	strh r4, [r0]
 	adds r0, 0x4
@@ -728,7 +728,7 @@ _0807C33C:
 	adds r1, 0x6
 	movs r0, 0x84
 	strh r0, [r1]
-	ldr r0, _0807C3EC @ =0x04000052
+	ldr r0, _0807C3EC @ =REG_BLDALPHA
 	strh r4, [r0]
 	adds r0, 0x2
 	movs r5, 0x8
@@ -754,7 +754,7 @@ _0807C33C:
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r1, _0807C404 @ =0x04000004
+	ldr r1, _0807C404 @ =REG_DISPSTAT
 	ldrh r0, [r1]
 	orrs r0, r5
 	strh r0, [r1]
@@ -771,19 +771,19 @@ _0807C33C:
 	strb r1, [r0]
 	b _0807C446
 	.align 2, 0
-_0807C3D4: .4byte 0x04000028
+_0807C3D4: .4byte REG_BG2X_L
 _0807C3D8: .4byte 0xffffe300
 _0807C3DC: .4byte 0xffffdf00
-_0807C3E0: .4byte 0x04000040
+_0807C3E0: .4byte REG_WIN0H
 _0807C3E4: .4byte 0x00001f1f
 _0807C3E8: .4byte 0x00003f1f
-_0807C3EC: .4byte 0x04000052
+_0807C3EC: .4byte REG_BLDALPHA
 _0807C3F0: .4byte 0x0000180b
 _0807C3F4: .4byte 0x0000190a
 _0807C3F8: .4byte 0x00004981
 _0807C3FC: .4byte 0x04000208
 _0807C400: .4byte 0x04000200
-_0807C404: .4byte 0x04000004
+_0807C404: .4byte REG_DISPSTAT
 _0807C408: .4byte 0x0000b441
 _0807C40C: .4byte 0x0000019d
 _0807C410: .4byte gMain
@@ -890,7 +890,7 @@ _0807C910:
 	ldr r3, _0807C994 @ =0x00001441
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _0807C998 @ =0x04000048
+	ldr r0, _0807C998 @ =REG_WININ
 	strh r2, [r0]
 	adds r0, 0x2
 	strh r2, [r0]
@@ -901,7 +901,7 @@ _0807C910:
 	adds r1, 0x2
 	movs r0, 0x1F
 	strh r0, [r1]
-	ldr r0, _0807C9A0 @ =0x04000054
+	ldr r0, _0807C9A0 @ =REG_BLDY
 	strh r2, [r0]
 	ldr r0, _0807C9A4 @ =gSpriteTemplate_8393ECC
 	movs r1, 0x6C
@@ -951,9 +951,9 @@ _0807C98C:
 	bx r0
 	.align 2, 0
 _0807C994: .4byte 0x00001441
-_0807C998: .4byte 0x04000048
+_0807C998: .4byte REG_WININ
 _0807C99C: .4byte 0x00003f50
-_0807C9A0: .4byte 0x04000054
+_0807C9A0: .4byte REG_BLDY
 _0807C9A4: .4byte gSpriteTemplate_8393ECC
 _0807C9A8: .4byte gSprites
 _0807C9AC: .4byte gSpriteTemplate_8393EE4
@@ -1042,7 +1042,7 @@ _0807CA30:
 	adds r0, r1, 0x1
 	strh r0, [r3, 0xE]
 _0807CA50:
-	ldr r0, _0807CA74 @ =0x0400002c
+	ldr r0, _0807CA74 @ =REG_BG2Y_L
 	adds r1, r7, r5
 	lsls r1, 3
 	adds r1, r2
@@ -1057,7 +1057,7 @@ _0807CA50:
 _0807CA68: .4byte 0x00001741
 _0807CA6C: .4byte Task_TitleScreenPhase3
 _0807CA70: .4byte gTasks
-_0807CA74: .4byte 0x0400002c
+_0807CA74: .4byte REG_BG2Y_L
 	thumb_func_end Task_TitleScreenPhase2
 
 	thumb_func_start Task_TitleScreenPhase3
@@ -1066,7 +1066,7 @@ Task_TitleScreenPhase3: @ 807CA78
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r1, _0807CAD0 @ =0x04000050
+	ldr r1, _0807CAD0 @ =REG_BLDCNT
 	ldr r2, _0807CAD4 @ =0x00002142
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -1104,7 +1104,7 @@ _0807CAAE:
 	bl SetMainCallback2
 	b _0807CB82
 	.align 2, 0
-_0807CAD0: .4byte 0x04000050
+_0807CAD0: .4byte REG_BLDCNT
 _0807CAD4: .4byte 0x00002142
 _0807CAD8: .4byte 0x00001f0f
 _0807CADC: .4byte gMain
@@ -1143,7 +1143,7 @@ _0807CAF8:
 _0807CB28: .4byte CB2_GoToClearSaveDataScreen
 _0807CB2C: .4byte CB2_GoToResetRtcScreen
 _0807CB30:
-	ldr r0, _0807CB8C @ =0x0400002c
+	ldr r0, _0807CB8C @ =REG_BG2Y_L
 	movs r3, 0
 	str r3, [r0]
 	ldr r1, _0807CB90 @ =gTasks
@@ -1188,7 +1188,7 @@ _0807CB82:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807CB8C: .4byte 0x0400002c
+_0807CB8C: .4byte REG_BG2Y_L
 _0807CB90: .4byte gTasks
 _0807CB94: .4byte gUnknown_030041B4
 _0807CB98: .4byte gUnknown_030042C0

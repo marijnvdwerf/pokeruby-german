@@ -135,7 +135,7 @@ _08083DF8: .4byte sub_8083D4C
 	thumb_func_start MoriDebugMenu_Egg
 MoriDebugMenu_Egg: @ 8083DFC
 	push {lr}
-	ldr r0, _08083E24 @ =0x020286d0
+	ldr r0, _08083E24 @ =gSaveBlock1 + 0x2F9C
 	bl daycare_count_pokemon
 	lsls r0, 24
 	lsrs r0, 24
@@ -152,13 +152,13 @@ _08083E1A:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08083E24: .4byte 0x020286d0
+_08083E24: .4byte gSaveBlock1 + 0x2F9C
 	thumb_func_end MoriDebugMenu_Egg
 
 	thumb_func_start MoriDebugMenu_MaleEgg
 MoriDebugMenu_MaleEgg: @ 8083E28
 	push {lr}
-	ldr r0, _08083E50 @ =0x020286d0
+	ldr r0, _08083E50 @ =gSaveBlock1 + 0x2F9C
 	bl daycare_count_pokemon
 	lsls r0, 24
 	lsrs r0, 24
@@ -175,7 +175,7 @@ _08083E46:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08083E50: .4byte 0x020286d0
+_08083E50: .4byte gSaveBlock1 + 0x2F9C
 	thumb_func_end MoriDebugMenu_MaleEgg
 
 	thumb_func_start MoriDebugMenu_1000Steps

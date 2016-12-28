@@ -62,14 +62,14 @@ _08146E6C:
 	mov r9, r0
 	movs r1, 0
 	strh r1, [r0]
-	ldr r6, _08146FB8 @ =0x0400000e
+	ldr r6, _08146FB8 @ =REG_BG3CNT
 	strh r1, [r6]
 	adds r0, 0xC
 	mov r8, r0
 	strh r1, [r0]
 	subs r0, 0x2
 	strh r1, [r0]
-	ldr r5, _08146FBC @ =0x04000008
+	ldr r5, _08146FBC @ =REG_BG0CNT
 	strh r1, [r5]
 	adds r0, 0x12
 	strh r1, [r0]
@@ -173,7 +173,7 @@ _08146E6C:
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _08147008 @ =0x04000004
+	ldr r2, _08147008 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -202,8 +202,8 @@ _08146E6C:
 	.align 2, 0
 _08146FB0: .4byte gMain
 _08146FB4: .4byte 0x0000043c
-_08146FB8: .4byte 0x0400000e
-_08146FBC: .4byte 0x04000008
+_08146FB8: .4byte REG_BG3CNT
+_08146FBC: .4byte REG_BG0CNT
 _08146FC0: .4byte 0x040000d4
 _08146FC4: .4byte 0x8100c000
 _08146FC8: .4byte 0x85000100
@@ -222,7 +222,7 @@ _08146FF8: .4byte gWindowConfig_81E6CE4
 _08146FFC: .4byte gSystemText_SaveFailedBackupCheck
 _08147000: .4byte 0x04000208
 _08147004: .4byte 0x04000200
-_08147008: .4byte 0x04000004
+_08147008: .4byte REG_DISPSTAT
 _0814700C: .4byte sub_8146E3C
 _08147010: .4byte 0x00000703
 _08147014: .4byte 0x00000602

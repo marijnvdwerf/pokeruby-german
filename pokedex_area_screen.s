@@ -67,14 +67,14 @@ _081106C8:
 	bl ResetTasks
 	bl FreeSpriteTileRanges
 	bl FreeAllSpritePalettes
-	ldr r0, _08110710 @ =0x04000010
+	ldr r0, _08110710 @ =REG_BG0HOFS
 	movs r1, 0
 	strh r1, [r0]
-	ldr r2, _08110714 @ =0x04000012
+	ldr r2, _08110714 @ =REG_BG0VOFS
 	ldr r3, _08110718 @ =0x0000fff8
 	adds r0, r3, 0
 	strh r0, [r2]
-	ldr r0, _0811071C @ =0x0400001a
+	ldr r0, _0811071C @ =REG_BG2VOFS
 	strh r1, [r0]
 	subs r0, 0x2
 	strh r1, [r0]
@@ -84,10 +84,10 @@ _081106C8:
 	strh r1, [r0]
 	b _081107C0
 	.align 2, 0
-_08110710: .4byte 0x04000010
-_08110714: .4byte 0x04000012
+_08110710: .4byte REG_BG0HOFS
+_08110714: .4byte REG_BG0VOFS
 _08110718: .4byte 0x0000fff8
-_0811071C: .4byte 0x0400001a
+_0811071C: .4byte REG_BG2VOFS
 _08110720:
 	ldr r4, _0811073C @ =0x020006e8
 	adds r0, r4, 0
@@ -135,7 +135,7 @@ _08110770:
 	bl BeginNormalPaletteFade
 	b _081107C0
 _08110782:
-	ldr r1, _0811079C @ =0x04000050
+	ldr r1, _0811079C @ =REG_BLDCNT
 	ldr r2, _081107A0 @ =0x00003f41
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -147,7 +147,7 @@ _08110782:
 	strh r0, [r1]
 	b _081107C0
 	.align 2, 0
-_0811079C: .4byte 0x04000050
+_0811079C: .4byte REG_BLDCNT
 _081107A0: .4byte 0x00003f41
 _081107A4: .4byte 0x00007741
 _081107A8:
@@ -295,7 +295,7 @@ _081108C0:
 	.align 2, 0
 _081108CC: .4byte gUnknown_083F8418
 _081108D0:
-	ldr r1, _081108E8 @ =0x04000008
+	ldr r1, _081108E8 @ =REG_BG0CNT
 	ldr r3, _081108EC @ =0x00001e0d
 	adds r0, r3, 0
 	strh r0, [r1]
@@ -309,7 +309,7 @@ _081108E4:
 	movs r0, 0
 	b _08110900
 	.align 2, 0
-_081108E8: .4byte 0x04000008
+_081108E8: .4byte REG_BG0CNT
 _081108EC: .4byte 0x00001e0d
 _081108F0:
 	ldr r1, _08110904 @ =0x02000000
@@ -499,7 +499,7 @@ _08110A44:
 	adds r1, r4, r0
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _08110A80 @ =0x02028878
+	ldr r0, _08110A80 @ =gSaveBlock1 + 0x3144
 	ldrb r2, [r0, 0x13]
 	cmp r2, 0
 	beq _08110A84
@@ -521,7 +521,7 @@ _08110A44:
 	b _08110A8C
 	.align 2, 0
 _08110A7C: .4byte 0x02000000
-_08110A80: .4byte 0x02028878
+_08110A80: .4byte gSaveBlock1 + 0x3144
 _08110A84:
 	movs r1, 0x88
 	lsls r1, 1
@@ -1379,7 +1379,7 @@ _081110BA:
 	adds r1, r2, r3
 	movs r0, 0x1
 	strb r0, [r1]
-	ldr r1, _08111108 @ =0x04000050
+	ldr r1, _08111108 @ =REG_BLDCNT
 	ldr r2, _0811110C @ =0x00003f41
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -1395,7 +1395,7 @@ _081110BA:
 _081110FC: .4byte 0x0000061e
 _08111100: .4byte 0x00000616
 _08111104: .4byte 0x0000061c
-_08111108: .4byte 0x04000050
+_08111108: .4byte REG_BLDCNT
 _0811110C: .4byte 0x00003f41
 	thumb_func_end sub_8111084
 
@@ -1463,7 +1463,7 @@ _0811115C:
 	lsls r0, 16
 	asrs r0, 20
 	lsls r0, 16
-	ldr r2, _081111CC @ =0x04000052
+	ldr r2, _081111CC @ =REG_BLDALPHA
 	lsrs r0, 8
 	orrs r1, r0
 	strh r1, [r2]
@@ -1491,7 +1491,7 @@ _0811115C:
 _081111C0: .4byte 0x0000061c
 _081111C4: .4byte gSineTable
 _081111C8: .4byte 0x0000061a
-_081111CC: .4byte 0x04000052
+_081111CC: .4byte REG_BLDALPHA
 _081111D0: .4byte 0x00000616
 _081111D4: .4byte 0x0000061e
 _081111D8:
@@ -1821,14 +1821,14 @@ _0811144C:
 	lsls r3, 7
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _08111478 @ =0x04000010
+	ldr r0, _08111478 @ =REG_BG0HOFS
 	movs r1, 0
 	strh r1, [r0]
-	ldr r2, _0811147C @ =0x04000012
+	ldr r2, _0811147C @ =REG_BG0VOFS
 	ldr r3, _08111480 @ =0x0000fff8
 	adds r0, r3, 0
 	strh r0, [r2]
-	ldr r0, _08111484 @ =0x0400001a
+	ldr r0, _08111484 @ =REG_BG2VOFS
 	strh r1, [r0]
 	subs r0, 0x2
 	strh r1, [r0]
@@ -1838,10 +1838,10 @@ _0811144C:
 	strh r1, [r0]
 	b _08111540
 	.align 2, 0
-_08111478: .4byte 0x04000010
-_0811147C: .4byte 0x04000012
+_08111478: .4byte REG_BG0HOFS
+_0811147C: .4byte REG_BG0VOFS
 _08111480: .4byte 0x0000fff8
-_08111484: .4byte 0x0400001a
+_08111484: .4byte REG_BG2VOFS
 _08111488:
 	bl ResetPaletteFade
 	bl ResetSpriteData
@@ -1899,7 +1899,7 @@ _081114F0:
 	bl BeginNormalPaletteFade
 	b _08111540
 _08111502:
-	ldr r1, _0811151C @ =0x04000050
+	ldr r1, _0811151C @ =REG_BLDCNT
 	ldr r2, _08111520 @ =0x00003f41
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -1911,7 +1911,7 @@ _08111502:
 	strh r0, [r1]
 	b _08111540
 	.align 2, 0
-_0811151C: .4byte 0x04000050
+_0811151C: .4byte REG_BLDCNT
 _08111520: .4byte 0x00003f41
 _08111524: .4byte 0x00007741
 _08111528:

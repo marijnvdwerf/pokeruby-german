@@ -740,7 +740,7 @@ sub_806B4A8: @ 806B4A8
 	ldr r2, _0806B518 @ =0x00000602
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _0806B51C @ =0x04000050
+	ldr r0, _0806B51C @ =REG_BLDCNT
 	movs r1, 0
 	strh r1, [r0]
 	subs r0, 0x40
@@ -757,7 +757,7 @@ sub_806B4A8: @ 806B4A8
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
-	ldr r2, _0806B520 @ =0x0400001e
+	ldr r2, _0806B520 @ =REG_BG3VOFS
 	strh r1, [r2]
 	ldr r1, _0806B524 @ =0x0000ffff
 	adds r0, r1, 0
@@ -769,8 +769,8 @@ _0806B50C: .4byte 0x00001e05
 _0806B510: .4byte 0x00000703
 _0806B514: .4byte 0x00000f08
 _0806B518: .4byte 0x00000602
-_0806B51C: .4byte 0x04000050
-_0806B520: .4byte 0x0400001e
+_0806B51C: .4byte REG_BLDCNT
+_0806B520: .4byte REG_BG3VOFS
 _0806B524: .4byte 0x0000ffff
 	thumb_func_end sub_806B4A8
 
@@ -803,7 +803,7 @@ sub_806B548: @ 806B548
 	ldrb r3, [r4]
 	cmp r3, 0
 	beq _0806B56E
-	ldr r1, _0806B57C @ =0x020221cc
+	ldr r1, _0806B57C @ =gBGTilemapBuffers + 0x1000
 	ldr r2, _0806B580 @ =0x06003000
 	ldr r0, _0806B584 @ =0x040000d4
 	str r1, [r0]
@@ -822,7 +822,7 @@ _0806B56E:
 	.align 2, 0
 _0806B574: .4byte 0x0201b000
 _0806B578: .4byte 0x00000261
-_0806B57C: .4byte 0x020221cc
+_0806B57C: .4byte gBGTilemapBuffers + 0x1000
 _0806B580: .4byte 0x06003000
 _0806B584: .4byte 0x040000d4
 _0806B588: .4byte 0x80000400
@@ -892,14 +892,14 @@ _0806B5F0:
 	.4byte _0806B8C6
 	.4byte _0806B8E8
 _0806B614:
-	ldr r0, _0806B624 @ =0x020221cc
+	ldr r0, _0806B624 @ =gBGTilemapBuffers + 0x1000
 	movs r2, 0x80
 	lsls r2, 4
 	movs r1, 0
 	bl memset
 	b _0806B900
 	.align 2, 0
-_0806B624: .4byte 0x020221cc
+_0806B624: .4byte gBGTilemapBuffers + 0x1000
 _0806B628:
 	ldrb r0, [r4]
 	ldrb r1, [r4, 0x1]
@@ -1269,7 +1269,7 @@ _0806B902:
 	thumb_func_start sub_806B908
 sub_806B908: @ 806B908
 	push {r4,r5,lr}
-	ldr r0, _0806B948 @ =0x020221cc
+	ldr r0, _0806B948 @ =gBGTilemapBuffers + 0x1000
 	movs r2, 0x80
 	lsls r2, 4
 	movs r1, 0
@@ -1297,7 +1297,7 @@ sub_806B908: @ 806B908
 	bl sub_806BA94
 	b _0806B964
 	.align 2, 0
-_0806B948: .4byte 0x020221cc
+_0806B948: .4byte gBGTilemapBuffers + 0x1000
 _0806B94C: .4byte gUnknown_0202E8FA
 _0806B950: .4byte gUnknown_083769A8
 _0806B954: .4byte 0x030043d4
@@ -1372,7 +1372,7 @@ _0806B9CA:
 	lsls r0, r1, 5
 	ldr r4, [sp, 0x4]
 	adds r6, r4, r0
-	ldr r0, _0806BA30 @ =0x020221cc
+	ldr r0, _0806BA30 @ =gBGTilemapBuffers + 0x1000
 	mov r12, r0
 	ldr r4, [sp]
 	lsls r5, r4, 12
@@ -1415,7 +1415,7 @@ _0806BA12:
 	bx r0
 	.align 2, 0
 _0806BA2C: .4byte gUnknown_083769D8
-_0806BA30: .4byte 0x020221cc
+_0806BA30: .4byte gBGTilemapBuffers + 0x1000
 	thumb_func_end sub_806B9A4
 
 	thumb_func_start sub_806BA34
@@ -1440,7 +1440,7 @@ _0806BA48:
 	lsls r0, r1, 5
 	mov r5, r8
 	adds r1, r5, r0
-	ldr r6, _0806BA90 @ =0x020221cc
+	ldr r6, _0806BA90 @ =gBGTilemapBuffers + 0x1000
 	movs r5, 0
 _0806BA5E:
 	adds r0, r3, r2
@@ -1470,7 +1470,7 @@ _0806BA7C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806BA90: .4byte 0x020221cc
+_0806BA90: .4byte gBGTilemapBuffers + 0x1000
 	thumb_func_end sub_806BA34
 
 	thumb_func_start sub_806BA94
@@ -1515,7 +1515,7 @@ _0806BACC:
 	lsls r0, r1, 5
 	ldr r4, [sp, 0x4]
 	adds r6, r4, r0
-	ldr r0, _0806BB38 @ =0x020221cc
+	ldr r0, _0806BB38 @ =gBGTilemapBuffers + 0x1000
 	mov r8, r0
 	ldr r4, [sp]
 	lsls r5, r4, 12
@@ -1560,7 +1560,7 @@ _0806BB16:
 	.align 2, 0
 _0806BB30: .4byte gUnknown_08376A5E
 _0806BB34: .4byte gUnknown_08376A25
-_0806BB38: .4byte 0x020221cc
+_0806BB38: .4byte gBGTilemapBuffers + 0x1000
 	thumb_func_end sub_806BA94
 
 	thumb_func_start sub_806BB3C
@@ -1585,7 +1585,7 @@ _0806BB50:
 	lsls r0, r1, 5
 	mov r5, r8
 	adds r1, r5, r0
-	ldr r6, _0806BB98 @ =0x020221cc
+	ldr r6, _0806BB98 @ =gBGTilemapBuffers + 0x1000
 	movs r5, 0
 _0806BB66:
 	adds r0, r3, r2
@@ -1615,7 +1615,7 @@ _0806BB84:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806BB98: .4byte 0x020221cc
+_0806BB98: .4byte gBGTilemapBuffers + 0x1000
 	thumb_func_end sub_806BB3C
 
 	thumb_func_start sub_806BB9C

@@ -348,7 +348,7 @@ _08000604:
 	strh r2, [r0]
 	ldr r1, _0800066C @ =0x04000200
 	strh r2, [r1]
-	ldr r3, _08000670 @ =0x04000004
+	ldr r3, _08000670 @ =REG_DISPSTAT
 	movs r0, 0x8
 	strh r0, [r3]
 	ldrh r0, [r1]
@@ -367,7 +367,7 @@ _08000660: .4byte 0x84000200
 _08000664: .4byte 0x03007ffc
 _08000668: .4byte 0x04000208
 _0800066C: .4byte 0x04000200
-_08000670: .4byte 0x04000004
+_08000670: .4byte REG_DISPSTAT
 	thumb_func_end InitIntrHandlers
 
 	thumb_func_start SetVBlankCallback

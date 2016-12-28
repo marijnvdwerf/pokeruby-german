@@ -14,7 +14,7 @@ task01_battle_start: @ 8081960
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08081980 @ =0x03004b38
+	ldr r1, _08081980 @ =gTasks + 0x8
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -24,7 +24,7 @@ task01_battle_start: @ 8081960
 	beq _0808199A
 	b _080819BA
 	.align 2, 0
-_08081980: .4byte 0x03004b38
+_08081980: .4byte gTasks + 0x8
 _08081984:
 	bl FieldPoisonEffectIsRunning
 	cmp r0, 0
@@ -2042,7 +2042,7 @@ sub_80828FC: @ 80828FC
 	mov r10, r2
 	movs r4, 0
 	movs r5, 0
-	ldr r0, _08082968 @ =0x020260ae
+	ldr r0, _08082968 @ =gSaveBlock1 + 0x97A
 	mov r9, r0
 _0808291E:
 	lsls r0, r5, 4
@@ -2080,7 +2080,7 @@ _0808291E:
 	movs r4, 0x1
 	b _0808296E
 	.align 2, 0
-_08082968: .4byte 0x020260ae
+_08082968: .4byte gSaveBlock1 + 0x97A
 _0808296C:
 	adds r4, 0x1
 _0808296E:
@@ -2125,7 +2125,7 @@ sub_80829A8: @ 80829A8
 	lsls r2, 16
 	lsrs r2, 16
 	movs r1, 0
-	ldr r5, _080829D4 @ =0x020260ae
+	ldr r5, _080829D4 @ =gSaveBlock1 + 0x97A
 	adds r3, r0, 0
 	adds r3, 0xA
 _080829BA:
@@ -2142,7 +2142,7 @@ _080829BA:
 	movs r0, 0x1
 	b _080829E2
 	.align 2, 0
-_080829D4: .4byte 0x020260ae
+_080829D4: .4byte gSaveBlock1 + 0x97A
 _080829D8:
 	adds r3, 0x10
 	adds r1, 0x1

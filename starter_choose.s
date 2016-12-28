@@ -50,14 +50,14 @@ CB2_ChooseStarter: @ 8109E80
 	mov r10, r0
 	movs r1, 0
 	strh r1, [r0]
-	ldr r6, _0810A08C @ =0x0400000e
+	ldr r6, _0810A08C @ =REG_BG3CNT
 	strh r1, [r6]
-	ldr r3, _0810A090 @ =0x0400000c
+	ldr r3, _0810A090 @ =REG_BG2CNT
 	mov r8, r3
 	strh r1, [r3]
 	adds r0, 0xA
 	strh r1, [r0]
-	ldr r5, _0810A094 @ =0x04000008
+	ldr r5, _0810A094 @ =REG_BG0CNT
 	strh r1, [r5]
 	adds r0, 0x12
 	strh r1, [r0]
@@ -151,7 +151,7 @@ CB2_ChooseStarter: @ 8109E80
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0810A0DC @ =0x04000004
+	ldr r2, _0810A0DC @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -160,21 +160,21 @@ CB2_ChooseStarter: @ 8109E80
 	bl SetVBlankCallback
 	ldr r0, _0810A0E4 @ =MainCallback2
 	bl SetMainCallback2
-	ldr r1, _0810A0E8 @ =0x04000048
+	ldr r1, _0810A0E8 @ =REG_WININ
 	movs r0, 0x3F
 	strh r0, [r1]
 	adds r1, 0x2
 	movs r0, 0x1F
 	strh r0, [r1]
-	ldr r0, _0810A0EC @ =0x04000040
+	ldr r0, _0810A0EC @ =REG_WIN0H
 	mov r1, r9
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
-	ldr r1, _0810A0F0 @ =0x04000050
+	ldr r1, _0810A0F0 @ =REG_BLDCNT
 	movs r0, 0xFE
 	strh r0, [r1]
-	ldr r0, _0810A0F4 @ =0x04000052
+	ldr r0, _0810A0F4 @ =REG_BLDALPHA
 	mov r3, r9
 	strh r3, [r0]
 	adds r1, 0x4
@@ -277,9 +277,9 @@ CB2_ChooseStarter: @ 8109E80
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810A08C: .4byte 0x0400000e
-_0810A090: .4byte 0x0400000c
-_0810A094: .4byte 0x04000008
+_0810A08C: .4byte REG_BG3CNT
+_0810A090: .4byte REG_BG2CNT
+_0810A094: .4byte REG_BG0CNT
 _0810A098: .4byte 0x040000d4
 _0810A09C: .4byte 0x8100c000
 _0810A0A0: .4byte 0x85000100
@@ -297,13 +297,13 @@ _0810A0CC: .4byte gWindowConfig_81E6C3C
 _0810A0D0: .4byte gWindowConfig_81E6CE4
 _0810A0D4: .4byte 0x04000208
 _0810A0D8: .4byte 0x04000200
-_0810A0DC: .4byte 0x04000004
+_0810A0DC: .4byte REG_DISPSTAT
 _0810A0E0: .4byte VblankCallback
 _0810A0E4: .4byte MainCallback2
-_0810A0E8: .4byte 0x04000048
-_0810A0EC: .4byte 0x04000040
-_0810A0F0: .4byte 0x04000050
-_0810A0F4: .4byte 0x04000052
+_0810A0E8: .4byte REG_WININ
+_0810A0EC: .4byte REG_WIN0H
+_0810A0F0: .4byte REG_BLDCNT
+_0810A0F4: .4byte REG_BLDALPHA
 _0810A0F8: .4byte 0x00000703
 _0810A0FC: .4byte 0x00000602
 _0810A100: .4byte 0x00001f08
@@ -392,7 +392,7 @@ Task_StarterChoose2: @ 810A584
 	lsls r3, 24
 	lsrs r3, 24
 	bl MenuZeroFillWindowRect
-	ldr r0, _0810A630 @ =0x04000040
+	ldr r0, _0810A630 @ =REG_WIN0H
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
@@ -441,7 +441,7 @@ Task_StarterChoose2: @ 810A584
 _0810A624: .4byte gTasks
 _0810A628: .4byte gMain
 _0810A62C: .4byte gStarterChoose_LabelCoords
-_0810A630: .4byte 0x04000040
+_0810A630: .4byte REG_WIN0H
 _0810A634: .4byte gSpriteTemplate_83F77FC
 _0810A638: .4byte gStarterChoose_PokeballCoords
 _0810A63C: .4byte gSprites
@@ -721,7 +721,7 @@ CreateStarterPokemonLabel: @ 810A838
 	lsls r3, 24
 	lsrs r3, 24
 	bl MenuZeroFillWindowRect
-	ldr r0, _0810A964 @ =0x04000040
+	ldr r0, _0810A964 @ =REG_WIN0H
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
@@ -828,11 +828,11 @@ _0810A8CA:
 	adds r5, 0x4
 	lsls r5, 27
 	lsrs r5, 24
-	ldr r2, _0810A964 @ =0x04000040
+	ldr r2, _0810A964 @ =REG_WIN0H
 	lsrs r0, 16
 	orrs r0, r4
 	strh r0, [r2]
-	ldr r0, _0810A96C @ =0x04000044
+	ldr r0, _0810A96C @ =REG_WIN0V
 	lsrs r1, 16
 	orrs r1, r5
 	strh r1, [r0]
@@ -842,9 +842,9 @@ _0810A8CA:
 	bx r0
 	.align 2, 0
 _0810A960: .4byte gStarterChoose_LabelCoords
-_0810A964: .4byte 0x04000040
+_0810A964: .4byte REG_WIN0H
 _0810A968: .4byte gSpeciesNames
-_0810A96C: .4byte 0x04000044
+_0810A96C: .4byte REG_WIN0V
 	thumb_func_end CreateStarterPokemonLabel
 
 	thumb_func_start nullsub_72

@@ -107,7 +107,7 @@ sub_810196C: @ 810196C
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r1, _081019A8 @ =0x04000040
+	ldr r1, _081019A8 @ =REG_WIN0H
 	ldr r2, _081019AC @ =0x02000000
 	adds r0, r2, 0
 	adds r0, 0x58
@@ -131,7 +131,7 @@ sub_810196C: @ 810196C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_081019A8: .4byte 0x04000040
+_081019A8: .4byte REG_WIN0H
 _081019AC: .4byte 0x02000000
 	thumb_func_end sub_810196C
 
@@ -227,7 +227,7 @@ sub_8101A44: @ 8101A44
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _08101A88 @ =0x04000004
+	ldr r2, _08101A88 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -245,7 +245,7 @@ sub_8101A44: @ 8101A44
 _08101A7C: .4byte sub_810196C
 _08101A80: .4byte 0x04000208
 _08101A84: .4byte 0x04000200
-_08101A88: .4byte 0x04000004
+_08101A88: .4byte REG_DISPSTAT
 	thumb_func_end sub_8101A44
 
 	thumb_func_start sub_8101A8C
@@ -318,16 +318,16 @@ _08101B00: .4byte 0x81000200
 	thumb_func_start sub_8101B04
 sub_8101B04: @ 8101B04
 	push {r4,r5,lr}
-	ldr r5, _08101B70 @ =0x04000008
+	ldr r5, _08101B70 @ =REG_BG0CNT
 	movs r1, 0
 	strh r1, [r5]
-	ldr r2, _08101B74 @ =0x0400000a
+	ldr r2, _08101B74 @ =REG_BG1CNT
 	strh r1, [r2]
-	ldr r3, _08101B78 @ =0x0400000c
+	ldr r3, _08101B78 @ =REG_BG2CNT
 	strh r1, [r3]
-	ldr r4, _08101B7C @ =0x0400000e
+	ldr r4, _08101B7C @ =REG_BG3CNT
 	strh r1, [r4]
-	ldr r0, _08101B80 @ =0x04000010
+	ldr r0, _08101B80 @ =REG_BG0HOFS
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
@@ -355,12 +355,12 @@ sub_8101B04: @ 8101B04
 	ldr r1, _08101B90 @ =0x00001e02
 	adds r0, r1, 0
 	strh r0, [r4]
-	ldr r0, _08101B94 @ =0x04000048
+	ldr r0, _08101B94 @ =REG_WININ
 	movs r1, 0x3F
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
-	ldr r1, _08101B98 @ =0x04000050
+	ldr r1, _08101B98 @ =REG_BLDCNT
 	ldr r2, _08101B9C @ =0x00001048
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -372,17 +372,17 @@ sub_8101B04: @ 8101B04
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08101B70: .4byte 0x04000008
-_08101B74: .4byte 0x0400000a
-_08101B78: .4byte 0x0400000c
-_08101B7C: .4byte 0x0400000e
-_08101B80: .4byte 0x04000010
+_08101B70: .4byte REG_BG0CNT
+_08101B74: .4byte REG_BG1CNT
+_08101B78: .4byte REG_BG2CNT
+_08101B7C: .4byte REG_BG3CNT
+_08101B80: .4byte REG_BG0HOFS
 _08101B84: .4byte 0x00001f08
 _08101B88: .4byte 0x00001c01
 _08101B8C: .4byte 0x00001d02
 _08101B90: .4byte 0x00001e02
-_08101B94: .4byte 0x04000048
-_08101B98: .4byte 0x04000050
+_08101B94: .4byte REG_WININ
+_08101B98: .4byte REG_BLDCNT
 _08101B9C: .4byte 0x00001048
 _08101BA0: .4byte 0x00000809
 	thumb_func_end sub_8101B04
@@ -5884,7 +5884,7 @@ sub_810437C: @ 810437C
 	strh r2, [r0]
 	ldr r0, _081043E4 @ =gSpriteCoordOffsetY
 	strh r2, [r0]
-	ldr r0, _081043E8 @ =0x04000014
+	ldr r0, _081043E8 @ =REG_BG1HOFS
 	strh r2, [r0]
 	adds r0, 0x2
 	strh r2, [r0]
@@ -5907,7 +5907,7 @@ sub_810437C: @ 810437C
 _081043DC: .4byte 0x02000000
 _081043E0: .4byte gSpriteCoordOffsetX
 _081043E4: .4byte gSpriteCoordOffsetY
-_081043E8: .4byte 0x04000014
+_081043E8: .4byte REG_BG1HOFS
 	thumb_func_end sub_810437C
 
 	thumb_func_start sub_81043EC
@@ -5927,7 +5927,7 @@ sub_81043EC: @ 81043EC
 	movs r1, 0xFF
 	ands r0, r1
 	lsrs r3, r0, 3
-	ldr r1, _08104460 @ =0x04000014
+	ldr r1, _08104460 @ =REG_BG1HOFS
 	ldr r0, _08104464 @ =0x000001ff
 	ands r2, r0
 	strh r2, [r1]
@@ -5969,7 +5969,7 @@ _0810444A:
 	bx r0
 	.align 2, 0
 _0810445C: .4byte gSpriteCoordOffsetX
-_08104460: .4byte 0x04000014
+_08104460: .4byte REG_BG1HOFS
 _08104464: .4byte 0x000001ff
 	thumb_func_end sub_81043EC
 
@@ -6404,7 +6404,7 @@ sub_8104794: @ 8104794
 	movs r1, 0xFF
 	ands r0, r1
 	lsrs r4, r0, 3
-	ldr r1, _081047D8 @ =0x04000014
+	ldr r1, _081047D8 @ =REG_BG1HOFS
 	ldr r0, _081047DC @ =0x000001ff
 	ands r2, r0
 	strh r2, [r1]
@@ -6418,7 +6418,7 @@ sub_8104794: @ 8104794
 	b _081047E6
 	.align 2, 0
 _081047D4: .4byte gSpriteCoordOffsetX
-_081047D8: .4byte 0x04000014
+_081047D8: .4byte REG_BG1HOFS
 _081047DC: .4byte 0x000001ff
 _081047E0:
 	ldrh r0, [r3, 0x8]
@@ -6441,7 +6441,7 @@ sub_81047EC: @ 81047EC
 	strb r0, [r4, 0xA]
 	ldr r0, _08104838 @ =gSpriteCoordOffsetX
 	strh r6, [r0]
-	ldr r0, _0810483C @ =0x04000014
+	ldr r0, _0810483C @ =REG_BG1HOFS
 	strh r6, [r0]
 	movs r0, 0x8
 	strh r0, [r4, 0x1A]
@@ -6464,7 +6464,7 @@ sub_81047EC: @ 81047EC
 	.align 2, 0
 _08104834: .4byte 0x02000000
 _08104838: .4byte gSpriteCoordOffsetX
-_0810483C: .4byte 0x04000014
+_0810483C: .4byte REG_BG1HOFS
 _08104840: .4byte sub_810434C
 _08104844:
 	movs r0, 0x4
@@ -6600,7 +6600,7 @@ sub_8104940: @ 8104940
 	ldr r0, _081049B8 @ =gSpriteCoordOffsetY
 	ldrh r1, [r4, 0x10]
 	strh r1, [r0]
-	ldr r0, _081049BC @ =0x04000016
+	ldr r0, _081049BC @ =REG_BG1VOFS
 	strh r1, [r0]
 	ldrh r1, [r4, 0x12]
 	movs r0, 0x1
@@ -6655,7 +6655,7 @@ _081049B0:
 	bx r0
 	.align 2, 0
 _081049B8: .4byte gSpriteCoordOffsetY
-_081049BC: .4byte 0x04000016
+_081049BC: .4byte REG_BG1VOFS
 _081049C0: .4byte gSprites
 _081049C4: .4byte 0x02000000
 	thumb_func_end sub_8104940
@@ -6667,7 +6667,7 @@ sub_81049C8: @ 81049C8
 	ldr r0, _081049F0 @ =gSpriteCoordOffsetY
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _081049F4 @ =0x04000016
+	ldr r0, _081049F4 @ =REG_BG1VOFS
 	strh r1, [r0]
 	bl sub_8105ACC
 	lsls r0, 24
@@ -6683,7 +6683,7 @@ _081049EA:
 	bx r0
 	.align 2, 0
 _081049F0: .4byte gSpriteCoordOffsetY
-_081049F4: .4byte 0x04000016
+_081049F4: .4byte REG_BG1VOFS
 	thumb_func_end sub_81049C8
 
 	thumb_func_start sub_81049F8
@@ -6692,7 +6692,7 @@ sub_81049F8: @ 81049F8
 	ldr r0, _08104A30 @ =gSpriteCoordOffsetX
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _08104A34 @ =0x04000014
+	ldr r0, _08104A34 @ =REG_BG1HOFS
 	strh r1, [r0]
 	ldr r0, _08104A38 @ =0x02000000
 	adds r0, 0x60
@@ -6711,7 +6711,7 @@ sub_81049F8: @ 81049F8
 	bx r0
 	.align 2, 0
 _08104A30: .4byte gSpriteCoordOffsetX
-_08104A34: .4byte 0x04000014
+_08104A34: .4byte REG_BG1HOFS
 _08104A38: .4byte 0x02000000
 _08104A3C: .4byte sub_810434C
 	thumb_func_end sub_81049F8
@@ -9641,7 +9641,7 @@ _08105FAE:
 	adds r0, r4, 0
 	movs r1, 0x1
 	bl StartSpriteAnim
-	ldr r2, _08105FFC @ =0x0400004c
+	ldr r2, _08105FFC @ =REG_MOSAIC
 	ldrh r1, [r4, 0x30]
 	lsls r0, r1, 4
 	orrs r0, r1
@@ -9649,7 +9649,7 @@ _08105FAE:
 	strh r0, [r2]
 	b _0810604E
 	.align 2, 0
-_08105FFC: .4byte 0x0400004c
+_08105FFC: .4byte REG_MOSAIC
 _08106000:
 	ldrh r1, [r4, 0x32]
 	lsls r1, 16
@@ -9663,7 +9663,7 @@ _08106000:
 	movs r0, 0
 	strh r0, [r4, 0x30]
 _08106016:
-	ldr r2, _08106054 @ =0x0400004c
+	ldr r2, _08106054 @ =REG_MOSAIC
 	ldrh r1, [r4, 0x30]
 	lsls r0, r1, 4
 	orrs r0, r1
@@ -9695,7 +9695,7 @@ _0810604E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08106054: .4byte 0x0400004c
+_08106054: .4byte REG_MOSAIC
 	thumb_func_end sub_8105F9C
 
 	thumb_func_start sub_8106058
@@ -10115,12 +10115,12 @@ nullsub_70: @ 8106360
 
 	thumb_func_start sub_8106364
 sub_8106364: @ 8106364
-	ldr r1, _0810636C @ =0x0400004c
+	ldr r1, _0810636C @ =REG_MOSAIC
 	movs r0, 0
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_0810636C: .4byte 0x0400004c
+_0810636C: .4byte REG_MOSAIC
 	thumb_func_end sub_8106364
 
 	thumb_func_start sub_8106370

@@ -161,7 +161,7 @@ EvolutionScene: @ 8111984
 	lsls r1, 19
 	ldr r2, _08111C10 @ =0x05006000
 	bl CpuSet
-	ldr r0, _08111C14 @ =0x0400004c
+	ldr r0, _08111C14 @ =REG_MOSAIC
 	strh r5, [r0]
 	subs r0, 0xC
 	strh r5, [r0]
@@ -424,7 +424,7 @@ EvolutionScene: @ 8111984
 	bx r0
 	.align 2, 0
 _08111C10: .4byte 0x05006000
-_08111C14: .4byte 0x0400004c
+_08111C14: .4byte REG_MOSAIC
 _08111C18: .4byte gWindowConfig_81E6C58
 _08111C1C: .4byte gUnknown_030042A4
 _08111C20: .4byte gUnknown_030042A0
@@ -500,7 +500,7 @@ CB2_EvolutionSceneLoadGraphics: @ 8111C90
 	ldr r2, _08111E20 @ =0x05006000
 	add r0, sp, 0x8
 	bl CpuSet
-	ldr r0, _08111E24 @ =0x0400004c
+	ldr r0, _08111E24 @ =REG_MOSAIC
 	strh r5, [r0]
 	subs r0, 0xC
 	strh r5, [r0]
@@ -636,7 +636,7 @@ _08111E14: .4byte gTasks
 _08111E18: .4byte 0x02014800
 _08111E1C: .4byte gPlayerParty
 _08111E20: .4byte 0x05006000
-_08111E24: .4byte 0x0400004c
+_08111E24: .4byte REG_MOSAIC
 _08111E28: .4byte gWindowConfig_81E6C58
 _08111E2C: .4byte gUnknown_030042A4
 _08111E30: .4byte gUnknown_030042A0
@@ -6583,7 +6583,7 @@ HBlankCB_EvolutionScene: @ 8114FD0
 	thumb_func_start VBlankCB_EvolutionScene
 VBlankCB_EvolutionScene: @ 8114FD4
 	push {lr}
-	ldr r1, _08115034 @ =0x04000008
+	ldr r1, _08115034 @ =REG_BG0CNT
 	ldr r2, _08115038 @ =0x00009803
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -6626,7 +6626,7 @@ VBlankCB_EvolutionScene: @ 8114FD4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08115034: .4byte 0x04000008
+_08115034: .4byte REG_BG0CNT
 _08115038: .4byte 0x00009803
 _0811503C: .4byte gUnknown_030042A4
 _08115040: .4byte gUnknown_030042A0
@@ -6641,7 +6641,7 @@ _08115058: .4byte gUnknown_030041B8
 	thumb_func_start VBlankCB_TradeEvolutionScene
 VBlankCB_TradeEvolutionScene: @ 811505C
 	push {lr}
-	ldr r1, _081150B4 @ =0x04000010
+	ldr r1, _081150B4 @ =REG_BG0HOFS
 	ldr r0, _081150B8 @ =gUnknown_030042A4
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -6680,7 +6680,7 @@ VBlankCB_TradeEvolutionScene: @ 811505C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_081150B4: .4byte 0x04000010
+_081150B4: .4byte REG_BG0HOFS
 _081150B8: .4byte gUnknown_030042A4
 _081150BC: .4byte gUnknown_030042A0
 _081150C0: .4byte gUnknown_030042C0

@@ -121,14 +121,14 @@ sub_80B5AB8: @ 80B5AB8
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r1, _080B5B00 @ =0x04000016
+	ldr r1, _080B5B00 @ =REG_BG1VOFS
 	ldr r4, _080B5B04 @ =0x02000000
 	ldrh r0, [r4, 0x4]
 	strh r0, [r1]
 	adds r1, 0x4
 	ldrh r0, [r4, 0x6]
 	strh r0, [r1]
-	ldr r2, _080B5B08 @ =0x0400000a
+	ldr r2, _080B5B08 @ =REG_BG1CNT
 	ldrh r1, [r2]
 	ldr r3, _080B5B0C @ =0x0000fffc
 	adds r0, r3, 0
@@ -150,9 +150,9 @@ sub_80B5AB8: @ 80B5AB8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B5B00: .4byte 0x04000016
+_080B5B00: .4byte REG_BG1VOFS
 _080B5B04: .4byte 0x02000000
-_080B5B08: .4byte 0x0400000a
+_080B5B08: .4byte REG_BG1CNT
 _080B5B0C: .4byte 0x0000fffc
 	thumb_func_end sub_80B5AB8
 
@@ -294,7 +294,7 @@ sub_80B5C04: @ 80B5C04
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _080B5C48 @ =0x04000004
+	ldr r2, _080B5C48 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -312,7 +312,7 @@ sub_80B5C04: @ 80B5C04
 _080B5C3C: .4byte sub_80B5AB8
 _080B5C40: .4byte 0x04000208
 _080B5C44: .4byte 0x04000200
-_080B5C48: .4byte 0x04000004
+_080B5C48: .4byte REG_DISPSTAT
 	thumb_func_end sub_80B5C04
 
 	thumb_func_start NamingScreen_ClearVram
@@ -385,16 +385,16 @@ _080B5CC0: .4byte 0x81000200
 	thumb_func_start NamingScreen_SetUpVideoRegs
 NamingScreen_SetUpVideoRegs: @ 80B5CC4
 	push {r4,r5,lr}
-	ldr r5, _080B5D2C @ =0x04000008
+	ldr r5, _080B5D2C @ =REG_BG0CNT
 	movs r1, 0
 	strh r1, [r5]
-	ldr r2, _080B5D30 @ =0x0400000a
+	ldr r2, _080B5D30 @ =REG_BG1CNT
 	strh r1, [r2]
-	ldr r3, _080B5D34 @ =0x0400000c
+	ldr r3, _080B5D34 @ =REG_BG2CNT
 	strh r1, [r3]
-	ldr r4, _080B5D38 @ =0x0400000e
+	ldr r4, _080B5D38 @ =REG_BG3CNT
 	strh r1, [r4]
-	ldr r0, _080B5D3C @ =0x04000010
+	ldr r0, _080B5D3C @ =REG_BG0HOFS
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
@@ -423,7 +423,7 @@ NamingScreen_SetUpVideoRegs: @ 80B5CC4
 	ldr r1, _080B5D48 @ =0x00001e03
 	adds r0, r1, 0
 	strh r0, [r4]
-	ldr r1, _080B5D4C @ =0x04000050
+	ldr r1, _080B5D4C @ =REG_BLDCNT
 	movs r2, 0xC8
 	lsls r2, 3
 	adds r0, r2, 0
@@ -436,15 +436,15 @@ NamingScreen_SetUpVideoRegs: @ 80B5CC4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B5D2C: .4byte 0x04000008
-_080B5D30: .4byte 0x0400000a
-_080B5D34: .4byte 0x0400000c
-_080B5D38: .4byte 0x0400000e
-_080B5D3C: .4byte 0x04000010
+_080B5D2C: .4byte REG_BG0CNT
+_080B5D30: .4byte REG_BG1CNT
+_080B5D34: .4byte REG_BG2CNT
+_080B5D38: .4byte REG_BG3CNT
+_080B5D3C: .4byte REG_BG0HOFS
 _080B5D40: .4byte 0x00001c01
 _080B5D44: .4byte 0x00001d0a
 _080B5D48: .4byte 0x00001e03
-_080B5D4C: .4byte 0x04000050
+_080B5D4C: .4byte REG_BLDCNT
 _080B5D50: .4byte 0x0000080c
 	thumb_func_end NamingScreen_SetUpVideoRegs
 

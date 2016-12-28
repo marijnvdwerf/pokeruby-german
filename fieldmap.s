@@ -858,7 +858,7 @@ save_serialize_map: @ 80565A4
 	mov r7, r9
 	mov r6, r8
 	push {r6,r7}
-	ldr r5, _0805660C @ =0x02025768
+	ldr r5, _0805660C @ =gSaveBlock1 + 0x34
 	ldr r0, _08056610 @ =gUnknown_03004870
 	ldr r0, [r0]
 	mov r8, r0
@@ -910,7 +910,7 @@ _080565FE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805660C: .4byte 0x02025768
+_0805660C: .4byte gSaveBlock1 + 0x34
 _08056610: .4byte gUnknown_03004870
 _08056614: .4byte 0x02029828
 	thumb_func_end save_serialize_map
@@ -920,7 +920,7 @@ sub_8056618: @ 8056618
 	push {r4,lr}
 	movs r2, 0
 	movs r1, 0
-	ldr r4, _0805663C @ =0x02025768
+	ldr r4, _0805663C @ =gSaveBlock1 + 0x34
 	ldr r3, _08056640 @ =0x000001ff
 _08056622:
 	lsls r0, r1, 1
@@ -937,7 +937,7 @@ _08056622:
 	movs r0, 0
 	b _08056646
 	.align 2, 0
-_0805663C: .4byte 0x02025768
+_0805663C: .4byte gSaveBlock1 + 0x34
 _08056640: .4byte 0x000001ff
 _08056644:
 	movs r0, 0x1
@@ -954,7 +954,7 @@ sav2_mapdata_clear: @ 805664C
 	mov r1, sp
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _08056668 @ =0x02025768
+	ldr r1, _08056668 @ =gSaveBlock1 + 0x34
 	ldr r2, _0805666C @ =0x01000100
 	mov r0, sp
 	bl CpuSet
@@ -962,7 +962,7 @@ sav2_mapdata_clear: @ 805664C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056668: .4byte 0x02025768
+_08056668: .4byte gSaveBlock1 + 0x34
 _0805666C: .4byte 0x01000100
 	thumb_func_end sav2_mapdata_clear
 
@@ -972,7 +972,7 @@ sub_8056670: @ 8056670
 	mov r7, r9
 	mov r6, r8
 	push {r6,r7}
-	ldr r5, _080566E4 @ =0x02025768
+	ldr r5, _080566E4 @ =gSaveBlock1 + 0x34
 	bl sub_8056618
 	cmp r0, 0
 	bne _080566D6
@@ -1029,7 +1029,7 @@ _080566D6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080566E4: .4byte 0x02025768
+_080566E4: .4byte gSaveBlock1 + 0x34
 _080566E8: .4byte gUnknown_03004870
 _080566EC: .4byte 0x02029828
 	thumb_func_end sub_8056670
@@ -1045,7 +1045,7 @@ sub_80566F0: @ 80566F0
 	lsls r0, 24
 	lsrs r1, r0, 24
 	adds r2, r1, 0
-	ldr r0, _08056734 @ =0x02025768
+	ldr r0, _08056734 @ =gSaveBlock1 + 0x34
 	mov r10, r0
 	ldr r0, _08056738 @ =gUnknown_03004870
 	ldr r0, [r0]
@@ -1071,7 +1071,7 @@ sub_80566F0: @ 80566F0
 	beq _0805674E
 	b _08056766
 	.align 2, 0
-_08056734: .4byte 0x02025768
+_08056734: .4byte gSaveBlock1 + 0x34
 _08056738: .4byte gUnknown_03004870
 _0805673C:
 	cmp r2, 0x3

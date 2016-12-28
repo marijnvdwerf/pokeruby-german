@@ -181,7 +181,7 @@ _0814A6F2:
 	ands r0, r1
 	cmp r0, 0
 	bne _0814A70C
-	ldr r0, _0814A744 @ =0x0400004a
+	ldr r0, _0814A744 @ =REG_WINOUT
 	ldrb r1, [r0]
 	movs r2, 0x1F
 	orrs r1, r2
@@ -215,7 +215,7 @@ _0814A72C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0814A744: .4byte 0x0400004a
+_0814A744: .4byte REG_WINOUT
 _0814A748: .4byte gUnknown_0203A3D3
 _0814A74C: .4byte gUnknown_0203A3D4
 _0814A750: .4byte 0x0400004b

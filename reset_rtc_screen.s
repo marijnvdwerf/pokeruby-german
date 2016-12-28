@@ -648,7 +648,7 @@ Task_ResetRtc_1: @ 806A958
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r7, r0, 3
-	ldr r0, _0806A99C @ =0x03004b38
+	ldr r0, _0806A99C @ =gTasks + 0x8
 	mov r8, r0
 	adds r5, r7, r0
 	ldrb r4, [r5, 0x4]
@@ -674,7 +674,7 @@ Task_ResetRtc_1: @ 806A958
 	movs r0, 0x6
 	b _0806A9CC
 	.align 2, 0
-_0806A99C: .4byte 0x03004b38
+_0806A99C: .4byte gTasks + 0x8
 _0806A9A0: .4byte gUnknown_08376414
 _0806A9A4: .4byte gMain
 _0806A9A8: .4byte Task_ResetRtc_2
@@ -781,7 +781,7 @@ Task_ResetRtc_0: @ 806AA64
 	lsls r6, r5, 2
 	adds r6, r5
 	lsls r6, 3
-	ldr r0, _0806AACC @ =0x03004b38
+	ldr r0, _0806AACC @ =gTasks + 0x8
 	mov r8, r0
 	adds r4, r6, r0
 	movs r0, 0
@@ -823,7 +823,7 @@ Task_ResetRtc_0: @ 806AA64
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806AACC: .4byte 0x03004b38
+_0806AACC: .4byte gTasks + 0x8
 _0806AAD0: .4byte gLocalTime
 _0806AAD4: .4byte Task_ResetRtc_1
 	thumb_func_end Task_ResetRtc_0
@@ -965,7 +965,7 @@ Task_ShowResetRtcPrompt: @ 806ABF4
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _0806AC14 @ =0x03004b38
+	ldr r1, _0806AC14 @ =gTasks + 0x8
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
@@ -975,7 +975,7 @@ Task_ShowResetRtcPrompt: @ 806ABF4
 	beq _0806AC80
 	b _0806ACC4
 	.align 2, 0
-_0806AC14: .4byte 0x03004b38
+_0806AC14: .4byte gTasks + 0x8
 _0806AC18:
 	bl MenuZeroFillScreen
 	movs r0, 0
@@ -1065,7 +1065,7 @@ Task_ResetRtcScreen: @ 806ACCC
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _0806ACF4 @ =0x03004b38
+	ldr r1, _0806ACF4 @ =gTasks + 0x8
 	adds r5, r0, r1
 	movs r1, 0
 	ldrsh r0, [r5, r1]
@@ -1079,7 +1079,7 @@ _0806ACE8:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806ACF4: .4byte 0x03004b38
+_0806ACF4: .4byte gTasks + 0x8
 _0806ACF8: .4byte _0806ACFC
 	.align 2, 0
 _0806ACFC:

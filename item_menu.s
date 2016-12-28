@@ -24,7 +24,7 @@ sub_80A3134: @ 80A3134
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r1, _080A3168 @ =0x020219cc
+	ldr r1, _080A3168 @ =gBGTilemapBuffers + 0x800
 	ldr r2, _080A316C @ =0x06002000
 	ldr r0, _080A3170 @ =0x040000d4
 	str r1, [r0]
@@ -43,7 +43,7 @@ sub_80A3134: @ 80A3134
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A3168: .4byte 0x020219cc
+_080A3168: .4byte gBGTilemapBuffers + 0x800
 _080A316C: .4byte 0x06002000
 _080A3170: .4byte 0x040000d4
 _080A3174: .4byte 0x80000400
@@ -230,7 +230,7 @@ _080A3328:
 	ldr r1, _080A3378 @ =gUnknown_0203855A
 	movs r0, 0x10
 	strb r0, [r1]
-	ldr r4, _080A337C @ =0x020221cc
+	ldr r4, _080A337C @ =gBGTilemapBuffers + 0x1000
 	ldr r5, _080A3380 @ =gUnknown_02038559
 	ldrb r1, [r5]
 	adds r1, 0x1
@@ -261,7 +261,7 @@ _080A3328:
 	b _080A3464
 	.align 2, 0
 _080A3378: .4byte gUnknown_0203855A
-_080A337C: .4byte 0x020221cc
+_080A337C: .4byte gBGTilemapBuffers + 0x1000
 _080A3380: .4byte gUnknown_02038559
 _080A3384: .4byte gBagPockets
 _080A3388: .4byte gUnknown_03005D24
@@ -324,7 +324,7 @@ _080A3404:
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _080A344C @ =0x04000004
+	ldr r2, _080A344C @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -348,7 +348,7 @@ _080A3404:
 	.align 2, 0
 _080A3444: .4byte 0x04000208
 _080A3448: .4byte 0x04000200
-_080A344C: .4byte 0x04000004
+_080A344C: .4byte REG_DISPSTAT
 _080A3450: .4byte gPaletteFade
 _080A3454: .4byte gMain
 _080A3458: .4byte 0x0000043c
@@ -425,7 +425,7 @@ _080A34E4: .4byte gUnknown_03000700
 sub_80A34E8: @ 80A34E8
 	push {lr}
 	bl sub_80F9368
-	ldr r1, _080A3514 @ =0x0400000c
+	ldr r1, _080A3514 @ =REG_BG2CNT
 	ldr r2, _080A3518 @ =0x00000c06
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -444,7 +444,7 @@ sub_80A34E8: @ 80A34E8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A3514: .4byte 0x0400000c
+_080A3514: .4byte REG_BG2CNT
 _080A3518: .4byte 0x00000c06
 _080A351C: .4byte 0x00000405
 	thumb_func_end sub_80A34E8
@@ -486,14 +486,14 @@ _080A3568: .4byte gBagScreen_Gfx
 _080A356C: .4byte 0x06004000
 _080A3570:
 	ldr r0, _080A3580 @ =gUnknown_08E77004
-	ldr r1, _080A3584 @ =0x020221cc
+	ldr r1, _080A3584 @ =gBGTilemapBuffers + 0x1000
 	movs r2, 0x80
 	lsls r2, 3
 	bl CpuSet
 	b _080A35EA
 	.align 2, 0
 _080A3580: .4byte gUnknown_08E77004
-_080A3584: .4byte 0x020221cc
+_080A3584: .4byte gBGTilemapBuffers + 0x1000
 _080A3588:
 	ldr r0, _080A35A4 @ =gSaveBlock2
 	ldrb r0, [r0, 0x8]
@@ -837,7 +837,7 @@ sub_80A37F8: @ 80A37F8
 	bhi _080A3868
 	adds r0, r5, 0x1
 	strb r0, [r6]
-	ldr r4, _080A3858 @ =0x020221cc
+	ldr r4, _080A3858 @ =gBGTilemapBuffers + 0x1000
 	ldrb r2, [r6]
 	adds r0, r4, 0
 	adds r1, r5, 0
@@ -873,7 +873,7 @@ sub_80A37F8: @ 80A37F8
 	b _080A3932
 	.align 2, 0
 _080A3854: .4byte gUnknown_0203855A
-_080A3858: .4byte 0x020221cc
+_080A3858: .4byte gBGTilemapBuffers + 0x1000
 _080A385C: .4byte gUnknown_02038559
 _080A3860: .4byte gTasks
 _080A3864: .4byte gUnknown_02038558
@@ -2021,7 +2021,7 @@ sub_80A40D0: @ 80A40D0
 	ldrb r0, [r0, 0x2]
 	cmp r1, r0
 	beq _080A4136
-	ldr r5, _080A411C @ =0x02025bca
+	ldr r5, _080A411C @ =gSaveBlock1 + 0x496
 _080A40EE:
 	movs r0, 0
 	ldrsb r0, [r6, r0]
@@ -2043,7 +2043,7 @@ _080A40EE:
 	.align 2, 0
 _080A4114: .4byte gUnknown_03005D10
 _080A4118: .4byte gUnknown_02038559
-_080A411C: .4byte 0x02025bca
+_080A411C: .4byte gSaveBlock1 + 0x496
 _080A4120: .4byte gUnknown_03005D24
 _080A4124:
 	adds r0, r4, 0x1
@@ -2477,11 +2477,11 @@ sub_80A444C: @ 80A444C
 	mov r10, r0
 	lsls r1, 24
 	lsrs r6, r1, 24
-	ldr r0, _080A446C @ =0x02025bca
+	ldr r0, _080A446C @ =gSaveBlock1 + 0x496
 	mov r9, r0
 	b _080A4520
 	.align 2, 0
-_080A446C: .4byte 0x02025bca
+_080A446C: .4byte gSaveBlock1 + 0x496
 _080A4470:
 	ldr r1, _080A44E8 @ =gUnknown_03005D10
 	ldr r0, _080A44EC @ =gUnknown_02038559
@@ -2601,11 +2601,11 @@ sub_80A4548: @ 80A4548
 	lsls r1, 24
 	lsrs r1, 24
 	mov r8, r1
-	ldr r0, _080A456C @ =0x020221cc
+	ldr r0, _080A456C @ =gBGTilemapBuffers + 0x1000
 	mov r9, r0
 	b _080A46C2
 	.align 2, 0
-_080A456C: .4byte 0x020221cc
+_080A456C: .4byte gBGTilemapBuffers + 0x1000
 _080A4570:
 	ldr r1, _080A461C @ =gUnknown_03005D10
 	ldr r0, _080A4620 @ =gUnknown_02038559
@@ -2809,7 +2809,7 @@ sub_80A46FC: @ 80A46FC
 	str r0, [sp, 0x4]
 	lsls r1, 24
 	lsrs r6, r1, 24
-	ldr r0, _080A4724 @ =0x020221cc
+	ldr r0, _080A4724 @ =gBGTilemapBuffers + 0x1000
 	mov r10, r0
 	ldr r1, _080A4728 @ =gStringVar2
 	mov r9, r1
@@ -2817,7 +2817,7 @@ sub_80A46FC: @ 80A46FC
 	mov r8, r0
 	b _080A47B4
 	.align 2, 0
-_080A4724: .4byte 0x020221cc
+_080A4724: .4byte gBGTilemapBuffers + 0x1000
 _080A4728: .4byte gStringVar2
 _080A472C: .4byte gUnknown_03005D24
 _080A4730:
@@ -3718,7 +3718,7 @@ sub_80A4DD8: @ 80A4DD8
 	lsrs r3, 24
 	adds r0, r4, 0
 	bl MenuDrawTextWindow
-	ldr r0, _080A4E88 @ =0x020219cc
+	ldr r0, _080A4E88 @ =gBGTilemapBuffers + 0x800
 	adds r4, 0x1
 	lsls r4, 24
 	lsrs r4, 24
@@ -3757,7 +3757,7 @@ sub_80A4DD8: @ 80A4DD8
 	bx r0
 	.align 2, 0
 _080A4E84: .4byte gTasks
-_080A4E88: .4byte 0x020219cc
+_080A4E88: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80A4DD8
 
 	thumb_func_start sub_80A4E8C
@@ -3791,7 +3791,7 @@ sub_80A4E8C: @ 80A4E8C
 	bl sub_80F996C
 	movs r0, 0x3
 	bl sub_80F996C
-	ldr r5, _080A4F04 @ =0x020221cc
+	ldr r5, _080A4F04 @ =gBGTilemapBuffers + 0x1000
 	lsls r4, 24
 	asrs r4, 24
 	adds r0, r5, 0
@@ -3809,7 +3809,7 @@ sub_80A4E8C: @ 80A4E8C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A4F04: .4byte 0x020221cc
+_080A4F04: .4byte gBGTilemapBuffers + 0x1000
 _080A4F08: .4byte gUnknown_02038559
 	thumb_func_end sub_80A4E8C
 
@@ -4046,7 +4046,7 @@ sub_80A50C8: @ 80A50C8
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _080A5148 @ =0x03004b38
+	ldr r1, _080A5148 @ =gTasks + 0x8
 	adds r5, r0, r1
 	ldr r0, _080A514C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
@@ -4104,7 +4104,7 @@ _080A5138:
 	bl sub_80A3F50
 	b _080A526A
 	.align 2, 0
-_080A5148: .4byte 0x03004b38
+_080A5148: .4byte gTasks + 0x8
 _080A514C: .4byte gPaletteFade
 _080A5150: .4byte gMain
 _080A5154: .4byte gUnknown_02038559
@@ -4283,7 +4283,7 @@ sub_80A52C4: @ 80A52C4
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080A52F4 @ =0x03004b38
+	ldr r0, _080A52F4 @ =gTasks + 0x8
 	adds r1, r0
 	ldr r0, _080A52F8 @ =gMain
 	ldrh r0, [r0, 0x30]
@@ -4299,7 +4299,7 @@ sub_80A52C4: @ 80A52C4
 	adds r0, 0x1
 	b _080A5340
 	.align 2, 0
-_080A52F4: .4byte 0x03004b38
+_080A52F4: .4byte gTasks + 0x8
 _080A52F8: .4byte gMain
 _080A52FC:
 	cmp r2, 0x80
@@ -4363,7 +4363,7 @@ sub_80A5350: @ 80A5350
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r2, _080A539C @ =0x03004b38
+	ldr r2, _080A539C @ =gTasks + 0x8
 	adds r4, r1, r2
 	ldr r1, _080A53A0 @ =gUnknown_02038560
 	ldrb r1, [r1]
@@ -4392,7 +4392,7 @@ sub_80A5350: @ 80A5350
 	bl sub_80A418C
 	b _080A53BC
 	.align 2, 0
-_080A539C: .4byte 0x03004b38
+_080A539C: .4byte gTasks + 0x8
 _080A53A0: .4byte gUnknown_02038560
 _080A53A4: .4byte gUnknown_03005D24
 _080A53A8: .4byte gUnknown_02038559
@@ -4594,7 +4594,7 @@ _080A5500:
 	adds r0, r4, 0
 	adds r1, r2, 0
 	bl sub_80A48E8
-	ldr r0, _080A557C @ =0x020219cc
+	ldr r0, _080A557C @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	ldr r1, _080A5580 @ =gUnknown_083C1640
 	ldr r0, _080A5584 @ =gUnknown_03000704
@@ -4624,7 +4624,7 @@ _080A5552:
 _080A5570: .4byte gTasks
 _080A5574: .4byte gUnknown_03005D10
 _080A5578: .4byte gUnknown_02038559
-_080A557C: .4byte 0x020219cc
+_080A557C: .4byte gBGTilemapBuffers + 0x800
 _080A5580: .4byte gUnknown_083C1640
 _080A5584: .4byte gUnknown_03000704
 _080A5588: .4byte gUnknown_03000701
@@ -4636,7 +4636,7 @@ _080A5590:
 	lsls r0, 3
 	adds r0, r1
 	strh r5, [r0, 0x1C]
-	ldr r0, _080A55C4 @ =0x020219cc
+	ldr r0, _080A55C4 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	ldr r1, _080A55C8 @ =gUnknown_083C1640
 	ldr r0, _080A55CC @ =gUnknown_03000700
@@ -4654,7 +4654,7 @@ _080A5590:
 	b _080A5552
 	.align 2, 0
 _080A55C0: .4byte gTasks
-_080A55C4: .4byte 0x020219cc
+_080A55C4: .4byte gBGTilemapBuffers + 0x800
 _080A55C8: .4byte gUnknown_083C1640
 _080A55CC: .4byte gUnknown_03000700
 _080A55D0: .4byte gUnknown_03000704
@@ -4821,7 +4821,7 @@ _080A56E4:
 	adds r0, r4, 0
 	adds r1, r2, 0
 	bl sub_80A48E8
-	ldr r0, _080A5758 @ =0x020219cc
+	ldr r0, _080A5758 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	ldr r1, _080A575C @ =gUnknown_083C1640
 	ldr r0, _080A5760 @ =gUnknown_03000704
@@ -4847,7 +4847,7 @@ _080A5736:
 _080A574C: .4byte gTasks
 _080A5750: .4byte gUnknown_03005D10
 _080A5754: .4byte gUnknown_02038559
-_080A5758: .4byte 0x020219cc
+_080A5758: .4byte gBGTilemapBuffers + 0x800
 _080A575C: .4byte gUnknown_083C1640
 _080A5760: .4byte gUnknown_03000704
 _080A5764: .4byte gUnknown_03000700
@@ -4858,7 +4858,7 @@ _080A5768:
 	lsls r0, 3
 	adds r0, r1
 	strh r5, [r0, 0x1C]
-	ldr r0, _080A579C @ =0x020219cc
+	ldr r0, _080A579C @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	ldr r1, _080A57A0 @ =gUnknown_083C1640
 	ldr r0, _080A57A4 @ =gUnknown_03000700
@@ -4876,7 +4876,7 @@ _080A5768:
 	b _080A5736
 	.align 2, 0
 _080A5798: .4byte gTasks
-_080A579C: .4byte 0x020219cc
+_080A579C: .4byte gBGTilemapBuffers + 0x800
 _080A57A0: .4byte gUnknown_083C1640
 _080A57A4: .4byte gUnknown_03000700
 _080A57A8: .4byte gUnknown_03000704
@@ -4947,7 +4947,7 @@ _080A5824:
 	movs r5, 0x7
 _080A582C:
 	adds r6, r1, 0
-	ldr r0, _080A5884 @ =0x020219cc
+	ldr r0, _080A5884 @ =gBGTilemapBuffers + 0x800
 	adds r4, r5, 0x1
 	ldrb r1, [r6]
 	lsls r1, 25
@@ -4985,7 +4985,7 @@ _080A582C:
 	bx r0
 	.align 2, 0
 _080A5880: .4byte gUnknown_02038564
-_080A5884: .4byte 0x020219cc
+_080A5884: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80A57C4
 
 	thumb_func_start sub_80A5888
@@ -5062,7 +5062,7 @@ _080A58F4:
 	adds r0, r4, 0
 	adds r1, r2, 0
 	bl sub_80A48E8
-	ldr r0, _080A5954 @ =0x020219cc
+	ldr r0, _080A5954 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	ldr r1, _080A5958 @ =gUnknown_083C1640
 	ldr r0, _080A595C @ =gUnknown_03000700
@@ -5082,7 +5082,7 @@ _080A58F4:
 _080A5948: .4byte gTasks
 _080A594C: .4byte gUnknown_03005D10
 _080A5950: .4byte gUnknown_02038559
-_080A5954: .4byte 0x020219cc
+_080A5954: .4byte gBGTilemapBuffers + 0x800
 _080A5958: .4byte gUnknown_083C1640
 _080A595C: .4byte gUnknown_03000700
 _080A5960: .4byte gUnknown_03000704
@@ -5097,7 +5097,7 @@ _080A5964:
 	lsls r0, 3
 	adds r0, r1
 	strh r2, [r0, 0x1C]
-	ldr r0, _080A5994 @ =0x020219cc
+	ldr r0, _080A5994 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	ldr r0, _080A5998 @ =gUnknown_083C1640
 	ldr r1, [r0, 0x14]
@@ -5109,7 +5109,7 @@ _080A5988:
 	bx r0
 	.align 2, 0
 _080A5990: .4byte gTasks
-_080A5994: .4byte 0x020219cc
+_080A5994: .4byte gBGTilemapBuffers + 0x800
 _080A5998: .4byte gUnknown_083C1640
 	thumb_func_end sub_80A5888
 
@@ -5200,7 +5200,7 @@ _080A5A48: .4byte gUnknown_03005D10
 _080A5A4C: .4byte gUnknown_02038559
 _080A5A50: .4byte sub_80A5888
 _080A5A54:
-	ldr r0, _080A5A7C @ =0x020219cc
+	ldr r0, _080A5A7C @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4BF0
 	ldr r0, _080A5A80 @ =gUnknown_02038559
 	ldrb r0, [r0]
@@ -5220,7 +5220,7 @@ _080A5A6E:
 	ldr r0, _080A5A8C @ =sub_80A5414
 	b _080A5A9A
 	.align 2, 0
-_080A5A7C: .4byte 0x020219cc
+_080A5A7C: .4byte gBGTilemapBuffers + 0x800
 _080A5A80: .4byte gUnknown_02038559
 _080A5A84: .4byte gUnknown_03000701
 _080A5A88: .4byte gTasks
@@ -5295,7 +5295,7 @@ sub_80A5B00: @ 80A5B00
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _080A5B38 @ =0x03004b38
+	ldr r1, _080A5B38 @ =gTasks + 0x8
 	adds r2, r0, r1
 	ldr r0, _080A5B3C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
@@ -5316,7 +5316,7 @@ _080A5B32:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A5B38: .4byte 0x03004b38
+_080A5B38: .4byte gTasks + 0x8
 _080A5B3C: .4byte gPaletteFade
 	thumb_func_end sub_80A5B00
 
@@ -5457,7 +5457,7 @@ sub_80A5C48: @ 80A5C48
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _080A5C90 @ =0x020219cc
+	ldr r0, _080A5C90 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x1F
 	str r1, [sp]
 	movs r1, 0
@@ -5486,7 +5486,7 @@ sub_80A5C48: @ 80A5C48
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A5C90: .4byte 0x020219cc
+_080A5C90: .4byte gBGTilemapBuffers + 0x800
 _080A5C94: .4byte gTasks
 _080A5C98: .4byte sub_80A5C24
 	thumb_func_end sub_80A5C48
@@ -5588,7 +5588,7 @@ sub_80A5D38: @ 80A5D38
 	adds r0, r1
 	movs r1, 0
 	strh r1, [r0, 0xA]
-	ldr r0, _080A5D74 @ =0x020219cc
+	ldr r0, _080A5D74 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	movs r0, 0
 	bl sub_80A7528
@@ -5602,14 +5602,14 @@ sub_80A5D38: @ 80A5D38
 	bx r0
 	.align 2, 0
 _080A5D70: .4byte gTasks
-_080A5D74: .4byte 0x020219cc
+_080A5D74: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80A5D38
 
 	thumb_func_start sub_80A5D78
 sub_80A5D78: @ 80A5D78
 	push {lr}
 	sub sp, 0x4
-	ldr r0, _080A5D9C @ =0x020219cc
+	ldr r0, _080A5D9C @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x4
 	str r1, [sp]
 	movs r1, 0x8
@@ -5624,7 +5624,7 @@ sub_80A5D78: @ 80A5D78
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A5D9C: .4byte 0x020219cc
+_080A5D9C: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80A5D78
 
 	thumb_func_start sub_80A5DA0
@@ -5654,7 +5654,7 @@ _080A5DCC:
 	movs r3, 0x2
 	bl ConvertIntToDecimalStringN
 _080A5DD8:
-	ldr r0, _080A5DF4 @ =0x020219cc
+	ldr r0, _080A5DF4 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	movs r0, 0x5
 	bl sub_80A7528
@@ -5664,13 +5664,13 @@ _080A5DD8:
 	bx r0
 	.align 2, 0
 _080A5DF0: .4byte gStringVar2
-_080A5DF4: .4byte 0x020219cc
+_080A5DF4: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80A5DA0
 
 	thumb_func_start sub_80A5DF8
 sub_80A5DF8: @ 80A5DF8
 	push {lr}
-	ldr r0, _080A5E18 @ =0x020219cc
+	ldr r0, _080A5E18 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	movs r0, 0x7
 	movs r1, 0x6
@@ -5682,7 +5682,7 @@ sub_80A5DF8: @ 80A5DF8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A5E18: .4byte 0x020219cc
+_080A5E18: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80A5DF8
 
 	thumb_func_start sub_80A5E1C
@@ -5950,7 +5950,7 @@ sub_80A6024: @ 80A6024
 	ands r0, r1
 	cmp r0, 0
 	beq _080A6062
-	ldr r0, _080A6070 @ =0x020219cc
+	ldr r0, _080A6070 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x1F
 	str r1, [sp]
 	movs r1, 0
@@ -5976,7 +5976,7 @@ _080A6062:
 	bx r0
 	.align 2, 0
 _080A606C: .4byte gMain
-_080A6070: .4byte 0x020219cc
+_080A6070: .4byte gBGTilemapBuffers + 0x800
 _080A6074: .4byte gTasks
 _080A6078: .4byte sub_80A6000
 	thumb_func_end sub_80A6024
@@ -6437,7 +6437,7 @@ sub_80A6444: @ 80A6444
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _080A6480 @ =0x020219cc
+	ldr r0, _080A6480 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x1F
 	str r1, [sp]
 	movs r1, 0
@@ -6461,7 +6461,7 @@ sub_80A6444: @ 80A6444
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A6480: .4byte 0x020219cc
+_080A6480: .4byte gBGTilemapBuffers + 0x800
 _080A6484: .4byte gTasks
 _080A6488: .4byte sub_80A640C
 	thumb_func_end sub_80A6444
@@ -6479,7 +6479,7 @@ sub_80A648C: @ 80A648C
 	adds r4, r1
 	ldr r0, _080A64EC @ =Task_BuyHowManyDialogueHandleInput
 	str r0, [r4]
-	ldr r0, _080A64F0 @ =0x020219cc
+	ldr r0, _080A64F0 @ =gBGTilemapBuffers + 0x800
 	movs r5, 0x2
 	str r5, [sp]
 	movs r1, 0x1
@@ -6513,7 +6513,7 @@ sub_80A648C: @ 80A648C
 	.align 2, 0
 _080A64E8: .4byte gTasks
 _080A64EC: .4byte Task_BuyHowManyDialogueHandleInput
-_080A64F0: .4byte 0x020219cc
+_080A64F0: .4byte gBGTilemapBuffers + 0x800
 _080A64F4: .4byte gUnknown_02038559
 _080A64F8:
 	str r5, [sp]
@@ -6622,7 +6622,7 @@ sub_80A65AC: @ 80A65AC
 	movs r2, 0xD
 	movs r3, 0xC
 	bl MenuZeroFillWindowRect
-	ldr r0, _080A6600 @ =0x020219cc
+	ldr r0, _080A6600 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x6
 	str r1, [sp]
 	movs r1, 0x7
@@ -6649,7 +6649,7 @@ sub_80A65AC: @ 80A65AC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A6600: .4byte 0x020219cc
+_080A6600: .4byte gBGTilemapBuffers + 0x800
 _080A6604: .4byte gScriptItemId
 _080A6608: .4byte gStringVar2
 _080A660C: .4byte gStringVar4
@@ -6669,7 +6669,7 @@ sub_80A6618: @ 80A6618
 	movs r2, 0xD
 	movs r3, 0xC
 	bl MenuZeroFillWindowRect
-	ldr r0, _080A664C @ =0x020219cc
+	ldr r0, _080A664C @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x6
 	str r1, [sp]
 	movs r1, 0x7
@@ -6683,7 +6683,7 @@ sub_80A6618: @ 80A6618
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A664C: .4byte 0x020219cc
+_080A664C: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80A6618
 
 	thumb_func_start sub_80A6650
@@ -6748,7 +6748,7 @@ _080A66B4:
 	movs r2, 0xD
 	movs r3, 0xD
 	bl MenuZeroFillWindowRect
-	ldr r0, _080A6728 @ =0x020219cc
+	ldr r0, _080A6728 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x3
 	str r1, [sp]
 	movs r1, 0
@@ -6785,7 +6785,7 @@ _080A66B4:
 	b _080A6758
 	.align 2, 0
 _080A6724: .4byte gMain
-_080A6728: .4byte 0x020219cc
+_080A6728: .4byte gBGTilemapBuffers + 0x800
 _080A672C: .4byte gStringVar1
 _080A6730: .4byte gScriptItemId
 _080A6734: .4byte gTasks
@@ -6842,7 +6842,7 @@ BuyMenuPrintItemQuantityAndPrice: @ 80A6798
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _080A67E8 @ =0x020219cc
+	ldr r0, _080A67E8 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x1F
 	str r1, [sp]
 	movs r1, 0
@@ -6874,7 +6874,7 @@ BuyMenuPrintItemQuantityAndPrice: @ 80A6798
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A67E8: .4byte 0x020219cc
+_080A67E8: .4byte gBGTilemapBuffers + 0x800
 _080A67EC: .4byte gTasks
 _080A67F0: .4byte sub_80A6760
 	thumb_func_end BuyMenuPrintItemQuantityAndPrice
@@ -6927,7 +6927,7 @@ sub_80A683C: @ 80A683C
 	movs r1, 0
 	movs r2, 0
 	bl sub_80B7C14
-	ldr r0, _080A686C @ =0x020219cc
+	ldr r0, _080A686C @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x2
 	str r1, [sp]
 	movs r1, 0x1
@@ -6939,7 +6939,7 @@ sub_80A683C: @ 80A683C
 	bx r0
 	.align 2, 0
 _080A6868: .4byte gSaveBlock1
-_080A686C: .4byte 0x020219cc
+_080A686C: .4byte gBGTilemapBuffers + 0x800
 	thumb_func_end sub_80A683C
 
 	thumb_func_start sub_80A6870
@@ -6950,7 +6950,7 @@ sub_80A6870: @ 80A6870
 	lsrs r0, 16
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r5, _080A68A0 @ =0x02025bc4
+	ldr r5, _080A68A0 @ =gSaveBlock1 + 0x490
 	bl ItemId_GetPrice
 	lsls r0, 16
 	lsrs r0, 17
@@ -6966,7 +6966,7 @@ sub_80A6870: @ 80A6870
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A68A0: .4byte 0x02025bc4
+_080A68A0: .4byte gSaveBlock1 + 0x490
 	thumb_func_end sub_80A6870
 
 	thumb_func_start sub_80A68A4
@@ -7235,10 +7235,10 @@ sub_80A6A84: @ 80A6A84
 	lsls r4, r5, 2
 	adds r4, r5
 	lsls r4, 3
-	ldr r6, _080A6AE8 @ =0x03004b38
+	ldr r6, _080A6AE8 @ =gTasks + 0x8
 	adds r0, r4, r6
 	mov r8, r0
-	ldr r0, _080A6AEC @ =0x020219cc
+	ldr r0, _080A6AEC @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	ldr r0, _080A6AF0 @ =gScriptItemId
 	ldrh r0, [r0]
@@ -7270,8 +7270,8 @@ sub_80A6A84: @ 80A6A84
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A6AE8: .4byte 0x03004b38
-_080A6AEC: .4byte 0x020219cc
+_080A6AE8: .4byte gTasks + 0x8
+_080A6AEC: .4byte gBGTilemapBuffers + 0x800
 _080A6AF0: .4byte gScriptItemId
 _080A6AF4: .4byte gStringVar1
 _080A6AF8: .4byte gStringVar2
@@ -7337,7 +7337,7 @@ sub_80A6B64: @ 80A6B64
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r5, r0, 3
-	ldr r6, _080A6B9C @ =0x03004b38
+	ldr r6, _080A6B9C @ =gTasks + 0x8
 	adds r7, r5, r6
 	ldr r0, _080A6BA0 @ =gScriptItemId
 	mov r8, r0
@@ -7356,7 +7356,7 @@ sub_80A6B64: @ 80A6B64
 	bl sub_80A7528
 	b _080A6BD2
 	.align 2, 0
-_080A6B9C: .4byte 0x03004b38
+_080A6B9C: .4byte gTasks + 0x8
 _080A6BA0: .4byte gScriptItemId
 _080A6BA4: .4byte sub_80A6B00
 _080A6BA8:
@@ -7409,14 +7409,14 @@ sub_80A6BE0: @ 80A6BE0
 	beq _080A6C20
 	movs r0, 0x5
 	bl PlaySE
-	ldr r0, _080A6C1C @ =0x020219cc
+	ldr r0, _080A6C1C @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	adds r0, r4, 0
 	bl sub_80A6B64
 	b _080A6C58
 	.align 2, 0
 _080A6C18: .4byte gMain
-_080A6C1C: .4byte 0x020219cc
+_080A6C1C: .4byte gBGTilemapBuffers + 0x800
 _080A6C20:
 	movs r0, 0x2
 	ands r0, r1
@@ -7801,7 +7801,7 @@ _080A6F14:
 	adds r0, r4, 0
 	adds r1, r2, 0
 	bl sub_80A48E8
-	ldr r0, _080A6F74 @ =0x020219cc
+	ldr r0, _080A6F74 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	ldr r1, _080A6F78 @ =gUnknown_083C1640
 	ldr r0, _080A6F7C @ =gUnknown_03000700
@@ -7821,7 +7821,7 @@ _080A6F14:
 _080A6F68: .4byte gTasks
 _080A6F6C: .4byte gUnknown_03005D10
 _080A6F70: .4byte gUnknown_02038559
-_080A6F74: .4byte 0x020219cc
+_080A6F74: .4byte gBGTilemapBuffers + 0x800
 _080A6F78: .4byte gUnknown_083C1640
 _080A6F7C: .4byte gUnknown_03000700
 _080A6F80: .4byte gUnknown_03000704
@@ -7847,7 +7847,7 @@ _080A6F84:
 	adds r0, r5, 0
 	adds r1, r2, 0
 	bl sub_80A48E8
-	ldr r0, _080A6FD4 @ =0x020219cc
+	ldr r0, _080A6FD4 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
 	ldr r0, _080A6FD8 @ =gUnknown_083C1640
 	ldr r1, [r0, 0x2C]
@@ -7861,7 +7861,7 @@ _080A6FC0:
 _080A6FC8: .4byte gTasks
 _080A6FCC: .4byte gUnknown_03005D10
 _080A6FD0: .4byte gUnknown_02038559
-_080A6FD4: .4byte 0x020219cc
+_080A6FD4: .4byte gBGTilemapBuffers + 0x800
 _080A6FD8: .4byte gUnknown_083C1640
 	thumb_func_end sub_80A6EB8
 
@@ -7936,7 +7936,7 @@ sub_80A7024: @ 80A7024
 	adds r1, r2, 0
 	bl sub_80A48E8
 	bl sub_80A73FC
-	ldr r0, _080A708C @ =0x020219cc
+	ldr r0, _080A708C @ =gBGTilemapBuffers + 0x800
 	bl sub_80A6DF0
 	ldr r0, _080A7090 @ =sub_80A6EB8
 	str r0, [r4]
@@ -7948,7 +7948,7 @@ _080A707C: .4byte gUnknown_03000700
 _080A7080: .4byte gTasks
 _080A7084: .4byte gUnknown_03005D10
 _080A7088: .4byte gUnknown_02038559
-_080A708C: .4byte 0x020219cc
+_080A708C: .4byte gBGTilemapBuffers + 0x800
 _080A7090: .4byte sub_80A6EB8
 	thumb_func_end sub_80A7024
 
@@ -8096,7 +8096,7 @@ PrepareBagForWallyTutorial: @ 80A719C
 	strb r1, [r0]
 	movs r1, 0
 	ldr r4, _080A721C @ =0x0201e000
-	ldr r5, _080A7220 @ =0x02025c94
+	ldr r5, _080A7220 @ =gSaveBlock1 + 0x560
 	ldr r3, _080A7224 @ =gUnknown_03005D10
 	movs r2, 0
 _080A71B2:
@@ -8145,7 +8145,7 @@ _080A71B2:
 _080A7214: .4byte gUnknown_03000700
 _080A7218: .4byte gUnknown_02038559
 _080A721C: .4byte 0x0201e000
-_080A7220: .4byte 0x02025c94
+_080A7220: .4byte gSaveBlock1 + 0x560
 _080A7224: .4byte gUnknown_03005D10
 _080A7228: .4byte gUnknown_03000701
 _080A722C: .4byte sub_80A7150
@@ -8162,7 +8162,7 @@ sub_80A7230: @ 80A7230
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r6, r0, 3
-	ldr r0, _080A725C @ =0x03004b38
+	ldr r0, _080A725C @ =gTasks + 0x8
 	mov r8, r0
 	adds r7, r6, r0
 	movs r0, 0x1E
@@ -8175,7 +8175,7 @@ sub_80A7230: @ 80A7230
 	beq _080A726A
 	b _080A7358
 	.align 2, 0
-_080A725C: .4byte 0x03004b38
+_080A725C: .4byte gTasks + 0x8
 _080A7260:
 	movs r0, 0x99
 	lsls r0, 1
@@ -8227,7 +8227,7 @@ _080A727A:
 	adds r1, r2, 0
 	bl sub_80A48E8
 	bl sub_80A73FC
-	ldr r0, _080A72F0 @ =0x020219cc
+	ldr r0, _080A72F0 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A6DF0
 	b _080A7358
 	.align 2, 0
@@ -8237,13 +8237,13 @@ _080A72E0: .4byte gUnknown_083C1708
 _080A72E4: .4byte gUnknown_02038564
 _080A72E8: .4byte gUnknown_03005D10
 _080A72EC: .4byte gUnknown_02038559
-_080A72F0: .4byte 0x020219cc
+_080A72F0: .4byte gBGTilemapBuffers + 0x800
 _080A72F4:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r0, _080A7344 @ =0x020219cc
+	ldr r0, _080A7344 @ =gBGTilemapBuffers + 0x800
 	bl sub_80A4DA4
-	ldr r4, _080A7348 @ =0x02025c94
+	ldr r4, _080A7348 @ =gSaveBlock1 + 0x560
 	ldr r5, _080A734C @ =0x0201e000
 	adds r0, r4, 0
 	adds r1, r5, 0
@@ -8275,8 +8275,8 @@ _080A72F4:
 	bl BeginNormalPaletteFade
 	b _080A735E
 	.align 2, 0
-_080A7344: .4byte 0x020219cc
-_080A7348: .4byte 0x02025c94
+_080A7344: .4byte gBGTilemapBuffers + 0x800
+_080A7348: .4byte gSaveBlock1 + 0x560
 _080A734C: .4byte 0x0201e000
 _080A7350: .4byte sub_802E424
 _080A7354: .4byte sub_80A5B00
@@ -9685,7 +9685,7 @@ sub_80A7CF8: @ 80A7CF8
 	bl sub_80B4940
 	cmp r0, 0x1
 	bne _080A7D44
-	ldr r4, _080A7D34 @ =0x020288b0
+	ldr r4, _080A7D34 @ =gSaveBlock1 + 0x317C
 	ldr r1, _080A7D38 @ =0x02000000
 	adds r0, r4, 0
 	bl sub_80A7CA0
@@ -9703,7 +9703,7 @@ sub_80A7CF8: @ 80A7CF8
 	bl LoadSpritePalette
 	b _080A7D72
 	.align 2, 0
-_080A7D34: .4byte 0x020288b0
+_080A7D34: .4byte gSaveBlock1 + 0x317C
 _080A7D38: .4byte 0x02000000
 _080A7D3C: .4byte 0xffff0000
 _080A7D40: .4byte 0x00007544

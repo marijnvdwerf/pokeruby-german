@@ -296,7 +296,7 @@ sub_804E4FC: @ 804E4FC
 	ldr r2, _0804E530 @ =0x00000c0d
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _0804E534 @ =0x04000010
+	ldr r0, _0804E534 @ =REG_BG0HOFS
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -309,7 +309,7 @@ sub_804E4FC: @ 804E4FC
 	.align 2, 0
 _0804E52C: .4byte 0x00001341
 _0804E530: .4byte 0x00000c0d
-_0804E534: .4byte 0x04000010
+_0804E534: .4byte REG_BG0HOFS
 	thumb_func_end sub_804E4FC
 
 	thumb_func_start sub_804E538
@@ -1509,7 +1509,7 @@ _0804EF34:
 	adds r0, r3, 0
 	adds r0, 0x54
 	strh r1, [r0]
-	ldr r1, _0804EFD0 @ =0x0400000c
+	ldr r1, _0804EFD0 @ =REG_BG2CNT
 	ldr r4, _0804EFD4 @ =0x00004882
 	adds r0, r4, 0
 	strh r0, [r1]
@@ -1532,7 +1532,7 @@ _0804EFBC:
 	.align 2, 0
 _0804EFC8: .4byte gUnknown_082162F8
 _0804EFCC: .4byte gUnknown_08216300
-_0804EFD0: .4byte 0x0400000c
+_0804EFD0: .4byte REG_BG2CNT
 _0804EFD4: .4byte 0x00004882
 _0804EFD8:
 	bl sub_8051B8C
@@ -2401,7 +2401,7 @@ _0804F650:
 	adds r0, r3, 0
 	adds r0, 0x54
 	strh r1, [r0]
-	ldr r1, _0804F6F0 @ =0x0400000c
+	ldr r1, _0804F6F0 @ =REG_BG2CNT
 	ldr r5, _0804F6F4 @ =0x00004882
 	adds r0, r5, 0
 	strh r0, [r1]
@@ -2424,7 +2424,7 @@ _0804F6D6:
 	.align 2, 0
 _0804F6E8: .4byte gUnknown_082162F8
 _0804F6EC: .4byte gUnknown_08216300
-_0804F6F0: .4byte 0x0400000c
+_0804F6F0: .4byte REG_BG2CNT
 _0804F6F4: .4byte 0x00004882
 _0804F6F8:
 	bl sub_8051B8C
@@ -6183,7 +6183,7 @@ _080514A0: .4byte gUnknown_03004854
 
 	thumb_func_start sub_80514A4
 sub_80514A4: @ 80514A4
-	ldr r1, _080514E8 @ =0x04000020
+	ldr r1, _080514E8 @ =REG_BG2PA
 	ldr r0, _080514EC @ =gUnknown_03004854
 	ldr r2, [r0]
 	movs r3, 0xB4
@@ -6218,13 +6218,13 @@ sub_80514A4: @ 80514A4
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_080514E8: .4byte 0x04000020
+_080514E8: .4byte REG_BG2PA
 _080514EC: .4byte gUnknown_03004854
 	thumb_func_end sub_80514A4
 
 	thumb_func_start sub_80514F0
 sub_80514F0: @ 80514F0
-	ldr r1, _0805151C @ =0x04000014
+	ldr r1, _0805151C @ =REG_BG1HOFS
 	ldr r0, _08051520 @ =gUnknown_03004854
 	ldr r3, [r0]
 	movs r0, 0xA2
@@ -6246,7 +6246,7 @@ sub_80514F0: @ 80514F0
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_0805151C: .4byte 0x04000014
+_0805151C: .4byte REG_BG1HOFS
 _08051520: .4byte gUnknown_03004854
 	thumb_func_end sub_80514F0
 

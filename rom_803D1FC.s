@@ -225,11 +225,11 @@ _0803E344: .4byte 0x0000043d
 _0803E348: .4byte gUnknown_02024A60
 _0803E34C: .4byte gUnknown_02024DF8
 _0803E350:
-	ldr r2, _0803E358 @ =0x02028daa
+	ldr r2, _0803E358 @ =gSaveBlock1 + 0x3676
 	str r2, [sp, 0x20]
 	b _0803E374
 	.align 2, 0
-_0803E358: .4byte 0x02028daa
+_0803E358: .4byte gSaveBlock1 + 0x3676
 _0803E35C:
 	mov r0, r8
 	movs r2, 0
@@ -2273,10 +2273,10 @@ _0803F3AC: .4byte 0x0000043d
 _0803F3B0: .4byte gUnknown_02024E6C
 _0803F3B4: .4byte gUnknown_02024DF8
 _0803F3B8:
-	ldr r7, _0803F3BC @ =0x02028daa
+	ldr r7, _0803F3BC @ =gSaveBlock1 + 0x3676
 	b _0803F3CA
 	.align 2, 0
-_0803F3BC: .4byte 0x02028daa
+_0803F3BC: .4byte gSaveBlock1 + 0x3676
 _0803F3C0:
 	ldr r1, _0803F404 @ =gItemEffectTable
 	subs r0, 0xD

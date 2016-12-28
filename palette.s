@@ -2230,7 +2230,7 @@ _08074E44: .4byte 0xfffff83f
 	thumb_func_start UpdateBlendRegisters
 UpdateBlendRegisters: @ 8074E48
 	push {lr}
-	ldr r1, _08074E8C @ =0x04000050
+	ldr r1, _08074E8C @ =REG_BLDCNT
 	ldr r2, _08074E90 @ =gPaletteFade
 	ldr r0, [r2]
 	strh r0, [r1]
@@ -2264,7 +2264,7 @@ _08074E86:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08074E8C: .4byte 0x04000050
+_08074E8C: .4byte REG_BLDCNT
 _08074E90: .4byte gPaletteFade
 _08074E94: .4byte 0xfffff83f
 	thumb_func_end UpdateBlendRegisters

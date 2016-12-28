@@ -14,7 +14,7 @@ sub_810993C: @ 810993C
 	mov r5, r8
 	push {r5-r7}
 	sub sp, 0x10
-	ldr r0, _081099C8 @ =0x020284c8
+	ldr r0, _081099C8 @ =gSaveBlock1 + 0x2D94
 	mov r9, r0
 	movs r2, 0
 _0810994E:
@@ -79,13 +79,13 @@ _081099AC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_081099C8: .4byte 0x020284c8
+_081099C8: .4byte gSaveBlock1 + 0x2D94
 	thumb_func_end sub_810993C
 
 	thumb_func_start sub_81099CC
 sub_81099CC: @ 81099CC
 	push {r4-r6,lr}
-	ldr r5, _08109A14 @ =0x020284c8
+	ldr r5, _08109A14 @ =gSaveBlock1 + 0x2D94
 	movs r1, 0
 	movs r0, 0x2
 	strb r0, [r5]
@@ -119,20 +119,20 @@ _081099E0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08109A14: .4byte 0x020284c8
+_08109A14: .4byte gSaveBlock1 + 0x2D94
 _08109A18: .4byte gUnknown_083F62D8
 _08109A1C: .4byte gTraderDecorations
 	thumb_func_end sub_81099CC
 
 	thumb_func_start sub_8109A20
 sub_8109A20: @ 8109A20
-	ldr r0, _08109A2C @ =0x020284c8
+	ldr r0, _08109A2C @ =gSaveBlock1 + 0x2D94
 	adds r0, 0x31
 	movs r1, 0
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_08109A2C: .4byte 0x020284c8
+_08109A2C: .4byte gSaveBlock1 + 0x2D94
 	thumb_func_end sub_8109A20
 
 	thumb_func_start sub_8109A30
@@ -161,7 +161,7 @@ sub_8109A48: @ 8109A48
 	mov r9, r0
 	movs r6, 0x1
 	movs r5, 0
-	ldr r0, _08109AB8 @ =0x020284c8
+	ldr r0, _08109AB8 @ =gSaveBlock1 + 0x2D94
 	movs r4, 0
 	adds r7, r0, 0x1
 	adds r1, r7, 0
@@ -209,7 +209,7 @@ _08109A98:
 	bl MenuPrint
 	b _08109AD8
 	.align 2, 0
-_08109AB8: .4byte 0x020284c8
+_08109AB8: .4byte gSaveBlock1 + 0x2D94
 _08109ABC: .4byte gOtherText_FiveQuestionsAndSlash
 _08109AC0:
 	ldrb r0, [r1]
@@ -312,7 +312,7 @@ sub_8109B7C: @ 8109B7C
 	lsls r0, 24
 	lsrs r4, r0, 24
 	adds r5, r4, 0
-	ldr r6, _08109BA4 @ =0x020284c8
+	ldr r6, _08109BA4 @ =gSaveBlock1 + 0x2D94
 	ldr r0, _08109BA8 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x40
@@ -326,7 +326,7 @@ sub_8109B7C: @ 8109B7C
 	bl MoveMenuCursor
 	b _08109C3E
 	.align 2, 0
-_08109BA4: .4byte 0x020284c8
+_08109BA4: .4byte gSaveBlock1 + 0x2D94
 _08109BA8: .4byte gMain
 _08109BAC:
 	movs r0, 0x80
@@ -401,14 +401,14 @@ _08109C3E:
 
 	thumb_func_start sub_8109C44
 sub_8109C44: @ 8109C44
-	ldr r0, _08109C50 @ =0x020284c8
+	ldr r0, _08109C50 @ =gSaveBlock1 + 0x2D94
 	ldr r1, _08109C54 @ =gScriptResult
 	adds r0, 0x31
 	ldrb r0, [r0]
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_08109C50: .4byte 0x020284c8
+_08109C50: .4byte gSaveBlock1 + 0x2D94
 _08109C54: .4byte gScriptResult
 	thumb_func_end sub_8109C44
 
@@ -603,7 +603,7 @@ _08109DDC: .4byte gSpecialVar_0x8006
 	thumb_func_start sub_8109DE0
 sub_8109DE0: @ 8109DE0
 	push {r4-r6,lr}
-	ldr r4, _08109E20 @ =0x020284c8
+	ldr r4, _08109E20 @ =gSaveBlock1 + 0x2D94
 	ldr r6, _08109E24 @ =gSpecialVar_0x8006
 	ldrb r0, [r6]
 	bl sub_81340A8
@@ -631,7 +631,7 @@ sub_8109DE0: @ 8109DE0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08109E20: .4byte 0x020284c8
+_08109E20: .4byte gSaveBlock1 + 0x2D94
 _08109E24: .4byte gSpecialVar_0x8006
 _08109E28: .4byte gSpecialVar_0x8004
 _08109E2C: .4byte gSpecialVar_0x8005

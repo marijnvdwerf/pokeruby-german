@@ -458,7 +458,7 @@ ContestPaintingInitBG: @ 81069CC
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r1, _08106A00 @ =0x04000008
+	ldr r1, _08106A00 @ =REG_BG0CNT
 	ldr r2, _08106A04 @ =0x00000c42
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -466,7 +466,7 @@ ContestPaintingInitBG: @ 81069CC
 	ldr r2, _08106A08 @ =0x00000a45
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _08106A0C @ =0x04000050
+	ldr r0, _08106A0C @ =REG_BLDCNT
 	strh r3, [r0]
 	adds r0, 0x2
 	strh r3, [r0]
@@ -475,10 +475,10 @@ ContestPaintingInitBG: @ 81069CC
 	bx lr
 	.align 2, 0
 _081069FC: .4byte 0x04000200
-_08106A00: .4byte 0x04000008
+_08106A00: .4byte REG_BG0CNT
 _08106A04: .4byte 0x00000c42
 _08106A08: .4byte 0x00000a45
-_08106A0C: .4byte 0x04000050
+_08106A0C: .4byte REG_BLDCNT
 	thumb_func_end ContestPaintingInitBG
 
 	thumb_func_start ContestPaintingInitVars
@@ -525,14 +525,14 @@ ContestPaintingMosaic: @ 8106A58
 	ldrb r1, [r0]
 	cmp r1, 0
 	bne _08106A70
-	ldr r0, _08106A6C @ =0x0400004c
+	ldr r0, _08106A6C @ =REG_MOSAIC
 	strh r1, [r0]
 	b _08106A92
 	.align 2, 0
 _08106A68: .4byte gUnknown_03000756
-_08106A6C: .4byte 0x0400004c
+_08106A6C: .4byte REG_MOSAIC
 _08106A70:
-	ldr r1, _08106A98 @ =0x0400000a
+	ldr r1, _08106A98 @ =REG_BG1CNT
 	ldr r2, _08106A9C @ =0x00000a45
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -541,7 +541,7 @@ _08106A70:
 	ldrh r1, [r0]
 	lsrs r1, 1
 	strh r1, [r2]
-	ldr r3, _08106AA8 @ =0x0400004c
+	ldr r3, _08106AA8 @ =REG_MOSAIC
 	lsls r0, r1, 12
 	lsls r2, r1, 8
 	orrs r0, r2
@@ -553,11 +553,11 @@ _08106A92:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08106A98: .4byte 0x0400000a
+_08106A98: .4byte REG_BG1CNT
 _08106A9C: .4byte 0x00000a45
 _08106AA0: .4byte gUnknown_03000752
 _08106AA4: .4byte gUnknown_03000754
-_08106AA8: .4byte 0x0400004c
+_08106AA8: .4byte REG_MOSAIC
 	thumb_func_end ContestPaintingMosaic
 
 	thumb_func_start VBlankCB_ContestPainting

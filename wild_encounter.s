@@ -1209,7 +1209,7 @@ _08085222:
 	cmp r0, 0x1
 	bne _08085268
 _0808524A:
-	ldr r0, _08085264 @ =0x02028878
+	ldr r0, _08085264 @ =gSaveBlock1 + 0x3144
 	ldrb r0, [r0, 0xC]
 	bl RepelCheck
 	lsls r0, 24
@@ -1220,7 +1220,7 @@ _0808524A:
 	b _08085284
 	.align 2, 0
 _08085260: .4byte gWildMonHeaders
-_08085264: .4byte 0x02028878
+_08085264: .4byte gSaveBlock1 + 0x3144
 _08085268:
 	ldr r0, [r4]
 	movs r1, 0x1

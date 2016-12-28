@@ -315,14 +315,14 @@ _08148DE8:
 	orrs r0, r4
 	strh r0, [r3]
 	strh r1, [r2]
-	ldr r2, _08148EB0 @ =0x04000004
+	ldr r2, _08148EB0 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
 	strh r0, [r2]
 	ldr r0, _08148EB4 @ =VBlankCB_InitClearSaveDataScreen
 	bl SetVBlankCallback
-	ldr r1, _08148EB8 @ =0x0400000e
+	ldr r1, _08148EB8 @ =REG_BG3CNT
 	ldr r2, _08148EBC @ =0x00000703
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -357,9 +357,9 @@ _08148EA0: .4byte gWindowConfig_81E6CE4
 _08148EA4: .4byte 0x0000ffff
 _08148EA8: .4byte 0x04000208
 _08148EAC: .4byte 0x04000200
-_08148EB0: .4byte 0x04000004
+_08148EB0: .4byte REG_DISPSTAT
 _08148EB4: .4byte VBlankCB_InitClearSaveDataScreen
-_08148EB8: .4byte 0x0400000e
+_08148EB8: .4byte REG_BG3CNT
 _08148EBC: .4byte 0x00000703
 _08148EC0:
 	bl UpdatePaletteFade

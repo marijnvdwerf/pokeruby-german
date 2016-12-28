@@ -1558,7 +1558,7 @@ _08078616:
 	thumb_func_start sub_807861C
 sub_807861C: @ 807861C
 	push {lr}
-	ldr r1, _08078630 @ =0x04000050
+	ldr r1, _08078630 @ =REG_BLDCNT
 	movs r2, 0
 	strh r2, [r1]
 	adds r1, 0x2
@@ -1567,7 +1567,7 @@ sub_807861C: @ 807861C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08078630: .4byte 0x04000050
+_08078630: .4byte REG_BLDCNT
 	thumb_func_end sub_807861C
 
 	thumb_func_start sub_8078634
@@ -1575,7 +1575,7 @@ sub_8078634: @ 8078634
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0807864C @ =0x04000050
+	ldr r1, _0807864C @ =REG_BLDCNT
 	movs r2, 0
 	strh r2, [r1]
 	adds r1, 0x2
@@ -1584,7 +1584,7 @@ sub_8078634: @ 8078634
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807864C: .4byte 0x04000050
+_0807864C: .4byte REG_BLDCNT
 	thumb_func_end sub_8078634
 
 	thumb_func_start sub_8078650
@@ -2078,7 +2078,7 @@ sub_80789D4: @ 80789D4
 	lsls r0, 24
 	cmp r0, 0
 	bne _080789F4
-	ldr r2, _080789F0 @ =0x0400000e
+	ldr r2, _080789F0 @ =REG_BG3CNT
 	ldrb r1, [r2, 0x1]
 	movs r0, 0x3F
 	ands r0, r1
@@ -2088,13 +2088,13 @@ sub_80789D4: @ 80789D4
 	orrs r0, r1
 	b _08078A2A
 	.align 2, 0
-_080789F0: .4byte 0x0400000e
+_080789F0: .4byte REG_BG3CNT
 _080789F4:
 	bl sub_8076BE0
 	lsls r0, 24
 	cmp r0, 0
 	beq _08078A14
-	ldr r2, _08078A10 @ =0x0400000e
+	ldr r2, _08078A10 @ =REG_BG3CNT
 	ldrb r1, [r2, 0x1]
 	movs r0, 0x3F
 	ands r0, r1
@@ -2104,9 +2104,9 @@ _080789F4:
 	orrs r0, r1
 	b _08078A2A
 	.align 2, 0
-_08078A10: .4byte 0x0400000e
+_08078A10: .4byte REG_BG3CNT
 _08078A14:
-	ldr r2, _08078A30 @ =0x0400000e
+	ldr r2, _08078A30 @ =REG_BG3CNT
 	ldrb r1, [r2, 0x1]
 	movs r0, 0x3F
 	ands r0, r1
@@ -2122,7 +2122,7 @@ _08078A2A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08078A30: .4byte 0x0400000e
+_08078A30: .4byte REG_BG3CNT
 	thumb_func_end sub_80789D4
 
 	thumb_func_start sub_8078A34
@@ -3133,7 +3133,7 @@ _08079184:
 	adds r0, r1, r0
 	ldr r2, _080791A0 @ =gPlttBufferFaded
 	adds r1, r2
-	ldr r2, _080791A4 @ =0x04000008
+	ldr r2, _080791A4 @ =REG_BG0CNT
 	bl CpuSet
 _08079194:
 	pop {r4-r7}
@@ -3142,7 +3142,7 @@ _08079194:
 	.align 2, 0
 _0807919C: .4byte gPlttBufferUnfaded
 _080791A0: .4byte gPlttBufferFaded
-_080791A4: .4byte 0x04000008
+_080791A4: .4byte REG_BG0CNT
 	thumb_func_end sub_8079108
 
 	thumb_func_start sub_80791A8
@@ -3821,7 +3821,7 @@ _080796A4:
 	strh r0, [r1, 0x16]
 	ldrh r0, [r4, 0x6]
 	strh r0, [r1, 0x18]
-	ldr r3, _080796F0 @ =0x04000052
+	ldr r3, _080796F0 @ =REG_BLDALPHA
 	ldrh r0, [r4, 0x2]
 	lsls r0, 8
 	ldrh r2, [r4]
@@ -3836,7 +3836,7 @@ _080796A4:
 _080796E4: .4byte gUnknown_03004B00
 _080796E8: .4byte 0x0000ffff
 _080796EC: .4byte gTasks
-_080796F0: .4byte 0x04000052
+_080796F0: .4byte REG_BLDALPHA
 _080796F4: .4byte sub_80796F8
 	thumb_func_end sub_8079670
 
@@ -3893,7 +3893,7 @@ _08079748:
 	adds r0, r2, r0
 	strh r0, [r3, 0x10]
 _0807975C:
-	ldr r2, _0807978C @ =0x04000052
+	ldr r2, _0807978C @ =REG_BLDALPHA
 	ldrh r0, [r3, 0x10]
 	lsls r0, 8
 	ldrh r1, [r3, 0xE]
@@ -3918,7 +3918,7 @@ _08079786:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807978C: .4byte 0x04000052
+_0807978C: .4byte REG_BLDALPHA
 	thumb_func_end sub_80796F8
 
 	thumb_func_start sub_8079790
@@ -4918,12 +4918,12 @@ _08079EF0:
 	cmp r4, 0x3
 	bne _08079F00
 _08079EF8:
-	ldr r0, _08079EFC @ =0x0400000c
+	ldr r0, _08079EFC @ =REG_BG2CNT
 	b _08079F02
 	.align 2, 0
-_08079EFC: .4byte 0x0400000c
+_08079EFC: .4byte REG_BG2CNT
 _08079F00:
-	ldr r0, _08079F10 @ =0x0400000a
+	ldr r0, _08079F10 @ =REG_BG1CNT
 _08079F02:
 	ldr r0, [r0]
 	lsls r0, 30
@@ -4933,7 +4933,7 @@ _08079F08:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08079F10: .4byte 0x0400000a
+_08079F10: .4byte REG_BG1CNT
 	thumb_func_end sub_8079ED4
 
 	thumb_func_start battle_get_per_side_status_permutated
@@ -5984,7 +5984,7 @@ _0807A742:
 	lsls r1, r6, 1
 	ldr r2, _0807A774 @ =gPlttBufferFaded
 	adds r1, r2
-	ldr r2, _0807A778 @ =0x04000008
+	ldr r2, _0807A778 @ =REG_BG0CNT
 	bl CpuSet
 	ldr r0, _0807A77C @ =gUnknown_03004B00
 	ldrb r2, [r0, 0x2]
@@ -6000,7 +6000,7 @@ _0807A742:
 	.align 2, 0
 _0807A770: .4byte gPlttBufferUnfaded
 _0807A774: .4byte gPlttBufferFaded
-_0807A778: .4byte 0x04000008
+_0807A778: .4byte REG_BG0CNT
 _0807A77C: .4byte gUnknown_03004B00
 _0807A780: .4byte sub_807A784
 	thumb_func_end sub_807A69C

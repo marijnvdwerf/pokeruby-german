@@ -1701,7 +1701,7 @@ sub_807DB64: @ 807DB64
 	ldr r2, _0807DB9C @ =0x00000736
 	adds r3, r2
 	strh r1, [r3]
-	ldr r2, _0807DBA0 @ =0x04000052
+	ldr r2, _0807DBA0 @ =REG_BLDALPHA
 	lsls r1, 8
 	orrs r1, r0
 	strh r1, [r2]
@@ -1711,7 +1711,7 @@ sub_807DB64: @ 807DB64
 	.align 2, 0
 _0807DB98: .4byte gUnknown_0202F7E8
 _0807DB9C: .4byte 0x00000736
-_0807DBA0: .4byte 0x04000052
+_0807DBA0: .4byte REG_BLDALPHA
 	thumb_func_end sub_807DB64
 
 	thumb_func_start sub_807DBA4
@@ -1821,7 +1821,7 @@ _0807DC70:
 _0807DC76:
 	strh r0, [r3]
 _0807DC78:
-	ldr r3, _0807DCA0 @ =0x04000052
+	ldr r3, _0807DCA0 @ =REG_BLDALPHA
 	ldr r6, _0807DCA4 @ =0x00000732
 	adds r0, r4, r6
 	ldrh r0, [r0]
@@ -1841,7 +1841,7 @@ _0807DC78:
 	movs r0, 0
 	b _0807DCAE
 	.align 2, 0
-_0807DCA0: .4byte 0x04000052
+_0807DCA0: .4byte REG_BLDALPHA
 _0807DCA4: .4byte 0x00000732
 _0807DCA8: .4byte 0x00000734
 _0807DCAC:
@@ -2662,7 +2662,7 @@ _0807E2B0:
 	movs r2, 0
 	strh r2, [r3, 0xA]
 	strh r2, [r3, 0xC]
-	ldr r1, _0807E2F4 @ =0x04000048
+	ldr r1, _0807E2F4 @ =REG_WININ
 	ldrh r0, [r1]
 	strh r0, [r3, 0xE]
 	ldr r4, _0807E2F8 @ =0x00003f3f
@@ -2671,7 +2671,7 @@ _0807E2B0:
 	adds r1, 0x8
 	movs r0, 0x9E
 	strh r0, [r1]
-	ldr r0, _0807E2FC @ =0x04000054
+	ldr r0, _0807E2FC @ =REG_BLDY
 	strh r2, [r0]
 	ldrh r0, [r3, 0x8]
 	adds r0, 0x1
@@ -2687,7 +2687,7 @@ _0807E2D2:
 	movs r0, 0x10
 	strh r0, [r3, 0xA]
 _0807E2E4:
-	ldr r0, _0807E2FC @ =0x04000054
+	ldr r0, _0807E2FC @ =REG_BLDY
 	ldrh r1, [r3, 0xA]
 	strh r1, [r0]
 	movs r1, 0xA
@@ -2696,9 +2696,9 @@ _0807E2E4:
 	ble _0807E35E
 	b _0807E344
 	.align 2, 0
-_0807E2F4: .4byte 0x04000048
+_0807E2F4: .4byte REG_WININ
 _0807E2F8: .4byte 0x00003f3f
-_0807E2FC: .4byte 0x04000054
+_0807E2FC: .4byte REG_BLDY
 _0807E300:
 	ldrh r0, [r3, 0xC]
 	adds r0, 0x1
@@ -2720,19 +2720,19 @@ _0807E300:
 	adds r0, 0x1
 	strh r0, [r3, 0x8]
 _0807E326:
-	ldr r1, _0807E330 @ =0x04000054
+	ldr r1, _0807E330 @ =REG_BLDY
 	ldrh r0, [r3, 0xA]
 	strh r0, [r1]
 	b _0807E35E
 	.align 2, 0
-_0807E330: .4byte 0x04000054
+_0807E330: .4byte REG_BLDY
 _0807E334:
-	ldr r0, _0807E34C @ =0x04000050
+	ldr r0, _0807E34C @ =REG_BLDCNT
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
-	ldr r1, _0807E350 @ =0x04000048
+	ldr r1, _0807E350 @ =REG_WININ
 	ldrh r0, [r3, 0xE]
 	strh r0, [r1]
 _0807E344:
@@ -2741,8 +2741,8 @@ _0807E344:
 	strh r0, [r3, 0x8]
 	b _0807E35E
 	.align 2, 0
-_0807E34C: .4byte 0x04000050
-_0807E350: .4byte 0x04000048
+_0807E34C: .4byte REG_BLDCNT
+_0807E350: .4byte REG_WININ
 _0807E354:
 	bl EnableBothScriptContexts
 	adds r0, r4, 0
@@ -5425,7 +5425,7 @@ sub_807F7F8: @ 807F7F8
 	movs r0, 0
 	movs r1, 0x10
 	bl sub_807DB64
-	ldr r1, _0807F854 @ =0x04000052
+	ldr r1, _0807F854 @ =REG_BLDALPHA
 	movs r2, 0xFD
 	lsls r2, 6
 	adds r0, r2, 0
@@ -5438,7 +5438,7 @@ _0807F844: .4byte gUnknown_08396FC4
 _0807F848: .4byte 0x000006cc
 _0807F84C: .4byte 0x000006d2
 _0807F850: .4byte 0x000006c2
-_0807F854: .4byte 0x04000052
+_0807F854: .4byte REG_BLDALPHA
 	thumb_func_end sub_807F7F8
 
 	thumb_func_start sub_807F858
@@ -5595,7 +5595,7 @@ _0807F978:
 	strh r0, [r4]
 	b _0807F994
 _0807F980:
-	ldr r1, _0807F990 @ =0x04000052
+	ldr r1, _0807F990 @ =REG_BLDALPHA
 	movs r0, 0
 	strh r0, [r1]
 	ldrh r0, [r4]
@@ -5605,7 +5605,7 @@ _0807F98C:
 	movs r0, 0
 	b _0807F996
 	.align 2, 0
-_0807F990: .4byte 0x04000052
+_0807F990: .4byte REG_BLDALPHA
 _0807F994:
 	movs r0, 0x1
 _0807F996:

@@ -21,11 +21,11 @@ _080692BC:
 	cmp r1, r0
 	bhi _080692D0
 	lsrs r0, r2, 19
-	ldr r1, _080692CC @ =0x02026954
+	ldr r1, _080692CC @ =gSaveBlock1 + 0x1220
 	b _080692E0
 	.align 2, 0
 _080692C8: .4byte 0x00003fff
-_080692CC: .4byte 0x02026954
+_080692CC: .4byte gSaveBlock1 + 0x1220
 _080692D0:
 	ldr r1, _080692E8 @ =0xffffc000
 	adds r0, r3, r1

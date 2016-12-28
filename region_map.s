@@ -237,7 +237,7 @@ _080FAAB4:
 	ldr r0, [r2]
 	adds r0, 0x7E
 	strb r1, [r0]
-	ldr r1, _080FAAEC @ =0x0400000c
+	ldr r1, _080FAAEC @ =REG_BG2CNT
 	ldr r3, _080FAAF0 @ =0x0000bc8a
 	adds r0, r3, 0
 	strh r0, [r1]
@@ -251,7 +251,7 @@ _080FAAE2:
 	b _080FAB02
 	.align 2, 0
 _080FAAE8: .4byte gUnknown_020388CC
-_080FAAEC: .4byte 0x0400000c
+_080FAAEC: .4byte REG_BG2CNT
 _080FAAF0: .4byte 0x0000bc8a
 _080FAAF4:
 	ldr r0, _080FAB0C @ =gUnknown_020388CC
@@ -1272,7 +1272,7 @@ sub_80FB260: @ 80FB260
 	ldrb r0, [r3]
 	cmp r0, 0
 	beq _080FB298
-	ldr r1, _080FB2A0 @ =0x04000020
+	ldr r1, _080FB2A0 @ =REG_BG2PA
 	ldr r0, [r2, 0x2C]
 	strh r0, [r1]
 	adds r1, 0x2
@@ -1297,7 +1297,7 @@ _080FB298:
 	bx r0
 	.align 2, 0
 _080FB29C: .4byte gUnknown_020388CC
-_080FB2A0: .4byte 0x04000020
+_080FB2A0: .4byte REG_BG2PA
 	thumb_func_end sub_80FB260
 
 	thumb_func_start sub_80FB2A4
@@ -1532,7 +1532,7 @@ _080FB464:
 	strh r1, [r0, 0x14]
 	cmp r1, 0x57
 	beq _080FB498
-	ldr r4, _080FB494 @ =0x02025758
+	ldr r4, _080FB494 @ =gSaveBlock1 + 0x24
 	movs r0, 0
 	ldrsb r0, [r4, r0]
 	lsls r0, 16
@@ -1547,9 +1547,9 @@ _080FB464:
 	.align 2, 0
 _080FB48C: .4byte gUnknown_020388CC
 _080FB490: .4byte gMapHeader
-_080FB494: .4byte 0x02025758
+_080FB494: .4byte gSaveBlock1 + 0x24
 _080FB498:
-	ldr r4, _080FB548 @ =0x02025748
+	ldr r4, _080FB548 @ =gSaveBlock1 + 0x14
 	movs r0, 0
 	ldrsb r0, [r4, r0]
 	lsls r0, 16
@@ -1639,7 +1639,7 @@ _080FB53A:
 	beq _080FB55E
 	b _080FB5BE
 	.align 2, 0
-_080FB548: .4byte 0x02025748
+_080FB548: .4byte gSaveBlock1 + 0x14
 _080FB54C: .4byte gUnknown_020388CC
 _080FB550: .4byte gRegionMapLocations
 _080FB554:
@@ -3220,7 +3220,7 @@ _080FC1AA:
 	.align 2, 0
 _080FC1C0: .4byte sub_80FC214
 _080FC1C4:
-	ldr r1, _080FC1F8 @ =0x04000050
+	ldr r1, _080FC1F8 @ =REG_BLDCNT
 	movs r0, 0
 	strh r0, [r1]
 	subs r1, 0x46
@@ -3247,7 +3247,7 @@ _080FC1F2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FC1F8: .4byte 0x04000050
+_080FC1F8: .4byte REG_BLDCNT
 _080FC1FC: .4byte 0x00001e0d
 _080FC200: .4byte 0x00001741
 _080FC204: .4byte sub_80FC5B4

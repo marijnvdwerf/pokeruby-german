@@ -19,7 +19,7 @@ sub_80C2020: @ 80C2020
 	ldr r0, _080C20F4 @ =gMenuWindow
 	adds r1, r4, 0
 	bl InitWindowFromConfig
-	ldr r1, _080C20F8 @ =0x04000008
+	ldr r1, _080C20F8 @ =REG_BG0CNT
 	movs r2, 0xF8
 	lsls r2, 6
 	adds r0, r2, 0
@@ -36,7 +36,7 @@ sub_80C2020: @ 80C2020
 	ldr r3, _080C2104 @ =0x00003a03
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _080C2108 @ =0x0400004c
+	ldr r0, _080C2108 @ =REG_MOSAIC
 	movs r2, 0
 	strh r2, [r0]
 	adds r1, 0x3A
@@ -47,7 +47,7 @@ sub_80C2020: @ 80C2020
 	subs r3, 0x11
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _080C2110 @ =0x04000040
+	ldr r0, _080C2110 @ =REG_WIN0H
 	strh r2, [r0]
 	adds r0, 0x4
 	strh r2, [r0]
@@ -113,13 +113,13 @@ sub_80C2020: @ 80C2020
 	.align 2, 0
 _080C20F0: .4byte gWindowConfig_81E6FA0
 _080C20F4: .4byte gMenuWindow
-_080C20F8: .4byte 0x04000008
+_080C20F8: .4byte REG_BG0CNT
 _080C20FC: .4byte 0x00001803
 _080C2100: .4byte 0x00001c03
 _080C2104: .4byte 0x00003a03
-_080C2108: .4byte 0x0400004c
+_080C2108: .4byte REG_MOSAIC
 _080C210C: .4byte 0x00003f3f
-_080C2110: .4byte 0x04000040
+_080C2110: .4byte REG_WIN0H
 _080C2114: .4byte gUnknown_030042A4
 _080C2118: .4byte gUnknown_030042A0
 _080C211C: .4byte gUnknown_030042C0
@@ -482,7 +482,7 @@ sub_80C2430: @ 80C2430
 	thumb_func_start sub_80C2448
 sub_80C2448: @ 80C2448
 	push {lr}
-	ldr r1, _080C24C0 @ =0x04000010
+	ldr r1, _080C24C0 @ =REG_BG0HOFS
 	ldr r0, _080C24C4 @ =gUnknown_030042A4
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -537,7 +537,7 @@ sub_80C2448: @ 80C2448
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C24C0: .4byte 0x04000010
+_080C24C0: .4byte REG_BG0HOFS
 _080C24C4: .4byte gUnknown_030042A4
 _080C24C8: .4byte gUnknown_030042A0
 _080C24CC: .4byte gUnknown_030042C0
@@ -1807,7 +1807,7 @@ _080C2EEE:
 	.align 2, 0
 _080C2F00: .4byte 0xffff0000
 _080C2F04:
-	ldr r0, _080C2F20 @ =0x04000050
+	ldr r0, _080C2F20 @ =REG_BLDCNT
 	strh r3, [r0]
 	adds r0, 0x4
 	strh r3, [r0]
@@ -1820,7 +1820,7 @@ _080C2F18:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C2F20: .4byte 0x04000050
+_080C2F20: .4byte REG_BLDCNT
 _080C2F24: .4byte c2_exit_to_overworld_1_continue_scripts_restart_music
 	thumb_func_end sub_80C2EA0
 
@@ -2246,7 +2246,7 @@ _080C3218:
 	adds r7, r4, r1
 	ldr r0, _080C32E0 @ =gUnknown_083D1624
 	mov r9, r0
-	ldr r1, _080C32E4 @ =0x04000008
+	ldr r1, _080C32E4 @ =REG_BG0CNT
 	mov r8, r1
 	adds r1, r7, 0
 	mov r2, r8
@@ -2305,7 +2305,7 @@ _080C32D4: .4byte gUnknown_020238CC
 _080C32D8: .4byte gUnknown_083D17E2
 _080C32DC: .4byte 0x02018068
 _080C32E0: .4byte gUnknown_083D1624
-_080C32E4: .4byte 0x04000008
+_080C32E4: .4byte REG_BG0CNT
 _080C32E8: .4byte 0x06010100
 _080C32EC: .4byte 0x06010200
 _080C32F0: .4byte 0x06010300
@@ -2378,7 +2378,7 @@ _080C3322:
 	ble _080C32B2
 _080C3382:
 	ldr r4, _080C33D4 @ =gUnknown_083D1644
-	ldr r5, _080C33D8 @ =0x04000008
+	ldr r5, _080C33D8 @ =REG_BG0CNT
 	adds r0, r4, 0
 	adds r1, r7, 0
 	adds r2, r5, 0
@@ -2415,7 +2415,7 @@ _080C3382:
 	.align 2, 0
 _080C33D0: .4byte gUnknown_083D16E4
 _080C33D4: .4byte gUnknown_083D1644
-_080C33D8: .4byte 0x04000008
+_080C33D8: .4byte REG_BG0CNT
 	thumb_func_end sub_80C3158
 
 	thumb_func_start sub_80C33DC
@@ -2869,7 +2869,7 @@ _080C36DA:
 	adds r1, 0x10
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r1, _080C375C @ =0x04000048
+	ldr r1, _080C375C @ =REG_WININ
 	ldr r2, _080C3760 @ =0x00003f3e
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -2881,7 +2881,7 @@ _080C374C: .4byte 0x02018000
 _080C3750: .4byte gSprites
 _080C3754: .4byte gUnknown_030042C4
 _080C3758: .4byte gUnknown_03004240
-_080C375C: .4byte 0x04000048
+_080C375C: .4byte REG_WININ
 _080C3760: .4byte 0x00003f3e
 	thumb_func_end sub_80C3698
 
@@ -2927,11 +2927,11 @@ _080C3790:
 	movs r1, 0
 	strh r1, [r7]
 	strh r1, [r6]
-	ldr r0, _080C37D8 @ =0x04000040
+	ldr r0, _080C37D8 @ =REG_WIN0H
 	strh r1, [r0]
 	adds r0, 0x4
 	strh r1, [r0]
-	ldr r1, _080C37DC @ =0x04000048
+	ldr r1, _080C37DC @ =REG_WININ
 	ldr r2, _080C37E0 @ =0x00003f3f
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -2943,8 +2943,8 @@ _080C37C8: .4byte 0x02018000
 _080C37CC: .4byte gSprites
 _080C37D0: .4byte gUnknown_030042C4
 _080C37D4: .4byte gUnknown_03004240
-_080C37D8: .4byte 0x04000040
-_080C37DC: .4byte 0x04000048
+_080C37D8: .4byte REG_WIN0H
+_080C37DC: .4byte REG_WININ
 _080C37E0: .4byte 0x00003f3f
 	thumb_func_end sub_80C3764
 
@@ -5428,7 +5428,7 @@ sub_80C4A44: @ 80C4A44
 	lsls r1, r5, 2
 	adds r0, r1, r5
 	lsls r4, r0, 3
-	ldr r6, _080C4AA4 @ =0x03004b38
+	ldr r6, _080C4AA4 @ =gTasks + 0x8
 	adds r7, r1, 0
 _080C4A64:
 	mov r0, sp
@@ -5464,7 +5464,7 @@ _080C4A96:
 	b _080C4AAA
 	.align 2, 0
 _080C4AA0: .4byte gSpecialVar_0x8004
-_080C4AA4: .4byte 0x03004b38
+_080C4AA4: .4byte gTasks + 0x8
 _080C4AA8:
 	movs r0, 0x1
 _080C4AAA:
@@ -5474,7 +5474,7 @@ _080C4AAA:
 	mov r4, r12
 	adds r0, r7, r5
 	lsls r2, r0, 3
-	ldr r6, _080C4AF8 @ =0x03004b38
+	ldr r6, _080C4AF8 @ =gTasks + 0x8
 _080C4AB8:
 	adds r1, r4, r3
 	adds r0, r3, 0x5
@@ -5506,7 +5506,7 @@ _080C4AB8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C4AF8: .4byte 0x03004b38
+_080C4AF8: .4byte gTasks + 0x8
 _080C4AFC: .4byte gUnknown_0203869B
 _080C4B00: .4byte gScriptContestCategory
 _080C4B04: .4byte sub_80C8EBC

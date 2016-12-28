@@ -1706,7 +1706,7 @@ sub_8123FBC: @ 8123FBC
 	cmp r0, 0x1
 	beq _08124024
 _08123FCA:
-	ldr r1, _08124020 @ =0x04000048
+	ldr r1, _08124020 @ =REG_WININ
 	movs r0, 0
 	strh r0, [r1]
 	adds r1, 0x2
@@ -1749,9 +1749,9 @@ _08123FCA:
 	strh r0, [r1]
 	b _081240EE
 	.align 2, 0
-_08124020: .4byte 0x04000048
+_08124020: .4byte REG_WININ
 _08124024:
-	ldr r0, _08124060 @ =0x04000048
+	ldr r0, _08124060 @ =REG_WININ
 	movs r3, 0
 	strh r3, [r0]
 	adds r0, 0x2
@@ -1781,7 +1781,7 @@ _08124024:
 	movs r0, 0x50
 	b _08124082
 	.align 2, 0
-_08124060: .4byte 0x04000048
+_08124060: .4byte REG_WININ
 _08124064: .4byte gSpecialVar_0x8004
 _08124068: .4byte gUnknown_02039274
 _0812406C:
@@ -1803,19 +1803,19 @@ _08124082:
 	ldr r0, [r1]
 	strb r3, [r0, 0x9]
 	adds r2, r1, 0
-	ldr r1, _081240F8 @ =0x0400001c
+	ldr r1, _081240F8 @ =REG_BG3HOFS
 	ldr r2, [r2]
 	ldrb r0, [r2, 0x14]
 	strh r0, [r1]
 	adds r1, 0x2
 	ldrb r0, [r2, 0x15]
 	strh r0, [r1]
-	ldr r0, _081240FC @ =0x04000018
+	ldr r0, _081240FC @ =REG_BG2HOFS
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
-	ldr r1, _08124100 @ =0x04000014
+	ldr r1, _08124100 @ =REG_BG1HOFS
 	ldrb r0, [r2, 0xC]
 	strh r0, [r1]
 	adds r1, 0x2
@@ -1839,7 +1839,7 @@ _08124082:
 	ldr r2, _0812410C @ =0x00003e03
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _08124110 @ =0x0400000e
+	ldr r0, _08124110 @ =REG_BG3CNT
 	movs r3, 0xFC
 	lsls r3, 6
 	adds r2, r3, 0
@@ -1849,21 +1849,21 @@ _08124082:
 	lsls r3, 5
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _08124114 @ =0x04000050
+	ldr r0, _08124114 @ =REG_BLDCNT
 	strh r2, [r0]
 _081240EE:
 	pop {r0}
 	bx r0
 	.align 2, 0
 _081240F4: .4byte gUnknown_02039274
-_081240F8: .4byte 0x0400001c
-_081240FC: .4byte 0x04000018
-_08124100: .4byte 0x04000014
+_081240F8: .4byte REG_BG3HOFS
+_081240FC: .4byte REG_BG2HOFS
+_08124100: .4byte REG_BG1HOFS
 _08124104: .4byte 0x00003c01
 _08124108: .4byte 0x00003d02
 _0812410C: .4byte 0x00003e03
-_08124110: .4byte 0x0400000e
-_08124114: .4byte 0x04000050
+_08124110: .4byte REG_BG3CNT
+_08124114: .4byte REG_BLDCNT
 	thumb_func_end sub_8123FBC
 
 	thumb_func_start sub_8124118

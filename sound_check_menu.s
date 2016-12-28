@@ -47,7 +47,7 @@ unref_sub_80BA0EC: @ 80BA0EC
 	lsls r6, 19
 	movs r5, 0
 	strh r5, [r6]
-	ldr r0, _080BA20C @ =0x0400000c
+	ldr r0, _080BA20C @ =REG_BG2CNT
 	strh r5, [r0]
 	subs r0, 0x2
 	strh r5, [r0]
@@ -108,7 +108,7 @@ unref_sub_80BA0EC: @ 80BA0EC
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r0, _080BA228 @ =0x04000040
+	ldr r0, _080BA228 @ =REG_WIN0H
 	strh r4, [r0]
 	adds r0, 0x4
 	strh r4, [r0]
@@ -116,7 +116,7 @@ unref_sub_80BA0EC: @ 80BA0EC
 	strh r4, [r0]
 	adds r0, 0x4
 	strh r4, [r0]
-	ldr r1, _080BA22C @ =0x04000048
+	ldr r1, _080BA22C @ =REG_WININ
 	ldr r2, _080BA230 @ =0x00001111
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -126,7 +126,7 @@ unref_sub_80BA0EC: @ 80BA0EC
 	adds r1, 0x6
 	movs r0, 0xE1
 	strh r0, [r1]
-	ldr r0, _080BA234 @ =0x04000052
+	ldr r0, _080BA234 @ =REG_BLDALPHA
 	strh r4, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
@@ -137,7 +137,7 @@ unref_sub_80BA0EC: @ 80BA0EC
 	ldrh r0, [r1]
 	orrs r0, r2
 	strh r0, [r1]
-	ldr r2, _080BA23C @ =0x04000004
+	ldr r2, _080BA23C @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -172,19 +172,19 @@ unref_sub_80BA0EC: @ 80BA0EC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BA20C: .4byte 0x0400000c
+_080BA20C: .4byte REG_BG2CNT
 _080BA210: .4byte 0x040000d4
 _080BA214: .4byte 0x8100c000
 _080BA218: .4byte 0x85000100
 _080BA21C: .4byte 0x81000200
 _080BA220: .4byte gWindowConfig_81E6C3C
 _080BA224: .4byte gWindowConfig_81E6CE4
-_080BA228: .4byte 0x04000040
-_080BA22C: .4byte 0x04000048
+_080BA228: .4byte REG_WIN0H
+_080BA22C: .4byte REG_WININ
 _080BA230: .4byte 0x00001111
-_080BA234: .4byte 0x04000052
+_080BA234: .4byte REG_BLDALPHA
 _080BA238: .4byte 0x04000200
-_080BA23C: .4byte 0x04000004
+_080BA23C: .4byte REG_DISPSTAT
 _080BA240: .4byte sub_80BA0C0
 _080BA244: .4byte sub_80BA0A8
 _080BA248: .4byte 0x00007140
@@ -289,7 +289,7 @@ sub_80BA258: @ 80BA258
 	adds r0, r1
 	ldr r1, _080BA374 @ =sub_80BA384
 	str r1, [r0]
-	ldr r1, _080BA378 @ =0x04000040
+	ldr r1, _080BA378 @ =REG_WIN0H
 	ldr r2, _080BA37C @ =0x000011df
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -315,7 +315,7 @@ _080BA368: .4byte gDebugText_DriverTest
 _080BA36C: .4byte gPaletteFade
 _080BA370: .4byte gTasks
 _080BA374: .4byte sub_80BA384
-_080BA378: .4byte 0x04000040
+_080BA378: .4byte REG_WIN0H
 _080BA37C: .4byte 0x000011df
 _080BA380: .4byte 0x0000011f
 	thumb_func_end sub_80BA258
@@ -749,7 +749,7 @@ sub_80BA6B8: @ 80BA6B8
 	cmp r0, 0x1
 	beq _080BA6E0
 _080BA6C6:
-	ldr r1, _080BA6D4 @ =0x04000042
+	ldr r1, _080BA6D4 @ =REG_WIN1H
 	ldr r2, _080BA6D8 @ =0x000011df
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -757,11 +757,11 @@ _080BA6C6:
 	ldr r2, _080BA6DC @ =0x00002957
 	b _080BA6EC
 	.align 2, 0
-_080BA6D4: .4byte 0x04000042
+_080BA6D4: .4byte REG_WIN1H
 _080BA6D8: .4byte 0x000011df
 _080BA6DC: .4byte 0x00002957
 _080BA6E0:
-	ldr r1, _080BA6F4 @ =0x04000042
+	ldr r1, _080BA6F4 @ =REG_WIN1H
 	ldr r2, _080BA6F8 @ =0x000011df
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -773,7 +773,7 @@ _080BA6EC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BA6F4: .4byte 0x04000042
+_080BA6F4: .4byte REG_WIN1H
 _080BA6F8: .4byte 0x000011df
 _080BA6FC: .4byte 0x0000618f
 	thumb_func_end sub_80BA6B8
@@ -1070,7 +1070,7 @@ sub_80BA800: @ 80BA800
 	movs r1, 0x13
 	movs r2, 0xC
 	bl MenuPrint
-	ldr r1, _080BAA20 @ =0x04000040
+	ldr r1, _080BAA20 @ =REG_WIN0H
 	movs r0, 0xF0
 	strh r0, [r1]
 	adds r1, 0x4
@@ -1141,7 +1141,7 @@ _080BAA10: .4byte gDebugText_Priority
 _080BAA14: .4byte gUnknown_083D0381
 _080BAA18: .4byte gUnknown_083D038A
 _080BAA1C: .4byte gUnknown_083D0393
-_080BAA20: .4byte 0x04000040
+_080BAA20: .4byte REG_WIN0H
 _080BAA24: .4byte gUnknown_020387B3
 _080BAA28: .4byte gUnknown_020387B1
 _080BAA2C: .4byte gUnknown_020387B2
@@ -1857,7 +1857,7 @@ sub_80BAF84: @ 80BAF84
 	movs r1, 0x3
 	movs r2, 0x8
 	bl MenuPrint
-	ldr r1, _080BB028 @ =0x04000040
+	ldr r1, _080BB028 @ =REG_WIN0H
 	movs r0, 0xF0
 	strh r0, [r1]
 	adds r1, 0x4
@@ -1887,7 +1887,7 @@ sub_80BAF84: @ 80BAF84
 _080BB01C: .4byte gOtherText_SE
 _080BB020: .4byte gOtherText_Pan
 _080BB024: .4byte gUnknown_083D0381
-_080BB028: .4byte 0x04000040
+_080BB028: .4byte REG_WIN0H
 _080BB02C: .4byte gUnknown_020387B4
 _080BB030: .4byte gTasks
 _080BB034: .4byte sub_80BB038
@@ -2268,11 +2268,11 @@ _080BB306:
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r0, _080BB398 @ =0x04000018
+	ldr r0, _080BB398 @ =REG_BG2HOFS
 	strh r4, [r0]
 	adds r0, 0x2
 	strh r4, [r0]
-	ldr r1, _080BB39C @ =0x0400000c
+	ldr r1, _080BB39C @ =REG_BG2CNT
 	ldr r2, _080BB3A0 @ =0x00000f01
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -2307,8 +2307,8 @@ _080BB388: .4byte 0x00ffffff
 _080BB38C: .4byte 0xffff00ff
 _080BB390: .4byte 0xffffff00
 _080BB394: .4byte gUnknown_03005E98
-_080BB398: .4byte 0x04000018
-_080BB39C: .4byte 0x0400000c
+_080BB398: .4byte REG_BG2HOFS
+_080BB39C: .4byte REG_BG2CNT
 _080BB3A0: .4byte 0x00000f01
 _080BB3A4: .4byte 0x00001d03
 _080BB3A8: .4byte gMPlay_BGM

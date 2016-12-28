@@ -104,7 +104,7 @@ sub_8148C78: @ 8148C78
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08148CA4 @ =0x0400000e
+	ldr r1, _08148CA4 @ =REG_BG3CNT
 	ldr r2, _08148CA8 @ =0x00000603
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -124,7 +124,7 @@ sub_8148C78: @ 8148C78
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08148CA4: .4byte 0x0400000e
+_08148CA4: .4byte REG_BG3CNT
 _08148CA8: .4byte 0x00000603
 _08148CAC: .4byte 0x00000f05
 	thumb_func_end sub_8148C78
@@ -313,7 +313,7 @@ _08148E8C: .4byte gUnknown_0203935C
 
 	thumb_func_start sub_8148E90
 sub_8148E90: @ 8148E90
-	ldr r1, _08148EB4 @ =0x0400000e
+	ldr r1, _08148EB4 @ =REG_BG3CNT
 	ldr r2, _08148EB8 @ =0x00000603
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -332,7 +332,7 @@ sub_8148E90: @ 8148E90
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_08148EB4: .4byte 0x0400000e
+_08148EB4: .4byte REG_BG3CNT
 _08148EB8: .4byte 0x00000603
 _08148EBC: .4byte 0x00000f05
 	thumb_func_end sub_8148E90
@@ -425,9 +425,9 @@ sub_8148F3C: @ 8148F3C
 	asrs r1, r2, 16
 	strh r1, [r3, 0xC]
 	strh r2, [r3, 0xE]
-	ldr r0, _08148FB8 @ =0x04000014
+	ldr r0, _08148FB8 @ =REG_BG1HOFS
 	strh r1, [r0]
-	ldr r2, _08148FBC @ =0x04000016
+	ldr r2, _08148FBC @ =REG_BG1VOFS
 	ldr r1, _08148FC0 @ =gUnknown_02039358
 	ldr r0, _08148FC4 @ =gUnknown_0203935A
 	ldrh r0, [r0]
@@ -449,13 +449,13 @@ _08148F7C:
 	asrs r1, r2, 16
 	strh r1, [r3, 0x12]
 	strh r2, [r3, 0x14]
-	ldr r0, _08148FC8 @ =0x04000018
+	ldr r0, _08148FC8 @ =REG_BG2HOFS
 	strh r1, [r0]
 	movs r1, 0x8
 	ldrsh r0, [r3, r1]
 	cmp r0, 0
 	beq _08148FD0
-	ldr r2, _08148FCC @ =0x0400001a
+	ldr r2, _08148FCC @ =REG_BG2VOFS
 	ldr r1, _08148FC0 @ =gUnknown_02039358
 	ldr r0, _08148FC4 @ =gUnknown_0203935A
 	ldrh r0, [r0]
@@ -465,14 +465,14 @@ _08148F7C:
 	b _08148FD8
 	.align 2, 0
 _08148FB4: .4byte gTasks
-_08148FB8: .4byte 0x04000014
-_08148FBC: .4byte 0x04000016
+_08148FB8: .4byte REG_BG1HOFS
+_08148FBC: .4byte REG_BG1VOFS
 _08148FC0: .4byte gUnknown_02039358
 _08148FC4: .4byte gUnknown_0203935A
-_08148FC8: .4byte 0x04000018
-_08148FCC: .4byte 0x0400001a
+_08148FC8: .4byte REG_BG2HOFS
+_08148FCC: .4byte REG_BG2VOFS
 _08148FD0:
-	ldr r0, _08149010 @ =0x0400001a
+	ldr r0, _08149010 @ =REG_BG2VOFS
 	ldr r1, _08149014 @ =gUnknown_02039358
 	ldrh r1, [r1]
 	strh r1, [r0]
@@ -495,9 +495,9 @@ _08148FD8:
 	asrs r1, r2, 16
 	strh r1, [r3, 0x18]
 	strh r2, [r3, 0x1A]
-	ldr r0, _08149018 @ =0x0400001c
+	ldr r0, _08149018 @ =REG_BG3HOFS
 	strh r1, [r0]
-	ldr r1, _0814901C @ =0x0400001e
+	ldr r1, _0814901C @ =REG_BG3VOFS
 	ldr r0, _08149014 @ =gUnknown_02039358
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -506,10 +506,10 @@ _08149008:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08149010: .4byte 0x0400001a
+_08149010: .4byte REG_BG2VOFS
 _08149014: .4byte gUnknown_02039358
-_08149018: .4byte 0x0400001c
-_0814901C: .4byte 0x0400001e
+_08149018: .4byte REG_BG3HOFS
+_0814901C: .4byte REG_BG3VOFS
 	thumb_func_end sub_8148F3C
 
 	thumb_func_start sub_8149020

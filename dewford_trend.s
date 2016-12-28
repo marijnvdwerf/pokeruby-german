@@ -67,7 +67,7 @@ _080FA1C2:
 	lsrs r6, r0, 16
 	cmp r6, 0x4
 	bls _080FA192
-	ldr r0, _080FA21C @ =0x02028508
+	ldr r0, _080FA21C @ =gSaveBlock1 + 0x2DD4
 	movs r1, 0x5
 	movs r2, 0
 	bl sub_80FA46C
@@ -80,7 +80,7 @@ _080FA1C2:
 	.align 2, 0
 _080FA214: .4byte 0x00002dda
 _080FA218: .4byte 0x00002dd5
-_080FA21C: .4byte 0x02028508
+_080FA21C: .4byte gSaveBlock1 + 0x2DD4
 	thumb_func_end sub_80FA17C
 
 	thumb_func_start sub_80FA220
@@ -111,7 +111,7 @@ _080FA24A:
 	ldr r2, [sp]
 	mov r4, r10
 	lsls r0, r4, 3
-	ldr r1, _080FA28C @ =0x02028508
+	ldr r1, _080FA28C @ =gSaveBlock1 + 0x2DD4
 	adds r5, r0, r1
 	ldrb r6, [r5, 0x1]
 	movs r0, 0x40
@@ -141,7 +141,7 @@ _080FA24A:
 	orrs r0, r6
 	b _080FA334
 	.align 2, 0
-_080FA28C: .4byte 0x02028508
+_080FA28C: .4byte gSaveBlock1 + 0x2DD4
 _080FA290:
 	lsrs r0, r3, 25
 	subs r2, r0
@@ -236,7 +236,7 @@ _080FA336:
 	mov r10, r0
 	cmp r0, 0x4
 	bls _080FA24A
-	ldr r0, _080FA360 @ =0x02028508
+	ldr r0, _080FA360 @ =gSaveBlock1 + 0x2DD4
 	movs r1, 0x5
 	movs r2, 0
 	bl sub_80FA46C
@@ -250,7 +250,7 @@ _080FA34E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA360: .4byte 0x02028508
+_080FA360: .4byte gSaveBlock1 + 0x2DD4
 	thumb_func_end sub_80FA220
 
 	thumb_func_start sub_80FA364
@@ -313,7 +313,7 @@ _080FA3C8:
 	movs r6, 0
 _080FA3E4:
 	lsls r4, r6, 3
-	ldr r5, _080FA444 @ =0x02028508
+	ldr r5, _080FA444 @ =gSaveBlock1 + 0x2DD4
 	adds r1, r4, r5
 	mov r0, sp
 	movs r2, 0
@@ -361,7 +361,7 @@ _080FA428:
 	movs r0, 0x1
 	b _080FA464
 	.align 2, 0
-_080FA444: .4byte 0x02028508
+_080FA444: .4byte gSaveBlock1 + 0x2DD4
 _080FA448: .4byte 0xffffd22c
 _080FA44C: .4byte 0x00002dd4
 _080FA450:
@@ -544,7 +544,7 @@ _080FA588:
 	movs r2, 0x2
 	bl sub_80FA46C
 	adds r5, r4, 0
-	ldr r3, _080FA5B8 @ =0x02028508
+	ldr r3, _080FA5B8 @ =gSaveBlock1 + 0x2DD4
 	movs r4, 0
 _080FA59A:
 	ldm r5!, {r0,r1}
@@ -562,7 +562,7 @@ _080FA59A:
 	bx r0
 	.align 2, 0
 _080FA5B4: .4byte 0x02007900
-_080FA5B8: .4byte 0x02028508
+_080FA5B8: .4byte gSaveBlock1 + 0x2DD4
 	thumb_func_end sub_80FA4E4
 
 	thumb_func_start sub_80FA5BC
@@ -571,7 +571,7 @@ sub_80FA5BC: @ 80FA5BC
 	ldr r0, _080FA5D8 @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	lsls r1, 3
-	ldr r0, _080FA5DC @ =0x02028508
+	ldr r0, _080FA5DC @ =gSaveBlock1 + 0x2DD4
 	adds r1, r0
 	ldr r0, _080FA5E0 @ =gStringVar1
 	adds r1, 0x4
@@ -582,7 +582,7 @@ sub_80FA5BC: @ 80FA5BC
 	bx r0
 	.align 2, 0
 _080FA5D8: .4byte gSpecialVar_0x8004
-_080FA5DC: .4byte 0x02028508
+_080FA5DC: .4byte gSaveBlock1 + 0x2DD4
 _080FA5E0: .4byte gStringVar1
 	thumb_func_end sub_80FA5BC
 
@@ -843,7 +843,7 @@ SB1ContainsWords: @ 80FA7C8
 	movs r4, 0
 _080FA7CE:
 	lsls r1, r4, 3
-	ldr r0, _080FA7E4 @ =0x0202850c
+	ldr r0, _080FA7E4 @ =gSaveBlock1 + 0x2DD8
 	adds r1, r0
 	adds r0, r5, 0
 	bl IsEasyChatPairEqual
@@ -853,7 +853,7 @@ _080FA7CE:
 	movs r0, 0x1
 	b _080FA7F4
 	.align 2, 0
-_080FA7E4: .4byte 0x0202850c
+_080FA7E4: .4byte gSaveBlock1 + 0x2DD8
 _080FA7E8:
 	adds r0, r4, 0x1
 	lsls r0, 16

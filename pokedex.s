@@ -273,14 +273,14 @@ _080909AC: .4byte gSprites
 _080909B0: .4byte gUnknown_03005CEC
 _080909B4: .4byte gTasks
 _080909B8:
-	ldr r0, _080909E8 @ =0x04000050
+	ldr r0, _080909E8 @ =REG_BLDCNT
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
 	adds r0, 0x2
 	strh r1, [r0]
-	ldr r1, _080909EC @ =0x0400000e
+	ldr r1, _080909EC @ =REG_BG3CNT
 	ldr r2, _080909F0 @ =0x00000f07
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -299,8 +299,8 @@ _080909E0:
 	strh r1, [r0, 0x8]
 	b _08090A26
 	.align 2, 0
-_080909E8: .4byte 0x04000050
-_080909EC: .4byte 0x0400000e
+_080909E8: .4byte REG_BLDCNT
+_080909EC: .4byte REG_BG3CNT
 _080909F0: .4byte 0x00000f07
 _080909F4:
 	ldr r0, _08090A30 @ =gPaletteFade
@@ -1158,7 +1158,7 @@ sub_8091060: @ 8091060
 	ldr r0, _0809112C @ =0x0000feff
 	ands r0, r1
 	strh r0, [r2]
-	ldr r0, _08091130 @ =0x04000008
+	ldr r0, _08091130 @ =REG_BG0CNT
 	strh r3, [r0]
 	adds r0, 0x8
 	strh r3, [r0]
@@ -1178,7 +1178,7 @@ _0809108E:
 	ldr r0, _08091134 @ =0x0000fdff
 	ands r0, r1
 	strh r0, [r2]
-	ldr r0, _08091138 @ =0x0400000a
+	ldr r0, _08091138 @ =REG_BG1CNT
 	strh r3, [r0]
 	adds r0, 0xA
 	strh r3, [r0]
@@ -1198,7 +1198,7 @@ _080910B4:
 	ldr r0, _0809113C @ =0x0000fbff
 	ands r0, r1
 	strh r0, [r2]
-	ldr r0, _08091140 @ =0x0400000c
+	ldr r0, _08091140 @ =REG_BG2CNT
 	strh r3, [r0]
 	adds r0, 0xC
 	strh r3, [r0]
@@ -1218,7 +1218,7 @@ _080910DA:
 	ldr r0, _08091144 @ =0x0000f7ff
 	ands r0, r1
 	strh r0, [r2]
-	ldr r0, _08091148 @ =0x0400000e
+	ldr r0, _08091148 @ =REG_BG3CNT
 	strh r3, [r0]
 	adds r0, 0xE
 	strh r3, [r0]
@@ -1247,13 +1247,13 @@ _08091124:
 	bx r0
 	.align 2, 0
 _0809112C: .4byte 0x0000feff
-_08091130: .4byte 0x04000008
+_08091130: .4byte REG_BG0CNT
 _08091134: .4byte 0x0000fdff
-_08091138: .4byte 0x0400000a
+_08091138: .4byte REG_BG1CNT
 _0809113C: .4byte 0x0000fbff
-_08091140: .4byte 0x0400000c
+_08091140: .4byte REG_BG2CNT
 _08091144: .4byte 0x0000f7ff
-_08091148: .4byte 0x0400000e
+_08091148: .4byte REG_BG3CNT
 _0809114C: .4byte 0x0000efff
 _08091150: .4byte gReservedSpritePaletteCount
 	thumb_func_end sub_8091060
@@ -2748,7 +2748,7 @@ _08091F50:
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r1, r0, 3
-	ldr r3, _08091FB4 @ =0x03004b38
+	ldr r3, _08091FB4 @ =gTasks + 0x8
 	movs r2, 0
 _08091F7C:
 	lsls r0, r4, 1
@@ -2774,7 +2774,7 @@ _08091F7C:
 _08091FA8: .4byte gWindowConfig_81E7064
 _08091FAC: .4byte gUnknown_083A05CC
 _08091FB0: .4byte gUnknown_083A05DC
-_08091FB4: .4byte 0x03004b38
+_08091FB4: .4byte gTasks + 0x8
 _08091FB8: .4byte gMain
 _08091FBC: .4byte 0x0000043c
 _08091FC0:
@@ -2793,7 +2793,7 @@ _08091FC0:
 _08091FD8: .4byte gMain
 _08091FDC: .4byte 0x0000043c
 _08091FE0:
-	ldr r1, _08092000 @ =0x0400000e
+	ldr r1, _08092000 @ =REG_BG3CNT
 	ldr r2, _08092004 @ =0x00000f03
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -2810,7 +2810,7 @@ _08091FF6:
 	strb r0, [r1]
 	b _08092030
 	.align 2, 0
-_08092000: .4byte 0x0400000e
+_08092000: .4byte REG_BG3CNT
 _08092004: .4byte 0x00000f03
 _08092008: .4byte 0x0000043c
 _0809200C:
@@ -4555,7 +4555,7 @@ sub_8092E10: @ 8092E10
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _08092E50 @ =0x03004b38
+	ldr r0, _08092E50 @ =gTasks + 0x8
 	adds r1, r0
 	ldr r2, _08092E54 @ =gUnknown_083B5A7C
 	lsls r0, r3, 3
@@ -4579,7 +4579,7 @@ sub_8092E10: @ 8092E10
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08092E50: .4byte 0x03004b38
+_08092E50: .4byte gTasks + 0x8
 _08092E54: .4byte gUnknown_083B5A7C
 _08092E58: .4byte _08092E5C
 	.align 2, 0

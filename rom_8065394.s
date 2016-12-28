@@ -2274,7 +2274,7 @@ _0806902C: .4byte gMapHeader
 	thumb_func_start sub_8069030
 sub_8069030: @ 8069030
 	push {r4,lr}
-	ldr r4, _08069064 @ =0x02026954
+	ldr r4, _08069064 @ =gSaveBlock1 + 0x1220
 	movs r2, 0x90
 	lsls r2, 1
 	adds r0, r4, 0
@@ -2296,14 +2296,14 @@ sub_8069030: @ 8069030
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08069064: .4byte 0x02026954
+_08069064: .4byte gSaveBlock1 + 0x1220
 _08069068: .4byte gUnknown_0202E8E2
 	thumb_func_end sub_8069030
 
 	thumb_func_start sub_806906C
 sub_806906C: @ 806906C
 	push {lr}
-	ldr r0, _080690A0 @ =0x02026954
+	ldr r0, _080690A0 @ =gSaveBlock1 + 0x1220
 	movs r1, 0
 	str r1, [r0]
 	movs r1, 0x90
@@ -2323,7 +2323,7 @@ sub_806906C: @ 806906C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080690A0: .4byte 0x02026954
+_080690A0: .4byte gSaveBlock1 + 0x1220
 _080690A4: .4byte 0x0000084d
 _080690A8: .4byte 0x0000084e
 _080690AC: .4byte 0x00000829
@@ -2333,14 +2333,14 @@ _080690B0: .4byte 0x00000861
 	thumb_func_start sub_80690B4
 sub_80690B4: @ 80690B4
 	push {lr}
-	ldr r0, _080690C4 @ =0x02026a6c
+	ldr r0, _080690C4 @ =gSaveBlock1 + 0x1338
 	movs r1, 0
 	movs r2, 0x8
 	bl memset
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080690C4: .4byte 0x02026a6c
+_080690C4: .4byte gSaveBlock1 + 0x1338
 	thumb_func_end sub_80690B4
 
 	thumb_func_start sub_80690C8

@@ -694,7 +694,7 @@ sub_80C9458: @ 80C9458
 	lsls r6, r5, 2
 	adds r0, r6, r5
 	lsls r7, r0, 3
-	ldr r0, _080C94AC @ =0x03004b38
+	ldr r0, _080C94AC @ =gTasks + 0x8
 	mov r8, r0
 	adds r4, r7, r0
 	movs r1, 0x6
@@ -726,7 +726,7 @@ sub_80C9458: @ 80C9458
 	str r1, [r0]
 	b _080C9516
 	.align 2, 0
-_080C94AC: .4byte 0x03004b38
+_080C94AC: .4byte gTasks + 0x8
 _080C94B0: .4byte gUnknown_083D61F0
 _080C94B4: .4byte sub_80C99EC
 _080C94B8:
@@ -1227,7 +1227,7 @@ sub_80C9838: @ 80C9838
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _080C986C @ =0x03004b38
+	ldr r0, _080C986C @ =gTasks + 0x8
 	adds r3, r1, r0
 	movs r1, 0x4
 	ldrsh r0, [r3, r1]
@@ -1240,7 +1240,7 @@ sub_80C9838: @ 80C9838
 	strh r0, [r3, 0x4]
 	b _080C98FA
 	.align 2, 0
-_080C986C: .4byte 0x03004b38
+_080C986C: .4byte gTasks + 0x8
 _080C9870:
 	movs r1, 0
 	ldrsh r0, [r3, r1]
@@ -1502,7 +1502,7 @@ sub_80C9A38: @ 80C9A38
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080C9AB4 @ =0x03004b38
+	ldr r1, _080C9AB4 @ =gTasks + 0x8
 	adds r4, r0, r1
 	movs r0, 0xFF
 	movs r1, 0
@@ -1556,7 +1556,7 @@ _080C9AAE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C9AB4: .4byte 0x03004b38
+_080C9AB4: .4byte gTasks + 0x8
 _080C9AB8: .4byte gMapObjects
 _080C9ABC: .4byte gUnknown_083D61F0
 _080C9AC0: .4byte gOtherText_ItemfinderFoundItem
@@ -2176,7 +2176,7 @@ sub_80C9F80: @ 80C9F80
 	movs r1, 0x7
 	movs r2, 0x1
 	bl DisplayYesNoMenu
-	ldr r0, _080C9FB8 @ =0x020219cc
+	ldr r0, _080C9FB8 @ =gBGTilemapBuffers + 0x800
 	movs r1, 0x4
 	str r1, [sp]
 	movs r1, 0x1
@@ -2193,7 +2193,7 @@ sub_80C9F80: @ 80C9F80
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C9FB8: .4byte 0x020219cc
+_080C9FB8: .4byte gBGTilemapBuffers + 0x800
 _080C9FBC: .4byte gUnknown_083D61F4
 	thumb_func_end sub_80C9F80
 

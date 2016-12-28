@@ -35,7 +35,7 @@ sub_8115124: @ 8115124
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
 	bl sub_8117434
-	ldr r2, _08115188 @ =0x04000014
+	ldr r2, _08115188 @ =REG_BG1HOFS
 	ldr r3, _0811518C @ =0x02019000
 	ldrh r1, [r3, 0x26]
 	movs r4, 0x80
@@ -46,7 +46,7 @@ sub_8115124: @ 8115124
 	ldrb r0, [r3, 0x1]
 	cmp r0, 0
 	beq _08115154
-	ldr r1, _08115190 @ =0x04000052
+	ldr r1, _08115190 @ =REG_BLDALPHA
 	ldrh r0, [r3, 0x34]
 	strh r0, [r1]
 _08115154:
@@ -77,15 +77,15 @@ _08115170:
 	beq _081151F8
 	b _0811521A
 	.align 2, 0
-_08115188: .4byte 0x04000014
+_08115188: .4byte REG_BG1HOFS
 _0811518C: .4byte 0x02019000
-_08115190: .4byte 0x04000052
+_08115190: .4byte REG_BLDALPHA
 _08115194: .4byte 0x040000d4
 _08115198: .4byte 0x02021b8c
 _0811519C: .4byte 0x060021c0
 _081151A0: .4byte 0x800001a0
 _081151A4:
-	ldr r1, _081151C4 @ =0x04000008
+	ldr r1, _081151C4 @ =REG_BG0CNT
 	movs r4, 0xF8
 	lsls r4, 5
 	adds r0, r4, 0
@@ -101,7 +101,7 @@ _081151A4:
 	movs r0, 0x2
 	b _08115218
 	.align 2, 0
-_081151C4: .4byte 0x04000008
+_081151C4: .4byte REG_BG0CNT
 _081151C8: .4byte 0x0202238c
 _081151CC: .4byte 0x0600f9c0
 _081151D0: .4byte 0x800001a0
@@ -121,7 +121,7 @@ _081151EC: .4byte 0x0202238c
 _081151F0: .4byte 0x0600f9c0
 _081151F4: .4byte 0x800001a0
 _081151F8:
-	ldr r1, _08115224 @ =0x04000008
+	ldr r1, _08115224 @ =REG_BG0CNT
 	ldr r2, _08115228 @ =0x00001f08
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -145,7 +145,7 @@ _0811521A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08115224: .4byte 0x04000008
+_08115224: .4byte REG_BG0CNT
 _08115228: .4byte 0x00001f08
 _0811522C: .4byte 0x040000d4
 _08115230: .4byte 0x0600f9c0
@@ -348,7 +348,7 @@ _081153D0:
 	bl remove_some_task
 	bl sub_80F9438
 	bl sub_80F9368
-	ldr r1, _08115420 @ =0x0400000c
+	ldr r1, _08115420 @ =REG_BG2CNT
 	ldr r3, _08115424 @ =0x00004686
 	adds r0, r3, 0
 	strh r0, [r1]
@@ -377,7 +377,7 @@ _081153D0:
 	adds r1, r3
 	b _0811557A
 	.align 2, 0
-_08115420: .4byte 0x0400000c
+_08115420: .4byte REG_BG2CNT
 _08115424: .4byte 0x00004686
 _08115428: .4byte 0x00004401
 _0811542C: .4byte 0x0000060a
@@ -523,7 +523,7 @@ _0811558C:
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _08115610 @ =0x04000004
+	ldr r2, _08115610 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -573,7 +573,7 @@ _081155FE:
 	.align 2, 0
 _08115608: .4byte 0x04000208
 _0811560C: .4byte 0x04000200
-_08115610: .4byte 0x04000004
+_08115610: .4byte REG_DISPSTAT
 _08115614: .4byte sub_8115124
 _08115618: .4byte sub_81156BC
 _0811561C: .4byte 0x02019000
@@ -667,14 +667,14 @@ sub_81156BC: @ 81156BC
 	lsrs r3, r0, 24
 	cmp r3, 0
 	bne _08115716
-	ldr r2, _0811571C @ =0x04000050
+	ldr r2, _0811571C @ =REG_BLDCNT
 	ldrh r0, [r2]
 	movs r5, 0x90
 	lsls r5, 6
 	adds r1, r5, 0
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r1, _08115720 @ =0x04000052
+	ldr r1, _08115720 @ =REG_BLDALPHA
 	ldr r2, _08115724 @ =0x00000808
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -702,8 +702,8 @@ _08115716:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0811571C: .4byte 0x04000050
-_08115720: .4byte 0x04000052
+_0811571C: .4byte REG_BLDCNT
+_08115720: .4byte REG_BLDALPHA
 _08115724: .4byte 0x00000808
 _08115728: .4byte gTasks
 _0811572C: .4byte sub_81159BC
@@ -822,7 +822,7 @@ _081157EC:
 	.4byte _081158C8
 	.4byte _08115884
 _0811582C:
-	ldr r0, _08115844 @ =0x020221cc
+	ldr r0, _08115844 @ =gBGTilemapBuffers + 0x1000
 	movs r1, 0x10
 	str r1, [sp]
 	movs r1, 0xD
@@ -833,14 +833,14 @@ _0811582C:
 	bl sub_8124DDC
 	b _08115918
 	.align 2, 0
-_08115844: .4byte 0x020221cc
+_08115844: .4byte gBGTilemapBuffers + 0x1000
 _08115848:
 	lsls r0, r4, 1
 	adds r0, r4
 	adds r0, 0xE
 	lsls r0, 24
 	lsrs r7, r0, 24
-	ldr r5, _0811587C @ =0x020221cc
+	ldr r5, _0811587C @ =gBGTilemapBuffers + 0x1000
 	movs r0, 0x10
 	str r0, [sp]
 	movs r4, 0xD
@@ -860,7 +860,7 @@ _08115848:
 	bl sub_8124E2C
 	b _08115918
 	.align 2, 0
-_0811587C: .4byte 0x020221cc
+_0811587C: .4byte gBGTilemapBuffers + 0x1000
 _08115880: .4byte 0x02018a32
 _08115884:
 	subs r0, r4, 0x1
@@ -871,7 +871,7 @@ _08115884:
 	adds r1, 0xA
 	lsls r1, 24
 	lsrs r6, r1, 24
-	ldr r5, _081158C0 @ =0x020221cc
+	ldr r5, _081158C0 @ =gBGTilemapBuffers + 0x1000
 	movs r4, 0x10
 	str r4, [sp]
 	movs r0, 0xD
@@ -891,7 +891,7 @@ _08115884:
 	bl sub_8124E2C
 	b _08115918
 	.align 2, 0
-_081158C0: .4byte 0x020221cc
+_081158C0: .4byte gBGTilemapBuffers + 0x1000
 _081158C4: .4byte 0x02018a80
 _081158C8:
 	adds r0, r4, 0
@@ -912,7 +912,7 @@ _081158C8:
 	adds r1, 0x7
 	lsls r1, 24
 	lsrs r6, r1, 24
-	ldr r4, _08115920 @ =0x020221cc
+	ldr r4, _08115920 @ =gBGTilemapBuffers + 0x1000
 	movs r0, 0x10
 	str r0, [sp]
 	movs r0, 0xD
@@ -936,7 +936,7 @@ _08115918:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08115920: .4byte 0x020221cc
+_08115920: .4byte gBGTilemapBuffers + 0x1000
 _08115924: .4byte 0x02018a20
 	thumb_func_end sub_81157D0
 
@@ -1248,7 +1248,7 @@ sub_8115B58: @ 8115B58
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
-	ldr r1, _08115D34 @ =0x03004b38
+	ldr r1, _08115D34 @ =gTasks + 0x8
 	adds r0, r1
 	adds r0, 0x8
 	movs r1, 0
@@ -1267,7 +1267,7 @@ _08115B94:
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
-	ldr r1, _08115D34 @ =0x03004b38
+	ldr r1, _08115D34 @ =gTasks + 0x8
 	adds r0, r1
 	adds r0, 0x8
 	movs r1, 0x1
@@ -1286,7 +1286,7 @@ _08115BBA:
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
-	ldr r1, _08115D34 @ =0x03004b38
+	ldr r1, _08115D34 @ =gTasks + 0x8
 	adds r0, r1
 	adds r0, 0x8
 	movs r1, 0x2
@@ -1305,7 +1305,7 @@ _08115BE0:
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
-	ldr r1, _08115D34 @ =0x03004b38
+	ldr r1, _08115D34 @ =gTasks + 0x8
 	adds r0, r1
 	adds r0, 0x8
 	movs r1, 0x3
@@ -1463,7 +1463,7 @@ _08115D20:
 	bx r0
 	.align 2, 0
 _08115D30: .4byte gMain
-_08115D34: .4byte 0x03004b38
+_08115D34: .4byte gTasks + 0x8
 _08115D38: .4byte gTasks
 _08115D3C: .4byte 0x020190b8
 _08115D40: .4byte 0x0000ffff
@@ -3239,7 +3239,7 @@ sub_8116B40: @ 8116B40
 	bl ResetPaletteFade
 	bl ResetSpriteData
 	bl sub_80F9020
-	ldr r0, _08116BB0 @ =0x04000050
+	ldr r0, _08116BB0 @ =REG_BLDCNT
 	strh r4, [r0]
 	adds r0, 0x2
 	strh r4, [r0]
@@ -3260,7 +3260,7 @@ _08116B9E:
 _08116BA4: .4byte 0x02019000
 _08116BA8: .4byte gSpriteCoordOffsetX
 _08116BAC: .4byte gSpriteCoordOffsetY
-_08116BB0: .4byte 0x04000050
+_08116BB0: .4byte REG_BLDCNT
 _08116BB4: .4byte gUnknown_0300485C
 _08116BB8: .4byte sub_8080990
 _08116BBC: .4byte c2_exit_to_overworld_2_switch
@@ -4016,7 +4016,7 @@ sub_8117158: @ 8117158
 	movs r0, 0
 	movs r1, 0
 	bl sub_8117AA8
-	ldr r0, _081171A0 @ =0x020219cc
+	ldr r0, _081171A0 @ =gBGTilemapBuffers + 0x800
 	ldr r1, _081171A4 @ =0xfffff800
 	adds r4, r1
 	movs r1, 0x10
@@ -4036,7 +4036,7 @@ sub_8117158: @ 8117158
 	mov pc, r0
 	.align 2, 0
 _0811719C: .4byte 0x02019000
-_081171A0: .4byte 0x020219cc
+_081171A0: .4byte gBGTilemapBuffers + 0x800
 _081171A4: .4byte 0xfffff800
 _081171A8: .4byte _081171AC
 	.align 2, 0
@@ -4169,7 +4169,7 @@ _0811727C:
 	bhi _08117350
 	add r5, sp, 0xC
 	ldr r7, [sp, 0x20]
-	ldr r0, _08117374 @ =0x020219cc
+	ldr r0, _08117374 @ =gBGTilemapBuffers + 0x800
 	mov r8, r0
 	ldr r6, [sp, 0x1C]
 	ldr r1, _08117378 @ =0x020189a0
@@ -4263,7 +4263,7 @@ _08117360:
 	bx r0
 	.align 2, 0
 _08117370: .4byte gUnknown_083F8C00
-_08117374: .4byte 0x020219cc
+_08117374: .4byte gBGTilemapBuffers + 0x800
 _08117378: .4byte 0x020189a0
 _0811737C: .4byte 0x020189a4
 	thumb_func_end sub_8117158
@@ -4367,7 +4367,7 @@ _0811742A:
 	thumb_func_start sub_8117434
 sub_8117434: @ 8117434
 	push {r4-r6,lr}
-	ldr r1, _081174AC @ =0x04000020
+	ldr r1, _081174AC @ =REG_BG2PA
 	ldr r4, _081174B0 @ =0x02019000
 	ldrh r0, [r4, 0x2C]
 	strh r0, [r1]
@@ -4410,7 +4410,7 @@ sub_8117434: @ 8117434
 	ldrsh r0, [r4, r6]
 	muls r0, r3
 	subs r1, r0
-	ldr r0, _081174BC @ =0x04000028
+	ldr r0, _081174BC @ =REG_BG2X_L
 	strh r2, [r0]
 	adds r0, 0x2
 	ldr r3, _081174C0 @ =0x0fff0000
@@ -4427,11 +4427,11 @@ sub_8117434: @ 8117434
 	pop {r0}
 	bx r0
 	.align 2, 0
-_081174AC: .4byte 0x04000020
+_081174AC: .4byte REG_BG2PA
 _081174B0: .4byte 0x02019000
 _081174B4: .4byte gSpriteCoordOffsetY
 _081174B8: .4byte gSpriteCoordOffsetX
-_081174BC: .4byte 0x04000028
+_081174BC: .4byte REG_BG2X_L
 _081174C0: .4byte 0x0fff0000
 	thumb_func_end sub_8117434
 

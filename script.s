@@ -605,7 +605,7 @@ CalculateRamScriptChecksum: @ 8065760
 	movs r2, 0
 	movs r1, 0
 	ldr r4, _08065780 @ =0x000003e7
-	ldr r3, _08065784 @ =0x02028dc8
+	ldr r3, _08065784 @ =gSaveBlock1 + 0x3694
 _0806576A:
 	adds r0, r1, r3
 	ldrb r0, [r0]
@@ -619,7 +619,7 @@ _0806576A:
 	bx r1
 	.align 2, 0
 _08065780: .4byte 0x000003e7
-_08065784: .4byte 0x02028dc8
+_08065784: .4byte gSaveBlock1 + 0x3694
 	thumb_func_end CalculateRamScriptChecksum
 
 	thumb_func_start ClearRamScript
@@ -628,7 +628,7 @@ ClearRamScript: @ 8065788
 	sub sp, 0x4
 	movs r0, 0
 	str r0, [sp]
-	ldr r1, _080657A0 @ =0x02028dc4
+	ldr r1, _080657A0 @ =gSaveBlock1 + 0x3690
 	ldr r2, _080657A4 @ =0x050000fb
 	mov r0, sp
 	bl CpuSet
@@ -636,7 +636,7 @@ ClearRamScript: @ 8065788
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080657A0: .4byte 0x02028dc4
+_080657A0: .4byte gSaveBlock1 + 0x3690
 _080657A4: .4byte 0x050000fb
 	thumb_func_end ClearRamScript
 
@@ -657,7 +657,7 @@ InitRamScript: @ 80657A8
 	lsrs r6, r3, 24
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r4, _080657F4 @ =0x02028dc8
+	ldr r4, _080657F4 @ =gSaveBlock1 + 0x3694
 	bl ClearRamScript
 	ldr r0, _080657F8 @ =0x000003e3
 	cmp r8, r0
@@ -677,7 +677,7 @@ InitRamScript: @ 80657A8
 	movs r0, 0x1
 	b _080657FE
 	.align 2, 0
-_080657F4: .4byte 0x02028dc8
+_080657F4: .4byte gSaveBlock1 + 0x3694
 _080657F8: .4byte 0x000003e3
 _080657FC:
 	movs r0, 0
@@ -696,7 +696,7 @@ GetRamScript: @ 806580C
 	adds r5, r1, 0
 	lsls r0, 24
 	lsrs r3, r0, 24
-	ldr r4, _08065854 @ =0x02028dc8
+	ldr r4, _08065854 @ =gSaveBlock1 + 0x3694
 	ldr r6, _08065858 @ =gUnknown_0202E8AC
 	movs r0, 0
 	str r0, [r6]
@@ -727,7 +727,7 @@ GetRamScript: @ 806580C
 	adds r0, r4, 0x4
 	b _08065866
 	.align 2, 0
-_08065854: .4byte 0x02028dc8
+_08065854: .4byte gSaveBlock1 + 0x3694
 _08065858: .4byte gUnknown_0202E8AC
 _0806585C: .4byte 0xffffc96c
 _08065860:

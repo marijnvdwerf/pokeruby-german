@@ -583,7 +583,7 @@ _08043B50:
 	lsrs r1, 17
 	ldr r2, _08043C34 @ =0x06010000
 	adds r1, r2
-	ldr r2, _08043C38 @ =0x04000010
+	ldr r2, _08043C38 @ =REG_BG0HOFS
 	bl CpuSet
 	lsls r0, r6, 4
 	adds r0, r6
@@ -632,7 +632,7 @@ _08043C28: .4byte gUnknown_02024A72
 _08043C2C: .4byte gSpriteTemplate_820A56C
 _08043C30: .4byte gSubspriteTables_820A684
 _08043C34: .4byte 0x06010000
-_08043C38: .4byte 0x04000010
+_08043C38: .4byte REG_BG0HOFS
 	thumb_func_end battle_make_oam_normal_battle
 
 	thumb_func_start battle_make_oam_safari_battle
@@ -1251,7 +1251,7 @@ _080440BC:
 	ldm r7!, {r1}
 	adds r1, r0
 	adds r0, r5, 0
-	ldr r2, _080440E8 @ =0x04000008
+	ldr r2, _080440E8 @ =REG_BG0CNT
 	bl CpuSet
 	adds r5, 0x40
 	subs r4, 0x1
@@ -1264,7 +1264,7 @@ _080440BC:
 	.align 2, 0
 _080440E0: .4byte gSprites
 _080440E4: .4byte 0x02000020
-_080440E8: .4byte 0x04000008
+_080440E8: .4byte REG_BG0CNT
 	thumb_func_end sub_8043FC0
 
 	thumb_func_start sub_80440EC
@@ -1388,7 +1388,7 @@ _080441D6:
 	ldm r7!, {r1}
 	adds r1, r0
 	adds r0, r5, 0
-	ldr r2, _0804420C @ =0x04000008
+	ldr r2, _0804420C @ =REG_BG0CNT
 	bl CpuSet
 	adds r5, 0x40
 	subs r4, 0x1
@@ -1406,7 +1406,7 @@ _080441FC: .4byte gUnknown_0820A85C
 _08044200: .4byte gUnknown_0820A854
 _08044204: .4byte gSprites
 _08044208: .4byte 0x02000020
-_0804420C: .4byte 0x04000008
+_0804420C: .4byte REG_BG0CNT
 	thumb_func_end sub_80440EC
 
 	thumb_func_start sub_8044210
@@ -1496,7 +1496,7 @@ _0804428C:
 	adds r1, r2
 	ldr r2, _08044328 @ =0x06010000
 	adds r1, r2
-	ldr r2, _0804432C @ =0x04000008
+	ldr r2, _0804432C @ =REG_BG0CNT
 	bl CpuSet
 _080442CE:
 	ldr r6, _08044330 @ =gSprites
@@ -1526,7 +1526,7 @@ _080442F8:
 	ldm r7!, {r1}
 	adds r1, r0
 	adds r0, r5, 0
-	ldr r2, _0804432C @ =0x04000008
+	ldr r2, _0804432C @ =REG_BG0CNT
 	bl CpuSet
 	adds r5, 0x40
 	subs r4, 0x1
@@ -1544,7 +1544,7 @@ _08044312:
 	.align 2, 0
 _08044324: .4byte gUnknown_0820A894
 _08044328: .4byte 0x06010000
-_0804432C: .4byte 0x04000008
+_0804432C: .4byte REG_BG0CNT
 _08044330: .4byte gSprites
 _08044334: .4byte 0x02000020
 	thumb_func_end sub_8044210
@@ -1649,7 +1649,7 @@ _080443FA:
 	bl sub_8043CDC
 	lsls r1, r5, 6
 	adds r1, r6, r1
-	ldr r2, _080444F8 @ =0x04000008
+	ldr r2, _080444F8 @ =REG_BG0CNT
 	bl CpuSet
 	adds r0, r5, 0x1
 	lsls r0, 24
@@ -1667,7 +1667,7 @@ _080443FA:
 	cmp r7, r9
 	bge _08044486
 	ldr r1, _080444FC @ =gSprites
-	ldr r2, _080444F8 @ =0x04000008
+	ldr r2, _080444F8 @ =REG_BG0CNT
 	mov r10, r2
 	ldr r2, [sp, 0x14]
 	adds r0, r3, r2
@@ -1766,11 +1766,11 @@ _080444DA:
 	ldr r0, _08044500 @ =0x06010000
 	adds r1, r0
 	adds r0, r4, 0
-	ldr r2, _080444F8 @ =0x04000008
+	ldr r2, _080444F8 @ =REG_BG0CNT
 	bl CpuSet
 	b _0804452A
 	.align 2, 0
-_080444F8: .4byte 0x04000008
+_080444F8: .4byte REG_BG0CNT
 _080444FC: .4byte gSprites
 _08044500: .4byte 0x06010000
 _08044504: .4byte 0x02000000
@@ -1786,7 +1786,7 @@ _08044514:
 	ldr r2, _08044544 @ =0x060100c0
 	adds r1, r2
 	adds r0, r4, 0
-	ldr r2, _08044548 @ =0x04000008
+	ldr r2, _08044548 @ =REG_BG0CNT
 	bl CpuSet
 _0804452A:
 	adds r4, 0x40
@@ -1803,7 +1803,7 @@ _0804452A:
 	bx r0
 	.align 2, 0
 _08044544: .4byte 0x060100c0
-_08044548: .4byte 0x04000008
+_08044548: .4byte REG_BG0CNT
 	thumb_func_end sub_8044338
 
 	thumb_func_start sub_804454C
@@ -1986,13 +1986,13 @@ _08044694:
 	lsrs r1, 17
 	ldr r2, _080446D4 @ =0x06010680
 	adds r1, r2
-	ldr r2, _080446D8 @ =0x04000008
+	ldr r2, _080446D8 @ =REG_BG0CNT
 	bl CpuSet
 	b _080447BE
 	.align 2, 0
 _080446D0: .4byte gPlayerParty
 _080446D4: .4byte 0x06010680
-_080446D8: .4byte 0x04000008
+_080446D8: .4byte REG_BG0CNT
 _080446DC:
 	cmp r6, 0x1
 	bne _0804478C
@@ -2762,7 +2762,7 @@ _08044CD8:
 	adds r5, 0x1
 	cmp r5, 0x5
 	ble _08044CD8
-	ldr r1, _08044DBC @ =0x04000050
+	ldr r1, _08044DBC @ =REG_BLDCNT
 	movs r2, 0xFD
 	lsls r2, 6
 	adds r0, r2, 0
@@ -2869,7 +2869,7 @@ _08044D5E:
 	.align 2, 0
 _08044DB4: .4byte gTasks
 _08044DB8: .4byte gSprites
-_08044DBC: .4byte 0x04000050
+_08044DBC: .4byte REG_BLDCNT
 _08044DC0: .4byte sub_8045110
 _08044DC4:
 	ldrb r1, [r4]
@@ -2984,7 +2984,7 @@ sub_8044E74: @ 8044E74
 	lsls r0, r2, 16
 	cmp r0, 0
 	blt _08044EBA
-	ldr r1, _08044EC4 @ =0x04000052
+	ldr r1, _08044EC4 @ =REG_BLDALPHA
 	movs r0, 0x10
 	subs r0, r2
 	lsls r0, 8
@@ -3002,7 +3002,7 @@ _08044EBA:
 	bx r0
 	.align 2, 0
 _08044EC0: .4byte gTasks
-_08044EC4: .4byte 0x04000052
+_08044EC4: .4byte REG_BLDALPHA
 _08044EC8: .4byte sub_8044ECC
 	thumb_func_end sub_8044E74
 
@@ -3075,7 +3075,7 @@ _08044F4C:
 	negs r0, r0
 	cmp r2, r0
 	bne _08044F62
-	ldr r0, _08044F6C @ =0x04000050
+	ldr r0, _08044F6C @ =REG_BLDCNT
 	strh r5, [r0]
 	adds r0, 0x2
 	strh r5, [r0]
@@ -3087,7 +3087,7 @@ _08044F62:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08044F6C: .4byte 0x04000050
+_08044F6C: .4byte REG_BLDCNT
 	thumb_func_end sub_8044ECC
 
 	thumb_func_start sub_8044F70
@@ -3110,7 +3110,7 @@ sub_8044F70: @ 8044F70
 	asrs r1, r0, 16
 	cmp r1, 0
 	blt _08044FAC
-	ldr r1, _08044FA8 @ =0x04000052
+	ldr r1, _08044FA8 @ =REG_BLDALPHA
 	movs r0, 0x10
 	subs r0, r2
 	lsls r0, 8
@@ -3119,7 +3119,7 @@ sub_8044F70: @ 8044F70
 	b _08045022
 	.align 2, 0
 _08044FA4: .4byte gTasks
-_08044FA8: .4byte 0x04000052
+_08044FA8: .4byte REG_BLDALPHA
 _08044FAC:
 	movs r0, 0x1
 	negs r0, r0
@@ -3173,7 +3173,7 @@ _0804500C:
 	negs r0, r0
 	cmp r1, r0
 	bne _08045022
-	ldr r0, _0804502C @ =0x04000050
+	ldr r0, _0804502C @ =REG_BLDCNT
 	strh r5, [r0]
 	adds r0, 0x2
 	strh r5, [r0]
@@ -3185,7 +3185,7 @@ _08045022:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804502C: .4byte 0x04000050
+_0804502C: .4byte REG_BLDCNT
 	thumb_func_end sub_8044F70
 
 	thumb_func_start sub_8045030
@@ -3590,7 +3590,7 @@ _0804531C:
 _0804531E:
 	bl sub_8043CDC
 	adds r1, r7, 0
-	ldr r2, _080453C8 @ =0x04000008
+	ldr r2, _080453C8 @ =REG_BG0CNT
 	bl CpuSet
 	adds r7, 0x40
 	adds r6, 0x1
@@ -3611,7 +3611,7 @@ _08045344:
 	movs r0, 0x2B
 	bl sub_8043CDC
 	adds r1, r4, 0
-	ldr r2, _080453C8 @ =0x04000008
+	ldr r2, _080453C8 @ =REG_BG0CNT
 	bl CpuSet
 	adds r4, 0x40
 	subs r6, 0x1
@@ -3640,7 +3640,7 @@ _0804535A:
 	beq _08045438
 	mov r8, r6
 	mov r9, r1
-	ldr r7, _080453C8 @ =0x04000008
+	ldr r7, _080453C8 @ =REG_BG0CNT
 	mov r6, r10
 _0804538E:
 	mov r1, r9
@@ -3671,7 +3671,7 @@ _0804538E:
 	bne _0804538E
 	b _08045438
 	.align 2, 0
-_080453C8: .4byte 0x04000008
+_080453C8: .4byte REG_BG0CNT
 _080453CC: .4byte gSprites
 _080453D0: .4byte gUnknown_0820A8B4
 _080453D4:
@@ -3695,7 +3695,7 @@ _080453F2:
 	beq _08045438
 	mov r8, r4
 	mov r9, r1
-	ldr r7, _08045454 @ =0x04000008
+	ldr r7, _08045454 @ =REG_BG0CNT
 	mov r6, r10
 _08045400:
 	mov r0, r9
@@ -3737,7 +3737,7 @@ _08045438:
 _08045448: .4byte gSprites
 _0804544C: .4byte gUnknown_0820A8DC
 _08045450: .4byte gUnknown_0820A904
-_08045454: .4byte 0x04000008
+_08045454: .4byte REG_BG0CNT
 	thumb_func_end sub_80451A0
 
 	thumb_func_start sub_8045458
@@ -3811,7 +3811,7 @@ sub_8045458: @ 8045458
 	adds r1, r2
 	ldr r2, _08045504 @ =0x06010000
 	adds r1, r2
-	ldr r2, _08045508 @ =0x04000008
+	ldr r2, _08045508 @ =REG_BG0CNT
 	bl CpuSet
 	b _0804552E
 	.align 2, 0
@@ -3820,7 +3820,7 @@ _080454F8: .4byte gSprites
 _080454FC: .4byte gUnknown_02024A6A
 _08045500: .4byte gEnemyParty
 _08045504: .4byte 0x06010000
-_08045508: .4byte 0x04000008
+_08045508: .4byte REG_BG0CNT
 _0804550C:
 	str r7, [sp]
 	lsls r0, r4, 4
@@ -4014,7 +4014,7 @@ _0804568A:
 	ldr r3, _080456EC @ =0x06010000
 	adds r1, r3
 	adds r0, r6, 0
-	ldr r2, _080456F0 @ =0x04000008
+	ldr r2, _080456F0 @ =REG_BG0CNT
 	bl CpuSet
 	adds r4, 0x1
 	cmp r4, 0x2
@@ -4039,7 +4039,7 @@ _0804568A:
 	lsrs r1, 17
 	ldr r2, _080456EC @ =0x06010000
 	adds r1, r2
-	ldr r2, _080456F8 @ =0x04000010
+	ldr r2, _080456F8 @ =REG_BG0HOFS
 	bl CpuSet
 _080456DC:
 	mov r0, r9
@@ -4049,9 +4049,9 @@ _080456DC:
 	.align 2, 0
 _080456E8: .4byte gSprites
 _080456EC: .4byte 0x06010000
-_080456F0: .4byte 0x04000008
+_080456F0: .4byte REG_BG0CNT
 _080456F4: .4byte 0x02017800
-_080456F8: .4byte 0x04000010
+_080456F8: .4byte REG_BG0HOFS
 _080456FC:
 	mov r1, r9
 	lsls r5, r1, 4
@@ -4089,7 +4089,7 @@ _080456FC:
 	ldr r2, _080457D8 @ =0x06010000
 	mov r8, r2
 	add r1, r8
-	ldr r2, _080457DC @ =0x04000018
+	ldr r2, _080457DC @ =REG_BG2HOFS
 	adds r0, r6, 0
 	bl CpuSet
 	bl battle_type_is_double
@@ -4124,7 +4124,7 @@ _0804576A:
 	lsls r1, 22
 	lsrs r1, 17
 	add r1, r8
-	ldr r5, _080457E4 @ =0x04000008
+	ldr r5, _080457E4 @ =REG_BG0CNT
 	adds r2, r5, 0
 	bl CpuSet
 	movs r0, 0x41
@@ -4154,9 +4154,9 @@ _080457CC: .4byte gBattleInterfaceStatusIcons_DynPal
 _080457D0: .4byte 0x0202ecc8
 _080457D4: .4byte 0x05000200
 _080457D8: .4byte 0x06010000
-_080457DC: .4byte 0x04000018
+_080457DC: .4byte REG_BG2HOFS
 _080457E0: .4byte 0x02017800
-_080457E4: .4byte 0x04000008
+_080457E4: .4byte REG_BG0CNT
 	thumb_func_end draw_status_ailment_maybe
 
 	thumb_func_start sub_80457E8
@@ -4293,7 +4293,7 @@ _080458EE:
 	bl sub_8043CDC
 	lsls r1, r4, 6
 	adds r1, r6, r1
-	ldr r2, _08045990 @ =0x04000008
+	ldr r2, _08045990 @ =REG_BG0CNT
 	bl CpuSet
 	adds r0, r4, 0x1
 	lsls r0, 24
@@ -4307,7 +4307,7 @@ _080458EE:
 	cmp r7, r9
 	bge _08045974
 	ldr r1, _08045984 @ =gSprites
-	ldr r0, _08045990 @ =0x04000008
+	ldr r0, _08045990 @ =REG_BG0CNT
 	mov r10, r0
 	lsls r0, r5, 4
 	adds r0, r5
@@ -4366,7 +4366,7 @@ _08045974:
 _08045984: .4byte gSprites
 _08045988: .4byte 0x02000520
 _0804598C: .4byte gUnknown_08400DD6
-_08045990: .4byte 0x04000008
+_08045990: .4byte REG_BG0CNT
 _08045994: .4byte 0x06010000
 	thumb_func_end sub_80458B0
 
@@ -4435,7 +4435,7 @@ _08045A06:
 	ldr r0, _08045A54 @ =0x06010000
 	adds r1, r0
 	adds r0, r7, 0
-	ldr r2, _08045A58 @ =0x04000008
+	ldr r2, _08045A58 @ =REG_BG0CNT
 	bl CpuSet
 	adds r7, 0x40
 	adds r4, 0x1
@@ -4456,7 +4456,7 @@ _08045A48: .4byte gSprites
 _08045A4C: .4byte 0x02000520
 _08045A50: .4byte 0x02000540
 _08045A54: .4byte 0x06010000
-_08045A58: .4byte 0x04000008
+_08045A58: .4byte REG_BG0CNT
 	thumb_func_end sub_8045998
 
 	thumb_func_start sub_8045A5C
@@ -4920,14 +4920,14 @@ _08045DB4:
 	lsls r1, 5
 	ldr r2, _08045E08 @ =0x06010000
 	adds r1, r2
-	ldr r2, _08045E0C @ =0x04000008
+	ldr r2, _08045E0C @ =REG_BG0CNT
 	bl CpuSet
 	b _08045E3E
 	.align 2, 0
 _08045E00: .4byte 0x02017850
 _08045E04: .4byte gSprites
 _08045E08: .4byte 0x06010000
-_08045E0C: .4byte 0x04000008
+_08045E0C: .4byte REG_BG0CNT
 _08045E10:
 	mov r0, r8
 	bl sub_8043CDC
@@ -4948,7 +4948,7 @@ _08045E10:
 	lsls r1, 5
 	ldr r4, _08045E4C @ =0x06010040
 	adds r1, r4
-	ldr r2, _08045E50 @ =0x04000008
+	ldr r2, _08045E50 @ =REG_BG0CNT
 	bl CpuSet
 _08045E3E:
 	adds r0, r5, 0x1
@@ -4959,7 +4959,7 @@ _08045E3E:
 	b _08045F42
 	.align 2, 0
 _08045E4C: .4byte 0x06010040
-_08045E50: .4byte 0x04000008
+_08045E50: .4byte REG_BG0CNT
 _08045E54:
 	lsls r5, r6, 2
 	adds r3, r5, r6
@@ -5035,7 +5035,7 @@ _08045EB6:
 	lsls r1, 5
 	ldr r2, _08045F00 @ =0x06010000
 	adds r1, r2
-	ldr r2, _08045F04 @ =0x04000008
+	ldr r2, _08045F04 @ =REG_BG0CNT
 	bl CpuSet
 	b _08045F38
 	.align 2, 0
@@ -5044,7 +5044,7 @@ _08045EF4: .4byte gUnknown_02024A6A
 _08045EF8: .4byte gPlayerParty
 _08045EFC: .4byte gSprites
 _08045F00: .4byte 0x06010000
-_08045F04: .4byte 0x04000008
+_08045F04: .4byte REG_BG0CNT
 _08045F08:
 	movs r0, 0xC
 	bl sub_8043CDC
@@ -5066,7 +5066,7 @@ _08045F08:
 	lsls r1, 5
 	ldr r2, _08045F50 @ =0x06010b80
 	adds r1, r2
-	ldr r2, _08045F54 @ =0x04000008
+	ldr r2, _08045F54 @ =REG_BG0CNT
 	bl CpuSet
 _08045F38:
 	adds r0, r5, 0x1
@@ -5083,7 +5083,7 @@ _08045F42:
 	bx r0
 	.align 2, 0
 _08045F50: .4byte 0x06010b80
-_08045F54: .4byte 0x04000008
+_08045F54: .4byte REG_BG0CNT
 	thumb_func_end sub_8045D58
 
 	thumb_func_start sub_8045F58

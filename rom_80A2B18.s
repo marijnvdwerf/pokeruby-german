@@ -10,7 +10,7 @@
 sub_80A2B18: @ 80A2B18
 	push {r4,r5,lr}
 	movs r4, 0
-	ldr r5, _080A2B3C @ =0x02028280
+	ldr r5, _080A2B3C @ =gSaveBlock1 + 0x2B4C
 _080A2B1E:
 	lsls r0, r4, 3
 	adds r0, r4
@@ -26,7 +26,7 @@ _080A2B1E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A2B3C: .4byte 0x02028280
+_080A2B3C: .4byte gSaveBlock1 + 0x2B4C
 	thumb_func_end sub_80A2B18
 
 	thumb_func_start sub_80A2B40
@@ -147,7 +147,7 @@ _080A2C08:
 	ldr r0, _080A2D08 @ =gSaveBlock2
 	mov r12, r0
 	mov r4, r10
-	ldr r6, _080A2D0C @ =0x02028280
+	ldr r6, _080A2D0C @ =gSaveBlock1 + 0x2B4C
 	ldr r1, _080A2D10 @ =0x0000ffff
 	adds r5, r1, 0
 _080A2C16:
@@ -168,7 +168,7 @@ _080A2C16:
 	bls _080A2C16
 	movs r3, 0
 	mov r2, r10
-	ldr r4, _080A2D14 @ =0x02028292
+	ldr r4, _080A2D14 @ =gSaveBlock1 + 0x2B5E
 _080A2C3A:
 	ldrb r1, [r2]
 	lsls r0, r1, 3
@@ -191,7 +191,7 @@ _080A2C3A:
 	adds r0, r1
 	lsls r0, 2
 	adds r0, r3, r0
-	ldr r1, _080A2D14 @ =0x02028292
+	ldr r1, _080A2D14 @ =gSaveBlock1 + 0x2B5E
 	adds r0, r1
 	movs r1, 0xFF
 	strb r1, [r0]
@@ -200,13 +200,13 @@ _080A2C3A:
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r3, _080A2D14 @ =0x02028292
+	ldr r3, _080A2D14 @ =gSaveBlock1 + 0x2B5E
 	adds r0, r3
 	movs r1, 0
 	bl sub_814A518
 	movs r3, 0
 	mov r2, r10
-	ldr r5, _080A2D18 @ =0x0202829a
+	ldr r5, _080A2D18 @ =gSaveBlock1 + 0x2B66
 	ldr r4, _080A2D1C @ =0x02024eae
 _080A2C88:
 	ldrb r1, [r2]
@@ -268,10 +268,10 @@ _080A2C88:
 _080A2D00: .4byte gSaveBlock1
 _080A2D04: .4byte 0x00002b6c
 _080A2D08: .4byte gSaveBlock2
-_080A2D0C: .4byte 0x02028280
+_080A2D0C: .4byte gSaveBlock1 + 0x2B4C
 _080A2D10: .4byte 0x0000ffff
-_080A2D14: .4byte 0x02028292
-_080A2D18: .4byte 0x0202829a
+_080A2D14: .4byte gSaveBlock1 + 0x2B5E
+_080A2D18: .4byte gSaveBlock1 + 0x2B66
 _080A2D1C: .4byte 0x02024eae
 _080A2D20: .4byte 0x00002b6a
 _080A2D24:
@@ -603,7 +603,7 @@ AddMapNamePopUpWindowTask: @ 80A2F54
 	bl CreateTask
 	ldr r4, _080A2FB0 @ =gUnknown_02038538
 	strb r0, [r4]
-	ldr r1, _080A2FB4 @ =0x04000012
+	ldr r1, _080A2FB4 @ =REG_BG0VOFS
 	movs r0, 0x20
 	strh r0, [r1]
 	bl sub_80A30E0
@@ -625,7 +625,7 @@ AddMapNamePopUpWindowTask: @ 80A2F54
 	.align 2, 0
 _080A2FAC: .4byte sub_80A2FF4
 _080A2FB0: .4byte gUnknown_02038538
-_080A2FB4: .4byte 0x04000012
+_080A2FB4: .4byte REG_BG0VOFS
 _080A2FB8: .4byte gTasks
 _080A2FBC:
 	ldr r3, _080A2FEC @ =gTasks
@@ -742,7 +742,7 @@ _080A308C:
 	bl HideMapNamePopUpWindow
 	b _080A3098
 _080A3092:
-	ldr r1, _080A30A0 @ =0x04000012
+	ldr r1, _080A30A0 @ =REG_BG0VOFS
 	ldrh r0, [r4, 0xC]
 	strh r0, [r1]
 _080A3098:
@@ -750,7 +750,7 @@ _080A3098:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A30A0: .4byte 0x04000012
+_080A30A0: .4byte REG_BG0VOFS
 	thumb_func_end sub_80A2FF4
 
 	thumb_func_start HideMapNamePopUpWindow
@@ -767,7 +767,7 @@ HideMapNamePopUpWindow: @ 80A30A4
 	movs r2, 0xD
 	movs r3, 0x3
 	bl MenuZeroFillWindowRect
-	ldr r1, _080A30D8 @ =0x04000012
+	ldr r1, _080A30D8 @ =REG_BG0VOFS
 	movs r0, 0
 	strh r0, [r1]
 	ldr r0, _080A30DC @ =gUnknown_02038538
@@ -778,7 +778,7 @@ _080A30D0:
 	bx r0
 	.align 2, 0
 _080A30D4: .4byte sub_80A2FF4
-_080A30D8: .4byte 0x04000012
+_080A30D8: .4byte REG_BG0VOFS
 _080A30DC: .4byte gUnknown_02038538
 	thumb_func_end HideMapNamePopUpWindow
 

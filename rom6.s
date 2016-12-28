@@ -488,7 +488,7 @@ sub_810B68C: @ 810B68C
 	bl LoadOam
 	bl ProcessSpriteCopyRequests
 	bl TransferPlttBuffer
-	ldr r1, _0810B6B0 @ =0x020221cc
+	ldr r1, _0810B6B0 @ =gBGTilemapBuffers + 0x1000
 	ldr r2, _0810B6B4 @ =0x06007800
 	ldr r0, _0810B6B8 @ =0x040000d4
 	str r1, [r0]
@@ -499,7 +499,7 @@ sub_810B68C: @ 810B68C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810B6B0: .4byte 0x020221cc
+_0810B6B0: .4byte gBGTilemapBuffers + 0x1000
 _0810B6B4: .4byte 0x06007800
 _0810B6B8: .4byte 0x040000d4
 _0810B6BC: .4byte 0x80000400
@@ -550,7 +550,7 @@ _0810B6E8:
 _0810B734:
 	bl sub_80F9438
 	bl sub_80F9368
-	ldr r1, _0810B754 @ =0x0400000c
+	ldr r1, _0810B754 @ =REG_BG2CNT
 	ldr r2, _0810B758 @ =0x00000f0a
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -562,7 +562,7 @@ _0810B734:
 	adds r1, r0
 	b _0810B922
 	.align 2, 0
-_0810B754: .4byte 0x0400000c
+_0810B754: .4byte REG_BG2CNT
 _0810B758: .4byte 0x00000f0a
 _0810B75C: .4byte gMain
 _0810B760: .4byte 0x0000043c
@@ -732,7 +732,7 @@ _0810B8C4:
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0810B904 @ =0x04000004
+	ldr r2, _0810B904 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -752,7 +752,7 @@ _0810B8C4:
 	.align 2, 0
 _0810B8FC: .4byte 0x04000208
 _0810B900: .4byte 0x04000200
-_0810B904: .4byte 0x04000004
+_0810B904: .4byte REG_DISPSTAT
 _0810B908: .4byte sub_810B68C
 _0810B90C: .4byte gMain
 _0810B910: .4byte 0x0000043c
@@ -862,12 +862,12 @@ _0810B9DC: .4byte gMenuPokeblock_Gfx
 _0810B9E0: .4byte 0x06008000
 _0810B9E4:
 	ldr r0, _0810B9F0 @ =gMenuPokeblock_Tilemap
-	ldr r1, _0810B9F4 @ =0x020221cc
+	ldr r1, _0810B9F4 @ =gBGTilemapBuffers + 0x1000
 	bl sub_800D238
 	b _0810BA0E
 	.align 2, 0
 _0810B9F0: .4byte gMenuPokeblock_Tilemap
-_0810B9F4: .4byte 0x020221cc
+_0810B9F4: .4byte gBGTilemapBuffers + 0x1000
 _0810B9F8:
 	ldr r0, _0810BA04 @ =gMenuPokeblock_Pal
 	movs r1, 0
@@ -1148,7 +1148,7 @@ _0810BC08:
 	movs r0, 0x6
 	strb r0, [r4, 0x2]
 	adds r4, 0x3
-	ldr r0, _0810BC80 @ =0x02025f2c
+	ldr r0, _0810BC80 @ =gSaveBlock1 + 0x7F8
 	adds r5, r0
 	adds r0, r5, 0
 	bl sub_810C9B0
@@ -1181,7 +1181,7 @@ _0810BC6C:
 	bx r0
 	.align 2, 0
 _0810BC7C: .4byte gPokeblockNames
-_0810BC80: .4byte 0x02025f2c
+_0810BC80: .4byte gSaveBlock1 + 0x7F8
 	thumb_func_end sub_810BB88
 
 	thumb_func_start sub_810BC84
@@ -1218,7 +1218,7 @@ _0810BCA6:
 	movs r2, 0xFF
 	lsls r2, 3
 	adds r7, r0, r2
-	ldr r0, _0810BD04 @ =0x02025f2c
+	ldr r0, _0810BD04 @ =gSaveBlock1 + 0x7F8
 	mov r12, r0
 	adds r6, r1, r0
 _0810BCC4:
@@ -1255,7 +1255,7 @@ _0810BCE8:
 	bx r0
 	.align 2, 0
 _0810BD00: .4byte gSaveBlock1
-_0810BD04: .4byte 0x02025f2c
+_0810BD04: .4byte gSaveBlock1 + 0x7F8
 	thumb_func_end sub_810BC98
 
 	thumb_func_start sub_810BD08
@@ -1317,7 +1317,7 @@ sub_810BD64: @ 810BD64
 	lsrs r3, r0, 16
 	movs r2, 0
 	ldr r5, _0810BDA4 @ =gUnknown_02039248
-	ldr r4, _0810BDA8 @ =0x020221cc
+	ldr r4, _0810BDA8 @ =gBGTilemapBuffers + 0x1000
 _0810BD70:
 	ldrb r0, [r5]
 	lsls r0, 1
@@ -1346,7 +1346,7 @@ _0810BD70:
 	bx r0
 	.align 2, 0
 _0810BDA4: .4byte gUnknown_02039248
-_0810BDA8: .4byte 0x020221cc
+_0810BDA8: .4byte gBGTilemapBuffers + 0x1000
 	thumb_func_end sub_810BD64
 
 	thumb_func_start sub_810BDAC
@@ -1409,7 +1409,7 @@ _0810BE20:
 	bl sub_80F979C
 _0810BE28:
 	movs r6, 0
-	ldr r7, _0810BE94 @ =0x020221cc
+	ldr r7, _0810BE94 @ =gBGTilemapBuffers + 0x1000
 	movs r0, 0xF
 	mov r8, r0
 _0810BE30:
@@ -1438,7 +1438,7 @@ _0810BE30:
 	cmp r0, r1
 	beq _0810BEB8
 	lsls r0, 3
-	ldr r1, _0810BEA0 @ =0x02025f2c
+	ldr r1, _0810BEA0 @ =gSaveBlock1 + 0x7F8
 	adds r0, r1
 	adds r4, r6, 0x1
 	lsls r1, r4, 24
@@ -1461,10 +1461,10 @@ _0810BE30:
 	strh r2, [r0]
 	b _0810BECC
 	.align 2, 0
-_0810BE94: .4byte 0x020221cc
+_0810BE94: .4byte gBGTilemapBuffers + 0x1000
 _0810BE98: .4byte 0x000001a1
 _0810BE9C: .4byte gUnknown_02039248
-_0810BEA0: .4byte 0x02025f2c
+_0810BEA0: .4byte gSaveBlock1 + 0x7F8
 _0810BEA4:
 	lsls r0, r5, 1
 	adds r0, r7
@@ -1503,7 +1503,7 @@ _0810BECC:
 	beq _0810BF20
 	ldr r4, _0810BF18 @ =gStringVar1
 	lsls r0, r2, 3
-	ldr r1, _0810BF1C @ =0x02025f2c
+	ldr r1, _0810BF1C @ =gSaveBlock1 + 0x7F8
 	adds r0, r1
 	bl sub_810C9E8
 	adds r1, r0, 0
@@ -1522,7 +1522,7 @@ _0810BECC:
 _0810BF10: .4byte gWindowConfig_81E6E34
 _0810BF14: .4byte gUnknown_02039248
 _0810BF18: .4byte gStringVar1
-_0810BF1C: .4byte 0x02025f2c
+_0810BF1C: .4byte gSaveBlock1 + 0x7F8
 _0810BF20:
 	movs r0, 0xB
 	movs r1, 0x11
@@ -1887,7 +1887,7 @@ _0810C1D8:
 	lsls r0, 1
 	adds r1, r0, 0x1
 	lsls r5, r1, 5
-	ldr r3, _0810C238 @ =0x020221cc
+	ldr r3, _0810C238 @ =gBGTilemapBuffers + 0x1000
 	adds r0, 0x2
 	lsls r4, r0, 5
 _0810C208:
@@ -1914,7 +1914,7 @@ _0810C226:
 _0810C22C: .4byte 0x00001005
 _0810C230: .4byte gTasks
 _0810C234: .4byte gUnknown_02039248
-_0810C238: .4byte 0x020221cc
+_0810C238: .4byte gBGTilemapBuffers + 0x1000
 	thumb_func_end sub_810C1C8
 
 	thumb_func_start sub_810C23C
@@ -2240,7 +2240,7 @@ sub_810C4C4: @ 810C4C4
 	ldr r0, _0810C4FC @ =gScriptItemId
 	ldrh r0, [r0]
 	lsls r0, 3
-	ldr r1, _0810C500 @ =0x02025f2c
+	ldr r1, _0810C500 @ =gSaveBlock1 + 0x7F8
 	adds r0, r1
 	ldr r1, _0810C504 @ =sub_810B96C
 	bl sub_8136130
@@ -2253,7 +2253,7 @@ _0810C4F0:
 	.align 2, 0
 _0810C4F8: .4byte gPaletteFade
 _0810C4FC: .4byte gScriptItemId
-_0810C500: .4byte 0x02025f2c
+_0810C500: .4byte gSaveBlock1 + 0x7F8
 _0810C504: .4byte sub_810B96C
 	thumb_func_end sub_810C4C4
 
@@ -2580,7 +2580,7 @@ sub_810C788: @ 810C788
 	ldr r7, _0810C838 @ =gScriptItemId
 	ldrh r1, [r7]
 	lsls r1, 3
-	ldr r5, _0810C83C @ =0x02025f2c
+	ldr r5, _0810C83C @ =gSaveBlock1 + 0x7F8
 	adds r1, r5
 	bl sub_810CAE4
 	adds r4, r0, 0
@@ -2653,7 +2653,7 @@ _0810C808:
 	.align 2, 0
 _0810C834: .4byte gEnemyParty
 _0810C838: .4byte gScriptItemId
-_0810C83C: .4byte 0x02025f2c
+_0810C83C: .4byte gSaveBlock1 + 0x7F8
 _0810C840: .4byte gUnknown_030041C0
 _0810C844: .4byte gPokeblockNames
 _0810C848: .4byte 0xfffff808
@@ -3523,11 +3523,11 @@ sub_810CE78: @ 810CE78
 	movs r1, 0xE0
 	movs r2, 0x10
 	bl LoadPalette
-	ldr r1, _0810CF00 @ =0x04000050
+	ldr r1, _0810CF00 @ =REG_BLDCNT
 	ldr r2, _0810CF04 @ =0x00003e41
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r0, _0810CF08 @ =0x04000052
+	ldr r0, _0810CF08 @ =REG_BLDALPHA
 	strh r5, [r0]
 	adds r0, 0x2
 	strh r5, [r0]
@@ -3560,9 +3560,9 @@ _0810CEF0: .4byte gCaveTransitionTilemap
 _0810CEF4: .4byte 0x0600f800
 _0810CEF8: .4byte gCaveTransitionPalette_White
 _0810CEFC: .4byte gUnknown_083F809C
-_0810CF00: .4byte 0x04000050
+_0810CF00: .4byte REG_BLDCNT
 _0810CF04: .4byte 0x00003e41
-_0810CF08: .4byte 0x04000052
+_0810CF08: .4byte REG_BLDALPHA
 _0810CF0C: .4byte 0x00001f0c
 _0810CF10: .4byte gTasks
 _0810CF14: .4byte sub_810CF18
@@ -3584,7 +3584,7 @@ sub_810CF18: @ 810CF18
 	adds r0, r2, r1
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _0810CF48 @ =0x04000052
+	ldr r1, _0810CF48 @ =REG_BLDALPHA
 	strh r0, [r1]
 	cmp r2, 0x10
 	bhi _0810CF4C
@@ -3594,7 +3594,7 @@ sub_810CF18: @ 810CF18
 	b _0810CF54
 	.align 2, 0
 _0810CF44: .4byte gTasks
-_0810CF48: .4byte 0x04000052
+_0810CF48: .4byte REG_BLDALPHA
 _0810CF4C:
 	movs r0, 0
 	strh r0, [r3, 0xC]
@@ -3612,7 +3612,7 @@ sub_810CF5C: @ 810CF5C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0810CF94 @ =0x04000052
+	ldr r2, _0810CF94 @ =REG_BLDALPHA
 	ldr r3, _0810CF98 @ =0x00001010
 	adds r1, r3, 0
 	strh r1, [r2]
@@ -3637,7 +3637,7 @@ sub_810CF5C: @ 810CF5C
 	bl LoadPalette
 	b _0810CFB6
 	.align 2, 0
-_0810CF94: .4byte 0x04000052
+_0810CF94: .4byte REG_BLDALPHA
 _0810CF98: .4byte 0x00001010
 _0810CF9C: .4byte gTasks
 _0810CFA0: .4byte gUnknown_083F809C
@@ -3735,13 +3735,13 @@ sub_810D028: @ 810D028
 	ldr r0, _0810D0A0 @ =gCaveTransitionTilemap
 	ldr r1, _0810D0A4 @ =0x0600f800
 	bl LZ77UnCompVram
-	ldr r0, _0810D0A8 @ =0x04000050
+	ldr r0, _0810D0A8 @ =REG_BLDCNT
 	strh r4, [r0]
 	adds r0, 0x2
 	strh r4, [r0]
 	adds r0, 0x2
 	strh r4, [r0]
-	ldr r1, _0810D0AC @ =0x04000008
+	ldr r1, _0810D0AC @ =REG_BG0CNT
 	ldr r2, _0810D0B0 @ =0x00001f0c
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -3777,8 +3777,8 @@ _0810D098: .4byte gCaveTransitionTiles
 _0810D09C: .4byte 0x0600c000
 _0810D0A0: .4byte gCaveTransitionTilemap
 _0810D0A4: .4byte 0x0600f800
-_0810D0A8: .4byte 0x04000050
-_0810D0AC: .4byte 0x04000008
+_0810D0A8: .4byte REG_BLDCNT
+_0810D0AC: .4byte REG_BG0CNT
 _0810D0B0: .4byte 0x00001f0c
 _0810D0B4: .4byte gCaveTransitionPalette_White
 _0810D0B8: .4byte gCaveTransitionPalette_Black
@@ -3816,7 +3816,7 @@ sub_810D0C4: @ 810D0C4
 _0810D0F8: .4byte gTasks
 _0810D0FC: .4byte gUnknown_083F808C
 _0810D100:
-	ldr r1, _0810D118 @ =0x04000052
+	ldr r1, _0810D118 @ =REG_BLDALPHA
 	ldr r2, _0810D11C @ =0x00001010
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -3830,7 +3830,7 @@ _0810D114:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810D118: .4byte 0x04000052
+_0810D118: .4byte REG_BLDALPHA
 _0810D11C: .4byte 0x00001010
 _0810D120: .4byte 0x00003e41
 _0810D124: .4byte sub_810D128
@@ -3854,7 +3854,7 @@ sub_810D128: @ 810D128
 	lsls r2, 21
 	adds r0, r1, r2
 	lsrs r0, 16
-	ldr r2, _0810D15C @ =0x04000052
+	ldr r2, _0810D15C @ =REG_BLDALPHA
 	strh r0, [r2]
 	cmp r1, 0
 	beq _0810D160
@@ -3864,7 +3864,7 @@ sub_810D128: @ 810D128
 	b _0810D172
 	.align 2, 0
 _0810D158: .4byte gTasks
-_0810D15C: .4byte 0x04000052
+_0810D15C: .4byte REG_BLDALPHA
 _0810D160:
 	ldr r0, _0810D178 @ =gCaveTransitionPalette_Black
 	movs r1, 0
@@ -9359,7 +9359,7 @@ sub_810FB9C: @ 810FB9C
 	sub sp, 0x4
 	movs r3, 0
 	movs r5, 0
-	ldr r7, _0810FBD8 @ =0x02026af6
+	ldr r7, _0810FBD8 @ =gSaveBlock1 + 0x13C2
 	movs r6, 0x1
 _0810FBA8:
 	ldrh r1, [r7]
@@ -9385,7 +9385,7 @@ _0810FBA8:
 	strh r0, [r7]
 	b _0810FC00
 	.align 2, 0
-_0810FBD8: .4byte 0x02026af6
+_0810FBD8: .4byte gSaveBlock1 + 0x13C2
 _0810FBDC: .4byte gUnknown_083F8408
 _0810FBE0:
 	adds r0, r5, 0x1
@@ -9439,7 +9439,7 @@ _0810FC34:
 	b _0810FC92
 _0810FC3E:
 	movs r5, 0
-	ldr r2, _0810FCA0 @ =0x02026af6
+	ldr r2, _0810FCA0 @ =gSaveBlock1 + 0x13C2
 	movs r4, 0x1
 _0810FC44:
 	ldrh r1, [r2]
@@ -9491,7 +9491,7 @@ _0810FC94:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0810FCA0: .4byte 0x02026af6
+_0810FCA0: .4byte gSaveBlock1 + 0x13C2
 _0810FCA4: .4byte gUnknown_083F8410
 _0810FCA8: .4byte gSaveBlock1
 _0810FCAC: .4byte 0x000013c2
@@ -9502,7 +9502,7 @@ sub_810FCB0: @ 810FCB0
 	push {r4,r5,lr}
 	movs r3, 0
 	movs r2, 0
-	ldr r0, _0810FCE4 @ =0x02026af6
+	ldr r0, _0810FCE4 @ =gSaveBlock1 + 0x13C2
 	ldrh r4, [r0]
 	movs r5, 0x1
 _0810FCBC:
@@ -9527,7 +9527,7 @@ _0810FCD0:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0810FCE4: .4byte 0x02026af6
+_0810FCE4: .4byte gSaveBlock1 + 0x13C2
 	thumb_func_end sub_810FCB0
 
 	thumb_func_start sub_810FCE8
@@ -9681,13 +9681,13 @@ _0810FE08:
 	movs r3, 0x1
 	movs r2, 0x5
 _0810FE0C:
-	ldr r0, _0810FE18 @ =0x020287ec
+	ldr r0, _0810FE18 @ =gSaveBlock1 + 0x30B8
 	adds r1, r3, 0
 	bl sub_810FE1C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810FE18: .4byte 0x020287ec
+_0810FE18: .4byte gSaveBlock1 + 0x30B8
 	thumb_func_end sub_810FDAC
 
 	thumb_func_start sub_810FE1C

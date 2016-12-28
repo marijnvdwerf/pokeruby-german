@@ -188,7 +188,7 @@ WallClockInit: @ 810AC58
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0810ACCC @ =0x04000004
+	ldr r2, _0810ACCC @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -197,13 +197,13 @@ WallClockInit: @ 810AC58
 	bl SetVBlankCallback
 	ldr r0, _0810ACD4 @ =WallClockMainCallback
 	bl SetMainCallback2
-	ldr r0, _0810ACD8 @ =0x04000050
+	ldr r0, _0810ACD8 @ =REG_BLDCNT
 	strh r5, [r0]
 	adds r0, 0x2
 	strh r5, [r0]
 	adds r0, 0x2
 	strh r5, [r0]
-	ldr r1, _0810ACDC @ =0x0400000e
+	ldr r1, _0810ACDC @ =REG_BG3CNT
 	ldr r2, _0810ACE0 @ =0x00000701
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -223,11 +223,11 @@ WallClockInit: @ 810AC58
 	.align 2, 0
 _0810ACC4: .4byte 0x04000208
 _0810ACC8: .4byte 0x04000200
-_0810ACCC: .4byte 0x04000004
+_0810ACCC: .4byte REG_DISPSTAT
 _0810ACD0: .4byte WallClockVblankCallback
 _0810ACD4: .4byte WallClockMainCallback
-_0810ACD8: .4byte 0x04000050
-_0810ACDC: .4byte 0x0400000e
+_0810ACD8: .4byte REG_BLDCNT
+_0810ACDC: .4byte REG_BG3CNT
 _0810ACE0: .4byte 0x00000701
 _0810ACE4: .4byte 0x00001f08
 	thumb_func_end WallClockInit

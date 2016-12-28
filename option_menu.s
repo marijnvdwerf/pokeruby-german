@@ -202,7 +202,7 @@ _0808B7D0:
 _0808B7E8: .4byte gMain
 _0808B7EC: .4byte 0x0000043c
 _0808B7F0:
-	ldr r0, _0808B850 @ =0x04000040
+	ldr r0, _0808B850 @ =REG_WIN0H
 	movs r4, 0
 	strh r4, [r0]
 	adds r0, 0x4
@@ -211,7 +211,7 @@ _0808B7F0:
 	strh r4, [r0]
 	adds r0, 0x4
 	strh r4, [r0]
-	ldr r1, _0808B854 @ =0x04000048
+	ldr r1, _0808B854 @ =REG_WININ
 	ldr r2, _0808B858 @ =0x00001111
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -221,7 +221,7 @@ _0808B7F0:
 	adds r1, 0x6
 	movs r0, 0xE1
 	strh r0, [r1]
-	ldr r0, _0808B85C @ =0x04000052
+	ldr r0, _0808B85C @ =REG_BLDALPHA
 	strh r4, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
@@ -235,7 +235,7 @@ _0808B7F0:
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0808B868 @ =0x04000004
+	ldr r2, _0808B868 @ =REG_DISPSTAT
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
@@ -249,13 +249,13 @@ _0808B7F0:
 	strh r0, [r1]
 	b _0808B95C
 	.align 2, 0
-_0808B850: .4byte 0x04000040
-_0808B854: .4byte 0x04000048
+_0808B850: .4byte REG_WIN0H
+_0808B854: .4byte REG_WININ
 _0808B858: .4byte 0x00001111
-_0808B85C: .4byte 0x04000052
+_0808B85C: .4byte REG_BLDALPHA
 _0808B860: .4byte 0x04000208
 _0808B864: .4byte 0x04000200
-_0808B868: .4byte 0x04000004
+_0808B868: .4byte REG_DISPSTAT
 _0808B86C: .4byte _0808BA7C
 _0808B870: .4byte 0x00007140
 _0808B874:
@@ -347,7 +347,7 @@ _0808B874:
 	bl ButtonMode_DrawChoices
 	ldrb r0, [r4, 0x14]
 	bl FrameType_DrawChoices
-	ldr r1, _0808B998 @ =0x04000040
+	ldr r1, _0808B998 @ =REG_WIN0H
 	ldr r2, _0808B99C @ =0x000011df
 	adds r0, r2, 0
 	strh r0, [r1]
@@ -378,7 +378,7 @@ _0808B988: .4byte gSystemText_Sound
 _0808B98C: .4byte gSystemText_ButtonMode
 _0808B990: .4byte gSystemText_Frame
 _0808B994: .4byte gSystemText_Cancel
-_0808B998: .4byte 0x04000040
+_0808B998: .4byte REG_WIN0H
 _0808B99C: .4byte 0x000011df
 _0808B9A0: .4byte 0x0000011f
 _0808B9A4: .4byte gMain
@@ -721,7 +721,7 @@ _0808C08C: .4byte gMain
 	thumb_func_start HighlightOptionMenuItem
 HighlightOptionMenuItem: @ 808C090
 	lsls r0, 24
-	ldr r2, _0808C0AC @ =0x04000042
+	ldr r2, _0808C0AC @ =REG_WIN1H
 	ldr r3, _0808C0B0 @ =0x000018d7
 	adds r1, r3, 0
 	strh r1, [r2]
@@ -735,7 +735,7 @@ HighlightOptionMenuItem: @ 808C090
 	strh r1, [r2]
 	bx lr
 	.align 2, 0
-_0808C0AC: .4byte 0x04000042
+_0808C0AC: .4byte REG_WIN1H
 _0808C0B0: .4byte 0x000018d7
 	thumb_func_end HighlightOptionMenuItem
 
