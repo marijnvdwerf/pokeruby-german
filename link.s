@@ -1079,14 +1079,14 @@ _08007A68:
 _08007A70:
 	subs r2, r4, r7
 	lsls r2, 2
-	ldr r1, _08007A84 @ =0x03002988
+	ldr r1, _08007A84 @ =gLinkPlayers + 0x8
 	adds r0, r2, r1
 	adds r1, r2
 	ldrb r1, [r1, 0x12]
 	bl ConvertInternationalString
 	b _08007B54
 	.align 2, 0
-_08007A84: .4byte 0x03002988
+_08007A84: .4byte gLinkPlayers + 0x8
 _08007A88:
 	lsls r0, r7, 24
 	lsrs r0, 24

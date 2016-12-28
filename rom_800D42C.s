@@ -473,7 +473,7 @@ sub_800D74C: @ 800D74C
 	adds r2, 0x2
 	ldr r1, _0800D7B0 @ =0x0000675a
 	strh r1, [r2]
-	ldr r1, _0800D7B4 @ =0x0202ef80
+	ldr r1, _0800D7B4 @ =gPlttBufferFaded + 0xB8
 	movs r2, 0x4
 	bl CpuSet
 	bl sub_8032A38
@@ -487,7 +487,7 @@ _0800D7A4: .4byte 0x00007fe0
 _0800D7A8: .4byte 0x00002529
 _0800D7AC: .4byte 0x00007fff
 _0800D7B0: .4byte 0x0000675a
-_0800D7B4: .4byte 0x0202ef80
+_0800D7B4: .4byte gPlttBufferFaded + 0xB8
 	thumb_func_end sub_800D74C
 
 	thumb_func_start sub_800D7B8
@@ -1342,7 +1342,7 @@ _0800DF04:
 	lsls r1, r7, 3
 	subs r1, r7
 	lsls r1, 2
-	ldr r2, _0800DF94 @ =0x03002988
+	ldr r2, _0800DF94 @ =gLinkPlayers + 0x8
 	adds r1, r2
 	ldrh r2, [r0, 0x4]
 	ldrb r3, [r0, 0x6]
@@ -1366,7 +1366,7 @@ _0800DF04:
 	lsls r1, r6, 3
 	subs r1, r6
 	lsls r1, 2
-	ldr r2, _0800DF94 @ =0x03002988
+	ldr r2, _0800DF94 @ =gLinkPlayers + 0x8
 	adds r1, r2
 	ldrh r2, [r0, 0x4]
 	ldrb r3, [r0, 0x6]
@@ -1397,7 +1397,7 @@ _0800DF84: .4byte 0x02000000
 _0800DF88: .4byte 0x000160cb
 _0800DF8C: .4byte gLinkPlayers
 _0800DF90: .4byte gUnknown_081F9680
-_0800DF94: .4byte 0x03002988
+_0800DF94: .4byte gLinkPlayers + 0x8
 _0800DF98: .4byte gTasks
 _0800DF9C:
 	ldr r0, _0800E010 @ =0x00002710
@@ -2838,7 +2838,7 @@ _0800EBB4:
 	bge _0800EC28
 	ldr r1, _0800EC38 @ =gEnigmaBerries
 	mov r12, r1
-	ldr r0, _0800EC3C @ =0x03002b94
+	ldr r0, _0800EC3C @ =gBlockRecvBuffer + 0x4
 	mov r10, r0
 	movs r1, 0x8
 	add r1, r12
@@ -2904,7 +2904,7 @@ _0800EC28:
 	bx r0
 	.align 2, 0
 _0800EC38: .4byte gEnigmaBerries
-_0800EC3C: .4byte 0x03002b94
+_0800EC3C: .4byte gBlockRecvBuffer + 0x4
 _0800EC40: .4byte gLinkPlayers
 	thumb_func_end sub_800EB08
 

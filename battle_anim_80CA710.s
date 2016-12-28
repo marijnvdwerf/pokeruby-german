@@ -6127,7 +6127,7 @@ _080CD5D8:
 	ldrb r1, [r4, 0x5]
 	lsrs r1, 4
 	lsls r0, r1, 5
-	ldr r2, _080CD638 @ =0x0202ecd8
+	ldr r2, _080CD638 @ =gPlttBufferUnfaded + 0x210
 	adds r0, r2
 	lsls r1, 4
 	ldr r3, _080CD63C @ =0x00000101
@@ -6145,7 +6145,7 @@ _080CD5D8:
 	b _080CD648
 	.align 2, 0
 _080CD634: .4byte 0x00007fff
-_080CD638: .4byte 0x0202ecd8
+_080CD638: .4byte gPlttBufferUnfaded + 0x210
 _080CD63C: .4byte 0x00000101
 _080CD640:
 	cmp r0, 0
@@ -23105,7 +23105,7 @@ _080D588E:
 	muls r1, r3
 	lsls r1, 16
 	asrs r1, 16
-	ldr r0, _080D58F4 @ =0x083e56e2
+	ldr r0, _080D58F4 @ =gUnknown_083D96DC + 0x2
 	adds r2, r0
 	movs r3, 0
 	ldrsh r2, [r2, r3]
@@ -23143,7 +23143,7 @@ _080D58E4: .4byte gSpriteTemplate_83D96C4
 _080D58E8: .4byte gSprites
 _080D58EC: .4byte 0x000003ff
 _080D58F0: .4byte 0xfffffc00
-_080D58F4: .4byte 0x083e56e2
+_080D58F4: .4byte gUnknown_083D96DC + 0x2
 _080D58F8: .4byte gTasks + 0x8
 	thumb_func_end sub_80D57C4
 
@@ -41944,7 +41944,7 @@ _080DE98A:
 	strh r2, [r4, 0x38]
 	mov r3, r9
 	strh r3, [r4, 0x3A]
-	ldr r0, _080DEA80 @ =0x02020020
+	ldr r0, _080DEA80 @ =gSprites + 0x1C
 	adds r5, r0
 	ldr r0, _080DEA84 @ =sub_80DE8D8
 	str r0, [r5]
@@ -41978,7 +41978,7 @@ _080DEA70: .4byte gUnknown_03004B00
 _080DEA74: .4byte gUnknown_0202F7C8
 _080DEA78: .4byte gSpriteTemplate_83DAF08
 _080DEA7C: .4byte gSprites
-_080DEA80: .4byte 0x02020020
+_080DEA80: .4byte gSprites + 0x1C
 _080DEA84: .4byte sub_80DE8D8
 _080DEA88:
 	ldr r0, _080DEB24 @ =gSpriteTemplate_83DAF08

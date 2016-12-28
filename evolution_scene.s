@@ -398,7 +398,7 @@ EvolutionScene: @ 8111984
 	ldrh r1, [r1, 0x28]
 	strh r1, [r0, 0x20]
 	ldr r0, _08111C7C @ =0x02009000
-	ldr r1, _08111C80 @ =0x0202eb08
+	ldr r1, _08111C80 @ =gPlttBufferUnfaded + 0x40
 	movs r2, 0x60
 	bl memcpy
 	movs r1, 0x80
@@ -451,7 +451,7 @@ _08111C70: .4byte nullsub_37
 _08111C74: .4byte Task_EvolutionScene
 _08111C78: .4byte gTasks
 _08111C7C: .4byte 0x02009000
-_08111C80: .4byte 0x0202eb08
+_08111C80: .4byte gPlttBufferUnfaded + 0x40
 _08111C84: .4byte HBlankCB_EvolutionScene
 _08111C88: .4byte VBlankCB_EvolutionScene
 _08111C8C: .4byte CB2_EvolutionSceneUpdate_0
@@ -1671,7 +1671,7 @@ _08112762:
 	ldrh r0, [r4, 0x10]
 	movs r1, 0
 	bl PlayCry1
-	ldr r0, _08112798 @ =0x0202eb08
+	ldr r0, _08112798 @ =gPlttBufferUnfaded + 0x40
 	ldr r1, _0811279C @ =0x02009000
 	movs r2, 0x60
 	bl memcpy
@@ -1685,7 +1685,7 @@ _08112762:
 	b _08112992
 	.align 2, 0
 _08112794: .4byte gTasks
-_08112798: .4byte 0x0202eb08
+_08112798: .4byte gPlttBufferUnfaded + 0x40
 _0811279C: .4byte 0x02009000
 _081127A0:
 	bl IsCryFinished
@@ -2972,7 +2972,7 @@ _081132B6:
 	ldrh r0, [r4, 0x10]
 	movs r1, 0
 	bl PlayCry1
-	ldr r0, _081132F0 @ =0x0202eb08
+	ldr r0, _081132F0 @ =gPlttBufferUnfaded + 0x40
 	ldr r1, _081132F4 @ =0x02009000
 	movs r2, 0x60
 	bl memcpy
@@ -2990,7 +2990,7 @@ _081132E2:
 	bl _08113B3A
 	.align 2, 0
 _081132EC: .4byte gTasks
-_081132F0: .4byte 0x0202eb08
+_081132F0: .4byte gPlttBufferUnfaded + 0x40
 _081132F4: .4byte 0x02009000
 _081132F8:
 	bl IsCryFinished

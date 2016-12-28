@@ -5136,7 +5136,7 @@ _0810DAEA:
 	lsls r1, r4, 3
 	subs r1, r4
 	lsls r1, 2
-	ldr r2, _0810DB24 @ =0x03002988
+	ldr r2, _0810DB24 @ =gLinkPlayers + 0x8
 	adds r1, r2
 	bl StringCopy
 	adds r0, r6, 0x1
@@ -5157,7 +5157,7 @@ _0810DB12:
 	bx r1
 	.align 2, 0
 _0810DB20: .4byte gUnknown_083D1464
-_0810DB24: .4byte 0x03002988
+_0810DB24: .4byte gLinkPlayers + 0x8
 	thumb_func_end GetLinkPartnerNames
 
 	thumb_func_start sub_810DB28

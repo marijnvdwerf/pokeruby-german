@@ -1432,7 +1432,7 @@ _0800C3A0:
 	lsls r0, r4, 8
 	mov r2, r10
 	adds r3, r0, r2
-	ldr r1, _0800C46C @ =0x03002b94
+	ldr r1, _0800C46C @ =gBlockRecvBuffer + 0x4
 	adds r0, r1
 	ldrh r6, [r0]
 	ldr r7, _0800C470 @ =gTasks
@@ -1519,7 +1519,7 @@ _0800C458:
 	bx r0
 	.align 2, 0
 _0800C468: .4byte gBitTable
-_0800C46C: .4byte 0x03002b94
+_0800C46C: .4byte gBlockRecvBuffer + 0x4
 _0800C470: .4byte gTasks
 _0800C474: .4byte gUnknown_020238C5
 _0800C478: .4byte 0x02015000

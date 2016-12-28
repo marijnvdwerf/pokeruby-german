@@ -412,7 +412,7 @@ sub_80B9F3C: @ 80B9F3C
 	ldrh r1, [r4]
 	bl VarSet
 	ldr r0, _080B9FA8 @ =gStringVar1
-	ldr r1, _080B9FAC @ =0x03002988
+	ldr r1, _080B9FAC @ =gLinkPlayers + 0x8
 	bl StringCopy
 	ldrh r1, [r4]
 	ldr r0, _080B9FB0 @ =0x00000113
@@ -424,7 +424,7 @@ sub_80B9F3C: @ 80B9F3C
 	.align 2, 0
 _080B9FA4: .4byte 0x00004001
 _080B9FA8: .4byte gStringVar1
-_080B9FAC: .4byte 0x03002988
+_080B9FAC: .4byte gLinkPlayers + 0x8
 _080B9FB0: .4byte 0x00000113
 _080B9FB4: .4byte 0x00000853
 _080B9FB8:
@@ -446,13 +446,13 @@ _080B9FC8:
 	ldrh r1, [r4]
 	bl VarSet
 	ldr r0, _080B9FF0 @ =gStringVar1
-	ldr r1, _080B9FF4 @ =0x03002988
+	ldr r1, _080B9FF4 @ =gLinkPlayers + 0x8
 	bl StringCopy
 	b _080BA000
 	.align 2, 0
 _080B9FEC: .4byte 0x00004001
 _080B9FF0: .4byte gStringVar1
-_080B9FF4: .4byte 0x03002988
+_080B9FF4: .4byte gLinkPlayers + 0x8
 _080B9FF8:
 	ldr r0, _080BA008 @ =0x00004001
 	movs r1, 0

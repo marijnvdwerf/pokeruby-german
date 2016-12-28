@@ -476,7 +476,7 @@ Task_IntroLoadPart1Graphics: @ 813BE70
 	bl LoadCompressedObjectPic
 	ldr r0, _0813C058 @ =gUnknown_0840B028
 	bl LoadSpritePalettes
-	ldr r4, _0813C05C @ =0x0202ecc8
+	ldr r4, _0813C05C @ =gPlttBufferUnfaded + 0x200
 	movs r0, 0xF0
 	lsls r0, 1
 	adds r1, r4, r0
@@ -573,7 +573,7 @@ _0813C04C: .4byte 0x00009201
 _0813C050: .4byte gUnknown_0840B008
 _0813C054: .4byte gUnknown_0840B018
 _0813C058: .4byte gUnknown_0840B028
-_0813C05C: .4byte 0x0202ecc8
+_0813C05C: .4byte gPlttBufferUnfaded + 0x200
 _0813C060: .4byte gTasks
 _0813C064: .4byte Task_IntroFadeIn
 	thumb_func_end Task_IntroLoadPart1Graphics

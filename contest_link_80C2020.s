@@ -325,7 +325,7 @@ _080C2296:
 	lsls r4, r5, 3
 	subs r1, r4, r5
 	lsls r1, 2
-	ldr r0, _080C22F8 @ =0x03002988
+	ldr r0, _080C22F8 @ =gLinkPlayers + 0x8
 	adds r1, r0
 	adds r0, r2, 0
 	bl StringCopy
@@ -335,7 +335,7 @@ _080C22E8: .4byte gUnknown_020238CC
 _080C22EC: .4byte 0x02038572
 _080C22F0: .4byte gUnknown_083D17E0
 _080C22F4: .4byte gUnknown_0203869A
-_080C22F8: .4byte 0x03002988
+_080C22F8: .4byte gLinkPlayers + 0x8
 _080C22FC:
 	adds r1, r7, 0
 	adds r1, 0xB
@@ -1190,7 +1190,7 @@ _080C29D4:
 	lsls r1, r4, 3
 	subs r1, r4
 	lsls r1, 2
-	ldr r0, _080C2A00 @ =0x03002988
+	ldr r0, _080C2A00 @ =gLinkPlayers + 0x8
 	adds r1, r0
 	adds r0, r3, 0
 	bl StringCopy
@@ -1200,7 +1200,7 @@ _080C29D4:
 _080C29F4: .4byte gUnknown_02038690
 _080C29F8: .4byte gUnknown_0203869A
 _080C29FC: .4byte gStringVar1
-_080C2A00: .4byte 0x03002988
+_080C2A00: .4byte gLinkPlayers + 0x8
 _080C2A04:
 	lsls r4, 6
 	ldr r1, _080C2A54 @ =gUnknown_0203857D
@@ -4976,7 +4976,7 @@ sub_80C46EC: @ 80C46EC
 	lsls r1, r2, 3
 	subs r1, r2
 	lsls r1, 2
-	ldr r2, _080C471C @ =0x03002988
+	ldr r2, _080C471C @ =gLinkPlayers + 0x8
 	adds r1, r2
 	bl sub_80C4674
 	b _080C4730
@@ -4984,7 +4984,7 @@ sub_80C46EC: @ 80C46EC
 _080C4710: .4byte gUnknown_0203869A
 _080C4714: .4byte gStringVar1
 _080C4718: .4byte gSpecialVar_0x8006
-_080C471C: .4byte 0x03002988
+_080C471C: .4byte gLinkPlayers + 0x8
 _080C4720:
 	ldr r0, _080C4734 @ =gStringVar1
 	ldr r1, _080C4738 @ =gSpecialVar_0x8006
@@ -5129,7 +5129,7 @@ _080C4812:
 	lsls r1, r2, 3
 	subs r1, r2
 	lsls r1, 2
-	ldr r0, _080C483C @ =0x03002988
+	ldr r0, _080C483C @ =gLinkPlayers + 0x8
 	adds r1, r0
 	adds r0, r4, 0
 	bl sub_80C4674
@@ -5138,7 +5138,7 @@ _080C4812:
 _080C4830: .4byte gUnknown_02038690
 _080C4834: .4byte gUnknown_0203869A
 _080C4838: .4byte gStringVar3
-_080C483C: .4byte 0x03002988
+_080C483C: .4byte gLinkPlayers + 0x8
 _080C4840:
 	lsls r1, r2, 6
 	ldr r0, _080C4854 @ =gUnknown_0203857D

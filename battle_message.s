@@ -1570,11 +1570,11 @@ _08121768:
 	lsls r0, r7, 3
 	subs r0, r7
 	lsls r0, 2
-	ldr r1, _08121774 @ =0x03002988
+	ldr r1, _08121774 @ =gLinkPlayers + 0x8
 	adds r4, r0, r1
 	b _0812191E
 	.align 2, 0
-_08121774: .4byte 0x03002988
+_08121774: .4byte gLinkPlayers + 0x8
 _08121778:
 	ldr r4, _08121788 @ =gLinkPlayers
 	lsls r0, r7, 3
@@ -1625,13 +1625,13 @@ _081217C4:
 	lsls r1, r0, 3
 	subs r1, r0
 	lsls r1, 2
-	ldr r0, _081217E4 @ =0x03002988
+	ldr r0, _081217E4 @ =gLinkPlayers + 0x8
 	adds r4, r1, r0
 	b _0812191E
 	.align 2, 0
 _081217DC: .4byte 0x02000000
 _081217E0: .4byte 0x00016003
-_081217E4: .4byte 0x03002988
+_081217E4: .4byte gLinkPlayers + 0x8
 _081217E8:
 	ldr r4, _081217EC @ =gSaveBlock2
 	b _0812191E

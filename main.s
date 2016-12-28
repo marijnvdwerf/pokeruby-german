@@ -440,7 +440,7 @@ _080006D2:
 	bl m4aSoundMain
 	bl sub_800C35C
 	bl Random
-	ldr r1, _0800071C @ =0x03007ff8
+	ldr r1, _0800071C @ =INTR_CHECK
 	ldrh r0, [r1]
 	movs r2, 0x1
 	orrs r0, r2
@@ -459,7 +459,7 @@ _0800070C: .4byte 0x04000208
 _08000710: .4byte gMain
 _08000714: .4byte gPcmDmaCounter
 _08000718: .4byte gSoundInfo
-_0800071C: .4byte 0x03007ff8
+_0800071C: .4byte INTR_CHECK
 	thumb_func_end VBlankIntr
 
 	thumb_func_start InitFlashTimer
@@ -484,7 +484,7 @@ HBlankIntr: @ 8000734
 	beq _08000742
 	bl _call_via_r0
 _08000742:
-	ldr r2, _08000760 @ =0x03007ff8
+	ldr r2, _08000760 @ =INTR_CHECK
 	ldrh r0, [r2]
 	movs r1, 0x2
 	orrs r0, r1
@@ -498,7 +498,7 @@ _08000742:
 	bx r0
 	.align 2, 0
 _0800075C: .4byte gMain
-_08000760: .4byte 0x03007ff8
+_08000760: .4byte INTR_CHECK
 	thumb_func_end HBlankIntr
 
 	thumb_func_start VCountIntr
@@ -510,7 +510,7 @@ VCountIntr: @ 8000764
 	beq _08000772
 	bl _call_via_r0
 _08000772:
-	ldr r2, _08000790 @ =0x03007ff8
+	ldr r2, _08000790 @ =INTR_CHECK
 	ldrh r0, [r2]
 	movs r1, 0x4
 	orrs r0, r1
@@ -524,7 +524,7 @@ _08000772:
 	bx r0
 	.align 2, 0
 _0800078C: .4byte gMain
-_08000790: .4byte 0x03007ff8
+_08000790: .4byte INTR_CHECK
 	thumb_func_end VCountIntr
 
 	thumb_func_start SerialIntr
@@ -536,7 +536,7 @@ SerialIntr: @ 8000794
 	beq _080007A2
 	bl _call_via_r0
 _080007A2:
-	ldr r2, _080007C0 @ =0x03007ff8
+	ldr r2, _080007C0 @ =INTR_CHECK
 	ldrh r0, [r2]
 	movs r1, 0x80
 	orrs r0, r1
@@ -550,7 +550,7 @@ _080007A2:
 	bx r0
 	.align 2, 0
 _080007BC: .4byte gMain
-_080007C0: .4byte 0x03007ff8
+_080007C0: .4byte INTR_CHECK
 	thumb_func_end SerialIntr
 
 	thumb_func_start IntrDummy

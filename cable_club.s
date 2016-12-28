@@ -1968,7 +1968,7 @@ sub_8083BF4: @ 8083BF4
 	lsls r1, r4, 3
 	subs r1, r4
 	lsls r1, 2
-	ldr r2, _08083C3C @ =0x03002988
+	ldr r2, _08083C3C @ =gLinkPlayers + 0x8
 	adds r1, r2
 	bl StringCopy
 	adds r0, r4, 0
@@ -1989,7 +1989,7 @@ sub_8083BF4: @ 8083BF4
 	.align 2, 0
 _08083C34: .4byte gSpecialVar_0x8006
 _08083C38: .4byte gStringVar1
-_08083C3C: .4byte 0x03002988
+_08083C3C: .4byte gLinkPlayers + 0x8
 _08083C40: .4byte gStringVar2
 _08083C44: .4byte gTrainerCardColorNames
 _08083C48:

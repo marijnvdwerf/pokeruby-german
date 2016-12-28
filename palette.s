@@ -464,7 +464,7 @@ _08073D8E:
 	lsls r0, r5, 1
 	adds r0, r5
 	lsls r0, 2
-	ldr r1, _08073DDC @ =0x0202f2c8
+	ldr r1, _08073DDC @ =gPlttBufferFaded + 0x400
 	adds r4, r0, r1
 	ldrb r0, [r4, 0x4]
 	lsls r0, 31
@@ -499,7 +499,7 @@ _08073DCA:
 	bl unused_sub_8073DFC
 	b _08073DE4
 	.align 2, 0
-_08073DDC: .4byte 0x0202f2c8
+_08073DDC: .4byte gPlttBufferFaded + 0x400
 _08073DE0:
 	subs r0, 0x1
 	strb r0, [r4, 0x8]
@@ -870,7 +870,7 @@ _0807408E:
 ResetPaletteStruct: @ 8074094
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080740DC @ =0x0202f2c8
+	ldr r2, _080740DC @ =gPlttBufferFaded + 0x400
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
@@ -904,7 +904,7 @@ ResetPaletteStruct: @ 8074094
 	strb r0, [r1, 0x9]
 	bx lr
 	.align 2, 0
-_080740DC: .4byte 0x0202f2c8
+_080740DC: .4byte gPlttBufferFaded + 0x400
 _080740E0: .4byte gDummyPaletteStructTemplate
 _080740E4: .4byte 0xfffff803
 _080740E8: .4byte 0xffe007ff
@@ -982,7 +982,7 @@ unref_sub_8074168: @ 8074168
 	lsrs r2, r0, 24
 	cmp r2, 0x10
 	beq _0807418C
-	ldr r1, _08074190 @ =0x0202f2c8
+	ldr r1, _08074190 @ =gPlttBufferFaded + 0x400
 	lsls r0, r2, 1
 	adds r0, r2
 	lsls r0, 2
@@ -995,7 +995,7 @@ _0807418C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08074190: .4byte 0x0202f2c8
+_08074190: .4byte gPlttBufferFaded + 0x400
 	thumb_func_end unref_sub_8074168
 
 	thumb_func_start unref_sub_8074194
@@ -1008,7 +1008,7 @@ unref_sub_8074194: @ 8074194
 	lsrs r2, r0, 24
 	cmp r2, 0x10
 	beq _080741BA
-	ldr r0, _080741C0 @ =0x0202f2c8
+	ldr r0, _080741C0 @ =gPlttBufferFaded + 0x400
 	lsls r1, r2, 1
 	adds r1, r2
 	lsls r1, 2
@@ -1022,7 +1022,7 @@ _080741BA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080741C0: .4byte 0x0202f2c8
+_080741C0: .4byte gPlttBufferFaded + 0x400
 	thumb_func_end unref_sub_8074194
 
 	thumb_func_start GetPaletteNumByUid
@@ -1031,7 +1031,7 @@ GetPaletteNumByUid: @ 8074584
 	lsls r0, 16
 	lsrs r2, r0, 16
 	movs r1, 0
-	ldr r3, _080745A4 @ =0x0202f2c8
+	ldr r3, _080745A4 @ =gPlttBufferFaded + 0x400
 _0807458E:
 	lsls r0, r1, 1
 	adds r0, r1
@@ -1044,7 +1044,7 @@ _0807458E:
 	adds r0, r1, 0
 	b _080745B4
 	.align 2, 0
-_080745A4: .4byte 0x0202f2c8
+_080745A4: .4byte gPlttBufferFaded + 0x400
 _080745A8:
 	adds r0, r1, 0x1
 	lsls r0, 24

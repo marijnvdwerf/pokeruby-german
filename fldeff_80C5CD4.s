@@ -642,7 +642,7 @@ _080C61AA:
 	thumb_func_start sub_80C61B0
 sub_80C61B0: @ 80C61B0
 	push {r4-r6,lr}
-	ldr r2, _080C61F0 @ =0x03007ff8
+	ldr r2, _080C61F0 @ =INTR_CHECK
 	ldrh r1, [r2]
 	movs r5, 0x2
 	orrs r1, r5
@@ -672,7 +672,7 @@ sub_80C61B0: @ 80C61B0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C61F0: .4byte 0x03007ff8
+_080C61F0: .4byte INTR_CHECK
 _080C61F4: .4byte REG_DISPSTAT
 _080C61F8: .4byte 0x04000208
 _080C61FC: .4byte 0x04000200
@@ -682,7 +682,7 @@ _080C6200: .4byte gMain
 	thumb_func_start ClearGpuRegBits
 ClearGpuRegBits: @ 80C6204
 	push {r4,r5,lr}
-	ldr r3, _080C6248 @ =0x03007ff8
+	ldr r3, _080C6248 @ =INTR_CHECK
 	ldrh r1, [r3]
 	ldr r2, _080C624C @ =0x0000fffd
 	adds r0, r2, 0
@@ -714,7 +714,7 @@ ClearGpuRegBits: @ 80C6204
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C6248: .4byte 0x03007ff8
+_080C6248: .4byte INTR_CHECK
 _080C624C: .4byte 0x0000fffd
 _080C6250: .4byte REG_DISPSTAT
 _080C6254: .4byte 0x0000ffef

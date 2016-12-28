@@ -37,7 +37,7 @@ sub_8047CE8: @ 8047CE8
 	lsls r2, r3, 3
 	subs r2, r3
 	lsls r2, 2
-	ldr r0, _08047D50 @ =0x03002988
+	ldr r0, _08047D50 @ =gLinkPlayers + 0x8
 	adds r2, r0
 	adds r0, r6, 0
 	movs r3, 0xC
@@ -62,7 +62,7 @@ sub_8047CE8: @ 8047CE8
 _08047D44: .4byte gWindowConfig_81E725C
 _08047D48: .4byte gUnknown_020296CC
 _08047D4C: .4byte gSaveBlock2
-_08047D50: .4byte 0x03002988
+_08047D50: .4byte gLinkPlayers + 0x8
 _08047D54: .4byte gUnknown_0820C14C
 	thumb_func_end sub_8047CE8
 
@@ -122,7 +122,7 @@ _08047D86:
 	lsls r0, r1, 3
 	subs r0, r1
 	lsls r0, 2
-	ldr r1, _08047E3C @ =0x03002988
+	ldr r1, _08047E3C @ =gLinkPlayers + 0x8
 	adds r0, r1
 	bl StringLength
 	lsls r0, 16
@@ -178,7 +178,7 @@ _08047DEE:
 _08047E30: .4byte gSaveBlock2
 _08047E34: .4byte gTradeUnknownSpriteCoords
 _08047E38: .4byte gSpriteTemplate_820C0EC
-_08047E3C: .4byte 0x03002988
+_08047E3C: .4byte gLinkPlayers + 0x8
 _08047E40: .4byte 0x082192b9
 	thumb_func_end sub_8047D58
 
@@ -7342,7 +7342,7 @@ _0804B7F4:
 	strb r0, [r1]
 	movs r0, 0x6
 	strb r0, [r1, 0x1]
-	ldr r4, _0804B8E8 @ =0x03002988
+	ldr r4, _0804B8E8 @ =gLinkPlayers + 0x8
 	ldr r1, _0804B8EC @ =gSaveBlock2
 	adds r0, r4, 0
 	bl StringCopy
@@ -7442,7 +7442,7 @@ _0804B7F4:
 	.align 2, 0
 _0804B8E0: .4byte gUnknown_020297D8
 _0804B8E4: .4byte gSpecialVar_0x8005
-_0804B8E8: .4byte 0x03002988
+_0804B8E8: .4byte gLinkPlayers + 0x8
 _0804B8EC: .4byte gSaveBlock2
 _0804B8F0: .4byte gEnemyParty
 _0804B8F4: .4byte gUnknown_03004828
@@ -8488,7 +8488,7 @@ sub_804C1A8: @ 804C1A8
 	lsls r1, r2, 3
 	subs r1, r2
 	lsls r1, 2
-	ldr r0, _0804C224 @ =0x03002988
+	ldr r0, _0804C224 @ =gLinkPlayers + 0x8
 	adds r1, r0
 	adds r0, r3, 0
 	bl StringCopy
@@ -8522,7 +8522,7 @@ sub_804C1A8: @ 804C1A8
 	.align 2, 0
 _0804C21C: .4byte gUnknown_03004828
 _0804C220: .4byte gStringVar1
-_0804C224: .4byte 0x03002988
+_0804C224: .4byte gLinkPlayers + 0x8
 _0804C228: .4byte gUnknown_020297D8
 _0804C22C: .4byte gEnemyParty
 _0804C230: .4byte gStringVar3

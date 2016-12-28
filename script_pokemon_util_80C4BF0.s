@@ -380,7 +380,7 @@ _080C4E78:
 	lsls r1, r6, 3
 	subs r1, r6
 	lsls r1, 2
-	ldr r2, _080C4EB4 @ =0x03002988
+	ldr r2, _080C4EB4 @ =gLinkPlayers + 0x8
 	adds r1, r2
 	bl sub_80C4674
 	b _080C4EC4
@@ -390,7 +390,7 @@ _080C4EA4: .4byte gSpecialVar_0x8006
 _080C4EA8: .4byte gStringVar1
 _080C4EAC: .4byte gUnknown_0203869A
 _080C4EB0: .4byte gStringVar2
-_080C4EB4: .4byte 0x03002988
+_080C4EB4: .4byte gLinkPlayers + 0x8
 _080C4EB8:
 	ldr r0, _080C4ED8 @ =gStringVar2
 	lsls r1, r6, 6

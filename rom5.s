@@ -1114,9 +1114,9 @@ unref_sub_807B69C: @ 807B69C
 	lsls r0, 24
 	lsrs r0, 24
 	mov r8, r0
-	ldr r0, _0807B748 @ =0x08389d8c
+	ldr r0, _0807B748 @ =gBattleAnimPicTable + (136 * 8)
 	bl LoadCompressedObjectPic
-	ldr r0, _0807B74C @ =0x0838a694
+	ldr r0, _0807B74C @ =gBattleAnimPaletteTable + (136 * 8)
 	bl LoadCompressedObjectPalette
 	ldr r1, _0807B750 @ =gTasks
 	mov r2, r8
@@ -1179,8 +1179,8 @@ _0807B734:
 	.align 2, 0
 _0807B740: .4byte gUnknown_02024BE0
 _0807B744: .4byte sub_807B7E0
-_0807B748: .4byte 0x08389d8c
-_0807B74C: .4byte 0x0838a694
+_0807B748: .4byte gBattleAnimPicTable + (136 * 8)
+_0807B74C: .4byte gBattleAnimPaletteTable + (136 * 8)
 _0807B750: .4byte gTasks
 _0807B754: .4byte gSprites
 _0807B758: .4byte gSpriteTemplate_83931F8

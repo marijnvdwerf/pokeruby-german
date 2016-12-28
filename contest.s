@@ -210,7 +210,7 @@ sub_80AB350: @ 80AB350
 _080AB364:
 	adds r1, r4, 0
 	adds r1, 0xF0
-	ldr r0, _080AB390 @ =0x0202ecaa
+	ldr r0, _080AB390 @ =gPlttBufferUnfaded + 0x1E2
 	movs r2, 0x2
 	bl LoadPalette
 	adds r0, r4, 0x1
@@ -227,7 +227,7 @@ _080AB364:
 	bx r0
 	.align 2, 0
 _080AB38C: .4byte gWindowConfig_81E6FD8
-_080AB390: .4byte 0x0202ecaa
+_080AB390: .4byte gPlttBufferUnfaded + 0x1E2
 _080AB394: .4byte 0x00007e3f
 	thumb_func_end sub_80AB350
 
@@ -805,7 +805,7 @@ _080AB844:
 	lsls r2, 2
 	movs r1, 0
 	bl LoadCompressedPalette
-	ldr r5, _080AB8B0 @ =0x0202ebc8
+	ldr r5, _080AB8B0 @ =gPlttBufferUnfaded + 0x100
 	ldr r6, _080AB8B4 @ =REG_BG0CNT
 	adds r0, r5, 0
 	mov r1, sp
@@ -848,7 +848,7 @@ _080AB844:
 	b _080AB946
 	.align 2, 0
 _080AB8AC: .4byte gUnknown_08D17144
-_080AB8B0: .4byte 0x0202ebc8
+_080AB8B0: .4byte gPlttBufferUnfaded + 0x100
 _080AB8B4: .4byte REG_BG0CNT
 _080AB8B8: .4byte gContestPlayerMonIndex
 _080AB8BC: .4byte 0xffffff00
@@ -10584,9 +10584,9 @@ sub_80B05A4: @ 80B05A4
 	bl sub_80B0548
 	adds r0, r4, 0x5
 	lsls r2, r0, 5
-	ldr r3, _080B05E8 @ =0x0202eadc
+	ldr r3, _080B05E8 @ =gPlttBufferUnfaded + 0x14
 	adds r6, r2, r3
-	ldr r5, _080B05EC @ =0x0202eedc
+	ldr r5, _080B05EC @ =gPlttBufferFaded + 0x14
 	adds r2, r5
 	ldr r1, _080B05F0 @ =0x040000d4
 	str r6, [r1]
@@ -10610,8 +10610,8 @@ sub_80B05A4: @ 80B05A4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B05E8: .4byte 0x0202eadc
-_080B05EC: .4byte 0x0202eedc
+_080B05E8: .4byte gPlttBufferUnfaded + 0x14
+_080B05EC: .4byte gPlttBufferFaded + 0x14
 _080B05F0: .4byte 0x040000d4
 _080B05F4: .4byte 0x80000001
 	thumb_func_end sub_80B05A4
@@ -15549,7 +15549,7 @@ _080B2BC4:
 	lsls r1, r6, 3
 	subs r1, r6
 	lsls r1, 2
-	ldr r2, _080B2C20 @ =0x03002988
+	ldr r2, _080B2C20 @ =gLinkPlayers + 0x8
 	adds r1, r2
 	bl StringCopy
 	b _080B2C32
@@ -15557,7 +15557,7 @@ _080B2BC4:
 _080B2C14: .4byte 0x02015de0
 _080B2C18: .4byte gContestMons
 _080B2C1C: .4byte gUnknown_0203869A
-_080B2C20: .4byte 0x03002988
+_080B2C20: .4byte gLinkPlayers + 0x8
 _080B2C24:
 	adds r0, r5, 0
 	adds r0, 0x16

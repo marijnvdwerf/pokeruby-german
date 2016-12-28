@@ -5749,7 +5749,7 @@ _081042A6:
 	asrs r0, r1, 16
 	cmp r0, 0xF
 	bgt _081042F0
-	ldr r7, _081042BC @ =0x083f90f2
+	ldr r7, _081042BC @ =gUnknown_083ECBC4 + 0x2
 _081042B0:
 	movs r3, 0
 	asrs r0, r1, 16
@@ -5758,7 +5758,7 @@ _081042B0:
 	movs r3, 0x1
 	b _081042C6
 	.align 2, 0
-_081042BC: .4byte 0x083f90f2
+_081042BC: .4byte gUnknown_083ECBC4 + 0x2
 _081042C0:
 	cmp r0, 0xF
 	bne _081042C6

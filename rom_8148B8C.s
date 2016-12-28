@@ -2159,8 +2159,8 @@ sub_8149C50: @ 8149C50
 	adds r5, r0
 	movs r0, 0
 	strh r0, [r5, 0x26]
-	ldr r0, _08149C9C @ =0x0202ef08
-	ldr r1, _08149CA0 @ =0x0202eb08
+	ldr r0, _08149C9C @ =gPlttBufferFaded + 0x40
+	ldr r1, _08149CA0 @ =gPlttBufferUnfaded + 0x40
 	movs r2, 0x30
 	bl CpuSet
 	ldr r0, _08149CA4 @ =0xfff9001c
@@ -2180,8 +2180,8 @@ sub_8149C50: @ 8149C50
 	bx r0
 	.align 2, 0
 _08149C98: .4byte gTasks
-_08149C9C: .4byte 0x0202ef08
-_08149CA0: .4byte 0x0202eb08
+_08149C9C: .4byte gPlttBufferFaded + 0x40
+_08149CA0: .4byte gPlttBufferUnfaded + 0x40
 _08149CA4: .4byte 0xfff9001c
 _08149CA8: .4byte 0x00007fff
 _08149CAC: .4byte sub_8149CB0
@@ -2320,8 +2320,8 @@ sub_8149D8C: @ 8149D8C
 	adds r5, r0
 	movs r0, 0
 	strh r0, [r5, 0x26]
-	ldr r0, _08149DD8 @ =0x0202ef08
-	ldr r1, _08149DDC @ =0x0202eb08
+	ldr r0, _08149DD8 @ =gPlttBufferFaded + 0x40
+	ldr r1, _08149DDC @ =gPlttBufferUnfaded + 0x40
 	movs r2, 0x30
 	bl CpuSet
 	ldr r0, _08149DE0 @ =0xfff90001
@@ -2341,8 +2341,8 @@ sub_8149D8C: @ 8149D8C
 	bx r0
 	.align 2, 0
 _08149DD4: .4byte gTasks
-_08149DD8: .4byte 0x0202ef08
-_08149DDC: .4byte 0x0202eb08
+_08149DD8: .4byte gPlttBufferFaded + 0x40
+_08149DDC: .4byte gPlttBufferUnfaded + 0x40
 _08149DE0: .4byte 0xfff90001
 _08149DE4: .4byte 0x00007fff
 _08149DE8: .4byte sub_8149DEC
@@ -2530,7 +2530,7 @@ _08149E96:
 	ldrb r1, [r2, 0x5]
 	lsrs r1, 4
 	lsls r1, 5
-	ldr r0, _08149FC4 @ =0x0202f0c8
+	ldr r0, _08149FC4 @ =gPlttBufferFaded + 0x200
 	mov r10, r0
 	add r1, r10
 	add r0, sp, 0x4
@@ -2583,7 +2583,7 @@ _08149FB4: .4byte 0x00007fff
 _08149FB8: .4byte gTasks
 _08149FBC: .4byte gSprites
 _08149FC0: .4byte nullsub_85
-_08149FC4: .4byte 0x0202f0c8
+_08149FC4: .4byte gPlttBufferFaded + 0x200
 	thumb_func_end sub_8149E7C
 
 	thumb_func_start sub_8149FC8
