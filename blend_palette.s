@@ -7,7 +7,7 @@
 	.text
 
 	thumb_func_start BlendPalette
-BlendPalette: @ 8041534
+BlendPalette: @ 8041210
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -26,12 +26,12 @@ BlendPalette: @ 8041534
 	strh r3, [r0]
 	movs r6, 0
 	cmp r6, r12
-	bcs _080415BA
-	ldr r0, _080415CC @ =gPlttBufferUnfaded
+	bcs _08041296
+	ldr r0, _080412A8 @ =gPlttBufferUnfaded
 	mov r10, r0
-	ldr r1, _080415D0 @ =gPlttBufferFaded
+	ldr r1, _080412AC @ =gPlttBufferFaded
 	mov r9, r1
-_08041562:
+_0804123E:
 	mov r0, r8
 	adds r5, r6, r0
 	lsls r5, 16
@@ -75,8 +75,8 @@ _08041562:
 	lsls r0, 16
 	lsrs r6, r0, 16
 	cmp r6, r12
-	bcc _08041562
-_080415BA:
+	bcc _0804123E
+_08041296:
 	add sp, 0x4
 	pop {r3-r5}
 	mov r8, r3
@@ -86,8 +86,8 @@ _080415BA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080415CC: .4byte gPlttBufferUnfaded
-_080415D0: .4byte gPlttBufferFaded
+_080412A8: .4byte gPlttBufferUnfaded
+_080412AC: .4byte gPlttBufferFaded
 	thumb_func_end BlendPalette
 
 	.align 2, 0 @ Don't pad with nop.

@@ -7,7 +7,7 @@
 	.text
 
 	thumb_func_start sub_8046234
-sub_8046234: @ 8046558
+sub_8046234: @ 8046234
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -19,19 +19,19 @@ sub_8046234: @ 8046558
 	lsrs r7, r1, 16
 	lsls r2, 24
 	lsrs r4, r2, 24
-	ldr r5, _08046690 @ =gUnknown_081FAEA4
+	ldr r5, _0804636C @ =gUnknown_081FAEA4
 	ldrh r0, [r5, 0x6]
 	bl GetSpriteTileStartByTag
 	lsls r0, 16
-	ldr r1, _08046694 @ =0xffff0000
+	ldr r1, _08046370 @ =0xffff0000
 	cmp r0, r1
-	bne _0804658A
+	bne _08046266
 	adds r0, r5, 0
 	bl LoadCompressedObjectPic
-	ldr r0, _08046698 @ =gUnknown_081FAEAC
+	ldr r0, _08046374 @ =gUnknown_081FAEAC
 	bl LoadCompressedObjectPalette
-_0804658A:
-	ldr r0, _0804669C @ =sub_8046388
+_08046266:
+	ldr r0, _08046378 @ =sub_8046388
 	bl object_new_hidden_with_callback
 	mov r8, r0
 	mov r0, r8
@@ -41,15 +41,15 @@ _0804658A:
 	lsls r5, r0, 4
 	add r5, r8
 	lsls r5, 2
-	ldr r0, _080466A0 @ =gSprites
+	ldr r0, _0804637C @ =gSprites
 	adds r5, r0
 	strh r4, [r5, 0x30]
-	ldr r0, _080466A4 @ =gSpriteTemplate_81FAF0C
+	ldr r0, _08046380 @ =gSpriteTemplate_81FAF0C
 	mov r9, r0
 	lsls r6, 16
 	asrs r0, r6, 16
 	mov r10, r0
-	ldr r0, _080466A8 @ =0xfff00000
+	ldr r0, _08046384 @ =0xfff00000
 	adds r6, r0
 	asrs r6, 16
 	lsls r4, r7, 16
@@ -66,7 +66,7 @@ _0804658A:
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _080466A0 @ =gSprites
+	ldr r0, _0804637C @ =gSprites
 	adds r1, r0
 	mov r0, r8
 	strh r0, [r1, 0x2E]
@@ -85,7 +85,7 @@ _0804658A:
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _080466A0 @ =gSprites
+	ldr r0, _0804637C @ =gSprites
 	adds r4, r0
 	mov r0, r8
 	strh r0, [r4, 0x2E]
@@ -107,7 +107,7 @@ _0804658A:
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _080466A0 @ =gSprites
+	ldr r0, _0804637C @ =gSprites
 	adds r4, r0
 	mov r0, r8
 	strh r0, [r4, 0x2E]
@@ -129,7 +129,7 @@ _0804658A:
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _080466A0 @ =gSprites
+	ldr r0, _0804637C @ =gSprites
 	adds r4, r0
 	mov r0, r8
 	strh r0, [r4, 0x2E]
@@ -150,52 +150,52 @@ _0804658A:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08046690: .4byte gUnknown_081FAEA4
-_08046694: .4byte 0xffff0000
-_08046698: .4byte gUnknown_081FAEAC
-_0804669C: .4byte sub_8046388
-_080466A0: .4byte gSprites
-_080466A4: .4byte gSpriteTemplate_81FAF0C
-_080466A8: .4byte 0xfff00000
+_0804636C: .4byte gUnknown_081FAEA4
+_08046370: .4byte 0xffff0000
+_08046374: .4byte gUnknown_081FAEAC
+_08046378: .4byte sub_8046388
+_0804637C: .4byte gSprites
+_08046380: .4byte gSpriteTemplate_81FAF0C
+_08046384: .4byte 0xfff00000
 	thumb_func_end sub_8046234
 
 	thumb_func_start sub_8046388
-sub_8046388: @ 80466AC
+sub_8046388: @ 8046388
 	push {r4,lr}
 	adds r4, r0, 0
 	movs r1, 0x2E
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
-	bne _080466E4
-	ldr r0, _080466D8 @ =gUnknown_081FAEA4
+	bne _080463C0
+	ldr r0, _080463B4 @ =gUnknown_081FAEA4
 	ldrh r0, [r0, 0x6]
 	bl FreeSpriteTilesByTag
-	ldr r0, _080466DC @ =gUnknown_081FAEAC
+	ldr r0, _080463B8 @ =gUnknown_081FAEAC
 	ldrh r0, [r0, 0x4]
 	bl FreeSpritePaletteByTag
 	movs r1, 0x30
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
-	bne _080466E0
+	bne _080463BC
 	adds r0, r4, 0
 	bl DestroySprite
-	b _080466E4
+	b _080463C0
 	.align 2, 0
-_080466D8: .4byte gUnknown_081FAEA4
-_080466DC: .4byte gUnknown_081FAEAC
-_080466E0:
-	ldr r0, _080466EC @ =SpriteCallbackDummy
+_080463B4: .4byte gUnknown_081FAEA4
+_080463B8: .4byte gUnknown_081FAEAC
+_080463BC:
+	ldr r0, _080463C8 @ =SpriteCallbackDummy
 	str r0, [r4, 0x1C]
-_080466E4:
+_080463C0:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080466EC: .4byte SpriteCallbackDummy
+_080463C8: .4byte SpriteCallbackDummy
 	thumb_func_end sub_8046388
 
 	thumb_func_start sub_80463CC
-sub_80463CC: @ 80466F0
+sub_80463CC: @ 80463CC
 	push {lr}
 	adds r3, r0, 0
 	adds r0, 0x3F
@@ -203,8 +203,8 @@ sub_80463CC: @ 80466F0
 	movs r0, 0x10
 	ands r0, r1
 	cmp r0, 0
-	beq _0804671A
-	ldr r2, _08046720 @ =gSprites
+	beq _080463F6
+	ldr r2, _080463FC @ =gSprites
 	movs r0, 0x2E
 	ldrsh r1, [r3, r0]
 	lsls r0, r1, 4
@@ -216,11 +216,11 @@ sub_80463CC: @ 80466F0
 	strh r1, [r0, 0x2E]
 	adds r0, r3, 0
 	bl DestroySprite
-_0804671A:
+_080463F6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08046720: .4byte gSprites
+_080463FC: .4byte gSprites
 	thumb_func_end sub_80463CC
 
 	.align 2, 0 @ Don't pad with nop.

@@ -7,11 +7,11 @@
 	.text
 
 	thumb_func_start CheckTrainers
-CheckTrainers: @ 8084410
+CheckTrainers: @ 8083FBC
 	push {r4,r5,lr}
 	movs r4, 0
-	ldr r5, _08084440 @ =gMapObjects
-_08084416:
+	ldr r5, _08083FEC @ =gMapObjects
+_08083FC2:
 	lsls r0, r4, 3
 	adds r0, r4
 	lsls r0, 2
@@ -19,37 +19,37 @@ _08084416:
 	ldrb r0, [r1]
 	lsls r0, 31
 	cmp r0, 0
-	beq _08084444
+	beq _08083FF0
 	ldrb r0, [r1, 0x7]
 	cmp r0, 0x1
-	beq _08084430
+	beq _08083FDC
 	cmp r0, 0x3
-	bne _08084444
-_08084430:
+	bne _08083FF0
+_08083FDC:
 	adds r0, r4, 0
 	bl CheckTrainer
 	lsls r0, 24
 	cmp r0, 0
-	beq _08084444
+	beq _08083FF0
 	movs r0, 0x1
-	b _08084450
+	b _08083FFC
 	.align 2, 0
-_08084440: .4byte gMapObjects
-_08084444:
+_08083FEC: .4byte gMapObjects
+_08083FF0:
 	adds r0, r4, 0x1
 	lsls r0, 24
 	lsrs r4, r0, 24
 	cmp r4, 0xF
-	bls _08084416
+	bls _08083FC2
 	movs r0, 0
-_08084450:
+_08083FFC:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end CheckTrainers
 
 	thumb_func_start CheckTrainer
-CheckTrainer: @ 8084458
+CheckTrainer: @ 8084004
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
@@ -59,24 +59,24 @@ CheckTrainer: @ 8084458
 	adds r6, r0, 0
 	bl GetTrainerFlagFromScriptPointer
 	cmp r0, 0
-	bne _08084488
+	bne _08084034
 	lsls r0, r4, 3
 	adds r0, r4
 	lsls r0, 2
-	ldr r1, _0808448C @ =gMapObjects
+	ldr r1, _08084038 @ =gMapObjects
 	adds r5, r0, r1
 	adds r0, r5, 0
 	bl TrainerCanApproachPlayer
 	lsls r0, 24
 	lsrs r4, r0, 24
 	cmp r4, 0
-	bne _08084490
-_08084488:
+	bne _0808403C
+_08084034:
 	movs r0, 0
-	b _080844A6
+	b _08084052
 	.align 2, 0
-_0808448C: .4byte gMapObjects
-_08084490:
+_08084038: .4byte gMapObjects
+_0808403C:
 	adds r0, r7, 0
 	adds r1, r6, 0
 	bl TrainerWantsBattle
@@ -86,14 +86,14 @@ _08084490:
 	adds r0, r5, 0
 	bl sub_80842C8
 	movs r0, 0x1
-_080844A6:
+_08084052:
 	pop {r4-r7}
 	pop {r1}
 	bx r1
 	thumb_func_end CheckTrainer
 
 	thumb_func_start TrainerCanApproachPlayer
-TrainerCanApproachPlayer: @ 80844AC
+TrainerCanApproachPlayer: @ 8084058
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -107,8 +107,8 @@ TrainerCanApproachPlayer: @ 80844AC
 	ldrb r0, [r7, 0x7]
 	mov r8, r4
 	cmp r0, 0x1
-	bne _0808450C
-	ldr r1, _08084504 @ =gIsTrainerInRange
+	bne _080840B8
+	ldr r1, _080840B0 @ =gIsTrainerInRange
 	ldrb r0, [r7, 0x18]
 	lsls r0, 28
 	lsrs r0, 26
@@ -133,16 +133,16 @@ TrainerCanApproachPlayer: @ 80844AC
 	bl CheckPathBetweenTrainerAndPlayer
 	lsls r0, 24
 	lsrs r0, 24
-	b _0808454C
+	b _080840F8
 	.align 2, 0
-_08084504: .4byte gIsTrainerInRange
-_08084508:
+_080840B0: .4byte gIsTrainerInRange
+_080840B4:
 	adds r0, r6, 0
-	b _0808454C
-_0808450C:
+	b _080840F8
+_080840B8:
 	movs r5, 0
-_0808450E:
-	ldr r0, _08084558 @ =gIsTrainerInRange
+_080840BA:
+	ldr r0, _08084104 @ =gIsTrainerInRange
 	lsls r4, r5, 2
 	adds r4, r0
 	ldrb r1, [r7, 0x1D]
@@ -166,12 +166,12 @@ _0808450E:
 	bl CheckPathBetweenTrainerAndPlayer
 	lsls r0, 24
 	cmp r0, 0
-	bne _08084508
+	bne _080840B4
 	adds r5, r4, 0
 	cmp r5, 0x3
-	bls _0808450E
+	bls _080840BA
 	movs r0, 0
-_0808454C:
+_080840F8:
 	add sp, 0x4
 	pop {r3}
 	mov r8, r3
@@ -179,11 +179,11 @@ _0808454C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08084558: .4byte gIsTrainerInRange
+_08084104: .4byte gIsTrainerInRange
 	thumb_func_end TrainerCanApproachPlayer
 
 	thumb_func_start IsTrainerInRangeSouth
-IsTrainerInRangeSouth: @ 808455C
+IsTrainerInRangeSouth: @ 8084108
 	push {r4-r6,lr}
 	adds r4, r0, 0
 	lsls r1, 16
@@ -195,34 +195,34 @@ IsTrainerInRangeSouth: @ 808455C
 	lsls r2, 16
 	asrs r2, 16
 	cmp r0, r2
-	bne _08084596
+	bne _08084142
 	lsls r0, r5, 16
 	asrs r2, r0, 16
 	ldrh r3, [r4, 0x12]
 	movs r1, 0x12
 	ldrsh r0, [r4, r1]
 	cmp r2, r0
-	ble _08084596
+	ble _08084142
 	adds r1, r0, 0
 	lsls r0, r6, 16
 	asrs r0, 16
 	adds r1, r0
 	cmp r2, r1
-	bgt _08084596
+	bgt _08084142
 	subs r0, r5, r3
 	lsls r0, 24
 	lsrs r0, 24
-	b _08084598
-_08084596:
+	b _08084144
+_08084142:
 	movs r0, 0
-_08084598:
+_08084144:
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	thumb_func_end IsTrainerInRangeSouth
 
 	thumb_func_start IsTrainerInRangeNorth
-IsTrainerInRangeNorth: @ 80845A0
+IsTrainerInRangeNorth: @ 808414C
 	push {r4-r6,lr}
 	adds r4, r0, 0
 	lsls r1, 16
@@ -234,34 +234,34 @@ IsTrainerInRangeNorth: @ 80845A0
 	lsls r2, 16
 	asrs r2, 16
 	cmp r0, r2
-	bne _080845DA
+	bne _08084186
 	lsls r0, r5, 16
 	asrs r2, r0, 16
 	ldrh r3, [r4, 0x12]
 	movs r1, 0x12
 	ldrsh r0, [r4, r1]
 	cmp r2, r0
-	bge _080845DA
+	bge _08084186
 	adds r1, r0, 0
 	lsls r0, r6, 16
 	asrs r0, 16
 	subs r1, r0
 	cmp r2, r1
-	blt _080845DA
+	blt _08084186
 	subs r0, r3, r5
 	lsls r0, 24
 	lsrs r0, 24
-	b _080845DC
-_080845DA:
+	b _08084188
+_08084186:
 	movs r0, 0
-_080845DC:
+_08084188:
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	thumb_func_end IsTrainerInRangeNorth
 
 	thumb_func_start IsTrainerInRangeWest
-IsTrainerInRangeWest: @ 80845E4
+IsTrainerInRangeWest: @ 8084190
 	push {r4-r6,lr}
 	adds r4, r0, 0
 	lsls r1, 16
@@ -273,34 +273,34 @@ IsTrainerInRangeWest: @ 80845E4
 	lsls r3, 16
 	asrs r3, 16
 	cmp r0, r3
-	bne _0808461E
+	bne _080841CA
 	lsls r0, r5, 16
 	asrs r3, r0, 16
 	ldrh r2, [r4, 0x10]
 	movs r1, 0x10
 	ldrsh r0, [r4, r1]
 	cmp r3, r0
-	bge _0808461E
+	bge _080841CA
 	adds r1, r0, 0
 	lsls r0, r6, 16
 	asrs r0, 16
 	subs r1, r0
 	cmp r3, r1
-	blt _0808461E
+	blt _080841CA
 	subs r0, r2, r5
 	lsls r0, 24
 	lsrs r0, 24
-	b _08084620
-_0808461E:
+	b _080841CC
+_080841CA:
 	movs r0, 0
-_08084620:
+_080841CC:
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	thumb_func_end IsTrainerInRangeWest
 
 	thumb_func_start IsTrainerInRangeEast
-IsTrainerInRangeEast: @ 8084628
+IsTrainerInRangeEast: @ 80841D4
 	push {r4-r6,lr}
 	adds r4, r0, 0
 	lsls r1, 16
@@ -312,34 +312,34 @@ IsTrainerInRangeEast: @ 8084628
 	lsls r3, 16
 	asrs r3, 16
 	cmp r0, r3
-	bne _08084662
+	bne _0808420E
 	lsls r0, r5, 16
 	asrs r3, r0, 16
 	ldrh r2, [r4, 0x10]
 	movs r1, 0x10
 	ldrsh r0, [r4, r1]
 	cmp r3, r0
-	ble _08084662
+	ble _0808420E
 	adds r1, r0, 0
 	lsls r0, r6, 16
 	asrs r0, 16
 	adds r1, r0
 	cmp r3, r1
-	bgt _08084662
+	bgt _0808420E
 	subs r0, r5, r2
 	lsls r0, 24
 	lsrs r0, 24
-	b _08084664
-_08084662:
+	b _08084210
+_0808420E:
 	movs r0, 0
-_08084664:
+_08084210:
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	thumb_func_end IsTrainerInRangeEast
 
 	thumb_func_start CheckPathBetweenTrainerAndPlayer
-CheckPathBetweenTrainerAndPlayer: @ 808466C
+CheckPathBetweenTrainerAndPlayer: @ 8084218
 	push {r4-r7,lr}
 	mov r7, r9
 	mov r6, r8
@@ -352,7 +352,7 @@ CheckPathBetweenTrainerAndPlayer: @ 808466C
 	lsls r2, 24
 	lsrs r7, r2, 24
 	cmp r1, 0
-	beq _08084708
+	beq _080842B4
 	ldrh r1, [r6, 0x10]
 	mov r0, sp
 	strh r1, [r0]
@@ -365,8 +365,8 @@ CheckPathBetweenTrainerAndPlayer: @ 808466C
 	mov r5, r9
 	subs r5, 0x1
 	cmp r4, r5
-	bgt _080846DA
-_080846A0:
+	bgt _08084286
+_0808424C:
 	mov r0, sp
 	movs r2, 0
 	ldrsh r1, [r0, r2]
@@ -379,13 +379,13 @@ _080846A0:
 	lsls r0, 24
 	lsrs r1, r0, 24
 	cmp r1, 0
-	beq _080846C6
+	beq _08084272
 	movs r0, 0x2
 	negs r0, r0
 	ands r1, r0
 	cmp r1, 0
-	bne _08084708
-_080846C6:
+	bne _080842B4
+_08084272:
 	adds r0, r4, 0x1
 	lsls r0, 24
 	lsrs r4, r0, 24
@@ -394,8 +394,8 @@ _080846C6:
 	mov r2, r8
 	bl MoveCoords
 	cmp r4, r5
-	ble _080846A0
-_080846DA:
+	ble _0808424C
+_08084286:
 	ldrb r4, [r6, 0x19]
 	lsls r5, r4, 28
 	lsrs r5, 28
@@ -417,13 +417,13 @@ _080846DA:
 	orrs r5, r4
 	strb r5, [r6, 0x19]
 	cmp r1, 0x4
-	beq _0808470C
-_08084708:
+	beq _080842B8
+_080842B4:
 	movs r0, 0
-	b _0808470E
-_0808470C:
+	b _080842BA
+_080842B8:
 	mov r0, r9
-_0808470E:
+_080842BA:
 	add sp, 0x4
 	pop {r3,r4}
 	mov r8, r3
@@ -434,12 +434,12 @@ _0808470E:
 	thumb_func_end CheckPathBetweenTrainerAndPlayer
 
 	thumb_func_start sub_80842C8
-sub_80842C8: @ 808471C
+sub_80842C8: @ 80842C8
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	lsls r4, r1, 24
 	lsrs r4, 24
-	ldr r0, _08084748 @ =RunTrainerSeeFuncList
+	ldr r0, _080842F4 @ =RunTrainerSeeFuncList
 	movs r1, 0x50
 	bl CreateTask
 	lsls r0, 24
@@ -447,7 +447,7 @@ sub_80842C8: @ 808471C
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
-	ldr r0, _0808474C @ =gTasks
+	ldr r0, _080842F8 @ =gTasks
 	adds r1, r0
 	lsrs r0, r5, 16
 	strh r0, [r1, 0xA]
@@ -457,15 +457,15 @@ sub_80842C8: @ 808471C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08084748: .4byte RunTrainerSeeFuncList
-_0808474C: .4byte gTasks
+_080842F4: .4byte RunTrainerSeeFuncList
+_080842F8: .4byte gTasks
 	thumb_func_end sub_80842C8
 
 	thumb_func_start sub_80842FC
-sub_80842FC: @ 8084750
+sub_80842FC: @ 80842FC
 	push {r4-r6,lr}
 	adds r6, r0, 0
-	ldr r5, _08084788 @ =RunTrainerSeeFuncList
+	ldr r5, _08084334 @ =RunTrainerSeeFuncList
 	adds r0, r5, 0
 	bl FindTaskIdByFunc
 	adds r4, r0, 0
@@ -475,7 +475,7 @@ sub_80842FC: @ 8084750
 	adds r1, r5, 0
 	adds r2, r6, 0
 	bl SetTaskFuncWithFollowupFunc
-	ldr r1, _0808478C @ =gTasks
+	ldr r1, _08084338 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -488,19 +488,19 @@ sub_80842FC: @ 8084750
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08084788: .4byte RunTrainerSeeFuncList
-_0808478C: .4byte gTasks
+_08084334: .4byte RunTrainerSeeFuncList
+_08084338: .4byte gTasks
 	thumb_func_end sub_80842FC
 
 	thumb_func_start RunTrainerSeeFuncList
-RunTrainerSeeFuncList: @ 8084790
+RunTrainerSeeFuncList: @ 808433C
 	push {r4-r7,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
-	ldr r1, _080847BC @ =gTasks
+	ldr r1, _08084368 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0xA
 	ldrsh r0, [r4, r1]
@@ -511,15 +511,15 @@ RunTrainerSeeFuncList: @ 8084790
 	ldrb r0, [r5]
 	lsls r0, 31
 	cmp r0, 0
-	bne _080847C0
+	bne _0808436C
 	adds r0, r6, 0
 	bl SwitchTaskToFollowupFunc
-	b _080847DC
+	b _08084388
 	.align 2, 0
-_080847BC: .4byte gTasks
-_080847C0:
-	ldr r7, _080847E4 @ =gTrainerSeeFuncList
-_080847C2:
+_08084368: .4byte gTasks
+_0808436C:
+	ldr r7, _08084390 @ =gTrainerSeeFuncList
+_0808436E:
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
 	lsls r0, 2
@@ -531,27 +531,27 @@ _080847C2:
 	bl _call_via_r3
 	lsls r0, 24
 	cmp r0, 0
-	bne _080847C2
-_080847DC:
+	bne _0808436E
+_08084388:
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080847E4: .4byte gTrainerSeeFuncList
+_08084390: .4byte gTrainerSeeFuncList
 	thumb_func_end RunTrainerSeeFuncList
 
 	thumb_func_start sub_8084394
-sub_8084394: @ 80847E8
+sub_8084394: @ 8084394
 	movs r0, 0
 	bx lr
 	thumb_func_end sub_8084394
 
 	thumb_func_start sub_8084398
-sub_8084398: @ 80847EC
+sub_8084398: @ 8084398
 	push {r4,r5,lr}
 	adds r5, r1, 0
 	adds r4, r2, 0
-	ldr r1, _0808482C @ =gUnknown_0202FF84
+	ldr r1, _080843D8 @ =gUnknown_0202FF84
 	adds r2, r1, 0x4
 	adds r3, r1, 0
 	adds r3, 0x8
@@ -576,11 +576,11 @@ sub_8084398: @ 80847EC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0808482C: .4byte gUnknown_0202FF84
+_080843D8: .4byte gUnknown_0202FF84
 	thumb_func_end sub_8084398
 
 	thumb_func_start sub_80843DC
-sub_80843DC: @ 8084830
+sub_80843DC: @ 80843DC
 	push {r4,r5,lr}
 	adds r4, r1, 0
 	adds r5, r2, 0
@@ -588,10 +588,10 @@ sub_80843DC: @ 8084830
 	bl FieldEffectActiveListContains
 	lsls r0, 24
 	cmp r0, 0
-	beq _08084846
+	beq _080843F2
 	movs r0, 0
-	b _08084868
-_08084846:
+	b _08084414
+_080843F2:
 	ldrh r0, [r4, 0x8]
 	adds r0, 0x1
 	strh r0, [r4, 0x8]
@@ -600,25 +600,25 @@ _08084846:
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bhi _0808485C
+	bhi _08084408
 	movs r0, 0x6
 	strh r0, [r4, 0x8]
-_0808485C:
+_08084408:
 	ldrb r0, [r5, 0x6]
 	cmp r0, 0x3F
-	bne _08084866
+	bne _08084412
 	movs r0, 0x8
 	strh r0, [r4, 0x8]
-_08084866:
+_08084412:
 	movs r0, 0x1
-_08084868:
+_08084414:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end sub_80843DC
 
 	thumb_func_start sub_808441C
-sub_808441C: @ 8084870
+sub_808441C: @ 808441C
 	push {r4,r5,lr}
 	adds r5, r1, 0
 	adds r4, r2, 0
@@ -626,17 +626,17 @@ sub_808441C: @ 8084870
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	beq _0808488E
+	beq _0808443A
 	adds r0, r4, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _080848C2
-_0808488E:
+	beq _0808446E
+_0808443A:
 	movs r1, 0xE
 	ldrsh r0, [r5, r1]
 	cmp r0, 0
-	beq _080848B4
+	beq _08084460
 	ldrb r0, [r4, 0x18]
 	lsls r0, 28
 	lsrs r0, 28
@@ -649,15 +649,15 @@ _0808488E:
 	ldrh r0, [r5, 0xE]
 	subs r0, 0x1
 	strh r0, [r5, 0xE]
-	b _080848C2
-_080848B4:
+	b _0808446E
+_08084460:
 	adds r0, r4, 0
 	movs r1, 0x3E
 	bl FieldObjectSetSpecialAnim
 	ldrh r0, [r5, 0x8]
 	adds r0, 0x1
 	strh r0, [r5, 0x8]
-_080848C2:
+_0808446E:
 	movs r0, 0
 	pop {r4,r5}
 	pop {r1}
@@ -665,7 +665,7 @@ _080848C2:
 	thumb_func_end sub_808441C
 
 	thumb_func_start sub_8084478
-sub_8084478: @ 80848CC
+sub_8084478: @ 8084478
 	push {r4-r6,lr}
 	adds r6, r1, 0
 	adds r5, r2, 0
@@ -673,13 +673,13 @@ sub_8084478: @ 80848CC
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	beq _080848EA
+	beq _08084496
 	adds r0, r5, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _08084978
-_080848EA:
+	beq _08084524
+_08084496:
 	ldrb r0, [r5, 0x18]
 	lsls r0, 28
 	lsrs r0, 28
@@ -700,31 +700,31 @@ _080848EA:
 	bl sub_805C774
 	adds r0, r5, 0
 	bl sub_805C754
-	ldr r0, _08084980 @ =gPlayerAvatar
+	ldr r0, _0808452C @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08084984 @ =gMapObjects
+	ldr r1, _08084530 @ =gMapObjects
 	adds r4, r0, r1
 	adds r0, r4, 0
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	beq _08084942
+	beq _080844EE
 	adds r0, r4, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _08084978
-_08084942:
+	beq _08084524
+_080844EE:
 	bl sub_80597E8
-	ldr r0, _08084980 @ =gPlayerAvatar
+	ldr r0, _0808452C @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _08084984 @ =gMapObjects
+	ldr r0, _08084530 @ =gMapObjects
 	adds r4, r0
 	ldrb r0, [r5, 0x18]
 	lsls r0, 28
@@ -741,53 +741,53 @@ _08084942:
 	ldrh r0, [r6, 0x8]
 	adds r0, 0x1
 	strh r0, [r6, 0x8]
-_08084978:
+_08084524:
 	movs r0, 0
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08084980: .4byte gPlayerAvatar
-_08084984: .4byte gMapObjects
+_0808452C: .4byte gPlayerAvatar
+_08084530: .4byte gMapObjects
 	thumb_func_end sub_8084478
 
 	thumb_func_start sub_8084534
-sub_8084534: @ 8084988
+sub_8084534: @ 8084534
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r0, _080849C4 @ =gPlayerAvatar
+	ldr r0, _08084570 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080849C8 @ =gMapObjects
+	ldr r1, _08084574 @ =gMapObjects
 	adds r4, r0, r1
 	adds r0, r4, 0
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	beq _080849B4
+	beq _08084560
 	adds r0, r4, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _080849BA
-_080849B4:
+	beq _08084566
+_08084560:
 	adds r0, r5, 0
 	bl SwitchTaskToFollowupFunc
-_080849BA:
+_08084566:
 	movs r0, 0
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080849C4: .4byte gPlayerAvatar
-_080849C8: .4byte gMapObjects
+_08084570: .4byte gPlayerAvatar
+_08084574: .4byte gMapObjects
 	thumb_func_end sub_8084534
 
 	thumb_func_start sub_8084578
-sub_8084578: @ 80849CC
+sub_8084578: @ 8084578
 	push {r4,r5,lr}
 	adds r5, r1, 0
 	adds r4, r2, 0
@@ -795,20 +795,20 @@ sub_8084578: @ 80849CC
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	beq _080849EA
+	beq _08084596
 	adds r0, r4, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _080849F8
-_080849EA:
+	beq _080845A4
+_08084596:
 	adds r0, r4, 0
 	movs r1, 0x59
 	bl FieldObjectSetSpecialAnim
 	ldrh r0, [r5, 0x8]
 	adds r0, 0x1
 	strh r0, [r5, 0x8]
-_080849F8:
+_080845A4:
 	movs r0, 0
 	pop {r4,r5}
 	pop {r1}
@@ -816,17 +816,17 @@ _080849F8:
 	thumb_func_end sub_8084578
 
 	thumb_func_start sub_80845AC
-sub_80845AC: @ 8084A00
+sub_80845AC: @ 80845AC
 	push {r4,lr}
 	adds r4, r1, 0
 	adds r0, r2, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _08084A14
+	beq _080845C0
 	movs r0, 0x3
 	strh r0, [r4, 0x8]
-_08084A14:
+_080845C0:
 	movs r0, 0
 	pop {r4}
 	pop {r1}
@@ -834,7 +834,7 @@ _08084A14:
 	thumb_func_end sub_80845AC
 
 	thumb_func_start sub_80845C8
-sub_80845C8: @ 8084A1C
+sub_80845C8: @ 80845C8
 	push {r4,r5,lr}
 	adds r5, r1, 0
 	adds r4, r2, 0
@@ -842,20 +842,20 @@ sub_80845C8: @ 8084A1C
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	beq _08084A3A
+	beq _080845E6
 	adds r0, r4, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _08084A48
-_08084A3A:
+	beq _080845F4
+_080845E6:
 	adds r0, r4, 0
 	movs r1, 0x3E
 	bl FieldObjectSetSpecialAnim
 	ldrh r0, [r5, 0x8]
 	adds r0, 0x1
 	strh r0, [r5, 0x8]
-_08084A48:
+_080845F4:
 	movs r0, 0
 	pop {r4,r5}
 	pop {r1}
@@ -863,7 +863,7 @@ _08084A48:
 	thumb_func_end sub_80845C8
 
 	thumb_func_start sub_80845FC
-sub_80845FC: @ 8084A50
+sub_80845FC: @ 80845FC
 	push {r4,r5,lr}
 	adds r5, r1, 0
 	adds r4, r2, 0
@@ -871,15 +871,15 @@ sub_80845FC: @ 8084A50
 	bl FieldObjectCheckIfSpecialAnimFinishedOrInactive
 	lsls r0, 24
 	cmp r0, 0
-	beq _08084A96
-	ldr r2, _08084AA0 @ =gUnknown_0202FF84
+	beq _08084642
+	ldr r2, _0808464C @ =gUnknown_0202FF84
 	movs r1, 0x10
 	ldrsh r0, [r4, r1]
 	str r0, [r2]
 	movs r1, 0x12
 	ldrsh r0, [r4, r1]
 	str r0, [r2, 0x4]
-	ldr r3, _08084AA4 @ =gSprites
+	ldr r3, _08084650 @ =gSprites
 	ldrb r1, [r4, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -897,22 +897,22 @@ sub_80845FC: @ 8084A50
 	ldrh r0, [r5, 0x8]
 	adds r0, 0x1
 	strh r0, [r5, 0x8]
-_08084A96:
+_08084642:
 	movs r0, 0
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08084AA0: .4byte gUnknown_0202FF84
-_08084AA4: .4byte gSprites
+_0808464C: .4byte gUnknown_0202FF84
+_08084650: .4byte gSprites
 	thumb_func_end sub_80845FC
 
 	thumb_func_start sub_8084654
-sub_8084654: @ 8084AA8
+sub_8084654: @ 8084654
 	push {r4,r5,lr}
 	adds r5, r1, 0
 	adds r4, r2, 0
-	ldr r2, _08084B18 @ =gSprites
+	ldr r2, _080846C4 @ =gSprites
 	movs r1, 0x10
 	ldrsh r0, [r5, r1]
 	lsls r1, r0, 4
@@ -922,7 +922,7 @@ sub_8084654: @ 8084AA8
 	adds r1, 0x2B
 	ldrb r0, [r1]
 	cmp r0, 0x2
-	bne _08084B10
+	bne _080846BC
 	ldrb r1, [r4, 0x3]
 	movs r0, 0x5
 	negs r0, r0
@@ -958,27 +958,27 @@ sub_8084654: @ 8084AA8
 	ldrh r0, [r5, 0x8]
 	adds r0, 0x1
 	strh r0, [r5, 0x8]
-_08084B10:
+_080846BC:
 	movs r0, 0
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08084B18: .4byte gSprites
+_080846C4: .4byte gSprites
 	thumb_func_end sub_8084654
 
 	thumb_func_start sub_80846C8
-sub_80846C8: @ 8084B1C
+sub_80846C8: @ 80846C8
 	push {r4,lr}
 	adds r4, r1, 0
 	movs r0, 0x31
 	bl FieldEffectActiveListContains
 	lsls r0, 24
 	cmp r0, 0
-	bne _08084B30
+	bne _080846DC
 	movs r0, 0x3
 	strh r0, [r4, 0x8]
-_08084B30:
+_080846DC:
 	movs r0, 0
 	pop {r4}
 	pop {r1}
@@ -986,7 +986,7 @@ _08084B30:
 	thumb_func_end sub_80846C8
 
 	thumb_func_start sub_80846E4
-sub_80846E4: @ 8084B38
+sub_80846E4: @ 80846E4
 	push {r4,r5,lr}
 	sub sp, 0x4
 	lsls r0, 24
@@ -995,7 +995,7 @@ sub_80846E4: @ 8084B38
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _08084BCC @ =gTasks
+	ldr r1, _08084778 @ =gTasks
 	adds r4, r0, r1
 	adds r0, r4, 0
 	adds r0, 0xA
@@ -1004,14 +1004,14 @@ sub_80846E4: @ 8084B38
 	movs r1, 0x16
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
-	bne _08084B6A
+	bne _08084716
 	ldr r0, [sp]
 	bl FieldObjectClearAnim
 	ldrh r0, [r4, 0x16]
 	adds r0, 0x1
 	strh r0, [r4, 0x16]
-_08084B6A:
-	ldr r1, _08084BD0 @ =gTrainerSeeFuncList2
+_08084716:
+	ldr r1, _0808477C @ =gTrainerSeeFuncList2
 	movs r2, 0x8
 	ldrsh r0, [r4, r2]
 	lsls r0, 2
@@ -1024,12 +1024,12 @@ _08084B6A:
 	movs r1, 0x8
 	ldrsh r0, [r4, r1]
 	cmp r0, 0x3
-	bne _08084BD4
+	bne _08084780
 	movs r0, 0x31
 	bl FieldEffectActiveListContains
 	lsls r0, 24
 	cmp r0, 0
-	bne _08084BD4
+	bne _08084780
 	ldr r4, [sp]
 	ldrb r0, [r4, 0x18]
 	lsls r0, 28
@@ -1052,17 +1052,17 @@ _08084B6A:
 	bl sub_805C774
 	adds r0, r5, 0
 	bl DestroyTask
-	b _08084BDE
+	b _0808478A
 	.align 2, 0
-_08084BCC: .4byte gTasks
-_08084BD0: .4byte gTrainerSeeFuncList2
-_08084BD4:
+_08084778: .4byte gTasks
+_0808477C: .4byte gTrainerSeeFuncList2
+_08084780:
 	ldr r2, [sp]
 	ldrb r1, [r2]
 	movs r0, 0x7F
 	ands r0, r1
 	strb r0, [r2]
-_08084BDE:
+_0808478A:
 	add sp, 0x4
 	pop {r4,r5}
 	pop {r0}
@@ -1070,10 +1070,10 @@ _08084BDE:
 	thumb_func_end sub_80846E4
 
 	thumb_func_start sub_8084794
-sub_8084794: @ 8084BE8
+sub_8084794: @ 8084794
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r0, _08084C14 @ =sub_80846E4
+	ldr r0, _080847C0 @ =sub_80846E4
 	movs r1, 0
 	bl CreateTask
 	adds r1, r0, 0
@@ -1082,7 +1082,7 @@ sub_8084794: @ 8084BE8
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _08084C18 @ =0x03004b38
+	ldr r1, _080847C4 @ =0x03004b38
 	adds r0, r1
 	adds r0, 0x2
 	adds r1, r4, 0
@@ -1091,23 +1091,23 @@ sub_8084794: @ 8084BE8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08084C14: .4byte sub_80846E4
-_08084C18: .4byte 0x03004b38
+_080847C0: .4byte sub_80846E4
+_080847C4: .4byte 0x03004b38
 	thumb_func_end sub_8084794
 
 	thumb_func_start sub_80847C8
-sub_80847C8: @ 8084C1C
+sub_80847C8: @ 80847C8
 	push {lr}
-	ldr r0, _08084C28 @ =sub_80847D8
+	ldr r0, _080847D4 @ =sub_80847D8
 	bl sub_80842FC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08084C28: .4byte sub_80847D8
+_080847D4: .4byte sub_80847D8
 	thumb_func_end sub_80847C8
 
 	thumb_func_start sub_80847D8
-sub_80847D8: @ 8084C2C
+sub_80847D8: @ 80847D8
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24

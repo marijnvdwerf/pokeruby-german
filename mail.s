@@ -7,14 +7,14 @@
 	.text
 
 	thumb_func_start sub_80F890C
-sub_80F890C: @ 80F8CBC
+sub_80F890C: @ 80F890C
 	push {r4-r6,lr}
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r6, r1, 0
 	lsls r2, 24
 	lsrs r5, r2, 24
-	ldr r2, _080F8D08 @ =0x02000000
+	ldr r2, _080F8958 @ =0x02000000
 	adds r1, r2, 0
 	adds r1, 0xFF
 	movs r0, 0x5
@@ -26,12 +26,12 @@ sub_80F890C: @ 80F8CBC
 	movs r0, 0x82
 	lsls r0, 1
 	adds r1, r2, r0
-	ldr r0, _080F8D0C @ =ConvertEasyChatWordsToString
+	ldr r0, _080F895C @ =ConvertEasyChatWordsToString
 	str r0, [r1]
 	movs r0, 0x84
 	lsls r0, 1
 	adds r1, r2, r0
-	ldr r0, _080F8D10 @ =sub_80EB544
+	ldr r0, _080F8960 @ =sub_80EB544
 	str r0, [r1]
 	ldrh r1, [r4, 0x20]
 	adds r0, r1, 0
@@ -39,33 +39,33 @@ sub_80F890C: @ 80F8CBC
 	lsls r0, 16
 	lsrs r0, 16
 	cmp r0, 0xB
-	bhi _080F8D14
+	bhi _080F8964
 	subs r1, 0x79
 	adds r0, r2, 0
 	adds r0, 0xFA
 	strb r1, [r0]
-	b _080F8D1E
+	b _080F896E
 	.align 2, 0
-_080F8D08: .4byte 0x02000000
-_080F8D0C: .4byte ConvertEasyChatWordsToString
-_080F8D10: .4byte sub_80EB544
-_080F8D14:
+_080F8958: .4byte 0x02000000
+_080F895C: .4byte ConvertEasyChatWordsToString
+_080F8960: .4byte sub_80EB544
+_080F8964:
 	adds r1, r2, 0
 	adds r1, 0xFA
 	movs r0, 0
 	strb r0, [r1]
 	movs r5, 0
-_080F8D1E:
-	ldr r1, _080F8D44 @ =0x02000000
+_080F896E:
+	ldr r1, _080F8994 @ =0x02000000
 	movs r2, 0x80
 	lsls r2, 1
 	adds r0, r1, r2
 	ldrb r0, [r0]
 	cmp r0, 0
-	beq _080F8D30
+	beq _080F8980
 	cmp r0, 0x1
-	beq _080F8D4C
-_080F8D30:
+	beq _080F899C
+_080F8980:
 	movs r0, 0x86
 	lsls r0, 1
 	adds r2, r1, r0
@@ -73,12 +73,12 @@ _080F8D30:
 	adds r0, 0xFA
 	ldrb r0, [r0]
 	lsls r0, 3
-	ldr r1, _080F8D48 @ =gUnknown_083E5730
-	b _080F8D5C
+	ldr r1, _080F8998 @ =gUnknown_083E5730
+	b _080F89AC
 	.align 2, 0
-_080F8D44: .4byte 0x02000000
-_080F8D48: .4byte gUnknown_083E5730
-_080F8D4C:
+_080F8994: .4byte 0x02000000
+_080F8998: .4byte gUnknown_083E5730
+_080F899C:
 	movs r0, 0x86
 	lsls r0, 1
 	adds r2, r1, r0
@@ -86,51 +86,51 @@ _080F8D4C:
 	adds r0, 0xFA
 	ldrb r0, [r0]
 	lsls r0, 3
-	ldr r1, _080F8D8C @ =gUnknown_083E57A4
-_080F8D5C:
+	ldr r1, _080F89DC @ =gUnknown_083E57A4
+_080F89AC:
 	adds r0, r1
 	str r0, [r2]
 	ldrh r0, [r4, 0x1E]
 	mov r1, sp
 	bl sub_80A2D64
 	lsls r0, 16
-	ldr r1, _080F8D90 @ =0xffff0000
+	ldr r1, _080F89E0 @ =0xffff0000
 	adds r0, r1
 	movs r1, 0xCD
 	lsls r1, 17
 	cmp r0, r1
-	bhi _080F8DA8
-	ldr r0, _080F8D94 @ =0x02000000
+	bhi _080F89F8
+	ldr r0, _080F89E4 @ =0x02000000
 	adds r1, r0, 0
 	adds r1, 0xFA
 	ldrb r2, [r1]
 	adds r1, r0, 0
 	cmp r2, 0x6
-	beq _080F8D98
+	beq _080F89E8
 	cmp r2, 0x9
-	beq _080F8DA0
-	b _080F8DAA
+	beq _080F89F0
+	b _080F89FA
 	.align 2, 0
-_080F8D8C: .4byte gUnknown_083E57A4
-_080F8D90: .4byte 0xffff0000
-_080F8D94: .4byte 0x02000000
-_080F8D98:
+_080F89DC: .4byte gUnknown_083E57A4
+_080F89E0: .4byte 0xffff0000
+_080F89E4: .4byte 0x02000000
+_080F89E8:
 	adds r2, r1, 0
 	adds r2, 0xFB
 	movs r0, 0x1
-	b _080F8DB0
-_080F8DA0:
+	b _080F8A00
+_080F89F0:
 	adds r2, r1, 0
 	adds r2, 0xFB
 	movs r0, 0x2
-	b _080F8DB0
-_080F8DA8:
-	ldr r1, _080F8DD0 @ =0x02000000
-_080F8DAA:
+	b _080F8A00
+_080F89F8:
+	ldr r1, _080F8A20 @ =0x02000000
+_080F89FA:
 	adds r2, r1, 0
 	adds r2, 0xFB
 	movs r0, 0
-_080F8DB0:
+_080F8A00:
 	strb r0, [r2]
 	adds r0, r1, 0
 	adds r0, 0xF4
@@ -139,15 +139,15 @@ _080F8DB0:
 	str r6, [r0]
 	adds r0, 0xC
 	strb r5, [r0]
-	ldr r0, _080F8DD4 @ =sub_80F8D50
+	ldr r0, _080F8A24 @ =sub_80F8D50
 	bl SetMainCallback2
 	add sp, 0x4
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080F8DD0: .4byte 0x02000000
-_080F8DD4: .4byte sub_80F8D50
+_080F8A20: .4byte 0x02000000
+_080F8A24: .4byte sub_80F8D50
 	thumb_func_end sub_80F890C
 
 	thumb_func_start sub_80F8A28
@@ -522,32 +522,32 @@ _080F90FC: .4byte 0x0000043c
 	thumb_func_end sub_80F8A28
 
 	thumb_func_start sub_80F8D50
-sub_80F8D50: @ 80F9100
+sub_80F8D50: @ 80F8D50
 	push {lr}
-_080F9102:
+_080F8D52:
 	bl sub_80F8A28
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _080F911C
-	ldr r0, _080F9118 @ =sub_80F8F2C
+	bne _080F8D6C
+	ldr r0, _080F8D68 @ =sub_80F8F2C
 	bl SetMainCallback2
-	b _080F9128
+	b _080F8D78
 	.align 2, 0
-_080F9118: .4byte sub_80F8F2C
-_080F911C:
+_080F8D68: .4byte sub_80F8F2C
+_080F8D6C:
 	bl sub_80F9344
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _080F9102
-_080F9128:
+	bne _080F8D52
+_080F8D78:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_80F8D50
 
 	thumb_func_start sub_80F8D7C
-sub_80F8D7C: @ 80F912C
+sub_80F8D7C: @ 80F8D7C
 	push {r4,lr}
 	adds r4, r0, 0
 	bl StringCopy

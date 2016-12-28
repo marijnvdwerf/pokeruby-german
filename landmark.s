@@ -7,7 +7,7 @@
 	.text
 
 	thumb_func_start GetLandmarkName
-GetLandmarkName: @ 811ACC0
+GetLandmarkName: @ 811A8CC
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -18,40 +18,40 @@ GetLandmarkName: @ 811ACC0
 	bl GetLandmarks
 	adds r4, r0, 0
 	cmp r4, 0
-	bne _0811ACDC
-_0811ACD8:
+	bne _0811A8E8
+_0811A8E4:
 	movs r0, 0
-	b _0811AD0E
-_0811ACDC:
-	ldr r6, _0811ACE0 @ =0x0000ffff
-	b _0811ACF2
+	b _0811A91A
+_0811A8E8:
+	ldr r6, _0811A8EC @ =0x0000ffff
+	b _0811A8FE
 	.align 2, 0
-_0811ACE0: .4byte 0x0000ffff
-_0811ACE4:
+_0811A8EC: .4byte 0x0000ffff
+_0811A8F0:
 	subs r0, r5, 0x1
 	lsls r0, 24
 	lsrs r5, r0, 24
-_0811ACEA:
+_0811A8F6:
 	adds r4, 0x4
 	ldr r0, [r4]
 	cmp r0, 0
-	beq _0811ACD8
-_0811ACF2:
+	beq _0811A8E4
+_0811A8FE:
 	ldr r1, [r4]
 	ldrh r0, [r1, 0x4]
 	cmp r0, r6
-	beq _0811AD06
+	beq _0811A912
 	bl FlagGet
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _0811ACEA
-_0811AD06:
+	bne _0811A8F6
+_0811A912:
 	cmp r5, 0
-	bne _0811ACE4
+	bne _0811A8F0
 	ldr r0, [r4]
 	ldr r0, [r0]
-_0811AD0E:
+_0811A91A:
 	pop {r4-r6}
 	pop {r1}
 	bx r1

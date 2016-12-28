@@ -454,21 +454,21 @@ _080589D4:
 	thumb_func_end cur_mapdata_get_door_x2_at
 
 	thumb_func_start unref_sub_805869C
-unref_sub_805869C: @ 80589DC
+unref_sub_805869C: @ 805869C
 	push {lr}
 	adds r3, r0, 0
 	adds r2, r1, 0
-	ldr r0, _080589F0 @ =gDoorAnimGraphicsTable
+	ldr r0, _080586B0 @ =gDoorAnimGraphicsTable
 	adds r1, r3, 0
 	bl StartDoorOpenAnimation
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080589F0: .4byte gDoorAnimGraphicsTable
+_080586B0: .4byte gDoorAnimGraphicsTable
 	thumb_func_end unref_sub_805869C
 
 	thumb_func_start FieldSetDoorOpened
-FieldSetDoorOpened: @ 80589F4
+FieldSetDoorOpened: @ 80586B4
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
@@ -478,21 +478,21 @@ FieldSetDoorOpened: @ 80589F4
 	bl MetatileBehavior_IsDoor
 	lsls r0, 24
 	cmp r0, 0
-	beq _08058A16
-	ldr r0, _08058A1C @ =gDoorAnimGraphicsTable
+	beq _080586D6
+	ldr r0, _080586DC @ =gDoorAnimGraphicsTable
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl DrawOpenedDoor
-_08058A16:
+_080586D6:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058A1C: .4byte gDoorAnimGraphicsTable
+_080586DC: .4byte gDoorAnimGraphicsTable
 	thumb_func_end FieldSetDoorOpened
 
 	thumb_func_start FieldSetDoorClosed
-FieldSetDoorClosed: @ 8058A20
+FieldSetDoorClosed: @ 80586E0
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
@@ -502,21 +502,21 @@ FieldSetDoorClosed: @ 8058A20
 	bl MetatileBehavior_IsDoor
 	lsls r0, 24
 	cmp r0, 0
-	beq _08058A42
-	ldr r0, _08058A48 @ =gDoorAnimGraphicsTable
+	beq _08058702
+	ldr r0, _08058708 @ =gDoorAnimGraphicsTable
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl DrawClosedDoor
-_08058A42:
+_08058702:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058A48: .4byte gDoorAnimGraphicsTable
+_08058708: .4byte gDoorAnimGraphicsTable
 	thumb_func_end FieldSetDoorClosed
 
 	thumb_func_start FieldAnimateDoorClose
-FieldAnimateDoorClose: @ 8058A4C
+FieldAnimateDoorClose: @ 805870C
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
@@ -526,27 +526,27 @@ FieldAnimateDoorClose: @ 8058A4C
 	bl MetatileBehavior_IsDoor
 	lsls r0, 24
 	cmp r0, 0
-	beq _08058A78
-	ldr r0, _08058A74 @ =gDoorAnimGraphicsTable
+	beq _08058738
+	ldr r0, _08058734 @ =gDoorAnimGraphicsTable
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl StartDoorCloseAnimation
 	lsls r0, 24
 	asrs r0, 24
-	b _08058A7C
+	b _0805873C
 	.align 2, 0
-_08058A74: .4byte gDoorAnimGraphicsTable
-_08058A78:
+_08058734: .4byte gDoorAnimGraphicsTable
+_08058738:
 	movs r0, 0x1
 	negs r0, r0
-_08058A7C:
+_0805873C:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end FieldAnimateDoorClose
 
 	thumb_func_start FieldAnimateDoorOpen
-FieldAnimateDoorOpen: @ 8058A84
+FieldAnimateDoorOpen: @ 8058744
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
@@ -556,56 +556,56 @@ FieldAnimateDoorOpen: @ 8058A84
 	bl MetatileBehavior_IsDoor
 	lsls r0, 24
 	cmp r0, 0
-	beq _08058AB0
-	ldr r0, _08058AAC @ =gDoorAnimGraphicsTable
+	beq _08058770
+	ldr r0, _0805876C @ =gDoorAnimGraphicsTable
 	adds r1, r4, 0
 	adds r2, r5, 0
 	bl StartDoorOpenAnimation
 	lsls r0, 24
 	asrs r0, 24
-	b _08058AB4
+	b _08058774
 	.align 2, 0
-_08058AAC: .4byte gDoorAnimGraphicsTable
-_08058AB0:
+_0805876C: .4byte gDoorAnimGraphicsTable
+_08058770:
 	movs r0, 0x1
 	negs r0, r0
-_08058AB4:
+_08058774:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end FieldAnimateDoorOpen
 
 	thumb_func_start FieldIsDoorAnimationRunning
-FieldIsDoorAnimationRunning: @ 8058ABC
+FieldIsDoorAnimationRunning: @ 805877C
 	push {lr}
-	ldr r0, _08058ACC @ =Task_AnimateDoor
+	ldr r0, _0805878C @ =Task_AnimateDoor
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r0, 24
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058ACC: .4byte Task_AnimateDoor
+_0805878C: .4byte Task_AnimateDoor
 	thumb_func_end FieldIsDoorAnimationRunning
 
 	thumb_func_start sub_8058790
-sub_8058790: @ 8058AD0
+sub_8058790: @ 8058790
 	push {lr}
 	adds r3, r0, 0
 	adds r2, r1, 0
-	ldr r0, _08058AE8 @ =gDoorAnimGraphicsTable
+	ldr r0, _080587A8 @ =gDoorAnimGraphicsTable
 	adds r1, r3, 0
 	bl cur_mapdata_get_door_x2_at
 	lsls r0, 24
 	cmp r0, 0
-	beq _08058AEC
+	beq _080587AC
 	movs r0, 0x12
-	b _08058AEE
+	b _080587AE
 	.align 2, 0
-_08058AE8: .4byte gDoorAnimGraphicsTable
-_08058AEC:
+_080587A8: .4byte gDoorAnimGraphicsTable
+_080587AC:
 	movs r0, 0x8
-_08058AEE:
+_080587AE:
 	pop {r1}
 	bx r1
 	thumb_func_end sub_8058790

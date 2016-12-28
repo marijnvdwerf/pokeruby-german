@@ -7,20 +7,20 @@
 	.text
 
 	thumb_func_start ResetTasks
-ResetTasks: @ 807ADE8
+ResetTasks: @ 807AA28
 	push {r4-r7,lr}
 	movs r4, 0
-	ldr r6, _0807AE3C @ =gTasks
+	ldr r6, _0807AA7C @ =gTasks
 	adds r7, r6, 0
 	adds r7, 0x8
-_0807ADF2:
+_0807AA32:
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
 	adds r2, r0, r6
 	movs r1, 0
 	strb r1, [r2, 0x4]
-	ldr r1, _0807AE40 @ =TaskDummy
+	ldr r1, _0807AA80 @ =TaskDummy
 	str r1, [r2]
 	strb r4, [r2, 0x5]
 	adds r4, 0x1
@@ -37,11 +37,11 @@ _0807ADF2:
 	lsls r4, 24
 	lsrs r4, 24
 	cmp r4, 0xF
-	bls _0807ADF2
-	ldr r0, _0807AE3C @ =gTasks
+	bls _0807AA32
+	ldr r0, _0807AA7C @ =gTasks
 	movs r1, 0xFE
 	strb r1, [r0, 0x5]
-	ldr r1, _0807AE44 @ =0x0000025e
+	ldr r1, _0807AA84 @ =0x0000025e
 	adds r0, r1
 	ldrb r1, [r0]
 	orrs r1, r5
@@ -50,27 +50,27 @@ _0807ADF2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807AE3C: .4byte gTasks
-_0807AE40: .4byte TaskDummy
-_0807AE44: .4byte 0x0000025e
+_0807AA7C: .4byte gTasks
+_0807AA80: .4byte TaskDummy
+_0807AA84: .4byte 0x0000025e
 	thumb_func_end ResetTasks
 
 	thumb_func_start CreateTask
-CreateTask: @ 807AE48
+CreateTask: @ 807AA88
 	push {r4-r7,lr}
 	adds r2, r0, 0
 	lsls r1, 24
 	lsrs r1, 24
 	movs r6, 0
-	ldr r7, _0807AE84 @ =gTasks
-_0807AE54:
+	ldr r7, _0807AAC4 @ =gTasks
+_0807AA94:
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r5, r0, 3
 	adds r4, r5, r7
 	ldrb r0, [r4, 0x4]
 	cmp r0, 0
-	bne _0807AE88
+	bne _0807AAC8
 	str r2, [r4]
 	strb r1, [r4, 0x7]
 	adds r0, r6, 0
@@ -84,17 +84,17 @@ _0807AE54:
 	movs r0, 0x1
 	strb r0, [r4, 0x4]
 	adds r0, r6, 0
-	b _0807AE94
+	b _0807AAD4
 	.align 2, 0
-_0807AE84: .4byte gTasks
-_0807AE88:
+_0807AAC4: .4byte gTasks
+_0807AAC8:
 	adds r0, r6, 0x1
 	lsls r0, 24
 	lsrs r6, r0, 24
 	cmp r6, 0xF
-	bls _0807AE54
+	bls _0807AA94
 	movs r0, 0
-_0807AE94:
+_0807AAD4:
 	pop {r4-r7}
 	pop {r1}
 	bx r1
@@ -184,40 +184,40 @@ _0807AF28:
 	thumb_func_end InsertTask
 
 	thumb_func_start DestroyTask
-DestroyTask: @ 807AF34
+DestroyTask: @ 807AB74
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r4, _0807AF68 @ =gTasks
+	ldr r4, _0807ABA8 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
 	adds r2, r1, r4
 	ldrb r0, [r2, 0x4]
 	cmp r0, 0
-	beq _0807AF9E
+	beq _0807ABDE
 	movs r0, 0
 	strb r0, [r2, 0x4]
 	ldrb r3, [r2, 0x5]
 	cmp r3, 0xFE
-	bne _0807AF6C
+	bne _0807ABAC
 	ldrb r0, [r2, 0x6]
 	cmp r0, 0xFF
-	beq _0807AF9E
+	beq _0807ABDE
 	adds r1, r0, 0
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
 	adds r0, r4
 	strb r3, [r0, 0x5]
-	b _0807AF9E
+	b _0807ABDE
 	.align 2, 0
-_0807AF68: .4byte gTasks
-_0807AF6C:
+_0807ABA8: .4byte gTasks
+_0807ABAC:
 	ldrb r3, [r2, 0x6]
 	adds r0, r3, 0
 	cmp r0, 0xFF
-	bne _0807AF84
+	bne _0807ABC4
 	ldrb r0, [r2, 0x5]
 	lsls r1, r0, 2
 	adds r1, r0
@@ -225,8 +225,8 @@ _0807AF6C:
 	adds r1, r4
 	movs r0, 0xFF
 	strb r0, [r1, 0x6]
-	b _0807AF9E
-_0807AF84:
+	b _0807ABDE
+_0807ABC4:
 	ldrb r1, [r2, 0x5]
 	lsls r0, r1, 2
 	adds r0, r1
@@ -240,22 +240,22 @@ _0807AF84:
 	adds r0, r4
 	ldrb r1, [r2, 0x5]
 	strb r1, [r0, 0x5]
-_0807AF9E:
+_0807ABDE:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end DestroyTask
 
 	thumb_func_start RunTasks
-RunTasks: @ 807AFA4
+RunTasks: @ 807ABE4
 	push {r4,r5,lr}
 	bl FindFirstActiveTask
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x10
-	beq _0807AFC8
-	ldr r5, _0807AFD0 @ =gTasks
-_0807AFB4:
+	beq _0807AC08
+	ldr r5, _0807AC10 @ =gTasks
+_0807ABF4:
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
@@ -264,13 +264,13 @@ _0807AFB4:
 	bl _call_via_r1
 	ldrb r0, [r4, 0x6]
 	cmp r0, 0xFF
-	bne _0807AFB4
-_0807AFC8:
+	bne _0807ABF4
+_0807AC08:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807AFD0: .4byte gTasks
+_0807AC10: .4byte gTasks
 	thumb_func_end RunTasks
 
 	thumb_func_start FindFirstActiveTask
@@ -310,16 +310,16 @@ _0807B00C: .4byte gTasks
 	thumb_func_end FindFirstActiveTask
 
 	thumb_func_start TaskDummy
-TaskDummy: @ 807B010
+TaskDummy: @ 807AC50
 	bx lr
 	thumb_func_end TaskDummy
 
 	thumb_func_start SetTaskFuncWithFollowupFunc
-SetTaskFuncWithFollowupFunc: @ 807B014
+SetTaskFuncWithFollowupFunc: @ 807AC54
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0807B044 @ =gTasks
+	ldr r5, _0807AC84 @ =gTasks
 	lsls r3, r0, 2
 	adds r3, r0
 	lsls r3, 3
@@ -340,15 +340,15 @@ SetTaskFuncWithFollowupFunc: @ 807B014
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807B044: .4byte gTasks
+_0807AC84: .4byte gTasks
 	thumb_func_end SetTaskFuncWithFollowupFunc
 
 	thumb_func_start SwitchTaskToFollowupFunc
-SwitchTaskToFollowupFunc: @ 807B048
+SwitchTaskToFollowupFunc: @ 807AC88
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r3, _0807B078 @ =gTasks
+	ldr r3, _0807ACB8 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -369,100 +369,100 @@ SwitchTaskToFollowupFunc: @ 807B048
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807B078: .4byte gTasks
+_0807ACB8: .4byte gTasks
 	thumb_func_end SwitchTaskToFollowupFunc
 
 	thumb_func_start FuncIsActiveTask
-FuncIsActiveTask: @ 807B07C
+FuncIsActiveTask: @ 807ACBC
 	push {r4,lr}
 	adds r3, r0, 0
 	movs r2, 0
-	ldr r4, _0807B09C @ =gTasks
-_0807B084:
+	ldr r4, _0807ACDC @ =gTasks
+_0807ACC4:
 	lsls r0, r2, 2
 	adds r0, r2
 	lsls r0, 3
 	adds r1, r0, r4
 	ldrb r0, [r1, 0x4]
 	cmp r0, 0x1
-	bne _0807B0A0
+	bne _0807ACE0
 	ldr r0, [r1]
 	cmp r0, r3
-	bne _0807B0A0
+	bne _0807ACE0
 	movs r0, 0x1
-	b _0807B0AC
+	b _0807ACEC
 	.align 2, 0
-_0807B09C: .4byte gTasks
-_0807B0A0:
+_0807ACDC: .4byte gTasks
+_0807ACE0:
 	adds r0, r2, 0x1
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0xF
-	bls _0807B084
+	bls _0807ACC4
 	movs r0, 0
-_0807B0AC:
+_0807ACEC:
 	pop {r4}
 	pop {r1}
 	bx r1
 	thumb_func_end FuncIsActiveTask
 
 	thumb_func_start FindTaskIdByFunc
-FindTaskIdByFunc: @ 807B0B4
+FindTaskIdByFunc: @ 807ACF4
 	push {lr}
 	adds r3, r0, 0
 	movs r2, 0
-	ldr r1, _0807B0D0 @ =gTasks
-_0807B0BC:
+	ldr r1, _0807AD10 @ =gTasks
+_0807ACFC:
 	ldrb r0, [r1, 0x4]
 	cmp r0, 0x1
-	bne _0807B0D4
+	bne _0807AD14
 	ldr r0, [r1]
 	cmp r0, r3
-	bne _0807B0D4
+	bne _0807AD14
 	lsls r0, r2, 24
 	lsrs r0, 24
-	b _0807B0DE
+	b _0807AD1E
 	.align 2, 0
-_0807B0D0: .4byte gTasks
-_0807B0D4:
+_0807AD10: .4byte gTasks
+_0807AD14:
 	adds r1, 0x28
 	adds r2, 0x1
 	cmp r2, 0xF
-	ble _0807B0BC
+	ble _0807ACFC
 	movs r0, 0xFF
-_0807B0DE:
+_0807AD1E:
 	pop {r1}
 	bx r1
 	thumb_func_end FindTaskIdByFunc
 
 	thumb_func_start GetTaskCount
-GetTaskCount: @ 807B0E4
+GetTaskCount: @ 807AD24
 	push {lr}
 	movs r2, 0
 	movs r1, 0
-	ldr r3, _0807B110 @ =gTasks
-_0807B0EC:
+	ldr r3, _0807AD50 @ =gTasks
+_0807AD2C:
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
 	adds r0, r3
 	ldrb r0, [r0, 0x4]
 	cmp r0, 0x1
-	bne _0807B100
+	bne _0807AD40
 	adds r0, r2, 0x1
 	lsls r0, 24
 	lsrs r2, r0, 24
-_0807B100:
+_0807AD40:
 	adds r0, r1, 0x1
 	lsls r0, 24
 	lsrs r1, r0, 24
 	cmp r1, 0xF
-	bls _0807B0EC
+	bls _0807AD2C
 	adds r0, r2, 0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0807B110: .4byte gTasks
+_0807AD50: .4byte gTasks
 	thumb_func_end GetTaskCount
 
 	.align 2, 0 @ Don't pad with nop.

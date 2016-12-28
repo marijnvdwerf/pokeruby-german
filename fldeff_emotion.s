@@ -7,9 +7,9 @@
 	.text
 
 	thumb_func_start FldEff_ExclamationMarkIcon1
-FldEff_ExclamationMarkIcon1: @ 8084C40
+FldEff_ExclamationMarkIcon1: @ 80847EC
 	push {lr}
-	ldr r0, _08084C70 @ =gSpriteTemplate_839B510
+	ldr r0, _0808481C @ =gSpriteTemplate_839B510
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x53
@@ -17,28 +17,28 @@ FldEff_ExclamationMarkIcon1: @ 8084C40
 	lsls r0, 24
 	lsrs r1, r0, 24
 	cmp r1, 0x40
-	beq _08084C68
+	beq _08084814
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08084C74 @ =gSprites
+	ldr r1, _08084820 @ =gSprites
 	adds r0, r1
 	movs r1, 0
 	movs r2, 0
 	bl sub_8084894
-_08084C68:
+_08084814:
 	movs r0, 0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08084C70: .4byte gSpriteTemplate_839B510
-_08084C74: .4byte gSprites
+_0808481C: .4byte gSpriteTemplate_839B510
+_08084820: .4byte gSprites
 	thumb_func_end FldEff_ExclamationMarkIcon1
 
 	thumb_func_start FldEff_ExclamationMarkIcon2
-FldEff_ExclamationMarkIcon2: @ 8084C78
+FldEff_ExclamationMarkIcon2: @ 8084824
 	push {lr}
-	ldr r0, _08084CA8 @ =gSpriteTemplate_839B510
+	ldr r0, _08084854 @ =gSpriteTemplate_839B510
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x52
@@ -46,28 +46,28 @@ FldEff_ExclamationMarkIcon2: @ 8084C78
 	lsls r0, 24
 	lsrs r1, r0, 24
 	cmp r1, 0x40
-	beq _08084CA0
+	beq _0808484C
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08084CAC @ =gSprites
+	ldr r1, _08084858 @ =gSprites
 	adds r0, r1
 	movs r1, 0x21
 	movs r2, 0x1
 	bl sub_8084894
-_08084CA0:
+_0808484C:
 	movs r0, 0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08084CA8: .4byte gSpriteTemplate_839B510
-_08084CAC: .4byte gSprites
+_08084854: .4byte gSpriteTemplate_839B510
+_08084858: .4byte gSprites
 	thumb_func_end FldEff_ExclamationMarkIcon2
 
 	thumb_func_start FldEff_HeartIcon
-FldEff_HeartIcon: @ 8084CB0
+FldEff_HeartIcon: @ 808485C
 	push {lr}
-	ldr r0, _08084CE0 @ =gSpriteTemplate_839B528
+	ldr r0, _0808488C @ =gSpriteTemplate_839B528
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x52
@@ -75,26 +75,26 @@ FldEff_HeartIcon: @ 8084CB0
 	lsls r0, 24
 	lsrs r1, r0, 24
 	cmp r1, 0x40
-	beq _08084CD8
+	beq _08084884
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08084CE4 @ =gSprites
+	ldr r1, _08084890 @ =gSprites
 	adds r0, r1
 	movs r1, 0x2E
 	movs r2, 0
 	bl sub_8084894
-_08084CD8:
+_08084884:
 	movs r0, 0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08084CE0: .4byte gSpriteTemplate_839B528
-_08084CE4: .4byte gSprites
+_0808488C: .4byte gSpriteTemplate_839B528
+_08084890: .4byte gSprites
 	thumb_func_end FldEff_HeartIcon
 
 	thumb_func_start sub_8084894
-sub_8084894: @ 8084CE8
+sub_8084894: @ 8084894
 	push {r4,lr}
 	lsls r2, 24
 	lsrs r2, 24
@@ -113,14 +113,14 @@ sub_8084894: @ 8084CE8
 	orrs r3, r4
 	mov r4, r12
 	strb r3, [r4]
-	ldr r4, _08084D2C @ =gUnknown_0202FF84
+	ldr r4, _080848D8 @ =gUnknown_0202FF84
 	ldr r3, [r4]
 	strh r3, [r0, 0x2E]
 	ldr r3, [r4, 0x4]
 	strh r3, [r0, 0x30]
 	ldr r3, [r4, 0x8]
 	strh r3, [r0, 0x32]
-	ldr r3, _08084D30 @ =0x0000fffb
+	ldr r3, _080848DC @ =0x0000fffb
 	strh r3, [r0, 0x34]
 	strh r1, [r0, 0x3C]
 	adds r1, r2, 0
@@ -129,12 +129,12 @@ sub_8084894: @ 8084CE8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08084D2C: .4byte gUnknown_0202FF84
-_08084D30: .4byte 0x0000fffb
+_080848D8: .4byte gUnknown_0202FF84
+_080848DC: .4byte 0x0000fffb
 	thumb_func_end sub_8084894
 
 	thumb_func_start objc_exclamation_mark_probably
-objc_exclamation_mark_probably: @ 8084D34
+objc_exclamation_mark_probably: @ 80848E0
 	push {r4,lr}
 	sub sp, 0x4
 	adds r4, r0, 0
@@ -151,23 +151,23 @@ objc_exclamation_mark_probably: @ 8084D34
 	bl TryGetFieldObjectIdByLocalIdAndMap
 	lsls r0, 24
 	cmp r0, 0
-	bne _08084D66
+	bne _08084912
 	adds r0, r4, 0
 	adds r0, 0x3F
 	ldrb r1, [r0]
 	movs r0, 0x10
 	ands r0, r1
 	cmp r0, 0
-	beq _08084D74
-_08084D66:
+	beq _08084920
+_08084912:
 	ldrh r1, [r4, 0x3C]
 	lsls r1, 24
 	lsrs r1, 24
 	adds r0, r4, 0
 	bl FieldEffectStop
-	b _08084DC2
-_08084D74:
-	ldr r2, _08084DB8 @ =gMapObjects
+	b _0808496E
+_08084920:
+	ldr r2, _08084964 @ =gMapObjects
 	mov r0, sp
 	ldrb r1, [r0]
 	lsls r0, r1, 3
@@ -178,7 +178,7 @@ _08084D74:
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
-	ldr r0, _08084DBC @ =gSprites
+	ldr r0, _08084968 @ =gSprites
 	adds r1, r0
 	ldrh r3, [r4, 0x34]
 	ldrh r0, [r4, 0x36]
@@ -197,16 +197,16 @@ _08084D74:
 	lsls r2, 16
 	asrs r2, 16
 	cmp r2, 0
-	beq _08084DC0
+	beq _0808496C
 	adds r0, r3, 0x1
 	strh r0, [r4, 0x34]
-	b _08084DC2
+	b _0808496E
 	.align 2, 0
-_08084DB8: .4byte gMapObjects
-_08084DBC: .4byte gSprites
-_08084DC0:
+_08084964: .4byte gMapObjects
+_08084968: .4byte gSprites
+_0808496C:
 	strh r2, [r4, 0x34]
-_08084DC2:
+_0808496E:
 	add sp, 0x4
 	pop {r4}
 	pop {r0}

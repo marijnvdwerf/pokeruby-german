@@ -331,40 +331,40 @@ _0813BE16:
 	thumb_func_end SetUpCopyrightScreen
 
 	thumb_func_start c2_copyright_1
-c2_copyright_1: @ 813BE20
+c2_copyright_1: @ 813BA44
 	push {lr}
 	bl SetUpCopyrightScreen
 	lsls r0, 24
 	cmp r0, 0
-	bne _0813BE56
+	bne _0813BA7A
 	bl sub_8052E4C
 	bl sub_81251B8
 	movs r0, 0
 	bl sub_8125EC8
-	ldr r0, _0813BE5C @ =gSaveFileStatus
+	ldr r0, _0813BA80 @ =gSaveFileStatus
 	ldrh r0, [r0]
 	cmp r0, 0
-	beq _0813BE46
+	beq _0813BA6A
 	cmp r0, 0x2
-	bne _0813BE4A
-_0813BE46:
+	bne _0813BA6E
+_0813BA6A:
 	bl ClearSav2
-_0813BE4A:
-	ldr r0, _0813BE60 @ =gSaveBlock2
+_0813BA6E:
+	ldr r0, _0813BA84 @ =gSaveBlock2
 	ldrb r0, [r0, 0x15]
 	lsls r0, 31
 	lsrs r0, 31
 	bl SetPokemonCryStereo
-_0813BE56:
+_0813BA7A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0813BE5C: .4byte gSaveFileStatus
-_0813BE60: .4byte gSaveBlock2
+_0813BA80: .4byte gSaveFileStatus
+_0813BA84: .4byte gSaveBlock2
 	thumb_func_end c2_copyright_1
 
 	thumb_func_start CB2_InitCopyrightScreen
-CB2_InitCopyrightScreen: @ 813BE64
+CB2_InitCopyrightScreen: @ 813BA88
 	push {lr}
 	bl SetUpCopyrightScreen
 	pop {r0}

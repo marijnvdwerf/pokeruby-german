@@ -7,23 +7,23 @@
 	.text
 
 	thumb_func_start ZeroBoxMonData
-ZeroBoxMonData: @ 803A894
+ZeroBoxMonData: @ 803A6C0
 	push {lr}
 	adds r2, r0, 0
 	movs r1, 0
 	movs r3, 0
-_0803A89C:
+_0803A6C8:
 	adds r0, r2, r1
 	strb r3, [r0]
 	adds r1, 0x1
 	cmp r1, 0x4F
-	bls _0803A89C
+	bls _0803A6C8
 	pop {r0}
 	bx r0
 	thumb_func_end ZeroBoxMonData
 
 	thumb_func_start ZeroMonData
-ZeroMonData: @ 803A8AC
+ZeroMonData: @ 803A6D8
 	push {r4,lr}
 	sub sp, 0x4
 	adds r4, r0, 0
@@ -79,47 +79,47 @@ ZeroMonData: @ 803A8AC
 	thumb_func_end ZeroMonData
 
 	thumb_func_start ZeroPlayerPartyMons
-ZeroPlayerPartyMons: @ 803A92C
+ZeroPlayerPartyMons: @ 803A758
 	push {r4,r5,lr}
-	ldr r4, _0803A948 @ =gPlayerParty
+	ldr r4, _0803A774 @ =gPlayerParty
 	movs r0, 0xFA
 	lsls r0, 1
 	adds r5, r4, r0
-_0803A936:
+_0803A762:
 	adds r0, r4, 0
 	bl ZeroMonData
 	adds r4, 0x64
 	cmp r4, r5
-	ble _0803A936
+	ble _0803A762
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803A948: .4byte gPlayerParty
+_0803A774: .4byte gPlayerParty
 	thumb_func_end ZeroPlayerPartyMons
 
 	thumb_func_start ZeroEnemyPartyMons
-ZeroEnemyPartyMons: @ 803A94C
+ZeroEnemyPartyMons: @ 803A778
 	push {r4,r5,lr}
-	ldr r4, _0803A968 @ =gEnemyParty
+	ldr r4, _0803A794 @ =gEnemyParty
 	movs r0, 0xFA
 	lsls r0, 1
 	adds r5, r4, r0
-_0803A956:
+_0803A782:
 	adds r0, r4, 0
 	bl ZeroMonData
 	adds r4, 0x64
 	cmp r4, r5
-	ble _0803A956
+	ble _0803A782
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803A968: .4byte gEnemyParty
+_0803A794: .4byte gEnemyParty
 	thumb_func_end ZeroEnemyPartyMons
 
 	thumb_func_start CreateMon
-CreateMon: @ 803A96C
+CreateMon: @ 803A798
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -174,7 +174,7 @@ CreateMon: @ 803A96C
 	thumb_func_end CreateMon
 
 	thumb_func_start CreateBoxMon
-CreateBoxMon: @ 803A9DC
+CreateBoxMon: @ 803A808
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -200,11 +200,11 @@ CreateBoxMon: @ 803A9DC
 	adds r0, r7, 0
 	bl ZeroBoxMonData
 	cmp r4, 0
-	beq _0803AA18
+	beq _0803A844
 	ldr r0, [sp, 0x44]
 	str r0, [sp, 0x14]
-	b _0803AA2C
-_0803AA18:
+	b _0803A858
+_0803A844:
 	bl Random
 	adds r4, r0, 0
 	bl Random
@@ -213,7 +213,7 @@ _0803AA18:
 	lsls r0, 16
 	orrs r4, r0
 	str r4, [sp, 0x14]
-_0803AA2C:
+_0803A858:
 	add r2, sp, 0x14
 	adds r0, r7, 0
 	movs r1, 0
@@ -223,11 +223,11 @@ _0803AA2C:
 	add r5, sp, 0xC
 	mov r1, r10
 	cmp r1, 0x2
-	bne _0803AA84
-	ldr r2, _0803AA7C @ =0xffff0000
+	bne _0803A8B0
+	ldr r2, _0803A8A8 @ =0xffff0000
 	mov r8, r2
-	ldr r6, _0803AA80 @ =0x0000ffff
-_0803AA48:
+	ldr r6, _0803A8AC @ =0x0000ffff
+_0803A874:
 	bl Random
 	adds r4, r0, 0
 	bl Random
@@ -250,20 +250,20 @@ _0803AA48:
 	ands r2, r6
 	eors r1, r2
 	cmp r1, 0x7
-	bls _0803AA48
-	b _0803AAA8
+	bls _0803A874
+	b _0803A8D4
 	.align 2, 0
-_0803AA7C: .4byte 0xffff0000
-_0803AA80: .4byte 0x0000ffff
-_0803AA84:
+_0803A8A8: .4byte 0xffff0000
+_0803A8AC: .4byte 0x0000ffff
+_0803A8B0:
 	mov r0, r10
 	cmp r0, 0x1
-	bne _0803AA90
+	bne _0803A8BC
 	ldr r0, [sp, 0x4C]
 	str r0, [sp, 0x18]
-	b _0803AAA8
-_0803AA90:
-	ldr r2, _0803ABD4 @ =gSaveBlock2
+	b _0803A8D4
+_0803A8BC:
+	ldr r2, _0803AA00 @ =gSaveBlock2
 	ldrb r1, [r2, 0xA]
 	ldrb r0, [r2, 0xB]
 	lsls r0, 8
@@ -275,7 +275,7 @@ _0803AA90:
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [sp, 0x18]
-_0803AAA8:
+_0803A8D4:
 	adds r0, r7, 0
 	movs r1, 0x1
 	mov r2, r9
@@ -296,11 +296,11 @@ _0803AAA8:
 	movs r1, 0x2
 	mov r2, sp
 	bl SetBoxMonData
-	ldr r2, _0803ABD8 @ =gGameLanguage
+	ldr r2, _0803AA04 @ =gGameLanguage
 	adds r0, r7, 0
 	movs r1, 0x3
 	bl SetBoxMonData
-	ldr r5, _0803ABD4 @ =gSaveBlock2
+	ldr r5, _0803AA00 @ =gSaveBlock2
 	adds r0, r7, 0
 	movs r1, 0x7
 	adds r2, r5, 0
@@ -310,7 +310,7 @@ _0803AAA8:
 	mov r2, sp
 	adds r2, 0xE
 	bl SetBoxMonData
-	ldr r4, _0803ABDC @ =gBaseStats
+	ldr r4, _0803AA08 @ =gBaseStats
 	mov r2, sp
 	ldrh r1, [r2, 0xE]
 	lsls r0, r1, 3
@@ -325,7 +325,7 @@ _0803AAA8:
 	mov r3, sp
 	ldrb r0, [r3, 0x10]
 	lsls r0, 2
-	ldr r1, _0803ABE0 @ =gExperienceTables
+	ldr r1, _0803AA0C @ =gExperienceTables
 	adds r0, r1
 	adds r2, r0
 	adds r0, r7, 0
@@ -353,7 +353,7 @@ _0803AAA8:
 	movs r1, 0x24
 	add r2, sp, 0x10
 	bl SetBoxMonData
-	ldr r2, _0803ABE4 @ =gGameVersion
+	ldr r2, _0803AA10 @ =gGameVersion
 	adds r0, r7, 0
 	movs r1, 0x25
 	bl SetBoxMonData
@@ -371,7 +371,7 @@ _0803AAA8:
 	mov r2, sp
 	ldrb r0, [r2, 0x11]
 	cmp r0, 0x1F
-	bhi _0803ABE8
+	bhi _0803AA14
 	adds r0, r7, 0
 	movs r1, 0x27
 	adds r2, 0x11
@@ -401,14 +401,14 @@ _0803AAA8:
 	mov r2, sp
 	adds r2, 0x11
 	bl SetBoxMonData
-	b _0803AC70
+	b _0803AA9C
 	.align 2, 0
-_0803ABD4: .4byte gSaveBlock2
-_0803ABD8: .4byte gGameLanguage
-_0803ABDC: .4byte gBaseStats
-_0803ABE0: .4byte gExperienceTables
-_0803ABE4: .4byte gGameVersion
-_0803ABE8:
+_0803AA00: .4byte gSaveBlock2
+_0803AA04: .4byte gGameLanguage
+_0803AA08: .4byte gBaseStats
+_0803AA0C: .4byte gExperienceTables
+_0803AA10: .4byte gGameVersion
+_0803AA14:
 	bl Random
 	lsls r0, 16
 	lsrs r0, 16
@@ -469,8 +469,8 @@ _0803ABE8:
 	movs r1, 0x2C
 	adds r2, r4, 0
 	bl SetBoxMonData
-_0803AC70:
-	ldr r2, _0803ACAC @ =gBaseStats
+_0803AA9C:
+	ldr r2, _0803AAD8 @ =gBaseStats
 	mov r3, sp
 	ldrh r1, [r3, 0xE]
 	lsls r0, r1, 3
@@ -479,7 +479,7 @@ _0803AC70:
 	adds r0, r2
 	ldrb r0, [r0, 0x17]
 	cmp r0, 0
-	beq _0803AC96
+	beq _0803AAC2
 	ldr r0, [sp, 0x14]
 	movs r1, 0x1
 	ands r0, r1
@@ -488,7 +488,7 @@ _0803AC70:
 	movs r1, 0x2E
 	mov r2, r9
 	bl SetBoxMonData
-_0803AC96:
+_0803AAC2:
 	adds r0, r7, 0
 	bl GiveBoxMonInitialMoveset
 	add sp, 0x20
@@ -500,11 +500,11 @@ _0803AC96:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803ACAC: .4byte gBaseStats
+_0803AAD8: .4byte gBaseStats
 	thumb_func_end CreateBoxMon
 
 	thumb_func_start CreateMonWithNature
-CreateMonWithNature: @ 803ACB0
+CreateMonWithNature: @ 803AADC
 	push {r4-r7,lr}
 	mov r7, r9
 	mov r6, r8
@@ -521,7 +521,7 @@ CreateMonWithNature: @ 803ACB0
 	lsrs r6, r3, 24
 	lsls r0, 24
 	lsrs r5, r0, 24
-_0803ACD0:
+_0803AAFC:
 	bl Random
 	adds r4, r0, 0
 	bl Random
@@ -534,7 +534,7 @@ _0803ACD0:
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r5, r0
-	bne _0803ACD0
+	bne _0803AAFC
 	movs r0, 0x1
 	str r0, [sp]
 	str r4, [sp, 0x4]
@@ -556,7 +556,7 @@ _0803ACD0:
 	thumb_func_end CreateMonWithNature
 
 	thumb_func_start CreateMonWithGenderNatureLetter
-CreateMonWithGenderNatureLetter: @ 803AD18
+CreateMonWithGenderNatureLetter: @ 803AB44
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -588,8 +588,8 @@ CreateMonWithGenderNatureLetter: @ 803AD18
 	adds r0, r1
 	lsrs r0, 24
 	cmp r0, 0x1B
-	bhi _0803ADBE
-_0803AD58:
+	bhi _0803ABEA
+_0803AB84:
 	bl Random
 	adds r4, r0, 0
 	bl Random
@@ -623,20 +623,20 @@ _0803AD58:
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r6, r0
-	bne _0803AD58
+	bne _0803AB84
 	adds r0, r7, 0
 	adds r1, r4, 0
 	bl GetGenderFromSpeciesAndPersonality
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r8, r0
-	bne _0803AD58
+	bne _0803AB84
 	mov r0, r9
 	subs r0, 0x1
 	cmp r5, r0
-	bne _0803AD58
-	b _0803ADEE
-_0803ADBE:
+	bne _0803AB84
+	b _0803AC1A
+_0803ABEA:
 	bl Random
 	adds r4, r0, 0
 	bl Random
@@ -649,15 +649,15 @@ _0803ADBE:
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r6, r0
-	bne _0803ADBE
+	bne _0803ABEA
 	adds r0, r7, 0
 	adds r1, r4, 0
 	bl GetGenderFromSpeciesAndPersonality
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r8, r0
-	bne _0803ADBE
-_0803ADEE:
+	bne _0803ABEA
+_0803AC1A:
 	movs r0, 0x1
 	str r0, [sp]
 	str r4, [sp, 0x4]
@@ -680,7 +680,7 @@ _0803ADEE:
 	thumb_func_end CreateMonWithGenderNatureLetter
 
 	thumb_func_start CreateMaleMon
-CreateMaleMon: @ 803AE18
+CreateMaleMon: @ 803AC44
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -690,7 +690,7 @@ CreateMaleMon: @ 803AE18
 	lsrs r6, r1, 16
 	lsls r2, 24
 	lsrs r7, r2, 24
-_0803AE2A:
+_0803AC56:
 	bl Random
 	adds r4, r0, 0
 	bl Random
@@ -710,7 +710,7 @@ _0803AE2A:
 	bl GetGenderFromSpeciesAndPersonality
 	lsls r0, 24
 	cmp r0, 0
-	bne _0803AE2A
+	bne _0803AC56
 	movs r0, 0x1
 	str r0, [sp]
 	str r4, [sp, 0x4]
@@ -730,7 +730,7 @@ _0803AE2A:
 	thumb_func_end CreateMaleMon
 
 	thumb_func_start CreateMonWithIVsPersonality
-CreateMonWithIVsPersonality: @ 803AE80
+CreateMonWithIVsPersonality: @ 803ACAC
 	push {r4,lr}
 	sub sp, 0x14
 	adds r4, r0, 0
@@ -762,7 +762,7 @@ CreateMonWithIVsPersonality: @ 803AE80
 	thumb_func_end CreateMonWithIVsPersonality
 
 	thumb_func_start CreateMonWithIVsOTID
-CreateMonWithIVsOTID: @ 803AEC0
+CreateMonWithIVsOTID: @ 803ACEC
 	push {r4,r5,lr}
 	sub sp, 0x10
 	adds r5, r0, 0
@@ -815,7 +815,7 @@ CreateMonWithIVsOTID: @ 803AEC0
 	thumb_func_end CreateMonWithIVsOTID
 
 	thumb_func_start CreateMonWithEVSpread
-CreateMonWithEVSpread: @ 803AF34
+CreateMonWithEVSpread: @ 803AD60
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -841,17 +841,17 @@ CreateMonWithEVSpread: @ 803AF34
 	mov r4, r8
 	movs r1, 0x1
 	movs r5, 0x5
-_0803AF68:
+_0803AD94:
 	adds r0, r4, 0
 	ands r0, r1
 	cmp r0, 0
-	beq _0803AF72
+	beq _0803AD9E
 	adds r6, 0x1
-_0803AF72:
+_0803AD9E:
 	lsrs r4, 1
 	subs r5, 0x1
 	cmp r5, 0
-	bge _0803AF68
+	bge _0803AD94
 	movs r0, 0xFF
 	lsls r0, 1
 	adds r1, r6, 0
@@ -860,22 +860,22 @@ _0803AF72:
 	strh r0, [r1]
 	movs r4, 0x1
 	movs r5, 0
-_0803AF8C:
+_0803ADB8:
 	mov r0, r8
 	ands r0, r4
 	cmp r0, 0
-	beq _0803AFA0
+	beq _0803ADCC
 	adds r1, r5, 0
 	adds r1, 0x1A
 	adds r0, r7, 0
 	add r2, sp, 0x10
 	bl SetMonData
-_0803AFA0:
+_0803ADCC:
 	lsls r0, r4, 25
 	lsrs r4, r0, 24
 	adds r5, 0x1
 	cmp r5, 0x5
-	ble _0803AF8C
+	ble _0803ADB8
 	adds r0, r7, 0
 	bl CalculateMonStats
 	add sp, 0x14
@@ -887,7 +887,7 @@ _0803AFA0:
 	thumb_func_end CreateMonWithEVSpread
 
 	thumb_func_start sub_803ADE8
-sub_803ADE8: @ 803AFBC
+sub_803ADE8: @ 803ADE8
 	push {r4-r7,lr}
 	mov r7, r9
 	mov r6, r8
@@ -914,7 +914,7 @@ sub_803ADE8: @ 803AFBC
 	add r1, sp
 	mov r8, r1
 	adds r4, r6, 0x4
-_0803AFF2:
+_0803AE1E:
 	ldrh r1, [r4]
 	lsls r2, r5, 24
 	lsrs r2, 24
@@ -923,7 +923,7 @@ _0803AFF2:
 	adds r4, 0x2
 	adds r5, 0x1
 	cmp r5, 0x3
-	ble _0803AFF2
+	ble _0803AE1E
 	adds r2, r6, 0
 	adds r2, 0xD
 	adds r0, r7, 0
@@ -940,16 +940,16 @@ _0803AFF2:
 	add r0, sp, 0x10
 	ldrb r0, [r0]
 	cmp r0, 0xFC
-	bne _0803B03A
+	bne _0803AE66
 	add r0, sp, 0x10
 	ldrb r0, [r0, 0x1]
 	cmp r0, 0x15
-	bne _0803B03A
+	bne _0803AE66
 	movs r0, 0x1
-	b _0803B03C
-_0803B03A:
+	b _0803AE68
+_0803AE66:
 	movs r0, 0x5
-_0803B03C:
+_0803AE68:
 	mov r1, r9
 	strb r0, [r1]
 	adds r0, r7, 0
@@ -1071,7 +1071,7 @@ _0803B03C:
 	thumb_func_end sub_803ADE8
 
 	thumb_func_start sub_803AF78
-sub_803AF78: @ 803B14C
+sub_803AF78: @ 803AF78
 	push {r4-r7,lr}
 	mov r7, r9
 	mov r6, r8
@@ -1089,9 +1089,9 @@ sub_803AF78: @ 803B14C
 	lsls r0, 16
 	lsrs r0, 16
 	cmp r0, 0xAF
-	bne _0803B176
+	bne _0803AFA2
 	movs r0, 0
-_0803B176:
+_0803AFA2:
 	strh r0, [r6, 0x2]
 	movs r5, 0
 	movs r0, 0x2B
@@ -1101,7 +1101,7 @@ _0803B176:
 	adds r1, r6
 	mov r9, r1
 	adds r4, r6, 0x4
-_0803B188:
+_0803AFB4:
 	adds r1, r5, 0
 	adds r1, 0xD
 	adds r0, r7, 0
@@ -1111,7 +1111,7 @@ _0803B188:
 	adds r4, 0x2
 	adds r5, 0x1
 	cmp r5, 0x3
-	ble _0803B188
+	ble _0803AFB4
 	adds r0, r7, 0
 	movs r1, 0x38
 	movs r2, 0
@@ -1183,7 +1183,7 @@ _0803B188:
 	ands r0, r5
 	lsls r0, 5
 	ldrh r2, [r6, 0x18]
-	ldr r1, _0803B2EC @ =0xfffffc1f
+	ldr r1, _0803B118 @ =0xfffffc1f
 	ands r1, r2
 	orrs r1, r0
 	strh r1, [r6, 0x18]
@@ -1207,7 +1207,7 @@ _0803B188:
 	ands r1, r0
 	lsls r1, 15
 	ldr r0, [r6, 0x18]
-	ldr r2, _0803B2F0 @ =0xfff07fff
+	ldr r2, _0803B11C @ =0xfff07fff
 	ands r0, r2
 	orrs r0, r1
 	str r0, [r6, 0x18]
@@ -1218,7 +1218,7 @@ _0803B188:
 	ands r0, r5
 	lsls r0, 4
 	ldrh r2, [r6, 0x1A]
-	ldr r1, _0803B2F4 @ =0xfffffe0f
+	ldr r1, _0803B120 @ =0xfffffe0f
 	ands r1, r2
 	orrs r1, r0
 	strh r1, [r6, 0x1A]
@@ -1260,13 +1260,13 @@ _0803B188:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803B2EC: .4byte 0xfffffc1f
-_0803B2F0: .4byte 0xfff07fff
-_0803B2F4: .4byte 0xfffffe0f
+_0803B118: .4byte 0xfffffc1f
+_0803B11C: .4byte 0xfff07fff
+_0803B120: .4byte 0xfffffe0f
 	thumb_func_end sub_803AF78
 
 	thumb_func_start CalculateBoxMonChecksum
-CalculateBoxMonChecksum: @ 803B2F8
+CalculateBoxMonChecksum: @ 803B124
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -1292,7 +1292,7 @@ CalculateBoxMonChecksum: @ 803B2F8
 	bl GetSubstruct
 	adds r3, r0, 0
 	movs r1, 0x5
-_0803B332:
+_0803B15E:
 	ldrh r0, [r5]
 	adds r0, r6, r0
 	lsls r0, 16
@@ -1300,10 +1300,10 @@ _0803B332:
 	adds r5, 0x2
 	subs r1, 0x1
 	cmp r1, 0
-	bge _0803B332
+	bge _0803B15E
 	adds r2, r7, 0
 	movs r1, 0x5
-_0803B346:
+_0803B172:
 	ldrh r0, [r2]
 	adds r0, r6, r0
 	lsls r0, 16
@@ -1311,10 +1311,10 @@ _0803B346:
 	adds r2, 0x2
 	subs r1, 0x1
 	cmp r1, 0
-	bge _0803B346
+	bge _0803B172
 	mov r2, r8
 	movs r1, 0x5
-_0803B35A:
+_0803B186:
 	ldrh r0, [r2]
 	adds r0, r6, r0
 	lsls r0, 16
@@ -1322,10 +1322,10 @@ _0803B35A:
 	adds r2, 0x2
 	subs r1, 0x1
 	cmp r1, 0
-	bge _0803B35A
+	bge _0803B186
 	adds r2, r3, 0
 	movs r1, 0x5
-_0803B36E:
+_0803B19A:
 	ldrh r0, [r2]
 	adds r0, r6, r0
 	lsls r0, 16
@@ -1333,7 +1333,7 @@ _0803B36E:
 	adds r2, 0x2
 	subs r1, 0x1
 	cmp r1, 0
-	bge _0803B36E
+	bge _0803B19A
 	adds r0, r6, 0
 	pop {r3}
 	mov r8, r3
@@ -1343,7 +1343,7 @@ _0803B36E:
 	thumb_func_end CalculateBoxMonChecksum
 
 	thumb_func_start CalculateMonStats
-CalculateMonStats: @ 803B38C
+CalculateMonStats: @ 803B1B8
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -1435,17 +1435,17 @@ CalculateMonStats: @ 803B38C
 	movs r1, 0x38
 	mov r2, sp
 	bl SetMonData
-	ldr r0, _0803B474 @ =0x0000012f
+	ldr r0, _0803B2A0 @ =0x0000012f
 	cmp r7, r0
-	bne _0803B478
+	bne _0803B2A4
 	movs r0, 0x1
 	str r0, [sp, 0x4]
 	lsls r6, r7, 3
-	b _0803B4A6
+	b _0803B2D2
 	.align 2, 0
-_0803B474: .4byte 0x0000012f
-_0803B478:
-	ldr r1, _0803B644 @ =gBaseStats
+_0803B2A0: .4byte 0x0000012f
+_0803B2A4:
+	ldr r1, _0803B470 @ =gBaseStats
 	lsls r2, r7, 3
 	subs r0, r2, r7
 	lsls r0, 2
@@ -1456,9 +1456,9 @@ _0803B478:
 	adds r0, r4, 0
 	adds r6, r2, 0
 	cmp r0, 0
-	bge _0803B492
+	bge _0803B2BE
 	adds r0, 0x3
-_0803B492:
+_0803B2BE:
 	asrs r0, 2
 	adds r0, r1, r0
 	ldr r4, [sp]
@@ -1468,25 +1468,25 @@ _0803B492:
 	adds r0, r4
 	adds r0, 0xA
 	str r0, [sp, 0x4]
-_0803B4A6:
-	ldr r1, _0803B648 @ =0x02000000
+_0803B2D2:
+	ldr r1, _0803B474 @ =0x02000000
 	add r2, sp, 0x4
 	ldrb r0, [r2]
 	mov r3, r8
 	subs r0, r3
-	ldr r3, _0803B64C @ =0x000160fa
+	ldr r3, _0803B478 @ =0x000160fa
 	adds r1, r3
 	strb r0, [r1]
 	lsls r0, 24
 	cmp r0, 0
-	bne _0803B4C0
+	bne _0803B2EC
 	movs r0, 0x1
 	strb r0, [r1]
-_0803B4C0:
+_0803B2EC:
 	adds r0, r5, 0
 	movs r1, 0x3A
 	bl SetMonData
-	ldr r0, _0803B644 @ =gBaseStats
+	ldr r0, _0803B470 @ =gBaseStats
 	subs r1, r6, r7
 	lsls r1, 2
 	adds r6, r1, r0
@@ -1496,9 +1496,9 @@ _0803B4C0:
 	adds r1, r0, r2
 	mov r0, r9
 	cmp r0, 0
-	bge _0803B4E0
+	bge _0803B30C
 	adds r0, 0x3
-_0803B4E0:
+_0803B30C:
 	asrs r0, 2
 	adds r0, r1, r0
 	ldr r1, [sp]
@@ -1528,9 +1528,9 @@ _0803B4E0:
 	adds r1, r0, r3
 	ldr r0, [sp, 0x24]
 	cmp r0, 0
-	bge _0803B526
+	bge _0803B352
 	adds r0, 0x3
-_0803B526:
+_0803B352:
 	asrs r0, 2
 	adds r0, r1, r0
 	ldr r1, [sp]
@@ -1560,9 +1560,9 @@ _0803B526:
 	adds r1, r0, r2
 	ldr r0, [sp, 0x2C]
 	cmp r0, 0
-	bge _0803B56C
+	bge _0803B398
 	adds r0, 0x3
-_0803B56C:
+_0803B398:
 	asrs r0, 2
 	adds r0, r1, r0
 	ldr r1, [sp]
@@ -1592,9 +1592,9 @@ _0803B56C:
 	adds r1, r0, r3
 	ldr r0, [sp, 0x34]
 	cmp r0, 0
-	bge _0803B5B2
+	bge _0803B3DE
 	adds r0, 0x3
-_0803B5B2:
+_0803B3DE:
 	asrs r0, 2
 	adds r0, r1, r0
 	ldr r1, [sp]
@@ -1624,9 +1624,9 @@ _0803B5B2:
 	adds r1, r0, r2
 	ldr r0, [sp, 0x3C]
 	cmp r0, 0
-	bge _0803B5F8
+	bge _0803B424
 	adds r0, 0x3
-_0803B5F8:
+_0803B424:
 	asrs r0, 2
 	adds r0, r1, r0
 	ldr r1, [sp]
@@ -1650,44 +1650,44 @@ _0803B5F8:
 	movs r1, 0x3F
 	adds r2, r4, 0
 	bl SetMonData
-	ldr r0, _0803B650 @ =0x0000012f
+	ldr r0, _0803B47C @ =0x0000012f
 	cmp r7, r0
-	bne _0803B654
+	bne _0803B480
 	ldr r0, [sp, 0x1C]
 	cmp r0, 0
-	bne _0803B640
+	bne _0803B46C
 	mov r3, r8
 	cmp r3, 0
-	bne _0803B678
-_0803B640:
+	bne _0803B4A4
+_0803B46C:
 	movs r0, 0x1
-	b _0803B66C
+	b _0803B498
 	.align 2, 0
-_0803B644: .4byte gBaseStats
-_0803B648: .4byte 0x02000000
-_0803B64C: .4byte 0x000160fa
-_0803B650: .4byte 0x0000012f
-_0803B654:
+_0803B470: .4byte gBaseStats
+_0803B474: .4byte 0x02000000
+_0803B478: .4byte 0x000160fa
+_0803B47C: .4byte 0x0000012f
+_0803B480:
 	ldr r1, [sp, 0x1C]
 	cmp r1, 0
-	bne _0803B664
+	bne _0803B490
 	mov r0, r8
 	cmp r0, 0
-	bne _0803B678
+	bne _0803B4A4
 	ldr r0, [sp, 0x4]
-	b _0803B66C
-_0803B664:
+	b _0803B498
+_0803B490:
 	ldr r0, [sp, 0x4]
 	mov r2, r8
 	subs r0, r2
 	adds r0, r1, r0
-_0803B66C:
+_0803B498:
 	str r0, [sp, 0x1C]
 	add r2, sp, 0x1C
 	adds r0, r5, 0
 	movs r1, 0x39
 	bl SetMonData
-_0803B678:
+_0803B4A4:
 	add sp, 0x40
 	pop {r3-r5}
 	mov r8, r3
@@ -1699,7 +1699,7 @@ _0803B678:
 	thumb_func_end CalculateMonStats
 
 	thumb_func_start sub_803B4B4
-sub_803B4B4: @ 803B688
+sub_803B4B4: @ 803B4B4
 	push {r4,lr}
 	sub sp, 0x4
 	adds r2, r0, 0
@@ -1737,7 +1737,7 @@ sub_803B4B4: @ 803B688
 	thumb_func_end sub_803B4B4
 
 	thumb_func_start GetLevelFromMonExp
-GetLevelFromMonExp: @ 803B6D8
+GetLevelFromMonExp: @ 803B504
 	push {r4-r6,lr}
 	adds r5, r0, 0
 	movs r1, 0xB
@@ -1752,8 +1752,8 @@ GetLevelFromMonExp: @ 803B6D8
 	bl GetMonData
 	adds r3, r0, 0
 	movs r2, 0x1
-	ldr r6, _0803B73C @ =gExperienceTables
-	ldr r1, _0803B740 @ =gBaseStats
+	ldr r6, _0803B568 @ =gExperienceTables
+	ldr r1, _0803B56C @ =gBaseStats
 	lsls r0, r4, 3
 	subs r0, r4
 	lsls r0, 2
@@ -1766,12 +1766,12 @@ GetLevelFromMonExp: @ 803B6D8
 	adds r0, r6
 	ldr r0, [r0]
 	cmp r0, r3
-	bhi _0803B72E
+	bhi _0803B55A
 	adds r4, r1, 0
-_0803B718:
+_0803B544:
 	adds r2, 0x1
 	cmp r2, 0x64
-	bgt _0803B72E
+	bgt _0803B55A
 	lsls r1, r2, 2
 	ldrb r0, [r4, 0x13]
 	muls r0, r5
@@ -1779,8 +1779,8 @@ _0803B718:
 	adds r1, r6
 	ldr r0, [r1]
 	cmp r0, r3
-	bls _0803B718
-_0803B72E:
+	bls _0803B544
+_0803B55A:
 	subs r0, r2, 0x1
 	lsls r0, 24
 	lsrs r0, 24
@@ -1788,12 +1788,12 @@ _0803B72E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0803B73C: .4byte gExperienceTables
-_0803B740: .4byte gBaseStats
+_0803B568: .4byte gExperienceTables
+_0803B56C: .4byte gBaseStats
 	thumb_func_end GetLevelFromMonExp
 
 	thumb_func_start GetLevelFromBoxMonExp
-GetLevelFromBoxMonExp: @ 803B744
+GetLevelFromBoxMonExp: @ 803B570
 	push {r4-r6,lr}
 	adds r5, r0, 0
 	movs r1, 0xB
@@ -1808,8 +1808,8 @@ GetLevelFromBoxMonExp: @ 803B744
 	bl GetBoxMonData
 	adds r3, r0, 0
 	movs r2, 0x1
-	ldr r6, _0803B7A8 @ =gExperienceTables
-	ldr r1, _0803B7AC @ =gBaseStats
+	ldr r6, _0803B5D4 @ =gExperienceTables
+	ldr r1, _0803B5D8 @ =gBaseStats
 	lsls r0, r4, 3
 	subs r0, r4
 	lsls r0, 2
@@ -1822,12 +1822,12 @@ GetLevelFromBoxMonExp: @ 803B744
 	adds r0, r6
 	ldr r0, [r0]
 	cmp r0, r3
-	bhi _0803B79A
+	bhi _0803B5C6
 	adds r4, r1, 0
-_0803B784:
+_0803B5B0:
 	adds r2, 0x1
 	cmp r2, 0x64
-	bgt _0803B79A
+	bgt _0803B5C6
 	lsls r1, r2, 2
 	ldrb r0, [r4, 0x13]
 	muls r0, r5
@@ -1835,8 +1835,8 @@ _0803B784:
 	adds r1, r6
 	ldr r0, [r1]
 	cmp r0, r3
-	bls _0803B784
-_0803B79A:
+	bls _0803B5B0
+_0803B5C6:
 	subs r0, r2, 0x1
 	lsls r0, 24
 	lsrs r0, 24
@@ -1844,12 +1844,12 @@ _0803B79A:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0803B7A8: .4byte gExperienceTables
-_0803B7AC: .4byte gBaseStats
+_0803B5D4: .4byte gExperienceTables
+_0803B5D8: .4byte gBaseStats
 	thumb_func_end GetLevelFromBoxMonExp
 
 	thumb_func_start GiveMoveToMon
-GiveMoveToMon: @ 803B7B0
+GiveMoveToMon: @ 803B5DC
 	push {lr}
 	lsls r1, 16
 	lsrs r1, 16
@@ -1861,7 +1861,7 @@ GiveMoveToMon: @ 803B7B0
 	thumb_func_end GiveMoveToMon
 
 	thumb_func_start GiveMoveToBoxMon
-GiveMoveToBoxMon: @ 803B7C4
+GiveMoveToBoxMon: @ 803B5F0
 	push {r4-r7,lr}
 	sub sp, 0x4
 	adds r7, r0, 0
@@ -1869,7 +1869,7 @@ GiveMoveToBoxMon: @ 803B7C4
 	strh r1, [r0]
 	movs r5, 0
 	mov r6, sp
-_0803B7D2:
+_0803B5FE:
 	adds r4, r5, 0
 	adds r4, 0xD
 	adds r0, r7, 0
@@ -1879,7 +1879,7 @@ _0803B7D2:
 	lsls r0, 16
 	lsrs r0, 16
 	cmp r0, 0
-	bne _0803B810
+	bne _0803B63C
 	adds r0, r7, 0
 	adds r1, r4, 0
 	mov r2, sp
@@ -1890,79 +1890,79 @@ _0803B7D2:
 	lsls r2, r0, 1
 	adds r2, r0
 	lsls r2, 2
-	ldr r0, _0803B80C @ =0x08208100
+	ldr r0, _0803B638 @ =0x08208100
 	adds r2, r0
 	adds r0, r7, 0
 	bl SetBoxMonData
 	ldrh r0, [r6]
-	b _0803B828
+	b _0803B654
 	.align 2, 0
-_0803B80C: .4byte 0x08208100
-_0803B810:
+_0803B638: .4byte 0x08208100
+_0803B63C:
 	ldrh r1, [r6]
 	cmp r0, r1
-	bne _0803B820
-	ldr r0, _0803B81C @ =0x0000fffe
-	b _0803B828
+	bne _0803B64C
+	ldr r0, _0803B648 @ =0x0000fffe
+	b _0803B654
 	.align 2, 0
-_0803B81C: .4byte 0x0000fffe
-_0803B820:
+_0803B648: .4byte 0x0000fffe
+_0803B64C:
 	adds r5, 0x1
 	cmp r5, 0x3
-	ble _0803B7D2
-	ldr r0, _0803B830 @ =0x0000ffff
-_0803B828:
+	ble _0803B5FE
+	ldr r0, _0803B65C @ =0x0000ffff
+_0803B654:
 	add sp, 0x4
 	pop {r4-r7}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0803B830: .4byte 0x0000ffff
+_0803B65C: .4byte 0x0000ffff
 	thumb_func_end GiveMoveToBoxMon
 
 	thumb_func_start GiveMoveToBattleMon
-GiveMoveToBattleMon: @ 803B834
+GiveMoveToBattleMon: @ 803B660
 	push {r4,r5,lr}
 	lsls r1, 16
 	lsrs r4, r1, 16
 	movs r3, 0
 	adds r5, r0, 0
 	adds r5, 0x24
-	ldr r2, _0803B860 @ =gBattleMoves
+	ldr r2, _0803B68C @ =gBattleMoves
 	lsls r1, r4, 1
 	adds r1, r4
 	lsls r1, 2
 	adds r2, r1, r2
 	adds r1, r0, 0
 	adds r1, 0xC
-_0803B84E:
+_0803B67A:
 	ldrh r0, [r1]
 	cmp r0, 0
-	bne _0803B864
+	bne _0803B690
 	strh r4, [r1]
 	adds r1, r5, r3
 	ldrb r0, [r2, 0x4]
 	strb r0, [r1]
 	adds r0, r4, 0
-	b _0803B86E
+	b _0803B69A
 	.align 2, 0
-_0803B860: .4byte gBattleMoves
-_0803B864:
+_0803B68C: .4byte gBattleMoves
+_0803B690:
 	adds r1, 0x2
 	adds r3, 0x1
 	cmp r3, 0x3
-	ble _0803B84E
-	ldr r0, _0803B874 @ =0x0000ffff
-_0803B86E:
+	ble _0803B67A
+	ldr r0, _0803B6A0 @ =0x0000ffff
+_0803B69A:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0803B874: .4byte 0x0000ffff
+_0803B6A0: .4byte 0x0000ffff
 	thumb_func_end GiveMoveToBattleMon
 
 	thumb_func_start SetMonMoveSlot
-SetMonMoveSlot: @ 803B878
+SetMonMoveSlot: @ 803B6A4
 	push {r4,r5,lr}
 	sub sp, 0x4
 	adds r5, r0, 0
@@ -1982,7 +1982,7 @@ SetMonMoveSlot: @ 803B878
 	lsls r2, r0, 1
 	adds r2, r0
 	lsls r2, 2
-	ldr r0, _0803B8B4 @ =0x08208100
+	ldr r0, _0803B6E0 @ =0x08208100
 	adds r2, r0
 	adds r0, r5, 0
 	adds r1, r4, 0
@@ -1992,11 +1992,11 @@ SetMonMoveSlot: @ 803B878
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803B8B4: .4byte 0x08208100
+_0803B6E0: .4byte 0x08208100
 	thumb_func_end SetMonMoveSlot
 
 	thumb_func_start SetBattleMonMoveSlot
-SetBattleMonMoveSlot: @ 803B8B8
+SetBattleMonMoveSlot: @ 803B6E4
 	push {r4,lr}
 	lsls r1, 16
 	lsrs r1, 16
@@ -2009,7 +2009,7 @@ SetBattleMonMoveSlot: @ 803B8B8
 	strh r1, [r3]
 	adds r0, 0x24
 	adds r0, r2
-	ldr r3, _0803B8E4 @ =gBattleMoves
+	ldr r3, _0803B710 @ =gBattleMoves
 	lsls r2, r1, 1
 	adds r2, r1
 	lsls r2, 2
@@ -2020,11 +2020,11 @@ SetBattleMonMoveSlot: @ 803B8B8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803B8E4: .4byte gBattleMoves
+_0803B710: .4byte gBattleMoves
 	thumb_func_end SetBattleMonMoveSlot
 
 	thumb_func_start GiveMonInitialMoveset
-GiveMonInitialMoveset: @ 803B8E8
+GiveMonInitialMoveset: @ 803B714
 	push {lr}
 	bl GiveBoxMonInitialMoveset
 	pop {r0}
@@ -2032,7 +2032,7 @@ GiveMonInitialMoveset: @ 803B8E8
 	thumb_func_end GiveMonInitialMoveset
 
 	thumb_func_start GiveBoxMonInitialMoveset
-GiveBoxMonInitialMoveset: @ 803B8F4
+GiveBoxMonInitialMoveset: @ 803B720
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -2051,19 +2051,19 @@ GiveBoxMonInitialMoveset: @ 803B8F4
 	lsls r0, 24
 	lsrs r0, 24
 	mov r10, r0
-	ldr r0, _0803B990 @ =gLevelUpLearnsets
+	ldr r0, _0803B7BC @ =gLevelUpLearnsets
 	lsls r6, r4, 2
 	adds r0, r6, r0
 	ldr r0, [r0]
 	ldrh r1, [r0]
-	ldr r2, _0803B994 @ =0xffff0000
+	ldr r2, _0803B7C0 @ =0xffff0000
 	lsrs r0, r2, 16
 	cmp r1, r0
-	beq _0803B980
+	beq _0803B7AC
 	mov r9, r2
 	movs r3, 0
-_0803B932:
-	ldr r0, _0803B990 @ =gLevelUpLearnsets
+_0803B75E:
+	ldr r0, _0803B7BC @ =gLevelUpLearnsets
 	adds r7, r6, r0
 	ldr r0, [r7]
 	adds r0, r3, r0
@@ -2075,8 +2075,8 @@ _0803B932:
 	mov r4, r10
 	lsls r1, r4, 9
 	cmp r0, r1
-	bgt _0803B980
-	ldr r1, _0803B998 @ =0x000001ff
+	bgt _0803B7AC
+	ldr r1, _0803B7C4 @ =0x000001ff
 	adds r0, r1, 0
 	adds r4, r0, 0
 	ands r4, r2
@@ -2089,19 +2089,19 @@ _0803B932:
 	lsrs r5, r1, 16
 	ldr r3, [sp]
 	cmp r0, r9
-	bne _0803B974
+	bne _0803B7A0
 	mov r0, r8
 	adds r1, r4, 0
 	bl DeleteFirstMoveAndGiveMoveToBoxMon
 	ldr r3, [sp]
-_0803B974:
+_0803B7A0:
 	adds r3, 0x2
 	ldr r0, [r7]
 	adds r0, r3, r0
 	ldrh r0, [r0]
 	cmp r0, r5
-	bne _0803B932
-_0803B980:
+	bne _0803B75E
+_0803B7AC:
 	add sp, 0x4
 	pop {r3-r5}
 	mov r8, r3
@@ -2111,13 +2111,13 @@ _0803B980:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803B990: .4byte gLevelUpLearnsets
-_0803B994: .4byte 0xffff0000
-_0803B998: .4byte 0x000001ff
+_0803B7BC: .4byte gLevelUpLearnsets
+_0803B7C0: .4byte 0xffff0000
+_0803B7C4: .4byte 0x000001ff
 	thumb_func_end GiveBoxMonInitialMoveset
 
 	thumb_func_start sub_803B7C8
-sub_803B7C8: @ 803B99C
+sub_803B7C8: @ 803B7C8
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -2144,12 +2144,12 @@ sub_803B7C8: @ 803B99C
 	lsrs r0, 24
 	mov r10, r0
 	cmp r4, 0
-	beq _0803BA34
-	ldr r4, _0803BA20 @ =byte_2024E88
+	beq _0803B860
+	ldr r4, _0803B84C @ =byte_2024E88
 	mov r1, sp
 	ldrb r1, [r1]
 	strb r1, [r4]
-	ldr r2, _0803BA24 @ =gLevelUpLearnsets
+	ldr r2, _0803B850 @ =gLevelUpLearnsets
 	mov r5, r9
 	lsls r3, r5, 2
 	adds r5, r3, r2
@@ -2164,13 +2164,13 @@ sub_803B7C8: @ 803B99C
 	mov r1, r10
 	lsls r4, r1, 9
 	cmp r0, r4
-	beq _0803BA5C
+	beq _0803B888
 	adds r2, r6, 0
-	ldr r0, _0803BA28 @ =0x0000ffff
+	ldr r0, _0803B854 @ =0x0000ffff
 	mov r12, r0
 	adds r6, r7, 0
 	adds r3, r5, 0
-_0803BA08:
+_0803B834:
 	ldrb r0, [r2]
 	adds r0, 0x1
 	strb r0, [r2]
@@ -2180,24 +2180,24 @@ _0803BA08:
 	adds r0, r1
 	ldrh r1, [r0]
 	cmp r1, r12
-	bne _0803BA2C
+	bne _0803B858
 	movs r0, 0
-	b _0803BA88
+	b _0803B8B4
 	.align 2, 0
-_0803BA20: .4byte byte_2024E88
-_0803BA24: .4byte gLevelUpLearnsets
-_0803BA28: .4byte 0x0000ffff
-_0803BA2C:
+_0803B84C: .4byte byte_2024E88
+_0803B850: .4byte gLevelUpLearnsets
+_0803B854: .4byte 0x0000ffff
+_0803B858:
 	adds r0, r6, 0
 	ands r0, r1
 	cmp r0, r4
-	bne _0803BA08
-_0803BA34:
-	ldr r3, _0803BA98 @ =gLevelUpLearnsets
+	bne _0803B834
+_0803B860:
+	ldr r3, _0803B8C4 @ =gLevelUpLearnsets
 	mov r1, r9
 	lsls r4, r1, 2
 	adds r1, r4, r3
-	ldr r2, _0803BA9C @ =byte_2024E88
+	ldr r2, _0803B8C8 @ =byte_2024E88
 	ldrb r0, [r2]
 	ldr r1, [r1]
 	lsls r0, 1
@@ -2212,9 +2212,9 @@ _0803BA34:
 	mov r12, r3
 	adds r3, r4, 0
 	cmp r0, r1
-	bne _0803BA86
-_0803BA5C:
-	ldr r2, _0803BAA0 @ =word_2024E82
+	bne _0803B8B2
+_0803B888:
+	ldr r2, _0803B8CC @ =word_2024E82
 	mov r0, r12
 	adds r1, r3, r0
 	ldrb r0, [r6]
@@ -2222,7 +2222,7 @@ _0803BA5C:
 	lsls r0, 1
 	adds r0, r1
 	ldrh r1, [r0]
-	ldr r0, _0803BAA4 @ =0x000001ff
+	ldr r0, _0803B8D0 @ =0x000001ff
 	ands r0, r1
 	strh r0, [r2]
 	ldrb r0, [r6]
@@ -2234,9 +2234,9 @@ _0803BA5C:
 	lsls r0, 16
 	lsrs r0, 16
 	str r0, [sp]
-_0803BA86:
+_0803B8B2:
 	ldr r0, [sp]
-_0803BA88:
+_0803B8B4:
 	add sp, 0x4
 	pop {r3-r5}
 	mov r8, r3
@@ -2246,14 +2246,14 @@ _0803BA88:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0803BA98: .4byte gLevelUpLearnsets
-_0803BA9C: .4byte byte_2024E88
-_0803BAA0: .4byte word_2024E82
-_0803BAA4: .4byte 0x000001ff
+_0803B8C4: .4byte gLevelUpLearnsets
+_0803B8C8: .4byte byte_2024E88
+_0803B8CC: .4byte word_2024E82
+_0803B8D0: .4byte 0x000001ff
 	thumb_func_end sub_803B7C8
 
 	thumb_func_start DeleteFirstMoveAndGiveMoveToMon
-DeleteFirstMoveAndGiveMoveToMon: @ 803BAA8
+DeleteFirstMoveAndGiveMoveToMon: @ 803B8D4
 	push {r4-r7,lr}
 	mov r7, r9
 	mov r6, r8
@@ -2268,7 +2268,7 @@ DeleteFirstMoveAndGiveMoveToMon: @ 803BAA8
 	add r0, sp, 0xC
 	mov r9, r0
 	mov r5, sp
-_0803BAC4:
+_0803B8F0:
 	adds r1, r4, 0
 	adds r1, 0xE
 	adds r0, r6, 0
@@ -2285,7 +2285,7 @@ _0803BAC4:
 	adds r5, 0x2
 	adds r4, 0x1
 	cmp r4, 0x2
-	ble _0803BAC4
+	ble _0803B8F0
 	adds r0, r6, 0
 	movs r1, 0x15
 	movs r2, 0
@@ -2298,7 +2298,7 @@ _0803BAC4:
 	mov r0, sp
 	mov r2, r8
 	strh r2, [r0, 0x6]
-	ldr r1, _0803BB50 @ =gBattleMoves
+	ldr r1, _0803B97C @ =gBattleMoves
 	mov r2, r8
 	lsls r0, r2, 1
 	add r0, r8
@@ -2308,7 +2308,7 @@ _0803BAC4:
 	strb r0, [r7, 0x3]
 	movs r4, 0
 	mov r5, sp
-_0803BB18:
+_0803B944:
 	adds r1, r4, 0
 	adds r1, 0xD
 	adds r0, r6, 0
@@ -2322,7 +2322,7 @@ _0803BB18:
 	adds r5, 0x2
 	adds r4, 0x1
 	cmp r4, 0x3
-	ble _0803BB18
+	ble _0803B944
 	adds r0, r6, 0
 	movs r1, 0x15
 	mov r2, r9
@@ -2335,11 +2335,11 @@ _0803BB18:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803BB50: .4byte gBattleMoves
+_0803B97C: .4byte gBattleMoves
 	thumb_func_end DeleteFirstMoveAndGiveMoveToMon
 
 	thumb_func_start DeleteFirstMoveAndGiveMoveToBoxMon
-DeleteFirstMoveAndGiveMoveToBoxMon: @ 803BB54
+DeleteFirstMoveAndGiveMoveToBoxMon: @ 803B980
 	push {r4-r7,lr}
 	mov r7, r9
 	mov r6, r8
@@ -2354,7 +2354,7 @@ DeleteFirstMoveAndGiveMoveToBoxMon: @ 803BB54
 	add r0, sp, 0xC
 	mov r9, r0
 	mov r5, sp
-_0803BB70:
+_0803B99C:
 	adds r1, r4, 0
 	adds r1, 0xE
 	adds r0, r6, 0
@@ -2371,7 +2371,7 @@ _0803BB70:
 	adds r5, 0x2
 	adds r4, 0x1
 	cmp r4, 0x2
-	ble _0803BB70
+	ble _0803B99C
 	adds r0, r6, 0
 	movs r1, 0x15
 	movs r2, 0
@@ -2384,7 +2384,7 @@ _0803BB70:
 	mov r0, sp
 	mov r2, r8
 	strh r2, [r0, 0x6]
-	ldr r1, _0803BBFC @ =gBattleMoves
+	ldr r1, _0803BA28 @ =gBattleMoves
 	mov r2, r8
 	lsls r0, r2, 1
 	add r0, r8
@@ -2394,7 +2394,7 @@ _0803BB70:
 	strb r0, [r7, 0x3]
 	movs r4, 0
 	mov r5, sp
-_0803BBC4:
+_0803B9F0:
 	adds r1, r4, 0
 	adds r1, 0xD
 	adds r0, r6, 0
@@ -2408,7 +2408,7 @@ _0803BBC4:
 	adds r5, 0x2
 	adds r4, 0x1
 	cmp r4, 0x3
-	ble _0803BBC4
+	ble _0803B9F0
 	adds r0, r6, 0
 	movs r1, 0x15
 	mov r2, r9
@@ -2421,7 +2421,7 @@ _0803BBC4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803BBFC: .4byte gBattleMoves
+_0803BA28: .4byte gBattleMoves
 	thumb_func_end DeleteFirstMoveAndGiveMoveToBoxMon
 
 	.align 2, 0 @ Don't pad with nop.

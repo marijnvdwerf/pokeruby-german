@@ -7,24 +7,24 @@
 	.text
 
 	thumb_func_start InitFieldMessageBox
-InitFieldMessageBox: @ 8064DB4
+InitFieldMessageBox: @ 8064A74
 	push {lr}
-	ldr r1, _08064DD0 @ =0x030005a8
+	ldr r1, _08064A90 @ =0x030005a8
 	movs r0, 0
 	strb r0, [r1]
-	ldr r0, _08064DD4 @ =gMenuTextWindowContentTileOffset
+	ldr r0, _08064A94 @ =gMenuTextWindowContentTileOffset
 	ldrh r0, [r0]
 	bl SetMessageBoxBaseTileNum
-	ldr r0, _08064DD8 @ =gFieldMessageBoxWindow
-	ldr r1, _08064DDC @ =gWindowConfig_81E6CE4
+	ldr r0, _08064A98 @ =gFieldMessageBoxWindow
+	ldr r1, _08064A9C @ =gWindowConfig_81E6CE4
 	bl InitWindowFromConfig
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08064DD0: .4byte 0x030005a8
-_08064DD4: .4byte gMenuTextWindowContentTileOffset
-_08064DD8: .4byte gFieldMessageBoxWindow
-_08064DDC: .4byte gWindowConfig_81E6CE4
+_08064A90: .4byte 0x030005a8
+_08064A94: .4byte gMenuTextWindowContentTileOffset
+_08064A98: .4byte gFieldMessageBoxWindow
+_08064A9C: .4byte gWindowConfig_81E6CE4
 	thumb_func_end InitFieldMessageBox
 
 	thumb_func_start Task_FieldMessageBox
@@ -136,56 +136,56 @@ _08064EA4: .4byte Task_FieldMessageBox
 	thumb_func_end DestroyFieldMessageBoxTask
 
 	thumb_func_start ShowFieldMessage
-ShowFieldMessage: @ 8064EA8
+ShowFieldMessage: @ 8064B68
 	push {r4,lr}
 	adds r1, r0, 0
-	ldr r4, _08064EC4 @ =0x030005a8
+	ldr r4, _08064B84 @ =0x030005a8
 	ldrb r0, [r4]
 	cmp r0, 0
-	bne _08064EC8
+	bne _08064B88
 	adds r0, r1, 0
 	bl PrintFieldMessage
 	movs r0, 0x2
 	strb r0, [r4]
 	movs r0, 0x1
-	b _08064ECA
+	b _08064B8A
 	.align 2, 0
-_08064EC4: .4byte 0x030005a8
-_08064EC8:
+_08064B84: .4byte 0x030005a8
+_08064B88:
 	movs r0, 0
-_08064ECA:
+_08064B8A:
 	pop {r4}
 	pop {r1}
 	bx r1
 	thumb_func_end ShowFieldMessage
 
 	thumb_func_start ShowFieldAutoScrollMessage
-ShowFieldAutoScrollMessage: @ 8064ED0
+ShowFieldAutoScrollMessage: @ 8064B90
 	push {lr}
 	adds r1, r0, 0
-	ldr r2, _08064EEC @ =0x030005a8
+	ldr r2, _08064BAC @ =0x030005a8
 	ldrb r0, [r2]
 	cmp r0, 0
-	bne _08064EF0
+	bne _08064BB0
 	movs r0, 0x3
 	strb r0, [r2]
 	adds r0, r1, 0
 	bl PrintFieldMessage
 	movs r0, 0x1
-	b _08064EF2
+	b _08064BB2
 	.align 2, 0
-_08064EEC: .4byte 0x030005a8
-_08064EF0:
+_08064BAC: .4byte 0x030005a8
+_08064BB0:
 	movs r0, 0
-_08064EF2:
+_08064BB2:
 	pop {r1}
 	bx r1
 	thumb_func_end ShowFieldAutoScrollMessage
 
 	thumb_func_start unref_sub_8064BB8
-unref_sub_8064BB8: @ 8064EF8
+unref_sub_8064BB8: @ 8064BB8
 	push {lr}
-	ldr r2, _08064F0C @ =0x030005a8
+	ldr r2, _08064BCC @ =0x030005a8
 	movs r1, 0x3
 	strb r1, [r2]
 	bl PrintFieldMessage
@@ -193,26 +193,26 @@ unref_sub_8064BB8: @ 8064EF8
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08064F0C: .4byte 0x030005a8
+_08064BCC: .4byte 0x030005a8
 	thumb_func_end unref_sub_8064BB8
 
 	thumb_func_start unref_sub_8064BD0
-unref_sub_8064BD0: @ 8064F10
+unref_sub_8064BD0: @ 8064BD0
 	push {lr}
-	ldr r1, _08064F28 @ =0x030005a8
+	ldr r1, _08064BE8 @ =0x030005a8
 	ldrb r0, [r1]
 	cmp r0, 0
-	bne _08064F2C
+	bne _08064BEC
 	movs r0, 0x2
 	strb r0, [r1]
 	bl PrintFieldMessageFromStringVar4
 	movs r0, 0x1
-	b _08064F2E
+	b _08064BEE
 	.align 2, 0
-_08064F28: .4byte 0x030005a8
-_08064F2C:
+_08064BE8: .4byte 0x030005a8
+_08064BEC:
 	movs r0, 0
-_08064F2E:
+_08064BEE:
 	pop {r1}
 	bx r1
 	thumb_func_end unref_sub_8064BD0
@@ -267,62 +267,62 @@ _08064F94: .4byte gMenuTextTileOffset
 	thumb_func_end PrintFieldMessageFromStringVar4
 
 	thumb_func_start HideFieldMessageBox
-HideFieldMessageBox: @ 8064F98
+HideFieldMessageBox: @ 8064C58
 	push {lr}
 	bl DestroyFieldMessageBoxTask
-	ldr r0, _08064FB0 @ =gFieldMessageBoxWindow
+	ldr r0, _08064C70 @ =gFieldMessageBoxWindow
 	bl ClearStandardMessageBox
-	ldr r1, _08064FB4 @ =0x030005a8
+	ldr r1, _08064C74 @ =0x030005a8
 	movs r0, 0
 	strb r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08064FB0: .4byte gFieldMessageBoxWindow
-_08064FB4: .4byte 0x030005a8
+_08064C70: .4byte gFieldMessageBoxWindow
+_08064C74: .4byte 0x030005a8
 	thumb_func_end HideFieldMessageBox
 
 	thumb_func_start GetFieldMessageBoxMode
-GetFieldMessageBoxMode: @ 8064FB8
-	ldr r0, _08064FC0 @ =0x030005a8
+GetFieldMessageBoxMode: @ 8064C78
+	ldr r0, _08064C80 @ =0x030005a8
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_08064FC0: .4byte 0x030005a8
+_08064C80: .4byte 0x030005a8
 	thumb_func_end GetFieldMessageBoxMode
 
 	thumb_func_start IsFieldMessageBoxHidden
-IsFieldMessageBoxHidden: @ 8064FC4
+IsFieldMessageBoxHidden: @ 8064C84
 	push {lr}
-	ldr r0, _08064FD4 @ =0x030005a8
+	ldr r0, _08064C94 @ =0x030005a8
 	ldrb r0, [r0]
 	cmp r0, 0
-	beq _08064FD8
+	beq _08064C98
 	movs r0, 0
-	b _08064FDA
+	b _08064C9A
 	.align 2, 0
-_08064FD4: .4byte 0x030005a8
-_08064FD8:
+_08064C94: .4byte 0x030005a8
+_08064C98:
 	movs r0, 0x1
-_08064FDA:
+_08064C9A:
 	pop {r1}
 	bx r1
 	thumb_func_end IsFieldMessageBoxHidden
 
 	thumb_func_start unref_sub_8064CA0
-unref_sub_8064CA0: @ 8064FE0
+unref_sub_8064CA0: @ 8064CA0
 	push {lr}
 	bl DestroyFieldMessageBoxTask
-	ldr r0, _08064FF8 @ =gFieldMessageBoxWindow
+	ldr r0, _08064CB8 @ =gFieldMessageBoxWindow
 	bl DrawStandardMessageBox
-	ldr r1, _08064FFC @ =0x030005a8
+	ldr r1, _08064CBC @ =0x030005a8
 	movs r0, 0
 	strb r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08064FF8: .4byte gFieldMessageBoxWindow
-_08064FFC: .4byte 0x030005a8
+_08064CB8: .4byte gFieldMessageBoxWindow
+_08064CBC: .4byte 0x030005a8
 	thumb_func_end unref_sub_8064CA0
 
 	.align 2, 0 @ Don't pad with nop.

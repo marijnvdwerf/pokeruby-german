@@ -269,27 +269,27 @@ _0814660A:
 	thumb_func_end sub_8146058
 
 	thumb_func_start BerryTagScreen_814625C
-BerryTagScreen_814625C: @ 8146614
+BerryTagScreen_814625C: @ 814625C
 	push {lr}
-_08146616:
+_0814625E:
 	bl sub_8146058
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _08146630
-	ldr r0, _0814662C @ =sub_8146480
+	bne _08146278
+	ldr r0, _08146274 @ =sub_8146480
 	movs r1, 0
 	bl CreateTask
-	b _0814663C
+	b _08146284
 	.align 2, 0
-_0814662C: .4byte sub_8146480
-_08146630:
+_08146274: .4byte sub_8146480
+_08146278:
 	bl sub_80F9344
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _08146616
-_0814663C:
+	bne _0814625E
+_08146284:
 	pop {r0}
 	bx r0
 	thumb_func_end BerryTagScreen_814625C
@@ -792,41 +792,41 @@ _08146A4C: .4byte 0x0000ffff
 	thumb_func_end sub_8146600
 
 	thumb_func_start sub_81466A0
-sub_81466A0: @ 8146A50
+sub_81466A0: @ 81466A0
 	push {r4-r7,lr}
 	movs r5, 0
 	movs r7, 0x1
 	negs r7, r7
-	ldr r6, _08146A8C @ =gUnknown_0203932E
-_08146A5A:
+	ldr r6, _081466DC @ =gUnknown_0203932E
+_081466AA:
 	lsls r0, r5, 1
 	adds r4, r0, r6
 	movs r1, 0
 	ldrsh r0, [r4, r1]
 	cmp r0, r7
-	beq _08146A7A
+	beq _081466CA
 	adds r1, r0, 0
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08146A90 @ =gSprites
+	ldr r1, _081466E0 @ =gSprites
 	adds r0, r1
 	bl DestroySprite
-	ldr r0, _08146A94 @ =0x0000ffff
+	ldr r0, _081466E4 @ =0x0000ffff
 	strh r0, [r4]
-_08146A7A:
+_081466CA:
 	adds r0, r5, 0x1
 	lsls r0, 16
 	lsrs r5, r0, 16
 	cmp r5, 0x4
-	bls _08146A5A
+	bls _081466AA
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08146A8C: .4byte gUnknown_0203932E
-_08146A90: .4byte gSprites
-_08146A94: .4byte 0x0000ffff
+_081466DC: .4byte gUnknown_0203932E
+_081466E0: .4byte gSprites
+_081466E4: .4byte 0x0000ffff
 	thumb_func_end sub_81466A0
 
 	thumb_func_start sub_81466E8
@@ -925,16 +925,16 @@ _08146B3C:
 	thumb_func_end sub_81466E8
 
 	thumb_func_start sub_8146798
-sub_8146798: @ 8146B48
+sub_8146798: @ 8146798
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _08146BB0 @ =0x03004b38
+	ldr r1, _08146800 @ =0x03004b38
 	adds r0, r1
-	ldr r2, _08146BB4 @ =gUnknown_030041B4
+	ldr r2, _08146804 @ =gUnknown_030041B4
 	ldrh r1, [r0]
 	ldrh r5, [r2]
 	adds r3, r1, r5
@@ -944,16 +944,16 @@ sub_8146798: @ 8146B48
 	movs r1, 0
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	ble _08146B72
+	ble _081467C2
 	cmp r3, 0x90
-	beq _08146B7A
-_08146B72:
+	beq _081467CA
+_081467C2:
 	cmp r0, 0
-	bge _08146B90
+	bge _081467E0
 	cmp r3, 0x70
-	bne _08146B90
-_08146B7A:
-	ldr r0, _08146BB8 @ =gTasks
+	bne _081467E0
+_081467CA:
+	ldr r0, _08146808 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
@@ -962,33 +962,33 @@ _08146B7A:
 	ldrsb r0, [r1, r0]
 	bl sub_8146810
 	bl sub_81468BC
-_08146B90:
-	ldr r0, _08146BB4 @ =gUnknown_030041B4
+_081467E0:
+	ldr r0, _08146804 @ =gUnknown_030041B4
 	ldrh r2, [r0]
 	cmp r2, 0
-	bne _08146BAA
-	ldr r0, _08146BB8 @ =gTasks
+	bne _081467FA
+	ldr r0, _08146808 @ =gTasks
 	lsls r1, r4, 2
 	adds r1, r4
 	lsls r1, 3
 	adds r1, r0
 	strh r2, [r1, 0x8]
 	strh r2, [r1, 0xA]
-	ldr r0, _08146BBC @ =sub_8146480
+	ldr r0, _0814680C @ =sub_8146480
 	str r0, [r1]
-_08146BAA:
+_081467FA:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08146BB0: .4byte 0x03004b38
-_08146BB4: .4byte gUnknown_030041B4
-_08146BB8: .4byte gTasks
-_08146BBC: .4byte sub_8146480
+_08146800: .4byte 0x03004b38
+_08146804: .4byte gUnknown_030041B4
+_08146808: .4byte gTasks
+_0814680C: .4byte sub_8146480
 	thumb_func_end sub_8146798
 
 	thumb_func_start sub_8146810
-sub_8146810: @ 8146BC0
+sub_8146810: @ 8146810
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r3, r0, 24
@@ -996,15 +996,15 @@ sub_8146810: @ 8146BC0
 	lsls r0, r3, 24
 	asrs r1, r0, 24
 	cmp r1, 0
-	ble _08146BF8
-	ldr r0, _08146BF0 @ =gUnknown_03005D10
+	ble _08146848
+	ldr r0, _08146840 @ =gUnknown_03005D10
 	adds r4, r0, 0
 	adds r4, 0xC
 	ldrb r2, [r0, 0xC]
 	adds r1, r2, r1
 	adds r6, r0, 0
 	cmp r1, 0x7
-	ble _08146BF4
+	ble _08146844
 	adds r0, r3, 0
 	adds r0, 0xF9
 	adds r0, r2, r0
@@ -1012,54 +1012,54 @@ sub_8146810: @ 8146BC0
 	adds r0, r1
 	strb r0, [r4, 0x1]
 	movs r0, 0x7
-	b _08146C1E
+	b _0814686E
 	.align 2, 0
-_08146BF0: .4byte gUnknown_03005D10
-_08146BF4:
+_08146840: .4byte gUnknown_03005D10
+_08146844:
 	adds r0, r2, r3
-	b _08146C1E
-_08146BF8:
-	ldr r0, _08146C18 @ =gUnknown_03005D10
+	b _0814686E
+_08146848:
+	ldr r0, _08146868 @ =gUnknown_03005D10
 	adds r5, r0, 0
 	adds r5, 0xC
 	ldrb r2, [r0, 0xC]
 	adds r1, r2, r1
 	adds r6, r0, 0
 	cmp r1, 0
-	bge _08146C1C
+	bge _0814686C
 	adds r0, r2, r3
 	ldrb r1, [r5, 0x1]
 	adds r0, r1
 	movs r1, 0
 	strb r0, [r5, 0x1]
 	strb r1, [r6, 0xC]
-	b _08146C20
+	b _08146870
 	.align 2, 0
-_08146C18: .4byte gUnknown_03005D10
-_08146C1C:
+_08146868: .4byte gUnknown_03005D10
+_0814686C:
 	adds r0, r2, r4
-_08146C1E:
+_0814686E:
 	strb r0, [r6, 0xC]
-_08146C20:
-	ldr r2, _08146C5C @ =gScriptItemId
+_08146870:
+	ldr r2, _081468AC @ =gScriptItemId
 	movs r0, 0x3
 	lsls r0, 2
 	adds r0, r6
 	ldrb r1, [r0, 0x1]
 	ldrb r0, [r0]
 	adds r1, r0
-	ldr r0, _08146C60 @ =gUnknown_03005D24
+	ldr r0, _081468B0 @ =gUnknown_03005D24
 	ldr r0, [r0]
 	lsls r1, 2
 	adds r1, r0
 	ldrh r0, [r1]
 	strh r0, [r2]
-	ldr r0, _08146C64 @ =gUnknown_0203932C
+	ldr r0, _081468B4 @ =gUnknown_0203932C
 	ldrb r1, [r0]
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08146C68 @ =gSprites
+	ldr r1, _081468B8 @ =gSprites
 	adds r0, r1
 	bl DestroySprite
 	bl sub_81466A0
@@ -1068,14 +1068,14 @@ _08146C20:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08146C5C: .4byte gScriptItemId
-_08146C60: .4byte gUnknown_03005D24
-_08146C64: .4byte gUnknown_0203932C
-_08146C68: .4byte gSprites
+_081468AC: .4byte gScriptItemId
+_081468B0: .4byte gUnknown_03005D24
+_081468B4: .4byte gUnknown_0203932C
+_081468B8: .4byte gSprites
 	thumb_func_end sub_8146810
 
 	thumb_func_start sub_81468BC
-sub_81468BC: @ 8146C6C
+sub_81468BC: @ 81468BC
 	push {r4,lr}
 	movs r0, 0
 	movs r1, 0x4
@@ -1083,7 +1083,7 @@ sub_81468BC: @ 8146C6C
 	movs r3, 0x13
 	bl MenuZeroFillWindowRect
 	bl sub_81464E4
-	ldr r4, _08146CA8 @ =gScriptItemId
+	ldr r4, _081468F8 @ =gScriptItemId
 	ldrb r0, [r4]
 	adds r0, 0x7B
 	lsls r0, 24
@@ -1091,7 +1091,7 @@ sub_81468BC: @ 8146C6C
 	movs r1, 0x38
 	movs r2, 0x40
 	bl sub_80A7D8C
-	ldr r1, _08146CAC @ =gUnknown_0203932C
+	ldr r1, _081468FC @ =gUnknown_0203932C
 	strb r0, [r1]
 	ldrb r0, [r4]
 	adds r0, 0x7B
@@ -1102,8 +1102,8 @@ sub_81468BC: @ 8146C6C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08146CA8: .4byte gScriptItemId
-_08146CAC: .4byte gUnknown_0203932C
+_081468F8: .4byte gScriptItemId
+_081468FC: .4byte gUnknown_0203932C
 	thumb_func_end sub_81468BC
 
 	.align 2, 0 @ Don't pad with nop.

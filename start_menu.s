@@ -364,12 +364,12 @@ _0807159C: .4byte 0x03004b38
 	thumb_func_end Task_StartMenu
 
 	thumb_func_start CreateStartMenuTask
-CreateStartMenuTask: @ 80715A0
+CreateStartMenuTask: @ 8071284
 	push {r4,r5,lr}
 	adds r5, r0, 0
-	ldr r0, _080715C8 @ =gWindowConfig_81E6CE4
+	ldr r0, _080712AC @ =gWindowConfig_81E6CE4
 	bl InitMenuWindow
-	ldr r4, _080715CC @ =Task_StartMenu
+	ldr r4, _080712B0 @ =Task_StartMenu
 	adds r0, r4, 0
 	movs r1, 0x50
 	bl CreateTask
@@ -382,75 +382,75 @@ CreateStartMenuTask: @ 80715A0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080715C8: .4byte gWindowConfig_81E6CE4
-_080715CC: .4byte Task_StartMenu
+_080712AC: .4byte gWindowConfig_81E6CE4
+_080712B0: .4byte Task_StartMenu
 	thumb_func_end CreateStartMenuTask
 
 	thumb_func_start sub_80712B4
-sub_80712B4: @ 80715D0
+sub_80712B4: @ 80712B4
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
-	ldr r1, _080715F0 @ =gTasks
+	ldr r1, _080712D4 @ =gTasks
 	adds r2, r0, r1
 	movs r1, 0x8
 	ldrsh r0, [r2, r1]
 	cmp r0, 0
-	beq _080715F4
+	beq _080712D8
 	cmp r0, 0x1
-	beq _0807160C
-	b _08071622
+	beq _080712F0
+	b _08071306
 	.align 2, 0
-_080715F0: .4byte gTasks
-_080715F4:
-	ldr r1, _08071604 @ =gCallback_03004AE8
-	ldr r0, _08071608 @ =StartMenu_InputProcessCallback
+_080712D4: .4byte gTasks
+_080712D8:
+	ldr r1, _080712E8 @ =gCallback_03004AE8
+	ldr r0, _080712EC @ =StartMenu_InputProcessCallback
 	str r0, [r1]
 	ldrh r0, [r2, 0x8]
 	adds r0, 0x1
 	strh r0, [r2, 0x8]
-	b _08071622
+	b _08071306
 	.align 2, 0
-_08071604: .4byte gCallback_03004AE8
-_08071608: .4byte StartMenu_InputProcessCallback
-_0807160C:
-	ldr r0, _08071628 @ =gCallback_03004AE8
+_080712E8: .4byte gCallback_03004AE8
+_080712EC: .4byte StartMenu_InputProcessCallback
+_080712F0:
+	ldr r0, _0807130C @ =gCallback_03004AE8
 	ldr r0, [r0]
 	bl _call_via_r0
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _08071622
+	bne _08071306
 	adds r0, r4, 0
 	bl DestroyTask
-_08071622:
+_08071306:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08071628: .4byte gCallback_03004AE8
+_0807130C: .4byte gCallback_03004AE8
 	thumb_func_end sub_80712B4
 
 	thumb_func_start sub_8071310
-sub_8071310: @ 807162C
+sub_8071310: @ 8071310
 	push {lr}
 	bl is_c1_link_related_active
 	cmp r0, 0
-	bne _08071642
+	bne _08071326
 	bl player_bitmagic
 	bl sub_80594C0
 	bl sub_80597F4
-_08071642:
-	ldr r0, _08071650 @ =sub_80712B4
+_08071326:
+	ldr r0, _08071334 @ =sub_80712B4
 	bl CreateStartMenuTask
 	bl ScriptContext2_Enable
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08071650: .4byte sub_80712B4
+_08071334: .4byte sub_80712B4
 	thumb_func_end sub_8071310
 
 	thumb_func_start StartMenu_InputProcessCallback
@@ -561,179 +561,179 @@ _0807172E:
 	thumb_func_end StartMenu_InputProcessCallback
 
 	thumb_func_start StartMenu_PokedexCallback
-StartMenu_PokedexCallback: @ 8071734
+StartMenu_PokedexCallback: @ 8071418
 	push {lr}
-	ldr r0, _08071748 @ =gPaletteFade
+	ldr r0, _0807142C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	beq _0807174C
+	beq _08071430
 	movs r0, 0
-	b _0807175E
+	b _08071442
 	.align 2, 0
-_08071748: .4byte gPaletteFade
-_0807174C:
+_0807142C: .4byte gPaletteFade
+_08071430:
 	movs r0, 0x29
 	bl sav12_xor_increment
 	bl PlayRainSoundEffect
-	ldr r0, _08071764 @ =CB2_InitPokedex
+	ldr r0, _08071448 @ =CB2_InitPokedex
 	bl SetMainCallback2
 	movs r0, 0x1
-_0807175E:
+_08071442:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08071764: .4byte CB2_InitPokedex
+_08071448: .4byte CB2_InitPokedex
 	thumb_func_end StartMenu_PokedexCallback
 
 	thumb_func_start StartMenu_PokemonCallback
-StartMenu_PokemonCallback: @ 8071768
+StartMenu_PokemonCallback: @ 807144C
 	push {lr}
-	ldr r0, _0807177C @ =gPaletteFade
+	ldr r0, _08071460 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	beq _08071780
+	beq _08071464
 	movs r0, 0
-	b _0807178C
+	b _08071470
 	.align 2, 0
-_0807177C: .4byte gPaletteFade
-_08071780:
+_08071460: .4byte gPaletteFade
+_08071464:
 	bl PlayRainSoundEffect
-	ldr r0, _08071790 @ =sub_8089A70
+	ldr r0, _08071474 @ =sub_8089A70
 	bl SetMainCallback2
 	movs r0, 0x1
-_0807178C:
+_08071470:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08071790: .4byte sub_8089A70
+_08071474: .4byte sub_8089A70
 	thumb_func_end StartMenu_PokemonCallback
 
 	thumb_func_start StartMenu_BagCallback
-StartMenu_BagCallback: @ 8071794
+StartMenu_BagCallback: @ 8071478
 	push {lr}
-	ldr r0, _080717A8 @ =gPaletteFade
+	ldr r0, _0807148C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	beq _080717AC
+	beq _08071490
 	movs r0, 0
-	b _080717B8
+	b _0807149C
 	.align 2, 0
-_080717A8: .4byte gPaletteFade
-_080717AC:
+_0807148C: .4byte gPaletteFade
+_08071490:
 	bl PlayRainSoundEffect
-	ldr r0, _080717BC @ =sub_80A53F8
+	ldr r0, _080714A0 @ =sub_80A53F8
 	bl SetMainCallback2
 	movs r0, 0x1
-_080717B8:
+_0807149C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080717BC: .4byte sub_80A53F8
+_080714A0: .4byte sub_80A53F8
 	thumb_func_end StartMenu_BagCallback
 
 	thumb_func_start StartMenu_PokenavCallback
-StartMenu_PokenavCallback: @ 80717C0
+StartMenu_PokenavCallback: @ 80714A4
 	push {lr}
-	ldr r0, _080717D4 @ =gPaletteFade
+	ldr r0, _080714B8 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	beq _080717D8
+	beq _080714BC
 	movs r0, 0
-	b _080717E4
+	b _080714C8
 	.align 2, 0
-_080717D4: .4byte gPaletteFade
-_080717D8:
+_080714B8: .4byte gPaletteFade
+_080714BC:
 	bl PlayRainSoundEffect
-	ldr r0, _080717E8 @ =sub_80EBA5C
+	ldr r0, _080714CC @ =sub_80EBA5C
 	bl SetMainCallback2
 	movs r0, 0x1
-_080717E4:
+_080714C8:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080717E8: .4byte sub_80EBA5C
+_080714CC: .4byte sub_80EBA5C
 	thumb_func_end StartMenu_PokenavCallback
 
 	thumb_func_start StartMenu_PlayerCallback
-StartMenu_PlayerCallback: @ 80717EC
+StartMenu_PlayerCallback: @ 80714D0
 	push {lr}
-	ldr r0, _08071800 @ =gPaletteFade
+	ldr r0, _080714E4 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	beq _08071804
+	beq _080714E8
 	movs r0, 0
-	b _08071810
+	b _080714F4
 	.align 2, 0
-_08071800: .4byte gPaletteFade
-_08071804:
+_080714E4: .4byte gPaletteFade
+_080714E8:
 	bl PlayRainSoundEffect
-	ldr r0, _08071814 @ =sub_805469C
+	ldr r0, _080714F8 @ =sub_805469C
 	bl sub_8093110
 	movs r0, 0x1
-_08071810:
+_080714F4:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08071814: .4byte sub_805469C
+_080714F8: .4byte sub_805469C
 	thumb_func_end StartMenu_PlayerCallback
 
 	thumb_func_start StartMenu_SaveCallback
-StartMenu_SaveCallback: @ 8071818
+StartMenu_SaveCallback: @ 80714FC
 	push {lr}
 	bl sub_8072DEC
-	ldr r1, _0807182C @ =gCallback_03004AE8
-	ldr r0, _08071830 @ =SaveCallback1
+	ldr r1, _08071510 @ =gCallback_03004AE8
+	ldr r0, _08071514 @ =SaveCallback1
 	str r0, [r1]
 	movs r0, 0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0807182C: .4byte gCallback_03004AE8
-_08071830: .4byte SaveCallback1
+_08071510: .4byte gCallback_03004AE8
+_08071514: .4byte SaveCallback1
 	thumb_func_end StartMenu_SaveCallback
 
 	thumb_func_start StartMenu_OptionCallback
-StartMenu_OptionCallback: @ 8071834
+StartMenu_OptionCallback: @ 8071518
 	push {lr}
-	ldr r0, _08071848 @ =gPaletteFade
+	ldr r0, _0807152C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	beq _0807184C
+	beq _08071530
 	movs r0, 0
-	b _0807185E
+	b _08071542
 	.align 2, 0
-_08071848: .4byte gPaletteFade
-_0807184C:
+_0807152C: .4byte gPaletteFade
+_08071530:
 	bl PlayRainSoundEffect
-	ldr r0, _08071864 @ =CB2_InitOptionMenu
+	ldr r0, _08071548 @ =CB2_InitOptionMenu
 	bl SetMainCallback2
-	ldr r1, _08071868 @ =gMain
-	ldr r0, _0807186C @ =sub_805469C
+	ldr r1, _0807154C @ =gMain
+	ldr r0, _08071550 @ =sub_805469C
 	str r0, [r1, 0x8]
 	movs r0, 0x1
-_0807185E:
+_08071542:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08071864: .4byte CB2_InitOptionMenu
-_08071868: .4byte gMain
-_0807186C: .4byte sub_805469C
+_08071548: .4byte CB2_InitOptionMenu
+_0807154C: .4byte gMain
+_08071550: .4byte sub_805469C
 	thumb_func_end StartMenu_OptionCallback
 
 	thumb_func_start StartMenu_ExitCallback
-StartMenu_ExitCallback: @ 8071870
+StartMenu_ExitCallback: @ 8071554
 	push {lr}
 	bl sub_8071C20
 	movs r0, 0x1
@@ -742,7 +742,7 @@ StartMenu_ExitCallback: @ 8071870
 	thumb_func_end StartMenu_ExitCallback
 
 	thumb_func_start StartMenu_RetireCallback
-StartMenu_RetireCallback: @ 807187C
+StartMenu_RetireCallback: @ 8071560
 	push {lr}
 	bl sub_8071C20
 	bl SafariZoneRetirePrompt
@@ -752,31 +752,31 @@ StartMenu_RetireCallback: @ 807187C
 	thumb_func_end StartMenu_RetireCallback
 
 	thumb_func_start StartMenu_PlayerLinkCallback
-StartMenu_PlayerLinkCallback: @ 807188C
+StartMenu_PlayerLinkCallback: @ 8071570
 	push {lr}
-	ldr r0, _080718A0 @ =gPaletteFade
+	ldr r0, _08071584 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	beq _080718A4
+	beq _08071588
 	movs r0, 0
-	b _080718B4
+	b _08071598
 	.align 2, 0
-_080718A0: .4byte gPaletteFade
-_080718A4:
+_08071584: .4byte gPaletteFade
+_08071588:
 	bl PlayRainSoundEffect
-	ldr r0, _080718B8 @ =gUnknown_03004860
+	ldr r0, _0807159C @ =gUnknown_03004860
 	ldrb r0, [r0]
-	ldr r1, _080718BC @ =sub_805469C
+	ldr r1, _080715A0 @ =sub_805469C
 	bl sub_8093130
 	movs r0, 0x1
-_080718B4:
+_08071598:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080718B8: .4byte gUnknown_03004860
-_080718BC: .4byte sub_805469C
+_0807159C: .4byte gUnknown_03004860
+_080715A0: .4byte sub_805469C
 	thumb_func_end StartMenu_PlayerLinkCallback
 
 	thumb_func_start SaveCallback1
@@ -883,16 +883,16 @@ _08071984: .4byte 0x030006a8
 	thumb_func_end RunSaveDialogCallback
 
 	thumb_func_start InitSaveDialog
-InitSaveDialog: @ 8071988
+InitSaveDialog: @ 807166C
 	push {lr}
 	bl sub_807160C
-	ldr r0, _0807199C @ =Task_SaveDialog
+	ldr r0, _08071680 @ =Task_SaveDialog
 	movs r1, 0x50
 	bl CreateTask
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807199C: .4byte Task_SaveDialog
+_08071680: .4byte Task_SaveDialog
 	thumb_func_end InitSaveDialog
 
 	thumb_func_start DisplaySaveMessageWithCallback
@@ -1524,24 +1524,24 @@ _08071E36:
 	thumb_func_end sub_80719FC
 
 	thumb_func_start sub_8071B28
-sub_8071B28: @ 8071E44
+sub_8071B28: @ 8071B28
 	push {lr}
-	ldr r0, _08071E64 @ =0x03001bac
+	ldr r0, _08071B48 @ =0x03001bac
 	bl sub_80719FC
 	cmp r0, 0
-	beq _08071E5E
-	ldr r0, _08071E68 @ =Task_8071B64
+	beq _08071B42
+	ldr r0, _08071B4C @ =Task_8071B64
 	movs r1, 0x50
 	bl CreateTask
-	ldr r0, _08071E6C @ =sub_8071B54
+	ldr r0, _08071B50 @ =sub_8071B54
 	bl SetMainCallback2
-_08071E5E:
+_08071B42:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08071E64: .4byte 0x03001bac
-_08071E68: .4byte Task_8071B64
-_08071E6C: .4byte sub_8071B54
+_08071B48: .4byte 0x03001bac
+_08071B4C: .4byte Task_8071B64
+_08071B50: .4byte sub_8071B54
 	thumb_func_end sub_8071B28
 
 	thumb_func_start sub_8071B54

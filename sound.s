@@ -7,219 +7,219 @@
 	.text
 
 	thumb_func_start InitMapMusic
-InitMapMusic: @ 8074F6C
+InitMapMusic: @ 8074BAC
 	push {lr}
-	ldr r1, _08074F7C @ =gDisableMusic
+	ldr r1, _08074BBC @ =gDisableMusic
 	movs r0, 0
 	strb r0, [r1]
 	bl ResetMapMusic
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08074F7C: .4byte gDisableMusic
+_08074BBC: .4byte gDisableMusic
 	thumb_func_end InitMapMusic
 
 	thumb_func_start MapMusicMain
-MapMusicMain: @ 8074F80
+MapMusicMain: @ 8074BC0
 	push {r4,r5,lr}
-	ldr r0, _08074F98 @ =0x030006d8
+	ldr r0, _08074BD8 @ =0x030006d8
 	ldrb r1, [r0]
 	adds r2, r0, 0
 	cmp r1, 0x7
-	bhi _08075062
+	bhi _08074CA2
 	lsls r0, r1, 2
-	ldr r1, _08074F9C @ =_08074FA0
+	ldr r1, _08074BDC @ =_08074FA0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08074F98: .4byte 0x030006d8
-_08074F9C: .4byte _08074FA0
+_08074BD8: .4byte 0x030006d8
+_08074BDC: .4byte _08074FA0
 	.align 2, 0
-_08074FA0:
-	.4byte _08075062
-	.4byte _08074FC0
-	.4byte _08075062
-	.4byte _08075062
-	.4byte _08075062
-	.4byte _08074FD4
-	.4byte _08074FF4
-	.4byte _08075030
-_08074FC0:
+_08074BE0:
+	.4byte _08074CA2
+	.4byte _08074C00
+	.4byte _08074CA2
+	.4byte _08074CA2
+	.4byte _08074CA2
+	.4byte _08074C14
+	.4byte _08074C34
+	.4byte _08074C70
+_08074C00:
 	movs r0, 0x2
 	strb r0, [r2]
-	ldr r0, _08074FD0 @ =0x030006d4
+	ldr r0, _08074C10 @ =0x030006d4
 	ldrh r0, [r0]
 	bl PlayBGM
-	b _08075062
+	b _08074CA2
 	.align 2, 0
-_08074FD0: .4byte 0x030006d4
-_08074FD4:
+_08074C10: .4byte 0x030006d4
+_08074C14:
 	bl IsBGMStopped
 	lsls r0, 24
 	cmp r0, 0
-	beq _08075062
-	ldr r0, _08074FEC @ =0x030006d6
+	beq _08074CA2
+	ldr r0, _08074C2C @ =0x030006d6
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _08074FF0 @ =0x030006d8
+	ldr r0, _08074C30 @ =0x030006d8
 	strb r1, [r0]
-	b _08075062
+	b _08074CA2
 	.align 2, 0
-_08074FEC: .4byte 0x030006d6
-_08074FF0: .4byte 0x030006d8
-_08074FF4:
+_08074C2C: .4byte 0x030006d6
+_08074C30: .4byte 0x030006d8
+_08074C34:
 	bl IsBGMStopped
 	lsls r0, 24
 	cmp r0, 0
-	beq _08075062
+	beq _08074CA2
 	bl IsFanfareTaskInactive
 	lsls r0, 24
 	cmp r0, 0
-	beq _08075062
-	ldr r2, _08075024 @ =0x030006d4
-	ldr r1, _08075028 @ =0x030006d6
+	beq _08074CA2
+	ldr r2, _08074C64 @ =0x030006d4
+	ldr r1, _08074C68 @ =0x030006d6
 	ldrh r0, [r1]
 	strh r0, [r2]
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _0807502C @ =0x030006d8
+	ldr r1, _08074C6C @ =0x030006d8
 	movs r0, 0x2
 	strb r0, [r1]
 	ldrh r0, [r2]
 	bl PlayBGM
-	b _08075062
+	b _08074CA2
 	.align 2, 0
-_08075024: .4byte 0x030006d4
-_08075028: .4byte 0x030006d6
-_0807502C: .4byte 0x030006d8
-_08075030:
+_08074C64: .4byte 0x030006d4
+_08074C68: .4byte 0x030006d6
+_08074C6C: .4byte 0x030006d8
+_08074C70:
 	bl IsBGMStopped
 	lsls r0, 24
 	cmp r0, 0
-	beq _08075062
+	beq _08074CA2
 	bl IsFanfareTaskInactive
 	lsls r0, 24
 	cmp r0, 0
-	beq _08075062
-	ldr r4, _08075068 @ =0x030006d6
+	beq _08074CA2
+	ldr r4, _08074CA8 @ =0x030006d6
 	ldrh r0, [r4]
-	ldr r5, _0807506C @ =0x030006d9
+	ldr r5, _08074CAC @ =0x030006d9
 	ldrb r1, [r5]
 	bl FadeInNewBGM
-	ldr r1, _08075070 @ =0x030006d4
+	ldr r1, _08074CB0 @ =0x030006d4
 	ldrh r0, [r4]
 	strh r0, [r1]
 	movs r2, 0
 	strh r2, [r4]
-	ldr r1, _08075074 @ =0x030006d8
+	ldr r1, _08074CB4 @ =0x030006d8
 	movs r0, 0x2
 	strb r0, [r1]
 	strb r2, [r5]
-_08075062:
+_08074CA2:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075068: .4byte 0x030006d6
-_0807506C: .4byte 0x030006d9
-_08075070: .4byte 0x030006d4
-_08075074: .4byte 0x030006d8
+_08074CA8: .4byte 0x030006d6
+_08074CAC: .4byte 0x030006d9
+_08074CB0: .4byte 0x030006d4
+_08074CB4: .4byte 0x030006d8
 	thumb_func_end MapMusicMain
 
 	thumb_func_start ResetMapMusic
-ResetMapMusic: @ 8075078
-	ldr r0, _0807508C @ =0x030006d4
+ResetMapMusic: @ 8074CB8
+	ldr r0, _08074CCC @ =0x030006d4
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _08075090 @ =0x030006d6
+	ldr r0, _08074CD0 @ =0x030006d6
 	strh r1, [r0]
-	ldr r0, _08075094 @ =0x030006d8
+	ldr r0, _08074CD4 @ =0x030006d8
 	strb r1, [r0]
-	ldr r0, _08075098 @ =0x030006d9
+	ldr r0, _08074CD8 @ =0x030006d9
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_0807508C: .4byte 0x030006d4
-_08075090: .4byte 0x030006d6
-_08075094: .4byte 0x030006d8
-_08075098: .4byte 0x030006d9
+_08074CCC: .4byte 0x030006d4
+_08074CD0: .4byte 0x030006d6
+_08074CD4: .4byte 0x030006d8
+_08074CD8: .4byte 0x030006d9
 	thumb_func_end ResetMapMusic
 
 	thumb_func_start GetCurrentMapMusic
-GetCurrentMapMusic: @ 807509C
-	ldr r0, _080750A4 @ =0x030006d4
+GetCurrentMapMusic: @ 8074CDC
+	ldr r0, _08074CE4 @ =0x030006d4
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
-_080750A4: .4byte 0x030006d4
+_08074CE4: .4byte 0x030006d4
 	thumb_func_end GetCurrentMapMusic
 
 	thumb_func_start PlayNewMapMusic
-PlayNewMapMusic: @ 80750A8
-	ldr r1, _080750BC @ =0x030006d4
+PlayNewMapMusic: @ 8074CE8
+	ldr r1, _08074CFC @ =0x030006d4
 	strh r0, [r1]
-	ldr r1, _080750C0 @ =0x030006d6
+	ldr r1, _08074D00 @ =0x030006d6
 	movs r0, 0
 	strh r0, [r1]
-	ldr r1, _080750C4 @ =0x030006d8
+	ldr r1, _08074D04 @ =0x030006d8
 	movs r0, 0x1
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-_080750BC: .4byte 0x030006d4
-_080750C0: .4byte 0x030006d6
-_080750C4: .4byte 0x030006d8
+_08074CFC: .4byte 0x030006d4
+_08074D00: .4byte 0x030006d6
+_08074D04: .4byte 0x030006d8
 	thumb_func_end PlayNewMapMusic
 
 	thumb_func_start StopMapMusic
-StopMapMusic: @ 80750C8
-	ldr r0, _080750DC @ =0x030006d4
+StopMapMusic: @ 8074D08
+	ldr r0, _08074D1C @ =0x030006d4
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _080750E0 @ =0x030006d6
+	ldr r0, _08074D20 @ =0x030006d6
 	strh r1, [r0]
-	ldr r1, _080750E4 @ =0x030006d8
+	ldr r1, _08074D24 @ =0x030006d8
 	movs r0, 0x1
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-_080750DC: .4byte 0x030006d4
-_080750E0: .4byte 0x030006d6
-_080750E4: .4byte 0x030006d8
+_08074D1C: .4byte 0x030006d4
+_08074D20: .4byte 0x030006d6
+_08074D24: .4byte 0x030006d8
 	thumb_func_end StopMapMusic
 
 	thumb_func_start FadeOutMapMusic
-FadeOutMapMusic: @ 80750E8
+FadeOutMapMusic: @ 8074D28
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
 	bl IsNotWaitingForBGMStop
 	lsls r0, 24
 	cmp r0, 0
-	beq _080750FE
+	beq _08074D3E
 	adds r0, r4, 0
 	bl FadeOutBGM
-_080750FE:
-	ldr r0, _08075114 @ =0x030006d4
+_08074D3E:
+	ldr r0, _08074D54 @ =0x030006d4
 	movs r1, 0
 	strh r1, [r0]
-	ldr r0, _08075118 @ =0x030006d6
+	ldr r0, _08074D58 @ =0x030006d6
 	strh r1, [r0]
-	ldr r1, _0807511C @ =0x030006d8
+	ldr r1, _08074D5C @ =0x030006d8
 	movs r0, 0x5
 	strb r0, [r1]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075114: .4byte 0x030006d4
-_08075118: .4byte 0x030006d6
-_0807511C: .4byte 0x030006d8
+_08074D54: .4byte 0x030006d4
+_08074D58: .4byte 0x030006d6
+_08074D5C: .4byte 0x030006d8
 	thumb_func_end FadeOutMapMusic
 
 	thumb_func_start FadeOutAndPlayNewMapMusic
-FadeOutAndPlayNewMapMusic: @ 8075120
+FadeOutAndPlayNewMapMusic: @ 8074D60
 	push {r4,lr}
 	adds r4, r0, 0
 	adds r0, r1, 0
@@ -228,25 +228,25 @@ FadeOutAndPlayNewMapMusic: @ 8075120
 	lsls r0, 24
 	lsrs r0, 24
 	bl FadeOutMapMusic
-	ldr r1, _08075148 @ =0x030006d4
+	ldr r1, _08074D88 @ =0x030006d4
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _0807514C @ =0x030006d6
+	ldr r0, _08074D8C @ =0x030006d6
 	strh r4, [r0]
-	ldr r1, _08075150 @ =0x030006d8
+	ldr r1, _08074D90 @ =0x030006d8
 	movs r0, 0x6
 	strb r0, [r1]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075148: .4byte 0x030006d4
-_0807514C: .4byte 0x030006d6
-_08075150: .4byte 0x030006d8
+_08074D88: .4byte 0x030006d4
+_08074D8C: .4byte 0x030006d6
+_08074D90: .4byte 0x030006d8
 	thumb_func_end FadeOutAndPlayNewMapMusic
 
 	thumb_func_start FadeOutAndFadeInNewMapMusic
-FadeOutAndFadeInNewMapMusic: @ 8075154
+FadeOutAndFadeInNewMapMusic: @ 8074D94
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r0, r1, 0
@@ -258,28 +258,28 @@ FadeOutAndFadeInNewMapMusic: @ 8075154
 	lsls r5, 24
 	lsrs r5, 24
 	bl FadeOutMapMusic
-	ldr r1, _08075188 @ =0x030006d4
+	ldr r1, _08074DC8 @ =0x030006d4
 	movs r0, 0
 	strh r0, [r1]
-	ldr r0, _0807518C @ =0x030006d6
+	ldr r0, _08074DCC @ =0x030006d6
 	strh r4, [r0]
-	ldr r1, _08075190 @ =0x030006d8
+	ldr r1, _08074DD0 @ =0x030006d8
 	movs r0, 0x7
 	strb r0, [r1]
-	ldr r0, _08075194 @ =0x030006d9
+	ldr r0, _08074DD4 @ =0x030006d9
 	strb r5, [r0]
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075188: .4byte 0x030006d4
-_0807518C: .4byte 0x030006d6
-_08075190: .4byte 0x030006d8
-_08075194: .4byte 0x030006d9
+_08074DC8: .4byte 0x030006d4
+_08074DCC: .4byte 0x030006d6
+_08074DD0: .4byte 0x030006d8
+_08074DD4: .4byte 0x030006d9
 	thumb_func_end FadeOutAndFadeInNewMapMusic
 
 	thumb_func_start FadeInNewMapMusic
-FadeInNewMapMusic: @ 8075198
+FadeInNewMapMusic: @ 8074DD8
 	push {r4,lr}
 	adds r4, r0, 0
 	lsls r4, 16
@@ -288,61 +288,61 @@ FadeInNewMapMusic: @ 8075198
 	lsrs r1, 24
 	adds r0, r4, 0
 	bl FadeInNewBGM
-	ldr r0, _080751C4 @ =0x030006d4
+	ldr r0, _08074E04 @ =0x030006d4
 	strh r4, [r0]
-	ldr r0, _080751C8 @ =0x030006d6
+	ldr r0, _08074E08 @ =0x030006d6
 	movs r2, 0
 	strh r2, [r0]
-	ldr r1, _080751CC @ =0x030006d8
+	ldr r1, _08074E0C @ =0x030006d8
 	movs r0, 0x2
 	strb r0, [r1]
-	ldr r0, _080751D0 @ =0x030006d9
+	ldr r0, _08074E10 @ =0x030006d9
 	strb r2, [r0]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080751C4: .4byte 0x030006d4
-_080751C8: .4byte 0x030006d6
-_080751CC: .4byte 0x030006d8
-_080751D0: .4byte 0x030006d9
+_08074E04: .4byte 0x030006d4
+_08074E08: .4byte 0x030006d6
+_08074E0C: .4byte 0x030006d8
+_08074E10: .4byte 0x030006d9
 	thumb_func_end FadeInNewMapMusic
 
 	thumb_func_start IsNotWaitingForBGMStop
-IsNotWaitingForBGMStop: @ 80751D4
+IsNotWaitingForBGMStop: @ 8074E14
 	push {lr}
-	ldr r0, _080751EC @ =0x030006d8
+	ldr r0, _08074E2C @ =0x030006d8
 	ldrb r0, [r0]
 	cmp r0, 0x6
-	beq _080751F0
+	beq _08074E30
 	cmp r0, 0x5
-	beq _080751F0
+	beq _08074E30
 	cmp r0, 0x7
-	beq _080751F0
+	beq _08074E30
 	movs r0, 0x1
-	b _080751F2
+	b _08074E32
 	.align 2, 0
-_080751EC: .4byte 0x030006d8
-_080751F0:
+_08074E2C: .4byte 0x030006d8
+_08074E30:
 	movs r0, 0
-_080751F2:
+_08074E32:
 	pop {r1}
 	bx r1
 	thumb_func_end IsNotWaitingForBGMStop
 
 	thumb_func_start PlayFanfareByFanfareNum
-PlayFanfareByFanfareNum: @ 80751F8
+PlayFanfareByFanfareNum: @ 8074E38
 	push {r4,lr}
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _08075220 @ =gMPlay_BGM
+	ldr r0, _08074E60 @ =gMPlay_BGM
 	bl m4aMPlayStop
-	ldr r0, _08075224 @ =gFanfares
+	ldr r0, _08074E64 @ =gFanfares
 	lsls r4, 2
 	adds r4, r0
 	ldrh r0, [r4]
-	ldr r2, _08075228 @ =0x030006da
+	ldr r2, _08074E68 @ =0x030006da
 	ldrh r1, [r4, 0x2]
 	strh r1, [r2]
 	bl m4aSongNumStart
@@ -350,49 +350,49 @@ PlayFanfareByFanfareNum: @ 80751F8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075220: .4byte gMPlay_BGM
-_08075224: .4byte gFanfares
-_08075228: .4byte 0x030006da
+_08074E60: .4byte gMPlay_BGM
+_08074E64: .4byte gFanfares
+_08074E68: .4byte 0x030006da
 	thumb_func_end PlayFanfareByFanfareNum
 
 	thumb_func_start WaitFanfare
-WaitFanfare: @ 807522C
+WaitFanfare: @ 8074E6C
 	push {lr}
 	lsls r0, 24
 	lsrs r1, r0, 24
-	ldr r2, _08075244 @ =0x030006da
+	ldr r2, _08074E84 @ =0x030006da
 	ldrh r0, [r2]
 	cmp r0, 0
-	beq _08075248
+	beq _08074E88
 	subs r0, 0x1
 	strh r0, [r2]
 	movs r0, 0
-	b _08075260
+	b _08074EA0
 	.align 2, 0
-_08075244: .4byte 0x030006da
-_08075248:
+_08074E84: .4byte 0x030006da
+_08074E88:
 	cmp r1, 0
-	bne _08075258
-	ldr r0, _08075254 @ =gMPlay_BGM
+	bne _08074E98
+	ldr r0, _08074E94 @ =gMPlay_BGM
 	bl m4aMPlayContinue
-	b _0807525E
+	b _08074E9E
 	.align 2, 0
-_08075254: .4byte gMPlay_BGM
-_08075258:
+_08074E94: .4byte gMPlay_BGM
+_08074E98:
 	movs r0, 0
 	bl m4aSongNumStart
-_0807525E:
+_08074E9E:
 	movs r0, 0x1
-_08075260:
+_08074EA0:
 	pop {r1}
 	bx r1
 	thumb_func_end WaitFanfare
 
 	thumb_func_start StopFanfareByFanfareNum
-StopFanfareByFanfareNum: @ 8075264
+StopFanfareByFanfareNum: @ 8074EA4
 	push {lr}
 	lsls r0, 24
-	ldr r1, _08075278 @ =gFanfares
+	ldr r1, _08074EB8 @ =gFanfares
 	lsrs r0, 22
 	adds r0, r1
 	ldrh r0, [r0]
@@ -400,56 +400,56 @@ StopFanfareByFanfareNum: @ 8075264
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075278: .4byte gFanfares
+_08074EB8: .4byte gFanfares
 	thumb_func_end StopFanfareByFanfareNum
 
 	thumb_func_start PlayFanfare
-PlayFanfare: @ 807527C
+PlayFanfare: @ 8074EBC
 	push {lr}
 	lsls r0, 16
 	lsrs r3, r0, 16
 	movs r1, 0
-	ldr r2, _0807529C @ =gFanfares
-_08075286:
+	ldr r2, _08074EDC @ =gFanfares
+_08074EC6:
 	ldrh r0, [r2]
 	cmp r0, r3
-	bne _080752A0
+	bne _08074EE0
 	lsls r0, r1, 24
 	lsrs r0, 24
 	bl PlayFanfareByFanfareNum
 	bl CreateFanfareTask
-	b _080752B2
+	b _08074EF2
 	.align 2, 0
-_0807529C: .4byte gFanfares
-_080752A0:
+_08074EDC: .4byte gFanfares
+_08074EE0:
 	adds r2, 0x4
 	adds r1, 0x1
 	cmp r1, 0xB
-	bls _08075286
+	bls _08074EC6
 	movs r0, 0
 	bl PlayFanfareByFanfareNum
 	bl CreateFanfareTask
-_080752B2:
+_08074EF2:
 	pop {r0}
 	bx r0
 	thumb_func_end PlayFanfare
 
 	thumb_func_start IsFanfareTaskInactive
-IsFanfareTaskInactive: @ 80752B8
+IsFanfareTaskInactive: @ 8074EF8
 	push {lr}
-	ldr r0, _080752CC @ =Task_Fanfare
+	ldr r0, _08074F0C @ =Task_Fanfare
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	beq _080752D0
+	beq _08074F10
 	movs r0, 0x1
-	b _080752D2
+	b _08074F12
 	.align 2, 0
-_080752CC: .4byte Task_Fanfare
-_080752D0:
+_08074F0C: .4byte Task_Fanfare
+_08074F10:
 	movs r0, 0
-_080752D2:
+_08074F12:
 	pop {r1}
 	bx r1
 	thumb_func_end IsFanfareTaskInactive
@@ -503,24 +503,24 @@ _08075328: .4byte Task_Fanfare
 	thumb_func_end CreateFanfareTask
 
 	thumb_func_start FadeInNewBGM
-FadeInNewBGM: @ 807532C
+FadeInNewBGM: @ 8074F6C
 	push {r4-r6,lr}
 	lsls r0, 16
 	lsrs r5, r0, 16
 	lsls r1, 24
 	lsrs r6, r1, 24
-	ldr r0, _0807536C @ =gDisableMusic
+	ldr r0, _08074FAC @ =gDisableMusic
 	ldrb r0, [r0]
 	cmp r0, 0
-	beq _08075340
+	beq _08074F80
 	movs r5, 0
-_08075340:
+_08074F80:
 	adds r0, r5, 0
 	bl m4aSongNumStart
-	ldr r4, _08075370 @ =gMPlay_BGM
+	ldr r4, _08074FB0 @ =gMPlay_BGM
 	adds r0, r4, 0
 	bl m4aMPlayImmInit
-	ldr r1, _08075374 @ =0x0000ffff
+	ldr r1, _08074FB4 @ =0x0000ffff
 	adds r0, r4, 0
 	movs r2, 0
 	bl m4aMPlayVolumeControl
@@ -533,96 +533,96 @@ _08075340:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807536C: .4byte gDisableMusic
-_08075370: .4byte gMPlay_BGM
-_08075374: .4byte 0x0000ffff
+_08074FAC: .4byte gDisableMusic
+_08074FB0: .4byte gMPlay_BGM
+_08074FB4: .4byte 0x0000ffff
 	thumb_func_end FadeInNewBGM
 
 	thumb_func_start FadeOutBGMTemporarily
-FadeOutBGMTemporarily: @ 8075378
+FadeOutBGMTemporarily: @ 8074FB8
 	push {lr}
 	adds r1, r0, 0
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r0, _0807538C @ =gMPlay_BGM
+	ldr r0, _08074FCC @ =gMPlay_BGM
 	bl m4aMPlayFadeOutTemporarily
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807538C: .4byte gMPlay_BGM
+_08074FCC: .4byte gMPlay_BGM
 	thumb_func_end FadeOutBGMTemporarily
 
 	thumb_func_start IsBGMPausedOrStopped
-IsBGMPausedOrStopped: @ 8075390
+IsBGMPausedOrStopped: @ 8074FD0
 	push {lr}
-	ldr r0, _080753A8 @ =gMPlay_BGM
+	ldr r0, _08074FE8 @ =gMPlay_BGM
 	ldr r1, [r0, 0x4]
 	cmp r1, 0
-	blt _080753B0
-	ldr r0, _080753AC @ =0x0000ffff
+	blt _08074FF0
+	ldr r0, _08074FEC @ =0x0000ffff
 	ands r1, r0
 	cmp r1, 0
-	beq _080753B0
+	beq _08074FF0
 	movs r0, 0
-	b _080753B2
+	b _08074FF2
 	.align 2, 0
-_080753A8: .4byte gMPlay_BGM
-_080753AC: .4byte 0x0000ffff
-_080753B0:
+_08074FE8: .4byte gMPlay_BGM
+_08074FEC: .4byte 0x0000ffff
+_08074FF0:
 	movs r0, 0x1
-_080753B2:
+_08074FF2:
 	pop {r1}
 	bx r1
 	thumb_func_end IsBGMPausedOrStopped
 
 	thumb_func_start FadeInBGM
-FadeInBGM: @ 80753B8
+FadeInBGM: @ 8074FF8
 	push {lr}
 	adds r1, r0, 0
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r0, _080753CC @ =gMPlay_BGM
+	ldr r0, _0807500C @ =gMPlay_BGM
 	bl m4aMPlayFadeIn
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080753CC: .4byte gMPlay_BGM
+_0807500C: .4byte gMPlay_BGM
 	thumb_func_end FadeInBGM
 
 	thumb_func_start FadeOutBGM
-FadeOutBGM: @ 80753D0
+FadeOutBGM: @ 8075010
 	push {lr}
 	adds r1, r0, 0
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r0, _080753E4 @ =gMPlay_BGM
+	ldr r0, _08075024 @ =gMPlay_BGM
 	bl m4aMPlayFadeOut
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080753E4: .4byte gMPlay_BGM
+_08075024: .4byte gMPlay_BGM
 	thumb_func_end FadeOutBGM
 
 	thumb_func_start IsBGMStopped
-IsBGMStopped: @ 80753E8
+IsBGMStopped: @ 8075028
 	push {lr}
-	ldr r0, _080753F8 @ =gMPlay_BGM
+	ldr r0, _08075038 @ =gMPlay_BGM
 	ldrh r0, [r0, 0x4]
 	cmp r0, 0
-	beq _080753FC
+	beq _0807503C
 	movs r0, 0
-	b _080753FE
+	b _0807503E
 	.align 2, 0
-_080753F8: .4byte gMPlay_BGM
-_080753FC:
+_08075038: .4byte gMPlay_BGM
+_0807503C:
 	movs r0, 0x1
-_080753FE:
+_0807503E:
 	pop {r1}
 	bx r1
 	thumb_func_end IsBGMStopped
 
 	thumb_func_start PlayCry1
-PlayCry1: @ 8075404
+PlayCry1: @ 8075044
 	push {r4,r5,lr}
 	sub sp, 0x4
 	adds r5, r0, 0
@@ -631,8 +631,8 @@ PlayCry1: @ 8075404
 	lsrs r5, 16
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _08075444 @ =gMPlay_BGM
-	ldr r1, _08075448 @ =0x0000ffff
+	ldr r0, _08075084 @ =gMPlay_BGM
+	ldr r1, _08075088 @ =0x0000ffff
 	movs r2, 0x55
 	bl m4aMPlayVolumeControl
 	lsls r4, 24
@@ -644,7 +644,7 @@ PlayCry1: @ 8075404
 	movs r2, 0x7D
 	movs r3, 0xA
 	bl PlayCryInternal
-	ldr r1, _0807544C @ =gPokemonCryBGMDuckingCounter
+	ldr r1, _0807508C @ =gPokemonCryBGMDuckingCounter
 	movs r0, 0x2
 	strb r0, [r1]
 	bl RestoreBGMVolumeAfterPokemonCry
@@ -653,13 +653,13 @@ PlayCry1: @ 8075404
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075444: .4byte gMPlay_BGM
-_08075448: .4byte 0x0000ffff
-_0807544C: .4byte gPokemonCryBGMDuckingCounter
+_08075084: .4byte gMPlay_BGM
+_08075088: .4byte 0x0000ffff
+_0807508C: .4byte gPokemonCryBGMDuckingCounter
 	thumb_func_end PlayCry1
 
 	thumb_func_start PlayCry2
-PlayCry2: @ 8075450
+PlayCry2: @ 8075090
 	push {r4,lr}
 	sub sp, 0x4
 	lsls r0, 16
@@ -680,7 +680,7 @@ PlayCry2: @ 8075450
 	thumb_func_end PlayCry2
 
 	thumb_func_start PlayCry3
-PlayCry3: @ 8075474
+PlayCry3: @ 80750B4
 	push {r4-r6,lr}
 	sub sp, 0x4
 	lsls r0, 16
@@ -690,7 +690,7 @@ PlayCry3: @ 8075474
 	lsls r2, 24
 	lsrs r4, r2, 24
 	cmp r4, 0x1
-	bne _0807549A
+	bne _080750DA
 	lsls r1, r5, 24
 	asrs r1, 24
 	str r4, [sp]
@@ -698,10 +698,10 @@ PlayCry3: @ 8075474
 	movs r2, 0x7D
 	movs r3, 0xA
 	bl PlayCryInternal
-	b _080754BE
-_0807549A:
-	ldr r0, _080754C8 @ =gMPlay_BGM
-	ldr r1, _080754CC @ =0x0000ffff
+	b _080750FE
+_080750DA:
+	ldr r0, _08075108 @ =gMPlay_BGM
+	ldr r1, _0807510C @ =0x0000ffff
 	movs r2, 0x55
 	bl m4aMPlayVolumeControl
 	lsls r1, r5, 24
@@ -711,23 +711,23 @@ _0807549A:
 	movs r2, 0x7D
 	movs r3, 0xA
 	bl PlayCryInternal
-	ldr r1, _080754D0 @ =gPokemonCryBGMDuckingCounter
+	ldr r1, _08075110 @ =gPokemonCryBGMDuckingCounter
 	movs r0, 0x2
 	strb r0, [r1]
 	bl RestoreBGMVolumeAfterPokemonCry
-_080754BE:
+_080750FE:
 	add sp, 0x4
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080754C8: .4byte gMPlay_BGM
-_080754CC: .4byte 0x0000ffff
-_080754D0: .4byte gPokemonCryBGMDuckingCounter
+_08075108: .4byte gMPlay_BGM
+_0807510C: .4byte 0x0000ffff
+_08075110: .4byte gPokemonCryBGMDuckingCounter
 	thumb_func_end PlayCry3
 
 	thumb_func_start PlayCry4
-PlayCry4: @ 80754D4
+PlayCry4: @ 8075114
 	push {r4-r6,lr}
 	sub sp, 0x4
 	lsls r0, 16
@@ -740,26 +740,26 @@ PlayCry4: @ 80754D4
 	lsrs r2, 24
 	adds r4, r2, 0
 	cmp r2, 0x1
-	bne _080754FE
+	bne _0807513E
 	lsls r1, 24
 	asrs r1, 24
 	str r2, [sp]
 	movs r2, 0x7D
 	movs r3, 0xA
 	bl PlayCryInternal
-	b _08075524
-_080754FE:
-	ldr r0, _0807552C @ =gUnknown_020239F8
+	b _08075164
+_0807513E:
+	ldr r0, _0807516C @ =gUnknown_020239F8
 	ldrh r1, [r0]
 	movs r0, 0x40
 	ands r0, r1
 	cmp r0, 0
-	bne _08075514
-	ldr r0, _08075530 @ =gMPlay_BGM
-	ldr r1, _08075534 @ =0x0000ffff
+	bne _08075154
+	ldr r0, _08075170 @ =gMPlay_BGM
+	ldr r1, _08075174 @ =0x0000ffff
 	movs r2, 0x55
 	bl m4aMPlayVolumeControl
-_08075514:
+_08075154:
 	lsls r1, r5, 24
 	asrs r1, 24
 	str r4, [sp]
@@ -767,19 +767,19 @@ _08075514:
 	movs r2, 0x7D
 	movs r3, 0xA
 	bl PlayCryInternal
-_08075524:
+_08075164:
 	add sp, 0x4
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807552C: .4byte gUnknown_020239F8
-_08075530: .4byte gMPlay_BGM
-_08075534: .4byte 0x0000ffff
+_0807516C: .4byte gUnknown_020239F8
+_08075170: .4byte gMPlay_BGM
+_08075174: .4byte 0x0000ffff
 	thumb_func_end PlayCry4
 
 	thumb_func_start PlayCry5
-PlayCry5: @ 8075538
+PlayCry5: @ 8075178
 	push {r4,r5,lr}
 	sub sp, 0x4
 	adds r5, r0, 0
@@ -788,8 +788,8 @@ PlayCry5: @ 8075538
 	lsrs r5, 16
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r0, _08075574 @ =gMPlay_BGM
-	ldr r1, _08075578 @ =0x0000ffff
+	ldr r0, _080751B4 @ =gMPlay_BGM
+	ldr r1, _080751B8 @ =0x0000ffff
 	movs r2, 0x55
 	bl m4aMPlayVolumeControl
 	str r4, [sp]
@@ -798,7 +798,7 @@ PlayCry5: @ 8075538
 	movs r2, 0x7D
 	movs r3, 0xA
 	bl PlayCryInternal
-	ldr r1, _0807557C @ =gPokemonCryBGMDuckingCounter
+	ldr r1, _080751BC @ =gPokemonCryBGMDuckingCounter
 	movs r0, 0x2
 	strb r0, [r1]
 	bl RestoreBGMVolumeAfterPokemonCry
@@ -807,9 +807,9 @@ PlayCry5: @ 8075538
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075574: .4byte gMPlay_BGM
-_08075578: .4byte 0x0000ffff
-_0807557C: .4byte gPokemonCryBGMDuckingCounter
+_080751B4: .4byte gMPlay_BGM
+_080751B8: .4byte 0x0000ffff
+_080751BC: .4byte gPokemonCryBGMDuckingCounter
 	thumb_func_end PlayCry5
 
 	thumb_func_start PlayCryInternal
@@ -1030,86 +1030,86 @@ _08075730: .4byte gMPlay_PokemonCry
 	thumb_func_end PlayCryInternal
 
 	thumb_func_start IsCryFinished
-IsCryFinished: @ 8075734
+IsCryFinished: @ 8075374
 	push {lr}
-	ldr r0, _0807574C @ =Task_DuckBGMForPokemonCry
+	ldr r0, _0807538C @ =Task_DuckBGMForPokemonCry
 	bl FuncIsActiveTask
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	beq _08075750
+	beq _08075390
 	bl ClearPokemonCrySongs
 	movs r0, 0x1
-	b _08075752
+	b _08075392
 	.align 2, 0
-_0807574C: .4byte Task_DuckBGMForPokemonCry
-_08075750:
+_0807538C: .4byte Task_DuckBGMForPokemonCry
+_08075390:
 	movs r0, 0
-_08075752:
+_08075392:
 	pop {r1}
 	bx r1
 	thumb_func_end IsCryFinished
 
 	thumb_func_start StopCryAndClearCrySongs
-StopCryAndClearCrySongs: @ 8075758
+StopCryAndClearCrySongs: @ 8075398
 	push {lr}
-	ldr r0, _0807576C @ =gMPlay_PokemonCry
+	ldr r0, _080753AC @ =gMPlay_PokemonCry
 	ldr r0, [r0]
 	bl m4aMPlayStop
 	bl ClearPokemonCrySongs
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807576C: .4byte gMPlay_PokemonCry
+_080753AC: .4byte gMPlay_PokemonCry
 	thumb_func_end StopCryAndClearCrySongs
 
 	thumb_func_start StopCry
-StopCry: @ 8075770
+StopCry: @ 80753B0
 	push {lr}
-	ldr r0, _08075780 @ =gMPlay_PokemonCry
+	ldr r0, _080753C0 @ =gMPlay_PokemonCry
 	ldr r0, [r0]
 	bl m4aMPlayStop
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075780: .4byte gMPlay_PokemonCry
+_080753C0: .4byte gMPlay_PokemonCry
 	thumb_func_end StopCry
 
 	thumb_func_start IsCryPlayingOrClearCrySongs
-IsCryPlayingOrClearCrySongs: @ 8075784
+IsCryPlayingOrClearCrySongs: @ 80753C4
 	push {lr}
-	ldr r0, _0807579C @ =gMPlay_PokemonCry
+	ldr r0, _080753DC @ =gMPlay_PokemonCry
 	ldr r0, [r0]
 	bl IsPokemonCryPlaying
 	cmp r0, 0
-	bne _080757A0
+	bne _080753E0
 	bl ClearPokemonCrySongs
 	movs r0, 0
-	b _080757A2
+	b _080753E2
 	.align 2, 0
-_0807579C: .4byte gMPlay_PokemonCry
-_080757A0:
+_080753DC: .4byte gMPlay_PokemonCry
+_080753E0:
 	movs r0, 0x1
-_080757A2:
+_080753E2:
 	pop {r1}
 	bx r1
 	thumb_func_end IsCryPlayingOrClearCrySongs
 
 	thumb_func_start IsCryPlaying
-IsCryPlaying: @ 80757A8
+IsCryPlaying: @ 80753E8
 	push {lr}
-	ldr r0, _080757BC @ =gMPlay_PokemonCry
+	ldr r0, _080753FC @ =gMPlay_PokemonCry
 	ldr r0, [r0]
 	bl IsPokemonCryPlaying
 	cmp r0, 0
-	bne _080757C0
+	bne _08075400
 	movs r0, 0
-	b _080757C2
+	b _08075402
 	.align 2, 0
-_080757BC: .4byte gMPlay_PokemonCry
-_080757C0:
+_080753FC: .4byte gMPlay_PokemonCry
+_08075400:
 	movs r0, 0x1
-_080757C2:
+_08075402:
 	pop {r1}
 	bx r1
 	thumb_func_end IsCryPlaying
@@ -1173,26 +1173,26 @@ _08075830: .4byte Task_DuckBGMForPokemonCry
 	thumb_func_end RestoreBGMVolumeAfterPokemonCry
 
 	thumb_func_start PlayBGM
-PlayBGM: @ 8075834
+PlayBGM: @ 8075474
 	push {lr}
 	lsls r0, 16
 	lsrs r1, r0, 16
-	ldr r0, _08075850 @ =gDisableMusic
+	ldr r0, _08075490 @ =gDisableMusic
 	ldrb r0, [r0]
 	cmp r0, 0
-	beq _08075844
+	beq _08075484
 	movs r1, 0
-_08075844:
+_08075484:
 	adds r0, r1, 0
 	bl m4aSongNumStart
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075850: .4byte gDisableMusic
+_08075490: .4byte gDisableMusic
 	thumb_func_end PlayBGM
 
 	thumb_func_start PlaySE
-PlaySE: @ 8075854
+PlaySE: @ 8075494
 	push {lr}
 	lsls r0, 16
 	lsrs r0, 16
@@ -1202,7 +1202,7 @@ PlaySE: @ 8075854
 	thumb_func_end PlaySE
 
 	thumb_func_start PlaySE12WithPanning
-PlaySE12WithPanning: @ 8075864
+PlaySE12WithPanning: @ 80754A4
 	push {r4-r6,lr}
 	mov r6, r8
 	push {r6}
@@ -1212,13 +1212,13 @@ PlaySE12WithPanning: @ 8075864
 	lsls r4, 24
 	lsrs r4, 24
 	bl m4aSongNumStart
-	ldr r6, _080758AC @ =gMPlay_SE1
+	ldr r6, _080754EC @ =gMPlay_SE1
 	adds r0, r6, 0
 	bl m4aMPlayImmInit
-	ldr r0, _080758B0 @ =gMPlay_SE2
+	ldr r0, _080754F0 @ =gMPlay_SE2
 	mov r8, r0
 	bl m4aMPlayImmInit
-	ldr r5, _080758B4 @ =0x0000ffff
+	ldr r5, _080754F4 @ =0x0000ffff
 	lsls r4, 24
 	asrs r4, 24
 	adds r0, r6, 0
@@ -1235,13 +1235,13 @@ PlaySE12WithPanning: @ 8075864
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080758AC: .4byte gMPlay_SE1
-_080758B0: .4byte gMPlay_SE2
-_080758B4: .4byte 0x0000ffff
+_080754EC: .4byte gMPlay_SE1
+_080754F0: .4byte gMPlay_SE2
+_080754F4: .4byte 0x0000ffff
 	thumb_func_end PlaySE12WithPanning
 
 	thumb_func_start PlaySE1WithPanning
-PlaySE1WithPanning: @ 80758B8
+PlaySE1WithPanning: @ 80754F8
 	push {r4,r5,lr}
 	adds r4, r1, 0
 	lsls r0, 16
@@ -1249,10 +1249,10 @@ PlaySE1WithPanning: @ 80758B8
 	lsls r4, 24
 	lsrs r4, 24
 	bl m4aSongNumStart
-	ldr r5, _080758E4 @ =gMPlay_SE1
+	ldr r5, _08075524 @ =gMPlay_SE1
 	adds r0, r5, 0
 	bl m4aMPlayImmInit
-	ldr r1, _080758E8 @ =0x0000ffff
+	ldr r1, _08075528 @ =0x0000ffff
 	lsls r4, 24
 	asrs r4, 24
 	adds r0, r5, 0
@@ -1262,12 +1262,12 @@ PlaySE1WithPanning: @ 80758B8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080758E4: .4byte gMPlay_SE1
-_080758E8: .4byte 0x0000ffff
+_08075524: .4byte gMPlay_SE1
+_08075528: .4byte 0x0000ffff
 	thumb_func_end PlaySE1WithPanning
 
 	thumb_func_start PlaySE2WithPanning
-PlaySE2WithPanning: @ 80758EC
+PlaySE2WithPanning: @ 807552C
 	push {r4,r5,lr}
 	adds r4, r1, 0
 	lsls r0, 16
@@ -1275,10 +1275,10 @@ PlaySE2WithPanning: @ 80758EC
 	lsls r4, 24
 	lsrs r4, 24
 	bl m4aSongNumStart
-	ldr r5, _08075918 @ =gMPlay_SE2
+	ldr r5, _08075558 @ =gMPlay_SE2
 	adds r0, r5, 0
 	bl m4aMPlayImmInit
-	ldr r1, _0807591C @ =0x0000ffff
+	ldr r1, _0807555C @ =0x0000ffff
 	lsls r4, 24
 	asrs r4, 24
 	adds r0, r5, 0
@@ -1288,22 +1288,22 @@ PlaySE2WithPanning: @ 80758EC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075918: .4byte gMPlay_SE2
-_0807591C: .4byte 0x0000ffff
+_08075558: .4byte gMPlay_SE2
+_0807555C: .4byte 0x0000ffff
 	thumb_func_end PlaySE2WithPanning
 
 	thumb_func_start SE12PanpotControl
-SE12PanpotControl: @ 8075920
+SE12PanpotControl: @ 8075560
 	push {r4,r5,lr}
 	adds r4, r0, 0
-	ldr r0, _08075944 @ =gMPlay_SE1
-	ldr r5, _08075948 @ =0x0000ffff
+	ldr r0, _08075584 @ =gMPlay_SE1
+	ldr r5, _08075588 @ =0x0000ffff
 	lsls r4, 24
 	asrs r4, 24
 	adds r1, r5, 0
 	adds r2, r4, 0
 	bl m4aMPlayPanpotControl
-	ldr r0, _0807594C @ =gMPlay_SE2
+	ldr r0, _0807558C @ =gMPlay_SE2
 	adds r1, r5, 0
 	adds r2, r4, 0
 	bl m4aMPlayPanpotControl
@@ -1311,92 +1311,92 @@ SE12PanpotControl: @ 8075920
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075944: .4byte gMPlay_SE1
-_08075948: .4byte 0x0000ffff
-_0807594C: .4byte gMPlay_SE2
+_08075584: .4byte gMPlay_SE1
+_08075588: .4byte 0x0000ffff
+_0807558C: .4byte gMPlay_SE2
 	thumb_func_end SE12PanpotControl
 
 	thumb_func_start IsSEPlaying
-IsSEPlaying: @ 8075950
+IsSEPlaying: @ 8075590
 	push {lr}
-	ldr r0, _08075980 @ =gMPlay_SE1
+	ldr r0, _080755C0 @ =gMPlay_SE1
 	ldr r1, [r0, 0x4]
 	movs r2, 0x80
 	lsls r2, 24
 	adds r3, r0, 0
 	cmp r1, 0
-	bge _0807596A
-	ldr r0, _08075984 @ =gMPlay_SE2
+	bge _080755AA
+	ldr r0, _080755C4 @ =gMPlay_SE2
 	ldr r0, [r0, 0x4]
 	ands r0, r2
 	cmp r0, 0
-	bne _0807597C
-_0807596A:
-	ldr r1, _08075988 @ =0x0000ffff
+	bne _080755BC
+_080755AA:
+	ldr r1, _080755C8 @ =0x0000ffff
 	ldrh r0, [r3, 0x4]
 	cmp r0, 0
-	bne _0807598C
-	ldr r0, _08075984 @ =gMPlay_SE2
+	bne _080755CC
+	ldr r0, _080755C4 @ =gMPlay_SE2
 	ldr r0, [r0, 0x4]
 	ands r0, r1
 	cmp r0, 0
-	bne _0807598C
-_0807597C:
+	bne _080755CC
+_080755BC:
 	movs r0, 0
-	b _0807598E
+	b _080755CE
 	.align 2, 0
-_08075980: .4byte gMPlay_SE1
-_08075984: .4byte gMPlay_SE2
-_08075988: .4byte 0x0000ffff
-_0807598C:
+_080755C0: .4byte gMPlay_SE1
+_080755C4: .4byte gMPlay_SE2
+_080755C8: .4byte 0x0000ffff
+_080755CC:
 	movs r0, 0x1
-_0807598E:
+_080755CE:
 	pop {r1}
 	bx r1
 	thumb_func_end IsSEPlaying
 
 	thumb_func_start IsBGMPlaying
-IsBGMPlaying: @ 8075994
+IsBGMPlaying: @ 80755D4
 	push {lr}
-	ldr r0, _080759AC @ =gMPlay_BGM
+	ldr r0, _080755EC @ =gMPlay_BGM
 	ldr r1, [r0, 0x4]
 	cmp r1, 0
-	blt _080759B4
-	ldr r0, _080759B0 @ =0x0000ffff
+	blt _080755F4
+	ldr r0, _080755F0 @ =0x0000ffff
 	ands r1, r0
 	cmp r1, 0
-	beq _080759B4
+	beq _080755F4
 	movs r0, 0x1
-	b _080759B6
+	b _080755F6
 	.align 2, 0
-_080759AC: .4byte gMPlay_BGM
-_080759B0: .4byte 0x0000ffff
-_080759B4:
+_080755EC: .4byte gMPlay_BGM
+_080755F0: .4byte 0x0000ffff
+_080755F4:
 	movs r0, 0
-_080759B6:
+_080755F6:
 	pop {r1}
 	bx r1
 	thumb_func_end IsBGMPlaying
 
 	thumb_func_start IsSpecialSEPlaying
-IsSpecialSEPlaying: @ 80759BC
+IsSpecialSEPlaying: @ 80755FC
 	push {lr}
-	ldr r0, _080759D4 @ =gMPlay_SE3
+	ldr r0, _08075614 @ =gMPlay_SE3
 	ldr r1, [r0, 0x4]
 	cmp r1, 0
-	blt _080759DC
-	ldr r0, _080759D8 @ =0x0000ffff
+	blt _0807561C
+	ldr r0, _08075618 @ =0x0000ffff
 	ands r1, r0
 	cmp r1, 0
-	beq _080759DC
+	beq _0807561C
 	movs r0, 0x1
-	b _080759DE
+	b _0807561E
 	.align 2, 0
-_080759D4: .4byte gMPlay_SE3
-_080759D8: .4byte 0x0000ffff
-_080759DC:
+_08075614: .4byte gMPlay_SE3
+_08075618: .4byte 0x0000ffff
+_0807561C:
 	movs r0, 0
-_080759DE:
+_0807561E:
 	pop {r1}
 	bx r1
 	thumb_func_end IsSpecialSEPlaying

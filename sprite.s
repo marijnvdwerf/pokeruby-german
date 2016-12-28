@@ -7,7 +7,7 @@
 	.text
 
 	thumb_func_start ResetSpriteData
-ResetSpriteData: @ 800087C
+ResetSpriteData: @ 8000748
 	push {r4,lr}
 	movs r0, 0
 	movs r1, 0x80
@@ -16,38 +16,38 @@ ResetSpriteData: @ 800087C
 	bl ClearSpriteCopyRequests
 	bl ResetAffineAnimData
 	bl FreeSpriteTileRanges
-	ldr r1, _080008B8 @ =gOamLimit
+	ldr r1, _08000784 @ =gOamLimit
 	movs r0, 0x40
 	strb r0, [r1]
-	ldr r0, _080008BC @ =gReservedSpriteTileCount
+	ldr r0, _08000788 @ =gReservedSpriteTileCount
 	movs r4, 0
 	strh r4, [r0]
 	movs r0, 0
 	bl AllocSpriteTiles
-	ldr r0, _080008C0 @ =gSpriteCoordOffsetX
+	ldr r0, _0800078C @ =gSpriteCoordOffsetX
 	strh r4, [r0]
-	ldr r0, _080008C4 @ =gSpriteCoordOffsetY
+	ldr r0, _08000790 @ =gSpriteCoordOffsetY
 	strh r4, [r0]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080008B8: .4byte gOamLimit
-_080008BC: .4byte gReservedSpriteTileCount
-_080008C0: .4byte gSpriteCoordOffsetX
-_080008C4: .4byte gSpriteCoordOffsetY
+_08000784: .4byte gOamLimit
+_08000788: .4byte gReservedSpriteTileCount
+_0800078C: .4byte gSpriteCoordOffsetX
+_08000790: .4byte gSpriteCoordOffsetY
 	thumb_func_end ResetSpriteData
 
 	thumb_func_start AnimateSprites
-AnimateSprites: @ 80008C8
+AnimateSprites: @ 8000794
 	push {r4-r7,lr}
 	movs r6, 0
 	movs r7, 0x1
-_080008CE:
+_0800079A:
 	lsls r0, r6, 4
 	adds r0, r6
 	lsls r0, 2
-	ldr r1, _08000910 @ =gSprites
+	ldr r1, _080007DC @ =gSprites
 	adds r4, r0, r1
 	adds r5, r4, 0
 	adds r5, 0x3E
@@ -55,7 +55,7 @@ _080008CE:
 	adds r0, r7, 0
 	ands r0, r1
 	cmp r0, 0
-	beq _080008FE
+	beq _080007CA
 	ldr r1, [r4, 0x1C]
 	adds r0, r4, 0
 	bl _call_via_r1
@@ -63,30 +63,30 @@ _080008CE:
 	adds r0, r7, 0
 	ands r0, r1
 	cmp r0, 0
-	beq _080008FE
+	beq _080007CA
 	adds r0, r4, 0
 	bl AnimateSprite
-_080008FE:
+_080007CA:
 	adds r0, r6, 0x1
 	lsls r0, 24
 	lsrs r6, r0, 24
 	cmp r6, 0x3F
-	bls _080008CE
+	bls _0800079A
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08000910: .4byte gSprites
+_080007DC: .4byte gSprites
 	thumb_func_end AnimateSprites
 
 	thumb_func_start BuildOamBuffer
-BuildOamBuffer: @ 8000914
+BuildOamBuffer: @ 80007E0
 	push {r4,r5,lr}
 	bl UpdateOamCoords
 	bl BuildSpritePriorities
 	bl SortSprites
-	ldr r5, _08000954 @ =gMain
-	ldr r0, _08000958 @ =0x0000043d
+	ldr r5, _08000820 @ =gMain
+	ldr r0, _08000824 @ =0x0000043d
 	adds r5, r0
 	ldrb r0, [r5]
 	lsls r4, r0, 31
@@ -103,15 +103,15 @@ BuildOamBuffer: @ 8000914
 	ands r0, r1
 	orrs r4, r0
 	strb r4, [r5]
-	ldr r0, _0800095C @ =gShouldProcessSpriteCopyRequests
+	ldr r0, _08000828 @ =gShouldProcessSpriteCopyRequests
 	strb r2, [r0]
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08000954: .4byte gMain
-_08000958: .4byte 0x0000043d
-_0800095C: .4byte gShouldProcessSpriteCopyRequests
+_08000820: .4byte gMain
+_08000824: .4byte 0x0000043d
+_08000828: .4byte gShouldProcessSpriteCopyRequests
 	thumb_func_end BuildOamBuffer
 
 	thumb_func_start UpdateOamCoords
@@ -616,18 +616,18 @@ _08000D0C: .4byte gDummyOamData
 	thumb_func_end AddSpritesToOamBuffer
 
 	thumb_func_start CreateSprite
-CreateSprite: @ 8000D10
+CreateSprite: @ 8000BDC
 	push {r4-r7,lr}
 	sub sp, 0x4
 	adds r7, r0, 0
 	lsls r3, 24
 	lsrs r4, r3, 24
 	movs r3, 0
-	ldr r0, _08000D4C @ =gSprites
+	ldr r0, _08000C18 @ =gSprites
 	mov r12, r0
 	lsls r5, r1, 16
 	lsls r6, r2, 16
-_08000D24:
+_08000BF0:
 	lsls r0, r3, 4
 	adds r0, r3
 	lsls r0, 2
@@ -636,7 +636,7 @@ _08000D24:
 	ldrb r0, [r0]
 	lsls r0, 31
 	cmp r0, 0
-	bne _08000D50
+	bne _08000C1C
 	str r4, [sp]
 	adds r0, r3, 0
 	adds r1, r7, 0
@@ -645,17 +645,17 @@ _08000D24:
 	bl CreateSpriteAt
 	lsls r0, 24
 	lsrs r0, 24
-	b _08000D5C
+	b _08000C28
 	.align 2, 0
-_08000D4C: .4byte gSprites
-_08000D50:
+_08000C18: .4byte gSprites
+_08000C1C:
 	adds r0, r3, 0x1
 	lsls r0, 24
 	lsrs r3, r0, 24
 	cmp r3, 0x3F
-	bls _08000D24
+	bls _08000BF0
 	movs r0, 0x40
-_08000D5C:
+_08000C28:
 	add sp, 0x4
 	pop {r4-r7}
 	pop {r1}
@@ -663,7 +663,7 @@ _08000D5C:
 	thumb_func_end CreateSprite
 
 	thumb_func_start CreateSpriteAtEnd
-CreateSpriteAtEnd: @ 8000D64
+CreateSpriteAtEnd: @ 8000C30
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -672,14 +672,14 @@ CreateSpriteAtEnd: @ 8000D64
 	lsls r3, 24
 	lsrs r6, r3, 24
 	movs r3, 0x3F
-	ldr r0, _08000DB0 @ =gSprites
+	ldr r0, _08000C7C @ =gSprites
 	mov r8, r0
 	movs r0, 0x1
 	negs r0, r0
 	mov r12, r0
 	lsls r4, r1, 16
 	lsls r5, r2, 16
-_08000D82:
+_08000C4E:
 	lsls r0, r3, 16
 	asrs r1, r0, 16
 	lsls r0, r1, 4
@@ -690,7 +690,7 @@ _08000D82:
 	ldrb r0, [r0]
 	lsls r0, 31
 	cmp r0, 0
-	bne _08000DB4
+	bne _08000C80
 	lsls r0, r3, 24
 	lsrs r0, 24
 	str r6, [sp]
@@ -700,18 +700,18 @@ _08000D82:
 	bl CreateSpriteAt
 	lsls r0, 24
 	lsrs r0, 24
-	b _08000DC2
+	b _08000C8E
 	.align 2, 0
-_08000DB0: .4byte gSprites
-_08000DB4:
+_08000C7C: .4byte gSprites
+_08000C80:
 	subs r0, r1, 0x1
 	lsls r0, 16
 	lsrs r3, r0, 16
 	asrs r0, 16
 	cmp r0, r12
-	bgt _08000D82
+	bgt _08000C4E
 	movs r0, 0x40
-_08000DC2:
+_08000C8E:
 	add sp, 0x4
 	pop {r3}
 	mov r8, r3
@@ -721,10 +721,10 @@ _08000DC2:
 	thumb_func_end CreateSpriteAtEnd
 
 	thumb_func_start CreateInvisibleSprite
-CreateInvisibleSprite: @ 8000DD0
+CreateInvisibleSprite: @ 8000C9C
 	push {r4-r6,lr}
 	adds r6, r0, 0
-	ldr r0, _08000E08 @ =gDummySpriteTemplate
+	ldr r0, _08000CD4 @ =gDummySpriteTemplate
 	movs r1, 0
 	movs r2, 0
 	movs r3, 0x1F
@@ -732,8 +732,8 @@ CreateInvisibleSprite: @ 8000DD0
 	lsls r0, 24
 	lsrs r5, r0, 24
 	cmp r5, 0x40
-	beq _08000E10
-	ldr r4, _08000E0C @ =gSprites
+	beq _08000CDC
+	ldr r4, _08000CD8 @ =gSprites
 	lsls r1, r5, 4
 	adds r1, r5
 	lsls r1, 2
@@ -747,13 +747,13 @@ CreateInvisibleSprite: @ 8000DD0
 	adds r1, r4
 	str r6, [r1]
 	adds r0, r5, 0
-	b _08000E12
+	b _08000CDE
 	.align 2, 0
-_08000E08: .4byte gDummySpriteTemplate
-_08000E0C: .4byte gSprites
-_08000E10:
+_08000CD4: .4byte gDummySpriteTemplate
+_08000CD8: .4byte gSprites
+_08000CDC:
 	movs r0, 0x40
-_08000E12:
+_08000CDE:
 	pop {r4-r6}
 	pop {r1}
 	bx r1
@@ -931,7 +931,7 @@ _08000F6C: .4byte 0x0000ffff
 	thumb_func_end CreateSpriteAt
 
 	thumb_func_start CreateSpriteAndAnimate
-CreateSpriteAndAnimate: @ 8000F70
+CreateSpriteAndAnimate: @ 8000E3C
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -943,12 +943,12 @@ CreateSpriteAndAnimate: @ 8000F70
 	lsrs r3, 24
 	mov r9, r3
 	movs r3, 0
-	ldr r5, _08000FE0 @ =gSprites
+	ldr r5, _08000EAC @ =gSprites
 	lsls r1, 16
 	mov r12, r1
 	lsls r2, 16
 	mov r8, r2
-_08000F90:
+_08000E5C:
 	lsls r0, r3, 4
 	adds r0, r3
 	lsls r6, r0, 2
@@ -958,7 +958,7 @@ _08000F90:
 	ldrb r0, [r7]
 	lsls r0, 31
 	cmp r0, 0
-	bne _08000FE8
+	bne _08000EB4
 	mov r0, r9
 	str r0, [sp]
 	adds r0, r3, 0
@@ -972,8 +972,8 @@ _08000F90:
 	lsrs r0, 24
 	adds r5, r0, 0
 	cmp r5, 0x40
-	beq _08000FF2
-	ldr r1, _08000FE4 @ =0x02020020
+	beq _08000EBE
+	ldr r1, _08000EB0 @ =0x02020020
 	adds r0, r6, r1
 	ldr r1, [r0]
 	adds r0, r4, 0
@@ -981,24 +981,24 @@ _08000F90:
 	ldrb r0, [r7]
 	lsls r0, 31
 	cmp r0, 0
-	beq _08000FDC
+	beq _08000EA8
 	adds r0, r4, 0
 	bl AnimateSprite
-_08000FDC:
+_08000EA8:
 	adds r0, r5, 0
-	b _08000FF4
+	b _08000EC0
 	.align 2, 0
-_08000FE0: .4byte gSprites
-_08000FE4: .4byte 0x02020020
-_08000FE8:
+_08000EAC: .4byte gSprites
+_08000EB0: .4byte 0x02020020
+_08000EB4:
 	adds r0, r3, 0x1
 	lsls r0, 24
 	lsrs r3, r0, 24
 	cmp r3, 0x3F
-	bls _08000F90
-_08000FF2:
+	bls _08000E5C
+_08000EBE:
 	movs r0, 0x40
-_08000FF4:
+_08000EC0:
 	add sp, 0x4
 	pop {r3-r5}
 	mov r8, r3
@@ -1010,7 +1010,7 @@ _08000FF4:
 	thumb_func_end CreateSpriteAndAnimate
 
 	thumb_func_start DestroySprite
-DestroySprite: @ 8001004
+DestroySprite: @ 8000ED0
 	push {r4-r7,lr}
 	adds r5, r0, 0
 	adds r0, 0x3E
@@ -1018,14 +1018,14 @@ DestroySprite: @ 8001004
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
-	beq _08001060
+	beq _08000F2C
 	adds r0, r5, 0
 	adds r0, 0x3F
 	ldrb r1, [r0]
 	movs r0, 0x40
 	ands r0, r1
 	cmp r0, 0
-	bne _0800105A
+	bne _08000F26
 	ldr r0, [r5, 0xC]
 	ldrh r2, [r0, 0x4]
 	lsrs r2, 5
@@ -1035,12 +1035,12 @@ DestroySprite: @ 8001004
 	adds r4, r1, r2
 	adds r3, r1, 0
 	cmp r3, r4
-	bcs _0800105A
-	ldr r0, _08001068 @ =gSpriteTileAllocBitmap
+	bcs _08000F26
+	ldr r0, _08000F34 @ =gSpriteTileAllocBitmap
 	mov r12, r0
 	movs r6, 0x7
 	movs r7, 0x1
-_0800103E:
+_08000F0A:
 	lsrs r2, r3, 3
 	add r2, r12
 	adds r0, r3, 0
@@ -1054,30 +1054,30 @@ _0800103E:
 	lsls r0, 16
 	lsrs r3, r0, 16
 	cmp r3, r4
-	bcc _0800103E
-_0800105A:
+	bcc _08000F0A
+_08000F26:
 	adds r0, r5, 0
 	bl ResetSprite
-_08001060:
+_08000F2C:
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08001068: .4byte gSpriteTileAllocBitmap
+_08000F34: .4byte gSpriteTileAllocBitmap
 	thumb_func_end DestroySprite
 
 	thumb_func_start ResetOamRange
-ResetOamRange: @ 800106C
+ResetOamRange: @ 8000F38
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsls r1, 24
 	lsrs r4, r1, 24
 	lsrs r3, r0, 24
 	cmp r3, r4
-	bcs _08001094
-	ldr r6, _0800109C @ =0x030017ac
-	ldr r5, _080010A0 @ =gDummyOamData
-_0800107E:
+	bcs _08000F60
+	ldr r6, _08000F68 @ =0x030017ac
+	ldr r5, _08000F6C @ =gDummyOamData
+_08000F4A:
 	lsls r0, r3, 3
 	adds r0, r6
 	ldr r1, [r5]
@@ -1088,40 +1088,40 @@ _0800107E:
 	lsls r0, 24
 	lsrs r3, r0, 24
 	cmp r3, r4
-	bcc _0800107E
-_08001094:
+	bcc _08000F4A
+_08000F60:
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800109C: .4byte 0x030017ac
-_080010A0: .4byte gDummyOamData
+_08000F68: .4byte 0x030017ac
+_08000F6C: .4byte gDummyOamData
 	thumb_func_end ResetOamRange
 
 	thumb_func_start LoadOam
-LoadOam: @ 80010A4
+LoadOam: @ 8000F70
 	push {lr}
-	ldr r2, _080010C8 @ =gMain
-	ldr r1, _080010CC @ =0x0000043d
+	ldr r2, _08000F94 @ =gMain
+	ldr r1, _08000F98 @ =0x0000043d
 	adds r0, r2, r1
 	ldrb r1, [r0]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
-	bne _080010C4
+	bne _08000F90
 	adds r0, r2, 0
 	adds r0, 0x3C
 	movs r1, 0xE0
 	lsls r1, 19
-	ldr r2, _080010D0 @ =0x04000100
+	ldr r2, _08000F9C @ =0x04000100
 	bl CpuSet
-_080010C4:
+_08000F90:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080010C8: .4byte gMain
-_080010CC: .4byte 0x0000043d
-_080010D0: .4byte 0x04000100
+_08000F94: .4byte gMain
+_08000F98: .4byte 0x0000043d
+_08000F9C: .4byte 0x04000100
 	thumb_func_end LoadOam
 
 	thumb_func_start ClearSpriteCopyRequests
@@ -1187,11 +1187,11 @@ _0800113C: .4byte gOamMatrices
 	thumb_func_end ResetOamMatrices
 
 	thumb_func_start SetOamMatrix
-SetOamMatrix: @ 8001140
+SetOamMatrix: @ 800100C
 	push {r4,r5,lr}
 	ldr r5, [sp, 0xC]
 	lsls r0, 24
-	ldr r4, _0800115C @ =gOamMatrices
+	ldr r4, _08001028 @ =gOamMatrices
 	lsrs r0, 21
 	adds r0, r4
 	strh r1, [r0]
@@ -1202,7 +1202,7 @@ SetOamMatrix: @ 8001140
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800115C: .4byte gOamMatrices
+_08001028: .4byte gOamMatrices
 	thumb_func_end SetOamMatrix
 
 	thumb_func_start ResetSprite
@@ -1218,14 +1218,14 @@ _08001170: .4byte 0x081ef830
 	thumb_func_end ResetSprite
 
 	thumb_func_start CalcCenterToCornerVec
-CalcCenterToCornerVec: @ 8001174
+CalcCenterToCornerVec: @ 8001040
 	push {r4-r6,lr}
 	adds r6, r0, 0
 	lsls r1, 24
 	lsls r2, 24
 	lsls r3, 24
 	lsrs r3, 24
-	ldr r4, _080011B4 @ =0x081ef815
+	ldr r4, _08001080 @ =0x081ef815
 	lsrs r2, 23
 	lsrs r1, 21
 	adds r2, r1
@@ -1237,12 +1237,12 @@ CalcCenterToCornerVec: @ 8001174
 	movs r0, 0x2
 	ands r3, r0
 	cmp r3, 0
-	beq _080011A2
+	beq _0800106E
 	lsls r0, r5, 25
 	lsrs r5, r0, 24
 	lsls r0, r1, 25
 	lsrs r1, r0, 24
-_080011A2:
+_0800106E:
 	adds r0, r6, 0
 	adds r0, 0x28
 	strb r5, [r0]
@@ -1252,7 +1252,7 @@ _080011A2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080011B4: .4byte 0x081ef815
+_08001080: .4byte 0x081ef815
 	thumb_func_end CalcCenterToCornerVec
 
 	thumb_func_start AllocSpriteTiles
@@ -1411,7 +1411,7 @@ _080012D0: .4byte gSpriteTileAllocBitmap
 	thumb_func_end AllocSpriteTiles
 
 	thumb_func_start SpriteTileAllocBitmapOp
-SpriteTileAllocBitmapOp: @ 80012D4
+SpriteTileAllocBitmapOp: @ 80011A0
 	push {r4-r6,lr}
 	lsls r0, 16
 	lsrs r2, r0, 16
@@ -1426,73 +1426,73 @@ SpriteTileAllocBitmapOp: @ 80012D4
 	adds r4, r2, 0
 	movs r5, 0
 	cmp r1, 0
-	bne _0800130C
+	bne _080011D8
 	movs r0, 0x1
 	lsls r0, r2
 	mvns r0, r0
 	lsls r0, 24
 	lsrs r2, r0, 24
-	ldr r0, _08001308 @ =gSpriteTileAllocBitmap
+	ldr r0, _080011D4 @ =gSpriteTileAllocBitmap
 	adds r0, r3, r0
 	ldrb r1, [r0]
 	ands r2, r1
 	strb r2, [r0]
-	b _08001338
+	b _08001204
 	.align 2, 0
-_08001308: .4byte gSpriteTileAllocBitmap
-_0800130C:
+_080011D4: .4byte gSpriteTileAllocBitmap
+_080011D8:
 	cmp r1, 0x1
-	bne _08001328
+	bne _080011F4
 	lsls r1, r2
 	lsls r0, r1, 24
 	lsrs r2, r0, 24
-	ldr r0, _08001324 @ =gSpriteTileAllocBitmap
+	ldr r0, _080011F0 @ =gSpriteTileAllocBitmap
 	adds r0, r3, r0
 	ldrb r1, [r0]
 	orrs r2, r1
 	strb r2, [r0]
-	b _08001338
+	b _08001204
 	.align 2, 0
-_08001324: .4byte gSpriteTileAllocBitmap
-_08001328:
+_080011F0: .4byte gSpriteTileAllocBitmap
+_080011F4:
 	movs r0, 0x80
 	lsls r0, 17
 	lsls r0, r4
 	lsrs r5, r0, 24
-	ldr r0, _08001340 @ =gSpriteTileAllocBitmap
+	ldr r0, _0800120C @ =gSpriteTileAllocBitmap
 	adds r0, r6, r0
 	ldrb r0, [r0]
 	ands r5, r0
-_08001338:
+_08001204:
 	adds r0, r5, 0
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08001340: .4byte gSpriteTileAllocBitmap
+_0800120C: .4byte gSpriteTileAllocBitmap
 	thumb_func_end SpriteTileAllocBitmapOp
 
 	thumb_func_start SpriteCallbackDummy
-SpriteCallbackDummy: @ 8001344
+SpriteCallbackDummy: @ 8001210
 	bx lr
 	thumb_func_end SpriteCallbackDummy
 
 	thumb_func_start ProcessSpriteCopyRequests
-ProcessSpriteCopyRequests: @ 8001348
+ProcessSpriteCopyRequests: @ 8001214
 	push {r4-r7,lr}
-	ldr r0, _08001398 @ =gShouldProcessSpriteCopyRequests
+	ldr r0, _08001264 @ =gShouldProcessSpriteCopyRequests
 	ldrb r0, [r0]
 	cmp r0, 0
-	beq _08001390
+	beq _0800125C
 	movs r4, 0
-	ldr r1, _0800139C @ =gSpriteCopyRequestCount
+	ldr r1, _08001268 @ =gSpriteCopyRequestCount
 	ldrb r0, [r1]
 	cmp r0, 0
-	beq _0800138A
-	ldr r6, _080013A0 @ =gSpriteCopyRequests
+	beq _08001256
+	ldr r6, _0800126C @ =gSpriteCopyRequests
 	adds r7, r6, 0x4
 	adds r5, r1, 0
-_08001362:
+_0800122E:
 	lsls r1, r4, 1
 	adds r1, r4
 	lsls r1, 2
@@ -1511,19 +1511,19 @@ _08001362:
 	lsrs r4, r0, 24
 	lsls r1, 24
 	cmp r1, 0
-	bne _08001362
-_0800138A:
-	ldr r1, _08001398 @ =gShouldProcessSpriteCopyRequests
+	bne _0800122E
+_08001256:
+	ldr r1, _08001264 @ =gShouldProcessSpriteCopyRequests
 	movs r0, 0
 	strb r0, [r1]
-_08001390:
+_0800125C:
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08001398: .4byte gShouldProcessSpriteCopyRequests
-_0800139C: .4byte gSpriteCopyRequestCount
-_080013A0: .4byte gSpriteCopyRequests
+_08001264: .4byte gShouldProcessSpriteCopyRequests
+_08001268: .4byte gSpriteCopyRequestCount
+_0800126C: .4byte gSpriteCopyRequests
 	thumb_func_end ProcessSpriteCopyRequests
 
 	thumb_func_start RequestSpriteFrameImageCopy
@@ -1579,17 +1579,17 @@ _08001404: .4byte 0x06010000
 	thumb_func_end RequestSpriteFrameImageCopy
 
 	thumb_func_start RequestSpriteCopy
-RequestSpriteCopy: @ 8001408
+RequestSpriteCopy: @ 80012D4
 	push {r4-r6,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
 	lsls r2, 16
 	lsrs r6, r2, 16
-	ldr r3, _08001450 @ =gSpriteCopyRequestCount
+	ldr r3, _0800131C @ =gSpriteCopyRequestCount
 	ldrb r0, [r3]
 	cmp r0, 0x3F
-	bhi _08001448
-	ldr r2, _08001454 @ =gSpriteCopyRequests
+	bhi _08001314
+	ldr r2, _08001320 @ =gSpriteCopyRequests
 	adds r1, r0, 0
 	lsls r0, r1, 1
 	adds r0, r1
@@ -1612,59 +1612,59 @@ RequestSpriteCopy: @ 8001408
 	ldrb r0, [r3]
 	adds r0, 0x1
 	strb r0, [r3]
-_08001448:
+_08001314:
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08001450: .4byte gSpriteCopyRequestCount
-_08001454: .4byte gSpriteCopyRequests
+_0800131C: .4byte gSpriteCopyRequestCount
+_08001320: .4byte gSpriteCopyRequests
 	thumb_func_end RequestSpriteCopy
 
 	thumb_func_start CopyFromSprites
-CopyFromSprites: @ 8001458
+CopyFromSprites: @ 8001324
 	push {r4,lr}
 	adds r1, r0, 0
-	ldr r3, _08001478 @ =gSprites
+	ldr r3, _08001344 @ =gSprites
 	movs r2, 0
-	ldr r4, _0800147C @ =0x000010ff
-_08001462:
+	ldr r4, _08001348 @ =0x000010ff
+_0800132E:
 	ldrb r0, [r3]
 	strb r0, [r1]
 	adds r1, 0x1
 	adds r3, 0x1
 	adds r2, 0x1
 	cmp r2, r4
-	bls _08001462
+	bls _0800132E
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08001478: .4byte gSprites
-_0800147C: .4byte 0x000010ff
+_08001344: .4byte gSprites
+_08001348: .4byte 0x000010ff
 	thumb_func_end CopyFromSprites
 
 	thumb_func_start CopyToSprites
-CopyToSprites: @ 8001480
+CopyToSprites: @ 800134C
 	push {r4,lr}
 	adds r1, r0, 0
-	ldr r3, _080014A0 @ =gSprites
+	ldr r3, _0800136C @ =gSprites
 	movs r2, 0
-	ldr r4, _080014A4 @ =0x000010ff
-_0800148A:
+	ldr r4, _08001370 @ =0x000010ff
+_08001356:
 	ldrb r0, [r1]
 	strb r0, [r3]
 	adds r1, 0x1
 	adds r3, 0x1
 	adds r2, 0x1
 	cmp r2, r4
-	bls _0800148A
+	bls _08001356
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080014A0: .4byte gSprites
-_080014A4: .4byte 0x000010ff
+_0800136C: .4byte gSprites
+_08001370: .4byte 0x000010ff
 	thumb_func_end CopyToSprites
 
 	thumb_func_start ResetAllSprites
@@ -1701,24 +1701,24 @@ _080014E4: .4byte gSpriteOrder
 	thumb_func_end ResetAllSprites
 
 	thumb_func_start FreeSpriteTiles
-FreeSpriteTiles: @ 80014E8
+FreeSpriteTiles: @ 80013B4
 	push {lr}
 	ldr r2, [r0, 0x14]
 	ldrh r1, [r2]
-	ldr r0, _08001500 @ =0x0000ffff
+	ldr r0, _080013CC @ =0x0000ffff
 	cmp r1, r0
-	beq _080014FA
+	beq _080013C6
 	adds r0, r1, 0
 	bl FreeSpriteTilesByTag
-_080014FA:
+_080013C6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08001500: .4byte 0x0000ffff
+_080013CC: .4byte 0x0000ffff
 	thumb_func_end FreeSpriteTiles
 
 	thumb_func_start FreeSpritePalette
-FreeSpritePalette: @ 8001504
+FreeSpritePalette: @ 80013D0
 	push {lr}
 	ldr r0, [r0, 0x14]
 	ldrh r0, [r0, 0x2]
@@ -1728,7 +1728,7 @@ FreeSpritePalette: @ 8001504
 	thumb_func_end FreeSpritePalette
 
 	thumb_func_start FreeSpriteOamMatrix
-FreeSpriteOamMatrix: @ 8001514
+FreeSpriteOamMatrix: @ 80013E0
 	push {r4,lr}
 	adds r4, r0, 0
 	ldrb r0, [r4, 0x1]
@@ -1737,7 +1737,7 @@ FreeSpriteOamMatrix: @ 8001514
 	movs r1, 0x1
 	ands r0, r1
 	cmp r0, 0
-	beq _0800153A
+	beq _08001406
 	ldrb r0, [r4, 0x3]
 	lsls r0, 26
 	lsrs r0, 27
@@ -1747,14 +1747,14 @@ FreeSpriteOamMatrix: @ 8001514
 	negs r0, r0
 	ands r0, r1
 	strb r0, [r4, 0x1]
-_0800153A:
+_08001406:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end FreeSpriteOamMatrix
 
 	thumb_func_start DestroySpriteAndFreeResources
-DestroySpriteAndFreeResources: @ 8001540
+DestroySpriteAndFreeResources: @ 800140C
 	push {r4,lr}
 	adds r4, r0, 0
 	bl FreeSpriteTiles
@@ -1770,7 +1770,7 @@ DestroySpriteAndFreeResources: @ 8001540
 	thumb_func_end DestroySpriteAndFreeResources
 
 	thumb_func_start sub_800142C
-sub_800142C: @ 8001560
+sub_800142C: @ 800142C
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -1782,7 +1782,7 @@ sub_800142C: @ 8001560
 	lsls r3, 16
 	lsrs r6, r3, 16
 	adds r3, r2, 0
-	ldr r0, _08001628 @ =gMain
+	ldr r0, _080014F4 @ =gMain
 	mov r12, r0
 	adds r0, 0x38
 	ldrb r1, [r0]
@@ -1793,13 +1793,13 @@ sub_800142C: @ 8001560
 	movs r0, 0x80
 	ands r1, r0
 	cmp r1, 0
-	bne _08001616
+	bne _080014E2
 	ldrh r1, [r3]
 	adds r0, r1, 0x1
 	lsls r0, 16
 	cmp r0, 0
-	beq _08001616
-	ldr r5, _0800162C @ =0x081ef8a8
+	beq _080014E2
+	ldr r5, _080014F8 @ =0x081ef8a8
 	ldrh r2, [r5]
 	str r2, [sp, 0x8]
 	ldrh r0, [r5, 0x4]
@@ -1815,7 +1815,7 @@ sub_800142C: @ 8001560
 	lsls r0, 4
 	mov r8, r0
 	mov r6, r12
-_080015B8:
+_08001484:
 	ldr r0, [sp, 0x8]
 	ands r0, r1
 	ldr r2, [sp, 0x4]
@@ -1857,13 +1857,13 @@ _080015B8:
 	movs r0, 0x80
 	ands r1, r0
 	cmp r1, 0
-	bne _08001616
+	bne _080014E2
 	ldrh r1, [r3]
 	adds r0, r1, 0x1
 	lsls r0, 16
 	cmp r0, 0
-	bne _080015B8
-_08001616:
+	bne _08001484
+_080014E2:
 	add sp, 0xC
 	pop {r3-r5}
 	mov r8, r3
@@ -1873,15 +1873,15 @@ _08001616:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08001628: .4byte gMain
-_0800162C: .4byte 0x081ef8a8
+_080014F4: .4byte gMain
+_080014F8: .4byte 0x081ef8a8
 	thumb_func_end sub_800142C
 
 	thumb_func_start AnimateSprite
-AnimateSprite: @ 8001630
+AnimateSprite: @ 80014FC
 	push {r4,r5,lr}
 	adds r4, r0, 0
-	ldr r2, _0800166C @ =0x081ef8bc
+	ldr r2, _08001538 @ =0x081ef8bc
 	adds r5, r4, 0
 	adds r5, 0x3F
 	ldrb r1, [r5]
@@ -1891,11 +1891,11 @@ AnimateSprite: @ 8001630
 	ldr r1, [r0]
 	adds r0, r4, 0
 	bl _call_via_r1
-	ldr r0, _08001670 @ =gAffineAnimsDisabled
+	ldr r0, _0800153C @ =gAffineAnimsDisabled
 	ldrb r0, [r0]
 	cmp r0, 0
-	bne _08001666
-	ldr r0, _08001674 @ =0x081ef8c4
+	bne _08001532
+	ldr r0, _08001540 @ =0x081ef8c4
 	ldrb r1, [r5]
 	lsls r1, 28
 	lsrs r1, 31
@@ -1904,14 +1904,14 @@ AnimateSprite: @ 8001630
 	ldr r1, [r1]
 	adds r0, r4, 0
 	bl _call_via_r1
-_08001666:
+_08001532:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800166C: .4byte 0x081ef8bc
-_08001670: .4byte gAffineAnimsDisabled
-_08001674: .4byte 0x081ef8c4
+_08001538: .4byte 0x081ef8bc
+_0800153C: .4byte gAffineAnimsDisabled
+_08001540: .4byte 0x081ef8c4
 	thumb_func_end AnimateSprite
 
 	thumb_func_start BeginAnim
@@ -3297,7 +3297,7 @@ _08002082:
 	thumb_func_end ApplyAffineAnimFrame
 
 	thumb_func_start StartSpriteAnim
-StartSpriteAnim: @ 800208C
+StartSpriteAnim: @ 8001F58
 	adds r2, r0, 0
 	adds r2, 0x2A
 	strb r1, [r2]
@@ -3313,7 +3313,7 @@ StartSpriteAnim: @ 800208C
 	thumb_func_end StartSpriteAnim
 
 	thumb_func_start StartSpriteAnimIfDifferent
-StartSpriteAnimIfDifferent: @ 80020A4
+StartSpriteAnimIfDifferent: @ 8001F70
 	push {lr}
 	adds r2, r0, 0
 	lsls r1, 24
@@ -3321,16 +3321,16 @@ StartSpriteAnimIfDifferent: @ 80020A4
 	adds r0, 0x2A
 	ldrb r0, [r0]
 	cmp r0, r1
-	beq _080020BA
+	beq _08001F86
 	adds r0, r2, 0
 	bl StartSpriteAnim
-_080020BA:
+_08001F86:
 	pop {r0}
 	bx r0
 	thumb_func_end StartSpriteAnimIfDifferent
 
 	thumb_func_start SeekSpriteAnim
-SeekSpriteAnim: @ 80020C0
+SeekSpriteAnim: @ 8001F8C
 	push {r4-r7,lr}
 	adds r3, r0, 0
 	lsls r1, 24
@@ -3372,7 +3372,7 @@ SeekSpriteAnim: @ 80020C0
 	movs r0, 0x3F
 	ands r0, r2
 	cmp r0, 0
-	beq _08002128
+	beq _08001FF4
 	lsls r0, r2, 26
 	lsrs r0, 26
 	adds r0, 0x1
@@ -3382,7 +3382,7 @@ SeekSpriteAnim: @ 80020C0
 	ands r1, r2
 	orrs r1, r0
 	strb r1, [r4]
-_08002128:
+_08001FF4:
 	lsls r2, r6, 6
 	ldrb r1, [r4]
 	adds r0, r5, 0
@@ -3395,7 +3395,7 @@ _08002128:
 	thumb_func_end SeekSpriteAnim
 
 	thumb_func_start StartSpriteAffineAnim
-StartSpriteAffineAnim: @ 800213C
+StartSpriteAffineAnim: @ 8002008
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	lsls r4, r1, 24
@@ -3419,7 +3419,7 @@ StartSpriteAffineAnim: @ 800213C
 	thumb_func_end StartSpriteAffineAnim
 
 	thumb_func_start StartSpriteAffineAnimIfDifferent
-StartSpriteAffineAnimIfDifferent: @ 8002168
+StartSpriteAffineAnimIfDifferent: @ 8002034
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	lsls r1, 24
@@ -3427,27 +3427,27 @@ StartSpriteAffineAnimIfDifferent: @ 8002168
 	bl GetSpriteMatrixNum
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08002198 @ =0x03000180
+	ldr r2, _08002064 @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
 	adds r1, r2
 	ldrb r0, [r1]
 	cmp r0, r4
-	beq _08002190
+	beq _0800205C
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl StartSpriteAffineAnim
-_08002190:
+_0800205C:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08002198: .4byte 0x03000180
+_08002064: .4byte 0x03000180
 	thumb_func_end StartSpriteAffineAnimIfDifferent
 
 	thumb_func_start ChangeSpriteAffineAnim
-ChangeSpriteAffineAnim: @ 800219C
+ChangeSpriteAffineAnim: @ 8002068
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	lsls r4, r1, 24
@@ -3455,7 +3455,7 @@ ChangeSpriteAffineAnim: @ 800219C
 	bl GetSpriteMatrixNum
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080021D0 @ =0x03000180
+	ldr r2, _0800209C @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
@@ -3473,11 +3473,11 @@ ChangeSpriteAffineAnim: @ 800219C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080021D0: .4byte 0x03000180
+_0800209C: .4byte 0x03000180
 	thumb_func_end ChangeSpriteAffineAnim
 
 	thumb_func_start ChangeSpriteAffineAnimIfDifferent
-ChangeSpriteAffineAnimIfDifferent: @ 80021D4
+ChangeSpriteAffineAnimIfDifferent: @ 80020A0
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	lsls r1, 24
@@ -3485,27 +3485,27 @@ ChangeSpriteAffineAnimIfDifferent: @ 80021D4
 	bl GetSpriteMatrixNum
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _08002204 @ =0x03000180
+	ldr r2, _080020D0 @ =0x03000180
 	lsls r1, r0, 1
 	adds r1, r0
 	lsls r1, 2
 	adds r1, r2
 	ldrb r0, [r1]
 	cmp r0, r4
-	beq _080021FC
+	beq _080020C8
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl ChangeSpriteAffineAnim
-_080021FC:
+_080020C8:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08002204: .4byte 0x03000180
+_080020D0: .4byte 0x03000180
 	thumb_func_end ChangeSpriteAffineAnimIfDifferent
 
 	thumb_func_start SetSpriteSheetFrameTileNum
-SetSpriteSheetFrameTileNum: @ 8002208
+SetSpriteSheetFrameTileNum: @ 80020D4
 	push {lr}
 	adds r3, r0, 0
 	adds r0, 0x3F
@@ -3513,7 +3513,7 @@ SetSpriteSheetFrameTileNum: @ 8002208
 	movs r0, 0x40
 	ands r0, r1
 	cmp r0, 0
-	beq _08002254
+	beq _08002120
 	adds r0, r3, 0
 	adds r0, 0x2A
 	ldrb r1, [r0]
@@ -3530,27 +3530,27 @@ SetSpriteSheetFrameTileNum: @ 8002208
 	movs r1, 0
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bge _0800223C
+	bge _08002108
 	movs r2, 0
-_0800223C:
+_08002108:
 	adds r0, r3, 0
 	adds r0, 0x40
 	ldrh r1, [r0]
 	adds r1, r2
-	ldr r2, _08002258 @ =0x000003ff
+	ldr r2, _08002124 @ =0x000003ff
 	adds r0, r2, 0
 	ands r1, r0
 	ldrh r2, [r3, 0x4]
-	ldr r0, _0800225C @ =0xfffffc00
+	ldr r0, _08002128 @ =0xfffffc00
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r3, 0x4]
-_08002254:
+_08002120:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08002258: .4byte 0x000003ff
-_0800225C: .4byte 0xfffffc00
+_08002124: .4byte 0x000003ff
+_08002128: .4byte 0xfffffc00
 	thumb_func_end SetSpriteSheetFrameTileNum
 
 	thumb_func_start ResetAffineAnimData
@@ -3581,58 +3581,58 @@ _08002290: .4byte gOamMatrixAllocBitmap
 	thumb_func_end ResetAffineAnimData
 
 	thumb_func_start AllocOamMatrix
-AllocOamMatrix: @ 8002294
+AllocOamMatrix: @ 8002160
 	push {r4,lr}
 	movs r2, 0
 	movs r1, 0x1
-	ldr r0, _080022B4 @ =gOamMatrixAllocBitmap
+	ldr r0, _08002180 @ =gOamMatrixAllocBitmap
 	ldr r4, [r0]
 	adds r3, r0, 0
-_080022A0:
+_0800216C:
 	adds r0, r4, 0
 	ands r0, r1
 	cmp r0, 0
-	bne _080022B8
+	bne _08002184
 	ldr r0, [r3]
 	orrs r0, r1
 	str r0, [r3]
 	adds r0, r2, 0
-	b _080022C6
+	b _08002192
 	.align 2, 0
-_080022B4: .4byte gOamMatrixAllocBitmap
-_080022B8:
+_08002180: .4byte gOamMatrixAllocBitmap
+_08002184:
 	adds r0, r2, 0x1
 	lsls r0, 24
 	lsrs r2, r0, 24
 	lsls r1, 1
 	cmp r2, 0x1F
-	bls _080022A0
+	bls _0800216C
 	movs r0, 0xFF
-_080022C6:
+_08002192:
 	pop {r4}
 	pop {r1}
 	bx r1
 	thumb_func_end AllocOamMatrix
 
 	thumb_func_start FreeOamMatrix
-FreeOamMatrix: @ 80022CC
+FreeOamMatrix: @ 8002198
 	push {lr}
 	sub sp, 0x4
 	lsls r0, 24
 	lsrs r2, r0, 24
 	movs r0, 0
 	movs r1, 0x1
-	ldr r3, _08002308 @ =gOamMatrixAllocBitmap
+	ldr r3, _080021D4 @ =gOamMatrixAllocBitmap
 	cmp r0, r2
-	bcs _080022EA
-_080022DE:
+	bcs _080021B6
+_080021AA:
 	adds r0, 0x1
 	lsls r0, 24
 	lsrs r0, 24
 	lsls r1, 1
 	cmp r0, r2
-	bcc _080022DE
-_080022EA:
+	bcc _080021AA
+_080021B6:
 	ldr r0, [r3]
 	bics r0, r1
 	str r0, [r3]
@@ -3647,18 +3647,18 @@ _080022EA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08002308: .4byte gOamMatrixAllocBitmap
+_080021D4: .4byte gOamMatrixAllocBitmap
 	thumb_func_end FreeOamMatrix
 
 	thumb_func_start InitSpriteAffineAnim
-InitSpriteAffineAnim: @ 800230C
+InitSpriteAffineAnim: @ 80021D8
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	bl AllocOamMatrix
 	lsls r0, 24
 	lsrs r5, r0, 24
 	cmp r5, 0xFF
-	beq _08002354
+	beq _08002220
 	ldrb r3, [r4, 0x1]
 	lsrs r1, r3, 6
 	ldrb r2, [r4, 0x3]
@@ -3685,14 +3685,14 @@ InitSpriteAffineAnim: @ 800230C
 	strb r0, [r2]
 	adds r0, r5, 0
 	bl AffineAnimStateReset
-_08002354:
+_08002220:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end InitSpriteAffineAnim
 
 	thumb_func_start SetOamMatrixRotationScaling
-SetOamMatrixRotationScaling: @ 800235C
+SetOamMatrixRotationScaling: @ 8002228
 	push {r4-r6,lr}
 	mov r6, r8
 	push {r6}
@@ -3712,7 +3712,7 @@ SetOamMatrixRotationScaling: @ 800235C
 	bl ConvertScaleParam
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _080023D4 @ =0xffff0000
+	ldr r1, _080022A0 @ =0xffff0000
 	mov r8, r1
 	ldr r1, [sp]
 	mov r2, r8
@@ -3724,7 +3724,7 @@ SetOamMatrixRotationScaling: @ 800235C
 	adds r0, r4, 0
 	bl ConvertScaleParam
 	lsls r0, 16
-	ldr r2, _080023D8 @ =0x0000ffff
+	ldr r2, _080022A4 @ =0x0000ffff
 	ldr r1, [sp]
 	ands r1, r2
 	orrs r1, r0
@@ -3750,12 +3750,12 @@ SetOamMatrixRotationScaling: @ 800235C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080023D4: .4byte 0xffff0000
-_080023D8: .4byte 0x0000ffff
+_080022A0: .4byte 0xffff0000
+_080022A4: .4byte 0x0000ffff
 	thumb_func_end SetOamMatrixRotationScaling
 
 	thumb_func_start LoadSpriteSheet
-LoadSpriteSheet: @ 80023DC
+LoadSpriteSheet: @ 80022A8
 	push {r4-r6,lr}
 	adds r5, r0, 0
 	ldrh r0, [r5, 0x4]
@@ -3764,7 +3764,7 @@ LoadSpriteSheet: @ 80023DC
 	lsls r4, r0, 16
 	asrs r6, r4, 16
 	cmp r6, 0
-	blt _08002418
+	blt _080022E4
 	ldrh r0, [r5, 0x6]
 	lsrs r4, 16
 	ldrh r2, [r5, 0x4]
@@ -3773,32 +3773,32 @@ LoadSpriteSheet: @ 80023DC
 	bl AllocSpriteTileRange
 	ldr r0, [r5]
 	lsls r1, r6, 5
-	ldr r2, _08002414 @ =0x06010000
+	ldr r2, _080022E0 @ =0x06010000
 	adds r1, r2
 	ldrh r2, [r5, 0x4]
 	lsrs r2, 1
 	bl CpuSet
 	adds r0, r4, 0
-	b _0800241A
+	b _080022E6
 	.align 2, 0
-_08002414: .4byte 0x06010000
-_08002418:
+_080022E0: .4byte 0x06010000
+_080022E4:
 	movs r0, 0
-_0800241A:
+_080022E6:
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	thumb_func_end LoadSpriteSheet
 
 	thumb_func_start LoadSpriteSheets
-LoadSpriteSheets: @ 8002420
+LoadSpriteSheets: @ 80022EC
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	movs r4, 0
 	ldr r0, [r5]
 	cmp r0, 0
-	beq _08002444
-_0800242C:
+	beq _08002310
+_080022F8:
 	lsls r0, r4, 3
 	adds r0, r5, r0
 	bl LoadSpriteSheet
@@ -3809,15 +3809,15 @@ _0800242C:
 	adds r0, r5
 	ldr r0, [r0]
 	cmp r0, 0
-	bne _0800242C
-_08002444:
+	bne _080022F8
+_08002310:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end LoadSpriteSheets
 
 	thumb_func_start AllocTilesForSpriteSheet
-AllocTilesForSpriteSheet: @ 800244C
+AllocTilesForSpriteSheet: @ 8002318
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	ldrh r0, [r5, 0x4]
@@ -3825,7 +3825,7 @@ AllocTilesForSpriteSheet: @ 800244C
 	bl AllocSpriteTiles
 	lsls r4, r0, 16
 	cmp r4, 0
-	blt _08002470
+	blt _0800233C
 	ldrh r0, [r5, 0x6]
 	lsrs r4, 16
 	ldrh r2, [r5, 0x4]
@@ -3833,24 +3833,24 @@ AllocTilesForSpriteSheet: @ 800244C
 	adds r1, r4, 0
 	bl AllocSpriteTileRange
 	adds r0, r4, 0
-	b _08002472
-_08002470:
+	b _0800233E
+_0800233C:
 	movs r0, 0
-_08002472:
+_0800233E:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end AllocTilesForSpriteSheet
 
 	thumb_func_start AllocTilesForSpriteSheets
-AllocTilesForSpriteSheets: @ 8002478
+AllocTilesForSpriteSheets: @ 8002344
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	movs r4, 0
 	ldr r0, [r5]
 	cmp r0, 0
-	beq _0800249C
-_08002484:
+	beq _08002368
+_08002350:
 	lsls r0, r4, 3
 	adds r0, r5, r0
 	bl AllocTilesForSpriteSheet
@@ -3861,15 +3861,15 @@ _08002484:
 	adds r0, r5
 	ldr r0, [r0]
 	cmp r0, 0
-	bne _08002484
-_0800249C:
+	bne _08002350
+_08002368:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end AllocTilesForSpriteSheets
 
 	thumb_func_start LoadTilesForSpriteSheet
-LoadTilesForSpriteSheet: @ 80024A4
+LoadTilesForSpriteSheet: @ 8002370
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	ldr r5, [r4]
@@ -3878,7 +3878,7 @@ LoadTilesForSpriteSheet: @ 80024A4
 	adds r1, r0, 0
 	lsls r1, 16
 	lsrs r1, 11
-	ldr r0, _080024CC @ =0x06010000
+	ldr r0, _08002398 @ =0x06010000
 	adds r1, r0
 	ldrh r2, [r4, 0x4]
 	lsrs r2, 1
@@ -3888,18 +3888,18 @@ LoadTilesForSpriteSheet: @ 80024A4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080024CC: .4byte 0x06010000
+_08002398: .4byte 0x06010000
 	thumb_func_end LoadTilesForSpriteSheet
 
 	thumb_func_start LoadTilesForSpriteSheets
-LoadTilesForSpriteSheets: @ 80024D0
+LoadTilesForSpriteSheets: @ 800239C
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	movs r4, 0
 	ldr r0, [r5]
 	cmp r0, 0
-	beq _080024F4
-_080024DC:
+	beq _080023C0
+_080023A8:
 	lsls r0, r4, 3
 	adds r0, r5, r0
 	bl LoadTilesForSpriteSheet
@@ -3910,15 +3910,15 @@ _080024DC:
 	adds r0, r5
 	ldr r0, [r0]
 	cmp r0, 0
-	bne _080024DC
-_080024F4:
+	bne _080023A8
+_080023C0:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end LoadTilesForSpriteSheets
 
 	thumb_func_start FreeSpriteTilesByTag
-FreeSpriteTilesByTag: @ 80024FC
+FreeSpriteTilesByTag: @ 80023C8
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -3928,8 +3928,8 @@ FreeSpriteTilesByTag: @ 80024FC
 	lsls r0, 24
 	lsrs r4, r0, 24
 	cmp r4, 0xFF
-	beq _0800255A
-	ldr r0, _08002564 @ =0x03000080
+	beq _08002426
+	ldr r0, _08002430 @ =0x03000080
 	lsls r1, r4, 2
 	adds r2, r1, r0
 	adds r0, 0x2
@@ -3937,17 +3937,17 @@ FreeSpriteTilesByTag: @ 80024FC
 	ldrh r0, [r1]
 	ldrh r3, [r2]
 	adds r0, r3, r0
-	ldr r1, _08002568 @ =0x03000000
+	ldr r1, _08002434 @ =0x03000000
 	mov r8, r1
 	lsls r5, r4, 1
 	cmp r3, r0
-	bge _08002552
-	ldr r1, _0800256C @ =gSpriteTileAllocBitmap
+	bge _0800241E
+	ldr r1, _08002438 @ =gSpriteTileAllocBitmap
 	mov r12, r1
 	movs r6, 0x7
 	movs r7, 0x1
 	adds r4, r0, 0
-_08002536:
+_08002402:
 	lsrs r2, r3, 3
 	add r2, r12
 	adds r0, r3, 0
@@ -3961,36 +3961,36 @@ _08002536:
 	lsls r0, 16
 	lsrs r3, r0, 16
 	cmp r3, r4
-	blt _08002536
-_08002552:
+	blt _08002402
+_0800241E:
 	mov r0, r8
 	adds r1, r5, r0
-	ldr r0, _08002570 @ =0x0000ffff
+	ldr r0, _0800243C @ =0x0000ffff
 	strh r0, [r1]
-_0800255A:
+_08002426:
 	pop {r3}
 	mov r8, r3
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08002564: .4byte 0x03000080
-_08002568: .4byte 0x03000000
-_0800256C: .4byte gSpriteTileAllocBitmap
-_08002570: .4byte 0x0000ffff
+_08002430: .4byte 0x03000080
+_08002434: .4byte 0x03000000
+_08002438: .4byte gSpriteTileAllocBitmap
+_0800243C: .4byte 0x0000ffff
 	thumb_func_end FreeSpriteTilesByTag
 
 	thumb_func_start FreeSpriteTileRanges
-FreeSpriteTileRanges: @ 8002574
+FreeSpriteTileRanges: @ 8002440
 	push {r4-r7,lr}
 	movs r2, 0
-	ldr r7, _080025A8 @ =0x03000000
-	ldr r0, _080025AC @ =0x0000ffff
+	ldr r7, _08002474 @ =0x03000000
+	ldr r0, _08002478 @ =0x0000ffff
 	adds r6, r0, 0
-	ldr r4, _080025B0 @ =0x03000080
+	ldr r4, _0800247C @ =0x03000080
 	movs r3, 0
 	adds r5, r4, 0x2
-_08002584:
+_08002450:
 	lsls r1, r2, 1
 	adds r1, r7
 	ldrh r0, [r1]
@@ -4005,18 +4005,18 @@ _08002584:
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0x3F
-	bls _08002584
+	bls _08002450
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080025A8: .4byte 0x03000000
-_080025AC: .4byte 0x0000ffff
-_080025B0: .4byte 0x03000080
+_08002474: .4byte 0x03000000
+_08002478: .4byte 0x0000ffff
+_0800247C: .4byte 0x03000080
 	thumb_func_end FreeSpriteTileRanges
 
 	thumb_func_start GetSpriteTileStartByTag
-GetSpriteTileStartByTag: @ 80025B4
+GetSpriteTileStartByTag: @ 8002480
 	push {lr}
 	lsls r0, 16
 	lsrs r0, 16
@@ -4024,21 +4024,21 @@ GetSpriteTileStartByTag: @ 80025B4
 	lsls r0, 24
 	lsrs r1, r0, 24
 	cmp r1, 0xFF
-	beq _080025D4
-	ldr r0, _080025D0 @ =0x03000080
+	beq _080024A0
+	ldr r0, _0800249C @ =0x03000080
 	lsls r1, 2
 	adds r1, r0
 	ldrh r0, [r1]
-	b _080025D6
+	b _080024A2
 	.align 2, 0
-_080025D0: .4byte 0x03000080
-_080025D4:
-	ldr r0, _080025DC @ =0x0000ffff
-_080025D6:
+_0800249C: .4byte 0x03000080
+_080024A0:
+	ldr r0, _080024A8 @ =0x0000ffff
+_080024A2:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080025DC: .4byte 0x0000ffff
+_080024A8: .4byte 0x0000ffff
 	thumb_func_end GetSpriteTileStartByTag
 
 	thumb_func_start IndexOfSpriteTileTag
@@ -4071,44 +4071,44 @@ _08002608:
 	thumb_func_end IndexOfSpriteTileTag
 
 	thumb_func_start GetSpriteTileTagByTileStart
-GetSpriteTileTagByTileStart: @ 800260C
+GetSpriteTileTagByTileStart: @ 80024D8
 	push {r4-r6,lr}
 	lsls r0, 16
 	lsrs r3, r0, 16
 	movs r2, 0
-	ldr r6, _08002634 @ =0x03000000
-	ldr r5, _08002638 @ =0x0000ffff
-	ldr r4, _0800263C @ =0x03000080
-_0800261A:
+	ldr r6, _08002500 @ =0x03000000
+	ldr r5, _08002504 @ =0x0000ffff
+	ldr r4, _08002508 @ =0x03000080
+_080024E6:
 	lsls r0, r2, 1
 	adds r1, r0, r6
 	ldrh r0, [r1]
 	cmp r0, r5
-	beq _08002640
+	beq _0800250C
 	lsls r0, r2, 2
 	adds r0, r4
 	ldrh r0, [r0]
 	cmp r0, r3
-	bne _08002640
+	bne _0800250C
 	ldrh r0, [r1]
-	b _0800264C
+	b _08002518
 	.align 2, 0
-_08002634: .4byte 0x03000000
-_08002638: .4byte 0x0000ffff
-_0800263C: .4byte 0x03000080
-_08002640:
+_08002500: .4byte 0x03000000
+_08002504: .4byte 0x0000ffff
+_08002508: .4byte 0x03000080
+_0800250C:
 	adds r0, r2, 0x1
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0x3F
-	bls _0800261A
-	ldr r0, _08002654 @ =0x0000ffff
-_0800264C:
+	bls _080024E6
+	ldr r0, _08002520 @ =0x0000ffff
+_08002518:
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08002654: .4byte 0x0000ffff
+_08002520: .4byte 0x0000ffff
 	thumb_func_end GetSpriteTileTagByTileStart
 
 	thumb_func_start AllocSpriteTileRange
@@ -4148,7 +4148,7 @@ _0800269C: .4byte 0x03000080
 	thumb_func_end AllocSpriteTileRange
 
 	thumb_func_start RequestSpriteSheetCopy
-RequestSpriteSheetCopy: @ 80026A0
+RequestSpriteSheetCopy: @ 800256C
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	ldr r5, [r4]
@@ -4157,7 +4157,7 @@ RequestSpriteSheetCopy: @ 80026A0
 	adds r1, r0, 0
 	lsls r1, 16
 	lsrs r1, 11
-	ldr r0, _080026C4 @ =0x06010000
+	ldr r0, _08002590 @ =0x06010000
 	adds r1, r0
 	ldrh r2, [r4, 0x4]
 	adds r0, r5, 0
@@ -4166,11 +4166,11 @@ RequestSpriteSheetCopy: @ 80026A0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080026C4: .4byte 0x06010000
+_08002590: .4byte 0x06010000
 	thumb_func_end RequestSpriteSheetCopy
 
 	thumb_func_start LoadSpriteSheetDeferred
-LoadSpriteSheetDeferred: @ 80026C8
+LoadSpriteSheetDeferred: @ 8002594
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	ldrh r0, [r5, 0x4]
@@ -4178,7 +4178,7 @@ LoadSpriteSheetDeferred: @ 80026C8
 	bl AllocSpriteTiles
 	lsls r4, r0, 16
 	cmp r4, 0
-	blt _080026F2
+	blt _080025BE
 	ldrh r0, [r5, 0x6]
 	lsrs r4, 16
 	ldrh r2, [r5, 0x4]
@@ -4188,26 +4188,26 @@ LoadSpriteSheetDeferred: @ 80026C8
 	adds r0, r5, 0
 	bl RequestSpriteSheetCopy
 	adds r0, r4, 0
-	b _080026F4
-_080026F2:
+	b _080025C0
+_080025BE:
 	movs r0, 0
-_080026F4:
+_080025C0:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end LoadSpriteSheetDeferred
 
 	thumb_func_start FreeAllSpritePalettes
-FreeAllSpritePalettes: @ 80026FC
+FreeAllSpritePalettes: @ 80025C8
 	push {r4,lr}
-	ldr r1, _08002728 @ =gReservedSpritePaletteCount
+	ldr r1, _080025F4 @ =gReservedSpritePaletteCount
 	movs r0, 0
 	strb r0, [r1]
 	movs r2, 0
-	ldr r4, _0800272C @ =0x03000300
-	ldr r0, _08002730 @ =0x0000ffff
+	ldr r4, _080025F8 @ =0x03000300
+	ldr r0, _080025FC @ =0x0000ffff
 	adds r3, r0, 0
-_0800270C:
+_080025D8:
 	lsls r0, r2, 1
 	adds r0, r4
 	ldrh r1, [r0]
@@ -4217,18 +4217,18 @@ _0800270C:
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0xF
-	bls _0800270C
+	bls _080025D8
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08002728: .4byte gReservedSpritePaletteCount
-_0800272C: .4byte 0x03000300
-_08002730: .4byte 0x0000ffff
+_080025F4: .4byte gReservedSpritePaletteCount
+_080025F8: .4byte 0x03000300
+_080025FC: .4byte 0x0000ffff
 	thumb_func_end FreeAllSpritePalettes
 
 	thumb_func_start LoadSpritePalette
-LoadSpritePalette: @ 8002734
+LoadSpritePalette: @ 8002600
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	ldrh r0, [r5, 0x4]
@@ -4236,17 +4236,17 @@ LoadSpritePalette: @ 8002734
 	lsls r0, 24
 	lsrs r4, r0, 24
 	cmp r4, 0xFF
-	beq _0800274A
+	beq _08002616
 	adds r0, r4, 0
-	b _0800277A
-_0800274A:
-	ldr r0, _08002770 @ =0x0000ffff
+	b _08002646
+_08002616:
+	ldr r0, _0800263C @ =0x0000ffff
 	bl IndexOfSpritePaletteTag
 	lsls r0, 24
 	lsrs r4, r0, 24
 	cmp r4, 0xFF
-	beq _08002778
-	ldr r1, _08002774 @ =0x03000300
+	beq _08002644
+	ldr r1, _08002640 @ =0x03000300
 	lsls r0, r4, 1
 	adds r0, r1
 	ldrh r1, [r5, 0x4]
@@ -4255,41 +4255,41 @@ _0800274A:
 	lsls r1, r4, 4
 	bl DoLoadSpritePalette
 	adds r0, r4, 0
-	b _0800277A
+	b _08002646
 	.align 2, 0
-_08002770: .4byte 0x0000ffff
-_08002774: .4byte 0x03000300
-_08002778:
+_0800263C: .4byte 0x0000ffff
+_08002640: .4byte 0x03000300
+_08002644:
 	movs r0, 0xFF
-_0800277A:
+_08002646:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end LoadSpritePalette
 
 	thumb_func_start LoadSpritePalettes
-LoadSpritePalettes: @ 8002780
+LoadSpritePalettes: @ 800264C
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	movs r4, 0
-	b _0800278E
-_08002788:
+	b _0800265A
+_08002654:
 	adds r0, r4, 0x1
 	lsls r0, 24
 	lsrs r4, r0, 24
-_0800278E:
+_0800265A:
 	lsls r0, r4, 3
 	adds r1, r0, r5
 	ldr r0, [r1]
 	cmp r0, 0
-	beq _080027A6
+	beq _08002672
 	adds r0, r1, 0
 	bl LoadSpritePalette
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0xFF
-	bne _08002788
-_080027A6:
+	bne _08002654
+_08002672:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
@@ -4310,81 +4310,81 @@ DoLoadSpritePalette: @ 80027AC
 	thumb_func_end DoLoadSpritePalette
 
 	thumb_func_start AllocSpritePalette
-AllocSpritePalette: @ 80027C4
+AllocSpritePalette: @ 8002690
 	push {r4,lr}
 	lsls r0, 16
 	lsrs r4, r0, 16
-	ldr r0, _080027E4 @ =0x0000ffff
+	ldr r0, _080026B0 @ =0x0000ffff
 	bl IndexOfSpritePaletteTag
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0xFF
-	beq _080027EC
-	ldr r1, _080027E8 @ =0x03000300
+	beq _080026B8
+	ldr r1, _080026B4 @ =0x03000300
 	lsls r0, r2, 1
 	adds r0, r1
 	strh r4, [r0]
 	adds r0, r2, 0
-	b _080027EE
+	b _080026BA
 	.align 2, 0
-_080027E4: .4byte 0x0000ffff
-_080027E8: .4byte 0x03000300
-_080027EC:
+_080026B0: .4byte 0x0000ffff
+_080026B4: .4byte 0x03000300
+_080026B8:
 	movs r0, 0xFF
-_080027EE:
+_080026BA:
 	pop {r4}
 	pop {r1}
 	bx r1
 	thumb_func_end AllocSpritePalette
 
 	thumb_func_start IndexOfSpritePaletteTag
-IndexOfSpritePaletteTag: @ 80027F4
+IndexOfSpritePaletteTag: @ 80026C0
 	push {lr}
 	lsls r0, 16
 	lsrs r2, r0, 16
-	ldr r0, _08002814 @ =gReservedSpritePaletteCount
+	ldr r0, _080026E0 @ =gReservedSpritePaletteCount
 	ldrb r1, [r0]
 	cmp r1, 0xF
-	bhi _08002826
-	ldr r3, _08002818 @ =0x03000300
-_08002804:
+	bhi _080026F2
+	ldr r3, _080026E4 @ =0x03000300
+_080026D0:
 	lsls r0, r1, 1
 	adds r0, r3
 	ldrh r0, [r0]
 	cmp r0, r2
-	bne _0800281C
+	bne _080026E8
 	adds r0, r1, 0
-	b _08002828
+	b _080026F4
 	.align 2, 0
-_08002814: .4byte gReservedSpritePaletteCount
-_08002818: .4byte 0x03000300
-_0800281C:
+_080026E0: .4byte gReservedSpritePaletteCount
+_080026E4: .4byte 0x03000300
+_080026E8:
 	adds r0, r1, 0x1
 	lsls r0, 24
 	lsrs r1, r0, 24
 	cmp r1, 0xF
-	bls _08002804
-_08002826:
+	bls _080026D0
+_080026F2:
 	movs r0, 0xFF
-_08002828:
+_080026F4:
 	pop {r1}
 	bx r1
 	thumb_func_end IndexOfSpritePaletteTag
 
 	thumb_func_start GetSpritePaletteTagByPaletteNum
-GetSpritePaletteTagByPaletteNum: @ 800282C
+GetSpritePaletteTagByPaletteNum: @ 80026F8
 	lsls r0, 24
-	ldr r1, _08002838 @ =0x03000300
+	ldr r1, _08002704 @ =0x03000300
 	lsrs r0, 23
 	adds r0, r1
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
-_08002838: .4byte 0x03000300
+_08002704: .4byte 0x03000300
 	thumb_func_end GetSpritePaletteTagByPaletteNum
 
 	thumb_func_start FreeSpritePaletteByTag
-FreeSpritePaletteByTag: @ 800283C
+FreeSpritePaletteByTag: @ 8002708
 	push {lr}
 	lsls r0, 16
 	lsrs r0, 16
@@ -4392,22 +4392,22 @@ FreeSpritePaletteByTag: @ 800283C
 	lsls r0, 24
 	lsrs r1, r0, 24
 	cmp r1, 0xFF
-	beq _08002858
-	ldr r0, _0800285C @ =0x03000300
+	beq _08002724
+	ldr r0, _08002728 @ =0x03000300
 	lsls r1, 1
 	adds r1, r0
-	ldr r0, _08002860 @ =0x0000ffff
+	ldr r0, _0800272C @ =0x0000ffff
 	strh r0, [r1]
-_08002858:
+_08002724:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800285C: .4byte 0x03000300
-_08002860: .4byte 0x0000ffff
+_08002728: .4byte 0x03000300
+_0800272C: .4byte 0x0000ffff
 	thumb_func_end FreeSpritePaletteByTag
 
 	thumb_func_start SetSubspriteTables
-SetSubspriteTables: @ 8002864
+SetSubspriteTables: @ 8002730
 	str r1, [r0, 0x18]
 	adds r0, 0x42
 	movs r1, 0x40
@@ -4416,32 +4416,32 @@ SetSubspriteTables: @ 8002864
 	thumb_func_end SetSubspriteTables
 
 	thumb_func_start AddSpriteToOamBuffer
-AddSpriteToOamBuffer: @ 8002870
+AddSpriteToOamBuffer: @ 800273C
 	push {r4,lr}
 	adds r4, r0, 0
 	adds r3, r1, 0
-	ldr r1, _08002884 @ =gOamLimit
+	ldr r1, _08002750 @ =gOamLimit
 	ldrb r0, [r3]
 	ldrb r1, [r1]
 	cmp r0, r1
-	bcc _08002888
+	bcc _08002754
 	movs r0, 0x1
-	b _080028D0
+	b _0800279C
 	.align 2, 0
-_08002884: .4byte gOamLimit
-_08002888:
+_08002750: .4byte gOamLimit
+_08002754:
 	ldr r0, [r4, 0x18]
 	cmp r0, 0
-	beq _0800289C
+	beq _08002768
 	adds r0, r4, 0
 	adds r0, 0x42
 	ldrb r1, [r0]
 	movs r0, 0xC0
 	ands r0, r1
 	cmp r0, 0
-	bne _080028BC
-_0800289C:
-	ldr r0, _080028B8 @ =gMain
+	bne _08002788
+_08002768:
+	ldr r0, _08002784 @ =gMain
 	ldrb r2, [r3]
 	lsls r2, 3
 	adds r2, r0
@@ -4453,29 +4453,29 @@ _0800289C:
 	adds r0, 0x1
 	strb r0, [r3]
 	movs r0, 0
-	b _080028D0
+	b _0800279C
 	.align 2, 0
-_080028B8: .4byte gMain
-_080028BC:
+_08002784: .4byte gMain
+_08002788:
 	ldrb r1, [r3]
 	lsls r1, 3
-	ldr r0, _080028D8 @ =0x030017ac
+	ldr r0, _080027A4 @ =0x030017ac
 	adds r1, r0
 	adds r0, r4, 0
 	adds r2, r3, 0
 	bl AddSubspritesToOamBuffer
 	lsls r0, 24
 	lsrs r0, 24
-_080028D0:
+_0800279C:
 	pop {r4}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080028D8: .4byte 0x030017ac
+_080027A4: .4byte 0x030017ac
 	thumb_func_end AddSpriteToOamBuffer
 
 	thumb_func_start AddSubspritesToOamBuffer
-AddSubspritesToOamBuffer: @ 80028DC
+AddSubspritesToOamBuffer: @ 80027A8
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -4485,17 +4485,17 @@ AddSubspritesToOamBuffer: @ 80028DC
 	adds r3, r0, 0
 	str r1, [sp]
 	mov r8, r2
-	ldr r0, _080028FC @ =gOamLimit
+	ldr r0, _080027C8 @ =gOamLimit
 	ldrb r1, [r2]
 	ldrb r0, [r0]
 	cmp r1, r0
-	bcc _08002900
-_080028F8:
+	bcc _080027CC
+_080027C4:
 	movs r0, 0x1
-	b _08002AB8
+	b _08002984
 	.align 2, 0
-_080028FC: .4byte gOamLimit
-_08002900:
+_080027C8: .4byte gOamLimit
+_080027CC:
 	adds r0, r3, 0
 	adds r0, 0x42
 	ldrb r1, [r0]
@@ -4506,11 +4506,11 @@ _08002900:
 	mov r12, r3
 	str r0, [sp, 0x18]
 	cmp r7, 0
-	beq _0800291C
+	beq _080027E8
 	ldr r0, [r7, 0x4]
 	cmp r0, 0
-	bne _08002932
-_0800291C:
+	bne _080027FE
+_080027E8:
 	mov r2, r12
 	ldr r0, [r2]
 	ldr r1, [r2, 0x4]
@@ -4521,8 +4521,8 @@ _0800291C:
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
-	b _08002AB6
-_08002932:
+	b _08002982
+_080027FE:
 	mov r2, r12
 	ldrh r0, [r2, 0x4]
 	lsls r0, 22
@@ -4568,19 +4568,19 @@ _08002932:
 	mov r9, r0
 	ldr r1, [sp, 0xC]
 	cmp r9, r1
-	bcc _08002990
-	b _08002AB6
-_08002990:
+	bcc _0800285C
+	b _08002982
+_0800285C:
 	lsls r0, r2, 16
 	asrs r0, 16
 	str r0, [sp, 0x14]
-_08002996:
+_08002862:
 	mov r2, r8
 	ldrb r0, [r2]
-	ldr r1, _08002AC8 @ =gOamLimit
+	ldr r1, _08002994 @ =gOamLimit
 	ldrb r1, [r1]
 	cmp r0, r1
-	bcs _080028F8
+	bcs _080027C4
 	ldr r0, [r7, 0x4]
 	mov r2, r9
 	lsls r6, r2, 3
@@ -4589,14 +4589,14 @@ _08002996:
 	ldrh r5, [r2, 0x2]
 	ldr r0, [sp, 0x10]
 	cmp r0, 0
-	beq _080029DA
+	beq _080028A6
 	ldrb r1, [r2, 0x4]
 	movs r0, 0xC
 	ands r0, r1
 	lsls r1, 30
 	lsrs r1, 26
 	adds r0, r1
-	ldr r1, _08002ACC @ =0x081ef8ec
+	ldr r1, _08002998 @ =0x081ef8ec
 	adds r0, r1
 	movs r1, 0
 	ldrsb r1, [r0, r1]
@@ -4609,17 +4609,17 @@ _08002996:
 	adds r0, 0x1
 	lsls r0, 16
 	lsrs r4, r0, 16
-_080029DA:
+_080028A6:
 	mov r0, r10
 	cmp r0, 0
-	beq _08002A06
+	beq _080028D2
 	ldrb r1, [r2, 0x4]
 	movs r0, 0xC
 	ands r0, r1
 	lsls r1, 30
 	lsrs r1, 26
 	adds r0, r1
-	ldr r1, _08002ACC @ =0x081ef8ec
+	ldr r1, _08002998 @ =0x081ef8ec
 	adds r0, r1
 	movs r1, 0x1
 	ldrsb r1, [r0, r1]
@@ -4632,7 +4632,7 @@ _080029DA:
 	adds r0, 0x1
 	lsls r0, 16
 	lsrs r5, r0, 16
-_08002A06:
+_080028D2:
 	ldr r2, [sp]
 	adds r3, r6, r2
 	mov r2, r12
@@ -4665,11 +4665,11 @@ _08002A06:
 	asrs r1, 16
 	ldr r0, [sp, 0x14]
 	adds r1, r0, r1
-	ldr r2, _08002AD0 @ =0x000001ff
+	ldr r2, _0800299C @ =0x000001ff
 	adds r0, r2, 0
 	ands r1, r0
 	ldrh r2, [r3, 0x2]
-	ldr r0, _08002AD4 @ =0xfffffe00
+	ldr r0, _080029A0 @ =0xfffffe00
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r3, 0x2]
@@ -4683,11 +4683,11 @@ _08002A06:
 	lsrs r1, 22
 	ldr r2, [sp, 0x4]
 	adds r1, r2, r1
-	ldr r2, _08002AD8 @ =0x000003ff
+	ldr r2, _080029A4 @ =0x000003ff
 	adds r0, r2, 0
 	ands r1, r0
 	ldrh r2, [r3, 0x4]
-	ldr r0, _08002ADC @ =0xfffffc00
+	ldr r0, _080029A8 @ =0xfffffc00
 	ands r0, r2
 	orrs r0, r1
 	strh r0, [r3, 0x4]
@@ -4696,7 +4696,7 @@ _08002A06:
 	movs r0, 0xC0
 	ands r0, r1
 	cmp r0, 0x80
-	beq _08002A9C
+	beq _08002968
 	ldr r0, [r7, 0x4]
 	adds r0, r6, r0
 	ldrb r1, [r0, 0x5]
@@ -4708,7 +4708,7 @@ _08002A06:
 	ands r0, r2
 	orrs r0, r1
 	strb r0, [r3, 0x5]
-_08002A9C:
+_08002968:
 	mov r0, r9
 	adds r0, 0x1
 	lsls r0, 24
@@ -4720,11 +4720,11 @@ _08002A9C:
 	strb r0, [r1]
 	ldr r2, [sp, 0xC]
 	cmp r9, r2
-	bcs _08002AB6
-	b _08002996
-_08002AB6:
+	bcs _08002982
+	b _08002862
+_08002982:
 	movs r0, 0
-_08002AB8:
+_08002984:
 	add sp, 0x1C
 	pop {r3-r5}
 	mov r8, r3
@@ -4734,12 +4734,12 @@ _08002AB8:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08002AC8: .4byte gOamLimit
-_08002ACC: .4byte 0x081ef8ec
-_08002AD0: .4byte 0x000001ff
-_08002AD4: .4byte 0xfffffe00
-_08002AD8: .4byte 0x000003ff
-_08002ADC: .4byte 0xfffffc00
+_08002994: .4byte gOamLimit
+_08002998: .4byte 0x081ef8ec
+_0800299C: .4byte 0x000001ff
+_080029A0: .4byte 0xfffffe00
+_080029A4: .4byte 0x000003ff
+_080029A8: .4byte 0xfffffc00
 	thumb_func_end AddSubspritesToOamBuffer
 
 	.align 2, 0 @ Don't pad with nop.

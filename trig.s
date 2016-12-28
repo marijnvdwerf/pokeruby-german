@@ -178,10 +178,10 @@ de_sub_804110C: @ 804110C
 	thumb_func_end de_sub_804110C
 
 	thumb_func_start Sin
-Sin: @ 8041110
+Sin: @ 8040DEC
 	lsls r1, 16
 	asrs r1, 16
-	ldr r2, _08041128 @ =gSineTable
+	ldr r2, _08040E04 @ =gSineTable
 	lsls r0, 16
 	asrs r0, 15
 	adds r0, r2
@@ -192,14 +192,14 @@ Sin: @ 8041110
 	asrs r0, 16
 	bx lr
 	.align 2, 0
-_08041128: .4byte gSineTable
+_08040E04: .4byte gSineTable
 	thumb_func_end Sin
 
 	thumb_func_start Cos
-Cos: @ 804112C
+Cos: @ 8040E08
 	lsls r1, 16
 	asrs r1, 16
-	ldr r2, _08041148 @ =gSineTable
+	ldr r2, _08040E24 @ =gSineTable
 	lsls r0, 16
 	asrs r0, 15
 	adds r0, 0x80
@@ -211,11 +211,11 @@ Cos: @ 804112C
 	asrs r0, 16
 	bx lr
 	.align 2, 0
-_08041148: .4byte gSineTable
+_08040E24: .4byte gSineTable
 	thumb_func_end Cos
 
 	thumb_func_start Sin2
-Sin2: @ 804114C
+Sin2: @ 8040E28
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	lsls r5, 16
@@ -231,20 +231,20 @@ Sin2: @ 804114C
 	bl __udivsi3
 	movs r1, 0x1
 	ands r0, r1
-	ldr r1, _08041180 @ =gSineDegreeTable
+	ldr r1, _08040E5C @ =gSineDegreeTable
 	lsls r4, 1
 	adds r4, r1
 	ldrh r1, [r4]
 	cmp r0, 0
-	bne _08041184
+	bne _08040E60
 	lsls r0, r1, 16
-	b _08041188
+	b _08040E64
 	.align 2, 0
-_08041180: .4byte gSineDegreeTable
-_08041184:
+_08040E5C: .4byte gSineDegreeTable
+_08040E60:
 	lsls r0, r1, 16
 	negs r0, r0
-_08041188:
+_08040E64:
 	asrs r0, 16
 	pop {r4,r5}
 	pop {r1}
@@ -252,7 +252,7 @@ _08041188:
 	thumb_func_end Sin2
 
 	thumb_func_start Cos2
-Cos2: @ 8041190
+Cos2: @ 8040E6C
 	push {lr}
 	lsls r0, 16
 	movs r1, 0xB4

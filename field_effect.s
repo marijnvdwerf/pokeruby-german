@@ -7,7 +7,7 @@
 	.text
 
 	thumb_func_start FieldEffectStart
-FieldEffectStart: @ 8085ABC
+FieldEffectStart: @ 8085668
 	push {r4,r5,lr}
 	sub sp, 0x8
 	adds r4, r0, 0
@@ -15,14 +15,14 @@ FieldEffectStart: @ 8085ABC
 	lsrs r4, 24
 	adds r0, r4, 0
 	bl FieldEffectActiveListAdd
-	ldr r0, _08085AFC @ =gFieldEffectScriptPointers
+	ldr r0, _080856A8 @ =gFieldEffectScriptPointers
 	lsls r4, 2
 	adds r4, r0
 	ldr r0, [r4]
 	str r0, [sp]
 	add r4, sp, 0x4
-	ldr r5, _08085B00 @ =gFieldEffectScriptFuncs
-_08085ADA:
+	ldr r5, _080856AC @ =gFieldEffectScriptFuncs
+_08085686:
 	ldr r0, [sp]
 	ldrb r0, [r0]
 	lsls r0, 2
@@ -33,19 +33,19 @@ _08085ADA:
 	bl _call_via_r2
 	lsls r0, 24
 	cmp r0, 0
-	bne _08085ADA
+	bne _08085686
 	ldr r0, [sp, 0x4]
 	add sp, 0x8
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08085AFC: .4byte gFieldEffectScriptPointers
-_08085B00: .4byte gFieldEffectScriptFuncs
+_080856A8: .4byte gFieldEffectScriptPointers
+_080856AC: .4byte gFieldEffectScriptFuncs
 	thumb_func_end FieldEffectStart
 
 	thumb_func_start FieldEffectCmd_loadtiles
-FieldEffectCmd_loadtiles: @ 8085B04
+FieldEffectCmd_loadtiles: @ 80856B0
 	push {lr}
 	ldr r1, [r0]
 	adds r1, 0x1
@@ -57,7 +57,7 @@ FieldEffectCmd_loadtiles: @ 8085B04
 	thumb_func_end FieldEffectCmd_loadtiles
 
 	thumb_func_start FieldEffectCmd_loadfadedpal
-FieldEffectCmd_loadfadedpal: @ 8085B18
+FieldEffectCmd_loadfadedpal: @ 80856C4
 	push {lr}
 	ldr r1, [r0]
 	adds r1, 0x1
@@ -69,7 +69,7 @@ FieldEffectCmd_loadfadedpal: @ 8085B18
 	thumb_func_end FieldEffectCmd_loadfadedpal
 
 	thumb_func_start FieldEffectCmd_loadpal
-FieldEffectCmd_loadpal: @ 8085B2C
+FieldEffectCmd_loadpal: @ 80856D8
 	push {lr}
 	ldr r1, [r0]
 	adds r1, 0x1
@@ -81,7 +81,7 @@ FieldEffectCmd_loadpal: @ 8085B2C
 	thumb_func_end FieldEffectCmd_loadpal
 
 	thumb_func_start FieldEffectCmd_callnative
-FieldEffectCmd_callnative: @ 8085B40
+FieldEffectCmd_callnative: @ 80856EC
 	push {lr}
 	ldr r2, [r0]
 	adds r2, 0x1
@@ -93,13 +93,13 @@ FieldEffectCmd_callnative: @ 8085B40
 	thumb_func_end FieldEffectCmd_callnative
 
 	thumb_func_start FieldEffectCmd_end
-FieldEffectCmd_end: @ 8085B54
+FieldEffectCmd_end: @ 8085700
 	movs r0, 0
 	bx lr
 	thumb_func_end FieldEffectCmd_end
 
 	thumb_func_start FieldEffectCmd_loadgfx_callnative
-FieldEffectCmd_loadgfx_callnative: @ 8085B58
+FieldEffectCmd_loadgfx_callnative: @ 8085704
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
@@ -120,7 +120,7 @@ FieldEffectCmd_loadgfx_callnative: @ 8085B58
 	thumb_func_end FieldEffectCmd_loadgfx_callnative
 
 	thumb_func_start FieldEffectCmd_loadtiles_callnative
-FieldEffectCmd_loadtiles_callnative: @ 8085B80
+FieldEffectCmd_loadtiles_callnative: @ 808572C
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
@@ -139,7 +139,7 @@ FieldEffectCmd_loadtiles_callnative: @ 8085B80
 	thumb_func_end FieldEffectCmd_loadtiles_callnative
 
 	thumb_func_start FieldEffectCmd_loadfadedpal_callnative
-FieldEffectCmd_loadfadedpal_callnative: @ 8085BA4
+FieldEffectCmd_loadfadedpal_callnative: @ 8085750
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
@@ -158,7 +158,7 @@ FieldEffectCmd_loadfadedpal_callnative: @ 8085BA4
 	thumb_func_end FieldEffectCmd_loadfadedpal_callnative
 
 	thumb_func_start FieldEffectScript_ReadWord
-FieldEffectScript_ReadWord: @ 8085BC8
+FieldEffectScript_ReadWord: @ 8085774
 	ldr r2, [r0]
 	ldrb r0, [r2]
 	ldrb r1, [r2, 0x1]
@@ -174,7 +174,7 @@ FieldEffectScript_ReadWord: @ 8085BC8
 	thumb_func_end FieldEffectScript_ReadWord
 
 	thumb_func_start FieldEffectScript_LoadTiles
-FieldEffectScript_LoadTiles: @ 8085BE0
+FieldEffectScript_LoadTiles: @ 808578C
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	bl FieldEffectScript_ReadWord
@@ -182,12 +182,12 @@ FieldEffectScript_LoadTiles: @ 8085BE0
 	ldrh r0, [r5, 0x6]
 	bl GetSpriteTileStartByTag
 	lsls r0, 16
-	ldr r1, _08085C0C @ =0xffff0000
+	ldr r1, _080857B8 @ =0xffff0000
 	cmp r0, r1
-	bne _08085BFE
+	bne _080857AA
 	adds r0, r5, 0
 	bl LoadSpriteSheet
-_08085BFE:
+_080857AA:
 	ldr r0, [r4]
 	adds r0, 0x4
 	str r0, [r4]
@@ -195,11 +195,11 @@ _08085BFE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08085C0C: .4byte 0xffff0000
+_080857B8: .4byte 0xffff0000
 	thumb_func_end FieldEffectScript_LoadTiles
 
 	thumb_func_start FieldEffectScript_LoadFadedPalette
-FieldEffectScript_LoadFadedPalette: @ 8085C10
+FieldEffectScript_LoadFadedPalette: @ 80857BC
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	bl FieldEffectScript_ReadWord
@@ -219,7 +219,7 @@ FieldEffectScript_LoadFadedPalette: @ 8085C10
 	thumb_func_end FieldEffectScript_LoadFadedPalette
 
 	thumb_func_start FieldEffectScript_LoadPalette
-FieldEffectScript_LoadPalette: @ 8085C38
+FieldEffectScript_LoadPalette: @ 80857E4
 	push {r4,lr}
 	adds r4, r0, 0
 	bl FieldEffectScript_ReadWord
@@ -233,7 +233,7 @@ FieldEffectScript_LoadPalette: @ 8085C38
 	thumb_func_end FieldEffectScript_LoadPalette
 
 	thumb_func_start FieldEffectScript_CallNative
-FieldEffectScript_CallNative: @ 8085C50
+FieldEffectScript_CallNative: @ 80857FC
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
@@ -249,7 +249,7 @@ FieldEffectScript_CallNative: @ 8085C50
 	thumb_func_end FieldEffectScript_CallNative
 
 	thumb_func_start FieldEffectFreeGraphicsResources
-FieldEffectFreeGraphicsResources: @ 8085C6C
+FieldEffectFreeGraphicsResources: @ 8085818
 	push {r4,r5,lr}
 	adds r1, r0, 0
 	adds r1, 0x40
@@ -267,7 +267,7 @@ FieldEffectFreeGraphicsResources: @ 8085C6C
 	thumb_func_end FieldEffectFreeGraphicsResources
 
 	thumb_func_start FieldEffectStop
-FieldEffectStop: @ 8085C90
+FieldEffectStop: @ 808583C
 	push {r4,lr}
 	lsls r4, r1, 24
 	lsrs r4, 24
@@ -280,7 +280,7 @@ FieldEffectStop: @ 8085C90
 	thumb_func_end FieldEffectStop
 
 	thumb_func_start FieldEffectFreeTilesIfUnused
-FieldEffectFreeTilesIfUnused: @ 8085CA8
+FieldEffectFreeTilesIfUnused: @ 8085854
 	push {r4,r5,lr}
 	lsls r0, 16
 	lsrs r4, r0, 16
@@ -288,12 +288,12 @@ FieldEffectFreeTilesIfUnused: @ 8085CA8
 	bl GetSpriteTileTagByTileStart
 	lsls r0, 16
 	lsrs r3, r0, 16
-	ldr r0, _08085D04 @ =0x0000ffff
+	ldr r0, _080858B0 @ =0x0000ffff
 	cmp r3, r0
-	beq _08085CFC
+	beq _080858A8
 	movs r2, 0
-	ldr r5, _08085D08 @ =gSprites
-_08085CC2:
+	ldr r5, _080858B4 @ =gSprites
+_0808586E:
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
@@ -303,37 +303,37 @@ _08085CC2:
 	ldrb r0, [r0]
 	lsls r0, 31
 	cmp r0, 0
-	beq _08085CEC
+	beq _08085898
 	adds r0, r1, 0
 	adds r0, 0x3F
 	ldrb r0, [r0]
 	lsls r0, 25
 	cmp r0, 0
-	bge _08085CEC
+	bge _08085898
 	adds r0, r1, 0
 	adds r0, 0x40
 	ldrh r0, [r0]
 	cmp r4, r0
-	beq _08085CFC
-_08085CEC:
+	beq _080858A8
+_08085898:
 	adds r0, r2, 0x1
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0x3F
-	bls _08085CC2
+	bls _0808586E
 	adds r0, r3, 0
 	bl FreeSpriteTilesByTag
-_08085CFC:
+_080858A8:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08085D04: .4byte 0x0000ffff
-_08085D08: .4byte gSprites
+_080858B0: .4byte 0x0000ffff
+_080858B4: .4byte gSprites
 	thumb_func_end FieldEffectFreeTilesIfUnused
 
 	thumb_func_start FieldEffectFreePaletteIfUnused
-FieldEffectFreePaletteIfUnused: @ 8085D0C
+FieldEffectFreePaletteIfUnused: @ 80858B8
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
@@ -341,13 +341,13 @@ FieldEffectFreePaletteIfUnused: @ 8085D0C
 	bl GetSpritePaletteTagByPaletteNum
 	lsls r0, 16
 	lsrs r5, r0, 16
-	ldr r0, _08085D5C @ =0x0000ffff
+	ldr r0, _08085908 @ =0x0000ffff
 	cmp r5, r0
-	beq _08085D54
+	beq _08085900
 	movs r2, 0
-	ldr r6, _08085D60 @ =gSprites
+	ldr r6, _0808590C @ =gSprites
 	adds r3, r4, 0
-_08085D28:
+_080858D4:
 	lsls r0, r2, 4
 	adds r0, r2
 	lsls r0, 2
@@ -357,35 +357,35 @@ _08085D28:
 	ldrb r0, [r0]
 	lsls r0, 31
 	cmp r0, 0
-	beq _08085D44
+	beq _080858F0
 	ldrb r0, [r1, 0x5]
 	lsrs r0, 4
 	cmp r0, r3
-	beq _08085D54
-_08085D44:
+	beq _08085900
+_080858F0:
 	adds r0, r2, 0x1
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0x3F
-	bls _08085D28
+	bls _080858D4
 	adds r0, r5, 0
 	bl FreeSpritePaletteByTag
-_08085D54:
+_08085900:
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08085D5C: .4byte 0x0000ffff
-_08085D60: .4byte gSprites
+_08085908: .4byte 0x0000ffff
+_0808590C: .4byte gSprites
 	thumb_func_end FieldEffectFreePaletteIfUnused
 
 	thumb_func_start FieldEffectActiveListClear
-FieldEffectActiveListClear: @ 8085D64
+FieldEffectActiveListClear: @ 8085910
 	push {r4,lr}
 	movs r2, 0
-	ldr r4, _08085D84 @ =0x030006e0
+	ldr r4, _08085930 @ =0x030006e0
 	movs r3, 0xFF
-_08085D6C:
+_08085918:
 	adds r0, r2, r4
 	ldrb r1, [r0]
 	orrs r1, r3
@@ -394,96 +394,96 @@ _08085D6C:
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0x1F
-	bls _08085D6C
+	bls _08085918
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08085D84: .4byte 0x030006e0
+_08085930: .4byte 0x030006e0
 	thumb_func_end FieldEffectActiveListClear
 
 	thumb_func_start FieldEffectActiveListAdd
-FieldEffectActiveListAdd: @ 8085D88
+FieldEffectActiveListAdd: @ 8085934
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r3, r0, 24
 	movs r2, 0
-	ldr r4, _08085DA0 @ =0x030006e0
-_08085D92:
+	ldr r4, _0808594C @ =0x030006e0
+_0808593E:
 	adds r1, r2, r4
 	ldrb r0, [r1]
 	cmp r0, 0xFF
-	bne _08085DA4
+	bne _08085950
 	strb r3, [r1]
-	b _08085DAE
+	b _0808595A
 	.align 2, 0
-_08085DA0: .4byte 0x030006e0
-_08085DA4:
+_0808594C: .4byte 0x030006e0
+_08085950:
 	adds r0, r2, 0x1
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0x1F
-	bls _08085D92
-_08085DAE:
+	bls _0808593E
+_0808595A:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end FieldEffectActiveListAdd
 
 	thumb_func_start FieldEffectActiveListRemove
-FieldEffectActiveListRemove: @ 8085DB4
+FieldEffectActiveListRemove: @ 8085960
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r3, r0, 24
 	movs r2, 0
-	ldr r4, _08085DD0 @ =0x030006e0
+	ldr r4, _0808597C @ =0x030006e0
 	movs r5, 0xFF
-_08085DC0:
+_0808596C:
 	adds r1, r2, r4
 	ldrb r0, [r1]
 	cmp r0, r3
-	bne _08085DD4
+	bne _08085980
 	orrs r0, r5
 	strb r0, [r1]
-	b _08085DDE
+	b _0808598A
 	.align 2, 0
-_08085DD0: .4byte 0x030006e0
-_08085DD4:
+_0808597C: .4byte 0x030006e0
+_08085980:
 	adds r0, r2, 0x1
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0x1F
-	bls _08085DC0
-_08085DDE:
+	bls _0808596C
+_0808598A:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end FieldEffectActiveListRemove
 
 	thumb_func_start FieldEffectActiveListContains
-FieldEffectActiveListContains: @ 8085DE4
+FieldEffectActiveListContains: @ 8085990
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
 	movs r1, 0
-	ldr r3, _08085DFC @ =0x030006e0
-_08085DEE:
+	ldr r3, _080859A8 @ =0x030006e0
+_0808599A:
 	adds r0, r1, r3
 	ldrb r0, [r0]
 	cmp r0, r2
-	bne _08085E00
+	bne _080859AC
 	movs r0, 0x1
-	b _08085E0C
+	b _080859B8
 	.align 2, 0
-_08085DFC: .4byte 0x030006e0
-_08085E00:
+_080859A8: .4byte 0x030006e0
+_080859AC:
 	adds r0, r1, 0x1
 	lsls r0, 24
 	lsrs r1, r0, 24
 	cmp r1, 0x1F
-	bls _08085DEE
+	bls _0808599A
 	movs r0, 0
-_08085E0C:
+_080859B8:
 	pop {r1}
 	bx r1
 	thumb_func_end FieldEffectActiveListContains

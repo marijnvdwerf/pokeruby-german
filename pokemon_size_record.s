@@ -327,22 +327,22 @@ _080C5D7C: .4byte gSaveBlock2
 	thumb_func_end GetMonSizeRecordInfo
 
 	thumb_func_start InitShroomishSizeRecord
-InitShroomishSizeRecord: @ 80C5D80
+InitShroomishSizeRecord: @ 80C5B84
 	push {lr}
-	ldr r0, _080C5D90 @ =0x00004047
+	ldr r0, _080C5B94 @ =0x00004047
 	movs r1, 0x81
 	lsls r1, 8
 	bl VarSet
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5D90: .4byte 0x00004047
+_080C5B94: .4byte 0x00004047
 	thumb_func_end InitShroomishSizeRecord
 
 	thumb_func_start GetShroomishSizeRecordInfo
-GetShroomishSizeRecordInfo: @ 80C5D94
+GetShroomishSizeRecordInfo: @ 80C5B98
 	push {lr}
-	ldr r0, _080C5DAC @ =0x00004047
+	ldr r0, _080C5BB0 @ =0x00004047
 	bl GetVarPointer
 	adds r1, r0, 0
 	movs r0, 0x99
@@ -351,16 +351,16 @@ GetShroomishSizeRecordInfo: @ 80C5D94
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5DAC: .4byte 0x00004047
+_080C5BB0: .4byte 0x00004047
 	thumb_func_end GetShroomishSizeRecordInfo
 
 	thumb_func_start CompareShroomishSize
-CompareShroomishSize: @ 80C5DB0
+CompareShroomishSize: @ 80C5BB4
 	push {r4,lr}
-	ldr r0, _080C5DD0 @ =0x00004047
+	ldr r0, _080C5BD4 @ =0x00004047
 	bl GetVarPointer
 	adds r1, r0, 0
-	ldr r4, _080C5DD4 @ =gScriptResult
+	ldr r4, _080C5BD8 @ =gScriptResult
 	movs r0, 0x99
 	lsls r0, 1
 	bl CompareMonSize
@@ -371,46 +371,46 @@ CompareShroomishSize: @ 80C5DB0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5DD0: .4byte 0x00004047
-_080C5DD4: .4byte gScriptResult
+_080C5BD4: .4byte 0x00004047
+_080C5BD8: .4byte gScriptResult
 	thumb_func_end CompareShroomishSize
 
 	thumb_func_start InitBarboachSizeRecord
-InitBarboachSizeRecord: @ 80C5DD8
+InitBarboachSizeRecord: @ 80C5BDC
 	push {lr}
-	ldr r0, _080C5DE8 @ =0x0000404f
+	ldr r0, _080C5BEC @ =0x0000404f
 	movs r1, 0x81
 	lsls r1, 8
 	bl VarSet
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5DE8: .4byte 0x0000404f
+_080C5BEC: .4byte 0x0000404f
 	thumb_func_end InitBarboachSizeRecord
 
 	thumb_func_start GetBarboachSizeRecordInfo
-GetBarboachSizeRecordInfo: @ 80C5DEC
+GetBarboachSizeRecordInfo: @ 80C5BF0
 	push {lr}
-	ldr r0, _080C5E00 @ =0x0000404f
+	ldr r0, _080C5C04 @ =0x0000404f
 	bl GetVarPointer
 	adds r1, r0, 0
-	ldr r0, _080C5E04 @ =0x00000143
+	ldr r0, _080C5C08 @ =0x00000143
 	bl GetMonSizeRecordInfo
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5E00: .4byte 0x0000404f
-_080C5E04: .4byte 0x00000143
+_080C5C04: .4byte 0x0000404f
+_080C5C08: .4byte 0x00000143
 	thumb_func_end GetBarboachSizeRecordInfo
 
 	thumb_func_start CompareBarboachSize
-CompareBarboachSize: @ 80C5E08
+CompareBarboachSize: @ 80C5C0C
 	push {r4,lr}
-	ldr r0, _080C5E28 @ =0x0000404f
+	ldr r0, _080C5C2C @ =0x0000404f
 	bl GetVarPointer
 	adds r1, r0, 0
-	ldr r4, _080C5E2C @ =gScriptResult
-	ldr r0, _080C5E30 @ =0x00000143
+	ldr r4, _080C5C30 @ =gScriptResult
+	ldr r0, _080C5C34 @ =0x00000143
 	bl CompareMonSize
 	lsls r0, 24
 	lsrs r0, 24
@@ -419,13 +419,13 @@ CompareBarboachSize: @ 80C5E08
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5E28: .4byte 0x0000404f
-_080C5E2C: .4byte gScriptResult
-_080C5E30: .4byte 0x00000143
+_080C5C2C: .4byte 0x0000404f
+_080C5C30: .4byte gScriptResult
+_080C5C34: .4byte 0x00000143
 	thumb_func_end CompareBarboachSize
 
 	thumb_func_start GiveGiftRibbonToParty
-GiveGiftRibbonToParty: @ 80C5E34
+GiveGiftRibbonToParty: @ 80C5C38
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -438,37 +438,37 @@ GiveGiftRibbonToParty: @ 80C5E34
 	add r4, sp, 0x8
 	movs r0, 0x1
 	strb r0, [r4]
-	ldr r1, _080C5EBC @ =gUnknown_083D188E
+	ldr r1, _080C5CC0 @ =gUnknown_083D188E
 	mov r0, sp
 	movs r2, 0x7
 	bl memcpy
 	mov r8, r4
 	cmp r6, 0xA
-	bhi _080C5EAE
+	bhi _080C5CB2
 	cmp r5, 0x40
-	bhi _080C5EAE
-	ldr r0, _080C5EC0 @ =gSaveBlock1
-	ldr r1, _080C5EC4 @ =0x00003110
+	bhi _080C5CB2
+	ldr r0, _080C5CC4 @ =gSaveBlock1
+	ldr r1, _080C5CC8 @ =0x00003110
 	adds r0, r1
 	adds r0, r6, r0
 	strb r5, [r0]
 	movs r5, 0
-_080C5E6C:
+_080C5C70:
 	movs r0, 0x64
 	adds r1, r5, 0
 	muls r1, r0
-	ldr r0, _080C5EC8 @ =gPlayerParty
+	ldr r0, _080C5CCC @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0xB
 	bl GetMonData
 	cmp r0, 0
-	beq _080C5E9E
+	beq _080C5CA2
 	adds r0, r4, 0
 	movs r1, 0x6
 	bl GetMonData
 	cmp r0, 0
-	bne _080C5E9E
+	bne _080C5CA2
 	mov r1, sp
 	adds r0, r1, r6
 	ldrb r1, [r0]
@@ -476,15 +476,15 @@ _080C5E6C:
 	mov r2, r8
 	bl SetMonData
 	movs r7, 0x1
-_080C5E9E:
+_080C5CA2:
 	adds r5, 0x1
 	cmp r5, 0x5
-	ble _080C5E6C
+	ble _080C5C70
 	cmp r7, 0
-	beq _080C5EAE
-	ldr r0, _080C5ECC @ =0x0000083b
+	beq _080C5CB2
+	ldr r0, _080C5CD0 @ =0x0000083b
 	bl FlagSet
-_080C5EAE:
+_080C5CB2:
 	add sp, 0xC
 	pop {r3}
 	mov r8, r3
@@ -492,11 +492,11 @@ _080C5EAE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5EBC: .4byte gUnknown_083D188E
-_080C5EC0: .4byte gSaveBlock1
-_080C5EC4: .4byte 0x00003110
-_080C5EC8: .4byte gPlayerParty
-_080C5ECC: .4byte 0x0000083b
+_080C5CC0: .4byte gUnknown_083D188E
+_080C5CC4: .4byte gSaveBlock1
+_080C5CC8: .4byte 0x00003110
+_080C5CCC: .4byte gPlayerParty
+_080C5CD0: .4byte 0x0000083b
 	thumb_func_end GiveGiftRibbonToParty
 
 	.align 2, 0 @ Don't pad with nop.

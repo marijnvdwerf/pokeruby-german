@@ -7,31 +7,31 @@
 	.text
 
 	thumb_func_start Random
-Random: @ 80411A8
-	ldr r2, _080411BC @ =gRngValue
+Random: @ 8040E84
+	ldr r2, _08040E98 @ =gRngValue
 	ldr r1, [r2]
-	ldr r0, _080411C0 @ =0x41c64e6d
+	ldr r0, _08040E9C @ =0x41c64e6d
 	muls r0, r1
-	ldr r1, _080411C4 @ =0x00006073
+	ldr r1, _08040EA0 @ =0x00006073
 	adds r0, r1
 	str r0, [r2]
 	lsrs r0, 16
 	bx lr
 	.align 2, 0
-_080411BC: .4byte gRngValue
-_080411C0: .4byte 0x41c64e6d
-_080411C4: .4byte 0x00006073
+_08040E98: .4byte gRngValue
+_08040E9C: .4byte 0x41c64e6d
+_08040EA0: .4byte 0x00006073
 	thumb_func_end Random
 
 	thumb_func_start SeedRng
-SeedRng: @ 80411C8
+SeedRng: @ 8040EA4
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _080411D4 @ =gRngValue
+	ldr r1, _08040EB0 @ =gRngValue
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_080411D4: .4byte gRngValue
+_08040EB0: .4byte gRngValue
 	thumb_func_end SeedRng
 
 	.align 2, 0 @ Don't pad with nop.

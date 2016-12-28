@@ -28,7 +28,7 @@ VBlankCB_MainMenu: @ 80098A8
 	thumb_func_end VBlankCB_MainMenu
 
 	thumb_func_start CB2_InitMainMenu
-CB2_InitMainMenu: @ 80098BC
+CB2_InitMainMenu: @ 80096F0
 	push {lr}
 	movs r0, 0
 	bl InitMainMenu

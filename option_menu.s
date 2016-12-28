@@ -7,39 +7,39 @@
 	.text
 
 	thumb_func_start CB2_InitOptionMenu
-CB2_InitOptionMenu: @ 808BA90
+CB2_InitOptionMenu: @ 808B63C
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
 	sub sp, 0xC
-	ldr r0, _0808BAB0 @ =gMain
-	ldr r1, _0808BAB4 @ =0x0000043c
+	ldr r0, _0808B65C @ =gMain
+	ldr r1, _0808B660 @ =0x0000043c
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0x9
-	bhi _0808BAE4
+	bhi _0808B690
 	lsls r0, 2
-	ldr r1, _0808BAB8 @ =_0808BABC
+	ldr r1, _0808B664 @ =_0808BABC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0808BAB0: .4byte gMain
-_0808BAB4: .4byte 0x0000043c
-_0808BAB8: .4byte _0808BABC
+_0808B65C: .4byte gMain
+_0808B660: .4byte 0x0000043c
+_0808B664: .4byte _0808BABC
 	.align 2, 0
-_0808BABC:
-	.4byte _0808BAE4
-	.4byte _0808BBAC
-	.4byte _0808BBBE
-	.4byte _0808BBD8
-	.4byte _0808BBE4
-	.4byte _0808BC00
-	.4byte _0808BC24
-	.4byte _0808BC44
-	.4byte _0808BCC8
-	.4byte _0808BE00
-_0808BAE4:
+_0808B668:
+	.4byte _0808B690
+	.4byte _0808B758
+	.4byte _0808B76A
+	.4byte _0808B784
+	.4byte _0808B790
+	.4byte _0808B7AC
+	.4byte _0808B7D0
+	.4byte _0808B7F0
+	.4byte _0808B874
+	.4byte _0808B9AC
+_0808B690:
 	movs r0, 0
 	bl SetVBlankCallback
 	movs r0, 0x80
@@ -72,14 +72,14 @@ _0808BAE4:
 	mov r8, r2
 	add r2, sp, 0x4
 	movs r6, 0
-	ldr r1, _0808BB9C @ =0x040000d4
+	ldr r1, _0808B748 @ =0x040000d4
 	movs r5, 0x80
 	lsls r5, 5
-	ldr r7, _0808BBA0 @ =0x81000800
+	ldr r7, _0808B74C @ =0x81000800
 	movs r0, 0x81
 	lsls r0, 24
 	mov r12, r0
-_0808BB34:
+_0808B6E0:
 	strh r6, [r2]
 	add r0, sp, 0x4
 	str r0, [r1]
@@ -89,7 +89,7 @@ _0808BB34:
 	adds r3, r5
 	subs r4, r5
 	cmp r4, r5
-	bhi _0808BB34
+	bhi _0808B6E0
 	strh r6, [r2]
 	add r2, sp, 0x4
 	str r2, [r1]
@@ -105,7 +105,7 @@ _0808BB34:
 	lsls r3, 3
 	movs r4, 0
 	str r4, [sp, 0x8]
-	ldr r2, _0808BB9C @ =0x040000d4
+	ldr r2, _0808B748 @ =0x040000d4
 	mov r1, r8
 	str r1, [r2]
 	str r0, [r2, 0x4]
@@ -127,66 +127,66 @@ _0808BB34:
 	orrs r3, r0
 	str r3, [r2, 0x8]
 	ldr r0, [r2, 0x8]
-	ldr r1, _0808BBA4 @ =gMain
-	ldr r2, _0808BBA8 @ =0x0000043c
+	ldr r1, _0808B750 @ =gMain
+	ldr r2, _0808B754 @ =0x0000043c
 	adds r1, r2
-	b _0808BDB6
+	b _0808B962
 	.align 2, 0
-_0808BB9C: .4byte 0x040000d4
-_0808BBA0: .4byte 0x81000800
-_0808BBA4: .4byte gMain
-_0808BBA8: .4byte 0x0000043c
-_0808BBAC:
+_0808B748: .4byte 0x040000d4
+_0808B74C: .4byte 0x81000800
+_0808B750: .4byte gMain
+_0808B754: .4byte 0x0000043c
+_0808B758:
 	bl ResetPaletteFade
 	bl remove_some_task
 	bl ResetTasks
 	bl ResetSpriteData
-	b _0808BDB0
-_0808BBBE:
-	ldr r0, _0808BBCC @ =gWindowConfig_81E71B4
+	b _0808B95C
+_0808B76A:
+	ldr r0, _0808B778 @ =gWindowConfig_81E71B4
 	bl SetUpWindowConfig
-	ldr r1, _0808BBD0 @ =gMain
-	ldr r2, _0808BBD4 @ =0x0000043c
+	ldr r1, _0808B77C @ =gMain
+	ldr r2, _0808B780 @ =0x0000043c
 	adds r1, r2
-	b _0808BDB6
+	b _0808B962
 	.align 2, 0
-_0808BBCC: .4byte gWindowConfig_81E71B4
-_0808BBD0: .4byte gMain
-_0808BBD4: .4byte 0x0000043c
-_0808BBD8:
-	ldr r0, _0808BBE0 @ =gWindowConfig_81E71B4
+_0808B778: .4byte gWindowConfig_81E71B4
+_0808B77C: .4byte gMain
+_0808B780: .4byte 0x0000043c
+_0808B784:
+	ldr r0, _0808B78C @ =gWindowConfig_81E71B4
 	bl MultistepInitMenuWindowBegin
-	b _0808BDB0
+	b _0808B95C
 	.align 2, 0
-_0808BBE0: .4byte gWindowConfig_81E71B4
-_0808BBE4:
+_0808B78C: .4byte gWindowConfig_81E71B4
+_0808B790:
 	bl MultistepInitMenuWindowContinue
 	cmp r0, 0
-	bne _0808BBEE
-	b _0808BE06
-_0808BBEE:
-	ldr r1, _0808BBF8 @ =gMain
-	ldr r2, _0808BBFC @ =0x0000043c
+	bne _0808B79A
+	b _0808B9B2
+_0808B79A:
+	ldr r1, _0808B7A4 @ =gMain
+	ldr r2, _0808B7A8 @ =0x0000043c
 	adds r1, r2
-	b _0808BDB6
+	b _0808B962
 	.align 2, 0
-_0808BBF8: .4byte gMain
-_0808BBFC: .4byte 0x0000043c
-_0808BC00:
-	ldr r0, _0808BC18 @ =gUnknown_0839F5FC
+_0808B7A4: .4byte gMain
+_0808B7A8: .4byte 0x0000043c
+_0808B7AC:
+	ldr r0, _0808B7C4 @ =gUnknown_0839F5FC
 	movs r1, 0x80
 	movs r2, 0x40
 	bl LoadPalette
-	ldr r0, _0808BC1C @ =gUnknown_0839F63C
-	ldr r1, _0808BC20 @ =0x0600bee0
+	ldr r0, _0808B7C8 @ =gUnknown_0839F63C
+	ldr r1, _0808B7CC @ =0x0600bee0
 	movs r2, 0x20
 	bl CpuSet
-	b _0808BDB0
+	b _0808B95C
 	.align 2, 0
-_0808BC18: .4byte gUnknown_0839F5FC
-_0808BC1C: .4byte gUnknown_0839F63C
-_0808BC20: .4byte 0x0600bee0
-_0808BC24:
+_0808B7C4: .4byte gUnknown_0839F5FC
+_0808B7C8: .4byte gUnknown_0839F63C
+_0808B7CC: .4byte 0x0600bee0
+_0808B7D0:
 	movs r0, 0x1
 	negs r0, r0
 	movs r1, 0
@@ -194,15 +194,15 @@ _0808BC24:
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r1, _0808BC3C @ =gMain
-	ldr r2, _0808BC40 @ =0x0000043c
+	ldr r1, _0808B7E8 @ =gMain
+	ldr r2, _0808B7EC @ =0x0000043c
 	adds r1, r2
-	b _0808BDB6
+	b _0808B962
 	.align 2, 0
-_0808BC3C: .4byte gMain
-_0808BC40: .4byte 0x0000043c
-_0808BC44:
-	ldr r0, _0808BCA4 @ =0x04000040
+_0808B7E8: .4byte gMain
+_0808B7EC: .4byte 0x0000043c
+_0808B7F0:
+	ldr r0, _0808B850 @ =0x04000040
 	movs r4, 0
 	strh r4, [r0]
 	adds r0, 0x4
@@ -211,8 +211,8 @@ _0808BC44:
 	strh r4, [r0]
 	adds r0, 0x4
 	strh r4, [r0]
-	ldr r1, _0808BCA8 @ =0x04000048
-	ldr r2, _0808BCAC @ =0x00001111
+	ldr r1, _0808B854 @ =0x04000048
+	ldr r2, _0808B858 @ =0x00001111
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
@@ -221,57 +221,57 @@ _0808BC44:
 	adds r1, 0x6
 	movs r0, 0xE1
 	strh r0, [r1]
-	ldr r0, _0808BCB0 @ =0x04000052
+	ldr r0, _0808B85C @ =0x04000052
 	strh r4, [r0]
 	adds r1, 0x4
 	movs r0, 0x7
 	strh r0, [r1]
-	ldr r3, _0808BCB4 @ =0x04000208
+	ldr r3, _0808B860 @ =0x04000208
 	ldrh r2, [r3]
 	strh r4, [r3]
-	ldr r4, _0808BCB8 @ =0x04000200
+	ldr r4, _0808B864 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r2, _0808BCBC @ =0x04000004
+	ldr r2, _0808B868 @ =0x04000004
 	ldrh r0, [r2]
 	movs r1, 0x8
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _0808BCC0 @ =_0808BA7C
+	ldr r0, _0808B86C @ =_0808BA7C
 	bl SetVBlankCallback
 	movs r1, 0x80
 	lsls r1, 19
-	ldr r2, _0808BCC4 @ =0x00007140
+	ldr r2, _0808B870 @ =0x00007140
 	adds r0, r2, 0
 	strh r0, [r1]
-	b _0808BDB0
+	b _0808B95C
 	.align 2, 0
-_0808BCA4: .4byte 0x04000040
-_0808BCA8: .4byte 0x04000048
-_0808BCAC: .4byte 0x00001111
-_0808BCB0: .4byte 0x04000052
-_0808BCB4: .4byte 0x04000208
-_0808BCB8: .4byte 0x04000200
-_0808BCBC: .4byte 0x04000004
-_0808BCC0: .4byte _0808BA7C
-_0808BCC4: .4byte 0x00007140
-_0808BCC8:
-	ldr r0, _0808BDC0 @ =Task_OptionMenuFadeIn
+_0808B850: .4byte 0x04000040
+_0808B854: .4byte 0x04000048
+_0808B858: .4byte 0x00001111
+_0808B85C: .4byte 0x04000052
+_0808B860: .4byte 0x04000208
+_0808B864: .4byte 0x04000200
+_0808B868: .4byte 0x04000004
+_0808B86C: .4byte _0808BA7C
+_0808B870: .4byte 0x00007140
+_0808B874:
+	ldr r0, _0808B96C @ =Task_OptionMenuFadeIn
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0808BDC4 @ =gTasks
+	ldr r1, _0808B970 @ =gTasks
 	lsls r4, r0, 2
 	adds r4, r0
 	lsls r4, 3
 	adds r4, r1
 	movs r0, 0
 	strh r0, [r4, 0x8]
-	ldr r1, _0808BDC8 @ =gSaveBlock2
+	ldr r1, _0808B974 @ =gSaveBlock2
 	ldrb r0, [r1, 0x14]
 	lsls r0, 29
 	lsrs r0, 29
@@ -303,35 +303,35 @@ _0808BCC8:
 	movs r2, 0x1B
 	movs r3, 0x13
 	bl MenuDrawTextWindow
-	ldr r0, _0808BDCC @ =gSystemText_OptionMenu
+	ldr r0, _0808B978 @ =gSystemText_OptionMenu
 	movs r1, 0x4
 	movs r2, 0x1
 	bl MenuPrint
-	ldr r0, _0808BDD0 @ =gSystemText_TextSpeed
+	ldr r0, _0808B97C @ =gSystemText_TextSpeed
 	movs r1, 0x4
 	movs r2, 0x5
 	bl MenuPrint
-	ldr r0, _0808BDD4 @ =gSystemText_BattleScene
+	ldr r0, _0808B980 @ =gSystemText_BattleScene
 	movs r1, 0x4
 	movs r2, 0x7
 	bl MenuPrint
-	ldr r0, _0808BDD8 @ =gSystemText_BattleStyle
+	ldr r0, _0808B984 @ =gSystemText_BattleStyle
 	movs r1, 0x4
 	movs r2, 0x9
 	bl MenuPrint
-	ldr r0, _0808BDDC @ =gSystemText_Sound
+	ldr r0, _0808B988 @ =gSystemText_Sound
 	movs r1, 0x4
 	movs r2, 0xB
 	bl MenuPrint
-	ldr r0, _0808BDE0 @ =gSystemText_ButtonMode
+	ldr r0, _0808B98C @ =gSystemText_ButtonMode
 	movs r1, 0x4
 	movs r2, 0xD
 	bl MenuPrint
-	ldr r0, _0808BDE4 @ =gSystemText_Frame
+	ldr r0, _0808B990 @ =gSystemText_Frame
 	movs r1, 0x4
 	movs r2, 0xF
 	bl MenuPrint
-	ldr r0, _0808BDE8 @ =gSystemText_Cancel
+	ldr r0, _0808B994 @ =gSystemText_Cancel
 	movs r1, 0x4
 	movs r2, 0x11
 	bl MenuPrint
@@ -347,46 +347,46 @@ _0808BCC8:
 	bl ButtonMode_DrawChoices
 	ldrb r0, [r4, 0x14]
 	bl FrameType_DrawChoices
-	ldr r1, _0808BDEC @ =0x04000040
-	ldr r2, _0808BDF0 @ =0x000011df
+	ldr r1, _0808B998 @ =0x04000040
+	ldr r2, _0808B99C @ =0x000011df
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x4
-	ldr r2, _0808BDF4 @ =0x0000011f
+	ldr r2, _0808B9A0 @ =0x0000011f
 	adds r0, r2, 0
 	strh r0, [r1]
 	ldrb r0, [r4, 0x8]
 	bl HighlightOptionMenuItem
-_0808BDB0:
-	ldr r1, _0808BDF8 @ =gMain
-	ldr r0, _0808BDFC @ =0x0000043c
+_0808B95C:
+	ldr r1, _0808B9A4 @ =gMain
+	ldr r0, _0808B9A8 @ =0x0000043c
 	adds r1, r0
-_0808BDB6:
+_0808B962:
 	ldrb r0, [r1]
 	adds r0, 0x1
 	strb r0, [r1]
-	b _0808BE06
+	b _0808B9B2
 	.align 2, 0
-_0808BDC0: .4byte Task_OptionMenuFadeIn
-_0808BDC4: .4byte gTasks
-_0808BDC8: .4byte gSaveBlock2
-_0808BDCC: .4byte gSystemText_OptionMenu
-_0808BDD0: .4byte gSystemText_TextSpeed
-_0808BDD4: .4byte gSystemText_BattleScene
-_0808BDD8: .4byte gSystemText_BattleStyle
-_0808BDDC: .4byte gSystemText_Sound
-_0808BDE0: .4byte gSystemText_ButtonMode
-_0808BDE4: .4byte gSystemText_Frame
-_0808BDE8: .4byte gSystemText_Cancel
-_0808BDEC: .4byte 0x04000040
-_0808BDF0: .4byte 0x000011df
-_0808BDF4: .4byte 0x0000011f
-_0808BDF8: .4byte gMain
-_0808BDFC: .4byte 0x0000043c
-_0808BE00:
-	ldr r0, _0808BE14 @ =_0808BA64
+_0808B96C: .4byte Task_OptionMenuFadeIn
+_0808B970: .4byte gTasks
+_0808B974: .4byte gSaveBlock2
+_0808B978: .4byte gSystemText_OptionMenu
+_0808B97C: .4byte gSystemText_TextSpeed
+_0808B980: .4byte gSystemText_BattleScene
+_0808B984: .4byte gSystemText_BattleStyle
+_0808B988: .4byte gSystemText_Sound
+_0808B98C: .4byte gSystemText_ButtonMode
+_0808B990: .4byte gSystemText_Frame
+_0808B994: .4byte gSystemText_Cancel
+_0808B998: .4byte 0x04000040
+_0808B99C: .4byte 0x000011df
+_0808B9A0: .4byte 0x0000011f
+_0808B9A4: .4byte gMain
+_0808B9A8: .4byte 0x0000043c
+_0808B9AC:
+	ldr r0, _0808B9C0 @ =_0808BA64
 	bl SetMainCallback2
-_0808BE06:
+_0808B9B2:
 	add sp, 0xC
 	pop {r3}
 	mov r8, r3
@@ -394,7 +394,7 @@ _0808BE06:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0808BE14: .4byte _0808BA64
+_0808B9C0: .4byte _0808BA64
 	thumb_func_end CB2_InitOptionMenu
 
 	thumb_func_start Task_OptionMenuFadeIn

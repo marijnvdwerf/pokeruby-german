@@ -7,20 +7,20 @@
 	.text
 
 	thumb_func_start CB2_InitClearSaveDataScreen
-CB2_InitClearSaveDataScreen: @ 8148BBC
+CB2_InitClearSaveDataScreen: @ 8148800
 	push {lr}
 	bl InitClearSaveDataScreen
 	lsls r0, 24
 	cmp r0, 0
-	beq _08148BD0
-	ldr r0, _08148BD4 @ =Task_InitMenu
+	beq _08148814
+	ldr r0, _08148818 @ =Task_InitMenu
 	movs r1, 0
 	bl CreateTask
-_08148BD0:
+_08148814:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08148BD4: .4byte Task_InitMenu
+_08148818: .4byte Task_InitMenu
 	thumb_func_end CB2_InitClearSaveDataScreen
 
 	thumb_func_start VBlankCB_ClearSaveDataScreen

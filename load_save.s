@@ -7,88 +7,88 @@
 	.text
 
 	thumb_func_start CheckForFlashMemory
-CheckForFlashMemory: @ 8047CF0
+CheckForFlashMemory: @ 80479CC
 	push {lr}
 	bl IdentifyFlash
 	lsls r0, 16
 	cmp r0, 0
-	bne _08047D0C
-	ldr r1, _08047D08 @ =gUnknown_3004820
+	bne _080479E8
+	ldr r1, _080479E4 @ =gUnknown_3004820
 	movs r0, 0x1
 	str r0, [r1]
 	bl InitFlashTimer
-	b _08047D12
+	b _080479EE
 	.align 2, 0
-_08047D08: .4byte gUnknown_3004820
-_08047D0C:
-	ldr r1, _08047D18 @ =gUnknown_3004820
+_080479E4: .4byte gUnknown_3004820
+_080479E8:
+	ldr r1, _080479F4 @ =gUnknown_3004820
 	movs r0, 0
 	str r0, [r1]
-_08047D12:
+_080479EE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08047D18: .4byte gUnknown_3004820
+_080479F4: .4byte gUnknown_3004820
 	thumb_func_end CheckForFlashMemory
 
 	thumb_func_start GetSecretBase2Field_9
-GetSecretBase2Field_9: @ 8047D1C
-	ldr r0, _08047D24 @ =gSaveBlock2
+GetSecretBase2Field_9: @ 80479F8
+	ldr r0, _08047A00 @ =gSaveBlock2
 	ldrb r0, [r0, 0x9]
 	bx lr
 	.align 2, 0
-_08047D24: .4byte gSaveBlock2
+_08047A00: .4byte gSaveBlock2
 	thumb_func_end GetSecretBase2Field_9
 
 	thumb_func_start ClearSecretBase2Field_9
-ClearSecretBase2Field_9: @ 8047D28
-	ldr r1, _08047D30 @ =gSaveBlock2
+ClearSecretBase2Field_9: @ 8047A04
+	ldr r1, _08047A0C @ =gSaveBlock2
 	movs r0, 0
 	strb r0, [r1, 0x9]
 	bx lr
 	.align 2, 0
-_08047D30: .4byte gSaveBlock2
+_08047A0C: .4byte gSaveBlock2
 	thumb_func_end ClearSecretBase2Field_9
 
 	thumb_func_start SetSecretBase2Field_9
-SetSecretBase2Field_9: @ 8047D34
-	ldr r1, _08047D3C @ =gSaveBlock2
+SetSecretBase2Field_9: @ 8047A10
+	ldr r1, _08047A18 @ =gSaveBlock2
 	movs r0, 0x1
 	strb r0, [r1, 0x9]
 	bx lr
 	.align 2, 0
-_08047D3C: .4byte gSaveBlock2
+_08047A18: .4byte gSaveBlock2
 	thumb_func_end SetSecretBase2Field_9
 
 	thumb_func_start SetSecretBase2Field_9_AndHideBG
-SetSecretBase2Field_9_AndHideBG: @ 8047D40
+SetSecretBase2Field_9_AndHideBG: @ 8047A1C
 	push {lr}
 	movs r0, 0
 	bl gpu_sync_bg_hide
-	ldr r1, _08047D54 @ =gSaveBlock2
+	ldr r1, _08047A30 @ =gSaveBlock2
 	movs r0, 0x1
 	strb r0, [r1, 0x9]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08047D54: .4byte gSaveBlock2
+_08047A30: .4byte gSaveBlock2
 	thumb_func_end SetSecretBase2Field_9_AndHideBG
 
 	thumb_func_start ClearSecretBase2Field_9_2
-ClearSecretBase2Field_9_2: @ 8047D58
-	ldr r1, _08047D60 @ =gSaveBlock2
+ClearSecretBase2Field_9_2: @ 8047A34
+	ldr r1, _08047A3C @ =gSaveBlock2
 	movs r0, 0
 	strb r0, [r1, 0x9]
 	bx lr
 	.align 2, 0
-_08047D60: .4byte gSaveBlock2
+_08047A3C: .4byte gSaveBlock2
 	thumb_func_end ClearSecretBase2Field_9_2
 
 	thumb_func_start SavePlayerParty
-SavePlayerParty: @ 8047D64
+SavePlayerParty: @ 8047A40
 	push {r4-r6,lr}
-	ldr r2, _08047D9C @ =gSaveBlock1
-	ldr r0, _08047DA0 @ =gPlayerPartyCount
+	ldr r2, _08047A78 @ =gSaveBlock1
+	ldr r0, _08047A7C @ =gPlayerPartyCount
 	ldrb r1, [r0]
 	movs r3, 0x8D
 	lsls r3, 2
@@ -99,8 +99,8 @@ SavePlayerParty: @ 8047D64
 	lsls r0, 2
 	adds r5, r2, r0
 	movs r4, 0
-_08047D7E:
-	ldr r1, _08047DA4 @ =gPlayerParty
+_08047A5A:
+	ldr r1, _08047A80 @ =gPlayerParty
 	adds r1, r4, r1
 	adds r0, r5, 0
 	movs r2, 0x64
@@ -109,33 +109,33 @@ _08047D7E:
 	adds r4, 0x64
 	adds r6, 0x1
 	cmp r6, 0x5
-	ble _08047D7E
+	ble _08047A5A
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08047D9C: .4byte gSaveBlock1
-_08047DA0: .4byte gPlayerPartyCount
-_08047DA4: .4byte gPlayerParty
+_08047A78: .4byte gSaveBlock1
+_08047A7C: .4byte gPlayerPartyCount
+_08047A80: .4byte gPlayerParty
 	thumb_func_end SavePlayerParty
 
 	thumb_func_start LoadPlayerParty
-LoadPlayerParty: @ 8047DA8
+LoadPlayerParty: @ 8047A84
 	push {r4-r6,lr}
-	ldr r0, _08047DE4 @ =gPlayerPartyCount
-	ldr r1, _08047DE8 @ =gSaveBlock1
+	ldr r0, _08047AC0 @ =gPlayerPartyCount
+	ldr r1, _08047AC4 @ =gSaveBlock1
 	movs r2, 0x8D
 	lsls r2, 2
 	adds r1, r2
 	ldrb r1, [r1]
 	strb r1, [r0]
-	ldr r4, _08047DEC @ =gPlayerParty
+	ldr r4, _08047AC8 @ =gPlayerParty
 	movs r5, 0
 	movs r0, 0xFA
 	lsls r0, 1
 	adds r6, r4, r0
-_08047DC2:
-	ldr r1, _08047DE8 @ =gSaveBlock1
+_08047A9E:
+	ldr r1, _08047AC4 @ =gSaveBlock1
 	adds r1, r5, r1
 	movs r2, 0x8E
 	lsls r2, 2
@@ -146,14 +146,14 @@ _08047DC2:
 	adds r4, 0x64
 	adds r5, 0x64
 	cmp r4, r6
-	ble _08047DC2
+	ble _08047A9E
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08047DE4: .4byte gPlayerPartyCount
-_08047DE8: .4byte gSaveBlock1
-_08047DEC: .4byte gPlayerParty
+_08047AC0: .4byte gPlayerPartyCount
+_08047AC4: .4byte gSaveBlock1
+_08047AC8: .4byte gPlayerParty
 	thumb_func_end LoadPlayerParty
 
 	thumb_func_start SaveMapObjects
@@ -219,7 +219,7 @@ _08047E5C: .4byte gMapObjects
 	thumb_func_end LoadMapObjects
 
 	thumb_func_start SaveSerializedGame
-SaveSerializedGame: @ 8047E60
+SaveSerializedGame: @ 8047B3C
 	push {lr}
 	bl SavePlayerParty
 	bl SaveMapObjects
@@ -228,7 +228,7 @@ SaveSerializedGame: @ 8047E60
 	thumb_func_end SaveSerializedGame
 
 	thumb_func_start LoadSerializedGame
-LoadSerializedGame: @ 8047E70
+LoadSerializedGame: @ 8047B4C
 	push {lr}
 	bl LoadPlayerParty
 	bl LoadMapObjects
@@ -237,61 +237,61 @@ LoadSerializedGame: @ 8047E70
 	thumb_func_end LoadSerializedGame
 
 	thumb_func_start LoadPlayerData
-LoadPlayerData: @ 8047E80
+LoadPlayerData: @ 8047B5C
 	push {r4-r7,lr}
-	ldr r0, _08047F30 @ =gSaveBlock1
+	ldr r0, _08047C0C @ =gSaveBlock1
 	movs r1, 0xAC
 	lsls r1, 3
 	adds r3, r0, r1
-	ldr r1, _08047F34 @ =gLoadedSaveData
+	ldr r1, _08047C10 @ =gLoadedSaveData
 	movs r2, 0x13
-_08047E8E:
+_08047B6A:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047E8E
-	ldr r1, _08047F34 @ =gLoadedSaveData
-	ldr r0, _08047F30 @ =gSaveBlock1
+	bge _08047B6A
+	ldr r1, _08047C10 @ =gLoadedSaveData
+	ldr r0, _08047C0C @ =gSaveBlock1
 	movs r2, 0xB6
 	lsls r2, 3
 	adds r3, r0, r2
 	adds r1, 0x50
 	movs r2, 0x13
-_08047EA6:
+_08047B82:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047EA6
-	ldr r1, _08047F34 @ =gLoadedSaveData
-	ldr r0, _08047F30 @ =gSaveBlock1
+	bge _08047B82
+	ldr r1, _08047C10 @ =gLoadedSaveData
+	ldr r0, _08047C0C @ =gSaveBlock1
 	movs r5, 0xC0
 	lsls r5, 3
 	adds r3, r0, r5
 	adds r1, 0xA0
 	movs r2, 0xF
-_08047EBE:
+_08047B9A:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047EBE
-	ldr r1, _08047F34 @ =gLoadedSaveData
-	ldr r0, _08047F30 @ =gSaveBlock1
+	bge _08047B9A
+	ldr r1, _08047C10 @ =gLoadedSaveData
+	ldr r0, _08047C0C @ =gSaveBlock1
 	movs r6, 0xC8
 	lsls r6, 3
 	adds r3, r0, r6
 	adds r1, 0xE0
 	movs r2, 0x3F
-_08047ED6:
+_08047BB2:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047ED6
-	ldr r1, _08047F34 @ =gLoadedSaveData
-	ldr r0, _08047F30 @ =gSaveBlock1
+	bge _08047BB2
+	ldr r1, _08047C10 @ =gLoadedSaveData
+	ldr r0, _08047C0C @ =gSaveBlock1
 	movs r7, 0xE8
 	lsls r7, 3
 	adds r3, r0, r7
@@ -299,21 +299,21 @@ _08047ED6:
 	lsls r0, 1
 	adds r1, r0
 	movs r2, 0x2D
-_08047EF2:
+_08047BCE:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047EF2
-	ldr r0, _08047F34 @ =gLoadedSaveData
-	ldr r4, _08047F30 @ =gSaveBlock1
+	bge _08047BCE
+	ldr r0, _08047C10 @ =gLoadedSaveData
+	ldr r4, _08047C0C @ =gSaveBlock1
 	movs r1, 0xA6
 	lsls r1, 2
 	adds r3, r0, r1
-	ldr r2, _08047F38 @ =0x00002b4c
+	ldr r2, _08047C14 @ =0x00002b4c
 	mov r12, r2
 	movs r2, 0xF
-_08047F0C:
+_08047BE8:
 	adds r1, r3, 0
 	mov r5, r12
 	adds r0, r4, r5
@@ -327,75 +327,75 @@ _08047F0C:
 	adds r3, 0x24
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047F0C
+	bge _08047BE8
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08047F30: .4byte gSaveBlock1
-_08047F34: .4byte gLoadedSaveData
-_08047F38: .4byte 0x00002b4c
+_08047C0C: .4byte gSaveBlock1
+_08047C10: .4byte gLoadedSaveData
+_08047C14: .4byte 0x00002b4c
 	thumb_func_end LoadPlayerData
 
 	thumb_func_start SavePlayerData
-SavePlayerData: @ 8047F3C
+SavePlayerData: @ 8047C18
 	push {r4-r7,lr}
-	ldr r0, _08047FF0 @ =gSaveBlock1
-	ldr r3, _08047FF4 @ =gLoadedSaveData
+	ldr r0, _08047CCC @ =gSaveBlock1
+	ldr r3, _08047CD0 @ =gLoadedSaveData
 	movs r2, 0xAC
 	lsls r2, 3
 	adds r1, r0, r2
 	movs r2, 0x13
-_08047F4A:
+_08047C26:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047F4A
-	ldr r1, _08047FF0 @ =gSaveBlock1
-	ldr r0, _08047FF4 @ =gLoadedSaveData
+	bge _08047C26
+	ldr r1, _08047CCC @ =gSaveBlock1
+	ldr r0, _08047CD0 @ =gLoadedSaveData
 	adds r3, r0, 0
 	adds r3, 0x50
 	movs r5, 0xB6
 	lsls r5, 3
 	adds r1, r5
 	movs r2, 0x13
-_08047F64:
+_08047C40:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047F64
-	ldr r1, _08047FF0 @ =gSaveBlock1
-	ldr r0, _08047FF4 @ =gLoadedSaveData
+	bge _08047C40
+	ldr r1, _08047CCC @ =gSaveBlock1
+	ldr r0, _08047CD0 @ =gLoadedSaveData
 	adds r3, r0, 0
 	adds r3, 0xA0
 	movs r6, 0xC0
 	lsls r6, 3
 	adds r1, r6
 	movs r2, 0xF
-_08047F7E:
+_08047C5A:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047F7E
-	ldr r1, _08047FF0 @ =gSaveBlock1
-	ldr r0, _08047FF4 @ =gLoadedSaveData
+	bge _08047C5A
+	ldr r1, _08047CCC @ =gSaveBlock1
+	ldr r0, _08047CD0 @ =gLoadedSaveData
 	adds r3, r0, 0
 	adds r3, 0xE0
 	movs r7, 0xC8
 	lsls r7, 3
 	adds r1, r7
 	movs r2, 0x3F
-_08047F98:
+_08047C74:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047F98
-	ldr r1, _08047FF0 @ =gSaveBlock1
-	ldr r0, _08047FF4 @ =gLoadedSaveData
+	bge _08047C74
+	ldr r1, _08047CCC @ =gSaveBlock1
+	ldr r0, _08047CD0 @ =gLoadedSaveData
 	movs r2, 0xF0
 	lsls r2, 1
 	adds r3, r0, r2
@@ -403,21 +403,21 @@ _08047F98:
 	lsls r5, 3
 	adds r1, r5
 	movs r2, 0x2D
-_08047FB4:
+_08047C90:
 	ldm r3!, {r0}
 	stm r1!, {r0}
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047FB4
-	ldr r0, _08047FF0 @ =gSaveBlock1
-	ldr r4, _08047FF4 @ =gLoadedSaveData
-	ldr r6, _08047FF8 @ =0x00002b4c
+	bge _08047C90
+	ldr r0, _08047CCC @ =gSaveBlock1
+	ldr r4, _08047CD0 @ =gLoadedSaveData
+	ldr r6, _08047CD4 @ =0x00002b4c
 	adds r3, r0, r6
 	movs r7, 0xA6
 	lsls r7, 2
 	mov r12, r7
 	movs r2, 0xF
-_08047FCE:
+_08047CAA:
 	adds r1, r3, 0
 	mov r5, r12
 	adds r0, r4, r5
@@ -431,14 +431,14 @@ _08047FCE:
 	adds r3, 0x24
 	subs r2, 0x1
 	cmp r2, 0
-	bge _08047FCE
+	bge _08047CAA
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08047FF0: .4byte gSaveBlock1
-_08047FF4: .4byte gLoadedSaveData
-_08047FF8: .4byte 0x00002b4c
+_08047CCC: .4byte gSaveBlock1
+_08047CD0: .4byte gLoadedSaveData
+_08047CD4: .4byte 0x00002b4c
 	thumb_func_end SavePlayerData
 
 	.align 2, 0 @ Don't pad with nop.

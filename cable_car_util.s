@@ -7,7 +7,7 @@
 	.text
 
 	thumb_func_start sub_8124E7C
-sub_8124E7C: @ 81251FC
+sub_8124E7C: @ 8124E7C
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -32,17 +32,17 @@ sub_8124E7C: @ 81251FC
 	movs r0, 0
 	lsrs r4, r3, 24
 	cmp r0, r8
-	bcs _08125276
-_0812522E:
+	bcs _08124EF6
+_08124EAE:
 	ldr r2, [sp]
 	movs r3, 0
 	adds r6, r4, 0x1
 	adds r0, 0x1
 	mov r12, r0
 	cmp r3, r7
-	bcs _08125260
+	bcs _08124EE0
 	lsls r5, r4, 6
-_0812523E:
+_08124EBE:
 	lsls r0, r2, 1
 	adds r0, r5
 	add r0, r10
@@ -59,8 +59,8 @@ _0812523E:
 	lsls r0, 24
 	lsrs r3, r0, 24
 	cmp r3, r7
-	bcc _0812523E
-_08125260:
+	bcc _08124EBE
+_08124EE0:
 	adds r0, r6, 0
 	asrs r0, 5
 	lsls r0, 5
@@ -71,8 +71,8 @@ _08125260:
 	lsls r0, r1, 24
 	lsrs r0, 24
 	cmp r0, r8
-	bcc _0812522E
-_08125276:
+	bcc _08124EAE
+_08124EF6:
 	add sp, 0x4
 	pop {r3-r5}
 	mov r8, r3
@@ -84,7 +84,7 @@ _08125276:
 	thumb_func_end sub_8124E7C
 
 	thumb_func_start sub_8124F08
-sub_8124F08: @ 8125288
+sub_8124F08: @ 8124F08
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -108,17 +108,17 @@ sub_8124F08: @ 8125288
 	adds r5, r1, 0
 	lsrs r4, r3, 24
 	cmp r0, r9
-	bcs _08125302
-_081252B8:
+	bcs _08124F82
+_08124F38:
 	ldr r2, [sp]
 	movs r3, 0
 	adds r7, r4, 0x1
 	adds r0, 0x1
 	mov r8, r0
 	cmp r3, r12
-	bcs _081252EC
+	bcs _08124F6C
 	lsls r6, r4, 6
-_081252C8:
+_08124F48:
 	lsls r0, r2, 1
 	adds r0, r6
 	add r0, r10
@@ -136,8 +136,8 @@ _081252C8:
 	lsls r0, 24
 	lsrs r3, r0, 24
 	cmp r3, r12
-	bcc _081252C8
-_081252EC:
+	bcc _08124F48
+_08124F6C:
 	adds r0, r7, 0
 	asrs r0, 5
 	lsls r0, 5
@@ -148,8 +148,8 @@ _081252EC:
 	lsls r0, r1, 24
 	lsrs r0, 24
 	cmp r0, r9
-	bcc _081252B8
-_08125302:
+	bcc _08124F38
+_08124F82:
 	add sp, 0x4
 	pop {r3-r5}
 	mov r8, r3

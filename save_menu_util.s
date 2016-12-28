@@ -7,7 +7,7 @@
 	.text
 
 	thumb_func_start HandleDrawSaveWindowInfo
-HandleDrawSaveWindowInfo: @ 8094710
+HandleDrawSaveWindowInfo: @ 80945C0
 	push {r4-r6,lr}
 	lsls r0, 16
 	lsrs r5, r0, 16
@@ -17,14 +17,14 @@ HandleDrawSaveWindowInfo: @ 8094710
 	bl sub_809473C
 	lsls r0, 24
 	cmp r0, 0
-	beq _08094728
+	beq _080945D8
 	movs r6, 0xD
-_08094728:
-	ldr r0, _080947A8 @ =0x00000801
+_080945D8:
+	ldr r0, _08094658 @ =0x00000801
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
-	beq _080947AC
+	beq _0809465C
 	lsls r0, r5, 24
 	lsrs r0, 24
 	lsls r1, r4, 24
@@ -76,10 +76,10 @@ _08094728:
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl PrintSavePlayTime
-	b _08094812
+	b _080946C2
 	.align 2, 0
-_080947A8: .4byte 0x00000801
-_080947AC:
+_08094658: .4byte 0x00000801
+_0809465C:
 	lsls r0, r5, 24
 	lsrs r0, 24
 	lsls r1, r4, 24
@@ -126,14 +126,14 @@ _080947AC:
 	adds r0, r5, 0
 	adds r1, r4, 0
 	bl PrintSavePlayTime
-_08094812:
+_080946C2:
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	thumb_func_end HandleDrawSaveWindowInfo
 
 	thumb_func_start sub_80946C8
-sub_80946C8: @ 8094818
+sub_80946C8: @ 80946C8
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -147,14 +147,14 @@ sub_80946C8: @ 8094818
 	bl sub_809473C
 	lsls r0, 24
 	cmp r0, 0
-	beq _08094838
+	beq _080946E8
 	movs r6, 0xD
-_08094838:
-	ldr r0, _08094860 @ =0x00000801
+_080946E8:
+	ldr r0, _08094710 @ =0x00000801
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
-	beq _08094864
+	beq _08094714
 	lsls r0, r4, 24
 	lsrs r0, 24
 	lsls r1, r5, 24
@@ -167,10 +167,10 @@ _08094838:
 	lsls r3, 24
 	lsrs r3, 24
 	bl MenuZeroFillWindowRect
-	b _08094880
+	b _08094730
 	.align 2, 0
-_08094860: .4byte 0x00000801
-_08094864:
+_08094710: .4byte 0x00000801
+_08094714:
 	lsls r0, r7, 24
 	lsrs r0, 24
 	mov r2, r8
@@ -184,7 +184,7 @@ _08094864:
 	lsls r3, 24
 	lsrs r3, 24
 	bl MenuZeroFillWindowRect
-_08094880:
+_08094730:
 	pop {r3}
 	mov r8, r3
 	pop {r4-r7}
@@ -193,26 +193,26 @@ _08094880:
 	thumb_func_end sub_80946C8
 
 	thumb_func_start sub_809473C
-sub_809473C: @ 809488C
+sub_809473C: @ 809473C
 	movs r0, 0x1
 	bx lr
 	thumb_func_end sub_809473C
 
 	thumb_func_start PrintSavePlayerName
-PrintSavePlayerName: @ 8094890
+PrintSavePlayerName: @ 8094740
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _080948C0 @ =gOtherText_Player
+	ldr r0, _08094770 @ =gOtherText_Player
 	lsls r1, r4, 24
 	lsrs r1, 24
 	lsls r5, 24
 	lsrs r5, 24
 	adds r2, r5, 0
 	bl MenuPrint
-	ldr r0, _080948C4 @ =gSaveBlock2
+	ldr r0, _08094774 @ =gSaveBlock2
 	adds r4, 0xC
 	lsls r4, 24
 	lsrs r4, 24
@@ -223,12 +223,12 @@ PrintSavePlayerName: @ 8094890
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080948C0: .4byte gOtherText_Player
-_080948C4: .4byte gSaveBlock2
+_08094770: .4byte gOtherText_Player
+_08094774: .4byte gSaveBlock2
 	thumb_func_end PrintSavePlayerName
 
 	thumb_func_start PrintSaveMapName
-PrintSaveMapName: @ 80948C8
+PrintSaveMapName: @ 8094778
 	push {r4,r5,lr}
 	sub sp, 0x20
 	adds r4, r0, 0
@@ -237,7 +237,7 @@ PrintSaveMapName: @ 80948C8
 	lsrs r4, 16
 	lsls r5, 16
 	lsrs r5, 16
-	ldr r0, _080948FC @ =gMapHeader
+	ldr r0, _080947AC @ =gMapHeader
 	ldrb r1, [r0, 0x14]
 	mov r0, sp
 	bl CopyMapName
@@ -254,18 +254,18 @@ PrintSaveMapName: @ 80948C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080948FC: .4byte gMapHeader
+_080947AC: .4byte gMapHeader
 	thumb_func_end PrintSaveMapName
 
 	thumb_func_start PrintSaveBadges
-PrintSaveBadges: @ 8094900
+PrintSaveBadges: @ 80947B0
 	push {r4,r5,lr}
 	sub sp, 0x10
 	adds r4, r0, 0
 	adds r5, r1, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _08094944 @ =gOtherText_Badges
+	ldr r0, _080947F4 @ =gOtherText_Badges
 	lsls r1, r4, 24
 	lsrs r1, 24
 	lsls r5, 24
@@ -290,18 +290,18 @@ PrintSaveBadges: @ 8094900
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08094944: .4byte gOtherText_Badges
+_080947F4: .4byte gOtherText_Badges
 	thumb_func_end PrintSaveBadges
 
 	thumb_func_start PrintSavePokedexCount
-PrintSavePokedexCount: @ 8094948
+PrintSavePokedexCount: @ 80947F8
 	push {r4,r5,lr}
 	sub sp, 0x10
 	adds r4, r0, 0
 	adds r5, r1, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _08094990 @ =gOtherText_Pokedex
+	ldr r0, _08094840 @ =gOtherText_Pokedex
 	lsls r1, r4, 24
 	lsrs r1, 24
 	lsls r5, 24
@@ -328,25 +328,25 @@ PrintSavePokedexCount: @ 8094948
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08094990: .4byte gOtherText_Pokedex
+_08094840: .4byte gOtherText_Pokedex
 	thumb_func_end PrintSavePokedexCount
 
 	thumb_func_start PrintSavePlayTime
-PrintSavePlayTime: @ 8094994
+PrintSavePlayTime: @ 8094844
 	push {r4,r5,lr}
 	sub sp, 0x10
 	adds r4, r0, 0
 	adds r5, r1, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r0, _080949D8 @ =gOtherText_PlayTime
+	ldr r0, _08094888 @ =gOtherText_PlayTime
 	lsls r1, r4, 24
 	lsrs r1, 24
 	lsls r5, 24
 	lsrs r5, 24
 	adds r2, r5, 0
 	bl MenuPrint
-	ldr r0, _080949DC @ =gSaveBlock2
+	ldr r0, _0809488C @ =gSaveBlock2
 	ldrh r1, [r0, 0xE]
 	ldrb r2, [r0, 0x10]
 	mov r0, sp
@@ -364,52 +364,52 @@ PrintSavePlayTime: @ 8094994
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080949D8: .4byte gOtherText_PlayTime
-_080949DC: .4byte gSaveBlock2
+_08094888: .4byte gOtherText_PlayTime
+_0809488C: .4byte gSaveBlock2
 	thumb_func_end PrintSavePlayTime
 
 	thumb_func_start GetBadgeCount
-GetBadgeCount: @ 80949E0
+GetBadgeCount: @ 8094890
 	push {r4,r5,lr}
 	movs r5, 0
-	ldr r4, _08094A0C @ =0x00000807
-_080949E6:
+	ldr r4, _080948BC @ =0x00000807
+_08094896:
 	lsls r0, r4, 16
 	lsrs r0, 16
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
-	beq _080949FA
+	beq _080948AA
 	adds r0, r5, 0x1
 	lsls r0, 24
 	lsrs r5, r0, 24
-_080949FA:
+_080948AA:
 	adds r4, 0x1
-	ldr r0, _08094A10 @ =0x0000080e
+	ldr r0, _080948C0 @ =0x0000080e
 	cmp r4, r0
-	ble _080949E6
+	ble _08094896
 	adds r0, r5, 0
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08094A0C: .4byte 0x00000807
-_08094A10: .4byte 0x0000080e
+_080948BC: .4byte 0x00000807
+_080948C0: .4byte 0x0000080e
 	thumb_func_end GetBadgeCount
 
 	thumb_func_start GetPokedexSeenCount
-GetPokedexSeenCount: @ 8094A14
+GetPokedexSeenCount: @ 80948C4
 	push {lr}
 	bl IsNationalPokedex
 	cmp r0, 0
-	beq _08094A26
+	beq _080948D6
 	movs r0, 0x1
 	bl GetNationalPokedexCount
-	b _08094A2C
-_08094A26:
+	b _080948DC
+_080948D6:
 	movs r0, 0x1
 	bl GetHoennPokedexCount
-_08094A2C:
+_080948DC:
 	lsls r0, 16
 	lsrs r0, 16
 	pop {r1}
@@ -417,7 +417,7 @@ _08094A2C:
 	thumb_func_end GetPokedexSeenCount
 
 	thumb_func_start FormatPlayTime
-FormatPlayTime: @ 8094A34
+FormatPlayTime: @ 80948E4
 	push {r4-r6,lr}
 	adds r5, r0, 0
 	adds r4, r3, 0
@@ -434,13 +434,13 @@ FormatPlayTime: @ 8094A34
 	lsls r4, 16
 	asrs r4, 16
 	cmp r4, 0
-	beq _08094A5E
+	beq _0809490E
 	movs r0, 0xF0
 	strb r0, [r5, 0x1]
-	b _08094A60
-_08094A5E:
+	b _08094910
+_0809490E:
 	strb r4, [r5, 0x1]
-_08094A60:
+_08094910:
 	movs r0, 0
 	strb r0, [r5, 0x2]
 	adds r5, 0x3

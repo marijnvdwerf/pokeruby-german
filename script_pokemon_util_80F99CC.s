@@ -7,16 +7,16 @@
 	.text
 
 	thumb_func_start sub_80F99CC
-sub_80F99CC: @ 80F9D7C
+sub_80F99CC: @ 80F99CC
 	push {lr}
 	sub sp, 0x4
 	bl ScriptContext2_Enable
-	ldr r0, _080F9DB4 @ =sub_80F9A8C
+	ldr r0, _080F9A04 @ =sub_80F9A8C
 	movs r1, 0xA
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080F9DB8 @ =gTasks
+	ldr r2, _080F9A08 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -33,21 +33,21 @@ sub_80F99CC: @ 80F9D7C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080F9DB4: .4byte sub_80F9A8C
-_080F9DB8: .4byte gTasks
+_080F9A04: .4byte sub_80F9A8C
+_080F9A08: .4byte gTasks
 	thumb_func_end sub_80F99CC
 
 	thumb_func_start sub_80F9A0C
-sub_80F9A0C: @ 80F9DBC
+sub_80F9A0C: @ 80F9A0C
 	push {lr}
 	sub sp, 0x4
 	bl ScriptContext2_Enable
-	ldr r0, _080F9DF4 @ =sub_80F9A8C
+	ldr r0, _080F9A44 @ =sub_80F9A8C
 	movs r1, 0xA
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080F9DF8 @ =gTasks
+	ldr r2, _080F9A48 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -64,21 +64,21 @@ sub_80F9A0C: @ 80F9DBC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080F9DF4: .4byte sub_80F9A8C
-_080F9DF8: .4byte gTasks
+_080F9A44: .4byte sub_80F9A8C
+_080F9A48: .4byte gTasks
 	thumb_func_end sub_80F9A0C
 
 	thumb_func_start sub_80F9A4C
-sub_80F9A4C: @ 80F9DFC
+sub_80F9A4C: @ 80F9A4C
 	push {lr}
 	sub sp, 0x4
 	bl ScriptContext2_Enable
-	ldr r0, _080F9E34 @ =sub_80F9A8C
+	ldr r0, _080F9A84 @ =sub_80F9A8C
 	movs r1, 0xA
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _080F9E38 @ =gTasks
+	ldr r2, _080F9A88 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -95,26 +95,26 @@ sub_80F9A4C: @ 80F9DFC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080F9E34: .4byte sub_80F9A8C
-_080F9E38: .4byte gTasks
+_080F9A84: .4byte sub_80F9A8C
+_080F9A88: .4byte gTasks
 	thumb_func_end sub_80F9A4C
 
 	thumb_func_start sub_80F9A8C
-sub_80F9A8C: @ 80F9E3C
+sub_80F9A8C: @ 80F9A8C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r2, _080F9E74 @ =gPaletteFade
+	ldr r2, _080F9AC4 @ =gPaletteFade
 	ldrb r1, [r2, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	bne _080F9E6E
+	bne _080F9ABE
 	ldrb r0, [r2, 0x8]
 	movs r1, 0x80
 	orrs r0, r1
 	strb r0, [r2, 0x8]
-	ldr r1, _080F9E78 @ =gTasks
+	ldr r1, _080F9AC8 @ =gTasks
 	lsls r0, r4, 2
 	adds r0, r4
 	lsls r0, 3
@@ -124,19 +124,19 @@ sub_80F9A8C: @ 80F9E3C
 	bl OpenPartyMenu
 	adds r0, r4, 0
 	bl DestroyTask
-_080F9E6E:
+_080F9ABE:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080F9E74: .4byte gPaletteFade
-_080F9E78: .4byte gTasks
+_080F9AC4: .4byte gPaletteFade
+_080F9AC8: .4byte gTasks
 	thumb_func_end sub_80F9A8C
 
 	thumb_func_start sub_80F9ACC
-sub_80F9ACC: @ 80F9E7C
+sub_80F9ACC: @ 80F9ACC
 	push {r4,r5,lr}
-	ldr r1, _080F9E9C @ =0x0201b000
+	ldr r1, _080F9AEC @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r0, r1, r2
@@ -144,36 +144,36 @@ sub_80F9ACC: @ 80F9E7C
 	ldrsh r0, [r0, r2]
 	adds r4, r1, 0
 	cmp r0, 0x7
-	bls _080F9E92
-	b _080F9FA6
-_080F9E92:
+	bls _080F9AE2
+	b _080F9BF6
+_080F9AE2:
 	lsls r0, 2
-	ldr r1, _080F9EA0 @ =_080F9EA4
+	ldr r1, _080F9AF0 @ =_080F9EA4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080F9E9C: .4byte 0x0201b000
-_080F9EA0: .4byte _080F9EA4
+_080F9AEC: .4byte 0x0201b000
+_080F9AF0: .4byte _080F9EA4
 	.align 2, 0
-_080F9EA4:
-	.4byte _080F9EC4
-	.4byte _080F9F04
-	.4byte _080F9F0A
-	.4byte _080F9F1E
-	.4byte _080F9F48
-	.4byte _080F9F4E
-	.4byte _080F9F60
-	.4byte _080F9F78
-_080F9EC4:
-	ldr r0, _080F9EEC @ =0x00000266
+_080F9AF4:
+	.4byte _080F9B14
+	.4byte _080F9B54
+	.4byte _080F9B5A
+	.4byte _080F9B6E
+	.4byte _080F9B98
+	.4byte _080F9B9E
+	.4byte _080F9BB0
+	.4byte _080F9BC8
+_080F9B14:
+	ldr r0, _080F9B3C @ =0x00000266
 	adds r5, r4, r0
 	movs r1, 0
 	ldrsh r3, [r5, r1]
-	ldr r0, _080F9EF0 @ =gPlayerPartyCount
+	ldr r0, _080F9B40 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r3, r0
-	bge _080F9EF8
+	bge _080F9B48
 	movs r2, 0x98
 	lsls r2, 2
 	adds r0, r4, r2
@@ -181,25 +181,25 @@ _080F9EC4:
 	ldrb r1, [r5]
 	movs r2, 0x64
 	muls r2, r3
-	ldr r3, _080F9EF4 @ =gPlayerParty
+	ldr r3, _080F9B44 @ =gPlayerParty
 	adds r2, r3
 	bl sub_806D90C
-	b _080F9FA0
+	b _080F9BF0
 	.align 2, 0
-_080F9EEC: .4byte 0x00000266
-_080F9EF0: .4byte gPlayerPartyCount
-_080F9EF4: .4byte gPlayerParty
-_080F9EF8:
+_080F9B3C: .4byte 0x00000266
+_080F9B40: .4byte gPlayerPartyCount
+_080F9B44: .4byte gPlayerParty
+_080F9B48:
 	movs r0, 0
 	strh r0, [r5]
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r4, r0
-	b _080F9F6C
-_080F9F04:
+	b _080F9BBC
+_080F9B54:
 	bl sub_806DA98
-	b _080F9F64
-_080F9F0A:
+	b _080F9BB4
+_080F9B5A:
 	movs r1, 0x98
 	lsls r1, 2
 	adds r0, r4, r1
@@ -208,63 +208,63 @@ _080F9F0A:
 	movs r2, 0x99
 	lsls r2, 2
 	adds r1, r4, r2
-	b _080F9F6C
-_080F9F1E:
+	b _080F9BBC
+_080F9B6E:
 	movs r1, 0x98
 	lsls r1, 2
 	adds r0, r4, r1
 	ldrb r0, [r0]
-	ldr r2, _080F9F44 @ =0x00000266
+	ldr r2, _080F9B94 @ =0x00000266
 	adds r5, r4, r2
 	ldrb r1, [r5]
 	bl sub_806BD58
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _080F9FA0
+	bne _080F9BF0
 	movs r0, 0
 	strh r0, [r5]
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r4, r0
-	b _080F9F6C
+	b _080F9BBC
 	.align 2, 0
-_080F9F44: .4byte 0x00000266
-_080F9F48:
+_080F9B94: .4byte 0x00000266
+_080F9B98:
 	bl sub_806E334
-	b _080F9F64
-_080F9F4E:
+	b _080F9BB4
+_080F9B9E:
 	bl sub_806E0C4
-	ldr r1, _080F9F5C @ =0x0201b000
+	ldr r1, _080F9BAC @ =0x0201b000
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r0
-	b _080F9F6C
+	b _080F9BBC
 	.align 2, 0
-_080F9F5C: .4byte 0x0201b000
-_080F9F60:
+_080F9BAC: .4byte 0x0201b000
+_080F9BB0:
 	bl sub_80F9C00
-_080F9F64:
-	ldr r1, _080F9F74 @ =0x0201b000
+_080F9BB4:
+	ldr r1, _080F9BC4 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r1, r2
-_080F9F6C:
+_080F9BBC:
 	ldrh r0, [r1]
 	adds r0, 0x1
 	strh r0, [r1]
-	b _080F9FA6
+	b _080F9BF6
 	.align 2, 0
-_080F9F74: .4byte 0x0201b000
-_080F9F78:
-	ldr r0, _080F9F9C @ =0x00000266
+_080F9BC4: .4byte 0x0201b000
+_080F9BC8:
+	ldr r0, _080F9BEC @ =0x00000266
 	adds r5, r4, r0
 	ldrb r0, [r5]
 	bl sub_806B58C
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _080F9FA0
+	bne _080F9BF0
 	movs r1, 0
 	strh r1, [r5]
 	movs r2, 0x99
@@ -272,138 +272,138 @@ _080F9F78:
 	adds r0, r4, r2
 	strh r1, [r0]
 	movs r0, 0x1
-	b _080F9FA8
+	b _080F9BF8
 	.align 2, 0
-_080F9F9C: .4byte 0x00000266
-_080F9FA0:
+_080F9BEC: .4byte 0x00000266
+_080F9BF0:
 	ldrh r0, [r5]
 	adds r0, 0x1
 	strh r0, [r5]
-_080F9FA6:
+_080F9BF6:
 	movs r0, 0
-_080F9FA8:
+_080F9BF8:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end sub_80F9ACC
 
 	thumb_func_start sub_80F9C00
-sub_80F9C00: @ 80F9FB0
+sub_80F9C00: @ 80F9C00
 	push {r4,lr}
 	movs r4, 0
-	b _080FA008
-_080F9FB6:
+	b _080F9C58
+_080F9C06:
 	movs r0, 0x64
 	muls r0, r4
-	ldr r1, _080F9FD4 @ =gPlayerParty
+	ldr r1, _080F9C24 @ =gPlayerParty
 	adds r0, r1
 	bl sub_80AE47C
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x4
-	bhi _080FA002
+	bhi _080F9C52
 	lsls r0, 2
-	ldr r1, _080F9FD8 @ =_080F9FDC
+	ldr r1, _080F9C28 @ =_080F9FDC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080F9FD4: .4byte gPlayerParty
-_080F9FD8: .4byte _080F9FDC
+_080F9C24: .4byte gPlayerParty
+_080F9C28: .4byte _080F9FDC
 	.align 2, 0
-_080F9FDC:
-	.4byte _080F9FF0
-	.4byte _080F9FFA
-	.4byte _080F9FFA
-	.4byte _080F9FF0
-	.4byte _080F9FF0
-_080F9FF0:
+_080F9C2C:
+	.4byte _080F9C40
+	.4byte _080F9C4A
+	.4byte _080F9C4A
+	.4byte _080F9C40
+	.4byte _080F9C40
+_080F9C40:
 	adds r0, r4, 0
 	movs r1, 0x7E
 	bl sub_806BC3C
-	b _080FA002
-_080F9FFA:
+	b _080F9C52
+_080F9C4A:
 	adds r0, r4, 0
 	movs r1, 0x70
 	bl sub_806BC3C
-_080FA002:
+_080F9C52:
 	adds r0, r4, 0x1
 	lsls r0, 24
 	lsrs r4, r0, 24
-_080FA008:
-	ldr r0, _080FA018 @ =gPlayerPartyCount
+_080F9C58:
+	ldr r0, _080F9C68 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r4, r0
-	bcc _080F9FB6
+	bcc _080F9C06
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA018: .4byte gPlayerPartyCount
+_080F9C68: .4byte gPlayerPartyCount
 	thumb_func_end sub_80F9C00
 
 	thumb_func_start sub_80F9C6C
-sub_80F9C6C: @ 80FA01C
+sub_80F9C6C: @ 80F9C6C
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r0, _080FA044 @ =gPaletteFade
+	ldr r0, _080F9C94 @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	bne _080FA088
+	bne _080F9CD8
 	adds r0, r4, 0
 	bl sub_806BD80
 	lsls r0, 16
 	lsrs r0, 16
 	cmp r0, 0x1
-	beq _080FA048
+	beq _080F9C98
 	cmp r0, 0x2
-	beq _080FA070
-	b _080FA088
+	beq _080F9CC0
+	b _080F9CD8
 	.align 2, 0
-_080FA044: .4byte gPaletteFade
-_080FA048:
+_080F9C94: .4byte gPaletteFade
+_080F9C98:
 	movs r0, 0x5
 	bl PlaySE
 	adds r0, r4, 0
 	bl sub_806CA38
-	ldr r1, _080FA068 @ =gUnknown_02038694
+	ldr r1, _080F9CB8 @ =gUnknown_02038694
 	strb r0, [r1]
-	ldr r2, _080FA06C @ =gSpecialVar_0x8004
+	ldr r2, _080F9CBC @ =gSpecialVar_0x8004
 	ldrb r0, [r1]
 	strh r0, [r2]
 	adds r0, r4, 0
 	bl sub_8123138
-	b _080FA088
+	b _080F9CD8
 	.align 2, 0
-_080FA068: .4byte gUnknown_02038694
-_080FA06C: .4byte gSpecialVar_0x8004
-_080FA070:
+_080F9CB8: .4byte gUnknown_02038694
+_080F9CBC: .4byte gSpecialVar_0x8004
+_080F9CC0:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _080FA090 @ =gUnknown_02038694
+	ldr r1, _080F9CE0 @ =gUnknown_02038694
 	movs r0, 0xFF
 	strb r0, [r1]
-	ldr r1, _080FA094 @ =gSpecialVar_0x8004
+	ldr r1, _080F9CE4 @ =gSpecialVar_0x8004
 	movs r0, 0xFF
 	strh r0, [r1]
 	adds r0, r4, 0
 	bl sub_8123138
-_080FA088:
+_080F9CD8:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA090: .4byte gUnknown_02038694
-_080FA094: .4byte gSpecialVar_0x8004
+_080F9CE0: .4byte gUnknown_02038694
+_080F9CE4: .4byte gSpecialVar_0x8004
 	thumb_func_end sub_80F9C6C
 
 	thumb_func_start sub_80F9CE8
-sub_80F9CE8: @ 80FA098
+sub_80F9CE8: @ 80F9CE8
 	push {r4,r5,lr}
-	ldr r1, _080FA0B8 @ =0x0201b000
+	ldr r1, _080F9D08 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r0, r1, r2
@@ -411,36 +411,36 @@ sub_80F9CE8: @ 80FA098
 	ldrsh r0, [r0, r2]
 	adds r4, r1, 0
 	cmp r0, 0x7
-	bls _080FA0AE
-	b _080FA1C2
-_080FA0AE:
+	bls _080F9CFE
+	b _080F9E12
+_080F9CFE:
 	lsls r0, 2
-	ldr r1, _080FA0BC @ =_080FA0C0
+	ldr r1, _080F9D0C @ =_080FA0C0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080FA0B8: .4byte 0x0201b000
-_080FA0BC: .4byte _080FA0C0
+_080F9D08: .4byte 0x0201b000
+_080F9D0C: .4byte _080FA0C0
 	.align 2, 0
-_080FA0C0:
-	.4byte _080FA0E0
-	.4byte _080FA120
-	.4byte _080FA126
-	.4byte _080FA13A
-	.4byte _080FA164
-	.4byte _080FA16A
-	.4byte _080FA17C
-	.4byte _080FA194
-_080FA0E0:
-	ldr r0, _080FA108 @ =0x00000266
+_080F9D10:
+	.4byte _080F9D30
+	.4byte _080F9D70
+	.4byte _080F9D76
+	.4byte _080F9D8A
+	.4byte _080F9DB4
+	.4byte _080F9DBA
+	.4byte _080F9DCC
+	.4byte _080F9DE4
+_080F9D30:
+	ldr r0, _080F9D58 @ =0x00000266
 	adds r5, r4, r0
 	movs r1, 0
 	ldrsh r3, [r5, r1]
-	ldr r0, _080FA10C @ =gPlayerPartyCount
+	ldr r0, _080F9D5C @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r3, r0
-	bge _080FA114
+	bge _080F9D64
 	movs r2, 0x98
 	lsls r2, 2
 	adds r0, r4, r2
@@ -448,25 +448,25 @@ _080FA0E0:
 	ldrb r1, [r5]
 	movs r2, 0x64
 	muls r2, r3
-	ldr r3, _080FA110 @ =gPlayerParty
+	ldr r3, _080F9D60 @ =gPlayerParty
 	adds r2, r3
 	bl sub_806D90C
-	b _080FA1BC
+	b _080F9E0C
 	.align 2, 0
-_080FA108: .4byte 0x00000266
-_080FA10C: .4byte gPlayerPartyCount
-_080FA110: .4byte gPlayerParty
-_080FA114:
+_080F9D58: .4byte 0x00000266
+_080F9D5C: .4byte gPlayerPartyCount
+_080F9D60: .4byte gPlayerParty
+_080F9D64:
 	movs r0, 0
 	strh r0, [r5]
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r4, r0
-	b _080FA188
-_080FA120:
+	b _080F9DD8
+_080F9D70:
 	bl sub_806DA98
-	b _080FA180
-_080FA126:
+	b _080F9DD0
+_080F9D76:
 	movs r1, 0x98
 	lsls r1, 2
 	adds r0, r4, r1
@@ -475,63 +475,63 @@ _080FA126:
 	movs r2, 0x99
 	lsls r2, 2
 	adds r1, r4, r2
-	b _080FA188
-_080FA13A:
+	b _080F9DD8
+_080F9D8A:
 	movs r1, 0x98
 	lsls r1, 2
 	adds r0, r4, r1
 	ldrb r0, [r0]
-	ldr r2, _080FA160 @ =0x00000266
+	ldr r2, _080F9DB0 @ =0x00000266
 	adds r5, r4, r2
 	ldrb r1, [r5]
 	bl sub_806BD58
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _080FA1BC
+	bne _080F9E0C
 	movs r0, 0
 	strh r0, [r5]
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r4, r0
-	b _080FA188
+	b _080F9DD8
 	.align 2, 0
-_080FA160: .4byte 0x00000266
-_080FA164:
+_080F9DB0: .4byte 0x00000266
+_080F9DB4:
 	bl sub_806E334
-	b _080FA180
-_080FA16A:
+	b _080F9DD0
+_080F9DBA:
 	bl sub_806E0C4
-	ldr r1, _080FA178 @ =0x0201b000
+	ldr r1, _080F9DC8 @ =0x0201b000
 	movs r0, 0x99
 	lsls r0, 2
 	adds r1, r0
-	b _080FA188
+	b _080F9DD8
 	.align 2, 0
-_080FA178: .4byte 0x0201b000
-_080FA17C:
+_080F9DC8: .4byte 0x0201b000
+_080F9DCC:
 	bl sub_80F9E1C
-_080FA180:
-	ldr r1, _080FA190 @ =0x0201b000
+_080F9DD0:
+	ldr r1, _080F9DE0 @ =0x0201b000
 	movs r2, 0x99
 	lsls r2, 2
 	adds r1, r2
-_080FA188:
+_080F9DD8:
 	ldrh r0, [r1]
 	adds r0, 0x1
 	strh r0, [r1]
-	b _080FA1C2
+	b _080F9E12
 	.align 2, 0
-_080FA190: .4byte 0x0201b000
-_080FA194:
-	ldr r0, _080FA1B8 @ =0x00000266
+_080F9DE0: .4byte 0x0201b000
+_080F9DE4:
+	ldr r0, _080F9E08 @ =0x00000266
 	adds r5, r4, r0
 	ldrb r0, [r5]
 	bl sub_806B58C
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _080FA1BC
+	bne _080F9E0C
 	movs r1, 0
 	strh r1, [r5]
 	movs r2, 0x99
@@ -539,97 +539,97 @@ _080FA194:
 	adds r0, r4, r2
 	strh r1, [r0]
 	movs r0, 0x1
-	b _080FA1C4
+	b _080F9E14
 	.align 2, 0
-_080FA1B8: .4byte 0x00000266
-_080FA1BC:
+_080F9E08: .4byte 0x00000266
+_080F9E0C:
 	ldrh r0, [r5]
 	adds r0, 0x1
 	strh r0, [r5]
-_080FA1C2:
+_080F9E12:
 	movs r0, 0
-_080FA1C4:
+_080F9E14:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end sub_80F9CE8
 
 	thumb_func_start sub_80F9E1C
-sub_80F9E1C: @ 80FA1CC
+sub_80F9E1C: @ 80F9E1C
 	push {r4,lr}
 	movs r4, 0
-	b _080FA202
-_080FA1D2:
+	b _080F9E52
+_080F9E22:
 	movs r0, 0x64
 	muls r0, r4
-	ldr r1, _080FA1F0 @ =gPlayerParty
+	ldr r1, _080F9E40 @ =gPlayerParty
 	adds r0, r1
 	bl sub_8040574
 	lsls r0, 24
 	cmp r0, 0
-	bne _080FA1F4
+	bne _080F9E44
 	adds r0, r4, 0
 	movs r1, 0x9A
 	bl sub_806BC3C
-	b _080FA1FC
+	b _080F9E4C
 	.align 2, 0
-_080FA1F0: .4byte gPlayerParty
-_080FA1F4:
+_080F9E40: .4byte gPlayerParty
+_080F9E44:
 	adds r0, r4, 0
 	movs r1, 0x8C
 	bl sub_806BC3C
-_080FA1FC:
+_080F9E4C:
 	adds r0, r4, 0x1
 	lsls r0, 24
 	lsrs r4, r0, 24
-_080FA202:
-	ldr r0, _080FA210 @ =gPlayerPartyCount
+_080F9E52:
+	ldr r0, _080F9E60 @ =gPlayerPartyCount
 	ldrb r0, [r0]
 	cmp r4, r0
-	bcc _080FA1D2
+	bcc _080F9E22
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA210: .4byte gPlayerPartyCount
+_080F9E60: .4byte gPlayerPartyCount
 	thumb_func_end sub_80F9E1C
 
 	thumb_func_start sub_80F9E64
-sub_80F9E64: @ 80FA214
+sub_80F9E64: @ 80F9E64
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r6, r0, 24
-	ldr r0, _080FA23C @ =gPaletteFade
+	ldr r0, _080F9E8C @ =gPaletteFade
 	ldrb r1, [r0, 0x7]
 	movs r0, 0x80
 	ands r0, r1
 	cmp r0, 0
-	bne _080FA292
+	bne _080F9EE2
 	adds r0, r6, 0
 	bl sub_806BD80
 	lsls r0, 16
 	lsrs r0, 16
 	cmp r0, 0x1
-	beq _080FA240
+	beq _080F9E90
 	cmp r0, 0x2
-	beq _080FA280
-	b _080FA292
+	beq _080F9ED0
+	b _080F9EE2
 	.align 2, 0
-_080FA23C: .4byte gPaletteFade
-_080FA240:
+_080F9E8C: .4byte gPaletteFade
+_080F9E90:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r4, _080FA274 @ =gSpecialVar_0x8004
+	ldr r4, _080F9EC4 @ =gSpecialVar_0x8004
 	adds r0, r6, 0
 	bl sub_806CA38
 	lsls r0, 24
 	lsrs r0, 24
 	strh r0, [r4]
-	ldr r5, _080FA278 @ =gSpecialVar_0x8005
+	ldr r5, _080F9EC8 @ =gSpecialVar_0x8005
 	ldrh r1, [r4]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _080FA27C @ =gPlayerParty
+	ldr r1, _080F9ECC @ =gPlayerParty
 	adds r0, r1
 	bl sub_8040574
 	lsls r0, 24
@@ -637,112 +637,112 @@ _080FA240:
 	strh r0, [r5]
 	adds r0, r6, 0
 	bl sub_8123138
-	b _080FA292
+	b _080F9EE2
 	.align 2, 0
-_080FA274: .4byte gSpecialVar_0x8004
-_080FA278: .4byte gSpecialVar_0x8005
-_080FA27C: .4byte gPlayerParty
-_080FA280:
+_080F9EC4: .4byte gSpecialVar_0x8004
+_080F9EC8: .4byte gSpecialVar_0x8005
+_080F9ECC: .4byte gPlayerParty
+_080F9ED0:
 	movs r0, 0x5
 	bl PlaySE
-	ldr r1, _080FA298 @ =gSpecialVar_0x8004
+	ldr r1, _080F9EE8 @ =gSpecialVar_0x8004
 	movs r0, 0xFF
 	strh r0, [r1]
 	adds r0, r6, 0
 	bl sub_8123138
-_080FA292:
+_080F9EE2:
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA298: .4byte gSpecialVar_0x8004
+_080F9EE8: .4byte gSpecialVar_0x8004
 	thumb_func_end sub_80F9E64
 
 	thumb_func_start sub_80F9EEC
-sub_80F9EEC: @ 80FA29C
+sub_80F9EEC: @ 80F9EEC
 	push {r4,lr}
 	sub sp, 0x4
-	ldr r0, _080FA2D0 @ =gPlayerParty
-	ldr r1, _080FA2D4 @ =gSpecialVar_0x8004
+	ldr r0, _080F9F20 @ =gPlayerParty
+	ldr r1, _080F9F24 @ =gSpecialVar_0x8004
 	ldrb r1, [r1]
-	ldr r2, _080FA2D8 @ =gPlayerPartyCount
+	ldr r2, _080F9F28 @ =gPlayerPartyCount
 	ldrb r2, [r2]
 	subs r2, 0x1
 	lsls r2, 24
 	lsrs r2, 24
-	ldr r3, _080FA2DC @ =c2_exit_to_overworld_2_switch
+	ldr r3, _080F9F2C @ =c2_exit_to_overworld_2_switch
 	movs r4, 0
 	str r4, [sp]
 	bl sub_809D9F0
-	ldr r1, _080FA2E0 @ =0x02018000
+	ldr r1, _080F9F30 @ =0x02018000
 	movs r0, 0x3
 	strb r0, [r1, 0x8]
-	ldr r1, _080FA2E4 @ =gUnknown_0300485C
-	ldr r0, _080FA2E8 @ =sub_8080990
+	ldr r1, _080F9F34 @ =gUnknown_0300485C
+	ldr r0, _080F9F38 @ =sub_8080990
 	str r0, [r1]
 	add sp, 0x4
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA2D0: .4byte gPlayerParty
-_080FA2D4: .4byte gSpecialVar_0x8004
-_080FA2D8: .4byte gPlayerPartyCount
-_080FA2DC: .4byte c2_exit_to_overworld_2_switch
-_080FA2E0: .4byte 0x02018000
-_080FA2E4: .4byte gUnknown_0300485C
-_080FA2E8: .4byte sub_8080990
+_080F9F20: .4byte gPlayerParty
+_080F9F24: .4byte gSpecialVar_0x8004
+_080F9F28: .4byte gPlayerPartyCount
+_080F9F2C: .4byte c2_exit_to_overworld_2_switch
+_080F9F30: .4byte 0x02018000
+_080F9F34: .4byte gUnknown_0300485C
+_080F9F38: .4byte sub_8080990
 	thumb_func_end sub_80F9EEC
 
 	thumb_func_start sub_80F9F3C
-sub_80F9F3C: @ 80FA2EC
+sub_80F9F3C: @ 80F9F3C
 	push {r4,r5,lr}
-	ldr r1, _080FA328 @ =gScriptResult
+	ldr r1, _080F9F78 @ =gScriptResult
 	movs r0, 0
 	strh r0, [r1]
 	movs r4, 0
 	adds r5, r1, 0
-_080FA2F8:
-	ldr r0, _080FA32C @ =gSpecialVar_0x8004
+_080F9F48:
+	ldr r0, _080F9F7C @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _080FA330 @ =gPlayerParty
+	ldr r1, _080F9F80 @ =gPlayerParty
 	adds r0, r1
 	adds r1, r4, 0
 	adds r1, 0xD
 	bl GetMonData
 	cmp r0, 0
-	beq _080FA316
+	beq _080F9F66
 	ldrh r0, [r5]
 	adds r0, 0x1
 	strh r0, [r5]
-_080FA316:
+_080F9F66:
 	adds r0, r4, 0x1
 	lsls r0, 24
 	lsrs r4, r0, 24
 	cmp r4, 0x3
-	bls _080FA2F8
+	bls _080F9F48
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA328: .4byte gScriptResult
-_080FA32C: .4byte gSpecialVar_0x8004
-_080FA330: .4byte gPlayerParty
+_080F9F78: .4byte gScriptResult
+_080F9F7C: .4byte gSpecialVar_0x8004
+_080F9F80: .4byte gPlayerParty
 	thumb_func_end sub_80F9F3C
 
 	thumb_func_start sub_80F9F84
-sub_80F9F84: @ 80FA334
+sub_80F9F84: @ 80F9F84
 	push {r4,r5,lr}
-	ldr r0, _080FA374 @ =gSpecialVar_0x8004
+	ldr r0, _080F9FC4 @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	movs r0, 0x64
 	adds r5, r1, 0
 	muls r5, r0
-	ldr r0, _080FA378 @ =gPlayerParty
+	ldr r0, _080F9FC8 @ =gPlayerParty
 	adds r5, r0
-	ldr r0, _080FA37C @ =gSpecialVar_0x8005
+	ldr r0, _080F9FCC @ =gSpecialVar_0x8005
 	ldrh r1, [r0]
 	adds r1, 0xD
 	adds r0, r5, 0
@@ -750,29 +750,29 @@ sub_80F9F84: @ 80FA334
 	adds r4, r0, 0
 	lsls r4, 16
 	lsrs r4, 16
-	ldr r1, _080FA380 @ =gStringVar1
+	ldr r1, _080F9FD0 @ =gStringVar1
 	adds r0, r5, 0
 	bl GetMonNickname
-	ldr r0, _080FA384 @ =gStringVar2
+	ldr r0, _080F9FD4 @ =gStringVar2
 	movs r1, 0xD
 	muls r1, r4
-	ldr r2, _080FA388 @ =gMoveNames
+	ldr r2, _080F9FD8 @ =gMoveNames
 	adds r1, r2
 	bl StringCopy
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA374: .4byte gSpecialVar_0x8004
-_080FA378: .4byte gPlayerParty
-_080FA37C: .4byte gSpecialVar_0x8005
-_080FA380: .4byte gStringVar1
-_080FA384: .4byte gStringVar2
-_080FA388: .4byte gMoveNames
+_080F9FC4: .4byte gSpecialVar_0x8004
+_080F9FC8: .4byte gPlayerParty
+_080F9FCC: .4byte gSpecialVar_0x8005
+_080F9FD0: .4byte gStringVar1
+_080F9FD4: .4byte gStringVar2
+_080F9FD8: .4byte gMoveNames
 	thumb_func_end sub_80F9F84
 
 	thumb_func_start sub_80F9FDC
-sub_80F9FDC: @ 80FA38C
+sub_80F9FDC: @ 80F9FDC
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -829,7 +829,7 @@ sub_80F9FDC: @ 80FA38C
 	mov r6, sp
 	adds r6, 0x6
 	strb r0, [r6]
-	ldr r1, _080FA488 @ =gUnknown_08208238
+	ldr r1, _080FA0D8 @ =gUnknown_08208238
 	adds r0, r5, r1
 	ldrb r0, [r0]
 	mov r9, r0
@@ -890,22 +890,22 @@ sub_80F9FDC: @ 80FA38C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA488: .4byte gUnknown_08208238
+_080FA0D8: .4byte gUnknown_08208238
 	thumb_func_end sub_80F9FDC
 
 	thumb_func_start sub_80FA0DC
-sub_80FA0DC: @ 80FA48C
+sub_80FA0DC: @ 80FA0DC
 	push {r4-r6,lr}
 	mov r6, r8
 	push {r6}
-	ldr r0, _080FA4EC @ =gSpecialVar_0x8004
+	ldr r0, _080FA13C @ =gSpecialVar_0x8004
 	mov r8, r0
 	ldrh r0, [r0]
 	movs r6, 0x64
 	muls r0, r6
-	ldr r5, _080FA4F0 @ =gPlayerParty
+	ldr r5, _080FA140 @ =gPlayerParty
 	adds r0, r5
-	ldr r4, _080FA4F4 @ =gSpecialVar_0x8005
+	ldr r4, _080FA144 @ =gSpecialVar_0x8005
 	ldrb r2, [r4]
 	movs r1, 0
 	bl SetMonMoveSlot
@@ -917,13 +917,13 @@ sub_80FA0DC: @ 80FA48C
 	bl RemoveMonPPBonus
 	ldrh r4, [r4]
 	cmp r4, 0x2
-	bhi _080FA4E0
-_080FA4BE:
-	ldr r0, _080FA4EC @ =gSpecialVar_0x8004
+	bhi _080FA130
+_080FA10E:
+	ldr r0, _080FA13C @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _080FA4F0 @ =gPlayerParty
+	ldr r1, _080FA140 @ =gPlayerParty
 	adds r0, r1
 	lsls r1, r4, 24
 	lsrs r1, 24
@@ -934,45 +934,45 @@ _080FA4BE:
 	lsls r4, 16
 	lsrs r4, 16
 	cmp r4, 0x2
-	bls _080FA4BE
-_080FA4E0:
+	bls _080FA10E
+_080FA130:
 	pop {r3}
 	mov r8, r3
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA4EC: .4byte gSpecialVar_0x8004
-_080FA4F0: .4byte gPlayerParty
-_080FA4F4: .4byte gSpecialVar_0x8005
+_080FA13C: .4byte gSpecialVar_0x8004
+_080FA140: .4byte gPlayerParty
+_080FA144: .4byte gSpecialVar_0x8005
 	thumb_func_end sub_80FA0DC
 
 	thumb_func_start sub_80FA148
-sub_80FA148: @ 80FA4F8
+sub_80FA148: @ 80FA148
 	push {r4,lr}
-	ldr r0, _080FA520 @ =gSpecialVar_0x8004
+	ldr r0, _080FA170 @ =gSpecialVar_0x8004
 	ldrh r1, [r0]
 	movs r0, 0x64
 	muls r0, r1
-	ldr r1, _080FA524 @ =gPlayerParty
+	ldr r1, _080FA174 @ =gPlayerParty
 	adds r0, r1
-	ldr r4, _080FA528 @ =gScriptResult
+	ldr r4, _080FA178 @ =gScriptResult
 	movs r1, 0
 	strh r1, [r4]
 	movs r1, 0x2D
 	bl GetMonData
 	cmp r0, 0
-	beq _080FA51A
+	beq _080FA16A
 	movs r0, 0x1
 	strh r0, [r4]
-_080FA51A:
+_080FA16A:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080FA520: .4byte gSpecialVar_0x8004
-_080FA524: .4byte gPlayerParty
-_080FA528: .4byte gScriptResult
+_080FA170: .4byte gSpecialVar_0x8004
+_080FA174: .4byte gPlayerParty
+_080FA178: .4byte gScriptResult
 	thumb_func_end sub_80FA148
 
 	.align 2, 0 @ Don't pad with nop.

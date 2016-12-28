@@ -7,61 +7,61 @@
 	.text
 
 	thumb_func_start CheckMonIsValid
-CheckMonIsValid: @ 80C58B4
+CheckMonIsValid: @ 80C5684
 	push {lr}
 	movs r1, 0x41
 	bl GetMonData
 	lsls r0, 16
 	lsrs r1, r0, 16
 	cmp r1, 0
-	beq _080C58CC
+	beq _080C569C
 	movs r0, 0xCE
 	lsls r0, 1
 	cmp r1, r0
-	bne _080C58D0
-_080C58CC:
+	bne _080C56A0
+_080C569C:
 	movs r0, 0
-	b _080C58D2
-_080C58D0:
+	b _080C56A2
+_080C56A0:
 	movs r0, 0x1
-_080C58D2:
+_080C56A2:
 	pop {r1}
 	bx r1
 	thumb_func_end CheckMonIsValid
 
 	thumb_func_start AllMonsFainted
-AllMonsFainted: @ 80C58D8
+AllMonsFainted: @ 80C56A8
 	push {r4,r5,lr}
-	ldr r4, _080C58F8 @ =gPlayerParty
+	ldr r4, _080C56C8 @ =gPlayerParty
 	movs r5, 0
-_080C58DE:
+_080C56AE:
 	adds r0, r4, 0
 	bl CheckMonIsValid
 	cmp r0, 0
-	beq _080C58FC
+	beq _080C56CC
 	adds r0, r4, 0
 	movs r1, 0x39
 	bl GetMonData
 	cmp r0, 0
-	beq _080C58FC
+	beq _080C56CC
 	movs r0, 0
-	b _080C5906
+	b _080C56D6
 	.align 2, 0
-_080C58F8: .4byte gPlayerParty
-_080C58FC:
+_080C56C8: .4byte gPlayerParty
+_080C56CC:
 	adds r5, 0x1
 	adds r4, 0x64
 	cmp r5, 0x5
-	ble _080C58DE
+	ble _080C56AE
 	movs r0, 0x1
-_080C5906:
+_080C56D6:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	thumb_func_end AllMonsFainted
 
 	thumb_func_start MonFaintFromPoisonOnField
-MonFaintFromPoisonOnField: @ 80C590C
+MonFaintFromPoisonOnField: @ 80C56DC
 	push {r4,r5,lr}
 	sub sp, 0x4
 	lsls r0, 24
@@ -69,7 +69,7 @@ MonFaintFromPoisonOnField: @ 80C590C
 	movs r1, 0x64
 	adds r4, r0, 0
 	muls r4, r1
-	ldr r0, _080C5950 @ =gPlayerParty
+	ldr r0, _080C5720 @ =gPlayerParty
 	adds r4, r0
 	movs r0, 0
 	str r0, [sp]
@@ -80,7 +80,7 @@ MonFaintFromPoisonOnField: @ 80C590C
 	movs r1, 0x37
 	mov r2, sp
 	bl SetMonData
-	ldr r5, _080C5954 @ =gStringVar1
+	ldr r5, _080C5724 @ =gStringVar1
 	adds r0, r4, 0
 	movs r1, 0x2
 	adds r2, r5, 0
@@ -92,28 +92,28 @@ MonFaintFromPoisonOnField: @ 80C590C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5950: .4byte gPlayerParty
-_080C5954: .4byte gStringVar1
+_080C5720: .4byte gPlayerParty
+_080C5724: .4byte gStringVar1
 	thumb_func_end MonFaintFromPoisonOnField
 
 	thumb_func_start CheckMonFaintedFromPoison
-CheckMonFaintedFromPoison: @ 80C5958
+CheckMonFaintedFromPoison: @ 80C5728
 	push {r4,lr}
 	lsls r0, 24
 	lsrs r0, 24
 	movs r1, 0x64
 	muls r1, r0
-	ldr r0, _080C5994 @ =gPlayerParty
+	ldr r0, _080C5764 @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	bl CheckMonIsValid
 	cmp r0, 0
-	beq _080C5998
+	beq _080C5768
 	adds r0, r4, 0
 	movs r1, 0x39
 	bl GetMonData
 	cmp r0, 0
-	bne _080C5998
+	bne _080C5768
 	adds r0, r4, 0
 	movs r1, 0x37
 	bl GetMonData
@@ -121,56 +121,56 @@ CheckMonFaintedFromPoison: @ 80C5958
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _080C5998
+	bne _080C5768
 	movs r0, 0x1
-	b _080C599A
+	b _080C576A
 	.align 2, 0
-_080C5994: .4byte gPlayerParty
-_080C5998:
+_080C5764: .4byte gPlayerParty
+_080C5768:
 	movs r0, 0
-_080C599A:
+_080C576A:
 	pop {r4}
 	pop {r1}
 	bx r1
 	thumb_func_end CheckMonFaintedFromPoison
 
 	thumb_func_start Task_WhiteOut
-Task_WhiteOut: @ 80C59A0
+Task_WhiteOut: @ 80C5770
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
 	lsls r0, r5, 2
 	adds r0, r5
 	lsls r0, 3
-	ldr r1, _080C59C4 @ =0x03004b38
+	ldr r1, _080C5794 @ =0x03004b38
 	adds r4, r0, r1
 	movs r1, 0
 	ldrsh r0, [r4, r1]
 	cmp r0, 0x1
-	beq _080C59FA
+	beq _080C57CA
 	cmp r0, 0x1
-	bgt _080C59C8
+	bgt _080C5798
 	cmp r0, 0
-	beq _080C59CE
-	b _080C5A4A
+	beq _080C579E
+	b _080C581A
 	.align 2, 0
-_080C59C4: .4byte 0x03004b38
-_080C59C8:
+_080C5794: .4byte 0x03004b38
+_080C5798:
 	cmp r0, 0x2
-	beq _080C5A0C
-	b _080C5A4A
-_080C59CE:
+	beq _080C57DC
+	b _080C581A
+_080C579E:
 	ldrh r1, [r4, 0x2]
 	movs r2, 0x2
 	ldrsh r0, [r4, r2]
 	cmp r0, 0x5
-	bgt _080C59F4
-_080C59D8:
+	bgt _080C57C4
+_080C57A8:
 	lsls r0, r1, 24
 	lsrs r0, 24
 	bl CheckMonFaintedFromPoison
 	cmp r0, 0
-	bne _080C5A24
+	bne _080C57F4
 	ldrh r0, [r4, 0x2]
 	adds r0, 0x1
 	strh r0, [r4, 0x2]
@@ -178,84 +178,84 @@ _080C59D8:
 	lsls r0, 16
 	asrs r0, 16
 	cmp r0, 0x5
-	ble _080C59D8
-_080C59F4:
+	ble _080C57A8
+_080C57C4:
 	movs r0, 0x2
 	strh r0, [r4]
-	b _080C5A4A
-_080C59FA:
+	b _080C581A
+_080C57CA:
 	bl IsFieldMessageBoxHidden
 	lsls r0, 24
 	cmp r0, 0
-	beq _080C5A4A
+	beq _080C581A
 	ldrh r0, [r4]
 	subs r0, 0x1
 	strh r0, [r4]
-	b _080C5A4A
-_080C5A0C:
+	b _080C581A
+_080C57DC:
 	bl AllMonsFainted
 	adds r1, r0, 0
 	cmp r1, 0
-	beq _080C5A3C
-	ldr r1, _080C5A20 @ =gScriptResult
+	beq _080C580C
+	ldr r1, _080C57F0 @ =gScriptResult
 	movs r0, 0x1
 	strh r0, [r1]
-	b _080C5A40
+	b _080C5810
 	.align 2, 0
-_080C5A20: .4byte gScriptResult
-_080C5A24:
+_080C57F0: .4byte gScriptResult
+_080C57F4:
 	ldrb r0, [r4, 0x2]
 	bl MonFaintFromPoisonOnField
-	ldr r0, _080C5A38 @ =fieldPoisonText_PokemonFainted
+	ldr r0, _080C5808 @ =fieldPoisonText_PokemonFainted
 	bl ShowFieldMessage
 	ldrh r0, [r4]
 	adds r0, 0x1
 	strh r0, [r4]
-	b _080C5A4A
+	b _080C581A
 	.align 2, 0
-_080C5A38: .4byte fieldPoisonText_PokemonFainted
-_080C5A3C:
-	ldr r0, _080C5A50 @ =gScriptResult
+_080C5808: .4byte fieldPoisonText_PokemonFainted
+_080C580C:
+	ldr r0, _080C5820 @ =gScriptResult
 	strh r1, [r0]
-_080C5A40:
+_080C5810:
 	bl EnableBothScriptContexts
 	adds r0, r5, 0
 	bl DestroyTask
-_080C5A4A:
+_080C581A:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5A50: .4byte gScriptResult
+_080C5820: .4byte gScriptResult
 	thumb_func_end Task_WhiteOut
 
 	thumb_func_start DoWhiteOut
-DoWhiteOut: @ 80C5A54
+DoWhiteOut: @ 80C5824
 	push {lr}
-	ldr r0, _080C5A68 @ =Task_WhiteOut
+	ldr r0, _080C5838 @ =Task_WhiteOut
 	movs r1, 0x50
 	bl CreateTask
 	bl ScriptContext1_Stop
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C5A68: .4byte Task_WhiteOut
+_080C5838: .4byte Task_WhiteOut
 	thumb_func_end DoWhiteOut
 
 	thumb_func_start overworld_poison
-overworld_poison: @ 80C5A6C
+overworld_poison: @ 80C583C
 	push {r4-r7,lr}
 	sub sp, 0x4
-	ldr r4, _080C5AD8 @ =gPlayerParty
+	ldr r4, _080C58A8 @ =gPlayerParty
 	movs r7, 0
 	movs r6, 0
 	movs r5, 0x5
-_080C5A78:
+_080C5848:
 	adds r0, r4, 0
 	movs r1, 0x5
 	bl GetMonData
 	cmp r0, 0
-	beq _080C5ABC
+	beq _080C588C
 	adds r0, r4, 0
 	movs r1, 0x37
 	bl GetMonData
@@ -263,51 +263,51 @@ _080C5A78:
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x1
-	bne _080C5ABC
+	bne _080C588C
 	adds r0, r4, 0
 	movs r1, 0x39
 	bl GetMonData
 	str r0, [sp]
 	cmp r0, 0
-	beq _080C5AAE
+	beq _080C587E
 	subs r0, 0x1
 	str r0, [sp]
 	cmp r0, 0
-	bne _080C5AB0
-_080C5AAE:
+	bne _080C5880
+_080C587E:
 	adds r6, 0x1
-_080C5AB0:
+_080C5880:
 	adds r0, r4, 0
 	movs r1, 0x39
 	mov r2, sp
 	bl SetMonData
 	adds r7, 0x1
-_080C5ABC:
+_080C588C:
 	adds r4, 0x64
 	subs r5, 0x1
 	cmp r5, 0
-	bge _080C5A78
+	bge _080C5848
 	cmp r6, 0
-	bne _080C5ACC
+	bne _080C589C
 	cmp r7, 0
-	beq _080C5AD0
-_080C5ACC:
+	beq _080C58A0
+_080C589C:
 	bl DoFieldPoisonEffect
-_080C5AD0:
+_080C58A0:
 	cmp r6, 0
-	beq _080C5ADC
+	beq _080C58AC
 	movs r0, 0x2
-	b _080C5AE6
+	b _080C58B6
 	.align 2, 0
-_080C5AD8: .4byte gPlayerParty
-_080C5ADC:
+_080C58A8: .4byte gPlayerParty
+_080C58AC:
 	cmp r7, 0
-	bne _080C5AE4
+	bne _080C58B4
 	movs r0, 0
-	b _080C5AE6
-_080C5AE4:
+	b _080C58B6
+_080C58B4:
 	movs r0, 0x1
-_080C5AE6:
+_080C58B6:
 	add sp, 0x4
 	pop {r4-r7}
 	pop {r1}

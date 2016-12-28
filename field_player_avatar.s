@@ -7,7 +7,7 @@
 	.text
 
 	thumb_func_start sub_80587B4
-sub_80587B4: @ 8058AF4
+sub_80587B4: @ 80587B4
 	push {lr}
 	adds r1, r0, 0
 	movs r0, 0x2E
@@ -15,15 +15,15 @@ sub_80587B4: @ 8058AF4
 	lsls r0, r2, 3
 	adds r0, r2
 	lsls r0, 2
-	ldr r2, _08058B10 @ =gMapObjects
+	ldr r2, _080587D0 @ =gMapObjects
 	adds r0, r2
-	ldr r2, _08058B14 @ =sub_80587D8
+	ldr r2, _080587D4 @ =sub_80587D8
 	bl meta_step
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058B10: .4byte gMapObjects
-_08058B14: .4byte sub_80587D8
+_080587D0: .4byte gMapObjects
+_080587D4: .4byte sub_80587D8
 	thumb_func_end sub_80587B4
 
 	thumb_func_start sub_80587D8
@@ -33,7 +33,7 @@ sub_80587D8: @ 8058B18
 	thumb_func_end sub_80587D8
 
 	thumb_func_start player_step
-player_step: @ 8058B1C
+player_step: @ 80587DC
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -44,18 +44,18 @@ player_step: @ 8058B1C
 	lsrs r7, r1, 16
 	lsls r2, 16
 	lsrs r6, r2, 16
-	ldr r4, _08058B8C @ =gPlayerAvatar
+	ldr r4, _0805884C @ =gPlayerAvatar
 	ldrb r1, [r4, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08058B90 @ =gMapObjects
+	ldr r1, _08058850 @ =gMapObjects
 	adds r5, r0, r1
 	adds r0, r5, 0
 	bl sub_8059D60
 	ldrb r0, [r4, 0x6]
 	cmp r0, 0
-	bne _08058B82
+	bne _08058842
 	adds r0, r7, 0
 	adds r1, r6, 0
 	bl sub_80E5B38
@@ -64,28 +64,28 @@ player_step: @ 8058B1C
 	bl sub_8058854
 	lsls r0, 24
 	cmp r0, 0
-	bne _08058B82
+	bne _08058842
 	adds r0, r5, 0
 	bl npc_clear_strange_bits
 	bl DoPlayerAvatarTransition
 	bl TryDoMetatileBehaviorForcedMovement
 	lsls r0, 24
 	cmp r0, 0
-	bne _08058B82
+	bne _08058842
 	mov r0, r8
 	adds r1, r7, 0
 	adds r2, r6, 0
 	bl MovePlayerAvatarUsingKeypadInput
 	bl PlayerAllowForcedMovementIfMovingSameDirection
-_08058B82:
+_08058842:
 	pop {r3}
 	mov r8, r3
 	pop {r4-r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058B8C: .4byte gPlayerAvatar
-_08058B90: .4byte gMapObjects
+_0805884C: .4byte gPlayerAvatar
+_08058850: .4byte gMapObjects
 	thumb_func_end player_step
 
 	thumb_func_start sub_8058854
@@ -272,19 +272,19 @@ _08058CD8:
 	thumb_func_end GetForcedMovementByMetatileBehavior
 
 	thumb_func_start ForcedMovement_None
-ForcedMovement_None: @ 8058CE0
+ForcedMovement_None: @ 80589A0
 	push {r4,lr}
-	ldr r4, _08058D24 @ =gPlayerAvatar
+	ldr r4, _080589E4 @ =gPlayerAvatar
 	ldrb r1, [r4]
 	movs r0, 0x40
 	ands r0, r1
 	cmp r0, 0
-	beq _08058D1A
+	beq _080589DA
 	ldrb r1, [r4, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08058D28 @ =gMapObjects
+	ldr r1, _080589E8 @ =gMapObjects
 	adds r0, r1
 	ldrb r2, [r0, 0x1]
 	movs r1, 0x3
@@ -301,14 +301,14 @@ ForcedMovement_None: @ 8058CE0
 	movs r0, 0xBF
 	ands r0, r1
 	strb r0, [r4]
-_08058D1A:
+_080589DA:
 	movs r0, 0
 	pop {r4}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058D24: .4byte gPlayerAvatar
-_08058D28: .4byte gMapObjects
+_080589E4: .4byte gPlayerAvatar
+_080589E8: .4byte gMapObjects
 	thumb_func_end ForcedMovement_None
 
 	thumb_func_start DoForcedMovement
@@ -402,22 +402,22 @@ _08058DD4: .4byte gMapObjects
 	thumb_func_end DoForcedMovementInCurrentDirection
 
 	thumb_func_start ForcedMovement_Slip
-ForcedMovement_Slip: @ 8058DD8
+ForcedMovement_Slip: @ 8058A98
 	push {lr}
-	ldr r0, _08058DE8 @ =sub_80593C4
+	ldr r0, _08058AA8 @ =sub_80593C4
 	bl DoForcedMovementInCurrentDirection
 	lsls r0, 24
 	lsrs r0, 24
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058DE8: .4byte sub_80593C4
+_08058AA8: .4byte sub_80593C4
 	thumb_func_end ForcedMovement_Slip
 
 	thumb_func_start sub_8058AAC
-sub_8058AAC: @ 8058DEC
+sub_8058AAC: @ 8058AAC
 	push {lr}
-	ldr r1, _08058E00 @ =PlayerGoSpeed0
+	ldr r1, _08058AC0 @ =PlayerGoSpeed0
 	movs r0, 0x1
 	bl DoForcedMovement
 	lsls r0, 24
@@ -425,13 +425,13 @@ sub_8058AAC: @ 8058DEC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058E00: .4byte PlayerGoSpeed0
+_08058AC0: .4byte PlayerGoSpeed0
 	thumb_func_end sub_8058AAC
 
 	thumb_func_start sub_8058AC4
-sub_8058AC4: @ 8058E04
+sub_8058AC4: @ 8058AC4
 	push {lr}
-	ldr r1, _08058E18 @ =PlayerGoSpeed0
+	ldr r1, _08058AD8 @ =PlayerGoSpeed0
 	movs r0, 0x2
 	bl DoForcedMovement
 	lsls r0, 24
@@ -439,13 +439,13 @@ sub_8058AC4: @ 8058E04
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058E18: .4byte PlayerGoSpeed0
+_08058AD8: .4byte PlayerGoSpeed0
 	thumb_func_end sub_8058AC4
 
 	thumb_func_start sub_8058ADC
-sub_8058ADC: @ 8058E1C
+sub_8058ADC: @ 8058ADC
 	push {lr}
-	ldr r1, _08058E30 @ =PlayerGoSpeed0
+	ldr r1, _08058AF0 @ =PlayerGoSpeed0
 	movs r0, 0x3
 	bl DoForcedMovement
 	lsls r0, 24
@@ -453,13 +453,13 @@ sub_8058ADC: @ 8058E1C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058E30: .4byte PlayerGoSpeed0
+_08058AF0: .4byte PlayerGoSpeed0
 	thumb_func_end sub_8058ADC
 
 	thumb_func_start sub_8058AF4
-sub_8058AF4: @ 8058E34
+sub_8058AF4: @ 8058AF4
 	push {lr}
-	ldr r1, _08058E48 @ =PlayerGoSpeed0
+	ldr r1, _08058B08 @ =PlayerGoSpeed0
 	movs r0, 0x4
 	bl DoForcedMovement
 	lsls r0, 24
@@ -467,13 +467,13 @@ sub_8058AF4: @ 8058E34
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058E48: .4byte PlayerGoSpeed0
+_08058B08: .4byte PlayerGoSpeed0
 	thumb_func_end sub_8058AF4
 
 	thumb_func_start sub_8058B0C
-sub_8058B0C: @ 8058E4C
+sub_8058B0C: @ 8058B0C
 	push {lr}
-	ldr r1, _08058E60 @ =npc_use_some_d2s
+	ldr r1, _08058B20 @ =npc_use_some_d2s
 	movs r0, 0x1
 	bl DoForcedMovement
 	lsls r0, 24
@@ -481,13 +481,13 @@ sub_8058B0C: @ 8058E4C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058E60: .4byte npc_use_some_d2s
+_08058B20: .4byte npc_use_some_d2s
 	thumb_func_end sub_8058B0C
 
 	thumb_func_start sub_8058B24
-sub_8058B24: @ 8058E64
+sub_8058B24: @ 8058B24
 	push {lr}
-	ldr r1, _08058E78 @ =npc_use_some_d2s
+	ldr r1, _08058B38 @ =npc_use_some_d2s
 	movs r0, 0x2
 	bl DoForcedMovement
 	lsls r0, 24
@@ -495,13 +495,13 @@ sub_8058B24: @ 8058E64
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058E78: .4byte npc_use_some_d2s
+_08058B38: .4byte npc_use_some_d2s
 	thumb_func_end sub_8058B24
 
 	thumb_func_start sub_8058B3C
-sub_8058B3C: @ 8058E7C
+sub_8058B3C: @ 8058B3C
 	push {lr}
-	ldr r1, _08058E90 @ =npc_use_some_d2s
+	ldr r1, _08058B50 @ =npc_use_some_d2s
 	movs r0, 0x3
 	bl DoForcedMovement
 	lsls r0, 24
@@ -509,13 +509,13 @@ sub_8058B3C: @ 8058E7C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058E90: .4byte npc_use_some_d2s
+_08058B50: .4byte npc_use_some_d2s
 	thumb_func_end sub_8058B3C
 
 	thumb_func_start sub_8058B54
-sub_8058B54: @ 8058E94
+sub_8058B54: @ 8058B54
 	push {lr}
-	ldr r1, _08058EA8 @ =npc_use_some_d2s
+	ldr r1, _08058B68 @ =npc_use_some_d2s
 	movs r0, 0x4
 	bl DoForcedMovement
 	lsls r0, 24
@@ -523,7 +523,7 @@ sub_8058B54: @ 8058E94
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058EA8: .4byte npc_use_some_d2s
+_08058B68: .4byte npc_use_some_d2s
 	thumb_func_end sub_8058B54
 
 	thumb_func_start ForcedMovement_Slide
@@ -556,9 +556,9 @@ _08058EE0: .4byte gMapObjects
 	thumb_func_end ForcedMovement_Slide
 
 	thumb_func_start ForcedMovement_SlideSouth
-ForcedMovement_SlideSouth: @ 8058EE4
+ForcedMovement_SlideSouth: @ 8058BA4
 	push {lr}
-	ldr r1, _08058EF8 @ =sub_80593C4
+	ldr r1, _08058BB8 @ =sub_80593C4
 	movs r0, 0x1
 	bl ForcedMovement_Slide
 	lsls r0, 24
@@ -566,13 +566,13 @@ ForcedMovement_SlideSouth: @ 8058EE4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058EF8: .4byte sub_80593C4
+_08058BB8: .4byte sub_80593C4
 	thumb_func_end ForcedMovement_SlideSouth
 
 	thumb_func_start ForcedMovement_SlideNorth
-ForcedMovement_SlideNorth: @ 8058EFC
+ForcedMovement_SlideNorth: @ 8058BBC
 	push {lr}
-	ldr r1, _08058F10 @ =sub_80593C4
+	ldr r1, _08058BD0 @ =sub_80593C4
 	movs r0, 0x2
 	bl ForcedMovement_Slide
 	lsls r0, 24
@@ -580,13 +580,13 @@ ForcedMovement_SlideNorth: @ 8058EFC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058F10: .4byte sub_80593C4
+_08058BD0: .4byte sub_80593C4
 	thumb_func_end ForcedMovement_SlideNorth
 
 	thumb_func_start ForcedMovement_SlideWest
-ForcedMovement_SlideWest: @ 8058F14
+ForcedMovement_SlideWest: @ 8058BD4
 	push {lr}
-	ldr r1, _08058F28 @ =sub_80593C4
+	ldr r1, _08058BE8 @ =sub_80593C4
 	movs r0, 0x3
 	bl ForcedMovement_Slide
 	lsls r0, 24
@@ -594,13 +594,13 @@ ForcedMovement_SlideWest: @ 8058F14
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058F28: .4byte sub_80593C4
+_08058BE8: .4byte sub_80593C4
 	thumb_func_end ForcedMovement_SlideWest
 
 	thumb_func_start ForcedMovement_SlideEast
-ForcedMovement_SlideEast: @ 8058F2C
+ForcedMovement_SlideEast: @ 8058BEC
 	push {lr}
-	ldr r1, _08058F40 @ =sub_80593C4
+	ldr r1, _08058C00 @ =sub_80593C4
 	movs r0, 0x4
 	bl ForcedMovement_Slide
 	lsls r0, 24
@@ -608,11 +608,11 @@ ForcedMovement_SlideEast: @ 8058F2C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08058F40: .4byte sub_80593C4
+_08058C00: .4byte sub_80593C4
 	thumb_func_end ForcedMovement_SlideEast
 
 	thumb_func_start sub_8058C04
-sub_8058C04: @ 8058F44
+sub_8058C04: @ 8058C04
 	push {lr}
 	bl sub_8059F94
 	movs r0, 0x1
@@ -621,7 +621,7 @@ sub_8058C04: @ 8058F44
 	thumb_func_end sub_8058C04
 
 	thumb_func_start sub_8058C10
-sub_8058C10: @ 8058F50
+sub_8058C10: @ 8058C10
 	push {lr}
 	bl sub_805A06C
 	movs r0, 0x1
@@ -630,45 +630,45 @@ sub_8058C10: @ 8058F50
 	thumb_func_end sub_8058C10
 
 	thumb_func_start ForcedMovement_MuddySlope
-ForcedMovement_MuddySlope: @ 8058F5C
+ForcedMovement_MuddySlope: @ 8058C1C
 	push {r4,lr}
-	ldr r0, _08058FA0 @ =gPlayerAvatar
+	ldr r0, _08058C60 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08058FA4 @ =gMapObjects
+	ldr r1, _08058C64 @ =gMapObjects
 	adds r4, r0, r1
 	ldrb r1, [r4, 0x18]
 	movs r0, 0xF0
 	ands r0, r1
 	cmp r0, 0x20
-	bne _08058F82
+	bne _08058C42
 	bl sub_80E6034
 	lsls r0, 16
 	asrs r0, 16
 	cmp r0, 0x3
-	bgt _08058FAC
-_08058F82:
+	bgt _08058C6C
+_08058C42:
 	movs r0, 0
 	bl sub_80E6010
 	ldrb r0, [r4, 0x1]
 	movs r1, 0x2
 	orrs r0, r1
 	strb r0, [r4, 0x1]
-	ldr r1, _08058FA8 @ =sub_80593C4
+	ldr r1, _08058C68 @ =sub_80593C4
 	movs r0, 0x1
 	bl DoForcedMovement
 	lsls r0, 24
 	lsrs r0, 24
-	b _08058FAE
+	b _08058C6E
 	.align 2, 0
-_08058FA0: .4byte gPlayerAvatar
-_08058FA4: .4byte gMapObjects
-_08058FA8: .4byte sub_80593C4
-_08058FAC:
+_08058C60: .4byte gPlayerAvatar
+_08058C64: .4byte gMapObjects
+_08058C68: .4byte sub_80593C4
+_08058C6C:
 	movs r0, 0
-_08058FAE:
+_08058C6E:
 	pop {r4}
 	pop {r1}
 	bx r1
@@ -741,7 +741,7 @@ _08059024: .4byte gPlayerAvatar
 	thumb_func_end CheckMovementInputNotOnBike
 
 	thumb_func_start PlayerNotOnBikeNotMoving
-PlayerNotOnBikeNotMoving: @ 8059028
+PlayerNotOnBikeNotMoving: @ 8058CE8
 	push {lr}
 	bl player_get_direction_lower_nybble
 	lsls r0, 24
@@ -752,7 +752,7 @@ PlayerNotOnBikeNotMoving: @ 8059028
 	thumb_func_end PlayerNotOnBikeNotMoving
 
 	thumb_func_start PlayerNotOnBikeTurningInPlace
-PlayerNotOnBikeTurningInPlace: @ 805903C
+PlayerNotOnBikeTurningInPlace: @ 8058CFC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -762,7 +762,7 @@ PlayerNotOnBikeTurningInPlace: @ 805903C
 	thumb_func_end PlayerNotOnBikeTurningInPlace
 
 	thumb_func_start sub_8058D0C
-sub_8058D0C: @ 805904C
+sub_8058D0C: @ 8058D0C
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
@@ -774,49 +774,49 @@ sub_8058D0C: @ 805904C
 	lsrs r0, 24
 	adds r1, r0, 0
 	cmp r0, 0
-	beq _08059084
+	beq _08058D44
 	cmp r0, 0x6
-	bne _08059072
+	bne _08058D32
 	adds r0, r5, 0
 	bl PlayerJumpLedge
-	b _080590EE
-_08059072:
+	b _08058DAE
+_08058D32:
 	subs r0, r1, 0x5
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x3
-	bls _080590EE
+	bls _08058DAE
 	adds r0, r5, 0
 	bl PlayerNotOnBikeCollide
-	b _080590EE
-_08059084:
-	ldr r6, _08059098 @ =gPlayerAvatar
+	b _08058DAE
+_08058D44:
+	ldr r6, _08058D58 @ =gPlayerAvatar
 	ldrb r1, [r6]
 	movs r0, 0x8
 	ands r0, r1
 	cmp r0, 0
-	beq _0805909C
+	beq _08058D5C
 	adds r0, r5, 0
 	bl sub_80593C4
-	b _080590EE
+	b _08058DAE
 	.align 2, 0
-_08059098: .4byte gPlayerAvatar
-_0805909C:
+_08058D58: .4byte gPlayerAvatar
+_08058D5C:
 	movs r0, 0x10
 	ands r0, r1
 	cmp r0, 0
-	bne _080590E8
+	bne _08058DA8
 	movs r0, 0x2
 	ands r4, r0
 	cmp r4, 0
-	beq _080590E8
+	beq _08058DA8
 	movs r0, 0x86
 	lsls r0, 4
 	bl FlagGet
 	lsls r0, 24
 	cmp r0, 0
-	beq _080590E8
-	ldr r2, _080590E4 @ =gMapObjects
+	beq _08058DA8
+	ldr r2, _08058DA4 @ =gMapObjects
 	ldrb r1, [r6, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -826,20 +826,20 @@ _0805909C:
 	bl sub_80E5DEC
 	lsls r0, 24
 	cmp r0, 0
-	bne _080590E8
+	bne _08058DA8
 	adds r0, r5, 0
 	bl sub_805940C
 	ldrb r1, [r6]
 	movs r0, 0x80
 	orrs r0, r1
 	strb r0, [r6]
-	b _080590EE
+	b _08058DAE
 	.align 2, 0
-_080590E4: .4byte gMapObjects
-_080590E8:
+_08058DA4: .4byte gMapObjects
+_08058DA8:
 	adds r0, r5, 0
 	bl PlayerGoSpeed0
-_080590EE:
+_08058DAE:
 	pop {r4-r6}
 	pop {r0}
 	bx r0
@@ -899,7 +899,7 @@ _0805915C: .4byte gMapObjects
 	thumb_func_end CheckForPlayerAvatarCollision
 
 	thumb_func_start CheckForFieldObjectCollision
-CheckForFieldObjectCollision: @ 8059160
+CheckForFieldObjectCollision: @ 8058E20
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -928,17 +928,17 @@ CheckForFieldObjectCollision: @ 8059160
 	mov r1, sp
 	strb r0, [r1]
 	cmp r0, 0x3
-	bne _080591B0
+	bne _08058E70
 	adds r0, r5, 0
 	adds r1, r4, 0
 	adds r2, r6, 0
 	bl sub_8058EF0
 	lsls r0, 24
 	cmp r0, 0
-	beq _080591B0
+	beq _08058E70
 	movs r0, 0x5
-	b _0805921E
-_080591B0:
+	b _08058EDE
+_08058E70:
 	lsls r5, r7, 16
 	asrs r0, r5, 16
 	mov r8, r0
@@ -950,30 +950,30 @@ _080591B0:
 	bl ShouldJumpLedge
 	lsls r0, 24
 	cmp r0, 0
-	beq _080591D4
+	beq _08058E94
 	movs r0, 0x2B
 	bl sav12_xor_increment
 	movs r0, 0x6
-	b _0805921E
-_080591D4:
+	b _08058EDE
+_08058E94:
 	mov r0, sp
 	ldrb r0, [r0]
 	cmp r0, 0x4
-	bne _080591F0
+	bne _08058EB0
 	mov r0, r8
 	adds r1, r7, 0
 	adds r2, r6, 0
 	bl sub_8058F6C
 	lsls r0, 24
 	cmp r0, 0
-	beq _080591F0
+	beq _08058EB0
 	movs r0, 0x7
-	b _0805921E
-_080591F0:
+	b _08058EDE
+_08058EB0:
 	mov r0, sp
 	ldrb r0, [r0]
 	cmp r0, 0
-	bne _0805921A
+	bne _08058EDA
 	asrs r5, 16
 	asrs r4, 16
 	adds r0, r6, 0
@@ -981,19 +981,19 @@ _080591F0:
 	adds r2, r4, 0
 	bl CheckForRotatingGatePuzzleCollision
 	cmp r0, 0
-	beq _0805920E
+	beq _08058ECE
 	movs r0, 0x8
-	b _0805921E
-_0805920E:
+	b _08058EDE
+_08058ECE:
 	adds r0, r5, 0
 	adds r1, r4, 0
 	mov r2, r10
 	mov r3, sp
 	bl check_acro_bike_metatile
-_0805921A:
+_08058EDA:
 	mov r0, sp
 	ldrb r0, [r0]
-_0805921E:
+_08058EDE:
 	add sp, 0x4
 	pop {r3-r5}
 	mov r8, r3
@@ -1193,11 +1193,11 @@ _08059392:
 	thumb_func_end check_acro_bike_metatile
 
 	thumb_func_start SetPlayerAvatarTransitionFlags
-SetPlayerAvatarTransitionFlags: @ 8059398
+SetPlayerAvatarTransitionFlags: @ 8059058
 	push {lr}
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r2, _080593B0 @ =gPlayerAvatar
+	ldr r2, _08059070 @ =gPlayerAvatar
 	ldrb r1, [r2, 0x1]
 	orrs r0, r1
 	strb r0, [r2, 0x1]
@@ -1205,7 +1205,7 @@ SetPlayerAvatarTransitionFlags: @ 8059398
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080593B0: .4byte gPlayerAvatar
+_08059070: .4byte gPlayerAvatar
 	thumb_func_end SetPlayerAvatarTransitionFlags
 
 	thumb_func_start DoPlayerAvatarTransition
@@ -1254,12 +1254,12 @@ _08059404: .4byte gMapObjects
 	thumb_func_end DoPlayerAvatarTransition
 
 	thumb_func_start nullsub_49
-nullsub_49: @ 8059408
+nullsub_49: @ 80590C8
 	bx lr
 	thumb_func_end nullsub_49
 
 	thumb_func_start PlayerAvatarTransition_Normal
-PlayerAvatarTransition_Normal: @ 805940C
+PlayerAvatarTransition_Normal: @ 80590CC
 	push {r4,lr}
 	adds r4, r0, 0
 	movs r0, 0
@@ -1281,7 +1281,7 @@ PlayerAvatarTransition_Normal: @ 805940C
 	thumb_func_end PlayerAvatarTransition_Normal
 
 	thumb_func_start PlayerAvatarTransition_MachBike
-PlayerAvatarTransition_MachBike: @ 8059438
+PlayerAvatarTransition_MachBike: @ 80590F8
 	push {r4,lr}
 	adds r4, r0, 0
 	movs r0, 0x1
@@ -1306,7 +1306,7 @@ PlayerAvatarTransition_MachBike: @ 8059438
 	thumb_func_end PlayerAvatarTransition_MachBike
 
 	thumb_func_start PlayerAvatarTransition_AcroBike
-PlayerAvatarTransition_AcroBike: @ 805946C
+PlayerAvatarTransition_AcroBike: @ 805912C
 	push {r4,lr}
 	adds r4, r0, 0
 	movs r0, 0x2
@@ -1332,7 +1332,7 @@ PlayerAvatarTransition_AcroBike: @ 805946C
 	thumb_func_end PlayerAvatarTransition_AcroBike
 
 	thumb_func_start PlayerAvatarTransition_Surfing
-PlayerAvatarTransition_Surfing: @ 80594A4
+PlayerAvatarTransition_Surfing: @ 8059164
 	push {r4,lr}
 	adds r4, r0, 0
 	movs r0, 0x3
@@ -1348,14 +1348,14 @@ PlayerAvatarTransition_Surfing: @ 80594A4
 	bl FieldObjectTurn
 	movs r0, 0x8
 	bl SetPlayerAvatarStateMask
-	ldr r1, _080594F8 @ =gUnknown_0202FF84
+	ldr r1, _080591B8 @ =gUnknown_0202FF84
 	movs r2, 0x10
 	ldrsh r0, [r4, r2]
 	str r0, [r1]
 	movs r2, 0x12
 	ldrsh r0, [r4, r2]
 	str r0, [r1, 0x4]
-	ldr r0, _080594FC @ =gPlayerAvatar
+	ldr r0, _080591BC @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	str r0, [r1, 0x8]
 	movs r0, 0x8
@@ -1369,12 +1369,12 @@ PlayerAvatarTransition_Surfing: @ 80594A4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080594F8: .4byte gUnknown_0202FF84
-_080594FC: .4byte gPlayerAvatar
+_080591B8: .4byte gUnknown_0202FF84
+_080591BC: .4byte gPlayerAvatar
 	thumb_func_end PlayerAvatarTransition_Surfing
 
 	thumb_func_start PlayerAvatarTransition_Underwater
-PlayerAvatarTransition_Underwater: @ 8059500
+PlayerAvatarTransition_Underwater: @ 80591C0
 	push {r4,lr}
 	adds r4, r0, 0
 	movs r0, 0x4
@@ -1399,48 +1399,48 @@ PlayerAvatarTransition_Underwater: @ 8059500
 	thumb_func_end PlayerAvatarTransition_Underwater
 
 	thumb_func_start sub_80591F4
-sub_80591F4: @ 8059534
-	ldr r2, _08059540 @ =gPlayerAvatar
+sub_80591F4: @ 80591F4
+	ldr r2, _08059200 @ =gPlayerAvatar
 	ldrb r1, [r2]
 	movs r0, 0x20
 	orrs r0, r1
 	strb r0, [r2]
 	bx lr
 	.align 2, 0
-_08059540: .4byte gPlayerAvatar
+_08059200: .4byte gPlayerAvatar
 	thumb_func_end sub_80591F4
 
 	thumb_func_start sub_8059204
-sub_8059204: @ 8059544
+sub_8059204: @ 8059204
 	push {r4,lr}
-	ldr r4, _08059570 @ =gPlayerAvatar
+	ldr r4, _08059230 @ =gPlayerAvatar
 	movs r0, 0
 	strb r0, [r4, 0x3]
 	bl PlayerIsAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	beq _08059582
+	beq _08059242
 	bl PlayerCheckIfAnimFinishedOrInactive
 	lsls r0, 24
 	cmp r0, 0
-	bne _08059574
+	bne _08059234
 	bl player_is_anim_in_certain_ranges
 	lsls r0, 24
 	cmp r0, 0
-	bne _08059582
+	bne _08059242
 	movs r0, 0x1
-	b _08059580
+	b _08059240
 	.align 2, 0
-_08059570: .4byte gPlayerAvatar
-_08059574:
+_08059230: .4byte gPlayerAvatar
+_08059234:
 	bl sub_80592A4
 	lsls r0, 24
 	cmp r0, 0
-	bne _08059582
+	bne _08059242
 	movs r0, 0x2
-_08059580:
+_08059240:
 	strb r0, [r4, 0x3]
-_08059582:
+_08059242:
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -1576,9 +1576,9 @@ _08059668: .4byte gPlayerAvatar
 	thumb_func_end player_set_x22
 
 	thumb_func_start player_get_x22
-player_get_x22: @ 805966C
-	ldr r2, _08059680 @ =gMapObjects
-	ldr r0, _08059684 @ =gPlayerAvatar
+player_get_x22: @ 805932C
+	ldr r2, _08059340 @ =gMapObjects
+	ldr r0, _08059344 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -1588,8 +1588,8 @@ player_get_x22: @ 805966C
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_08059680: .4byte gMapObjects
-_08059684: .4byte gPlayerAvatar
+_08059340: .4byte gMapObjects
+_08059344: .4byte gPlayerAvatar
 	thumb_func_end player_get_x22
 
 	thumb_func_start sub_8059348
@@ -1614,7 +1614,7 @@ _080596AC: .4byte gMapObjects
 	thumb_func_end sub_8059348
 
 	thumb_func_start player_npc_set_state_and_x22_etc
-player_npc_set_state_and_x22_etc: @ 80596B0
+player_npc_set_state_and_x22_etc: @ 8059370
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
@@ -1623,29 +1623,29 @@ player_npc_set_state_and_x22_etc: @ 80596B0
 	bl PlayerIsAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	bne _080596DE
+	bne _0805939E
 	adds r0, r4, 0
 	bl player_set_x22
-	ldr r0, _080596E4 @ =gPlayerAvatar
+	ldr r0, _080593A4 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _080596E8 @ =gMapObjects
+	ldr r1, _080593A8 @ =gMapObjects
 	adds r0, r1
 	adds r1, r5, 0
 	bl FieldObjectSetSpecialAnim
-_080596DE:
+_0805939E:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080596E4: .4byte gPlayerAvatar
-_080596E8: .4byte gMapObjects
+_080593A4: .4byte gPlayerAvatar
+_080593A8: .4byte gMapObjects
 	thumb_func_end player_npc_set_state_and_x22_etc
 
 	thumb_func_start PlayerGoSpeed0
-PlayerGoSpeed0: @ 80596EC
+PlayerGoSpeed0: @ 80593AC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1659,7 +1659,7 @@ PlayerGoSpeed0: @ 80596EC
 	thumb_func_end PlayerGoSpeed0
 
 	thumb_func_start sub_80593C4
-sub_80593C4: @ 8059704
+sub_80593C4: @ 80593C4
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1673,7 +1673,7 @@ sub_80593C4: @ 8059704
 	thumb_func_end sub_80593C4
 
 	thumb_func_start npc_use_some_d2s
-npc_use_some_d2s: @ 805971C
+npc_use_some_d2s: @ 80593DC
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1687,7 +1687,7 @@ npc_use_some_d2s: @ 805971C
 	thumb_func_end npc_use_some_d2s
 
 	thumb_func_start sub_80593F4
-sub_80593F4: @ 8059734
+sub_80593F4: @ 80593F4
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1701,7 +1701,7 @@ sub_80593F4: @ 8059734
 	thumb_func_end sub_80593F4
 
 	thumb_func_start sub_805940C
-sub_805940C: @ 805974C
+sub_805940C: @ 805940C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1715,7 +1715,7 @@ sub_805940C: @ 805974C
 	thumb_func_end sub_805940C
 
 	thumb_func_start PlayerOnBikeCollide
-PlayerOnBikeCollide: @ 8059764
+PlayerOnBikeCollide: @ 8059424
 	push {r4,lr}
 	adds r4, r0, 0
 	lsls r4, 24
@@ -1753,7 +1753,7 @@ PlayerNotOnBikeCollide: @ 8059788
 	thumb_func_end PlayerNotOnBikeCollide
 
 	thumb_func_start PlayerFaceDirection
-PlayerFaceDirection: @ 80597AC
+PlayerFaceDirection: @ 805946C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1767,7 +1767,7 @@ PlayerFaceDirection: @ 80597AC
 	thumb_func_end PlayerFaceDirection
 
 	thumb_func_start PlayerTurnInPlace
-PlayerTurnInPlace: @ 80597C4
+PlayerTurnInPlace: @ 8059484
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1781,7 +1781,7 @@ PlayerTurnInPlace: @ 80597C4
 	thumb_func_end PlayerTurnInPlace
 
 	thumb_func_start PlayerJumpLedge
-PlayerJumpLedge: @ 80597DC
+PlayerJumpLedge: @ 805949C
 	push {r4,lr}
 	adds r4, r0, 0
 	lsls r4, 24
@@ -1800,20 +1800,20 @@ PlayerJumpLedge: @ 80597DC
 	thumb_func_end PlayerJumpLedge
 
 	thumb_func_start sub_80594C0
-sub_80594C0: @ 8059800
+sub_80594C0: @ 80594C0
 	push {r4,lr}
-	ldr r4, _0805983C @ =gPlayerAvatar
+	ldr r4, _080594FC @ =gPlayerAvatar
 	ldrb r0, [r4, 0x3]
 	cmp r0, 0x2
-	beq _0805980E
+	beq _080594CE
 	cmp r0, 0
-	bne _08059836
-_0805980E:
+	bne _080594F6
+_080594CE:
 	bl player_should_look_direction_be_enforced_upon_movement
 	lsls r0, 24
 	cmp r0, 0
-	beq _08059836
-	ldr r2, _08059840 @ =gMapObjects
+	beq _080594F6
+	ldr r2, _08059500 @ =gMapObjects
 	ldrb r1, [r4, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -1826,17 +1826,17 @@ _0805980E:
 	lsls r0, 24
 	lsrs r0, 24
 	bl sub_8059348
-_08059836:
+_080594F6:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805983C: .4byte gPlayerAvatar
-_08059840: .4byte gMapObjects
+_080594FC: .4byte gPlayerAvatar
+_08059500: .4byte gMapObjects
 	thumb_func_end sub_80594C0
 
 	thumb_func_start sub_8059504
-sub_8059504: @ 8059844
+sub_8059504: @ 8059504
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1850,7 +1850,7 @@ sub_8059504: @ 8059844
 	thumb_func_end sub_8059504
 
 	thumb_func_start sub_805951C
-sub_805951C: @ 805985C
+sub_805951C: @ 805951C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1864,7 +1864,7 @@ sub_805951C: @ 805985C
 	thumb_func_end sub_805951C
 
 	thumb_func_start sub_8059534
-sub_8059534: @ 8059874
+sub_8059534: @ 8059534
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1878,7 +1878,7 @@ sub_8059534: @ 8059874
 	thumb_func_end sub_8059534
 
 	thumb_func_start sub_805954C
-sub_805954C: @ 805988C
+sub_805954C: @ 805954C
 	push {r4,lr}
 	adds r4, r0, 0
 	lsls r4, 24
@@ -1897,7 +1897,7 @@ sub_805954C: @ 805988C
 	thumb_func_end sub_805954C
 
 	thumb_func_start sub_8059570
-sub_8059570: @ 80598B0
+sub_8059570: @ 8059570
 	push {r4,lr}
 	adds r4, r0, 0
 	lsls r4, 24
@@ -1916,7 +1916,7 @@ sub_8059570: @ 80598B0
 	thumb_func_end sub_8059570
 
 	thumb_func_start sub_8059594
-sub_8059594: @ 80598D4
+sub_8059594: @ 8059594
 	push {r4,lr}
 	adds r4, r0, 0
 	lsls r4, 24
@@ -1935,7 +1935,7 @@ sub_8059594: @ 80598D4
 	thumb_func_end sub_8059594
 
 	thumb_func_start sub_80595B8
-sub_80595B8: @ 80598F8
+sub_80595B8: @ 80595B8
 	push {r4,lr}
 	adds r4, r0, 0
 	lsls r4, 24
@@ -1954,7 +1954,7 @@ sub_80595B8: @ 80598F8
 	thumb_func_end sub_80595B8
 
 	thumb_func_start sub_80595DC
-sub_80595DC: @ 805991C
+sub_80595DC: @ 80595DC
 	push {r4,lr}
 	adds r4, r0, 0
 	lsls r4, 24
@@ -1973,7 +1973,7 @@ sub_80595DC: @ 805991C
 	thumb_func_end sub_80595DC
 
 	thumb_func_start sub_8059600
-sub_8059600: @ 8059940
+sub_8059600: @ 8059600
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -1987,7 +1987,7 @@ sub_8059600: @ 8059940
 	thumb_func_end sub_8059600
 
 	thumb_func_start sub_8059618
-sub_8059618: @ 8059958
+sub_8059618: @ 8059618
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -2001,7 +2001,7 @@ sub_8059618: @ 8059958
 	thumb_func_end sub_8059618
 
 	thumb_func_start sub_8059630
-sub_8059630: @ 8059970
+sub_8059630: @ 8059630
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
@@ -2075,12 +2075,12 @@ _08059A00: .4byte gUnknown_0830FC34
 	thumb_func_end PlayCollisionSoundIfNotFacingWarp
 
 	thumb_func_start GetXYCoordsOneStepInFrontOfPlayer
-GetXYCoordsOneStepInFrontOfPlayer: @ 8059A04
+GetXYCoordsOneStepInFrontOfPlayer: @ 80596C4
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r3, _08059A40 @ =gMapObjects
-	ldr r2, _08059A44 @ =gPlayerAvatar
+	ldr r3, _08059700 @ =gMapObjects
+	ldr r2, _08059704 @ =gPlayerAvatar
 	ldrb r1, [r2, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -2105,15 +2105,15 @@ GetXYCoordsOneStepInFrontOfPlayer: @ 8059A04
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059A40: .4byte gMapObjects
-_08059A44: .4byte gPlayerAvatar
+_08059700: .4byte gMapObjects
+_08059704: .4byte gPlayerAvatar
 	thumb_func_end GetXYCoordsOneStepInFrontOfPlayer
 
 	thumb_func_start PlayerGetDestCoords
-PlayerGetDestCoords: @ 8059A48
+PlayerGetDestCoords: @ 8059708
 	push {r4,r5,lr}
-	ldr r5, _08059A70 @ =gMapObjects
-	ldr r4, _08059A74 @ =gPlayerAvatar
+	ldr r5, _08059730 @ =gMapObjects
+	ldr r4, _08059734 @ =gPlayerAvatar
 	ldrb r3, [r4, 0x5]
 	lsls r2, r3, 3
 	adds r2, r3
@@ -2132,14 +2132,14 @@ PlayerGetDestCoords: @ 8059A48
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059A70: .4byte gMapObjects
-_08059A74: .4byte gPlayerAvatar
+_08059730: .4byte gMapObjects
+_08059734: .4byte gPlayerAvatar
 	thumb_func_end PlayerGetDestCoords
 
 	thumb_func_start player_get_direction_lower_nybble
-player_get_direction_lower_nybble: @ 8059A78
-	ldr r2, _08059A90 @ =gMapObjects
-	ldr r0, _08059A94 @ =gPlayerAvatar
+player_get_direction_lower_nybble: @ 8059738
+	ldr r2, _08059750 @ =gMapObjects
+	ldr r0, _08059754 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -2150,14 +2150,14 @@ player_get_direction_lower_nybble: @ 8059A78
 	lsrs r0, 28
 	bx lr
 	.align 2, 0
-_08059A90: .4byte gMapObjects
-_08059A94: .4byte gPlayerAvatar
+_08059750: .4byte gMapObjects
+_08059754: .4byte gPlayerAvatar
 	thumb_func_end player_get_direction_lower_nybble
 
 	thumb_func_start player_get_direction_upper_nybble
-player_get_direction_upper_nybble: @ 8059A98
-	ldr r2, _08059AAC @ =gMapObjects
-	ldr r0, _08059AB0 @ =gPlayerAvatar
+player_get_direction_upper_nybble: @ 8059758
+	ldr r2, _0805976C @ =gMapObjects
+	ldr r0, _08059770 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -2167,14 +2167,14 @@ player_get_direction_upper_nybble: @ 8059A98
 	lsrs r0, 4
 	bx lr
 	.align 2, 0
-_08059AAC: .4byte gMapObjects
-_08059AB0: .4byte gPlayerAvatar
+_0805976C: .4byte gMapObjects
+_08059770: .4byte gPlayerAvatar
 	thumb_func_end player_get_direction_upper_nybble
 
 	thumb_func_start PlayerGetZCoord
-PlayerGetZCoord: @ 8059AB4
-	ldr r2, _08059AC8 @ =gMapObjects
-	ldr r0, _08059ACC @ =gPlayerAvatar
+PlayerGetZCoord: @ 8059774
+	ldr r2, _08059788 @ =gMapObjects
+	ldr r0, _0805978C @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -2184,21 +2184,21 @@ PlayerGetZCoord: @ 8059AB4
 	lsrs r0, 4
 	bx lr
 	.align 2, 0
-_08059AC8: .4byte gMapObjects
-_08059ACC: .4byte gPlayerAvatar
+_08059788: .4byte gMapObjects
+_0805978C: .4byte gPlayerAvatar
 	thumb_func_end PlayerGetZCoord
 
 	thumb_func_start unref_sub_8059790
-unref_sub_8059790: @ 8059AD0
+unref_sub_8059790: @ 8059790
 	push {lr}
 	adds r3, r0, 0
 	adds r2, r1, 0
-	ldr r0, _08059AF8 @ =gPlayerAvatar
+	ldr r0, _080597B8 @ =gPlayerAvatar
 	ldrb r1, [r0, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08059AFC @ =gMapObjects
+	ldr r1, _080597BC @ =gMapObjects
 	adds r0, r1
 	lsls r3, 16
 	asrs r3, 16
@@ -2209,41 +2209,41 @@ unref_sub_8059790: @ 8059AD0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059AF8: .4byte gPlayerAvatar
-_08059AFC: .4byte gMapObjects
+_080597B8: .4byte gPlayerAvatar
+_080597BC: .4byte gMapObjects
 	thumb_func_end unref_sub_8059790
 
 	thumb_func_start TestPlayerAvatarFlags
-TestPlayerAvatarFlags: @ 8059B00
-	ldr r1, _08059B0C @ =gPlayerAvatar
+TestPlayerAvatarFlags: @ 80597C0
+	ldr r1, _080597CC @ =gPlayerAvatar
 	ldrb r1, [r1]
 	ands r1, r0
 	adds r0, r1, 0
 	bx lr
 	.align 2, 0
-_08059B0C: .4byte gPlayerAvatar
+_080597CC: .4byte gPlayerAvatar
 	thumb_func_end TestPlayerAvatarFlags
 
 	thumb_func_start sub_80597D0
-sub_80597D0: @ 8059B10
-	ldr r0, _08059B18 @ =gPlayerAvatar
+sub_80597D0: @ 80597D0
+	ldr r0, _080597D8 @ =gPlayerAvatar
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_08059B18: .4byte gPlayerAvatar
+_080597D8: .4byte gPlayerAvatar
 	thumb_func_end sub_80597D0
 
 	thumb_func_start GetPlayerAvatarObjectId
-GetPlayerAvatarObjectId: @ 8059B1C
-	ldr r0, _08059B24 @ =gPlayerAvatar
+GetPlayerAvatarObjectId: @ 80597DC
+	ldr r0, _080597E4 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x4]
 	bx lr
 	.align 2, 0
-_08059B24: .4byte gPlayerAvatar
+_080597E4: .4byte gPlayerAvatar
 	thumb_func_end GetPlayerAvatarObjectId
 
 	thumb_func_start sub_80597E8
-sub_80597E8: @ 8059B28
+sub_80597E8: @ 80597E8
 	push {lr}
 	bl ForcedMovement_None
 	pop {r0}
@@ -2251,14 +2251,14 @@ sub_80597E8: @ 8059B28
 	thumb_func_end sub_80597E8
 
 	thumb_func_start sub_80597F4
-sub_80597F4: @ 8059B34
+sub_80597F4: @ 80597F4
 	push {r4,lr}
-	ldr r0, _08059B74 @ =gPlayerAvatar
+	ldr r0, _08059834 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _08059B78 @ =gMapObjects
+	ldr r0, _08059838 @ =gMapObjects
 	adds r4, r0
 	adds r0, r4, 0
 	bl npc_clear_strange_bits
@@ -2271,32 +2271,32 @@ sub_80597F4: @ 8059B34
 	bl TestPlayerAvatarFlags
 	lsls r0, 24
 	cmp r0, 0
-	beq _08059B6C
+	beq _0805982C
 	bl sub_80E6084
 	movs r0, 0
 	bl sub_80E6010
-_08059B6C:
+_0805982C:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059B74: .4byte gPlayerAvatar
-_08059B78: .4byte gMapObjects
+_08059834: .4byte gPlayerAvatar
+_08059838: .4byte gMapObjects
 	thumb_func_end sub_80597F4
 
 	thumb_func_start sub_805983C
-sub_805983C: @ 8059B7C
+sub_805983C: @ 805983C
 	lsls r0, 24
 	lsls r1, 24
 	lsrs r1, 24
-	ldr r2, _08059B90 @ =gUnknown_0830FC44
+	ldr r2, _08059850 @ =gUnknown_0830FC44
 	lsrs r0, 23
 	adds r1, r0
 	adds r1, r2
 	ldrb r0, [r1]
 	bx lr
 	.align 2, 0
-_08059B90: .4byte gUnknown_0830FC44
+_08059850: .4byte gUnknown_0830FC44
 	thumb_func_end sub_805983C
 
 	thumb_func_start GetPlayerAvatarGraphicsIdByStateIdAndGender
@@ -2315,11 +2315,11 @@ _08059BA8: .4byte gUnknown_0830FC54
 	thumb_func_end GetPlayerAvatarGraphicsIdByStateIdAndGender
 
 	thumb_func_start GetPlayerAvatarGraphicsIdByStateId
-GetPlayerAvatarGraphicsIdByStateId: @ 8059BAC
+GetPlayerAvatarGraphicsIdByStateId: @ 805986C
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _08059BC4 @ =gPlayerAvatar
+	ldr r1, _08059884 @ =gPlayerAvatar
 	ldrb r1, [r1, 0x7]
 	bl GetPlayerAvatarGraphicsIdByStateIdAndGender
 	lsls r0, 24
@@ -2327,147 +2327,147 @@ GetPlayerAvatarGraphicsIdByStateId: @ 8059BAC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08059BC4: .4byte gPlayerAvatar
+_08059884: .4byte gPlayerAvatar
 	thumb_func_end GetPlayerAvatarGraphicsIdByStateId
 
 	thumb_func_start unref_sub_8059888
-unref_sub_8059888: @ 8059BC8
+unref_sub_8059888: @ 8059888
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
 	adds r1, r0, 0
 	cmp r0, 0x70
-	beq _08059BEA
+	beq _080598AA
 	cmp r0, 0x70
-	bgt _08059BE2
+	bgt _080598A2
 	cmp r0, 0x6D
-	bgt _08059BEE
+	bgt _080598AE
 	cmp r0, 0x69
-	blt _08059BEE
-	b _08059BEA
-_08059BE2:
+	blt _080598AE
+	b _080598AA
+_080598A2:
 	cmp r1, 0x8A
-	beq _08059BEA
+	beq _080598AA
 	cmp r1, 0xC0
-	bne _08059BEE
-_08059BEA:
+	bne _080598AE
+_080598AA:
 	movs r0, 0x1
-	b _08059BF0
-_08059BEE:
+	b _080598B0
+_080598AE:
 	movs r0, 0
-_08059BF0:
+_080598B0:
 	pop {r1}
 	bx r1
 	thumb_func_end unref_sub_8059888
 
 	thumb_func_start GetPlayerAvatarGenderByGraphicsId
-GetPlayerAvatarGenderByGraphicsId: @ 8059BF4
+GetPlayerAvatarGenderByGraphicsId: @ 80598B4
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
 	adds r1, r0, 0
 	cmp r0, 0x70
-	beq _08059C16
+	beq _080598D6
 	cmp r0, 0x70
-	bgt _08059C0E
+	bgt _080598CE
 	cmp r0, 0x5D
-	bgt _08059C1A
+	bgt _080598DA
 	cmp r0, 0x59
-	blt _08059C1A
-	b _08059C16
-_08059C0E:
+	blt _080598DA
+	b _080598D6
+_080598CE:
 	cmp r1, 0x8A
-	beq _08059C16
+	beq _080598D6
 	cmp r1, 0xC0
-	bne _08059C1A
-_08059C16:
+	bne _080598DA
+_080598D6:
 	movs r0, 0x1
-	b _08059C1C
-_08059C1A:
+	b _080598DC
+_080598DA:
 	movs r0, 0
-_08059C1C:
+_080598DC:
 	pop {r1}
 	bx r1
 	thumb_func_end GetPlayerAvatarGenderByGraphicsId
 
 	thumb_func_start PartyHasMonWithSurf
-PartyHasMonWithSurf: @ 8059C20
+PartyHasMonWithSurf: @ 80598E0
 	push {r4,r5,lr}
 	movs r0, 0x8
 	bl TestPlayerAvatarFlags
 	lsls r0, 24
 	cmp r0, 0
-	bne _08059C64
+	bne _08059924
 	movs r5, 0
-	b _08059C4A
-_08059C32:
+	b _0805990A
+_080598F2:
 	adds r0, r4, 0
 	movs r1, 0x39
 	bl pokemon_has_move
 	lsls r0, 24
 	cmp r0, 0
-	beq _08059C44
+	beq _08059904
 	movs r0, 0x1
-	b _08059C66
-_08059C44:
+	b _08059926
+_08059904:
 	adds r0, r5, 0x1
 	lsls r0, 24
 	lsrs r5, r0, 24
-_08059C4A:
+_0805990A:
 	cmp r5, 0x5
-	bhi _08059C64
+	bhi _08059924
 	movs r0, 0x64
 	adds r1, r5, 0
 	muls r1, r0
-	ldr r0, _08059C6C @ =gPlayerParty
+	ldr r0, _0805992C @ =gPlayerParty
 	adds r4, r1, r0
 	adds r0, r4, 0
 	movs r1, 0xB
 	bl GetMonData
 	cmp r0, 0
-	bne _08059C32
-_08059C64:
+	bne _080598F2
+_08059924:
 	movs r0, 0
-_08059C66:
+_08059926:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08059C6C: .4byte gPlayerParty
+_0805992C: .4byte gPlayerParty
 	thumb_func_end PartyHasMonWithSurf
 
 	thumb_func_start IsPlayerSurfingNorth
-IsPlayerSurfingNorth: @ 8059C70
+IsPlayerSurfingNorth: @ 8059930
 	push {lr}
 	bl player_get_direction_upper_nybble
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x2
-	bne _08059C8E
+	bne _0805994E
 	movs r0, 0x8
 	bl TestPlayerAvatarFlags
 	lsls r0, 24
 	cmp r0, 0
-	beq _08059C8E
+	beq _0805994E
 	movs r0, 0x1
-	b _08059C90
-_08059C8E:
+	b _08059950
+_0805994E:
 	movs r0, 0
-_08059C90:
+_08059950:
 	pop {r1}
 	bx r1
 	thumb_func_end IsPlayerSurfingNorth
 
 	thumb_func_start IsPlayerFacingSurfableFishableWater
-IsPlayerFacingSurfableFishableWater: @ 8059C94
+IsPlayerFacingSurfableFishableWater: @ 8059954
 	push {r4,r5,lr}
 	sub sp, 0x4
-	ldr r0, _08059D0C @ =gPlayerAvatar
+	ldr r0, _080599CC @ =gPlayerAvatar
 	ldrb r0, [r0, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _08059D10 @ =gMapObjects
+	ldr r0, _080599D0 @ =gMapObjects
 	adds r4, r0
 	ldrh r1, [r4, 0x10]
 	mov r0, sp
@@ -2495,12 +2495,12 @@ IsPlayerFacingSurfableFishableWater: @ 8059C94
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x3
-	bne _08059D14
+	bne _080599D4
 	bl PlayerGetZCoord
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x3
-	bne _08059D14
+	bne _080599D4
 	mov r0, sp
 	movs r1, 0
 	ldrsh r0, [r0, r1]
@@ -2512,15 +2512,15 @@ IsPlayerFacingSurfableFishableWater: @ 8059C94
 	bl MetatileBehavior_IsSurfableFishableWater
 	lsls r0, 24
 	cmp r0, 0
-	beq _08059D14
+	beq _080599D4
 	movs r0, 0x1
-	b _08059D16
+	b _080599D6
 	.align 2, 0
-_08059D0C: .4byte gPlayerAvatar
-_08059D10: .4byte gMapObjects
-_08059D14:
+_080599CC: .4byte gPlayerAvatar
+_080599D0: .4byte gMapObjects
+_080599D4:
 	movs r0, 0
-_08059D16:
+_080599D6:
 	add sp, 0x4
 	pop {r4,r5}
 	pop {r1}
@@ -2528,23 +2528,23 @@ _08059D16:
 	thumb_func_end IsPlayerFacingSurfableFishableWater
 
 	thumb_func_start ClearPlayerAvatarInfo
-ClearPlayerAvatarInfo: @ 8059D20
+ClearPlayerAvatarInfo: @ 80599E0
 	push {lr}
-	ldr r0, _08059D30 @ =gPlayerAvatar
+	ldr r0, _080599F0 @ =gPlayerAvatar
 	movs r1, 0
 	movs r2, 0x24
 	bl memset
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059D30: .4byte gPlayerAvatar
+_080599F0: .4byte gPlayerAvatar
 	thumb_func_end ClearPlayerAvatarInfo
 
 	thumb_func_start SetPlayerAvatarStateMask
-SetPlayerAvatarStateMask: @ 8059D34
+SetPlayerAvatarStateMask: @ 80599F4
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r3, _08059D48 @ =gPlayerAvatar
+	ldr r3, _08059A08 @ =gPlayerAvatar
 	ldrb r2, [r3]
 	movs r1, 0xE0
 	ands r1, r2
@@ -2552,7 +2552,7 @@ SetPlayerAvatarStateMask: @ 8059D34
 	strb r0, [r3]
 	bx lr
 	.align 2, 0
-_08059D48: .4byte gPlayerAvatar
+_08059A08: .4byte gPlayerAvatar
 	thumb_func_end SetPlayerAvatarStateMask
 
 	thumb_func_start GetPlayerAvatarStateTransitionByGraphicsId
@@ -2594,53 +2594,53 @@ _08059D84:
 	thumb_func_end GetPlayerAvatarStateTransitionByGraphicsId
 
 	thumb_func_start GetPlayerAvatarGraphicsIdByCurrentState
-GetPlayerAvatarGraphicsIdByCurrentState: @ 8059D8C
+GetPlayerAvatarGraphicsIdByCurrentState: @ 8059A4C
 	push {r4-r6,lr}
-	ldr r0, _08059DB4 @ =gPlayerAvatar
+	ldr r0, _08059A74 @ =gPlayerAvatar
 	ldrb r5, [r0]
 	movs r2, 0
-	ldr r3, _08059DB8 @ =gUnknown_0830FC64
+	ldr r3, _08059A78 @ =gUnknown_0830FC64
 	ldrb r1, [r0, 0x7]
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r4, r0, 1
 	adds r6, r3, 0x1
-_08059DA0:
+_08059A60:
 	lsls r0, r2, 1
 	adds r1, r0, r4
 	adds r0, r1, r6
 	ldrb r0, [r0]
 	ands r0, r5
 	cmp r0, 0
-	beq _08059DBC
+	beq _08059A7C
 	adds r0, r1, r3
 	ldrb r0, [r0]
-	b _08059DC8
+	b _08059A88
 	.align 2, 0
-_08059DB4: .4byte gPlayerAvatar
-_08059DB8: .4byte gUnknown_0830FC64
-_08059DBC:
+_08059A74: .4byte gPlayerAvatar
+_08059A78: .4byte gUnknown_0830FC64
+_08059A7C:
 	adds r0, r2, 0x1
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0x4
-	bls _08059DA0
+	bls _08059A60
 	movs r0, 0
-_08059DC8:
+_08059A88:
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	thumb_func_end GetPlayerAvatarGraphicsIdByCurrentState
 
 	thumb_func_start SetPlayerAvatarExtraStateTransition
-SetPlayerAvatarExtraStateTransition: @ 8059DD0
+SetPlayerAvatarExtraStateTransition: @ 8059A90
 	push {r4,r5,lr}
 	adds r4, r1, 0
 	lsls r0, 24
 	lsrs r0, 24
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r5, _08059DFC @ =gPlayerAvatar
+	ldr r5, _08059ABC @ =gPlayerAvatar
 	ldrb r1, [r5, 0x7]
 	bl GetPlayerAvatarStateTransitionByGraphicsId
 	lsls r0, 24
@@ -2654,11 +2654,11 @@ SetPlayerAvatarExtraStateTransition: @ 8059DD0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059DFC: .4byte gPlayerAvatar
+_08059ABC: .4byte gPlayerAvatar
 	thumb_func_end SetPlayerAvatarExtraStateTransition
 
 	thumb_func_start InitPlayerAvatar
-InitPlayerAvatar: @ 8059E00
+InitPlayerAvatar: @ 8059AC0
 	push {r4-r6,lr}
 	mov r6, r9
 	mov r5, r8
@@ -2720,7 +2720,7 @@ InitPlayerAvatar: @ 8059E00
 	lsls r4, r5, 3
 	adds r4, r5
 	lsls r4, 2
-	ldr r0, _08059EC0 @ =gMapObjects
+	ldr r0, _08059B80 @ =gMapObjects
 	adds r4, r0
 	ldrb r0, [r4, 0x2]
 	movs r1, 0x1
@@ -2732,7 +2732,7 @@ InitPlayerAvatar: @ 8059E00
 	mov r1, r9
 	bl FieldObjectTurn
 	bl ClearPlayerAvatarInfo
-	ldr r0, _08059EC4 @ =gPlayerAvatar
+	ldr r0, _08059B84 @ =gPlayerAvatar
 	strb r6, [r0, 0x2]
 	strb r6, [r0, 0x3]
 	strb r5, [r0, 0x5]
@@ -2750,17 +2750,17 @@ InitPlayerAvatar: @ 8059E00
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059EC0: .4byte gMapObjects
-_08059EC4: .4byte gPlayerAvatar
+_08059B80: .4byte gMapObjects
+_08059B84: .4byte gPlayerAvatar
 	thumb_func_end InitPlayerAvatar
 
 	thumb_func_start sub_8059B88
-sub_8059B88: @ 8059EC8
+sub_8059B88: @ 8059B88
 	push {r4-r6,lr}
 	lsls r0, 24
 	lsrs r4, r0, 24
-	ldr r6, _08059F28 @ =gMapObjects
-	ldr r5, _08059F2C @ =gPlayerAvatar
+	ldr r6, _08059BE8 @ =gMapObjects
+	ldr r5, _08059BEC @ =gPlayerAvatar
 	ldrb r0, [r5, 0x5]
 	lsls r1, r0, 3
 	adds r1, r0
@@ -2779,8 +2779,8 @@ sub_8059B88: @ 8059EC8
 	bl TestPlayerAvatarFlags
 	lsls r0, 24
 	cmp r0, 0
-	beq _08059F20
-	ldr r2, _08059F30 @ =gSprites
+	beq _08059BE0
+	ldr r2, _08059BF0 @ =gSprites
 	ldrb r1, [r5, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -2799,25 +2799,25 @@ sub_8059B88: @ 8059EC8
 	ands r0, r2
 	orrs r0, r3
 	strb r0, [r1]
-_08059F20:
+_08059BE0:
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059F28: .4byte gMapObjects
-_08059F2C: .4byte gPlayerAvatar
-_08059F30: .4byte gSprites
+_08059BE8: .4byte gMapObjects
+_08059BEC: .4byte gPlayerAvatar
+_08059BF0: .4byte gSprites
 	thumb_func_end sub_8059B88
 
 	thumb_func_start sub_8059BF4
-sub_8059BF4: @ 8059F34
+sub_8059BF4: @ 8059BF4
 	push {r4,r5,lr}
-	ldr r5, _08059F70 @ =gPlayerAvatar
+	ldr r5, _08059C30 @ =gPlayerAvatar
 	ldrb r0, [r5, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _08059F74 @ =gMapObjects
+	ldr r0, _08059C34 @ =gMapObjects
 	adds r4, r0
 	movs r0, 0x5
 	bl GetPlayerAvatarGraphicsIdByStateId
@@ -2830,7 +2830,7 @@ sub_8059BF4: @ 8059F34
 	lsls r0, r1, 4
 	adds r0, r1
 	lsls r0, 2
-	ldr r1, _08059F78 @ =gSprites
+	ldr r1, _08059C38 @ =gSprites
 	adds r0, r1
 	movs r1, 0
 	bl StartSpriteAnim
@@ -2838,23 +2838,23 @@ sub_8059BF4: @ 8059F34
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059F70: .4byte gPlayerAvatar
-_08059F74: .4byte gMapObjects
-_08059F78: .4byte gSprites
+_08059C30: .4byte gPlayerAvatar
+_08059C34: .4byte gMapObjects
+_08059C38: .4byte gSprites
 	thumb_func_end sub_8059BF4
 
 	thumb_func_start sub_8059C3C
-sub_8059C3C: @ 8059F7C
+sub_8059C3C: @ 8059C3C
 	push {r4-r6,lr}
 	adds r5, r0, 0
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r6, _08059FC8 @ =gPlayerAvatar
+	ldr r6, _08059C88 @ =gPlayerAvatar
 	ldrb r0, [r6, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _08059FCC @ =gMapObjects
+	ldr r0, _08059C8C @ =gMapObjects
 	adds r4, r0
 	movs r0, 0x6
 	bl GetPlayerAvatarGraphicsIdByStateId
@@ -2867,7 +2867,7 @@ sub_8059C3C: @ 8059F7C
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _08059FD0 @ =gSprites
+	ldr r0, _08059C90 @ =gSprites
 	adds r4, r0
 	adds r0, r5, 0
 	bl sub_805FDE8
@@ -2880,25 +2880,25 @@ sub_8059C3C: @ 8059F7C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059FC8: .4byte gPlayerAvatar
-_08059FCC: .4byte gMapObjects
-_08059FD0: .4byte gSprites
+_08059C88: .4byte gPlayerAvatar
+_08059C8C: .4byte gMapObjects
+_08059C90: .4byte gSprites
 	thumb_func_end sub_8059C3C
 
 	thumb_func_start sub_8059C94
-sub_8059C94: @ 8059FD4
+sub_8059C94: @ 8059C94
 	push {r4-r6,lr}
 	mov r6, r8
 	push {r6}
 	adds r5, r0, 0
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r6, _0805A03C @ =gPlayerAvatar
+	ldr r6, _08059CFC @ =gPlayerAvatar
 	ldrb r0, [r6, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0805A040 @ =gMapObjects
+	ldr r0, _08059D00 @ =gMapObjects
 	adds r4, r0
 	movs r0, 0x2
 	bl GetPlayerAvatarGraphicsIdByStateId
@@ -2911,7 +2911,7 @@ sub_8059C94: @ 8059FD4
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0805A044 @ =gSprites
+	ldr r0, _08059D04 @ =gSprites
 	mov r8, r0
 	add r4, r8
 	adds r0, r5, 0
@@ -2934,23 +2934,23 @@ sub_8059C94: @ 8059FD4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805A03C: .4byte gPlayerAvatar
-_0805A040: .4byte gMapObjects
-_0805A044: .4byte gSprites
+_08059CFC: .4byte gPlayerAvatar
+_08059D00: .4byte gMapObjects
+_08059D04: .4byte gSprites
 	thumb_func_end sub_8059C94
 
 	thumb_func_start sub_8059D08
-sub_8059D08: @ 805A048
+sub_8059D08: @ 8059D08
 	push {r4-r6,lr}
 	adds r5, r0, 0
 	lsls r5, 24
 	lsrs r5, 24
-	ldr r6, _0805A094 @ =gPlayerAvatar
+	ldr r6, _08059D54 @ =gPlayerAvatar
 	ldrb r0, [r6, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0805A098 @ =gMapObjects
+	ldr r0, _08059D58 @ =gMapObjects
 	adds r4, r0
 	movs r0, 0x7
 	bl GetPlayerAvatarGraphicsIdByStateId
@@ -2963,7 +2963,7 @@ sub_8059D08: @ 805A048
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0805A09C @ =gSprites
+	ldr r0, _08059D5C @ =gSprites
 	adds r4, r0
 	adds r0, r5, 0
 	bl FieldObjectDirectionToImageAnimId
@@ -2976,9 +2976,9 @@ sub_8059D08: @ 805A048
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805A094: .4byte gPlayerAvatar
-_0805A098: .4byte gMapObjects
-_0805A09C: .4byte gSprites
+_08059D54: .4byte gPlayerAvatar
+_08059D58: .4byte gMapObjects
+_08059D5C: .4byte gSprites
 	thumb_func_end sub_8059D08
 
 	thumb_func_start sub_8059D60
@@ -3133,11 +3133,11 @@ _0805A1C0: .4byte gPlayerAvatar
 	thumb_func_end sub_8059E2C
 
 	thumb_func_start sub_8059E84
-sub_8059E84: @ 805A1C4
+sub_8059E84: @ 8059E84
 	push {r4,lr}
 	adds r4, r0, 0
 	bl ScriptContext2_Enable
-	ldr r1, _0805A1E0 @ =gPlayerAvatar
+	ldr r1, _08059EA0 @ =gPlayerAvatar
 	movs r0, 0x1
 	strb r0, [r1, 0x6]
 	ldrh r0, [r4, 0x8]
@@ -3148,11 +3148,11 @@ sub_8059E84: @ 805A1C4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A1E0: .4byte gPlayerAvatar
+_08059EA0: .4byte gPlayerAvatar
 	thumb_func_end sub_8059E84
 
 	thumb_func_start sub_8059EA4
-sub_8059EA4: @ 805A1E4
+sub_8059EA4: @ 8059EA4
 	push {r4-r6,lr}
 	adds r6, r0, 0
 	adds r5, r1, 0
@@ -3161,12 +3161,12 @@ sub_8059EA4: @ 805A1E4
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	bne _0805A26E
+	bne _08059F2E
 	adds r0, r4, 0
 	bl FieldObjectIsSpecialAnimOrDirectionSequenceAnimActive
 	lsls r0, 24
 	cmp r0, 0
-	bne _0805A26E
+	bne _08059F2E
 	adds r0, r5, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	adds r0, r4, 0
@@ -3185,7 +3185,7 @@ sub_8059EA4: @ 805A1E4
 	lsrs r1, 24
 	adds r0, r4, 0
 	bl FieldObjectSetSpecialAnim
-	ldr r2, _0805A278 @ =gUnknown_0202FF84
+	ldr r2, _08059F38 @ =gUnknown_0202FF84
 	movs r1, 0x10
 	ldrsh r0, [r4, r1]
 	str r0, [r2]
@@ -3195,7 +3195,7 @@ sub_8059EA4: @ 805A1E4
 	ldrb r0, [r4, 0xB]
 	lsrs r0, 4
 	str r0, [r2, 0x8]
-	ldr r3, _0805A27C @ =gSprites
+	ldr r3, _08059F3C @ =gSprites
 	ldrb r1, [r4, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -3212,18 +3212,18 @@ sub_8059EA4: @ 805A1E4
 	ldrh r0, [r6, 0x8]
 	adds r0, 0x1
 	strh r0, [r6, 0x8]
-_0805A26E:
+_08059F2E:
 	movs r0, 0
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A278: .4byte gUnknown_0202FF84
-_0805A27C: .4byte gSprites
+_08059F38: .4byte gUnknown_0202FF84
+_08059F3C: .4byte gSprites
 	thumb_func_end sub_8059EA4
 
 	thumb_func_start sub_8059F40
-sub_8059F40: @ 805A280
+sub_8059F40: @ 8059F40
 	push {r4,r5,lr}
 	adds r4, r1, 0
 	adds r5, r2, 0
@@ -3231,33 +3231,33 @@ sub_8059F40: @ 805A280
 	bl FieldObjectCheckIfSpecialAnimFinishedOrInactive
 	lsls r0, 24
 	cmp r0, 0
-	beq _0805A2C2
+	beq _08059F82
 	adds r0, r5, 0
 	bl FieldObjectCheckIfSpecialAnimFinishedOrInactive
 	lsls r0, 24
 	cmp r0, 0
-	beq _0805A2C2
+	beq _08059F82
 	adds r0, r4, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	adds r0, r5, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
-	ldr r1, _0805A2CC @ =gPlayerAvatar
+	ldr r1, _08059F8C @ =gPlayerAvatar
 	movs r0, 0
 	strb r0, [r1, 0x6]
 	bl ScriptContext2_Disable
-	ldr r0, _0805A2D0 @ =sub_8059E2C
+	ldr r0, _08059F90 @ =sub_8059E2C
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
 	bl DestroyTask
-_0805A2C2:
+_08059F82:
 	movs r0, 0
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A2CC: .4byte gPlayerAvatar
-_0805A2D0: .4byte sub_8059E2C
+_08059F8C: .4byte gPlayerAvatar
+_08059F90: .4byte sub_8059E2C
 	thumb_func_end sub_8059F40
 
 	thumb_func_start sub_8059F94
@@ -3317,18 +3317,18 @@ _0805A33C: .4byte gMapObjects
 	thumb_func_end sub_8059FB4
 
 	thumb_func_start sub_805A000
-sub_805A000: @ 805A340
+sub_805A000: @ 805A000
 	push {r4-r6,lr}
 	adds r6, r0, 0
 	adds r4, r1, 0
-	ldr r5, _0805A3A4 @ =gPlayerAvatar
+	ldr r5, _0805A064 @ =gPlayerAvatar
 	movs r0, 0x1
 	strb r0, [r5, 0x6]
 	adds r0, r4, 0
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _0805A39C
+	beq _0805A05C
 	movs r0, 0xA
 	bl PlaySE
 	ldrb r0, [r4, 0x18]
@@ -3346,26 +3346,26 @@ sub_805A000: @ 805A340
 	lsls r0, 16
 	asrs r0, 16
 	cmp r0, 0x1
-	ble _0805A39C
+	ble _0805A05C
 	movs r0, 0
 	strb r0, [r5, 0x6]
 	ldrb r0, [r5, 0x1]
 	movs r1, 0x20
 	orrs r0, r1
 	strb r0, [r5, 0x1]
-	ldr r0, _0805A3A8 @ =sub_8059FB4
+	ldr r0, _0805A068 @ =sub_8059FB4
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
 	bl DestroyTask
-_0805A39C:
+_0805A05C:
 	movs r0, 0
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A3A4: .4byte gPlayerAvatar
-_0805A3A8: .4byte sub_8059FB4
+_0805A064: .4byte gPlayerAvatar
+_0805A068: .4byte sub_8059FB4
 	thumb_func_end sub_805A000
 
 	thumb_func_start sub_805A06C
@@ -3425,7 +3425,7 @@ _0805A414: .4byte gMapObjects
 	thumb_func_end sub_805A08C
 
 	thumb_func_start sub_805A0D8
-sub_805A0D8: @ 805A418
+sub_805A0D8: @ 805A0D8
 	push {lr}
 	ldrh r2, [r0, 0x8]
 	adds r2, 0x1
@@ -3433,7 +3433,7 @@ sub_805A0D8: @ 805A418
 	ldrb r1, [r1, 0x18]
 	lsrs r1, 4
 	strh r1, [r0, 0xA]
-	ldr r1, _0805A43C @ =gPlayerAvatar
+	ldr r1, _0805A0FC @ =gPlayerAvatar
 	movs r0, 0x1
 	strb r0, [r1, 0x6]
 	bl ScriptContext2_Enable
@@ -3443,16 +3443,16 @@ sub_805A0D8: @ 805A418
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A43C: .4byte gPlayerAvatar
+_0805A0FC: .4byte gPlayerAvatar
 	thumb_func_end sub_805A0D8
 
 	thumb_func_start sub_805A100
-sub_805A100: @ 805A440
+sub_805A100: @ 805A100
 	push {r4-r6,lr}
 	sub sp, 0x4
 	adds r4, r0, 0
 	adds r5, r1, 0
-	ldr r1, _0805A4B4 @ =gUnknown_0830FCA8
+	ldr r1, _0805A174 @ =gUnknown_0830FCA8
 	mov r0, sp
 	movs r2, 0x4
 	bl memcpy
@@ -3460,7 +3460,7 @@ sub_805A100: @ 805A440
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _0805A4A8
+	beq _0805A168
 	ldrb r0, [r5, 0x18]
 	lsrs r0, 4
 	subs r0, 0x1
@@ -3475,44 +3475,44 @@ sub_805A100: @ 805A440
 	bl FieldObjectSetSpecialAnim
 	ldrb r0, [r4, 0xA]
 	cmp r6, r0
-	bne _0805A486
+	bne _0805A146
 	ldrh r0, [r4, 0xC]
 	adds r0, 0x1
 	strh r0, [r4, 0xC]
-_0805A486:
+_0805A146:
 	ldrh r0, [r4, 0x8]
 	adds r0, 0x1
 	strh r0, [r4, 0x8]
 	movs r1, 0xC
 	ldrsh r0, [r4, r1]
 	cmp r0, 0x3
-	ble _0805A4A8
+	ble _0805A168
 	ldrb r0, [r4, 0xA]
 	bl GetOppositeDirection
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r6, r0
-	bne _0805A4A8
+	bne _0805A168
 	ldrh r0, [r4, 0x8]
 	adds r0, 0x1
 	strh r0, [r4, 0x8]
-_0805A4A8:
+_0805A168:
 	movs r0, 0
 	add sp, 0x4
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A4B4: .4byte gUnknown_0830FCA8
+_0805A174: .4byte gUnknown_0830FCA8
 	thumb_func_end sub_805A100
 
 	thumb_func_start sub_805A178
-sub_805A178: @ 805A4B8
+sub_805A178: @ 805A178
 	push {r4,r5,lr}
 	sub sp, 0x8
 	adds r5, r0, 0
 	adds r4, r1, 0
-	ldr r1, _0805A4F4 @ =gUnknown_0830FCAC
+	ldr r1, _0805A1B4 @ =gUnknown_0830FCAC
 	mov r0, sp
 	movs r2, 0x5
 	bl memcpy
@@ -3520,7 +3520,7 @@ sub_805A178: @ 805A4B8
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _0805A4E8
+	beq _0805A1A8
 	movs r1, 0xC
 	ldrsh r0, [r5, r1]
 	add r0, sp
@@ -3529,18 +3529,18 @@ sub_805A178: @ 805A4B8
 	bl FieldObjectSetSpecialAnim
 	movs r0, 0x1
 	strh r0, [r5, 0x8]
-_0805A4E8:
+_0805A1A8:
 	movs r0, 0
 	add sp, 0x8
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A4F4: .4byte gUnknown_0830FCAC
+_0805A1B4: .4byte gUnknown_0830FCAC
 	thumb_func_end sub_805A178
 
 	thumb_func_start sub_805A1B8
-sub_805A1B8: @ 805A4F8
+sub_805A1B8: @ 805A1B8
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	adds r5, r1, 0
@@ -3548,7 +3548,7 @@ sub_805A1B8: @ 805A4F8
 	bl FieldObjectClearAnimIfSpecialAnimFinished
 	lsls r0, 24
 	cmp r0, 0
-	beq _0805A53C
+	beq _0805A1FC
 	ldrb r0, [r4, 0xA]
 	bl GetOppositeDirection
 	lsls r0, 24
@@ -3560,26 +3560,26 @@ sub_805A1B8: @ 805A4F8
 	adds r0, r5, 0
 	bl FieldObjectSetSpecialAnim
 	bl ScriptContext2_Disable
-	ldr r1, _0805A544 @ =gPlayerAvatar
+	ldr r1, _0805A204 @ =gPlayerAvatar
 	movs r0, 0
 	strb r0, [r1, 0x6]
-	ldr r0, _0805A548 @ =sub_805A08C
+	ldr r0, _0805A208 @ =sub_805A08C
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
 	bl DestroyTask
-_0805A53C:
+_0805A1FC:
 	movs r0, 0
 	pop {r4,r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A544: .4byte gPlayerAvatar
-_0805A548: .4byte sub_805A08C
+_0805A204: .4byte gPlayerAvatar
+_0805A208: .4byte sub_805A08C
 	thumb_func_end sub_805A1B8
 
 	thumb_func_start sub_805A20C
-sub_805A20C: @ 805A54C
+sub_805A20C: @ 805A20C
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	lsls r4, 24
@@ -3587,7 +3587,7 @@ sub_805A20C: @ 805A54C
 	bl ScriptContext2_Enable
 	bl sav1_reset_battle_music_maybe
 	bl sub_8053F84
-	ldr r2, _0805A598 @ =gPlayerAvatar
+	ldr r2, _0805A258 @ =gPlayerAvatar
 	ldrb r1, [r2]
 	movs r0, 0xF7
 	ands r0, r1
@@ -3596,13 +3596,13 @@ sub_805A20C: @ 805A54C
 	strb r0, [r2]
 	movs r0, 0x1
 	strb r0, [r2, 0x6]
-	ldr r5, _0805A59C @ =taskFF_0805D1D4
+	ldr r5, _0805A25C @ =taskFF_0805D1D4
 	adds r0, r5, 0
 	movs r1, 0xFF
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0805A5A0 @ =gTasks
+	ldr r2, _0805A260 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -3613,9 +3613,9 @@ sub_805A20C: @ 805A54C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805A598: .4byte gPlayerAvatar
-_0805A59C: .4byte taskFF_0805D1D4
-_0805A5A0: .4byte gTasks
+_0805A258: .4byte gPlayerAvatar
+_0805A25C: .4byte taskFF_0805D1D4
+_0805A260: .4byte gTasks
 	thumb_func_end sub_805A20C
 
 	thumb_func_start taskFF_0805D1D4
@@ -3725,18 +3725,18 @@ _0805A684: .4byte gSprites
 	thumb_func_end sub_805A2D0
 
 	thumb_func_start StartFishing
-StartFishing: @ 805A688
+StartFishing: @ 805A348
 	push {r4,r5,lr}
 	adds r4, r0, 0
 	lsls r4, 24
 	lsrs r4, 24
-	ldr r5, _0805A6B4 @ =Task_Fishing
+	ldr r5, _0805A374 @ =Task_Fishing
 	adds r0, r5, 0
 	movs r1, 0xFF
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0805A6B8 @ =gTasks
+	ldr r2, _0805A378 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -3747,8 +3747,8 @@ StartFishing: @ 805A688
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805A6B4: .4byte Task_Fishing
-_0805A6B8: .4byte gTasks
+_0805A374: .4byte Task_Fishing
+_0805A378: .4byte gTasks
 	thumb_func_end StartFishing
 
 	thumb_func_start Task_Fishing
@@ -3782,11 +3782,11 @@ _0805A6F0: .4byte gTasks
 	thumb_func_end Task_Fishing
 
 	thumb_func_start Fishing1
-Fishing1: @ 805A6F4
+Fishing1: @ 805A3B4
 	push {r4,lr}
 	adds r4, r0, 0
 	bl ScriptContext2_Enable
-	ldr r1, _0805A710 @ =gPlayerAvatar
+	ldr r1, _0805A3D0 @ =gPlayerAvatar
 	movs r0, 0x1
 	strb r0, [r1, 0x6]
 	ldrh r0, [r4, 0x8]
@@ -3797,20 +3797,20 @@ Fishing1: @ 805A6F4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A710: .4byte gPlayerAvatar
+_0805A3D0: .4byte gPlayerAvatar
 	thumb_func_end Fishing1
 
 	thumb_func_start Fishing2
-Fishing2: @ 805A714
+Fishing2: @ 805A3D4
 	push {r4-r6,lr}
 	sub sp, 0x10
 	adds r5, r0, 0
-	ldr r1, _0805A79C @ =gUnknown_0830FCF4
+	ldr r1, _0805A45C @ =gUnknown_0830FCF4
 	mov r0, sp
 	movs r2, 0x6
 	bl memcpy
 	add r4, sp, 0x8
-	ldr r1, _0805A7A0 @ =gUnknown_0830FCFA
+	ldr r1, _0805A460 @ =gUnknown_0830FCFA
 	adds r0, r4, 0
 	movs r2, 0x6
 	bl memcpy
@@ -3831,8 +3831,8 @@ Fishing2: @ 805A714
 	ldrh r1, [r6]
 	adds r1, r0
 	strh r1, [r5, 0x22]
-	ldr r3, _0805A7A4 @ =gMapObjects
-	ldr r2, _0805A7A8 @ =gPlayerAvatar
+	ldr r3, _0805A464 @ =gMapObjects
+	ldr r2, _0805A468 @ =gPlayerAvatar
 	ldrb r1, [r2, 0x5]
 	lsls r0, r1, 3
 	adds r0, r1
@@ -3864,14 +3864,14 @@ Fishing2: @ 805A714
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A79C: .4byte gUnknown_0830FCF4
-_0805A7A0: .4byte gUnknown_0830FCFA
-_0805A7A4: .4byte gMapObjects
-_0805A7A8: .4byte gPlayerAvatar
+_0805A45C: .4byte gUnknown_0830FCF4
+_0805A460: .4byte gUnknown_0830FCFA
+_0805A464: .4byte gMapObjects
+_0805A468: .4byte gPlayerAvatar
 	thumb_func_end Fishing2
 
 	thumb_func_start Fishing3
-Fishing3: @ 805A7AC
+Fishing3: @ 805A46C
 	push {r4,lr}
 	adds r4, r0, 0
 	bl sub_805A954
@@ -3881,11 +3881,11 @@ Fishing3: @ 805A7AC
 	lsls r0, 16
 	asrs r0, 16
 	cmp r0, 0x3B
-	ble _0805A7C8
+	ble _0805A488
 	ldrh r0, [r4, 0x8]
 	adds r0, 0x1
 	strh r0, [r4, 0x8]
-_0805A7C8:
+_0805A488:
 	movs r0, 0
 	pop {r4}
 	pop {r1}
@@ -3893,7 +3893,7 @@ _0805A7C8:
 	thumb_func_end Fishing3
 
 	thumb_func_start Fishing4
-Fishing4: @ 805A7D0
+Fishing4: @ 805A490
 	push {r4,lr}
 	adds r4, r0, 0
 	bl MenuDisplayMessageBox
@@ -3914,17 +3914,17 @@ Fishing4: @ 805A7D0
 	movs r2, 0x20
 	ldrsh r0, [r4, r2]
 	cmp r0, 0
-	bne _0805A804
+	bne _0805A4C4
 	adds r0, r1, 0x4
 	strh r0, [r4, 0xE]
-_0805A804:
+_0805A4C4:
 	movs r1, 0xE
 	ldrsh r0, [r4, r1]
 	cmp r0, 0x9
-	ble _0805A810
+	ble _0805A4D0
 	movs r0, 0xA
 	strh r0, [r4, 0xE]
-_0805A810:
+_0805A4D0:
 	movs r0, 0x1
 	pop {r4}
 	pop {r1}
@@ -3932,11 +3932,11 @@ _0805A810:
 	thumb_func_end Fishing4
 
 	thumb_func_start Fishing5
-Fishing5: @ 805A818
+Fishing5: @ 805A4D8
 	push {r4,lr}
 	sub sp, 0x4
 	adds r4, r0, 0
-	ldr r1, _0805A854 @ =gUnknown_0830FD00
+	ldr r1, _0805A514 @ =gUnknown_0830FD00
 	mov r0, sp
 	movs r2, 0x2
 	bl memcpy
@@ -3944,31 +3944,31 @@ Fishing5: @ 805A818
 	ldrh r0, [r4, 0xA]
 	adds r2, r0, 0x1
 	strh r2, [r4, 0xA]
-	ldr r0, _0805A858 @ =gMain
+	ldr r0, _0805A518 @ =gMain
 	ldrh r0, [r0, 0x2E]
 	movs r1, 0x1
 	ands r1, r0
 	cmp r1, 0
-	beq _0805A85C
+	beq _0805A51C
 	movs r0, 0xB
 	strh r0, [r4, 0x8]
 	movs r1, 0x20
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
-	beq _0805A84E
+	beq _0805A50E
 	movs r0, 0xC
 	strh r0, [r4, 0x8]
-_0805A84E:
+_0805A50E:
 	movs r0, 0x1
-	b _0805A8A4
+	b _0805A564
 	.align 2, 0
-_0805A854: .4byte gUnknown_0830FD00
-_0805A858: .4byte gMain
-_0805A85C:
+_0805A514: .4byte gUnknown_0830FD00
+_0805A518: .4byte gMain
+_0805A51C:
 	lsls r0, r2, 16
 	asrs r0, 16
 	cmp r0, 0x13
-	ble _0805A8A2
+	ble _0805A562
 	strh r1, [r4, 0xA]
 	ldrh r2, [r4, 0xC]
 	movs r3, 0xC
@@ -3976,7 +3976,7 @@ _0805A85C:
 	movs r3, 0xE
 	ldrsh r0, [r4, r3]
 	cmp r1, r0
-	blt _0805A88E
+	blt _0805A54E
 	ldrh r0, [r4, 0x8]
 	adds r1, r0, 0x1
 	strh r1, [r4, 0x8]
@@ -3984,14 +3984,14 @@ _0805A85C:
 	movs r3, 0x20
 	ldrsh r0, [r4, r3]
 	cmp r0, 0
-	beq _0805A888
+	beq _0805A548
 	adds r0, r1, 0x1
 	strh r0, [r4, 0x8]
-_0805A888:
+_0805A548:
 	adds r0, r2, 0x1
 	strh r0, [r4, 0x20]
-	b _0805A8A2
-_0805A88E:
+	b _0805A562
+_0805A54E:
 	adds r1, r2, 0x4
 	lsls r1, 24
 	lsrs r1, 24
@@ -4001,9 +4001,9 @@ _0805A88E:
 	ldrh r0, [r4, 0xC]
 	adds r0, 0x1
 	strh r0, [r4, 0xC]
-_0805A8A2:
+_0805A562:
 	movs r0, 0
-_0805A8A4:
+_0805A564:
 	add sp, 0x4
 	pop {r4}
 	pop {r1}
@@ -4011,7 +4011,7 @@ _0805A8A4:
 	thumb_func_end Fishing5
 
 	thumb_func_start Fishing6
-Fishing6: @ 805A8AC
+Fishing6: @ 805A56C
 	push {r4,lr}
 	adds r4, r0, 0
 	bl sub_805A954
@@ -4021,23 +4021,23 @@ Fishing6: @ 805A8AC
 	bl GetFishingWildMonListHeader
 	lsls r0, 24
 	cmp r0, 0
-	beq _0805A8D0
+	beq _0805A590
 	bl Random
 	movs r1, 0x1
 	ands r1, r0
 	cmp r1, 0
-	beq _0805A8D6
-_0805A8D0:
+	beq _0805A596
+_0805A590:
 	movs r0, 0xB
 	strh r0, [r4, 0x8]
-	b _0805A8FC
-_0805A8D6:
-	ldr r0, _0805A904 @ =gPlayerAvatar
+	b _0805A5BC
+_0805A596:
+	ldr r0, _0805A5C4 @ =gPlayerAvatar
 	ldrb r0, [r0, 0x4]
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0805A908 @ =gSprites
+	ldr r0, _0805A5C8 @ =gSprites
 	adds r4, r0
 	bl player_get_direction_lower_nybble
 	lsls r0, 24
@@ -4048,22 +4048,22 @@ _0805A8D6:
 	lsrs r1, 24
 	adds r0, r4, 0
 	bl StartSpriteAnim
-_0805A8FC:
+_0805A5BC:
 	movs r0, 0x1
 	pop {r4}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A904: .4byte gPlayerAvatar
-_0805A908: .4byte gSprites
+_0805A5C4: .4byte gPlayerAvatar
+_0805A5C8: .4byte gSprites
 	thumb_func_end Fishing6
 
 	thumb_func_start Fishing7
-Fishing7: @ 805A90C
+Fishing7: @ 805A5CC
 	push {r4,lr}
 	adds r4, r0, 0
 	bl sub_805A954
-	ldr r0, _0805A930 @ =gOtherText_OhABite
+	ldr r0, _0805A5F0 @ =gOtherText_OhABite
 	movs r1, 0x4
 	movs r2, 0x11
 	bl MenuPrint
@@ -4077,15 +4077,15 @@ Fishing7: @ 805A90C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A930: .4byte gOtherText_OhABite
+_0805A5F0: .4byte gOtherText_OhABite
 	thumb_func_end Fishing7
 
 	thumb_func_start Fishing8
-Fishing8: @ 805A934
+Fishing8: @ 805A5F4
 	push {r4,lr}
 	sub sp, 0x8
 	adds r4, r0, 0
-	ldr r1, _0805A968 @ =gUnknown_0830FD02
+	ldr r1, _0805A628 @ =gUnknown_0830FD02
 	mov r0, sp
 	movs r2, 0x6
 	bl memcpy
@@ -4102,38 +4102,38 @@ Fishing8: @ 805A934
 	movs r2, 0
 	ldrsh r0, [r0, r2]
 	cmp r1, r0
-	blt _0805A96C
+	blt _0805A62C
 	movs r0, 0xC
-	b _0805A97C
+	b _0805A63C
 	.align 2, 0
-_0805A968: .4byte gUnknown_0830FD02
-_0805A96C:
-	ldr r0, _0805A988 @ =gMain
+_0805A628: .4byte gUnknown_0830FD02
+_0805A62C:
+	ldr r0, _0805A648 @ =gMain
 	ldrh r1, [r0, 0x2E]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
-	beq _0805A97E
+	beq _0805A63E
 	ldrh r0, [r4, 0x8]
 	adds r0, 0x1
-_0805A97C:
+_0805A63C:
 	strh r0, [r4, 0x8]
-_0805A97E:
+_0805A63E:
 	movs r0, 0
 	add sp, 0x8
 	pop {r4}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A988: .4byte gMain
+_0805A648: .4byte gMain
 	thumb_func_end Fishing8
 
 	thumb_func_start Fishing9
-Fishing9: @ 805A98C
+Fishing9: @ 805A64C
 	push {r4,lr}
 	sub sp, 0xC
 	adds r4, r0, 0
-	ldr r1, _0805A9F0 @ =gUnknown_0830FD08
+	ldr r1, _0805A6B0 @ =gUnknown_0830FD08
 	mov r0, sp
 	movs r2, 0xC
 	bl memcpy
@@ -4146,9 +4146,9 @@ Fishing9: @ 805A98C
 	movs r2, 0x22
 	ldrsh r0, [r4, r2]
 	cmp r1, r0
-	blt _0805A9E2
+	blt _0805A6A2
 	cmp r1, 0x1
-	bgt _0805A9E6
+	bgt _0805A6A6
 	bl Random
 	lsls r0, 16
 	lsrs r0, 16
@@ -4168,26 +4168,26 @@ Fishing9: @ 805A98C
 	lsls r0, 16
 	asrs r0, 16
 	cmp r1, r0
-	ble _0805A9E6
-_0805A9E2:
+	ble _0805A6A6
+_0805A6A2:
 	movs r0, 0x3
 	strh r0, [r4, 0x8]
-_0805A9E6:
+_0805A6A6:
 	movs r0, 0
 	add sp, 0xC
 	pop {r4}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805A9F0: .4byte gUnknown_0830FD08
+_0805A6B0: .4byte gUnknown_0830FD08
 	thumb_func_end Fishing9
 
 	thumb_func_start Fishing10
-Fishing10: @ 805A9F4
+Fishing10: @ 805A6B4
 	push {r4,lr}
 	adds r4, r0, 0
 	bl sub_805A954
-	ldr r0, _0805AA18 @ =gOtherText_PokeOnHook
+	ldr r0, _0805A6D8 @ =gOtherText_PokeOnHook
 	bl sub_8072044
 	bl MenuDisplayMessageBox
 	ldrh r0, [r4, 0x8]
@@ -4200,11 +4200,11 @@ Fishing10: @ 805A9F4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805AA18: .4byte gOtherText_PokeOnHook
+_0805A6D8: .4byte gOtherText_PokeOnHook
 	thumb_func_end Fishing10
 
 	thumb_func_start Fishing11
-Fishing11: @ 805AA1C
+Fishing11: @ 805A6DC
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -4212,22 +4212,22 @@ Fishing11: @ 805AA1C
 	movs r1, 0xA
 	ldrsh r0, [r5, r1]
 	cmp r0, 0
-	bne _0805AAC0
+	bne _0805A780
 	bl sub_805A954
 	movs r0, 0xA
 	ldrsh r6, [r5, r0]
 	cmp r6, 0
-	bne _0805AAC0
+	bne _0805A780
 	bl MenuUpdateWindowText
 	lsls r0, 24
 	cmp r0, 0
-	beq _0805AAB8
-	ldr r7, _0805AAAC @ =gPlayerAvatar
+	beq _0805A778
+	ldr r7, _0805A76C @ =gPlayerAvatar
 	ldrb r0, [r7, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r1, _0805AAB0 @ =gMapObjects
+	ldr r1, _0805A770 @ =gMapObjects
 	mov r8, r1
 	add r4, r8
 	ldrh r1, [r5, 0x24]
@@ -4243,7 +4243,7 @@ Fishing11: @ 805AA1C
 	movs r0, 0x8
 	ands r0, r1
 	cmp r0, 0
-	beq _0805AA86
+	beq _0805A746
 	ldrb r0, [r7, 0x5]
 	lsls r1, r0, 3
 	adds r1, r0
@@ -4253,8 +4253,8 @@ Fishing11: @ 805AA1C
 	movs r1, 0
 	movs r2, 0
 	bl sub_8127F28
-_0805AA86:
-	ldr r2, _0805AAB4 @ =gSprites
+_0805A746:
+	ldr r2, _0805A774 @ =gSprites
 	ldrb r1, [r7, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -4271,18 +4271,18 @@ _0805AA86:
 	ldrh r0, [r5, 0xA]
 	adds r0, 0x1
 	strh r0, [r5, 0xA]
-	b _0805AAE8
+	b _0805A7A8
 	.align 2, 0
-_0805AAAC: .4byte gPlayerAvatar
-_0805AAB0: .4byte gMapObjects
-_0805AAB4: .4byte gSprites
-_0805AAB8:
+_0805A76C: .4byte gPlayerAvatar
+_0805A770: .4byte gMapObjects
+_0805A774: .4byte gSprites
+_0805A778:
 	movs r1, 0xA
 	ldrsh r0, [r5, r1]
 	cmp r0, 0
-	beq _0805AAE8
-_0805AAC0:
-	ldr r1, _0805AAF4 @ =gPlayerAvatar
+	beq _0805A7A8
+_0805A780:
+	ldr r1, _0805A7B4 @ =gPlayerAvatar
 	movs r0, 0
 	strb r0, [r1, 0x6]
 	bl ScriptContext2_Disable
@@ -4292,12 +4292,12 @@ _0805AAC0:
 	bl FishingWildEncounter
 	movs r0, 0x1
 	bl sub_80BE97C
-	ldr r0, _0805AAF8 @ =Task_Fishing
+	ldr r0, _0805A7B8 @ =Task_Fishing
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
 	bl DestroyTask
-_0805AAE8:
+_0805A7A8:
 	movs r0, 0
 	pop {r3}
 	mov r8, r3
@@ -4305,21 +4305,21 @@ _0805AAE8:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805AAF4: .4byte gPlayerAvatar
-_0805AAF8: .4byte Task_Fishing
+_0805A7B4: .4byte gPlayerAvatar
+_0805A7B8: .4byte Task_Fishing
 	thumb_func_end Fishing11
 
 	thumb_func_start Fishing12
-Fishing12: @ 805AAFC
+Fishing12: @ 805A7BC
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	bl sub_805A954
-	ldr r0, _0805AB3C @ =gPlayerAvatar
+	ldr r0, _0805A7FC @ =gPlayerAvatar
 	ldrb r0, [r0, 0x4]
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0805AB40 @ =gSprites
+	ldr r0, _0805A800 @ =gSprites
 	adds r4, r0
 	bl player_get_direction_lower_nybble
 	lsls r0, 24
@@ -4330,7 +4330,7 @@ Fishing12: @ 805AAFC
 	lsrs r1, 24
 	adds r0, r4, 0
 	bl StartSpriteAnim
-	ldr r0, _0805AB44 @ =gOtherText_NotEvenANibble
+	ldr r0, _0805A804 @ =gOtherText_NotEvenANibble
 	bl sub_8072044
 	movs r0, 0xD
 	strh r0, [r5, 0x8]
@@ -4339,22 +4339,22 @@ Fishing12: @ 805AAFC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805AB3C: .4byte gPlayerAvatar
-_0805AB40: .4byte gSprites
-_0805AB44: .4byte gOtherText_NotEvenANibble
+_0805A7FC: .4byte gPlayerAvatar
+_0805A800: .4byte gSprites
+_0805A804: .4byte gOtherText_NotEvenANibble
 	thumb_func_end Fishing12
 
 	thumb_func_start Fishing13
-Fishing13: @ 805AB48
+Fishing13: @ 805A808
 	push {r4,r5,lr}
 	adds r5, r0, 0
 	bl sub_805A954
-	ldr r0, _0805AB8C @ =gPlayerAvatar
+	ldr r0, _0805A84C @ =gPlayerAvatar
 	ldrb r0, [r0, 0x4]
 	lsls r4, r0, 4
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0805AB90 @ =gSprites
+	ldr r0, _0805A850 @ =gSprites
 	adds r4, r0
 	bl player_get_direction_lower_nybble
 	lsls r0, 24
@@ -4365,7 +4365,7 @@ Fishing13: @ 805AB48
 	lsrs r1, 24
 	adds r0, r4, 0
 	bl StartSpriteAnim
-	ldr r0, _0805AB94 @ =gOtherText_ItGotAway
+	ldr r0, _0805A854 @ =gOtherText_ItGotAway
 	bl sub_8072044
 	ldrh r0, [r5, 0x8]
 	adds r0, 0x1
@@ -4375,13 +4375,13 @@ Fishing13: @ 805AB48
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805AB8C: .4byte gPlayerAvatar
-_0805AB90: .4byte gSprites
-_0805AB94: .4byte gOtherText_ItGotAway
+_0805A84C: .4byte gPlayerAvatar
+_0805A850: .4byte gSprites
+_0805A854: .4byte gOtherText_ItGotAway
 	thumb_func_end Fishing13
 
 	thumb_func_start Fishing14
-Fishing14: @ 805AB98
+Fishing14: @ 805A858
 	push {r4,lr}
 	adds r4, r0, 0
 	bl sub_805A954
@@ -4396,14 +4396,14 @@ Fishing14: @ 805AB98
 	thumb_func_end Fishing14
 
 	thumb_func_start Fishing15
-Fishing15: @ 805ABB4
+Fishing15: @ 805A874
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
 	adds r6, r0, 0
 	bl sub_805A954
-	ldr r7, _0805AC48 @ =gSprites
-	ldr r5, _0805AC4C @ =gPlayerAvatar
+	ldr r7, _0805A908 @ =gSprites
+	ldr r5, _0805A90C @ =gPlayerAvatar
 	ldrb r0, [r5, 0x4]
 	lsls r1, r0, 4
 	adds r1, r0
@@ -4413,12 +4413,12 @@ Fishing15: @ 805ABB4
 	ldrb r0, [r1]
 	lsls r0, 27
 	cmp r0, 0
-	bge _0805AC3A
+	bge _0805A8FA
 	ldrb r0, [r5, 0x5]
 	lsls r4, r0, 3
 	adds r4, r0
 	lsls r4, 2
-	ldr r0, _0805AC50 @ =gMapObjects
+	ldr r0, _0805A910 @ =gMapObjects
 	mov r8, r0
 	add r4, r8
 	ldrh r1, [r6, 0x24]
@@ -4434,7 +4434,7 @@ Fishing15: @ 805ABB4
 	movs r0, 0x8
 	ands r0, r1
 	cmp r0, 0
-	beq _0805AC1A
+	beq _0805A8DA
 	ldrb r0, [r5, 0x5]
 	lsls r1, r0, 3
 	adds r1, r0
@@ -4444,7 +4444,7 @@ Fishing15: @ 805ABB4
 	movs r1, 0
 	movs r2, 0
 	bl sub_8127F28
-_0805AC1A:
+_0805A8DA:
 	ldrb r1, [r5, 0x4]
 	lsls r0, r1, 4
 	adds r0, r1
@@ -4461,7 +4461,7 @@ _0805AC1A:
 	ldrh r0, [r6, 0x8]
 	adds r0, 0x1
 	strh r0, [r6, 0x8]
-_0805AC3A:
+_0805A8FA:
 	movs r0, 0
 	pop {r3}
 	mov r8, r3
@@ -4469,19 +4469,19 @@ _0805AC3A:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805AC48: .4byte gSprites
-_0805AC4C: .4byte gPlayerAvatar
-_0805AC50: .4byte gMapObjects
+_0805A908: .4byte gSprites
+_0805A90C: .4byte gPlayerAvatar
+_0805A910: .4byte gMapObjects
 	thumb_func_end Fishing15
 
 	thumb_func_start Fishing16
-Fishing16: @ 805AC54
+Fishing16: @ 805A914
 	push {lr}
 	bl MenuUpdateWindowText
 	lsls r0, 24
 	cmp r0, 0
-	beq _0805AC86
-	ldr r1, _0805AC8C @ =gPlayerAvatar
+	beq _0805A946
+	ldr r1, _0805A94C @ =gPlayerAvatar
 	movs r0, 0
 	strb r0, [r1, 0x6]
 	bl ScriptContext2_Disable
@@ -4489,18 +4489,18 @@ Fishing16: @ 805AC54
 	bl MenuZeroFillScreen
 	movs r0, 0
 	bl sub_80BE97C
-	ldr r0, _0805AC90 @ =Task_Fishing
+	ldr r0, _0805A950 @ =Task_Fishing
 	bl FindTaskIdByFunc
 	lsls r0, 24
 	lsrs r0, 24
 	bl DestroyTask
-_0805AC86:
+_0805A946:
 	movs r0, 0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805AC8C: .4byte gPlayerAvatar
-_0805AC90: .4byte Task_Fishing
+_0805A94C: .4byte gPlayerAvatar
+_0805A950: .4byte Task_Fishing
 	thumb_func_end Fishing16
 
 	thumb_func_start sub_805A954

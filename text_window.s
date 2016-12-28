@@ -7,29 +7,29 @@
 	.text
 
 	thumb_func_start SetTextWindowBaseTileNum
-SetTextWindowBaseTileNum: @ 8065234
+SetTextWindowBaseTileNum: @ 8064EF4
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _08065244 @ =0x030005ac
+	ldr r1, _08064F04 @ =0x030005ac
 	strh r0, [r1]
 	adds r0, 0x9
 	lsls r0, 16
 	lsrs r0, 16
 	bx lr
 	.align 2, 0
-_08065244: .4byte 0x030005ac
+_08064F04: .4byte 0x030005ac
 	thumb_func_end SetTextWindowBaseTileNum
 
 	thumb_func_start LoadTextWindowGraphics
-LoadTextWindowGraphics: @ 8065248
+LoadTextWindowGraphics: @ 8064F08
 	push {r4,lr}
 	ldr r1, [r0, 0x2C]
-	ldr r0, _08065270 @ =0x030005ac
+	ldr r0, _08064F30 @ =0x030005ac
 	ldrh r0, [r0]
 	lsls r0, 5
 	ldr r1, [r1, 0x10]
 	adds r1, r0
-	ldr r4, _08065274 @ =gSaveBlock2
+	ldr r4, _08064F34 @ =gSaveBlock2
 	ldrb r0, [r4, 0x14]
 	lsrs r0, 3
 	bl LoadTextWindowTiles
@@ -41,22 +41,22 @@ LoadTextWindowGraphics: @ 8065248
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08065270: .4byte 0x030005ac
-_08065274: .4byte gSaveBlock2
+_08064F30: .4byte 0x030005ac
+_08064F34: .4byte gSaveBlock2
 	thumb_func_end LoadTextWindowGraphics
 
 	thumb_func_start LoadTextWindowGraphics_OverridePalSlot
-LoadTextWindowGraphics_OverridePalSlot: @ 8065278
+LoadTextWindowGraphics_OverridePalSlot: @ 8064F38
 	push {r4,r5,lr}
 	lsls r5, r1, 24
 	lsrs r5, 24
 	ldr r1, [r0, 0x2C]
-	ldr r0, _080652A4 @ =0x030005ac
+	ldr r0, _08064F64 @ =0x030005ac
 	ldrh r0, [r0]
 	lsls r0, 5
 	ldr r1, [r1, 0x10]
 	adds r1, r0
-	ldr r4, _080652A8 @ =gSaveBlock2
+	ldr r4, _08064F68 @ =gSaveBlock2
 	ldrb r0, [r4, 0x14]
 	lsrs r0, 3
 	bl LoadTextWindowTiles
@@ -68,17 +68,17 @@ LoadTextWindowGraphics_OverridePalSlot: @ 8065278
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080652A4: .4byte 0x030005ac
-_080652A8: .4byte gSaveBlock2
+_08064F64: .4byte 0x030005ac
+_08064F68: .4byte gSaveBlock2
 	thumb_func_end LoadTextWindowGraphics_OverridePalSlot
 
 	thumb_func_start LoadTextWindowGraphics_OverrideFrameType
-LoadTextWindowGraphics_OverrideFrameType: @ 80652AC
+LoadTextWindowGraphics_OverrideFrameType: @ 8064F6C
 	push {r4,lr}
 	lsls r4, r1, 24
 	lsrs r4, 24
 	ldr r1, [r0, 0x2C]
-	ldr r0, _080652D4 @ =0x030005ac
+	ldr r0, _08064F94 @ =0x030005ac
 	ldrh r0, [r0]
 	lsls r0, 5
 	ldr r1, [r1, 0x10]
@@ -92,11 +92,11 @@ LoadTextWindowGraphics_OverrideFrameType: @ 80652AC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080652D4: .4byte 0x030005ac
+_08064F94: .4byte 0x030005ac
 	thumb_func_end LoadTextWindowGraphics_OverrideFrameType
 
 	thumb_func_start DrawTextWindow
-DrawTextWindow: @ 80652D8
+DrawTextWindow: @ 8064F98
 	push {r4,r5,lr}
 	sub sp, 0x8
 	adds r4, r1, 0
@@ -112,7 +112,7 @@ DrawTextWindow: @ 80652D8
 	lsrs r2, 24
 	ldr r0, [r0, 0x2C]
 	ldr r0, [r0, 0x14]
-	ldr r1, _08065310 @ =0x030005ac
+	ldr r1, _08064FD0 @ =0x030005ac
 	ldrh r1, [r1]
 	str r3, [sp]
 	str r2, [sp, 0x4]
@@ -124,29 +124,29 @@ DrawTextWindow: @ 80652D8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08065310: .4byte 0x030005ac
+_08064FD0: .4byte 0x030005ac
 	thumb_func_end DrawTextWindow
 
 	thumb_func_start GetTextWindowFrameGraphics
-GetTextWindowFrameGraphics: @ 8065314
+GetTextWindowFrameGraphics: @ 8064FD4
 	push {lr}
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x13
-	bhi _0806532C
+	bhi _08064FEC
 	lsls r0, 3
-	ldr r1, _08065328 @ =gUnknown_083761F0
+	ldr r1, _08064FE8 @ =gUnknown_083761F0
 	adds r0, r1
-	b _0806532E
+	b _08064FEE
 	.align 2, 0
-_08065328: .4byte gUnknown_083761F0
-_0806532C:
-	ldr r0, _08065334 @ =gUnknown_083761F0
-_0806532E:
+_08064FE8: .4byte gUnknown_083761F0
+_08064FEC:
+	ldr r0, _08064FF4 @ =gUnknown_083761F0
+_08064FEE:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08065334: .4byte gUnknown_083761F0
+_08064FF4: .4byte gUnknown_083761F0
 	thumb_func_end GetTextWindowFrameGraphics
 
 	thumb_func_start LoadTextWindowTiles
@@ -400,24 +400,24 @@ _08065504: .4byte 0xffffe000
 	thumb_func_end DrawTextWindowInternal
 
 	thumb_func_start SetMessageBoxBaseTileNum
-SetMessageBoxBaseTileNum: @ 8065508
+SetMessageBoxBaseTileNum: @ 80651C8
 	lsls r0, 16
 	lsrs r0, 16
-	ldr r1, _08065518 @ =0x030005ae
+	ldr r1, _080651D8 @ =0x030005ae
 	strh r0, [r1]
 	adds r0, 0xE
 	lsls r0, 16
 	lsrs r0, 16
 	bx lr
 	.align 2, 0
-_08065518: .4byte 0x030005ae
+_080651D8: .4byte 0x030005ae
 	thumb_func_end SetMessageBoxBaseTileNum
 
 	thumb_func_start unref_sub_80651DC
-unref_sub_80651DC: @ 806551C
+unref_sub_80651DC: @ 80651DC
 	push {lr}
 	sub sp, 0x4
-	ldr r2, _0806553C @ =0x030005ae
+	ldr r2, _080651FC @ =0x030005ae
 	ldrh r2, [r2]
 	adds r2, 0xE
 	lsls r2, 16
@@ -430,11 +430,11 @@ unref_sub_80651DC: @ 806551C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806553C: .4byte 0x030005ae
+_080651FC: .4byte 0x030005ae
 	thumb_func_end unref_sub_80651DC
 
 	thumb_func_start DisplayMessageBox
-DisplayMessageBox: @ 8065540
+DisplayMessageBox: @ 8065200
 	push {r4,lr}
 	adds r4, r0, 0
 	bl LoadMessageBoxTiles
@@ -604,7 +604,7 @@ _0806566C: .4byte 0x030005ae
 	thumb_func_end DrawMessageBox
 
 	thumb_func_start DrawStandardMessageBox
-DrawStandardMessageBox: @ 8065670
+DrawStandardMessageBox: @ 8065330
 	push {lr}
 	sub sp, 0x4
 	movs r1, 0x4
@@ -619,12 +619,12 @@ DrawStandardMessageBox: @ 8065670
 	thumb_func_end DrawStandardMessageBox
 
 	thumb_func_start LoadMessageBoxTiles
-LoadMessageBoxTiles: @ 8065688
+LoadMessageBoxTiles: @ 8065348
 	push {lr}
 	ldr r0, [r0, 0x2C]
 	ldr r1, [r0, 0x10]
-	ldr r0, _080656A4 @ =gMessageBox_Gfx
-	ldr r2, _080656A8 @ =0x030005ae
+	ldr r0, _08065364 @ =gMessageBox_Gfx
+	ldr r2, _08065368 @ =0x030005ae
 	ldrh r2, [r2]
 	lsls r2, 5
 	adds r1, r2
@@ -633,12 +633,12 @@ LoadMessageBoxTiles: @ 8065688
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080656A4: .4byte gMessageBox_Gfx
-_080656A8: .4byte 0x030005ae
+_08065364: .4byte gMessageBox_Gfx
+_08065368: .4byte 0x030005ae
 	thumb_func_end LoadMessageBoxTiles
 
 	thumb_func_start ClearStandardMessageBox
-ClearStandardMessageBox: @ 80656AC
+ClearStandardMessageBox: @ 806536C
 	push {lr}
 	ldr r1, [r0, 0x2C]
 	ldr r1, [r1, 0x14]
@@ -649,7 +649,7 @@ ClearStandardMessageBox: @ 80656AC
 	lsls r0, 28
 	lsrs r3, r0, 16
 	movs r2, 0
-_080656C0:
+_08065380:
 	lsls r0, r2, 1
 	adds r0, r1
 	strh r3, [r0]
@@ -657,7 +657,7 @@ _080656C0:
 	lsls r0, 24
 	lsrs r2, r0, 24
 	cmp r2, 0xBF
-	bls _080656C0
+	bls _08065380
 	pop {r0}
 	bx r0
 	thumb_func_end ClearStandardMessageBox

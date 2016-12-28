@@ -233,22 +233,22 @@ _0810ACE4: .4byte 0x00001f08
 	thumb_func_end WallClockInit
 
 	thumb_func_start Cb2_StartWallClock
-Cb2_StartWallClock: @ 810ACE8
+Cb2_StartWallClock: @ 810A8F4
 	push {r4-r6,lr}
 	mov r6, r9
 	mov r5, r8
 	push {r5,r6}
 	bl LoadWallClockGraphics
-	ldr r0, _0810ADE4 @ =gUnknown_08E954B0
-	ldr r1, _0810ADE8 @ =0x06003800
+	ldr r0, _0810A9F0 @ =gUnknown_08E954B0
+	ldr r1, _0810A9F4 @ =0x06003800
 	bl LZ77UnCompVram
-	ldr r0, _0810ADEC @ =Task_SetClock1
+	ldr r0, _0810A9F8 @ =Task_SetClock1
 	movs r1, 0
 	bl CreateTask
 	adds r6, r0, 0
 	lsls r6, 24
 	lsrs r6, 24
-	ldr r1, _0810ADF0 @ =gTasks
+	ldr r1, _0810A9FC @ =gTasks
 	lsls r0, r6, 2
 	adds r0, r6
 	lsls r0, 3
@@ -264,14 +264,14 @@ Cb2_StartWallClock: @ 810ACE8
 	movs r1, 0x96
 	lsls r1, 1
 	strh r1, [r0, 0xA]
-	ldr r0, _0810ADF4 @ =gSpriteTemplate_83F7AD8
+	ldr r0, _0810AA00 @ =gSpriteTemplate_83F7AD8
 	movs r1, 0x78
 	movs r2, 0x50
 	movs r3, 0x1
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r1, _0810ADF8 @ =gSprites
+	ldr r1, _0810AA04 @ =gSprites
 	mov r8, r1
 	lsls r1, r0, 4
 	adds r1, r0
@@ -294,7 +294,7 @@ Cb2_StartWallClock: @ 810ACE8
 	adds r0, r4, 0
 	ands r0, r2
 	strb r0, [r1, 0x3]
-	ldr r0, _0810ADFC @ =gSpriteTemplate_83F7AF0
+	ldr r0, _0810AA08 @ =gSpriteTemplate_83F7AF0
 	movs r1, 0x78
 	movs r2, 0x50
 	movs r3, 0
@@ -316,7 +316,7 @@ Cb2_StartWallClock: @ 810ACE8
 	movs r0, 0x2
 	orrs r4, r0
 	strb r4, [r1, 0x3]
-	ldr r0, _0810AE00 @ =gSpriteTemplate_83F7B28
+	ldr r0, _0810AA0C @ =gSpriteTemplate_83F7B28
 	movs r1, 0x78
 	movs r2, 0x50
 	movs r3, 0x2
@@ -330,7 +330,7 @@ Cb2_StartWallClock: @ 810ACE8
 	strh r6, [r1, 0x2E]
 	movs r0, 0x2D
 	strh r0, [r1, 0x30]
-	ldr r0, _0810AE04 @ =gSpriteTemplate_83F7B40
+	ldr r0, _0810AA10 @ =gSpriteTemplate_83F7B40
 	movs r1, 0x78
 	movs r2, 0x50
 	movs r3, 0x2
@@ -352,36 +352,36 @@ Cb2_StartWallClock: @ 810ACE8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810ADE4: .4byte gUnknown_08E954B0
-_0810ADE8: .4byte 0x06003800
-_0810ADEC: .4byte Task_SetClock1
-_0810ADF0: .4byte gTasks
-_0810ADF4: .4byte gSpriteTemplate_83F7AD8
-_0810ADF8: .4byte gSprites
-_0810ADFC: .4byte gSpriteTemplate_83F7AF0
-_0810AE00: .4byte gSpriteTemplate_83F7B28
-_0810AE04: .4byte gSpriteTemplate_83F7B40
+_0810A9F0: .4byte gUnknown_08E954B0
+_0810A9F4: .4byte 0x06003800
+_0810A9F8: .4byte Task_SetClock1
+_0810A9FC: .4byte gTasks
+_0810AA00: .4byte gSpriteTemplate_83F7AD8
+_0810AA04: .4byte gSprites
+_0810AA08: .4byte gSpriteTemplate_83F7AF0
+_0810AA0C: .4byte gSpriteTemplate_83F7B28
+_0810AA10: .4byte gSpriteTemplate_83F7B40
 	thumb_func_end Cb2_StartWallClock
 
 	thumb_func_start Cb2_ViewWallClock
-Cb2_ViewWallClock: @ 810AE08
+Cb2_ViewWallClock: @ 810AA14
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
 	mov r5, r8
 	push {r5-r7}
 	bl LoadWallClockGraphics
-	ldr r0, _0810AE4C @ =gUnknown_08E95774
-	ldr r1, _0810AE50 @ =0x06003800
+	ldr r0, _0810AA58 @ =gUnknown_08E95774
+	ldr r1, _0810AA5C @ =0x06003800
 	bl LZ77UnCompVram
-	ldr r0, _0810AE54 @ =Task_ViewClock1
+	ldr r0, _0810AA60 @ =Task_ViewClock1
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r7, r0, 24
 	adds r0, r7, 0
 	bl InitClockWithRtc
-	ldr r1, _0810AE58 @ =gTasks
+	ldr r1, _0810AA64 @ =gTasks
 	lsls r0, r7, 2
 	adds r0, r7
 	lsls r0, 3
@@ -389,31 +389,31 @@ Cb2_ViewWallClock: @ 810AE08
 	movs r1, 0x12
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0810AE5C
+	bne _0810AA68
 	movs r2, 0x2D
 	mov r9, r2
 	movs r0, 0x5A
 	mov r10, r0
-	b _0810AE64
+	b _0810AA70
 	.align 2, 0
-_0810AE4C: .4byte gUnknown_08E95774
-_0810AE50: .4byte 0x06003800
-_0810AE54: .4byte Task_ViewClock1
-_0810AE58: .4byte gTasks
-_0810AE5C:
+_0810AA58: .4byte gUnknown_08E95774
+_0810AA5C: .4byte 0x06003800
+_0810AA60: .4byte Task_ViewClock1
+_0810AA64: .4byte gTasks
+_0810AA68:
 	movs r1, 0x5A
 	mov r9, r1
 	movs r2, 0x87
 	mov r10, r2
-_0810AE64:
-	ldr r0, _0810AF1C @ =gSpriteTemplate_83F7AD8
+_0810AA70:
+	ldr r0, _0810AB28 @ =gSpriteTemplate_83F7AD8
 	movs r1, 0x78
 	movs r2, 0x50
 	movs r3, 0x1
 	bl CreateSprite
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r6, _0810AF20 @ =gSprites
+	ldr r6, _0810AB2C @ =gSprites
 	lsls r1, r0, 4
 	adds r1, r0
 	lsls r1, 2
@@ -435,7 +435,7 @@ _0810AE64:
 	adds r0, r4, 0
 	ands r0, r2
 	strb r0, [r1, 0x3]
-	ldr r0, _0810AF24 @ =gSpriteTemplate_83F7AF0
+	ldr r0, _0810AB30 @ =gSpriteTemplate_83F7AF0
 	movs r1, 0x78
 	movs r2, 0x50
 	movs r3, 0
@@ -457,7 +457,7 @@ _0810AE64:
 	movs r0, 0x2
 	orrs r4, r0
 	strb r4, [r1, 0x3]
-	ldr r0, _0810AF28 @ =gSpriteTemplate_83F7B28
+	ldr r0, _0810AB34 @ =gSpriteTemplate_83F7B28
 	movs r1, 0x78
 	movs r2, 0x50
 	movs r3, 0x2
@@ -471,7 +471,7 @@ _0810AE64:
 	strh r7, [r1, 0x2E]
 	mov r2, r9
 	strh r2, [r1, 0x30]
-	ldr r0, _0810AF2C @ =gSpriteTemplate_83F7B40
+	ldr r0, _0810AB38 @ =gSpriteTemplate_83F7B40
 	movs r1, 0x78
 	movs r2, 0x50
 	movs r3, 0x2
@@ -494,11 +494,11 @@ _0810AE64:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810AF1C: .4byte gSpriteTemplate_83F7AD8
-_0810AF20: .4byte gSprites
-_0810AF24: .4byte gSpriteTemplate_83F7AF0
-_0810AF28: .4byte gSpriteTemplate_83F7B28
-_0810AF2C: .4byte gSpriteTemplate_83F7B40
+_0810AB28: .4byte gSpriteTemplate_83F7AD8
+_0810AB2C: .4byte gSprites
+_0810AB30: .4byte gSpriteTemplate_83F7AF0
+_0810AB34: .4byte gSpriteTemplate_83F7B28
+_0810AB38: .4byte gSpriteTemplate_83F7B40
 	thumb_func_end Cb2_ViewWallClock
 
 	thumb_func_start WallClockMainCallback
@@ -1200,11 +1200,11 @@ _0810B446:
 	thumb_func_end InitClockWithRtc
 
 	thumb_func_start sub_810B05C
-sub_810B05C: @ 810B450
+sub_810B05C: @ 810B05C
 	push {r4-r7,lr}
 	sub sp, 0x4
 	adds r6, r0, 0
-	ldr r2, _0810B4E0 @ =gTasks
+	ldr r2, _0810B0EC @ =gTasks
 	movs r0, 0x2E
 	ldrsh r1, [r6, r0]
 	lsls r0, r1, 2
@@ -1218,9 +1218,9 @@ sub_810B05C: @ 810B450
 	lsls r0, 16
 	asrs r0, 16
 	cmp r0, 0
-	bge _0810B478
+	bge _0810B084
 	adds r0, 0xF
-_0810B478:
+_0810B084:
 	lsls r0, 12
 	lsrs r5, r0, 16
 	adds r0, r4, 0
@@ -1228,9 +1228,9 @@ _0810B478:
 	lsls r0, 16
 	asrs r0, 16
 	cmp r0, 0
-	bge _0810B48C
+	bge _0810B098
 	adds r0, 0xF
-_0810B48C:
+_0810B098:
 	lsls r1, r0, 12
 	lsrs r1, 16
 	lsls r3, r5, 16
@@ -1240,7 +1240,7 @@ _0810B48C:
 	str r1, [sp]
 	movs r0, 0
 	bl SetOamMatrix
-	ldr r1, _0810B4E4 @ =gClockHandCoords
+	ldr r1, _0810B0F0 @ =gClockHandCoords
 	lsls r2, r7, 1
 	adds r0, r2, r1
 	ldrb r0, [r0]
@@ -1255,19 +1255,19 @@ _0810B48C:
 	lsls r0, 16
 	lsrs r2, r0, 16
 	cmp r3, 0x80
-	bls _0810B4C8
+	bls _0810B0D4
 	movs r1, 0xFF
 	lsls r1, 8
 	adds r0, r1, 0
 	orrs r3, r0
-_0810B4C8:
+_0810B0D4:
 	cmp r2, 0x80
-	bls _0810B4D4
+	bls _0810B0E0
 	movs r1, 0xFF
 	lsls r1, 8
 	adds r0, r1, 0
 	orrs r2, r0
-_0810B4D4:
+_0810B0E0:
 	strh r3, [r6, 0x24]
 	strh r2, [r6, 0x26]
 	add sp, 0x4
@@ -1275,16 +1275,16 @@ _0810B4D4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810B4E0: .4byte gTasks
-_0810B4E4: .4byte gClockHandCoords
+_0810B0EC: .4byte gTasks
+_0810B0F0: .4byte gClockHandCoords
 	thumb_func_end sub_810B05C
 
 	thumb_func_start sub_810B0F4
-sub_810B0F4: @ 810B4E8
+sub_810B0F4: @ 810B0F4
 	push {r4-r7,lr}
 	sub sp, 0x4
 	adds r6, r0, 0
-	ldr r2, _0810B578 @ =gTasks
+	ldr r2, _0810B184 @ =gTasks
 	movs r0, 0x2E
 	ldrsh r1, [r6, r0]
 	lsls r0, r1, 2
@@ -1298,9 +1298,9 @@ sub_810B0F4: @ 810B4E8
 	lsls r0, 16
 	asrs r0, 16
 	cmp r0, 0
-	bge _0810B510
+	bge _0810B11C
 	adds r0, 0xF
-_0810B510:
+_0810B11C:
 	lsls r0, 12
 	lsrs r5, r0, 16
 	adds r0, r4, 0
@@ -1308,9 +1308,9 @@ _0810B510:
 	lsls r0, 16
 	asrs r0, 16
 	cmp r0, 0
-	bge _0810B524
+	bge _0810B130
 	adds r0, 0xF
-_0810B524:
+_0810B130:
 	lsls r1, r0, 12
 	lsrs r1, 16
 	lsls r3, r5, 16
@@ -1320,7 +1320,7 @@ _0810B524:
 	str r1, [sp]
 	movs r0, 0x1
 	bl SetOamMatrix
-	ldr r1, _0810B57C @ =gClockHandCoords
+	ldr r1, _0810B188 @ =gClockHandCoords
 	lsls r2, r7, 1
 	adds r0, r2, r1
 	ldrb r0, [r0]
@@ -1335,19 +1335,19 @@ _0810B524:
 	lsls r0, 16
 	lsrs r2, r0, 16
 	cmp r3, 0x80
-	bls _0810B560
+	bls _0810B16C
 	movs r1, 0xFF
 	lsls r1, 8
 	adds r0, r1, 0
 	orrs r3, r0
-_0810B560:
+_0810B16C:
 	cmp r2, 0x80
-	bls _0810B56C
+	bls _0810B178
 	movs r1, 0xFF
 	lsls r1, 8
 	adds r0, r1, 0
 	orrs r2, r0
-_0810B56C:
+_0810B178:
 	strh r3, [r6, 0x24]
 	strh r2, [r6, 0x26]
 	add sp, 0x4
@@ -1355,15 +1355,15 @@ _0810B56C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810B578: .4byte gTasks
-_0810B57C: .4byte gClockHandCoords
+_0810B184: .4byte gTasks
+_0810B188: .4byte gClockHandCoords
 	thumb_func_end sub_810B0F4
 
 	thumb_func_start sub_810B18C
-sub_810B18C: @ 810B580
+sub_810B18C: @ 810B18C
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r2, _0810B5BC @ =gTasks
+	ldr r2, _0810B1C8 @ =gTasks
 	movs r0, 0x2E
 	ldrsh r1, [r4, r0]
 	lsls r0, r1, 2
@@ -1373,46 +1373,46 @@ sub_810B18C: @ 810B580
 	movs r1, 0x12
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0810B5C0
+	beq _0810B1CC
 	ldrh r1, [r4, 0x30]
 	adds r0, r1, 0
 	subs r0, 0x3C
 	lsls r0, 16
 	lsrs r0, 16
 	cmp r0, 0x1D
-	bhi _0810B5AC
+	bhi _0810B1B8
 	adds r0, r1, 0x5
 	strh r0, [r4, 0x30]
-_0810B5AC:
+_0810B1B8:
 	ldrh r1, [r4, 0x30]
 	movs r2, 0x30
 	ldrsh r0, [r4, r2]
 	cmp r0, 0x3B
-	bgt _0810B5E0
+	bgt _0810B1EC
 	adds r0, r1, 0x1
-	b _0810B5DE
+	b _0810B1EA
 	.align 2, 0
-_0810B5BC: .4byte gTasks
-_0810B5C0:
+_0810B1C8: .4byte gTasks
+_0810B1CC:
 	ldrh r1, [r4, 0x30]
 	adds r0, r1, 0
 	subs r0, 0x2E
 	lsls r0, 16
 	lsrs r0, 16
 	cmp r0, 0x1D
-	bhi _0810B5D2
+	bhi _0810B1DE
 	subs r0, r1, 0x5
 	strh r0, [r4, 0x30]
-_0810B5D2:
+_0810B1DE:
 	ldrh r1, [r4, 0x30]
 	movs r2, 0x30
 	ldrsh r0, [r4, r2]
 	cmp r0, 0x4B
-	ble _0810B5E0
+	ble _0810B1EC
 	subs r0, r1, 0x1
-_0810B5DE:
+_0810B1EA:
 	strh r0, [r4, 0x30]
-_0810B5E0:
+_0810B1EC:
 	ldrh r0, [r4, 0x30]
 	bl Cos2
 	lsls r0, 16
@@ -1421,10 +1421,10 @@ _0810B5E0:
 	subs r1, r0
 	lsls r0, r1, 1
 	cmp r0, 0
-	bge _0810B5F8
-	ldr r1, _0810B620 @ =0x00000fff
+	bge _0810B204
+	ldr r1, _0810B22C @ =0x00000fff
 	adds r0, r1
-_0810B5F8:
+_0810B204:
 	asrs r0, 12
 	strh r0, [r4, 0x24]
 	ldrh r0, [r4, 0x30]
@@ -1435,24 +1435,24 @@ _0810B5F8:
 	subs r1, r0
 	lsls r0, r1, 1
 	cmp r0, 0
-	bge _0810B614
-	ldr r2, _0810B620 @ =0x00000fff
+	bge _0810B220
+	ldr r2, _0810B22C @ =0x00000fff
 	adds r0, r2
-_0810B614:
+_0810B220:
 	asrs r0, 12
 	strh r0, [r4, 0x26]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810B620: .4byte 0x00000fff
+_0810B22C: .4byte 0x00000fff
 	thumb_func_end sub_810B18C
 
 	thumb_func_start sub_810B230
-sub_810B230: @ 810B624
+sub_810B230: @ 810B230
 	push {r4,lr}
 	adds r4, r0, 0
-	ldr r2, _0810B660 @ =gTasks
+	ldr r2, _0810B26C @ =gTasks
 	movs r0, 0x2E
 	ldrsh r1, [r4, r0]
 	lsls r0, r1, 2
@@ -1462,46 +1462,46 @@ sub_810B230: @ 810B624
 	movs r1, 0x12
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0810B664
+	beq _0810B270
 	ldrh r1, [r4, 0x30]
 	adds r0, r1, 0
 	subs r0, 0x69
 	lsls r0, 16
 	lsrs r0, 16
 	cmp r0, 0x1D
-	bhi _0810B650
+	bhi _0810B25C
 	adds r0, r1, 0x5
 	strh r0, [r4, 0x30]
-_0810B650:
+_0810B25C:
 	ldrh r1, [r4, 0x30]
 	movs r2, 0x30
 	ldrsh r0, [r4, r2]
 	cmp r0, 0x68
-	bgt _0810B684
+	bgt _0810B290
 	adds r0, r1, 0x1
-	b _0810B682
+	b _0810B28E
 	.align 2, 0
-_0810B660: .4byte gTasks
-_0810B664:
+_0810B26C: .4byte gTasks
+_0810B270:
 	ldrh r1, [r4, 0x30]
 	adds r0, r1, 0
 	subs r0, 0x5B
 	lsls r0, 16
 	lsrs r0, 16
 	cmp r0, 0x1D
-	bhi _0810B676
+	bhi _0810B282
 	subs r0, r1, 0x5
 	strh r0, [r4, 0x30]
-_0810B676:
+_0810B282:
 	ldrh r1, [r4, 0x30]
 	movs r2, 0x30
 	ldrsh r0, [r4, r2]
 	cmp r0, 0x78
-	ble _0810B684
+	ble _0810B290
 	subs r0, r1, 0x1
-_0810B682:
+_0810B28E:
 	strh r0, [r4, 0x30]
-_0810B684:
+_0810B290:
 	ldrh r0, [r4, 0x30]
 	bl Cos2
 	lsls r0, 16
@@ -1510,10 +1510,10 @@ _0810B684:
 	subs r1, r0
 	lsls r0, r1, 1
 	cmp r0, 0
-	bge _0810B69C
-	ldr r1, _0810B6C4 @ =0x00000fff
+	bge _0810B2A8
+	ldr r1, _0810B2D0 @ =0x00000fff
 	adds r0, r1
-_0810B69C:
+_0810B2A8:
 	asrs r0, 12
 	strh r0, [r4, 0x24]
 	ldrh r0, [r4, 0x30]
@@ -1524,17 +1524,17 @@ _0810B69C:
 	subs r1, r0
 	lsls r0, r1, 1
 	cmp r0, 0
-	bge _0810B6B8
-	ldr r2, _0810B6C4 @ =0x00000fff
+	bge _0810B2C4
+	ldr r2, _0810B2D0 @ =0x00000fff
 	adds r0, r2
-_0810B6B8:
+_0810B2C4:
 	asrs r0, 12
 	strh r0, [r4, 0x26]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0810B6C4: .4byte 0x00000fff
+_0810B2D0: .4byte 0x00000fff
 	thumb_func_end sub_810B230
 
 	.align 2, 0 @ Don't pad with nop.

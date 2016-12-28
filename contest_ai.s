@@ -7,11 +7,11 @@
 	.text
 
 	thumb_func_start sub_81288F4
-sub_81288F4: @ 8128C70
+sub_81288F4: @ 81288F4
 	push {r4,r5,lr}
 	lsls r0, 24
 	lsrs r5, r0, 24
-	ldr r4, _08128CB8 @ =0x020192e4
+	ldr r4, _0812893C @ =0x020192e4
 	adds r0, r4, 0
 	movs r1, 0
 	movs r2, 0x44
@@ -21,12 +21,12 @@ sub_81288F4: @ 8128C70
 	movs r1, 0x3
 	adds r0, r2, 0
 	adds r0, 0x8
-_08128C8C:
+_08128910:
 	strb r3, [r0]
 	subs r0, 0x1
 	subs r1, 0x1
 	cmp r1, 0
-	bge _08128C8C
+	bge _08128910
 	adds r3, r2, 0
 	adds r3, 0x41
 	movs r1, 0
@@ -34,7 +34,7 @@ _08128C8C:
 	adds r0, r2, 0
 	adds r0, 0x40
 	strb r1, [r0]
-	ldr r1, _08128CBC @ =gContestMons
+	ldr r1, _08128940 @ =gContestMons
 	ldrb r0, [r3]
 	lsls r0, 6
 	adds r1, 0x18
@@ -45,28 +45,28 @@ _08128C8C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08128CB8: .4byte 0x020192e4
-_08128CBC: .4byte gContestMons
+_0812893C: .4byte 0x020192e4
+_08128940: .4byte gContestMons
 	thumb_func_end sub_81288F4
 
 	thumb_func_start sub_8128944
-sub_8128944: @ 8128CC0
+sub_8128944: @ 8128944
 	push {r4-r6,lr}
-	ldr r1, _08128D24 @ =0x020192e4
+	ldr r1, _081289A8 @ =0x020192e4
 	ldr r0, [r1, 0x14]
 	cmp r0, 0
-	beq _08128CF0
+	beq _08128974
 	adds r4, r1, 0
 	movs r5, 0
-_08128CCE:
+_08128952:
 	ldr r0, [r4, 0x14]
 	movs r1, 0x1
 	ands r0, r1
 	cmp r0, 0
-	beq _08128CDE
+	beq _08128962
 	strb r5, [r4]
 	bl sub_81289AC
-_08128CDE:
+_08128962:
 	ldr r1, [r4, 0x14]
 	lsrs r1, 1
 	str r1, [r4, 0x14]
@@ -75,11 +75,11 @@ _08128CDE:
 	strb r0, [r4, 0x10]
 	strb r5, [r4, 0x4]
 	cmp r1, 0
-	bne _08128CCE
-_08128CF0:
+	bne _08128952
+_08128974:
 	movs r6, 0x3
-	ldr r5, _08128D24 @ =0x020192e4
-_08128CF4:
+	ldr r5, _081289A8 @ =0x020192e4
+_08128978:
 	bl Random
 	adds r4, r0, 0
 	ands r4, r6
@@ -89,46 +89,46 @@ _08128CF4:
 	movs r1, 0
 	ldrb r0, [r5, 0x5]
 	cmp r2, r0
-	bcc _08128D18
-_08128D0A:
+	bcc _0812899C
+_0812898E:
 	adds r1, 0x1
 	cmp r1, 0x3
-	bgt _08128D18
+	bgt _0812899C
 	adds r0, r1, r3
 	ldrb r0, [r0]
 	cmp r2, r0
-	bcs _08128D0A
-_08128D18:
+	bcs _0812898E
+_0812899C:
 	cmp r1, 0x4
-	bne _08128CF4
+	bne _08128978
 	adds r0, r4, 0
 	pop {r4-r6}
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08128D24: .4byte 0x020192e4
+_081289A8: .4byte 0x020192e4
 	thumb_func_end sub_8128944
 
 	thumb_func_start sub_81289AC
-sub_81289AC: @ 8128D28
+sub_81289AC: @ 81289AC
 	push {r4-r6,lr}
-	ldr r1, _08128D70 @ =0x020192e4
+	ldr r1, _081289F4 @ =0x020192e4
 	ldrb r0, [r1]
 	adds r2, r1, 0
 	cmp r0, 0x2
-	beq _08128DF2
+	beq _08128A76
 	adds r4, r1, 0
-	ldr r5, _08128D74 @ =gAIScriptPtr
-	ldr r6, _08128D78 @ =gUnknown_0203858E
-_08128D3A:
+	ldr r5, _081289F8 @ =gAIScriptPtr
+	ldr r6, _081289FC @ =gUnknown_0203858E
+_081289BE:
 	ldrb r0, [r4]
 	cmp r0, 0x1
-	beq _08128D8A
+	beq _08128A0E
 	cmp r0, 0x1
-	bgt _08128DEA
+	bgt _08128A6E
 	cmp r0, 0
-	bne _08128DEA
-	ldr r1, _08128D7C @ =gContestAIs
+	bne _08128A6E
+	ldr r1, _08128A00 @ =gContestAIs
 	ldrb r0, [r4, 0x10]
 	lsls r0, 2
 	adds r0, r1
@@ -145,36 +145,36 @@ _08128D3A:
 	ldrh r1, [r1]
 	adds r0, r1, 0
 	cmp r0, 0
-	bne _08128D80
+	bne _08128A04
 	strh r0, [r4, 0x2]
-	b _08128D82
+	b _08128A06
 	.align 2, 0
-_08128D70: .4byte 0x020192e4
-_08128D74: .4byte gAIScriptPtr
-_08128D78: .4byte gUnknown_0203858E
-_08128D7C: .4byte gContestAIs
-_08128D80:
+_081289F4: .4byte 0x020192e4
+_081289F8: .4byte gAIScriptPtr
+_081289FC: .4byte gUnknown_0203858E
+_08128A00: .4byte gContestAIs
+_08128A04:
 	strh r1, [r4, 0x2]
-_08128D82:
+_08128A06:
 	ldrb r0, [r4]
 	adds r0, 0x1
 	strb r0, [r4]
-	b _08128DEA
-_08128D8A:
+	b _08128A6E
+_08128A0E:
 	ldrh r1, [r1, 0x2]
 	cmp r1, 0
-	beq _08128DA8
-	ldr r1, _08128DA4 @ =gUnknown_08401E60
+	beq _08128A2C
+	ldr r1, _08128A28 @ =gUnknown_08401E60
 	ldr r0, [r5]
 	ldrb r0, [r0]
 	lsls r0, 2
 	adds r0, r1
 	ldr r0, [r0]
 	bl _call_via_r0
-	b _08128DB8
+	b _08128A3C
 	.align 2, 0
-_08128DA4: .4byte gUnknown_08401E60
-_08128DA8:
+_08128A28: .4byte gUnknown_08401E60
+_08128A2C:
 	adds r0, r4, 0x5
 	ldrb r2, [r4, 0x4]
 	adds r0, r2
@@ -183,13 +183,13 @@ _08128DA8:
 	movs r0, 0x1
 	orrs r0, r1
 	strb r0, [r4, 0x9]
-_08128DB8:
-	ldr r2, _08128DD8 @ =0x020192e4
+_08128A3C:
+	ldr r2, _08128A5C @ =0x020192e4
 	ldrb r1, [r2, 0x9]
 	movs r0, 0x1
 	ands r0, r1
 	cmp r0, 0
-	beq _08128DEA
+	beq _08128A6E
 	ldrb r0, [r2, 0x4]
 	adds r0, 0x1
 	movs r1, 0
@@ -197,66 +197,66 @@ _08128DB8:
 	lsls r0, 24
 	lsrs r0, 24
 	cmp r0, 0x3
-	bhi _08128DDC
+	bhi _08128A60
 	strb r1, [r2]
-	b _08128DE2
+	b _08128A66
 	.align 2, 0
-_08128DD8: .4byte 0x020192e4
-_08128DDC:
+_08128A5C: .4byte 0x020192e4
+_08128A60:
 	ldrb r0, [r2]
 	adds r0, 0x1
 	strb r0, [r2]
-_08128DE2:
+_08128A66:
 	ldrb r1, [r4, 0x9]
 	movs r0, 0xFE
 	ands r0, r1
 	strb r0, [r4, 0x9]
-_08128DEA:
+_08128A6E:
 	adds r1, r2, 0
 	ldrb r0, [r1]
 	cmp r0, 0x2
-	bne _08128D3A
-_08128DF2:
+	bne _081289BE
+_08128A76:
 	pop {r4-r6}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81289AC
 
 	thumb_func_start sub_8128A7C
-sub_8128A7C: @ 8128DF8
+sub_8128A7C: @ 8128A7C
 	push {lr}
 	lsls r0, 24
 	lsrs r2, r0, 24
 	movs r1, 0
-	ldr r3, _08128E20 @ =0x020192d0
+	ldr r3, _08128AA4 @ =0x020192d0
 	ldrb r0, [r3]
 	cmp r0, r2
-	beq _08128E16
-_08128E08:
+	beq _08128A9A
+_08128A8C:
 	adds r1, 0x1
 	cmp r1, 0x3
-	bgt _08128E16
+	bgt _08128A9A
 	adds r0, r1, r3
 	ldrb r0, [r0]
 	cmp r0, r2
-	bne _08128E08
-_08128E16:
+	bne _08128A8C
+_08128A9A:
 	lsls r0, r1, 24
 	lsrs r0, 24
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08128E20: .4byte 0x020192d0
+_08128AA4: .4byte 0x020192d0
 	thumb_func_end sub_8128A7C
 
 	thumb_func_start sub_8128AA8
-sub_8128AA8: @ 8128E24
+sub_8128AA8: @ 8128AA8
 	push {lr}
-	ldr r2, _08128E4C @ =0x020192e4
+	ldr r2, _08128AD0 @ =0x020192e4
 	adds r1, r2, 0x5
 	ldrb r0, [r2, 0x4]
 	adds r1, r0
-	ldr r3, _08128E50 @ =gAIScriptPtr
+	ldr r3, _08128AD4 @ =gAIScriptPtr
 	ldr r0, [r3]
 	ldrb r0, [r0, 0x1]
 	lsls r0, 24
@@ -267,17 +267,17 @@ sub_8128AA8: @ 8128E24
 	lsrs r1, r0, 16
 	asrs r0, 16
 	cmp r0, 0xFF
-	ble _08128E54
+	ble _08128AD8
 	movs r1, 0xFF
-	b _08128E5A
+	b _08128ADE
 	.align 2, 0
-_08128E4C: .4byte 0x020192e4
-_08128E50: .4byte gAIScriptPtr
-_08128E54:
+_08128AD0: .4byte 0x020192e4
+_08128AD4: .4byte gAIScriptPtr
+_08128AD8:
 	cmp r0, 0
-	bge _08128E5A
+	bge _08128ADE
 	movs r1, 0
-_08128E5A:
+_08128ADE:
 	adds r0, r2, 0x5
 	ldrb r2, [r2, 0x4]
 	adds r0, r2
@@ -290,34 +290,34 @@ _08128E5A:
 	thumb_func_end sub_8128AA8
 
 	thumb_func_start contest_ai_get_turn
-contest_ai_get_turn: @ 8128E6C
-	ldr r1, _08128E80 @ =0x020192e4
+contest_ai_get_turn: @ 8128AF0
+	ldr r1, _08128B04 @ =0x020192e4
 	adds r0, r1, 0
 	subs r0, 0xE0
 	ldrb r0, [r0, 0x1]
 	strh r0, [r1, 0x18]
-	ldr r1, _08128E84 @ =gAIScriptPtr
+	ldr r1, _08128B08 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08128E80: .4byte 0x020192e4
-_08128E84: .4byte gAIScriptPtr
+_08128B04: .4byte 0x020192e4
+_08128B08: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_get_turn
 
 	thumb_func_start sub_8128B0C
-sub_8128B0C: @ 8128E88
+sub_8128B0C: @ 8128B0C
 	push {lr}
 	bl contest_ai_get_turn
-	ldr r0, _08128EB8 @ =0x020192e4
+	ldr r0, _08128B3C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08128EBC @ =gAIScriptPtr
+	ldr r3, _08128B40 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _08128EC0
+	bge _08128B44
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -329,30 +329,30 @@ sub_8128B0C: @ 8128E88
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08128EC4
+	b _08128B48
 	.align 2, 0
-_08128EB8: .4byte 0x020192e4
-_08128EBC: .4byte gAIScriptPtr
-_08128EC0:
+_08128B3C: .4byte 0x020192e4
+_08128B40: .4byte gAIScriptPtr
+_08128B44:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08128EC4:
+_08128B48:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128B0C
 
 	thumb_func_start sub_8128B4C
-sub_8128B4C: @ 8128EC8
+sub_8128B4C: @ 8128B4C
 	push {lr}
 	bl contest_ai_get_turn
-	ldr r0, _08128EF8 @ =0x020192e4
+	ldr r0, _08128B7C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08128EFC @ =gAIScriptPtr
+	ldr r3, _08128B80 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _08128F00
+	ble _08128B84
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -364,30 +364,30 @@ sub_8128B4C: @ 8128EC8
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08128F04
+	b _08128B88
 	.align 2, 0
-_08128EF8: .4byte 0x020192e4
-_08128EFC: .4byte gAIScriptPtr
-_08128F00:
+_08128B7C: .4byte 0x020192e4
+_08128B80: .4byte gAIScriptPtr
+_08128B84:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08128F04:
+_08128B88:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128B4C
 
 	thumb_func_start sub_8128B8C
-sub_8128B8C: @ 8128F08
+sub_8128B8C: @ 8128B8C
 	push {lr}
 	bl contest_ai_get_turn
-	ldr r0, _08128F38 @ =0x020192e4
+	ldr r0, _08128BBC @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08128F3C @ =gAIScriptPtr
+	ldr r3, _08128BC0 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _08128F40
+	bne _08128BC4
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -399,30 +399,30 @@ sub_8128B8C: @ 8128F08
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08128F44
+	b _08128BC8
 	.align 2, 0
-_08128F38: .4byte 0x020192e4
-_08128F3C: .4byte gAIScriptPtr
-_08128F40:
+_08128BBC: .4byte 0x020192e4
+_08128BC0: .4byte gAIScriptPtr
+_08128BC4:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08128F44:
+_08128BC8:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128B8C
 
 	thumb_func_start sub_8128BCC
-sub_8128BCC: @ 8128F48
+sub_8128BCC: @ 8128BCC
 	push {lr}
 	bl contest_ai_get_turn
-	ldr r0, _08128F78 @ =0x020192e4
+	ldr r0, _08128BFC @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08128F7C @ =gAIScriptPtr
+	ldr r3, _08128C00 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _08128F80
+	beq _08128C04
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -434,49 +434,49 @@ sub_8128BCC: @ 8128F48
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08128F84
+	b _08128C08
 	.align 2, 0
-_08128F78: .4byte 0x020192e4
-_08128F7C: .4byte gAIScriptPtr
-_08128F80:
+_08128BFC: .4byte 0x020192e4
+_08128C00: .4byte gAIScriptPtr
+_08128C04:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08128F84:
+_08128C08:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128BCC
 
 	thumb_func_start contest_ai_get_excitement
-contest_ai_get_excitement: @ 8128F88
-	ldr r1, _08128FA0 @ =0x020192e4
+contest_ai_get_excitement: @ 8128C0C
+	ldr r1, _08128C24 @ =0x020192e4
 	adds r0, r1, 0
 	subs r0, 0xE0
 	ldrb r0, [r0, 0x13]
 	lsls r0, 24
 	asrs r0, 24
 	strh r0, [r1, 0x18]
-	ldr r1, _08128FA4 @ =gAIScriptPtr
+	ldr r1, _08128C28 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08128FA0: .4byte 0x020192e4
-_08128FA4: .4byte gAIScriptPtr
+_08128C24: .4byte 0x020192e4
+_08128C28: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_get_excitement
 
 	thumb_func_start sub_8128C2C
-sub_8128C2C: @ 8128FA8
+sub_8128C2C: @ 8128C2C
 	push {lr}
 	bl contest_ai_get_excitement
-	ldr r0, _08128FD8 @ =0x020192e4
+	ldr r0, _08128C5C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08128FDC @ =gAIScriptPtr
+	ldr r3, _08128C60 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _08128FE0
+	bge _08128C64
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -488,30 +488,30 @@ sub_8128C2C: @ 8128FA8
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08128FE4
+	b _08128C68
 	.align 2, 0
-_08128FD8: .4byte 0x020192e4
-_08128FDC: .4byte gAIScriptPtr
-_08128FE0:
+_08128C5C: .4byte 0x020192e4
+_08128C60: .4byte gAIScriptPtr
+_08128C64:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08128FE4:
+_08128C68:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128C2C
 
 	thumb_func_start sub_8128C6C
-sub_8128C6C: @ 8128FE8
+sub_8128C6C: @ 8128C6C
 	push {lr}
 	bl contest_ai_get_excitement
-	ldr r0, _08129018 @ =0x020192e4
+	ldr r0, _08128C9C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812901C @ =gAIScriptPtr
+	ldr r3, _08128CA0 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _08129020
+	ble _08128CA4
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -523,30 +523,30 @@ sub_8128C6C: @ 8128FE8
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129024
+	b _08128CA8
 	.align 2, 0
-_08129018: .4byte 0x020192e4
-_0812901C: .4byte gAIScriptPtr
-_08129020:
+_08128C9C: .4byte 0x020192e4
+_08128CA0: .4byte gAIScriptPtr
+_08128CA4:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129024:
+_08128CA8:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128C6C
 
 	thumb_func_start sub_8128CAC
-sub_8128CAC: @ 8129028
+sub_8128CAC: @ 8128CAC
 	push {lr}
 	bl contest_ai_get_excitement
-	ldr r0, _08129058 @ =0x020192e4
+	ldr r0, _08128CDC @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812905C @ =gAIScriptPtr
+	ldr r3, _08128CE0 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _08129060
+	bne _08128CE4
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -558,30 +558,30 @@ sub_8128CAC: @ 8129028
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129064
+	b _08128CE8
 	.align 2, 0
-_08129058: .4byte 0x020192e4
-_0812905C: .4byte gAIScriptPtr
-_08129060:
+_08128CDC: .4byte 0x020192e4
+_08128CE0: .4byte gAIScriptPtr
+_08128CE4:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129064:
+_08128CE8:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128CAC
 
 	thumb_func_start sub_8128CEC
-sub_8128CEC: @ 8129068
+sub_8128CEC: @ 8128CEC
 	push {lr}
 	bl contest_ai_get_excitement
-	ldr r0, _08129098 @ =0x020192e4
+	ldr r0, _08128D1C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812909C @ =gAIScriptPtr
+	ldr r3, _08128D20 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _081290A0
+	beq _08128D24
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -593,21 +593,21 @@ sub_8128CEC: @ 8129068
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _081290A4
+	b _08128D28
 	.align 2, 0
-_08129098: .4byte 0x020192e4
-_0812909C: .4byte gAIScriptPtr
-_081290A0:
+_08128D1C: .4byte 0x020192e4
+_08128D20: .4byte gAIScriptPtr
+_08128D24:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_081290A4:
+_08128D28:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128CEC
 
 	thumb_func_start contest_ai_get_user_order
-contest_ai_get_user_order: @ 81290A8
-	ldr r1, _081290C4 @ =0x020192e4
+contest_ai_get_user_order: @ 8128D2C
+	ldr r1, _08128D48 @ =0x020192e4
 	adds r2, r1, 0
 	adds r2, 0x41
 	adds r0, r1, 0
@@ -616,28 +616,28 @@ contest_ai_get_user_order: @ 81290A8
 	adds r0, r2
 	ldrb r0, [r0]
 	strh r0, [r1, 0x18]
-	ldr r1, _081290C8 @ =gAIScriptPtr
+	ldr r1, _08128D4C @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_081290C4: .4byte 0x020192e4
-_081290C8: .4byte gAIScriptPtr
+_08128D48: .4byte 0x020192e4
+_08128D4C: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_get_user_order
 
 	thumb_func_start sub_8128D50
-sub_8128D50: @ 81290CC
+sub_8128D50: @ 8128D50
 	push {lr}
 	bl contest_ai_get_user_order
-	ldr r0, _081290FC @ =0x020192e4
+	ldr r0, _08128D80 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129100 @ =gAIScriptPtr
+	ldr r3, _08128D84 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _08129104
+	bge _08128D88
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -649,30 +649,30 @@ sub_8128D50: @ 81290CC
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129108
+	b _08128D8C
 	.align 2, 0
-_081290FC: .4byte 0x020192e4
-_08129100: .4byte gAIScriptPtr
-_08129104:
+_08128D80: .4byte 0x020192e4
+_08128D84: .4byte gAIScriptPtr
+_08128D88:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129108:
+_08128D8C:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128D50
 
 	thumb_func_start sub_8128D90
-sub_8128D90: @ 812910C
+sub_8128D90: @ 8128D90
 	push {lr}
 	bl contest_ai_get_user_order
-	ldr r0, _0812913C @ =0x020192e4
+	ldr r0, _08128DC0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129140 @ =gAIScriptPtr
+	ldr r3, _08128DC4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _08129144
+	ble _08128DC8
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -684,30 +684,30 @@ sub_8128D90: @ 812910C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129148
+	b _08128DCC
 	.align 2, 0
-_0812913C: .4byte 0x020192e4
-_08129140: .4byte gAIScriptPtr
-_08129144:
+_08128DC0: .4byte 0x020192e4
+_08128DC4: .4byte gAIScriptPtr
+_08128DC8:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129148:
+_08128DCC:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128D90
 
 	thumb_func_start sub_8128DD0
-sub_8128DD0: @ 812914C
+sub_8128DD0: @ 8128DD0
 	push {lr}
 	bl contest_ai_get_user_order
-	ldr r0, _0812917C @ =0x020192e4
+	ldr r0, _08128E00 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129180 @ =gAIScriptPtr
+	ldr r3, _08128E04 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _08129184
+	bne _08128E08
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -719,30 +719,30 @@ sub_8128DD0: @ 812914C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129188
+	b _08128E0C
 	.align 2, 0
-_0812917C: .4byte 0x020192e4
-_08129180: .4byte gAIScriptPtr
-_08129184:
+_08128E00: .4byte 0x020192e4
+_08128E04: .4byte gAIScriptPtr
+_08128E08:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129188:
+_08128E0C:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128DD0
 
 	thumb_func_start sub_8128E10
-sub_8128E10: @ 812918C
+sub_8128E10: @ 8128E10
 	push {lr}
 	bl contest_ai_get_user_order
-	ldr r0, _081291BC @ =0x020192e4
+	ldr r0, _08128E40 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _081291C0 @ =gAIScriptPtr
+	ldr r3, _08128E44 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _081291C4
+	beq _08128E48
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -754,22 +754,22 @@ sub_8128E10: @ 812918C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _081291C8
+	b _08128E4C
 	.align 2, 0
-_081291BC: .4byte 0x020192e4
-_081291C0: .4byte gAIScriptPtr
-_081291C4:
+_08128E40: .4byte 0x020192e4
+_08128E44: .4byte gAIScriptPtr
+_08128E48:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_081291C8:
+_08128E4C:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128E10
 
 	thumb_func_start contest_ai_get_user_condition_maybe
-contest_ai_get_user_condition_maybe: @ 81291CC
+contest_ai_get_user_condition_maybe: @ 8128E50
 	push {r4,lr}
-	ldr r4, _08129204 @ =0x020192e4
+	ldr r4, _08128E88 @ =0x020192e4
 	adds r0, r4, 0
 	adds r0, 0x41
 	ldrb r1, [r0]
@@ -787,7 +787,7 @@ contest_ai_get_user_condition_maybe: @ 81291CC
 	lsls r0, 24
 	asrs r0, 24
 	strh r0, [r4, 0x18]
-	ldr r1, _08129208 @ =gAIScriptPtr
+	ldr r1, _08128E8C @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -795,22 +795,22 @@ contest_ai_get_user_condition_maybe: @ 81291CC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08129204: .4byte 0x020192e4
-_08129208: .4byte gAIScriptPtr
+_08128E88: .4byte 0x020192e4
+_08128E8C: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_get_user_condition_maybe
 
 	thumb_func_start sub_8128E90
-sub_8128E90: @ 812920C
+sub_8128E90: @ 8128E90
 	push {lr}
 	bl contest_ai_get_user_condition_maybe
-	ldr r0, _0812923C @ =0x020192e4
+	ldr r0, _08128EC0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129240 @ =gAIScriptPtr
+	ldr r3, _08128EC4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _08129244
+	bge _08128EC8
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -822,30 +822,30 @@ sub_8128E90: @ 812920C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129248
+	b _08128ECC
 	.align 2, 0
-_0812923C: .4byte 0x020192e4
-_08129240: .4byte gAIScriptPtr
-_08129244:
+_08128EC0: .4byte 0x020192e4
+_08128EC4: .4byte gAIScriptPtr
+_08128EC8:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129248:
+_08128ECC:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128E90
 
 	thumb_func_start sub_8128ED0
-sub_8128ED0: @ 812924C
+sub_8128ED0: @ 8128ED0
 	push {lr}
 	bl contest_ai_get_user_condition_maybe
-	ldr r0, _0812927C @ =0x020192e4
+	ldr r0, _08128F00 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129280 @ =gAIScriptPtr
+	ldr r3, _08128F04 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _08129284
+	ble _08128F08
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -857,30 +857,30 @@ sub_8128ED0: @ 812924C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129288
+	b _08128F0C
 	.align 2, 0
-_0812927C: .4byte 0x020192e4
-_08129280: .4byte gAIScriptPtr
-_08129284:
+_08128F00: .4byte 0x020192e4
+_08128F04: .4byte gAIScriptPtr
+_08128F08:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129288:
+_08128F0C:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128ED0
 
 	thumb_func_start sub_8128F10
-sub_8128F10: @ 812928C
+sub_8128F10: @ 8128F10
 	push {lr}
 	bl contest_ai_get_user_condition_maybe
-	ldr r0, _081292BC @ =0x020192e4
+	ldr r0, _08128F40 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _081292C0 @ =gAIScriptPtr
+	ldr r3, _08128F44 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _081292C4
+	bne _08128F48
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -892,30 +892,30 @@ sub_8128F10: @ 812928C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _081292C8
+	b _08128F4C
 	.align 2, 0
-_081292BC: .4byte 0x020192e4
-_081292C0: .4byte gAIScriptPtr
-_081292C4:
+_08128F40: .4byte 0x020192e4
+_08128F44: .4byte gAIScriptPtr
+_08128F48:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_081292C8:
+_08128F4C:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128F10
 
 	thumb_func_start sub_8128F50
-sub_8128F50: @ 81292CC
+sub_8128F50: @ 8128F50
 	push {lr}
 	bl contest_ai_get_user_condition_maybe
-	ldr r0, _081292FC @ =0x020192e4
+	ldr r0, _08128F80 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129300 @ =gAIScriptPtr
+	ldr r3, _08128F84 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _08129304
+	beq _08128F88
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -927,21 +927,21 @@ sub_8128F50: @ 81292CC
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129308
+	b _08128F8C
 	.align 2, 0
-_081292FC: .4byte 0x020192e4
-_08129300: .4byte gAIScriptPtr
-_08129304:
+_08128F80: .4byte 0x020192e4
+_08128F84: .4byte gAIScriptPtr
+_08128F88:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129308:
+_08128F8C:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128F50
 
 	thumb_func_start sub_8128F90
-sub_8128F90: @ 812930C
-	ldr r2, _08129330 @ =0x020192e4
+sub_8128F90: @ 8128F90
+	ldr r2, _08128FB4 @ =0x020192e4
 	adds r0, r2, 0
 	adds r0, 0x41
 	ldrb r1, [r0]
@@ -953,22 +953,22 @@ sub_8128F90: @ 812930C
 	adds r0, r1
 	ldrh r0, [r0, 0x4]
 	strh r0, [r2, 0x18]
-	ldr r1, _08129334 @ =gAIScriptPtr
+	ldr r1, _08128FB8 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08129330: .4byte 0x020192e4
-_08129334: .4byte gAIScriptPtr
+_08128FB4: .4byte 0x020192e4
+_08128FB8: .4byte gAIScriptPtr
 	thumb_func_end sub_8128F90
 
 	thumb_func_start sub_8128FBC
-sub_8128FBC: @ 8129338
+sub_8128FBC: @ 8128FBC
 	push {r4,r5,lr}
 	bl sub_8128F90
-	ldr r2, _08129370 @ =0x020192e4
-	ldr r4, _08129374 @ =gAIScriptPtr
+	ldr r2, _08128FF4 @ =0x020192e4
+	ldr r4, _08128FF8 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3]
 	ldrb r0, [r3, 0x1]
@@ -979,7 +979,7 @@ sub_8128FBC: @ 8129338
 	lsls r1, 16
 	asrs r1, 16
 	cmp r0, r1
-	bge _08129378
+	bge _08128FFC
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -991,25 +991,25 @@ sub_8128FBC: @ 8129338
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812937C
+	b _08129000
 	.align 2, 0
-_08129370: .4byte 0x020192e4
-_08129374: .4byte gAIScriptPtr
-_08129378:
+_08128FF4: .4byte 0x020192e4
+_08128FF8: .4byte gAIScriptPtr
+_08128FFC:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_0812937C:
+_08129000:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8128FBC
 
 	thumb_func_start sub_8129008
-sub_8129008: @ 8129384
+sub_8129008: @ 8129008
 	push {r4,r5,lr}
 	bl sub_8128F90
-	ldr r2, _081293BC @ =0x020192e4
-	ldr r4, _081293C0 @ =gAIScriptPtr
+	ldr r2, _08129040 @ =0x020192e4
+	ldr r4, _08129044 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3]
 	ldrb r0, [r3, 0x1]
@@ -1020,7 +1020,7 @@ sub_8129008: @ 8129384
 	lsls r1, 16
 	asrs r1, 16
 	cmp r0, r1
-	ble _081293C4
+	ble _08129048
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -1032,25 +1032,25 @@ sub_8129008: @ 8129384
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _081293C8
+	b _0812904C
 	.align 2, 0
-_081293BC: .4byte 0x020192e4
-_081293C0: .4byte gAIScriptPtr
-_081293C4:
+_08129040: .4byte 0x020192e4
+_08129044: .4byte gAIScriptPtr
+_08129048:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_081293C8:
+_0812904C:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129008
 
 	thumb_func_start sub_8129054
-sub_8129054: @ 81293D0
+sub_8129054: @ 8129054
 	push {r4,r5,lr}
 	bl sub_8128F90
-	ldr r2, _08129408 @ =0x020192e4
-	ldr r4, _0812940C @ =gAIScriptPtr
+	ldr r2, _0812908C @ =0x020192e4
+	ldr r4, _08129090 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3]
 	ldrb r0, [r3, 0x1]
@@ -1061,7 +1061,7 @@ sub_8129054: @ 81293D0
 	lsls r1, 16
 	asrs r1, 16
 	cmp r0, r1
-	bne _08129410
+	bne _08129094
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -1073,25 +1073,25 @@ sub_8129054: @ 81293D0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _08129414
+	b _08129098
 	.align 2, 0
-_08129408: .4byte 0x020192e4
-_0812940C: .4byte gAIScriptPtr
-_08129410:
+_0812908C: .4byte 0x020192e4
+_08129090: .4byte gAIScriptPtr
+_08129094:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_08129414:
+_08129098:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129054
 
 	thumb_func_start sub_81290A0
-sub_81290A0: @ 812941C
+sub_81290A0: @ 81290A0
 	push {r4,r5,lr}
 	bl sub_8128F90
-	ldr r2, _08129454 @ =0x020192e4
-	ldr r4, _08129458 @ =gAIScriptPtr
+	ldr r2, _081290D8 @ =0x020192e4
+	ldr r4, _081290DC @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3]
 	ldrb r0, [r3, 0x1]
@@ -1102,7 +1102,7 @@ sub_81290A0: @ 812941C
 	lsls r1, 16
 	asrs r1, 16
 	cmp r0, r1
-	beq _0812945C
+	beq _081290E0
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -1114,23 +1114,23 @@ sub_81290A0: @ 812941C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _08129460
+	b _081290E4
 	.align 2, 0
-_08129454: .4byte 0x020192e4
-_08129458: .4byte gAIScriptPtr
-_0812945C:
+_081290D8: .4byte 0x020192e4
+_081290DC: .4byte gAIScriptPtr
+_081290E0:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_08129460:
+_081290E4:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81290A0
 
 	thumb_func_start sub_81290EC
-sub_81290EC: @ 8129468
-	ldr r2, _08129484 @ =0x020192e4
-	ldr r1, _08129488 @ =gUnknown_02038670
+sub_81290EC: @ 81290EC
+	ldr r2, _08129108 @ =0x020192e4
+	ldr r1, _0812910C @ =gUnknown_02038670
 	adds r0, r2, 0
 	adds r0, 0x41
 	ldrb r0, [r0]
@@ -1138,23 +1138,23 @@ sub_81290EC: @ 8129468
 	adds r0, r1
 	ldrh r0, [r0]
 	strh r0, [r2, 0x18]
-	ldr r1, _0812948C @ =gAIScriptPtr
+	ldr r1, _08129110 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08129484: .4byte 0x020192e4
-_08129488: .4byte gUnknown_02038670
-_0812948C: .4byte gAIScriptPtr
+_08129108: .4byte 0x020192e4
+_0812910C: .4byte gUnknown_02038670
+_08129110: .4byte gAIScriptPtr
 	thumb_func_end sub_81290EC
 
 	thumb_func_start sub_8129114
-sub_8129114: @ 8129490
+sub_8129114: @ 8129114
 	push {r4,r5,lr}
 	bl sub_81290EC
-	ldr r2, _081294C8 @ =0x020192e4
-	ldr r4, _081294CC @ =gAIScriptPtr
+	ldr r2, _0812914C @ =0x020192e4
+	ldr r4, _08129150 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3]
 	ldrb r0, [r3, 0x1]
@@ -1165,7 +1165,7 @@ sub_8129114: @ 8129490
 	lsls r1, 16
 	asrs r1, 16
 	cmp r0, r1
-	bge _081294D0
+	bge _08129154
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -1177,25 +1177,25 @@ sub_8129114: @ 8129490
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _081294D4
+	b _08129158
 	.align 2, 0
-_081294C8: .4byte 0x020192e4
-_081294CC: .4byte gAIScriptPtr
-_081294D0:
+_0812914C: .4byte 0x020192e4
+_08129150: .4byte gAIScriptPtr
+_08129154:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_081294D4:
+_08129158:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129114
 
 	thumb_func_start sub_8129160
-sub_8129160: @ 81294DC
+sub_8129160: @ 8129160
 	push {r4,r5,lr}
 	bl sub_81290EC
-	ldr r2, _08129514 @ =0x020192e4
-	ldr r4, _08129518 @ =gAIScriptPtr
+	ldr r2, _08129198 @ =0x020192e4
+	ldr r4, _0812919C @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3]
 	ldrb r0, [r3, 0x1]
@@ -1206,7 +1206,7 @@ sub_8129160: @ 81294DC
 	lsls r1, 16
 	asrs r1, 16
 	cmp r0, r1
-	ble _0812951C
+	ble _081291A0
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -1218,25 +1218,25 @@ sub_8129160: @ 81294DC
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _08129520
+	b _081291A4
 	.align 2, 0
-_08129514: .4byte 0x020192e4
-_08129518: .4byte gAIScriptPtr
-_0812951C:
+_08129198: .4byte 0x020192e4
+_0812919C: .4byte gAIScriptPtr
+_081291A0:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_08129520:
+_081291A4:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129160
 
 	thumb_func_start sub_81291AC
-sub_81291AC: @ 8129528
+sub_81291AC: @ 81291AC
 	push {r4,r5,lr}
 	bl sub_81290EC
-	ldr r2, _08129560 @ =0x020192e4
-	ldr r4, _08129564 @ =gAIScriptPtr
+	ldr r2, _081291E4 @ =0x020192e4
+	ldr r4, _081291E8 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3]
 	ldrb r0, [r3, 0x1]
@@ -1247,7 +1247,7 @@ sub_81291AC: @ 8129528
 	lsls r1, 16
 	asrs r1, 16
 	cmp r0, r1
-	bne _08129568
+	bne _081291EC
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -1259,25 +1259,25 @@ sub_81291AC: @ 8129528
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812956C
+	b _081291F0
 	.align 2, 0
-_08129560: .4byte 0x020192e4
-_08129564: .4byte gAIScriptPtr
-_08129568:
+_081291E4: .4byte 0x020192e4
+_081291E8: .4byte gAIScriptPtr
+_081291EC:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_0812956C:
+_081291F0:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81291AC
 
 	thumb_func_start sub_81291F8
-sub_81291F8: @ 8129574
+sub_81291F8: @ 81291F8
 	push {r4,r5,lr}
 	bl sub_81290EC
-	ldr r2, _081295AC @ =0x020192e4
-	ldr r4, _081295B0 @ =gAIScriptPtr
+	ldr r2, _08129230 @ =0x020192e4
+	ldr r4, _08129234 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3]
 	ldrb r0, [r3, 0x1]
@@ -1288,7 +1288,7 @@ sub_81291F8: @ 8129574
 	lsls r1, 16
 	asrs r1, 16
 	cmp r0, r1
-	beq _081295B4
+	beq _08129238
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -1300,48 +1300,48 @@ sub_81291F8: @ 8129574
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _081295B8
+	b _0812923C
 	.align 2, 0
-_081295AC: .4byte 0x020192e4
-_081295B0: .4byte gAIScriptPtr
-_081295B4:
+_08129230: .4byte 0x020192e4
+_08129234: .4byte gAIScriptPtr
+_08129238:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_081295B8:
+_0812923C:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81291F8
 
 	thumb_func_start contest_ai_get_contest_type
-contest_ai_get_contest_type: @ 81295C0
-	ldr r1, _081295D4 @ =0x020192e4
-	ldr r0, _081295D8 @ =gScriptContestCategory
+contest_ai_get_contest_type: @ 8129244
+	ldr r1, _08129258 @ =0x020192e4
+	ldr r0, _0812925C @ =gScriptContestCategory
 	ldrh r0, [r0]
 	strh r0, [r1, 0x18]
-	ldr r1, _081295DC @ =gAIScriptPtr
+	ldr r1, _08129260 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_081295D4: .4byte 0x020192e4
-_081295D8: .4byte gScriptContestCategory
-_081295DC: .4byte gAIScriptPtr
+_08129258: .4byte 0x020192e4
+_0812925C: .4byte gScriptContestCategory
+_08129260: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_get_contest_type
 
 	thumb_func_start sub_8129264
-sub_8129264: @ 81295E0
+sub_8129264: @ 8129264
 	push {lr}
 	bl contest_ai_get_contest_type
-	ldr r0, _08129610 @ =0x020192e4
+	ldr r0, _08129294 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129614 @ =gAIScriptPtr
+	ldr r3, _08129298 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _08129618
+	bne _0812929C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1353,30 +1353,30 @@ sub_8129264: @ 81295E0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812961C
+	b _081292A0
 	.align 2, 0
-_08129610: .4byte 0x020192e4
-_08129614: .4byte gAIScriptPtr
-_08129618:
+_08129294: .4byte 0x020192e4
+_08129298: .4byte gAIScriptPtr
+_0812929C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812961C:
+_081292A0:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129264
 
 	thumb_func_start sub_81292A4
-sub_81292A4: @ 8129620
+sub_81292A4: @ 81292A4
 	push {lr}
 	bl contest_ai_get_contest_type
-	ldr r0, _08129650 @ =0x020192e4
+	ldr r0, _081292D4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129654 @ =gAIScriptPtr
+	ldr r3, _081292D8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _08129658
+	beq _081292DC
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1388,23 +1388,23 @@ sub_81292A4: @ 8129620
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812965C
+	b _081292E0
 	.align 2, 0
-_08129650: .4byte 0x020192e4
-_08129654: .4byte gAIScriptPtr
-_08129658:
+_081292D4: .4byte 0x020192e4
+_081292D8: .4byte gAIScriptPtr
+_081292DC:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812965C:
+_081292E0:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81292A4
 
 	thumb_func_start contest_ai_get_move_excitement
-contest_ai_get_move_excitement: @ 8129660
+contest_ai_get_move_excitement: @ 81292E4
 	push {r4,lr}
-	ldr r2, _08129694 @ =gContestMons
-	ldr r4, _08129698 @ =0x020192e4
+	ldr r2, _08129318 @ =gContestMons
+	ldr r4, _0812931C @ =0x020192e4
 	ldrb r1, [r4, 0x4]
 	lsls r1, 1
 	adds r0, r4, 0
@@ -1419,7 +1419,7 @@ contest_ai_get_move_excitement: @ 8129660
 	lsls r0, 24
 	asrs r0, 24
 	strh r0, [r4, 0x18]
-	ldr r1, _0812969C @ =gAIScriptPtr
+	ldr r1, _08129320 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -1427,24 +1427,24 @@ contest_ai_get_move_excitement: @ 8129660
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08129694: .4byte gContestMons
-_08129698: .4byte 0x020192e4
-_0812969C: .4byte gAIScriptPtr
+_08129318: .4byte gContestMons
+_0812931C: .4byte 0x020192e4
+_08129320: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_get_move_excitement
 
 	thumb_func_start sub_8129324
-sub_8129324: @ 81296A0
+sub_8129324: @ 8129324
 	push {r4,lr}
 	bl contest_ai_get_move_excitement
-	ldr r0, _081296D0 @ =0x020192e4
-	ldr r3, _081296D4 @ =gAIScriptPtr
+	ldr r0, _08129354 @ =0x020192e4
+	ldr r3, _08129358 @ =gAIScriptPtr
 	ldr r2, [r3]
 	movs r4, 0x18
 	ldrsh r1, [r0, r4]
 	movs r0, 0
 	ldrsb r0, [r2, r0]
 	cmp r1, r0
-	bge _081296D8
+	bge _0812935C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1456,32 +1456,32 @@ sub_8129324: @ 81296A0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _081296DC
+	b _08129360
 	.align 2, 0
-_081296D0: .4byte 0x020192e4
-_081296D4: .4byte gAIScriptPtr
-_081296D8:
+_08129354: .4byte 0x020192e4
+_08129358: .4byte gAIScriptPtr
+_0812935C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_081296DC:
+_08129360:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129324
 
 	thumb_func_start sub_8129368
-sub_8129368: @ 81296E4
+sub_8129368: @ 8129368
 	push {r4,lr}
 	bl contest_ai_get_move_excitement
-	ldr r0, _08129714 @ =0x020192e4
-	ldr r3, _08129718 @ =gAIScriptPtr
+	ldr r0, _08129398 @ =0x020192e4
+	ldr r3, _0812939C @ =gAIScriptPtr
 	ldr r2, [r3]
 	movs r4, 0x18
 	ldrsh r1, [r0, r4]
 	movs r0, 0
 	ldrsb r0, [r2, r0]
 	cmp r1, r0
-	ble _0812971C
+	ble _081293A0
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1493,32 +1493,32 @@ sub_8129368: @ 81296E4
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129720
+	b _081293A4
 	.align 2, 0
-_08129714: .4byte 0x020192e4
-_08129718: .4byte gAIScriptPtr
-_0812971C:
+_08129398: .4byte 0x020192e4
+_0812939C: .4byte gAIScriptPtr
+_081293A0:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129720:
+_081293A4:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129368
 
 	thumb_func_start sub_81293AC
-sub_81293AC: @ 8129728
+sub_81293AC: @ 81293AC
 	push {r4,lr}
 	bl contest_ai_get_move_excitement
-	ldr r0, _08129758 @ =0x020192e4
-	ldr r3, _0812975C @ =gAIScriptPtr
+	ldr r0, _081293DC @ =0x020192e4
+	ldr r3, _081293E0 @ =gAIScriptPtr
 	ldr r2, [r3]
 	movs r4, 0x18
 	ldrsh r1, [r0, r4]
 	movs r0, 0
 	ldrsb r0, [r2, r0]
 	cmp r1, r0
-	bne _08129760
+	bne _081293E4
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1530,32 +1530,32 @@ sub_81293AC: @ 8129728
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129764
+	b _081293E8
 	.align 2, 0
-_08129758: .4byte 0x020192e4
-_0812975C: .4byte gAIScriptPtr
-_08129760:
+_081293DC: .4byte 0x020192e4
+_081293E0: .4byte gAIScriptPtr
+_081293E4:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129764:
+_081293E8:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81293AC
 
 	thumb_func_start sub_81293F0
-sub_81293F0: @ 812976C
+sub_81293F0: @ 81293F0
 	push {r4,lr}
 	bl contest_ai_get_move_excitement
-	ldr r0, _0812979C @ =0x020192e4
-	ldr r3, _081297A0 @ =gAIScriptPtr
+	ldr r0, _08129420 @ =0x020192e4
+	ldr r3, _08129424 @ =gAIScriptPtr
 	ldr r2, [r3]
 	movs r4, 0x18
 	ldrsh r1, [r0, r4]
 	movs r0, 0
 	ldrsb r0, [r2, r0]
 	cmp r1, r0
-	beq _081297A4
+	beq _08129428
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1567,23 +1567,23 @@ sub_81293F0: @ 812976C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _081297A8
+	b _0812942C
 	.align 2, 0
-_0812979C: .4byte 0x020192e4
-_081297A0: .4byte gAIScriptPtr
-_081297A4:
+_08129420: .4byte 0x020192e4
+_08129424: .4byte gAIScriptPtr
+_08129428:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_081297A8:
+_0812942C:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81293F0
 
 	thumb_func_start contest_ai_get_move_effect
-contest_ai_get_move_effect: @ 81297B0
-	ldr r2, _081297DC @ =gContestMons
-	ldr r3, _081297E0 @ =0x020192e4
+contest_ai_get_move_effect: @ 8129434
+	ldr r2, _08129460 @ =gContestMons
+	ldr r3, _08129464 @ =0x020192e4
 	ldrb r1, [r3, 0x4]
 	lsls r1, 1
 	adds r0, r3, 0
@@ -1594,35 +1594,35 @@ contest_ai_get_move_effect: @ 81297B0
 	adds r2, 0x1E
 	adds r1, r2
 	ldrh r0, [r1]
-	ldr r1, _081297E4 @ =gContestMoves
+	ldr r1, _08129468 @ =gContestMoves
 	lsls r0, 3
 	adds r0, r1
 	ldrb r0, [r0]
 	strh r0, [r3, 0x18]
-	ldr r1, _081297E8 @ =gAIScriptPtr
+	ldr r1, _0812946C @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_081297DC: .4byte gContestMons
-_081297E0: .4byte 0x020192e4
-_081297E4: .4byte gContestMoves
-_081297E8: .4byte gAIScriptPtr
+_08129460: .4byte gContestMons
+_08129464: .4byte 0x020192e4
+_08129468: .4byte gContestMoves
+_0812946C: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_get_move_effect
 
 	thumb_func_start sub_8129470
-sub_8129470: @ 81297EC
+sub_8129470: @ 8129470
 	push {lr}
 	bl contest_ai_get_move_effect
-	ldr r0, _0812981C @ =0x020192e4
+	ldr r0, _081294A0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129820 @ =gAIScriptPtr
+	ldr r3, _081294A4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _08129824
+	bne _081294A8
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1634,30 +1634,30 @@ sub_8129470: @ 81297EC
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129828
+	b _081294AC
 	.align 2, 0
-_0812981C: .4byte 0x020192e4
-_08129820: .4byte gAIScriptPtr
-_08129824:
+_081294A0: .4byte 0x020192e4
+_081294A4: .4byte gAIScriptPtr
+_081294A8:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129828:
+_081294AC:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129470
 
 	thumb_func_start sub_81294B0
-sub_81294B0: @ 812982C
+sub_81294B0: @ 81294B0
 	push {lr}
 	bl contest_ai_get_move_effect
-	ldr r0, _0812985C @ =0x020192e4
+	ldr r0, _081294E0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129860 @ =gAIScriptPtr
+	ldr r3, _081294E4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _08129864
+	beq _081294E8
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1669,22 +1669,22 @@ sub_81294B0: @ 812982C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129868
+	b _081294EC
 	.align 2, 0
-_0812985C: .4byte 0x020192e4
-_08129860: .4byte gAIScriptPtr
-_08129864:
+_081294E0: .4byte 0x020192e4
+_081294E4: .4byte gAIScriptPtr
+_081294E8:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129868:
+_081294EC:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81294B0
 
 	thumb_func_start contest_ai_get_move_effect_type
-contest_ai_get_move_effect_type: @ 812986C
-	ldr r2, _081298A0 @ =gContestMons
-	ldr r3, _081298A4 @ =0x020192e4
+contest_ai_get_move_effect_type: @ 81294F0
+	ldr r2, _08129524 @ =gContestMons
+	ldr r3, _08129528 @ =0x020192e4
 	ldrb r1, [r3, 0x4]
 	lsls r1, 1
 	adds r0, r3, 0
@@ -1695,8 +1695,8 @@ contest_ai_get_move_effect_type: @ 812986C
 	adds r2, 0x1E
 	adds r1, r2
 	ldrh r0, [r1]
-	ldr r2, _081298A8 @ =gContestEffects
-	ldr r1, _081298AC @ =gContestMoves
+	ldr r2, _0812952C @ =gContestEffects
+	ldr r1, _08129530 @ =gContestMoves
 	lsls r0, 3
 	adds r0, r1
 	ldrb r0, [r0]
@@ -1704,31 +1704,31 @@ contest_ai_get_move_effect_type: @ 812986C
 	adds r0, r2
 	ldrb r0, [r0]
 	strh r0, [r3, 0x18]
-	ldr r1, _081298B0 @ =gAIScriptPtr
+	ldr r1, _08129534 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_081298A0: .4byte gContestMons
-_081298A4: .4byte 0x020192e4
-_081298A8: .4byte gContestEffects
-_081298AC: .4byte gContestMoves
-_081298B0: .4byte gAIScriptPtr
+_08129524: .4byte gContestMons
+_08129528: .4byte 0x020192e4
+_0812952C: .4byte gContestEffects
+_08129530: .4byte gContestMoves
+_08129534: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_get_move_effect_type
 
 	thumb_func_start sub_8129538
-sub_8129538: @ 81298B4
+sub_8129538: @ 8129538
 	push {lr}
 	bl contest_ai_get_move_effect_type
-	ldr r0, _081298E4 @ =0x020192e4
+	ldr r0, _08129568 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _081298E8 @ =gAIScriptPtr
+	ldr r3, _0812956C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _081298EC
+	bne _08129570
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1740,30 +1740,30 @@ sub_8129538: @ 81298B4
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _081298F0
+	b _08129574
 	.align 2, 0
-_081298E4: .4byte 0x020192e4
-_081298E8: .4byte gAIScriptPtr
-_081298EC:
+_08129568: .4byte 0x020192e4
+_0812956C: .4byte gAIScriptPtr
+_08129570:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_081298F0:
+_08129574:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129538
 
 	thumb_func_start sub_8129578
-sub_8129578: @ 81298F4
+sub_8129578: @ 8129578
 	push {lr}
 	bl contest_ai_get_move_effect_type
-	ldr r0, _08129924 @ =0x020192e4
+	ldr r0, _081295A8 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129928 @ =gAIScriptPtr
+	ldr r3, _081295AC @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _0812992C
+	beq _081295B0
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -1775,23 +1775,23 @@ sub_8129578: @ 81298F4
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129930
+	b _081295B4
 	.align 2, 0
-_08129924: .4byte 0x020192e4
-_08129928: .4byte gAIScriptPtr
-_0812992C:
+_081295A8: .4byte 0x020192e4
+_081295AC: .4byte gAIScriptPtr
+_081295B0:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129930:
+_081295B4:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129578
 
 	thumb_func_start contest_ai_check_move_has_highest_appeal
-contest_ai_check_move_has_highest_appeal: @ 8129934
+contest_ai_check_move_has_highest_appeal: @ 81295B8
 	push {r4-r7,lr}
-	ldr r2, _0812998C @ =gContestMons
-	ldr r3, _08129990 @ =0x020192e4
+	ldr r2, _08129610 @ =gContestMons
+	ldr r3, _08129614 @ =0x020192e4
 	ldrb r0, [r3, 0x4]
 	lsls r0, 1
 	adds r1, r3, 0
@@ -1802,8 +1802,8 @@ contest_ai_check_move_has_highest_appeal: @ 8129934
 	adds r2, 0x1E
 	adds r0, r2
 	ldrh r0, [r0]
-	ldr r4, _08129994 @ =gContestEffects
-	ldr r5, _08129998 @ =gContestMoves
+	ldr r4, _08129618 @ =gContestEffects
+	ldr r5, _0812961C @ =gContestMoves
 	lsls r0, 3
 	adds r0, r5
 	ldrb r0, [r0]
@@ -1811,13 +1811,13 @@ contest_ai_check_move_has_highest_appeal: @ 8129934
 	adds r0, r4
 	ldrb r7, [r0, 0x1]
 	movs r6, 0
-	ldr r0, _0812999C @ =gAIScriptPtr
+	ldr r0, _08129620 @ =gAIScriptPtr
 	mov r12, r0
 	adds r1, r2
-_08129966:
+_081295EA:
 	ldrh r0, [r1]
 	cmp r0, 0
-	beq _0812997C
+	beq _08129600
 	lsls r0, 3
 	adds r0, r5
 	ldrb r0, [r0]
@@ -1825,26 +1825,26 @@ _08129966:
 	adds r0, r4
 	ldrb r0, [r0, 0x1]
 	cmp r7, r0
-	bcc _08129984
-_0812997C:
+	bcc _08129608
+_08129600:
 	adds r1, 0x2
 	adds r6, 0x1
 	cmp r6, 0x3
-	ble _08129966
-_08129984:
+	ble _081295EA
+_08129608:
 	cmp r6, 0x4
-	bne _081299A0
+	bne _08129624
 	movs r0, 0x1
-	b _081299A2
+	b _08129626
 	.align 2, 0
-_0812998C: .4byte gContestMons
-_08129990: .4byte 0x020192e4
-_08129994: .4byte gContestEffects
-_08129998: .4byte gContestMoves
-_0812999C: .4byte gAIScriptPtr
-_081299A0:
+_08129610: .4byte gContestMons
+_08129614: .4byte 0x020192e4
+_08129618: .4byte gContestEffects
+_0812961C: .4byte gContestMoves
+_08129620: .4byte gAIScriptPtr
+_08129624:
 	movs r0, 0
-_081299A2:
+_08129626:
 	strh r0, [r3, 0x18]
 	mov r1, r12
 	ldr r0, [r1]
@@ -1856,15 +1856,15 @@ _081299A2:
 	thumb_func_end contest_ai_check_move_has_highest_appeal
 
 	thumb_func_start sub_8129638
-sub_8129638: @ 81299B4
+sub_8129638: @ 8129638
 	push {lr}
 	bl contest_ai_check_move_has_highest_appeal
-	ldr r0, _081299E0 @ =0x020192e4
+	ldr r0, _08129664 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _081299E8
-	ldr r3, _081299E4 @ =gAIScriptPtr
+	beq _0812966C
+	ldr r3, _08129668 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -1877,27 +1877,27 @@ sub_8129638: @ 81299B4
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _081299F0
+	b _08129674
 	.align 2, 0
-_081299E0: .4byte 0x020192e4
-_081299E4: .4byte gAIScriptPtr
-_081299E8:
-	ldr r1, _081299F4 @ =gAIScriptPtr
+_08129664: .4byte 0x020192e4
+_08129668: .4byte gAIScriptPtr
+_0812966C:
+	ldr r1, _08129678 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_081299F0:
+_08129674:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_081299F4: .4byte gAIScriptPtr
+_08129678: .4byte gAIScriptPtr
 	thumb_func_end sub_8129638
 
 	thumb_func_start sub_812967C
-sub_812967C: @ 81299F8
+sub_812967C: @ 812967C
 	push {r4-r7,lr}
-	ldr r2, _08129A50 @ =gContestMons
-	ldr r3, _08129A54 @ =0x020192e4
+	ldr r2, _081296D4 @ =gContestMons
+	ldr r3, _081296D8 @ =0x020192e4
 	ldrb r0, [r3, 0x4]
 	lsls r0, 1
 	adds r1, r3, 0
@@ -1908,8 +1908,8 @@ sub_812967C: @ 81299F8
 	adds r2, 0x1E
 	adds r0, r2
 	ldrh r0, [r0]
-	ldr r4, _08129A58 @ =gContestEffects
-	ldr r5, _08129A5C @ =gContestMoves
+	ldr r4, _081296DC @ =gContestEffects
+	ldr r5, _081296E0 @ =gContestMoves
 	lsls r0, 3
 	adds r0, r5
 	ldrb r0, [r0]
@@ -1917,13 +1917,13 @@ sub_812967C: @ 81299F8
 	adds r0, r4
 	ldrb r7, [r0, 0x2]
 	movs r6, 0
-	ldr r0, _08129A60 @ =gAIScriptPtr
+	ldr r0, _081296E4 @ =gAIScriptPtr
 	mov r12, r0
 	adds r1, r2
-_08129A2A:
+_081296AE:
 	ldrh r0, [r1]
 	cmp r0, 0
-	beq _08129A40
+	beq _081296C4
 	lsls r0, 3
 	adds r0, r5
 	ldrb r0, [r0]
@@ -1931,26 +1931,26 @@ _08129A2A:
 	adds r0, r4
 	ldrb r0, [r0, 0x2]
 	cmp r7, r0
-	bcc _08129A48
-_08129A40:
+	bcc _081296CC
+_081296C4:
 	adds r1, 0x2
 	adds r6, 0x1
 	cmp r6, 0x3
-	ble _08129A2A
-_08129A48:
+	ble _081296AE
+_081296CC:
 	cmp r6, 0x4
-	bne _08129A64
+	bne _081296E8
 	movs r0, 0x1
-	b _08129A66
+	b _081296EA
 	.align 2, 0
-_08129A50: .4byte gContestMons
-_08129A54: .4byte 0x020192e4
-_08129A58: .4byte gContestEffects
-_08129A5C: .4byte gContestMoves
-_08129A60: .4byte gAIScriptPtr
-_08129A64:
+_081296D4: .4byte gContestMons
+_081296D8: .4byte 0x020192e4
+_081296DC: .4byte gContestEffects
+_081296E0: .4byte gContestMoves
+_081296E4: .4byte gAIScriptPtr
+_081296E8:
 	movs r0, 0
-_08129A66:
+_081296EA:
 	strh r0, [r3, 0x18]
 	mov r1, r12
 	ldr r0, [r1]
@@ -1962,15 +1962,15 @@ _08129A66:
 	thumb_func_end sub_812967C
 
 	thumb_func_start sub_81296FC
-sub_81296FC: @ 8129A78
+sub_81296FC: @ 81296FC
 	push {lr}
 	bl sub_812967C
-	ldr r0, _08129AA4 @ =0x020192e4
+	ldr r0, _08129728 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _08129AAC
-	ldr r3, _08129AA8 @ =gAIScriptPtr
+	beq _08129730
+	ldr r3, _0812972C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
@@ -1983,27 +1983,27 @@ sub_81296FC: @ 8129A78
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129AB4
+	b _08129738
 	.align 2, 0
-_08129AA4: .4byte 0x020192e4
-_08129AA8: .4byte gAIScriptPtr
-_08129AAC:
-	ldr r1, _08129AB8 @ =gAIScriptPtr
+_08129728: .4byte 0x020192e4
+_0812972C: .4byte gAIScriptPtr
+_08129730:
+	ldr r1, _0812973C @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x5
 	str r0, [r1]
-_08129AB4:
+_08129738:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08129AB8: .4byte gAIScriptPtr
+_0812973C: .4byte gAIScriptPtr
 	thumb_func_end sub_81296FC
 
 	thumb_func_start sub_8129740
-sub_8129740: @ 8129ABC
+sub_8129740: @ 8129740
 	push {r4,lr}
-	ldr r2, _08129B00 @ =gContestMons
-	ldr r4, _08129B04 @ =0x020192e4
+	ldr r2, _08129784 @ =gContestMons
+	ldr r4, _08129788 @ =0x020192e4
 	ldrb r1, [r4, 0x4]
 	lsls r1, 1
 	adds r0, r4, 0
@@ -2014,8 +2014,8 @@ sub_8129740: @ 8129ABC
 	adds r2, 0x1E
 	adds r1, r2
 	ldrh r0, [r1]
-	ldr r2, _08129B08 @ =gContestEffects
-	ldr r1, _08129B0C @ =gContestMoves
+	ldr r2, _0812978C @ =gContestEffects
+	ldr r1, _08129790 @ =gContestMoves
 	lsls r0, 3
 	adds r0, r1
 	ldrb r0, [r0]
@@ -2027,7 +2027,7 @@ sub_8129740: @ 8129ABC
 	lsls r0, 24
 	lsrs r0, 24
 	strh r0, [r4, 0x18]
-	ldr r1, _08129B10 @ =gAIScriptPtr
+	ldr r1, _08129794 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -2035,25 +2035,25 @@ sub_8129740: @ 8129ABC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08129B00: .4byte gContestMons
-_08129B04: .4byte 0x020192e4
-_08129B08: .4byte gContestEffects
-_08129B0C: .4byte gContestMoves
-_08129B10: .4byte gAIScriptPtr
+_08129784: .4byte gContestMons
+_08129788: .4byte 0x020192e4
+_0812978C: .4byte gContestEffects
+_08129790: .4byte gContestMoves
+_08129794: .4byte gAIScriptPtr
 	thumb_func_end sub_8129740
 
 	thumb_func_start sub_8129798
-sub_8129798: @ 8129B14
+sub_8129798: @ 8129798
 	push {lr}
 	bl sub_8129740
-	ldr r0, _08129B44 @ =0x020192e4
+	ldr r0, _081297C8 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129B48 @ =gAIScriptPtr
+	ldr r3, _081297CC @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _08129B4C
+	bge _081297D0
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2065,30 +2065,30 @@ sub_8129798: @ 8129B14
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129B50
+	b _081297D4
 	.align 2, 0
-_08129B44: .4byte 0x020192e4
-_08129B48: .4byte gAIScriptPtr
-_08129B4C:
+_081297C8: .4byte 0x020192e4
+_081297CC: .4byte gAIScriptPtr
+_081297D0:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129B50:
+_081297D4:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129798
 
 	thumb_func_start sub_81297D8
-sub_81297D8: @ 8129B54
+sub_81297D8: @ 81297D8
 	push {lr}
 	bl sub_8129740
-	ldr r0, _08129B84 @ =0x020192e4
+	ldr r0, _08129808 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129B88 @ =gAIScriptPtr
+	ldr r3, _0812980C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _08129B8C
+	ble _08129810
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2100,30 +2100,30 @@ sub_81297D8: @ 8129B54
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129B90
+	b _08129814
 	.align 2, 0
-_08129B84: .4byte 0x020192e4
-_08129B88: .4byte gAIScriptPtr
-_08129B8C:
+_08129808: .4byte 0x020192e4
+_0812980C: .4byte gAIScriptPtr
+_08129810:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129B90:
+_08129814:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81297D8
 
 	thumb_func_start sub_8129818
-sub_8129818: @ 8129B94
+sub_8129818: @ 8129818
 	push {lr}
 	bl sub_8129740
-	ldr r0, _08129BC4 @ =0x020192e4
+	ldr r0, _08129848 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129BC8 @ =gAIScriptPtr
+	ldr r3, _0812984C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _08129BCC
+	bne _08129850
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2135,30 +2135,30 @@ sub_8129818: @ 8129B94
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129BD0
+	b _08129854
 	.align 2, 0
-_08129BC4: .4byte 0x020192e4
-_08129BC8: .4byte gAIScriptPtr
-_08129BCC:
+_08129848: .4byte 0x020192e4
+_0812984C: .4byte gAIScriptPtr
+_08129850:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129BD0:
+_08129854:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129818
 
 	thumb_func_start sub_8129858
-sub_8129858: @ 8129BD4
+sub_8129858: @ 8129858
 	push {lr}
 	bl sub_8129740
-	ldr r0, _08129C04 @ =0x020192e4
+	ldr r0, _08129888 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129C08 @ =gAIScriptPtr
+	ldr r3, _0812988C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _08129C0C
+	beq _08129890
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2170,23 +2170,23 @@ sub_8129858: @ 8129BD4
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129C10
+	b _08129894
 	.align 2, 0
-_08129C04: .4byte 0x020192e4
-_08129C08: .4byte gAIScriptPtr
-_08129C0C:
+_08129888: .4byte 0x020192e4
+_0812988C: .4byte gAIScriptPtr
+_08129890:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129C10:
+_08129894:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129858
 
 	thumb_func_start sub_8129898
-sub_8129898: @ 8129C14
+sub_8129898: @ 8129898
 	push {r4,lr}
-	ldr r2, _08129C58 @ =gContestMons
-	ldr r4, _08129C5C @ =0x020192e4
+	ldr r2, _081298DC @ =gContestMons
+	ldr r4, _081298E0 @ =0x020192e4
 	ldrb r1, [r4, 0x4]
 	lsls r1, 1
 	adds r0, r4, 0
@@ -2197,8 +2197,8 @@ sub_8129898: @ 8129C14
 	adds r2, 0x1E
 	adds r1, r2
 	ldrh r0, [r1]
-	ldr r2, _08129C60 @ =gContestEffects
-	ldr r1, _08129C64 @ =gContestMoves
+	ldr r2, _081298E4 @ =gContestEffects
+	ldr r1, _081298E8 @ =gContestMoves
 	lsls r0, 3
 	adds r0, r1
 	ldrb r0, [r0]
@@ -2210,7 +2210,7 @@ sub_8129898: @ 8129C14
 	lsls r0, 24
 	lsrs r0, 24
 	strh r0, [r4, 0x18]
-	ldr r1, _08129C68 @ =gAIScriptPtr
+	ldr r1, _081298EC @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -2218,25 +2218,25 @@ sub_8129898: @ 8129C14
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08129C58: .4byte gContestMons
-_08129C5C: .4byte 0x020192e4
-_08129C60: .4byte gContestEffects
-_08129C64: .4byte gContestMoves
-_08129C68: .4byte gAIScriptPtr
+_081298DC: .4byte gContestMons
+_081298E0: .4byte 0x020192e4
+_081298E4: .4byte gContestEffects
+_081298E8: .4byte gContestMoves
+_081298EC: .4byte gAIScriptPtr
 	thumb_func_end sub_8129898
 
 	thumb_func_start sub_81298F0
-sub_81298F0: @ 8129C6C
+sub_81298F0: @ 81298F0
 	push {lr}
 	bl sub_8129898
-	ldr r0, _08129C9C @ =0x020192e4
+	ldr r0, _08129920 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129CA0 @ =gAIScriptPtr
+	ldr r3, _08129924 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _08129CA4
+	bge _08129928
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2248,30 +2248,30 @@ sub_81298F0: @ 8129C6C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129CA8
+	b _0812992C
 	.align 2, 0
-_08129C9C: .4byte 0x020192e4
-_08129CA0: .4byte gAIScriptPtr
-_08129CA4:
+_08129920: .4byte 0x020192e4
+_08129924: .4byte gAIScriptPtr
+_08129928:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129CA8:
+_0812992C:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81298F0
 
 	thumb_func_start sub_8129930
-sub_8129930: @ 8129CAC
+sub_8129930: @ 8129930
 	push {lr}
 	bl sub_8129898
-	ldr r0, _08129CDC @ =0x020192e4
+	ldr r0, _08129960 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129CE0 @ =gAIScriptPtr
+	ldr r3, _08129964 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _08129CE4
+	ble _08129968
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2283,30 +2283,30 @@ sub_8129930: @ 8129CAC
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129CE8
+	b _0812996C
 	.align 2, 0
-_08129CDC: .4byte 0x020192e4
-_08129CE0: .4byte gAIScriptPtr
-_08129CE4:
+_08129960: .4byte 0x020192e4
+_08129964: .4byte gAIScriptPtr
+_08129968:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129CE8:
+_0812996C:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129930
 
 	thumb_func_start sub_8129970
-sub_8129970: @ 8129CEC
+sub_8129970: @ 8129970
 	push {lr}
 	bl sub_8129898
-	ldr r0, _08129D1C @ =0x020192e4
+	ldr r0, _081299A0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129D20 @ =gAIScriptPtr
+	ldr r3, _081299A4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _08129D24
+	bne _081299A8
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2318,30 +2318,30 @@ sub_8129970: @ 8129CEC
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129D28
+	b _081299AC
 	.align 2, 0
-_08129D1C: .4byte 0x020192e4
-_08129D20: .4byte gAIScriptPtr
-_08129D24:
+_081299A0: .4byte 0x020192e4
+_081299A4: .4byte gAIScriptPtr
+_081299A8:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129D28:
+_081299AC:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129970
 
 	thumb_func_start sub_81299B0
-sub_81299B0: @ 8129D2C
+sub_81299B0: @ 81299B0
 	push {lr}
 	bl sub_8129898
-	ldr r0, _08129D5C @ =0x020192e4
+	ldr r0, _081299E0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129D60 @ =gAIScriptPtr
+	ldr r3, _081299E4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _08129D64
+	beq _081299E8
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2353,23 +2353,23 @@ sub_81299B0: @ 8129D2C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129D68
+	b _081299EC
 	.align 2, 0
-_08129D5C: .4byte 0x020192e4
-_08129D60: .4byte gAIScriptPtr
-_08129D64:
+_081299E0: .4byte 0x020192e4
+_081299E4: .4byte gAIScriptPtr
+_081299E8:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129D68:
+_081299EC:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_81299B0
 
 	thumb_func_start contest_ai_get_move_used_count
-contest_ai_get_move_used_count: @ 8129D6C
+contest_ai_get_move_used_count: @ 81299F0
 	push {r4,lr}
-	ldr r3, _08129D9C @ =gContestMons
-	ldr r4, _08129DA0 @ =0x020192e4
+	ldr r3, _08129A20 @ =gContestMons
+	ldr r4, _08129A24 @ =0x020192e4
 	ldrb r0, [r4, 0x4]
 	lsls r0, 1
 	adds r1, r4, 0
@@ -2388,20 +2388,20 @@ contest_ai_get_move_used_count: @ 8129D6C
 	adds r0, r1
 	ldrh r1, [r0, 0x8]
 	cmp r3, r1
-	beq _08129DA4
+	beq _08129A28
 	movs r0, 0
-	b _08129DAC
+	b _08129A30
 	.align 2, 0
-_08129D9C: .4byte gContestMons
-_08129DA0: .4byte 0x020192e4
-_08129DA4:
+_08129A20: .4byte gContestMons
+_08129A24: .4byte 0x020192e4
+_08129A28:
 	ldrb r0, [r0, 0xB]
 	lsls r0, 25
 	lsrs r0, 29
 	adds r0, 0x1
-_08129DAC:
+_08129A30:
 	strh r0, [r4, 0x18]
-	ldr r1, _08129DBC @ =gAIScriptPtr
+	ldr r1, _08129A40 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -2409,21 +2409,21 @@ _08129DAC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08129DBC: .4byte gAIScriptPtr
+_08129A40: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_get_move_used_count
 
 	thumb_func_start sub_8129A44
-sub_8129A44: @ 8129DC0
+sub_8129A44: @ 8129A44
 	push {lr}
 	bl contest_ai_get_move_used_count
-	ldr r0, _08129DF0 @ =0x020192e4
+	ldr r0, _08129A74 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129DF4 @ =gAIScriptPtr
+	ldr r3, _08129A78 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _08129DF8
+	bge _08129A7C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2435,30 +2435,30 @@ sub_8129A44: @ 8129DC0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129DFC
+	b _08129A80
 	.align 2, 0
-_08129DF0: .4byte 0x020192e4
-_08129DF4: .4byte gAIScriptPtr
-_08129DF8:
+_08129A74: .4byte 0x020192e4
+_08129A78: .4byte gAIScriptPtr
+_08129A7C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129DFC:
+_08129A80:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129A44
 
 	thumb_func_start sub_8129A84
-sub_8129A84: @ 8129E00
+sub_8129A84: @ 8129A84
 	push {lr}
 	bl contest_ai_get_move_used_count
-	ldr r0, _08129E30 @ =0x020192e4
+	ldr r0, _08129AB4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129E34 @ =gAIScriptPtr
+	ldr r3, _08129AB8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _08129E38
+	ble _08129ABC
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2470,30 +2470,30 @@ sub_8129A84: @ 8129E00
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129E3C
+	b _08129AC0
 	.align 2, 0
-_08129E30: .4byte 0x020192e4
-_08129E34: .4byte gAIScriptPtr
-_08129E38:
+_08129AB4: .4byte 0x020192e4
+_08129AB8: .4byte gAIScriptPtr
+_08129ABC:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129E3C:
+_08129AC0:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129A84
 
 	thumb_func_start sub_8129AC4
-sub_8129AC4: @ 8129E40
+sub_8129AC4: @ 8129AC4
 	push {lr}
 	bl contest_ai_get_move_used_count
-	ldr r0, _08129E70 @ =0x020192e4
+	ldr r0, _08129AF4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129E74 @ =gAIScriptPtr
+	ldr r3, _08129AF8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _08129E78
+	bne _08129AFC
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2505,30 +2505,30 @@ sub_8129AC4: @ 8129E40
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129E7C
+	b _08129B00
 	.align 2, 0
-_08129E70: .4byte 0x020192e4
-_08129E74: .4byte gAIScriptPtr
-_08129E78:
+_08129AF4: .4byte 0x020192e4
+_08129AF8: .4byte gAIScriptPtr
+_08129AFC:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129E7C:
+_08129B00:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129AC4
 
 	thumb_func_start sub_8129B04
-sub_8129B04: @ 8129E80
+sub_8129B04: @ 8129B04
 	push {lr}
 	bl contest_ai_get_move_used_count
-	ldr r0, _08129EB0 @ =0x020192e4
+	ldr r0, _08129B34 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _08129EB4 @ =gAIScriptPtr
+	ldr r3, _08129B38 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _08129EB8
+	beq _08129B3C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -2540,26 +2540,26 @@ sub_8129B04: @ 8129E80
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129EBC
+	b _08129B40
 	.align 2, 0
-_08129EB0: .4byte 0x020192e4
-_08129EB4: .4byte gAIScriptPtr
-_08129EB8:
+_08129B34: .4byte 0x020192e4
+_08129B38: .4byte gAIScriptPtr
+_08129B3C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_08129EBC:
+_08129B40:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129B04
 
 	thumb_func_start contest_ai_check_combo_starter
-contest_ai_check_combo_starter: @ 8129EC0
+contest_ai_check_combo_starter: @ 8129B44
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
 	movs r5, 0
-	ldr r3, _08129F28 @ =gContestMons
-	ldr r2, _08129F2C @ =0x020192e4
+	ldr r3, _08129BAC @ =gContestMons
+	ldr r2, _08129BB0 @ =0x020192e4
 	ldrb r1, [r2, 0x4]
 	lsls r1, 1
 	adds r2, 0x41
@@ -2572,7 +2572,7 @@ contest_ai_check_combo_starter: @ 8129EC0
 	movs r4, 0
 	mov r8, r2
 	adds r7, r3, 0
-_08129EE4:
+_08129B68:
 	lsls r0, r4, 1
 	mov r2, r8
 	ldrb r1, [r2]
@@ -2581,26 +2581,26 @@ _08129EE4:
 	adds r1, r0, r7
 	ldrh r0, [r1]
 	cmp r0, 0
-	beq _08129F06
+	beq _08129B8A
 	adds r1, r0, 0
 	adds r0, r6, 0
 	bl AreMovesContestCombo
 	lsls r0, 24
 	lsrs r5, r0, 24
 	cmp r5, 0
-	bne _08129F10
-_08129F06:
+	bne _08129B94
+_08129B8A:
 	adds r4, 0x1
 	cmp r4, 0x3
-	ble _08129EE4
+	ble _08129B68
 	cmp r5, 0
-	beq _08129F12
-_08129F10:
+	beq _08129B96
+_08129B94:
 	movs r5, 0x1
-_08129F12:
-	ldr r0, _08129F2C @ =0x020192e4
+_08129B96:
+	ldr r0, _08129BB0 @ =0x020192e4
 	strh r5, [r0, 0x18]
-	ldr r1, _08129F30 @ =gAIScriptPtr
+	ldr r1, _08129BB4 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -2610,21 +2610,21 @@ _08129F12:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08129F28: .4byte gContestMons
-_08129F2C: .4byte 0x020192e4
-_08129F30: .4byte gAIScriptPtr
+_08129BAC: .4byte gContestMons
+_08129BB0: .4byte 0x020192e4
+_08129BB4: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_check_combo_starter
 
 	thumb_func_start sub_8129BB8
-sub_8129BB8: @ 8129F34
+sub_8129BB8: @ 8129BB8
 	push {lr}
 	bl contest_ai_check_combo_starter
-	ldr r0, _08129F60 @ =0x020192e4
+	ldr r0, _08129BE4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _08129F68
-	ldr r3, _08129F64 @ =gAIScriptPtr
+	beq _08129BEC
+	ldr r3, _08129BE8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -2637,32 +2637,32 @@ sub_8129BB8: @ 8129F34
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129F70
+	b _08129BF4
 	.align 2, 0
-_08129F60: .4byte 0x020192e4
-_08129F64: .4byte gAIScriptPtr
-_08129F68:
-	ldr r1, _08129F74 @ =gAIScriptPtr
+_08129BE4: .4byte 0x020192e4
+_08129BE8: .4byte gAIScriptPtr
+_08129BEC:
+	ldr r1, _08129BF8 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_08129F70:
+_08129BF4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08129F74: .4byte gAIScriptPtr
+_08129BF8: .4byte gAIScriptPtr
 	thumb_func_end sub_8129BB8
 
 	thumb_func_start sub_8129BFC
-sub_8129BFC: @ 8129F78
+sub_8129BFC: @ 8129BFC
 	push {lr}
 	bl contest_ai_check_combo_starter
-	ldr r0, _08129FA4 @ =0x020192e4
+	ldr r0, _08129C28 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _08129FAC
-	ldr r3, _08129FA8 @ =gAIScriptPtr
+	bne _08129C30
+	ldr r3, _08129C2C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -2675,30 +2675,30 @@ sub_8129BFC: @ 8129F78
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _08129FB4
+	b _08129C38
 	.align 2, 0
-_08129FA4: .4byte 0x020192e4
-_08129FA8: .4byte gAIScriptPtr
-_08129FAC:
-	ldr r1, _08129FB8 @ =gAIScriptPtr
+_08129C28: .4byte 0x020192e4
+_08129C2C: .4byte gAIScriptPtr
+_08129C30:
+	ldr r1, _08129C3C @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_08129FB4:
+_08129C38:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08129FB8: .4byte gAIScriptPtr
+_08129C3C: .4byte gAIScriptPtr
 	thumb_func_end sub_8129BFC
 
 	thumb_func_start contest_ai_check_combo_finisher
-contest_ai_check_combo_finisher: @ 8129FBC
+contest_ai_check_combo_finisher: @ 8129C40
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
 	movs r5, 0
-	ldr r3, _0812A024 @ =gContestMons
-	ldr r2, _0812A028 @ =0x020192e4
+	ldr r3, _08129CA8 @ =gContestMons
+	ldr r2, _08129CAC @ =0x020192e4
 	ldrb r1, [r2, 0x4]
 	lsls r1, 1
 	adds r2, 0x41
@@ -2711,7 +2711,7 @@ contest_ai_check_combo_finisher: @ 8129FBC
 	movs r4, 0
 	mov r8, r2
 	adds r7, r3, 0
-_08129FE0:
+_08129C64:
 	lsls r0, r4, 1
 	mov r2, r8
 	ldrb r1, [r2]
@@ -2720,25 +2720,25 @@ _08129FE0:
 	adds r1, r0, r7
 	ldrh r0, [r1]
 	cmp r0, 0
-	beq _0812A000
+	beq _08129C84
 	adds r1, r6, 0
 	bl AreMovesContestCombo
 	lsls r0, 24
 	lsrs r5, r0, 24
 	cmp r5, 0
-	bne _0812A00A
-_0812A000:
+	bne _08129C8E
+_08129C84:
 	adds r4, 0x1
 	cmp r4, 0x3
-	ble _08129FE0
+	ble _08129C64
 	cmp r5, 0
-	beq _0812A00C
-_0812A00A:
+	beq _08129C90
+_08129C8E:
 	movs r5, 0x1
-_0812A00C:
-	ldr r0, _0812A028 @ =0x020192e4
+_08129C90:
+	ldr r0, _08129CAC @ =0x020192e4
 	strh r5, [r0, 0x18]
-	ldr r1, _0812A02C @ =gAIScriptPtr
+	ldr r1, _08129CB0 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -2748,21 +2748,21 @@ _0812A00C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A024: .4byte gContestMons
-_0812A028: .4byte 0x020192e4
-_0812A02C: .4byte gAIScriptPtr
+_08129CA8: .4byte gContestMons
+_08129CAC: .4byte 0x020192e4
+_08129CB0: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_check_combo_finisher
 
 	thumb_func_start sub_8129CB4
-sub_8129CB4: @ 812A030
+sub_8129CB4: @ 8129CB4
 	push {lr}
 	bl contest_ai_check_combo_finisher
-	ldr r0, _0812A05C @ =0x020192e4
+	ldr r0, _08129CE0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0812A064
-	ldr r3, _0812A060 @ =gAIScriptPtr
+	beq _08129CE8
+	ldr r3, _08129CE4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -2775,32 +2775,32 @@ sub_8129CB4: @ 812A030
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A06C
+	b _08129CF0
 	.align 2, 0
-_0812A05C: .4byte 0x020192e4
-_0812A060: .4byte gAIScriptPtr
-_0812A064:
-	ldr r1, _0812A070 @ =gAIScriptPtr
+_08129CE0: .4byte 0x020192e4
+_08129CE4: .4byte gAIScriptPtr
+_08129CE8:
+	ldr r1, _08129CF4 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A06C:
+_08129CF0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A070: .4byte gAIScriptPtr
+_08129CF4: .4byte gAIScriptPtr
 	thumb_func_end sub_8129CB4
 
 	thumb_func_start sub_8129CF8
-sub_8129CF8: @ 812A074
+sub_8129CF8: @ 8129CF8
 	push {lr}
 	bl contest_ai_check_combo_finisher
-	ldr r0, _0812A0A0 @ =0x020192e4
+	ldr r0, _08129D24 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0812A0A8
-	ldr r3, _0812A0A4 @ =gAIScriptPtr
+	bne _08129D2C
+	ldr r3, _08129D28 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -2813,28 +2813,28 @@ sub_8129CF8: @ 812A074
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A0B0
+	b _08129D34
 	.align 2, 0
-_0812A0A0: .4byte 0x020192e4
-_0812A0A4: .4byte gAIScriptPtr
-_0812A0A8:
-	ldr r1, _0812A0B4 @ =gAIScriptPtr
+_08129D24: .4byte 0x020192e4
+_08129D28: .4byte gAIScriptPtr
+_08129D2C:
+	ldr r1, _08129D38 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A0B0:
+_08129D34:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A0B4: .4byte gAIScriptPtr
+_08129D38: .4byte gAIScriptPtr
 	thumb_func_end sub_8129CF8
 
 	thumb_func_start contest_ai_check_would_finish_combo
-contest_ai_check_would_finish_combo: @ 812A0B8
+contest_ai_check_would_finish_combo: @ 8129D3C
 	push {r4,r5,lr}
 	movs r5, 0
-	ldr r3, _0812A108 @ =gContestMons
-	ldr r4, _0812A10C @ =0x020192e4
+	ldr r3, _08129D8C @ =gContestMons
+	ldr r4, _08129D90 @ =0x020192e4
 	ldrb r0, [r4, 0x4]
 	lsls r0, 1
 	adds r1, r4, 0
@@ -2853,18 +2853,18 @@ contest_ai_check_would_finish_combo: @ 812A0B8
 	adds r1, r0, r1
 	ldrh r0, [r1, 0x8]
 	cmp r0, 0
-	beq _0812A0F0
+	beq _08129D74
 	adds r1, r3, 0
 	bl AreMovesContestCombo
 	lsls r0, 24
 	lsrs r5, r0, 24
-_0812A0F0:
+_08129D74:
 	cmp r5, 0
-	beq _0812A0F6
+	beq _08129D7A
 	movs r5, 0x1
-_0812A0F6:
+_08129D7A:
 	strh r5, [r4, 0x18]
-	ldr r1, _0812A110 @ =gAIScriptPtr
+	ldr r1, _08129D94 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -2872,21 +2872,21 @@ _0812A0F6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A108: .4byte gContestMons
-_0812A10C: .4byte 0x020192e4
-_0812A110: .4byte gAIScriptPtr
+_08129D8C: .4byte gContestMons
+_08129D90: .4byte 0x020192e4
+_08129D94: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_check_would_finish_combo
 
 	thumb_func_start sub_8129D98
-sub_8129D98: @ 812A114
+sub_8129D98: @ 8129D98
 	push {lr}
 	bl contest_ai_check_would_finish_combo
-	ldr r0, _0812A140 @ =0x020192e4
+	ldr r0, _08129DC4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0812A148
-	ldr r3, _0812A144 @ =gAIScriptPtr
+	beq _08129DCC
+	ldr r3, _08129DC8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -2899,32 +2899,32 @@ sub_8129D98: @ 812A114
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A150
+	b _08129DD4
 	.align 2, 0
-_0812A140: .4byte 0x020192e4
-_0812A144: .4byte gAIScriptPtr
-_0812A148:
-	ldr r1, _0812A154 @ =gAIScriptPtr
+_08129DC4: .4byte 0x020192e4
+_08129DC8: .4byte gAIScriptPtr
+_08129DCC:
+	ldr r1, _08129DD8 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A150:
+_08129DD4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A154: .4byte gAIScriptPtr
+_08129DD8: .4byte gAIScriptPtr
 	thumb_func_end sub_8129D98
 
 	thumb_func_start sub_8129DDC
-sub_8129DDC: @ 812A158
+sub_8129DDC: @ 8129DDC
 	push {lr}
 	bl contest_ai_check_would_finish_combo
-	ldr r0, _0812A184 @ =0x020192e4
+	ldr r0, _08129E08 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0812A18C
-	ldr r3, _0812A188 @ =gAIScriptPtr
+	bne _08129E10
+	ldr r3, _08129E0C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -2937,32 +2937,32 @@ sub_8129DDC: @ 812A158
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A194
+	b _08129E18
 	.align 2, 0
-_0812A184: .4byte 0x020192e4
-_0812A188: .4byte gAIScriptPtr
-_0812A18C:
-	ldr r1, _0812A198 @ =gAIScriptPtr
+_08129E08: .4byte 0x020192e4
+_08129E0C: .4byte gAIScriptPtr
+_08129E10:
+	ldr r1, _08129E1C @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A194:
+_08129E18:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A198: .4byte gAIScriptPtr
+_08129E1C: .4byte gAIScriptPtr
 	thumb_func_end sub_8129DDC
 
 	thumb_func_start contest_ai_get_condition
-contest_ai_get_condition: @ 812A19C
+contest_ai_get_condition: @ 8129E20
 	push {r4,r5,lr}
-	ldr r4, _0812A1D8 @ =gAIScriptPtr
+	ldr r4, _08129E5C @ =gAIScriptPtr
 	ldr r0, [r4]
 	ldrb r0, [r0, 0x1]
 	bl sub_8128A7C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r5, _0812A1DC @ =0x020192e4
+	ldr r5, _08129E60 @ =0x020192e4
 	lsls r1, r0, 3
 	subs r1, r0
 	lsls r1, 2
@@ -2983,22 +2983,22 @@ contest_ai_get_condition: @ 812A19C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A1D8: .4byte gAIScriptPtr
-_0812A1DC: .4byte 0x020192e4
+_08129E5C: .4byte gAIScriptPtr
+_08129E60: .4byte 0x020192e4
 	thumb_func_end contest_ai_get_condition
 
 	thumb_func_start sub_8129E64
-sub_8129E64: @ 812A1E0
+sub_8129E64: @ 8129E64
 	push {lr}
 	bl contest_ai_get_condition
-	ldr r0, _0812A210 @ =0x020192e4
+	ldr r0, _08129E94 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A214 @ =gAIScriptPtr
+	ldr r3, _08129E98 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _0812A218
+	bge _08129E9C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3010,30 +3010,30 @@ sub_8129E64: @ 812A1E0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A21C
+	b _08129EA0
 	.align 2, 0
-_0812A210: .4byte 0x020192e4
-_0812A214: .4byte gAIScriptPtr
-_0812A218:
+_08129E94: .4byte 0x020192e4
+_08129E98: .4byte gAIScriptPtr
+_08129E9C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A21C:
+_08129EA0:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129E64
 
 	thumb_func_start sub_8129EA4
-sub_8129EA4: @ 812A220
+sub_8129EA4: @ 8129EA4
 	push {lr}
 	bl contest_ai_get_condition
-	ldr r0, _0812A250 @ =0x020192e4
+	ldr r0, _08129ED4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A254 @ =gAIScriptPtr
+	ldr r3, _08129ED8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _0812A258
+	ble _08129EDC
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3045,30 +3045,30 @@ sub_8129EA4: @ 812A220
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A25C
+	b _08129EE0
 	.align 2, 0
-_0812A250: .4byte 0x020192e4
-_0812A254: .4byte gAIScriptPtr
-_0812A258:
+_08129ED4: .4byte 0x020192e4
+_08129ED8: .4byte gAIScriptPtr
+_08129EDC:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A25C:
+_08129EE0:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129EA4
 
 	thumb_func_start sub_8129EE4
-sub_8129EE4: @ 812A260
+sub_8129EE4: @ 8129EE4
 	push {lr}
 	bl contest_ai_get_condition
-	ldr r0, _0812A290 @ =0x020192e4
+	ldr r0, _08129F14 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A294 @ =gAIScriptPtr
+	ldr r3, _08129F18 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _0812A298
+	bne _08129F1C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3080,30 +3080,30 @@ sub_8129EE4: @ 812A260
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A29C
+	b _08129F20
 	.align 2, 0
-_0812A290: .4byte 0x020192e4
-_0812A294: .4byte gAIScriptPtr
-_0812A298:
+_08129F14: .4byte 0x020192e4
+_08129F18: .4byte gAIScriptPtr
+_08129F1C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A29C:
+_08129F20:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129EE4
 
 	thumb_func_start sub_8129F24
-sub_8129F24: @ 812A2A0
+sub_8129F24: @ 8129F24
 	push {lr}
 	bl contest_ai_get_condition
-	ldr r0, _0812A2D0 @ =0x020192e4
+	ldr r0, _08129F54 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A2D4 @ =gAIScriptPtr
+	ldr r3, _08129F58 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _0812A2D8
+	beq _08129F5C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3115,23 +3115,23 @@ sub_8129F24: @ 812A2A0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A2DC
+	b _08129F60
 	.align 2, 0
-_0812A2D0: .4byte 0x020192e4
-_0812A2D4: .4byte gAIScriptPtr
-_0812A2D8:
+_08129F54: .4byte 0x020192e4
+_08129F58: .4byte gAIScriptPtr
+_08129F5C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A2DC:
+_08129F60:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129F24
 
 	thumb_func_start contest_ai_get_used_combo_starter
-contest_ai_get_used_combo_starter: @ 812A2E0
+contest_ai_get_used_combo_starter: @ 8129F64
 	push {r4-r6,lr}
 	movs r6, 0
-	ldr r5, _0812A328 @ =gAIScriptPtr
+	ldr r5, _08129FAC @ =gAIScriptPtr
 	ldr r0, [r5]
 	ldrb r0, [r0, 0x1]
 	bl sub_8128A7C
@@ -3141,12 +3141,12 @@ contest_ai_get_used_combo_starter: @ 812A2E0
 	bl sub_80B214C
 	lsls r0, 24
 	cmp r0, 0
-	beq _0812A318
-	ldr r2, _0812A32C @ =gContestMoves
+	beq _08129F9C
+	ldr r2, _08129FB0 @ =gContestMoves
 	lsls r0, r4, 3
 	subs r0, r4
 	lsls r0, 2
-	ldr r1, _0812A330 @ =0x02019260
+	ldr r1, _08129FB4 @ =0x02019260
 	adds r0, r1
 	ldrh r0, [r0, 0x8]
 	lsls r0, 3
@@ -3155,8 +3155,8 @@ contest_ai_get_used_combo_starter: @ 812A2E0
 	negs r0, r1
 	orrs r0, r1
 	lsrs r6, r0, 31
-_0812A318:
-	ldr r0, _0812A334 @ =0x020192e4
+_08129F9C:
+	ldr r0, _08129FB8 @ =0x020192e4
 	strh r6, [r0, 0x18]
 	ldr r0, [r5]
 	adds r0, 0x2
@@ -3165,24 +3165,24 @@ _0812A318:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A328: .4byte gAIScriptPtr
-_0812A32C: .4byte gContestMoves
-_0812A330: .4byte 0x02019260
-_0812A334: .4byte 0x020192e4
+_08129FAC: .4byte gAIScriptPtr
+_08129FB0: .4byte gContestMoves
+_08129FB4: .4byte 0x02019260
+_08129FB8: .4byte 0x020192e4
 	thumb_func_end contest_ai_get_used_combo_starter
 
 	thumb_func_start sub_8129FBC
-sub_8129FBC: @ 812A338
+sub_8129FBC: @ 8129FBC
 	push {lr}
 	bl contest_ai_get_used_combo_starter
-	ldr r0, _0812A368 @ =0x020192e4
+	ldr r0, _08129FEC @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A36C @ =gAIScriptPtr
+	ldr r3, _08129FF0 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _0812A370
+	bge _08129FF4
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3194,30 +3194,30 @@ sub_8129FBC: @ 812A338
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A374
+	b _08129FF8
 	.align 2, 0
-_0812A368: .4byte 0x020192e4
-_0812A36C: .4byte gAIScriptPtr
-_0812A370:
+_08129FEC: .4byte 0x020192e4
+_08129FF0: .4byte gAIScriptPtr
+_08129FF4:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A374:
+_08129FF8:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129FBC
 
 	thumb_func_start sub_8129FFC
-sub_8129FFC: @ 812A378
+sub_8129FFC: @ 8129FFC
 	push {lr}
 	bl contest_ai_get_used_combo_starter
-	ldr r0, _0812A3A8 @ =0x020192e4
+	ldr r0, _0812A02C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A3AC @ =gAIScriptPtr
+	ldr r3, _0812A030 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _0812A3B0
+	ble _0812A034
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3229,30 +3229,30 @@ sub_8129FFC: @ 812A378
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A3B4
+	b _0812A038
 	.align 2, 0
-_0812A3A8: .4byte 0x020192e4
-_0812A3AC: .4byte gAIScriptPtr
-_0812A3B0:
+_0812A02C: .4byte 0x020192e4
+_0812A030: .4byte gAIScriptPtr
+_0812A034:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A3B4:
+_0812A038:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8129FFC
 
 	thumb_func_start sub_812A03C
-sub_812A03C: @ 812A3B8
+sub_812A03C: @ 812A03C
 	push {lr}
 	bl contest_ai_get_used_combo_starter
-	ldr r0, _0812A3E8 @ =0x020192e4
+	ldr r0, _0812A06C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A3EC @ =gAIScriptPtr
+	ldr r3, _0812A070 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _0812A3F0
+	bne _0812A074
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3264,30 +3264,30 @@ sub_812A03C: @ 812A3B8
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A3F4
+	b _0812A078
 	.align 2, 0
-_0812A3E8: .4byte 0x020192e4
-_0812A3EC: .4byte gAIScriptPtr
-_0812A3F0:
+_0812A06C: .4byte 0x020192e4
+_0812A070: .4byte gAIScriptPtr
+_0812A074:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A3F4:
+_0812A078:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A03C
 
 	thumb_func_start sub_812A07C
-sub_812A07C: @ 812A3F8
+sub_812A07C: @ 812A07C
 	push {lr}
 	bl contest_ai_get_used_combo_starter
-	ldr r0, _0812A428 @ =0x020192e4
+	ldr r0, _0812A0AC @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A42C @ =gAIScriptPtr
+	ldr r3, _0812A0B0 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _0812A430
+	beq _0812A0B4
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3299,22 +3299,22 @@ sub_812A07C: @ 812A3F8
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A434
+	b _0812A0B8
 	.align 2, 0
-_0812A428: .4byte 0x020192e4
-_0812A42C: .4byte gAIScriptPtr
-_0812A430:
+_0812A0AC: .4byte 0x020192e4
+_0812A0B0: .4byte gAIScriptPtr
+_0812A0B4:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A434:
+_0812A0B8:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A07C
 
 	thumb_func_start contest_ai_check_can_participate
-contest_ai_check_can_participate: @ 812A438
+contest_ai_check_can_participate: @ 812A0BC
 	push {lr}
-	ldr r0, _0812A458 @ =gAIScriptPtr
+	ldr r0, _0812A0DC @ =gAIScriptPtr
 	ldr r0, [r0]
 	ldrb r0, [r0, 0x1]
 	bl sub_8128A7C
@@ -3323,39 +3323,39 @@ contest_ai_check_can_participate: @ 812A438
 	bl sub_80AF59C
 	lsls r0, 24
 	cmp r0, 0
-	beq _0812A460
-	ldr r1, _0812A45C @ =0x020192e4
+	beq _0812A0E4
+	ldr r1, _0812A0E0 @ =0x020192e4
 	movs r0, 0
-	b _0812A464
+	b _0812A0E8
 	.align 2, 0
-_0812A458: .4byte gAIScriptPtr
-_0812A45C: .4byte 0x020192e4
-_0812A460:
-	ldr r1, _0812A474 @ =0x020192e4
+_0812A0DC: .4byte gAIScriptPtr
+_0812A0E0: .4byte 0x020192e4
+_0812A0E4:
+	ldr r1, _0812A0F8 @ =0x020192e4
 	movs r0, 0x1
-_0812A464:
+_0812A0E8:
 	strh r0, [r1, 0x18]
-	ldr r1, _0812A478 @ =gAIScriptPtr
+	ldr r1, _0812A0FC @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x2
 	str r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A474: .4byte 0x020192e4
-_0812A478: .4byte gAIScriptPtr
+_0812A0F8: .4byte 0x020192e4
+_0812A0FC: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_check_can_participate
 
 	thumb_func_start sub_812A100
-sub_812A100: @ 812A47C
+sub_812A100: @ 812A100
 	push {lr}
 	bl contest_ai_check_can_participate
-	ldr r0, _0812A4A8 @ =0x020192e4
+	ldr r0, _0812A12C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0812A4B0
-	ldr r3, _0812A4AC @ =gAIScriptPtr
+	beq _0812A134
+	ldr r3, _0812A130 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3368,32 +3368,32 @@ sub_812A100: @ 812A47C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A4B8
+	b _0812A13C
 	.align 2, 0
-_0812A4A8: .4byte 0x020192e4
-_0812A4AC: .4byte gAIScriptPtr
-_0812A4B0:
-	ldr r1, _0812A4BC @ =gAIScriptPtr
+_0812A12C: .4byte 0x020192e4
+_0812A130: .4byte gAIScriptPtr
+_0812A134:
+	ldr r1, _0812A140 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A4B8:
+_0812A13C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A4BC: .4byte gAIScriptPtr
+_0812A140: .4byte gAIScriptPtr
 	thumb_func_end sub_812A100
 
 	thumb_func_start sub_812A144
-sub_812A144: @ 812A4C0
+sub_812A144: @ 812A144
 	push {lr}
 	bl contest_ai_check_can_participate
-	ldr r0, _0812A4EC @ =0x020192e4
+	ldr r0, _0812A170 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0812A4F4
-	ldr r3, _0812A4F0 @ =gAIScriptPtr
+	bne _0812A178
+	ldr r3, _0812A174 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3406,32 +3406,32 @@ sub_812A144: @ 812A4C0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A4FC
+	b _0812A180
 	.align 2, 0
-_0812A4EC: .4byte 0x020192e4
-_0812A4F0: .4byte gAIScriptPtr
-_0812A4F4:
-	ldr r1, _0812A500 @ =gAIScriptPtr
+_0812A170: .4byte 0x020192e4
+_0812A174: .4byte gAIScriptPtr
+_0812A178:
+	ldr r1, _0812A184 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A4FC:
+_0812A180:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A500: .4byte gAIScriptPtr
+_0812A184: .4byte gAIScriptPtr
 	thumb_func_end sub_812A144
 
 	thumb_func_start contest_ai_get_val_812A188
-contest_ai_get_val_812A188: @ 812A504
+contest_ai_get_val_812A188: @ 812A188
 	push {r4,lr}
-	ldr r4, _0812A538 @ =gAIScriptPtr
+	ldr r4, _0812A1BC @ =gAIScriptPtr
 	ldr r0, [r4]
 	ldrb r0, [r0, 0x1]
 	bl sub_8128A7C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0812A53C @ =0x020192e4
+	ldr r2, _0812A1C0 @ =0x020192e4
 	lsls r1, r0, 3
 	subs r1, r0
 	lsls r1, 2
@@ -3449,20 +3449,20 @@ contest_ai_get_val_812A188: @ 812A504
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A538: .4byte gAIScriptPtr
-_0812A53C: .4byte 0x020192e4
+_0812A1BC: .4byte gAIScriptPtr
+_0812A1C0: .4byte 0x020192e4
 	thumb_func_end contest_ai_get_val_812A188
 
 	thumb_func_start sub_812A1C4
-sub_812A1C4: @ 812A540
+sub_812A1C4: @ 812A1C4
 	push {lr}
 	bl contest_ai_get_val_812A188
-	ldr r0, _0812A56C @ =0x020192e4
+	ldr r0, _0812A1F0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0812A574
-	ldr r3, _0812A570 @ =gAIScriptPtr
+	beq _0812A1F8
+	ldr r3, _0812A1F4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3475,32 +3475,32 @@ sub_812A1C4: @ 812A540
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A57C
+	b _0812A200
 	.align 2, 0
-_0812A56C: .4byte 0x020192e4
-_0812A570: .4byte gAIScriptPtr
-_0812A574:
-	ldr r1, _0812A580 @ =gAIScriptPtr
+_0812A1F0: .4byte 0x020192e4
+_0812A1F4: .4byte gAIScriptPtr
+_0812A1F8:
+	ldr r1, _0812A204 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A57C:
+_0812A200:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A580: .4byte gAIScriptPtr
+_0812A204: .4byte gAIScriptPtr
 	thumb_func_end sub_812A1C4
 
 	thumb_func_start sub_812A208
-sub_812A208: @ 812A584
+sub_812A208: @ 812A208
 	push {lr}
 	bl contest_ai_get_val_812A188
-	ldr r0, _0812A5B0 @ =0x020192e4
+	ldr r0, _0812A234 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0812A5B8
-	ldr r3, _0812A5B4 @ =gAIScriptPtr
+	bne _0812A23C
+	ldr r3, _0812A238 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3513,32 +3513,32 @@ sub_812A208: @ 812A584
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A5C0
+	b _0812A244
 	.align 2, 0
-_0812A5B0: .4byte 0x020192e4
-_0812A5B4: .4byte gAIScriptPtr
-_0812A5B8:
-	ldr r1, _0812A5C4 @ =gAIScriptPtr
+_0812A234: .4byte 0x020192e4
+_0812A238: .4byte gAIScriptPtr
+_0812A23C:
+	ldr r1, _0812A248 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A5C0:
+_0812A244:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A5C4: .4byte gAIScriptPtr
+_0812A248: .4byte gAIScriptPtr
 	thumb_func_end sub_812A208
 
 	thumb_func_start sub_812A24C
-sub_812A24C: @ 812A5C8
+sub_812A24C: @ 812A24C
 	push {r4,r5,lr}
-	ldr r5, _0812A608 @ =gAIScriptPtr
+	ldr r5, _0812A28C @ =gAIScriptPtr
 	ldr r0, [r5]
 	ldrb r0, [r0, 0x1]
 	bl sub_8128A7C
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r3, _0812A60C @ =0x020192e4
+	ldr r3, _0812A290 @ =0x020192e4
 	lsls r1, r0, 3
 	subs r1, r0
 	lsls r1, 2
@@ -3563,20 +3563,20 @@ sub_812A24C: @ 812A5C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A608: .4byte gAIScriptPtr
-_0812A60C: .4byte 0x020192e4
+_0812A28C: .4byte gAIScriptPtr
+_0812A290: .4byte 0x020192e4
 	thumb_func_end sub_812A24C
 
 	thumb_func_start sub_812A294
-sub_812A294: @ 812A610
+sub_812A294: @ 812A294
 	push {lr}
 	bl sub_812A24C
-	ldr r0, _0812A63C @ =0x020192e4
+	ldr r0, _0812A2C0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bge _0812A644
-	ldr r3, _0812A640 @ =gAIScriptPtr
+	bge _0812A2C8
+	ldr r3, _0812A2C4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3589,32 +3589,32 @@ sub_812A294: @ 812A610
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A64C
+	b _0812A2D0
 	.align 2, 0
-_0812A63C: .4byte 0x020192e4
-_0812A640: .4byte gAIScriptPtr
-_0812A644:
-	ldr r1, _0812A650 @ =gAIScriptPtr
+_0812A2C0: .4byte 0x020192e4
+_0812A2C4: .4byte gAIScriptPtr
+_0812A2C8:
+	ldr r1, _0812A2D4 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A64C:
+_0812A2D0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A650: .4byte gAIScriptPtr
+_0812A2D4: .4byte gAIScriptPtr
 	thumb_func_end sub_812A294
 
 	thumb_func_start sub_812A2D8
-sub_812A2D8: @ 812A654
+sub_812A2D8: @ 812A2D8
 	push {lr}
 	bl sub_812A24C
-	ldr r0, _0812A680 @ =0x020192e4
+	ldr r0, _0812A304 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	ble _0812A688
-	ldr r3, _0812A684 @ =gAIScriptPtr
+	ble _0812A30C
+	ldr r3, _0812A308 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3627,32 +3627,32 @@ sub_812A2D8: @ 812A654
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A690
+	b _0812A314
 	.align 2, 0
-_0812A680: .4byte 0x020192e4
-_0812A684: .4byte gAIScriptPtr
-_0812A688:
-	ldr r1, _0812A694 @ =gAIScriptPtr
+_0812A304: .4byte 0x020192e4
+_0812A308: .4byte gAIScriptPtr
+_0812A30C:
+	ldr r1, _0812A318 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A690:
+_0812A314:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A694: .4byte gAIScriptPtr
+_0812A318: .4byte gAIScriptPtr
 	thumb_func_end sub_812A2D8
 
 	thumb_func_start sub_812A31C
-sub_812A31C: @ 812A698
+sub_812A31C: @ 812A31C
 	push {lr}
 	bl sub_812A24C
-	ldr r0, _0812A6C4 @ =0x020192e4
+	ldr r0, _0812A348 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0812A6CC
-	ldr r3, _0812A6C8 @ =gAIScriptPtr
+	bne _0812A350
+	ldr r3, _0812A34C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3665,32 +3665,32 @@ sub_812A31C: @ 812A698
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A6D4
+	b _0812A358
 	.align 2, 0
-_0812A6C4: .4byte 0x020192e4
-_0812A6C8: .4byte gAIScriptPtr
-_0812A6CC:
-	ldr r1, _0812A6D8 @ =gAIScriptPtr
+_0812A348: .4byte 0x020192e4
+_0812A34C: .4byte gAIScriptPtr
+_0812A350:
+	ldr r1, _0812A35C @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A6D4:
+_0812A358:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A6D8: .4byte gAIScriptPtr
+_0812A35C: .4byte gAIScriptPtr
 	thumb_func_end sub_812A31C
 
 	thumb_func_start sub_812A360
-sub_812A360: @ 812A6DC
+sub_812A360: @ 812A360
 	push {lr}
 	bl sub_812A24C
-	ldr r0, _0812A708 @ =0x020192e4
+	ldr r0, _0812A38C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0812A710
-	ldr r3, _0812A70C @ =gAIScriptPtr
+	beq _0812A394
+	ldr r3, _0812A390 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3703,32 +3703,32 @@ sub_812A360: @ 812A6DC
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A718
+	b _0812A39C
 	.align 2, 0
-_0812A708: .4byte 0x020192e4
-_0812A70C: .4byte gAIScriptPtr
-_0812A710:
-	ldr r1, _0812A71C @ =gAIScriptPtr
+_0812A38C: .4byte 0x020192e4
+_0812A390: .4byte gAIScriptPtr
+_0812A394:
+	ldr r1, _0812A3A0 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A718:
+_0812A39C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A71C: .4byte gAIScriptPtr
+_0812A3A0: .4byte gAIScriptPtr
 	thumb_func_end sub_812A360
 
 	thumb_func_start sub_812A3A4
-sub_812A3A4: @ 812A720
+sub_812A3A4: @ 812A3A4
 	push {r4,lr}
-	ldr r4, _0812A754 @ =gAIScriptPtr
+	ldr r4, _0812A3D8 @ =gAIScriptPtr
 	ldr r0, [r4]
 	ldrb r0, [r0, 0x1]
 	bl sub_8128A7C
 	lsls r0, 24
-	ldr r3, _0812A758 @ =0x020192e4
-	ldr r2, _0812A75C @ =gUnknown_02038670
+	ldr r3, _0812A3DC @ =0x020192e4
+	ldr r2, _0812A3E0 @ =gUnknown_02038670
 	lsrs r0, 23
 	adds r0, r2
 	adds r1, r3, 0
@@ -3747,21 +3747,21 @@ sub_812A3A4: @ 812A720
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A754: .4byte gAIScriptPtr
-_0812A758: .4byte 0x020192e4
-_0812A75C: .4byte gUnknown_02038670
+_0812A3D8: .4byte gAIScriptPtr
+_0812A3DC: .4byte 0x020192e4
+_0812A3E0: .4byte gUnknown_02038670
 	thumb_func_end sub_812A3A4
 
 	thumb_func_start sub_812A3E4
-sub_812A3E4: @ 812A760
+sub_812A3E4: @ 812A3E4
 	push {lr}
 	bl sub_812A3A4
-	ldr r0, _0812A78C @ =0x020192e4
+	ldr r0, _0812A410 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bge _0812A794
-	ldr r3, _0812A790 @ =gAIScriptPtr
+	bge _0812A418
+	ldr r3, _0812A414 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3774,32 +3774,32 @@ sub_812A3E4: @ 812A760
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A79C
+	b _0812A420
 	.align 2, 0
-_0812A78C: .4byte 0x020192e4
-_0812A790: .4byte gAIScriptPtr
-_0812A794:
-	ldr r1, _0812A7A0 @ =gAIScriptPtr
+_0812A410: .4byte 0x020192e4
+_0812A414: .4byte gAIScriptPtr
+_0812A418:
+	ldr r1, _0812A424 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A79C:
+_0812A420:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A7A0: .4byte gAIScriptPtr
+_0812A424: .4byte gAIScriptPtr
 	thumb_func_end sub_812A3E4
 
 	thumb_func_start sub_812A428
-sub_812A428: @ 812A7A4
+sub_812A428: @ 812A428
 	push {lr}
 	bl sub_812A3A4
-	ldr r0, _0812A7D0 @ =0x020192e4
+	ldr r0, _0812A454 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	ble _0812A7D8
-	ldr r3, _0812A7D4 @ =gAIScriptPtr
+	ble _0812A45C
+	ldr r3, _0812A458 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3812,32 +3812,32 @@ sub_812A428: @ 812A7A4
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A7E0
+	b _0812A464
 	.align 2, 0
-_0812A7D0: .4byte 0x020192e4
-_0812A7D4: .4byte gAIScriptPtr
-_0812A7D8:
-	ldr r1, _0812A7E4 @ =gAIScriptPtr
+_0812A454: .4byte 0x020192e4
+_0812A458: .4byte gAIScriptPtr
+_0812A45C:
+	ldr r1, _0812A468 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A7E0:
+_0812A464:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A7E4: .4byte gAIScriptPtr
+_0812A468: .4byte gAIScriptPtr
 	thumb_func_end sub_812A428
 
 	thumb_func_start sub_812A46C
-sub_812A46C: @ 812A7E8
+sub_812A46C: @ 812A46C
 	push {lr}
 	bl sub_812A3A4
-	ldr r0, _0812A814 @ =0x020192e4
+	ldr r0, _0812A498 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0812A81C
-	ldr r3, _0812A818 @ =gAIScriptPtr
+	bne _0812A4A0
+	ldr r3, _0812A49C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3850,32 +3850,32 @@ sub_812A46C: @ 812A7E8
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A824
+	b _0812A4A8
 	.align 2, 0
-_0812A814: .4byte 0x020192e4
-_0812A818: .4byte gAIScriptPtr
-_0812A81C:
-	ldr r1, _0812A828 @ =gAIScriptPtr
+_0812A498: .4byte 0x020192e4
+_0812A49C: .4byte gAIScriptPtr
+_0812A4A0:
+	ldr r1, _0812A4AC @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A824:
+_0812A4A8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A828: .4byte gAIScriptPtr
+_0812A4AC: .4byte gAIScriptPtr
 	thumb_func_end sub_812A46C
 
 	thumb_func_start sub_812A4B0
-sub_812A4B0: @ 812A82C
+sub_812A4B0: @ 812A4B0
 	push {lr}
 	bl sub_812A3A4
-	ldr r0, _0812A858 @ =0x020192e4
+	ldr r0, _0812A4DC @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0812A860
-	ldr r3, _0812A85C @ =gAIScriptPtr
+	beq _0812A4E4
+	ldr r3, _0812A4E0 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -3888,33 +3888,33 @@ sub_812A4B0: @ 812A82C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A868
+	b _0812A4EC
 	.align 2, 0
-_0812A858: .4byte 0x020192e4
-_0812A85C: .4byte gAIScriptPtr
-_0812A860:
-	ldr r1, _0812A86C @ =gAIScriptPtr
+_0812A4DC: .4byte 0x020192e4
+_0812A4E0: .4byte gAIScriptPtr
+_0812A4E4:
+	ldr r1, _0812A4F0 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812A868:
+_0812A4EC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A86C: .4byte gAIScriptPtr
+_0812A4F0: .4byte gAIScriptPtr
 	thumb_func_end sub_812A4B0
 
 	thumb_func_start sub_812A4F4
-sub_812A4F4: @ 812A870
+sub_812A4F4: @ 812A4F4
 	push {r4,lr}
-	ldr r4, _0812A8A8 @ =gAIScriptPtr
+	ldr r4, _0812A52C @ =gAIScriptPtr
 	ldr r0, [r4]
 	ldrb r0, [r0, 0x1]
 	bl sub_8128A7C
 	lsls r0, 24
 	ldr r3, [r4]
 	ldrb r1, [r3, 0x2]
-	ldr r2, _0812A8AC @ =0x02019204
+	ldr r2, _0812A530 @ =0x02019204
 	lsrs r0, 23
 	lsls r1, 3
 	adds r0, r1
@@ -3923,7 +3923,7 @@ sub_812A4F4: @ 812A870
 	adds r0, r1
 	ldrh r0, [r0]
 	adds r2, 0xE0
-	ldr r1, _0812A8B0 @ =gContestMoves
+	ldr r1, _0812A534 @ =gContestMoves
 	lsls r0, 3
 	adds r0, r1
 	ldrb r0, [r0]
@@ -3934,23 +3934,23 @@ sub_812A4F4: @ 812A870
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A8A8: .4byte gAIScriptPtr
-_0812A8AC: .4byte 0x02019204
-_0812A8B0: .4byte gContestMoves
+_0812A52C: .4byte gAIScriptPtr
+_0812A530: .4byte 0x02019204
+_0812A534: .4byte gContestMoves
 	thumb_func_end sub_812A4F4
 
 	thumb_func_start sub_812A538
-sub_812A538: @ 812A8B4
+sub_812A538: @ 812A538
 	push {lr}
 	bl sub_812A4F4
-	ldr r0, _0812A8E4 @ =0x020192e4
+	ldr r0, _0812A568 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A8E8 @ =gAIScriptPtr
+	ldr r3, _0812A56C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _0812A8EC
+	bge _0812A570
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3962,30 +3962,30 @@ sub_812A538: @ 812A8B4
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A8F0
+	b _0812A574
 	.align 2, 0
-_0812A8E4: .4byte 0x020192e4
-_0812A8E8: .4byte gAIScriptPtr
-_0812A8EC:
+_0812A568: .4byte 0x020192e4
+_0812A56C: .4byte gAIScriptPtr
+_0812A570:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A8F0:
+_0812A574:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A538
 
 	thumb_func_start sub_812A578
-sub_812A578: @ 812A8F4
+sub_812A578: @ 812A578
 	push {lr}
 	bl sub_812A4F4
-	ldr r0, _0812A924 @ =0x020192e4
+	ldr r0, _0812A5A8 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A928 @ =gAIScriptPtr
+	ldr r3, _0812A5AC @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _0812A92C
+	ble _0812A5B0
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -3997,30 +3997,30 @@ sub_812A578: @ 812A8F4
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A930
+	b _0812A5B4
 	.align 2, 0
-_0812A924: .4byte 0x020192e4
-_0812A928: .4byte gAIScriptPtr
-_0812A92C:
+_0812A5A8: .4byte 0x020192e4
+_0812A5AC: .4byte gAIScriptPtr
+_0812A5B0:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A930:
+_0812A5B4:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A578
 
 	thumb_func_start sub_812A5B8
-sub_812A5B8: @ 812A934
+sub_812A5B8: @ 812A5B8
 	push {lr}
 	bl sub_812A4F4
-	ldr r0, _0812A964 @ =0x020192e4
+	ldr r0, _0812A5E8 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A968 @ =gAIScriptPtr
+	ldr r3, _0812A5EC @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _0812A96C
+	bne _0812A5F0
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -4032,30 +4032,30 @@ sub_812A5B8: @ 812A934
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A970
+	b _0812A5F4
 	.align 2, 0
-_0812A964: .4byte 0x020192e4
-_0812A968: .4byte gAIScriptPtr
-_0812A96C:
+_0812A5E8: .4byte 0x020192e4
+_0812A5EC: .4byte gAIScriptPtr
+_0812A5F0:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A970:
+_0812A5F4:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A5B8
 
 	thumb_func_start sub_812A5F8
-sub_812A5F8: @ 812A974
+sub_812A5F8: @ 812A5F8
 	push {lr}
 	bl sub_812A4F4
-	ldr r0, _0812A9A4 @ =0x020192e4
+	ldr r0, _0812A628 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812A9A8 @ =gAIScriptPtr
+	ldr r3, _0812A62C @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _0812A9AC
+	beq _0812A630
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -4067,22 +4067,22 @@ sub_812A5F8: @ 812A974
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812A9B0
+	b _0812A634
 	.align 2, 0
-_0812A9A4: .4byte 0x020192e4
-_0812A9A8: .4byte gAIScriptPtr
-_0812A9AC:
+_0812A628: .4byte 0x020192e4
+_0812A62C: .4byte gAIScriptPtr
+_0812A630:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812A9B0:
+_0812A634:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A5F8
 
 	thumb_func_start sub_812A638
-sub_812A638: @ 812A9B4
+sub_812A638: @ 812A638
 	push {r4,lr}
-	ldr r4, _0812A9E8 @ =gAIScriptPtr
+	ldr r4, _0812A66C @ =gAIScriptPtr
 	ldr r0, [r4]
 	ldrb r0, [r0, 0x1]
 	bl sub_8128A7C
@@ -4090,7 +4090,7 @@ sub_812A638: @ 812A9B4
 	lsrs r0, 24
 	ldr r3, [r4]
 	ldrb r1, [r3, 0x2]
-	ldr r2, _0812A9EC @ =0x02019204
+	ldr r2, _0812A670 @ =0x02019204
 	lsls r1, 2
 	adds r0, r1
 	adds r1, r2, 0
@@ -4107,22 +4107,22 @@ sub_812A638: @ 812A9B4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812A9E8: .4byte gAIScriptPtr
-_0812A9EC: .4byte 0x02019204
+_0812A66C: .4byte gAIScriptPtr
+_0812A670: .4byte 0x02019204
 	thumb_func_end sub_812A638
 
 	thumb_func_start sub_812A674
-sub_812A674: @ 812A9F0
+sub_812A674: @ 812A674
 	push {lr}
 	bl sub_812A638
-	ldr r0, _0812AA20 @ =0x020192e4
+	ldr r0, _0812A6A4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812AA24 @ =gAIScriptPtr
+	ldr r3, _0812A6A8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bge _0812AA28
+	bge _0812A6AC
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -4134,30 +4134,30 @@ sub_812A674: @ 812A9F0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812AA2C
+	b _0812A6B0
 	.align 2, 0
-_0812AA20: .4byte 0x020192e4
-_0812AA24: .4byte gAIScriptPtr
-_0812AA28:
+_0812A6A4: .4byte 0x020192e4
+_0812A6A8: .4byte gAIScriptPtr
+_0812A6AC:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812AA2C:
+_0812A6B0:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A674
 
 	thumb_func_start sub_812A6B4
-sub_812A6B4: @ 812AA30
+sub_812A6B4: @ 812A6B4
 	push {lr}
 	bl sub_812A638
-	ldr r0, _0812AA60 @ =0x020192e4
+	ldr r0, _0812A6E4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812AA64 @ =gAIScriptPtr
+	ldr r3, _0812A6E8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	ble _0812AA68
+	ble _0812A6EC
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -4169,30 +4169,30 @@ sub_812A6B4: @ 812AA30
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812AA6C
+	b _0812A6F0
 	.align 2, 0
-_0812AA60: .4byte 0x020192e4
-_0812AA64: .4byte gAIScriptPtr
-_0812AA68:
+_0812A6E4: .4byte 0x020192e4
+_0812A6E8: .4byte gAIScriptPtr
+_0812A6EC:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812AA6C:
+_0812A6F0:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A6B4
 
 	thumb_func_start sub_812A6F4
-sub_812A6F4: @ 812AA70
+sub_812A6F4: @ 812A6F4
 	push {lr}
 	bl sub_812A638
-	ldr r0, _0812AAA0 @ =0x020192e4
+	ldr r0, _0812A724 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812AAA4 @ =gAIScriptPtr
+	ldr r3, _0812A728 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _0812AAA8
+	bne _0812A72C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -4204,30 +4204,30 @@ sub_812A6F4: @ 812AA70
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812AAAC
+	b _0812A730
 	.align 2, 0
-_0812AAA0: .4byte 0x020192e4
-_0812AAA4: .4byte gAIScriptPtr
-_0812AAA8:
+_0812A724: .4byte 0x020192e4
+_0812A728: .4byte gAIScriptPtr
+_0812A72C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812AAAC:
+_0812A730:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A6F4
 
 	thumb_func_start sub_812A734
-sub_812A734: @ 812AAB0
+sub_812A734: @ 812A734
 	push {lr}
 	bl sub_812A638
-	ldr r0, _0812AAE0 @ =0x020192e4
+	ldr r0, _0812A764 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812AAE4 @ =gAIScriptPtr
+	ldr r3, _0812A768 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _0812AAE8
+	beq _0812A76C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -4239,29 +4239,29 @@ sub_812A734: @ 812AAB0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812AAEC
+	b _0812A770
 	.align 2, 0
-_0812AAE0: .4byte 0x020192e4
-_0812AAE4: .4byte gAIScriptPtr
-_0812AAE8:
+_0812A764: .4byte 0x020192e4
+_0812A768: .4byte gAIScriptPtr
+_0812A76C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812AAEC:
+_0812A770:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A734
 
 	thumb_func_start sub_812A774
-sub_812A774: @ 812AAF0
+sub_812A774: @ 812A774
 	push {r4,r5,lr}
-	ldr r5, _0812AB30 @ =gAIScriptPtr
+	ldr r5, _0812A7B4 @ =gAIScriptPtr
 	ldr r0, [r5]
 	ldrb r0, [r0, 0x1]
 	bl sub_8128A7C
 	lsls r0, 24
 	ldr r3, [r5]
 	ldrb r1, [r3, 0x2]
-	ldr r2, _0812AB34 @ =0x02019204
+	ldr r2, _0812A7B8 @ =0x02019204
 	lsrs r0, 23
 	lsls r1, 3
 	adds r0, r1
@@ -4270,8 +4270,8 @@ sub_812A774: @ 812AAF0
 	adds r0, r1
 	ldrh r0, [r0]
 	adds r2, 0xE0
-	ldr r4, _0812AB38 @ =gContestEffects
-	ldr r1, _0812AB3C @ =gContestMoves
+	ldr r4, _0812A7BC @ =gContestEffects
+	ldr r1, _0812A7C0 @ =gContestMoves
 	lsls r0, 3
 	adds r0, r1
 	ldrb r0, [r0]
@@ -4285,24 +4285,24 @@ sub_812A774: @ 812AAF0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812AB30: .4byte gAIScriptPtr
-_0812AB34: .4byte 0x02019204
-_0812AB38: .4byte gContestEffects
-_0812AB3C: .4byte gContestMoves
+_0812A7B4: .4byte gAIScriptPtr
+_0812A7B8: .4byte 0x02019204
+_0812A7BC: .4byte gContestEffects
+_0812A7C0: .4byte gContestMoves
 	thumb_func_end sub_812A774
 
 	thumb_func_start sub_812A7C4
-sub_812A7C4: @ 812AB40
+sub_812A7C4: @ 812A7C4
 	push {lr}
 	bl sub_812A774
-	ldr r0, _0812AB70 @ =0x020192e4
+	ldr r0, _0812A7F4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812AB74 @ =gAIScriptPtr
+	ldr r3, _0812A7F8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	bne _0812AB78
+	bne _0812A7FC
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -4314,30 +4314,30 @@ sub_812A7C4: @ 812AB40
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812AB7C
+	b _0812A800
 	.align 2, 0
-_0812AB70: .4byte 0x020192e4
-_0812AB74: .4byte gAIScriptPtr
-_0812AB78:
+_0812A7F4: .4byte 0x020192e4
+_0812A7F8: .4byte gAIScriptPtr
+_0812A7FC:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812AB7C:
+_0812A800:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A7C4
 
 	thumb_func_start sub_812A804
-sub_812A804: @ 812AB80
+sub_812A804: @ 812A804
 	push {lr}
 	bl sub_812A774
-	ldr r0, _0812ABB0 @ =0x020192e4
+	ldr r0, _0812A834 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
-	ldr r3, _0812ABB4 @ =gAIScriptPtr
+	ldr r3, _0812A838 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	cmp r0, r1
-	beq _0812ABB8
+	beq _0812A83C
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
 	lsls r0, 8
@@ -4349,23 +4349,23 @@ sub_812A804: @ 812AB80
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812ABBC
+	b _0812A840
 	.align 2, 0
-_0812ABB0: .4byte 0x020192e4
-_0812ABB4: .4byte gAIScriptPtr
-_0812ABB8:
+_0812A834: .4byte 0x020192e4
+_0812A838: .4byte gAIScriptPtr
+_0812A83C:
 	adds r0, r2, 0x5
 	str r0, [r3]
-_0812ABBC:
+_0812A840:
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A804
 
 	thumb_func_start sub_812A844
-sub_812A844: @ 812ABC0
+sub_812A844: @ 812A844
 	push {r4,lr}
-	ldr r3, _0812ABE0 @ =0x020192e4
-	ldr r4, _0812ABE4 @ =gAIScriptPtr
+	ldr r3, _0812A864 @ =0x020192e4
+	ldr r4, _0812A868 @ =gAIScriptPtr
 	ldr r2, [r4]
 	ldrb r0, [r2, 0x1]
 	lsls r0, 1
@@ -4380,15 +4380,15 @@ sub_812A844: @ 812ABC0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812ABE0: .4byte 0x020192e4
-_0812ABE4: .4byte gAIScriptPtr
+_0812A864: .4byte 0x020192e4
+_0812A868: .4byte gAIScriptPtr
 	thumb_func_end sub_812A844
 
 	thumb_func_start sub_812A86C
-sub_812A86C: @ 812ABE8
+sub_812A86C: @ 812A86C
 	push {r4,lr}
-	ldr r0, _0812AC0C @ =0x020192e4
-	ldr r4, _0812AC10 @ =gAIScriptPtr
+	ldr r0, _0812A890 @ =0x020192e4
+	ldr r4, _0812A894 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r2, [r3, 0x1]
 	lsls r2, 1
@@ -4405,15 +4405,15 @@ sub_812A86C: @ 812ABE8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812AC0C: .4byte 0x020192e4
-_0812AC10: .4byte gAIScriptPtr
+_0812A890: .4byte 0x020192e4
+_0812A894: .4byte gAIScriptPtr
 	thumb_func_end sub_812A86C
 
 	thumb_func_start sub_812A898
-sub_812A898: @ 812AC14
+sub_812A898: @ 812A898
 	push {r4,lr}
-	ldr r0, _0812AC40 @ =0x020192e4
-	ldr r4, _0812AC44 @ =gAIScriptPtr
+	ldr r0, _0812A8C4 @ =0x020192e4
+	ldr r4, _0812A8C8 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r2, [r3, 0x1]
 	lsls r2, 1
@@ -4433,15 +4433,15 @@ sub_812A898: @ 812AC14
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812AC40: .4byte 0x020192e4
-_0812AC44: .4byte gAIScriptPtr
+_0812A8C4: .4byte 0x020192e4
+_0812A8C8: .4byte gAIScriptPtr
 	thumb_func_end sub_812A898
 
 	thumb_func_start sub_812A8CC
-sub_812A8CC: @ 812AC48
+sub_812A8CC: @ 812A8CC
 	push {r4,lr}
-	ldr r2, _0812AC70 @ =0x020192e4
-	ldr r4, _0812AC74 @ =gAIScriptPtr
+	ldr r2, _0812A8F4 @ =0x020192e4
+	ldr r4, _0812A8F8 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3, 0x1]
 	lsls r1, 1
@@ -4460,15 +4460,15 @@ sub_812A8CC: @ 812AC48
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812AC70: .4byte 0x020192e4
-_0812AC74: .4byte gAIScriptPtr
+_0812A8F4: .4byte 0x020192e4
+_0812A8F8: .4byte gAIScriptPtr
 	thumb_func_end sub_812A8CC
 
 	thumb_func_start sub_812A8FC
-sub_812A8FC: @ 812AC78
+sub_812A8FC: @ 812A8FC
 	push {r4,lr}
-	ldr r2, _0812ACA0 @ =0x020192e4
-	ldr r4, _0812ACA4 @ =gAIScriptPtr
+	ldr r2, _0812A924 @ =0x020192e4
+	ldr r4, _0812A928 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3, 0x1]
 	lsls r1, 1
@@ -4487,15 +4487,15 @@ sub_812A8FC: @ 812AC78
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812ACA0: .4byte 0x020192e4
-_0812ACA4: .4byte gAIScriptPtr
+_0812A924: .4byte 0x020192e4
+_0812A928: .4byte gAIScriptPtr
 	thumb_func_end sub_812A8FC
 
 	thumb_func_start sub_812A92C
-sub_812A92C: @ 812ACA8
+sub_812A92C: @ 812A92C
 	push {r4,lr}
-	ldr r1, _0812ACE0 @ =0x020192e4
-	ldr r4, _0812ACE4 @ =gAIScriptPtr
+	ldr r1, _0812A964 @ =0x020192e4
+	ldr r4, _0812A968 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r0, [r3, 0x1]
 	lsls r0, 1
@@ -4508,7 +4508,7 @@ sub_812A92C: @ 812ACA8
 	lsls r0, 8
 	orrs r1, r0
 	cmp r2, r1
-	bge _0812ACE8
+	bge _0812A96C
 	ldrb r1, [r3, 0x4]
 	ldrb r0, [r3, 0x5]
 	lsls r0, 8
@@ -4520,25 +4520,25 @@ sub_812A92C: @ 812ACA8
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812ACEE
+	b _0812A972
 	.align 2, 0
-_0812ACE0: .4byte 0x020192e4
-_0812ACE4: .4byte gAIScriptPtr
-_0812ACE8:
+_0812A964: .4byte 0x020192e4
+_0812A968: .4byte gAIScriptPtr
+_0812A96C:
 	adds r0, r3, 0
 	adds r0, 0x8
 	str r0, [r4]
-_0812ACEE:
+_0812A972:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A92C
 
 	thumb_func_start sub_812A978
-sub_812A978: @ 812ACF4
+sub_812A978: @ 812A978
 	push {r4,lr}
-	ldr r1, _0812AD2C @ =0x020192e4
-	ldr r4, _0812AD30 @ =gAIScriptPtr
+	ldr r1, _0812A9B0 @ =0x020192e4
+	ldr r4, _0812A9B4 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r0, [r3, 0x1]
 	lsls r0, 1
@@ -4551,7 +4551,7 @@ sub_812A978: @ 812ACF4
 	lsls r0, 8
 	orrs r1, r0
 	cmp r2, r1
-	ble _0812AD34
+	ble _0812A9B8
 	ldrb r1, [r3, 0x4]
 	ldrb r0, [r3, 0x5]
 	lsls r0, 8
@@ -4563,25 +4563,25 @@ sub_812A978: @ 812ACF4
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812AD3A
+	b _0812A9BE
 	.align 2, 0
-_0812AD2C: .4byte 0x020192e4
-_0812AD30: .4byte gAIScriptPtr
-_0812AD34:
+_0812A9B0: .4byte 0x020192e4
+_0812A9B4: .4byte gAIScriptPtr
+_0812A9B8:
 	adds r0, r3, 0
 	adds r0, 0x8
 	str r0, [r4]
-_0812AD3A:
+_0812A9BE:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A978
 
 	thumb_func_start sub_812A9C4
-sub_812A9C4: @ 812AD40
+sub_812A9C4: @ 812A9C4
 	push {r4,lr}
-	ldr r1, _0812AD78 @ =0x020192e4
-	ldr r4, _0812AD7C @ =gAIScriptPtr
+	ldr r1, _0812A9FC @ =0x020192e4
+	ldr r4, _0812AA00 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r0, [r3, 0x1]
 	lsls r0, 1
@@ -4594,7 +4594,7 @@ sub_812A9C4: @ 812AD40
 	lsls r0, 8
 	orrs r1, r0
 	cmp r2, r1
-	bne _0812AD80
+	bne _0812AA04
 	ldrb r1, [r3, 0x4]
 	ldrb r0, [r3, 0x5]
 	lsls r0, 8
@@ -4606,25 +4606,25 @@ sub_812A9C4: @ 812AD40
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812AD86
+	b _0812AA0A
 	.align 2, 0
-_0812AD78: .4byte 0x020192e4
-_0812AD7C: .4byte gAIScriptPtr
-_0812AD80:
+_0812A9FC: .4byte 0x020192e4
+_0812AA00: .4byte gAIScriptPtr
+_0812AA04:
 	adds r0, r3, 0
 	adds r0, 0x8
 	str r0, [r4]
-_0812AD86:
+_0812AA0A:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812A9C4
 
 	thumb_func_start sub_812AA10
-sub_812AA10: @ 812AD8C
+sub_812AA10: @ 812AA10
 	push {r4,lr}
-	ldr r1, _0812ADC4 @ =0x020192e4
-	ldr r4, _0812ADC8 @ =gAIScriptPtr
+	ldr r1, _0812AA48 @ =0x020192e4
+	ldr r4, _0812AA4C @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r0, [r3, 0x1]
 	lsls r0, 1
@@ -4637,7 +4637,7 @@ sub_812AA10: @ 812AD8C
 	lsls r0, 8
 	orrs r1, r0
 	cmp r2, r1
-	beq _0812ADCC
+	beq _0812AA50
 	ldrb r1, [r3, 0x4]
 	ldrb r0, [r3, 0x5]
 	lsls r0, 8
@@ -4649,25 +4649,25 @@ sub_812AA10: @ 812AD8C
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812ADD2
+	b _0812AA56
 	.align 2, 0
-_0812ADC4: .4byte 0x020192e4
-_0812ADC8: .4byte gAIScriptPtr
-_0812ADCC:
+_0812AA48: .4byte 0x020192e4
+_0812AA4C: .4byte gAIScriptPtr
+_0812AA50:
 	adds r0, r3, 0
 	adds r0, 0x8
 	str r0, [r4]
-_0812ADD2:
+_0812AA56:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812AA10
 
 	thumb_func_start sub_812AA5C
-sub_812AA5C: @ 812ADD8
+sub_812AA5C: @ 812AA5C
 	push {r4,lr}
-	ldr r2, _0812AE14 @ =0x020192e4
-	ldr r4, _0812AE18 @ =gAIScriptPtr
+	ldr r2, _0812AA98 @ =0x020192e4
+	ldr r4, _0812AA9C @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3, 0x1]
 	lsls r1, 1
@@ -4681,7 +4681,7 @@ sub_812AA5C: @ 812ADD8
 	movs r2, 0
 	ldrsh r0, [r0, r2]
 	cmp r1, r0
-	bge _0812AE1C
+	bge _0812AAA0
 	ldrb r1, [r3, 0x3]
 	ldrb r0, [r3, 0x4]
 	lsls r0, 8
@@ -4693,24 +4693,24 @@ sub_812AA5C: @ 812ADD8
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812AE20
+	b _0812AAA4
 	.align 2, 0
-_0812AE14: .4byte 0x020192e4
-_0812AE18: .4byte gAIScriptPtr
-_0812AE1C:
+_0812AA98: .4byte 0x020192e4
+_0812AA9C: .4byte gAIScriptPtr
+_0812AAA0:
 	adds r0, r3, 0x7
 	str r0, [r4]
-_0812AE20:
+_0812AAA4:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812AA5C
 
 	thumb_func_start sub_812AAAC
-sub_812AAAC: @ 812AE28
+sub_812AAAC: @ 812AAAC
 	push {r4,lr}
-	ldr r2, _0812AE64 @ =0x020192e4
-	ldr r4, _0812AE68 @ =gAIScriptPtr
+	ldr r2, _0812AAE8 @ =0x020192e4
+	ldr r4, _0812AAEC @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3, 0x1]
 	lsls r1, 1
@@ -4724,7 +4724,7 @@ sub_812AAAC: @ 812AE28
 	movs r2, 0
 	ldrsh r0, [r0, r2]
 	cmp r1, r0
-	ble _0812AE6C
+	ble _0812AAF0
 	ldrb r1, [r3, 0x3]
 	ldrb r0, [r3, 0x4]
 	lsls r0, 8
@@ -4736,24 +4736,24 @@ sub_812AAAC: @ 812AE28
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812AE70
+	b _0812AAF4
 	.align 2, 0
-_0812AE64: .4byte 0x020192e4
-_0812AE68: .4byte gAIScriptPtr
-_0812AE6C:
+_0812AAE8: .4byte 0x020192e4
+_0812AAEC: .4byte gAIScriptPtr
+_0812AAF0:
 	adds r0, r3, 0x7
 	str r0, [r4]
-_0812AE70:
+_0812AAF4:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812AAAC
 
 	thumb_func_start sub_812AAFC
-sub_812AAFC: @ 812AE78
+sub_812AAFC: @ 812AAFC
 	push {r4,lr}
-	ldr r2, _0812AEB4 @ =0x020192e4
-	ldr r4, _0812AEB8 @ =gAIScriptPtr
+	ldr r2, _0812AB38 @ =0x020192e4
+	ldr r4, _0812AB3C @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3, 0x1]
 	lsls r1, 1
@@ -4767,7 +4767,7 @@ sub_812AAFC: @ 812AE78
 	movs r2, 0
 	ldrsh r0, [r0, r2]
 	cmp r1, r0
-	bne _0812AEBC
+	bne _0812AB40
 	ldrb r1, [r3, 0x3]
 	ldrb r0, [r3, 0x4]
 	lsls r0, 8
@@ -4779,24 +4779,24 @@ sub_812AAFC: @ 812AE78
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812AEC0
+	b _0812AB44
 	.align 2, 0
-_0812AEB4: .4byte 0x020192e4
-_0812AEB8: .4byte gAIScriptPtr
-_0812AEBC:
+_0812AB38: .4byte 0x020192e4
+_0812AB3C: .4byte gAIScriptPtr
+_0812AB40:
 	adds r0, r3, 0x7
 	str r0, [r4]
-_0812AEC0:
+_0812AB44:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812AAFC
 
 	thumb_func_start sub_812AB4C
-sub_812AB4C: @ 812AEC8
+sub_812AB4C: @ 812AB4C
 	push {r4,lr}
-	ldr r2, _0812AF04 @ =0x020192e4
-	ldr r4, _0812AF08 @ =gAIScriptPtr
+	ldr r2, _0812AB88 @ =0x020192e4
+	ldr r4, _0812AB8C @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r1, [r3, 0x1]
 	lsls r1, 1
@@ -4810,7 +4810,7 @@ sub_812AB4C: @ 812AEC8
 	movs r2, 0
 	ldrsh r0, [r0, r2]
 	cmp r1, r0
-	beq _0812AF0C
+	beq _0812AB90
 	ldrb r1, [r3, 0x3]
 	ldrb r0, [r3, 0x4]
 	lsls r0, 8
@@ -4822,27 +4822,27 @@ sub_812AB4C: @ 812AEC8
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812AF10
+	b _0812AB94
 	.align 2, 0
-_0812AF04: .4byte 0x020192e4
-_0812AF08: .4byte gAIScriptPtr
-_0812AF0C:
+_0812AB88: .4byte 0x020192e4
+_0812AB8C: .4byte gAIScriptPtr
+_0812AB90:
 	adds r0, r3, 0x7
 	str r0, [r4]
-_0812AF10:
+_0812AB94:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812AB4C
 
 	thumb_func_start sub_812AB9C
-sub_812AB9C: @ 812AF18
+sub_812AB9C: @ 812AB9C
 	push {r4,lr}
 	bl Random
 	movs r2, 0xFF
 	ands r2, r0
-	ldr r1, _0812AF50 @ =0x020192e4
-	ldr r4, _0812AF54 @ =gAIScriptPtr
+	ldr r1, _0812ABD4 @ =0x020192e4
+	ldr r4, _0812ABD8 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r0, [r3, 0x1]
 	lsls r0, 1
@@ -4851,7 +4851,7 @@ sub_812AB9C: @ 812AF18
 	movs r1, 0
 	ldrsh r0, [r0, r1]
 	cmp r2, r0
-	bge _0812AF58
+	bge _0812ABDC
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -4863,27 +4863,27 @@ sub_812AB9C: @ 812AF18
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812AF5C
+	b _0812ABE0
 	.align 2, 0
-_0812AF50: .4byte 0x020192e4
-_0812AF54: .4byte gAIScriptPtr
-_0812AF58:
+_0812ABD4: .4byte 0x020192e4
+_0812ABD8: .4byte gAIScriptPtr
+_0812ABDC:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_0812AF5C:
+_0812ABE0:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812AB9C
 
 	thumb_func_start sub_812ABE8
-sub_812ABE8: @ 812AF64
+sub_812ABE8: @ 812ABE8
 	push {r4,lr}
 	bl Random
 	movs r2, 0xFF
 	ands r2, r0
-	ldr r1, _0812AF9C @ =0x020192e4
-	ldr r4, _0812AFA0 @ =gAIScriptPtr
+	ldr r1, _0812AC20 @ =0x020192e4
+	ldr r4, _0812AC24 @ =gAIScriptPtr
 	ldr r3, [r4]
 	ldrb r0, [r3, 0x1]
 	lsls r0, 1
@@ -4892,7 +4892,7 @@ sub_812ABE8: @ 812AF64
 	movs r1, 0
 	ldrsh r0, [r0, r1]
 	cmp r2, r0
-	ble _0812AFA4
+	ble _0812AC28
 	ldrb r1, [r3, 0x2]
 	ldrb r0, [r3, 0x3]
 	lsls r0, 8
@@ -4904,22 +4904,22 @@ sub_812ABE8: @ 812AF64
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r4]
-	b _0812AFA8
+	b _0812AC2C
 	.align 2, 0
-_0812AF9C: .4byte 0x020192e4
-_0812AFA0: .4byte gAIScriptPtr
-_0812AFA4:
+_0812AC20: .4byte 0x020192e4
+_0812AC24: .4byte gAIScriptPtr
+_0812AC28:
 	adds r0, r3, 0x6
 	str r0, [r4]
-_0812AFA8:
+_0812AC2C:
 	pop {r4}
 	pop {r0}
 	bx r0
 	thumb_func_end sub_812ABE8
 
 	thumb_func_start sub_812AC34
-sub_812AC34: @ 812AFB0
-	ldr r3, _0812AFCC @ =gAIScriptPtr
+sub_812AC34: @ 812AC34
+	ldr r3, _0812AC50 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2, 0x1]
 	ldrb r0, [r2, 0x2]
@@ -4934,13 +4934,13 @@ sub_812AC34: @ 812AFB0
 	str r1, [r3]
 	bx lr
 	.align 2, 0
-_0812AFCC: .4byte gAIScriptPtr
+_0812AC50: .4byte gAIScriptPtr
 	thumb_func_end sub_812AC34
 
 	thumb_func_start sub_812AC54
-sub_812AC54: @ 812AFD0
+sub_812AC54: @ 812AC54
 	push {r4,lr}
-	ldr r4, _0812AFFC @ =gAIScriptPtr
+	ldr r4, _0812AC80 @ =gAIScriptPtr
 	ldr r0, [r4]
 	adds r0, 0x5
 	bl sub_812ACA4
@@ -4960,32 +4960,32 @@ sub_812AC54: @ 812AFD0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812AFFC: .4byte gAIScriptPtr
+_0812AC80: .4byte gAIScriptPtr
 	thumb_func_end sub_812AC54
 
 	thumb_func_start sub_812AC84
-sub_812AC84: @ 812B000
+sub_812AC84: @ 812AC84
 	push {lr}
 	bl sub_812ACC8
 	lsls r0, 24
 	cmp r0, 0
-	bne _0812B016
-	ldr r2, _0812B01C @ =0x020192e4
+	bne _0812AC9A
+	ldr r2, _0812ACA0 @ =0x020192e4
 	ldrb r1, [r2, 0x9]
 	movs r0, 0x1
 	orrs r0, r1
 	strb r0, [r2, 0x9]
-_0812B016:
+_0812AC9A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812B01C: .4byte 0x020192e4
+_0812ACA0: .4byte 0x020192e4
 	thumb_func_end sub_812AC84
 
 	thumb_func_start sub_812ACA4
-sub_812ACA4: @ 812B020
+sub_812ACA4: @ 812ACA4
 	push {r4,lr}
-	ldr r3, _0812B040 @ =0x020192e4
+	ldr r3, _0812ACC4 @ =0x020192e4
 	adds r4, r3, 0
 	adds r4, 0x40
 	ldrb r1, [r4]
@@ -5000,26 +5000,26 @@ sub_812ACA4: @ 812B020
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812B040: .4byte 0x020192e4
+_0812ACC4: .4byte 0x020192e4
 	thumb_func_end sub_812ACA4
 
 	thumb_func_start sub_812ACC8
-sub_812ACC8: @ 812B044
+sub_812ACC8: @ 812ACC8
 	push {lr}
-	ldr r1, _0812B058 @ =0x020192e4
+	ldr r1, _0812ACDC @ =0x020192e4
 	adds r3, r1, 0
 	adds r3, 0x40
 	ldrb r0, [r3]
 	cmp r0, 0
-	bne _0812B05C
+	bne _0812ACE0
 	movs r0, 0
-	b _0812B070
+	b _0812ACF4
 	.align 2, 0
-_0812B058: .4byte 0x020192e4
-_0812B05C:
+_0812ACDC: .4byte 0x020192e4
+_0812ACE0:
 	subs r0, 0x1
 	strb r0, [r3]
-	ldr r2, _0812B074 @ =gAIScriptPtr
+	ldr r2, _0812ACF8 @ =gAIScriptPtr
 	ldrb r0, [r3]
 	lsls r0, 2
 	adds r1, 0x20
@@ -5027,21 +5027,21 @@ _0812B05C:
 	ldr r0, [r0]
 	str r0, [r2]
 	movs r0, 0x1
-_0812B070:
+_0812ACF4:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0812B074: .4byte gAIScriptPtr
+_0812ACF8: .4byte gAIScriptPtr
 	thumb_func_end sub_812ACC8
 
 	thumb_func_start contest_ai_check_for_exciting_move
-contest_ai_check_for_exciting_move: @ 812B078
+contest_ai_check_for_exciting_move: @ 812ACFC
 	push {r4-r7,lr}
 	movs r5, 0
 	movs r4, 0
-	ldr r7, _0812B0A4 @ =0x02019325
-	ldr r6, _0812B0A8 @ =gUnknown_0203858E
-_0812B082:
+	ldr r7, _0812AD28 @ =0x02019325
+	ldr r6, _0812AD2C @ =gUnknown_0203858E
+_0812AD06:
 	lsls r0, r4, 1
 	ldrb r1, [r7]
 	lsls r1, 6
@@ -5049,25 +5049,25 @@ _0812B082:
 	adds r1, r0, r6
 	ldrh r0, [r1]
 	cmp r0, 0
-	beq _0812B0AC
+	beq _0812AD30
 	bl contest_get_move_excitement
 	lsls r0, 24
 	asrs r0, 24
 	cmp r0, 0x1
-	bne _0812B0AC
+	bne _0812AD30
 	movs r5, 0x1
-	b _0812B0B2
+	b _0812AD36
 	.align 2, 0
-_0812B0A4: .4byte 0x02019325
-_0812B0A8: .4byte gUnknown_0203858E
-_0812B0AC:
+_0812AD28: .4byte 0x02019325
+_0812AD2C: .4byte gUnknown_0203858E
+_0812AD30:
 	adds r4, 0x1
 	cmp r4, 0x3
-	ble _0812B082
-_0812B0B2:
-	ldr r0, _0812B0C4 @ =0x020192e4
+	ble _0812AD06
+_0812AD36:
+	ldr r0, _0812AD48 @ =0x020192e4
 	strh r5, [r0, 0x18]
-	ldr r1, _0812B0C8 @ =gAIScriptPtr
+	ldr r1, _0812AD4C @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x1
 	str r0, [r1]
@@ -5075,20 +5075,20 @@ _0812B0B2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812B0C4: .4byte 0x020192e4
-_0812B0C8: .4byte gAIScriptPtr
+_0812AD48: .4byte 0x020192e4
+_0812AD4C: .4byte gAIScriptPtr
 	thumb_func_end contest_ai_check_for_exciting_move
 
 	thumb_func_start sub_812AD50
-sub_812AD50: @ 812B0CC
+sub_812AD50: @ 812AD50
 	push {lr}
 	bl contest_ai_check_for_exciting_move
-	ldr r0, _0812B0F8 @ =0x020192e4
+	ldr r0, _0812AD7C @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0812B100
-	ldr r3, _0812B0FC @ =gAIScriptPtr
+	beq _0812AD84
+	ldr r3, _0812AD80 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -5101,32 +5101,32 @@ sub_812AD50: @ 812B0CC
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812B108
+	b _0812AD8C
 	.align 2, 0
-_0812B0F8: .4byte 0x020192e4
-_0812B0FC: .4byte gAIScriptPtr
-_0812B100:
-	ldr r1, _0812B10C @ =gAIScriptPtr
+_0812AD7C: .4byte 0x020192e4
+_0812AD80: .4byte gAIScriptPtr
+_0812AD84:
+	ldr r1, _0812AD90 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812B108:
+_0812AD8C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812B10C: .4byte gAIScriptPtr
+_0812AD90: .4byte gAIScriptPtr
 	thumb_func_end sub_812AD50
 
 	thumb_func_start sub_812AD94
-sub_812AD94: @ 812B110
+sub_812AD94: @ 812AD94
 	push {lr}
 	bl contest_ai_check_for_exciting_move
-	ldr r0, _0812B13C @ =0x020192e4
+	ldr r0, _0812ADC0 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0812B144
-	ldr r3, _0812B140 @ =gAIScriptPtr
+	bne _0812ADC8
+	ldr r3, _0812ADC4 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -5139,36 +5139,36 @@ sub_812AD94: @ 812B110
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812B14C
+	b _0812ADD0
 	.align 2, 0
-_0812B13C: .4byte 0x020192e4
-_0812B140: .4byte gAIScriptPtr
-_0812B144:
-	ldr r1, _0812B150 @ =gAIScriptPtr
+_0812ADC0: .4byte 0x020192e4
+_0812ADC4: .4byte gAIScriptPtr
+_0812ADC8:
+	ldr r1, _0812ADD4 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812B14C:
+_0812ADD0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812B150: .4byte gAIScriptPtr
+_0812ADD4: .4byte gAIScriptPtr
 	thumb_func_end sub_812AD94
 
 	thumb_func_start sub_812ADD8
-sub_812ADD8: @ 812B154
+sub_812ADD8: @ 812ADD8
 	push {r4-r7,lr}
 	movs r6, 0
-	ldr r2, _0812B184 @ =gAIScriptPtr
+	ldr r2, _0812AE08 @ =gAIScriptPtr
 	ldr r0, [r2]
 	ldrb r4, [r0, 0x1]
 	ldrb r0, [r0, 0x2]
 	lsls r0, 8
 	orrs r4, r0
 	movs r3, 0
-	ldr r0, _0812B188 @ =gContestMons
+	ldr r0, _0812AE0C @ =gContestMons
 	mov r12, r0
-	ldr r5, _0812B18C @ =0x020192e4
+	ldr r5, _0812AE10 @ =0x020192e4
 	adds r0, r5, 0
 	adds r0, 0x41
 	ldrb r0, [r0]
@@ -5180,15 +5180,15 @@ sub_812ADD8: @ 812B154
 	adds r7, r2, 0
 	mov r2, r12
 	mov r12, r5
-	b _0812B1AA
+	b _0812AE2E
 	.align 2, 0
-_0812B184: .4byte gAIScriptPtr
-_0812B188: .4byte gContestMons
-_0812B18C: .4byte 0x020192e4
-_0812B190:
+_0812AE08: .4byte gAIScriptPtr
+_0812AE0C: .4byte gContestMons
+_0812AE10: .4byte 0x020192e4
+_0812AE14:
 	adds r3, 0x1
 	cmp r3, 0x3
-	bgt _0812B1B0
+	bgt _0812AE34
 	lsls r1, r3, 1
 	mov r0, r12
 	adds r0, 0x41
@@ -5199,11 +5199,11 @@ _0812B190:
 	adds r0, 0x1E
 	adds r1, r0
 	ldrh r0, [r1]
-_0812B1AA:
+_0812AE2E:
 	cmp r0, r4
-	bne _0812B190
+	bne _0812AE14
 	movs r6, 0x1
-_0812B1B0:
+_0812AE34:
 	mov r0, r12
 	strh r6, [r0, 0x18]
 	ldr r0, [r7]
@@ -5215,15 +5215,15 @@ _0812B1B0:
 	thumb_func_end sub_812ADD8
 
 	thumb_func_start sub_812AE44
-sub_812AE44: @ 812B1C0
+sub_812AE44: @ 812AE44
 	push {lr}
 	bl sub_812ADD8
-	ldr r0, _0812B1EC @ =0x020192e4
+	ldr r0, _0812AE70 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	beq _0812B1F4
-	ldr r3, _0812B1F0 @ =gAIScriptPtr
+	beq _0812AE78
+	ldr r3, _0812AE74 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -5236,32 +5236,32 @@ sub_812AE44: @ 812B1C0
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812B1FC
+	b _0812AE80
 	.align 2, 0
-_0812B1EC: .4byte 0x020192e4
-_0812B1F0: .4byte gAIScriptPtr
-_0812B1F4:
-	ldr r1, _0812B200 @ =gAIScriptPtr
+_0812AE70: .4byte 0x020192e4
+_0812AE74: .4byte gAIScriptPtr
+_0812AE78:
+	ldr r1, _0812AE84 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812B1FC:
+_0812AE80:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812B200: .4byte gAIScriptPtr
+_0812AE84: .4byte gAIScriptPtr
 	thumb_func_end sub_812AE44
 
 	thumb_func_start sub_812AE88
-sub_812AE88: @ 812B204
+sub_812AE88: @ 812AE88
 	push {lr}
 	bl sub_812ADD8
-	ldr r0, _0812B230 @ =0x020192e4
+	ldr r0, _0812AEB4 @ =0x020192e4
 	movs r1, 0x18
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0812B238
-	ldr r3, _0812B234 @ =gAIScriptPtr
+	bne _0812AEBC
+	ldr r3, _0812AEB8 @ =gAIScriptPtr
 	ldr r2, [r3]
 	ldrb r1, [r2]
 	ldrb r0, [r2, 0x1]
@@ -5274,20 +5274,20 @@ sub_812AE88: @ 812B204
 	lsls r0, 24
 	orrs r1, r0
 	str r1, [r3]
-	b _0812B240
+	b _0812AEC4
 	.align 2, 0
-_0812B230: .4byte 0x020192e4
-_0812B234: .4byte gAIScriptPtr
-_0812B238:
-	ldr r1, _0812B244 @ =gAIScriptPtr
+_0812AEB4: .4byte 0x020192e4
+_0812AEB8: .4byte gAIScriptPtr
+_0812AEBC:
+	ldr r1, _0812AEC8 @ =gAIScriptPtr
 	ldr r0, [r1]
 	adds r0, 0x4
 	str r0, [r1]
-_0812B240:
+_0812AEC4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0812B244: .4byte gAIScriptPtr
+_0812AEC8: .4byte gAIScriptPtr
 	thumb_func_end sub_812AE88
 
 	.align 2, 0 @ Don't pad with nop.

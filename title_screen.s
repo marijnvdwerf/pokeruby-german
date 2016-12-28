@@ -7,7 +7,7 @@
 	.text
 
 	thumb_func_start SpriteCallback_VersionBannerLeft
-SpriteCallback_VersionBannerLeft: @ 807C1C0
+SpriteCallback_VersionBannerLeft: @ 807BE00
 	push {r4,lr}
 	adds r2, r0, 0
 	movs r0, 0x30
@@ -15,12 +15,12 @@ SpriteCallback_VersionBannerLeft: @ 807C1C0
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _0807C1F4 @ =gTasks
+	ldr r1, _0807BE34 @ =gTasks
 	adds r4, r0, r1
 	movs r1, 0xA
 	ldrsh r0, [r4, r1]
 	cmp r0, 0
-	beq _0807C1F8
+	beq _0807BE38
 	ldrb r1, [r2, 0x1]
 	movs r0, 0xD
 	negs r0, r0
@@ -33,22 +33,22 @@ SpriteCallback_VersionBannerLeft: @ 807C1C0
 	subs r0, 0x59
 	ands r0, r1
 	strb r0, [r2]
-	b _0807C240
+	b _0807BE80
 	.align 2, 0
-_0807C1F4: .4byte gTasks
-_0807C1F8:
+_0807BE34: .4byte gTasks
+_0807BE38:
 	ldrh r1, [r4, 0x12]
 	movs r3, 0x12
 	ldrsh r0, [r4, r3]
 	cmp r0, 0
-	beq _0807C206
+	beq _0807BE46
 	subs r0, r1, 0x1
 	strh r0, [r4, 0x12]
-_0807C206:
+_0807BE46:
 	movs r1, 0x12
 	ldrsh r0, [r4, r1]
 	cmp r0, 0x3F
-	bgt _0807C240
+	bgt _0807BE80
 	adds r3, r2, 0
 	adds r3, 0x3E
 	ldrb r0, [r3]
@@ -60,12 +60,12 @@ _0807C206:
 	movs r3, 0x22
 	ldrsh r0, [r2, r3]
 	cmp r0, 0x54
-	beq _0807C22A
+	beq _0807BE6A
 	adds r0, r1, 0x1
 	strh r0, [r2, 0x22]
-_0807C22A:
-	ldr r3, _0807C248 @ =0x04000052
-	ldr r2, _0807C24C @ =gUnknown_08393E64
+_0807BE6A:
+	ldr r3, _0807BE88 @ =0x04000052
+	ldr r2, _0807BE8C @ =gUnknown_08393E64
 	movs r1, 0x12
 	ldrsh r0, [r4, r1]
 	lsrs r1, r0, 31
@@ -75,17 +75,17 @@ _0807C22A:
 	adds r0, r2
 	ldrh r0, [r0]
 	strh r0, [r3]
-_0807C240:
+_0807BE80:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C248: .4byte 0x04000052
-_0807C24C: .4byte gUnknown_08393E64
+_0807BE88: .4byte 0x04000052
+_0807BE8C: .4byte gUnknown_08393E64
 	thumb_func_end SpriteCallback_VersionBannerLeft
 
 	thumb_func_start SpriteCallback_VersionBannerRight
-SpriteCallback_VersionBannerRight: @ 807C250
+SpriteCallback_VersionBannerRight: @ 807BE90
 	push {lr}
 	adds r2, r0, 0
 	movs r0, 0x30
@@ -93,12 +93,12 @@ SpriteCallback_VersionBannerRight: @ 807C250
 	lsls r0, r1, 2
 	adds r0, r1
 	lsls r0, 3
-	ldr r1, _0807C284 @ =gTasks
+	ldr r1, _0807BEC4 @ =gTasks
 	adds r1, r0, r1
 	movs r3, 0xA
 	ldrsh r0, [r1, r3]
 	cmp r0, 0
-	beq _0807C288
+	beq _0807BEC8
 	ldrb r1, [r2, 0x1]
 	movs r0, 0xD
 	negs r0, r0
@@ -111,14 +111,14 @@ SpriteCallback_VersionBannerRight: @ 807C250
 	subs r0, 0x59
 	ands r0, r1
 	strb r0, [r2]
-	b _0807C2AC
+	b _0807BEEC
 	.align 2, 0
-_0807C284: .4byte gTasks
-_0807C288:
+_0807BEC4: .4byte gTasks
+_0807BEC8:
 	movs r3, 0x12
 	ldrsh r0, [r1, r3]
 	cmp r0, 0x3F
-	bgt _0807C2AC
+	bgt _0807BEEC
 	adds r3, r2, 0
 	adds r3, 0x3E
 	ldrb r0, [r3]
@@ -130,44 +130,44 @@ _0807C288:
 	movs r3, 0x22
 	ldrsh r0, [r2, r3]
 	cmp r0, 0x54
-	beq _0807C2AC
+	beq _0807BEEC
 	adds r0, r1, 0x1
 	strh r0, [r2, 0x22]
-_0807C2AC:
+_0807BEEC:
 	pop {r0}
 	bx r0
 	thumb_func_end SpriteCallback_VersionBannerRight
 
 	thumb_func_start SpriteCallback_PressStartCopyrightBanner
-SpriteCallback_PressStartCopyrightBanner: @ 807C2B0
+SpriteCallback_PressStartCopyrightBanner: @ 807BEF0
 	push {lr}
 	adds r2, r0, 0
 	movs r1, 0x2E
 	ldrsh r0, [r2, r1]
 	cmp r0, 0x1
-	bne _0807C2D8
+	bne _0807BF18
 	ldrh r0, [r2, 0x30]
 	adds r0, 0x1
 	strh r0, [r2, 0x30]
 	movs r1, 0x10
 	ands r0, r1
 	cmp r0, 0
-	bne _0807C2D8
+	bne _0807BF18
 	adds r0, r2, 0
 	adds r0, 0x3E
 	ldrb r1, [r0]
 	movs r2, 0x4
 	orrs r1, r2
 	strb r1, [r0]
-	b _0807C2E4
-_0807C2D8:
+	b _0807BF24
+_0807BF18:
 	adds r2, 0x3E
 	ldrb r1, [r2]
 	movs r0, 0x5
 	negs r0, r0
 	ands r0, r1
 	strb r0, [r2]
-_0807C2E4:
+_0807BF24:
 	pop {r0}
 	bx r0
 	thumb_func_end SpriteCallback_PressStartCopyrightBanner
@@ -319,11 +319,11 @@ _0807C410: .4byte gSprites
 	thumb_func_end CreateCopyrightBanner
 
 	thumb_func_start SpriteCallback_PokemonLogoShine
-SpriteCallback_PokemonLogoShine: @ 807C414
+SpriteCallback_PokemonLogoShine: @ 807BFE0
 	push {r4,lr}
 	adds r3, r0, 0
-	ldr r2, _0807C460 @ =gTasks
-	ldr r0, _0807C464 @ =gUnknown_0202F7E4
+	ldr r2, _0807C02C @ =gTasks
+	ldr r0, _0807C030 @ =gUnknown_0202F7E4
 	ldrb r1, [r0]
 	lsls r0, r1, 2
 	adds r0, r1
@@ -332,51 +332,51 @@ SpriteCallback_PokemonLogoShine: @ 807C414
 	movs r1, 0xA
 	ldrsh r0, [r0, r1]
 	cmp r0, 0
-	bne _0807C4A4
+	bne _0807C070
 	movs r2, 0x20
 	ldrsh r1, [r3, r2]
-	ldr r0, _0807C468 @ =0x0000010f
+	ldr r0, _0807C034 @ =0x0000010f
 	ldrh r4, [r3, 0x20]
 	cmp r1, r0
-	bgt _0807C4A4
+	bgt _0807C070
 	movs r2, 0x2E
 	ldrsh r0, [r3, r2]
 	cmp r0, 0
-	beq _0807C498
+	beq _0807C064
 	cmp r1, 0x77
-	bgt _0807C46C
+	bgt _0807C038
 	ldrh r1, [r3, 0x30]
 	movs r2, 0x30
 	ldrsh r0, [r3, r2]
 	cmp r0, 0x1E
-	bgt _0807C484
+	bgt _0807C050
 	adds r1, 0x1
 	strh r1, [r3, 0x30]
 	lsls r0, r1, 16
 	asrs r0, 16
 	cmp r0, 0x1E
-	bgt _0807C484
+	bgt _0807C050
 	adds r0, r1, 0x1
-	b _0807C482
+	b _0807C04E
 	.align 2, 0
-_0807C460: .4byte gTasks
-_0807C464: .4byte gUnknown_0202F7E4
-_0807C468: .4byte 0x0000010f
-_0807C46C:
+_0807C02C: .4byte gTasks
+_0807C030: .4byte gUnknown_0202F7E4
+_0807C034: .4byte 0x0000010f
+_0807C038:
 	ldrh r1, [r3, 0x30]
 	movs r2, 0x30
 	ldrsh r0, [r3, r2]
 	cmp r0, 0
-	beq _0807C484
+	beq _0807C050
 	subs r0, r1, 0x1
 	strh r0, [r3, 0x30]
 	lsls r0, 16
 	cmp r0, 0
-	beq _0807C484
+	beq _0807C050
 	subs r0, r1, 0x2
-_0807C482:
+_0807C04E:
 	strh r0, [r3, 0x30]
-_0807C484:
+_0807C050:
 	ldrh r1, [r3, 0x30]
 	movs r0, 0x1F
 	ands r0, r1
@@ -384,28 +384,28 @@ _0807C484:
 	lsls r2, r0, 5
 	adds r1, r2
 	orrs r1, r0
-	ldr r0, _0807C4A0 @ =gPlttBufferFaded
+	ldr r0, _0807C06C @ =gPlttBufferFaded
 	strh r1, [r0]
 	strh r1, [r0, 0x2A]
-_0807C498:
+_0807C064:
 	adds r0, r4, 0x4
 	strh r0, [r3, 0x20]
-	b _0807C4B2
+	b _0807C07E
 	.align 2, 0
-_0807C4A0: .4byte gPlttBufferFaded
-_0807C4A4:
-	ldr r1, _0807C4B8 @ =gPlttBufferFaded
+_0807C06C: .4byte gPlttBufferFaded
+_0807C070:
+	ldr r1, _0807C084 @ =gPlttBufferFaded
 	movs r0, 0
 	strh r0, [r1]
 	strh r0, [r1, 0x2A]
 	adds r0, r3, 0
 	bl DestroySprite
-_0807C4B2:
+_0807C07E:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C4B8: .4byte gPlttBufferFaded
+_0807C084: .4byte gPlttBufferFaded
 	thumb_func_end SpriteCallback_PokemonLogoShine
 
 	thumb_func_start StartPokemonLogoShine
@@ -458,36 +458,36 @@ _0807C520: .4byte gUnknown_030041B4
 	thumb_func_end StartPokemonLogoShine
 
 	thumb_func_start CB2_InitTitleScreen
-CB2_InitTitleScreen: @ 807C524
+CB2_InitTitleScreen: @ 807C0F0
 	push {r4,r5,lr}
 	sub sp, 0x14
-	ldr r0, _0807C540 @ =gMain
-	ldr r1, _0807C544 @ =0x0000043c
+	ldr r0, _0807C10C @ =gMain
+	ldr r1, _0807C110 @ =0x0000043c
 	adds r0, r1
 	ldrb r0, [r0]
 	cmp r0, 0x5
-	bhi _0807C564
+	bhi _0807C130
 	lsls r0, 2
-	ldr r1, _0807C548 @ =_0807C54C
+	ldr r1, _0807C114 @ =_0807C54C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0807C540: .4byte gMain
-_0807C544: .4byte 0x0000043c
-_0807C548: .4byte _0807C54C
+_0807C10C: .4byte gMain
+_0807C110: .4byte 0x0000043c
+_0807C114: .4byte _0807C54C
 	.align 2, 0
-_0807C54C:
-	.4byte _0807C564
-	.4byte _0807C618
-	.4byte _0807C6EC
-	.4byte _0807C73C
-	.4byte _0807C770
-	.4byte _0807C84C
-_0807C564:
+_0807C118:
+	.4byte _0807C130
+	.4byte _0807C1E4
+	.4byte _0807C2B8
+	.4byte _0807C308
+	.4byte _0807C33C
+	.4byte _0807C418
+_0807C130:
 	movs r0, 0
 	bl SetVBlankCallback
-	ldr r0, _0807C5F4 @ =0x04000050
+	ldr r0, _0807C1C0 @ =0x04000050
 	movs r1, 0
 	strh r1, [r0]
 	adds r0, 0x2
@@ -496,7 +496,7 @@ _0807C564:
 	strh r1, [r0]
 	movs r2, 0xA0
 	lsls r2, 19
-	ldr r3, _0807C5F8 @ =0x00007fff
+	ldr r3, _0807C1C4 @ =0x00007fff
 	adds r0, r3, 0
 	strh r0, [r2]
 	movs r0, 0x80
@@ -522,12 +522,12 @@ _0807C564:
 	strh r1, [r0]
 	add r0, sp, 0xC
 	strh r1, [r0]
-	ldr r1, _0807C5FC @ =0x040000d4
+	ldr r1, _0807C1C8 @ =0x040000d4
 	str r0, [r1]
 	movs r0, 0xC0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _0807C600 @ =0x8100c000
+	ldr r0, _0807C1CC @ =0x8100c000
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	movs r2, 0
@@ -537,59 +537,59 @@ _0807C564:
 	movs r0, 0xE0
 	lsls r0, 19
 	str r0, [r1, 0x4]
-	ldr r0, _0807C604 @ =0x85000100
+	ldr r0, _0807C1D0 @ =0x85000100
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	add r0, sp, 0xC
 	strh r2, [r0]
 	str r0, [r1]
-	ldr r0, _0807C608 @ =0x05000002
+	ldr r0, _0807C1D4 @ =0x05000002
 	str r0, [r1, 0x4]
-	ldr r0, _0807C60C @ =0x810001ff
+	ldr r0, _0807C1D8 @ =0x810001ff
 	str r0, [r1, 0x8]
 	ldr r0, [r1, 0x8]
 	bl ResetPaletteFade
-	ldr r0, _0807C610 @ =gMain
-	ldr r1, _0807C614 @ =0x0000043c
+	ldr r0, _0807C1DC @ =gMain
+	ldr r1, _0807C1E0 @ =0x0000043c
 	adds r0, r1
 	movs r1, 0x1
 	strb r1, [r0]
-	b _0807C87A
+	b _0807C446
 	.align 2, 0
-_0807C5F4: .4byte 0x04000050
-_0807C5F8: .4byte 0x00007fff
-_0807C5FC: .4byte 0x040000d4
-_0807C600: .4byte 0x8100c000
-_0807C604: .4byte 0x85000100
-_0807C608: .4byte 0x05000002
-_0807C60C: .4byte 0x810001ff
-_0807C610: .4byte gMain
-_0807C614: .4byte 0x0000043c
-_0807C618:
-	ldr r0, _0807C6A4 @ =gUnknown_08E9D8CC
+_0807C1C0: .4byte 0x04000050
+_0807C1C4: .4byte 0x00007fff
+_0807C1C8: .4byte 0x040000d4
+_0807C1CC: .4byte 0x8100c000
+_0807C1D0: .4byte 0x85000100
+_0807C1D4: .4byte 0x05000002
+_0807C1D8: .4byte 0x810001ff
+_0807C1DC: .4byte gMain
+_0807C1E0: .4byte 0x0000043c
+_0807C1E4:
+	ldr r0, _0807C270 @ =gUnknown_08E9D8CC
 	movs r1, 0xC0
 	lsls r1, 19
 	bl LZ77UnCompVram
-	ldr r0, _0807C6A8 @ =gUnknown_08E9F7E4
-	ldr r1, _0807C6AC @ =0x06004800
+	ldr r0, _0807C274 @ =gUnknown_08E9F7E4
+	ldr r1, _0807C278 @ =0x06004800
 	bl LZ77UnCompVram
-	ldr r4, _0807C6B0 @ =gUnknown_08E9F624
+	ldr r4, _0807C27C @ =gUnknown_08E9F624
 	movs r5, 0xE0
 	lsls r5, 1
 	adds r0, r4, 0
 	movs r1, 0
 	adds r2, r5, 0
 	bl LoadPalette
-	ldr r0, _0807C6B4 @ =gUnknown_08393250
-	ldr r1, _0807C6B8 @ =0x06008000
+	ldr r0, _0807C280 @ =gUnknown_08393250
+	ldr r1, _0807C284 @ =0x06008000
 	bl LZ77UnCompVram
-	ldr r0, _0807C6BC @ =gUnknown_083939EC
-	ldr r1, _0807C6C0 @ =0x0600c000
+	ldr r0, _0807C288 @ =gUnknown_083939EC
+	ldr r1, _0807C28C @ =0x0600c000
 	bl LZ77UnCompVram
-	ldr r0, _0807C6C4 @ =gUnknown_08393BF8
-	ldr r1, _0807C6C8 @ =0x0600c800
+	ldr r0, _0807C290 @ =gUnknown_08393BF8
+	ldr r1, _0807C294 @ =0x0600c800
 	bl LZ77UnCompVram
-	ldr r0, _0807C6CC @ =gUnknown_08393210
+	ldr r0, _0807C298 @ =gUnknown_08393210
 	movs r1, 0xE0
 	movs r2, 0x40
 	bl LoadPalette
@@ -597,54 +597,54 @@ _0807C618:
 	bl ResetTasks
 	bl ResetSpriteData
 	bl FreeAllSpritePalettes
-	ldr r1, _0807C6D0 @ =gReservedSpritePaletteCount
+	ldr r1, _0807C29C @ =gReservedSpritePaletteCount
 	movs r0, 0xE
 	strb r0, [r1]
-	ldr r0, _0807C6D4 @ =gUnknown_08393EFC
+	ldr r0, _0807C2A0 @ =gUnknown_08393EFC
 	bl LoadCompressedObjectPic
-	ldr r0, _0807C6D8 @ =gUnknown_08393F8C
+	ldr r0, _0807C2A4 @ =gUnknown_08393F8C
 	bl LoadCompressedObjectPic
-	ldr r0, _0807C6DC @ =gUnknown_08393FD8
+	ldr r0, _0807C2A8 @ =gUnknown_08393FD8
 	bl LoadCompressedObjectPic
 	movs r1, 0x80
 	lsls r1, 1
 	adds r0, r4, 0
 	adds r2, r5, 0
 	bl LoadPalette
-	ldr r0, _0807C6E0 @ =gUnknown_08393F9C
+	ldr r0, _0807C2AC @ =gUnknown_08393F9C
 	bl LoadSpritePalette
-	ldr r0, _0807C6E4 @ =gMain
-	ldr r2, _0807C6E8 @ =0x0000043c
+	ldr r0, _0807C2B0 @ =gMain
+	ldr r2, _0807C2B4 @ =0x0000043c
 	adds r0, r2
 	movs r1, 0x2
 	strb r1, [r0]
-	b _0807C87A
+	b _0807C446
 	.align 2, 0
-_0807C6A4: .4byte gUnknown_08E9D8CC
-_0807C6A8: .4byte gUnknown_08E9F7E4
-_0807C6AC: .4byte 0x06004800
-_0807C6B0: .4byte gUnknown_08E9F624
-_0807C6B4: .4byte gUnknown_08393250
-_0807C6B8: .4byte 0x06008000
-_0807C6BC: .4byte gUnknown_083939EC
-_0807C6C0: .4byte 0x0600c000
-_0807C6C4: .4byte gUnknown_08393BF8
-_0807C6C8: .4byte 0x0600c800
-_0807C6CC: .4byte gUnknown_08393210
-_0807C6D0: .4byte gReservedSpritePaletteCount
-_0807C6D4: .4byte gUnknown_08393EFC
-_0807C6D8: .4byte gUnknown_08393F8C
-_0807C6DC: .4byte gUnknown_08393FD8
-_0807C6E0: .4byte gUnknown_08393F9C
-_0807C6E4: .4byte gMain
-_0807C6E8: .4byte 0x0000043c
-_0807C6EC:
-	ldr r0, _0807C724 @ =Task_TitleScreenPhase1
+_0807C270: .4byte gUnknown_08E9D8CC
+_0807C274: .4byte gUnknown_08E9F7E4
+_0807C278: .4byte 0x06004800
+_0807C27C: .4byte gUnknown_08E9F624
+_0807C280: .4byte gUnknown_08393250
+_0807C284: .4byte 0x06008000
+_0807C288: .4byte gUnknown_083939EC
+_0807C28C: .4byte 0x0600c000
+_0807C290: .4byte gUnknown_08393BF8
+_0807C294: .4byte 0x0600c800
+_0807C298: .4byte gUnknown_08393210
+_0807C29C: .4byte gReservedSpritePaletteCount
+_0807C2A0: .4byte gUnknown_08393EFC
+_0807C2A4: .4byte gUnknown_08393F8C
+_0807C2A8: .4byte gUnknown_08393FD8
+_0807C2AC: .4byte gUnknown_08393F9C
+_0807C2B0: .4byte gMain
+_0807C2B4: .4byte 0x0000043c
+_0807C2B8:
+	ldr r0, _0807C2F0 @ =Task_TitleScreenPhase1
 	movs r1, 0
 	bl CreateTask
 	lsls r0, 24
 	lsrs r0, 24
-	ldr r2, _0807C728 @ =gTasks
+	ldr r2, _0807C2F4 @ =gTasks
 	lsls r1, r0, 2
 	adds r1, r0
 	lsls r1, 3
@@ -654,61 +654,61 @@ _0807C6EC:
 	lsls r2, 1
 	strh r2, [r1, 0x8]
 	strh r3, [r1, 0xA]
-	ldr r2, _0807C72C @ =0x0000fff0
+	ldr r2, _0807C2F8 @ =0x0000fff0
 	strh r2, [r1, 0xC]
 	subs r2, 0x10
 	strh r2, [r1, 0xE]
-	ldr r1, _0807C730 @ =gUnknown_0202F7E4
+	ldr r1, _0807C2FC @ =gUnknown_0202F7E4
 	strb r0, [r1]
-	ldr r0, _0807C734 @ =gMain
-	ldr r3, _0807C738 @ =0x0000043c
+	ldr r0, _0807C300 @ =gMain
+	ldr r3, _0807C304 @ =0x0000043c
 	adds r0, r3
 	movs r1, 0x3
 	strb r1, [r0]
-	b _0807C87A
+	b _0807C446
 	.align 2, 0
-_0807C724: .4byte Task_TitleScreenPhase1
-_0807C728: .4byte gTasks
-_0807C72C: .4byte 0x0000fff0
-_0807C730: .4byte gUnknown_0202F7E4
-_0807C734: .4byte gMain
-_0807C738: .4byte 0x0000043c
-_0807C73C:
+_0807C2F0: .4byte Task_TitleScreenPhase1
+_0807C2F4: .4byte gTasks
+_0807C2F8: .4byte 0x0000fff0
+_0807C2FC: .4byte gUnknown_0202F7E4
+_0807C300: .4byte gMain
+_0807C304: .4byte 0x0000043c
+_0807C308:
 	movs r0, 0x1
 	negs r0, r0
-	ldr r1, _0807C760 @ =0x0000ffff
+	ldr r1, _0807C32C @ =0x0000ffff
 	str r1, [sp]
 	movs r1, 0x1
 	movs r2, 0x10
 	movs r3, 0
 	bl BeginNormalPaletteFade
-	ldr r0, _0807C764 @ =_0807C4FC
+	ldr r0, _0807C330 @ =_0807C4FC
 	bl SetVBlankCallback
-	ldr r0, _0807C768 @ =gMain
-	ldr r1, _0807C76C @ =0x0000043c
+	ldr r0, _0807C334 @ =gMain
+	ldr r1, _0807C338 @ =0x0000043c
 	adds r0, r1
 	movs r1, 0x4
 	strb r1, [r0]
-	b _0807C87A
+	b _0807C446
 	.align 2, 0
-_0807C760: .4byte 0x0000ffff
-_0807C764: .4byte _0807C4FC
-_0807C768: .4byte gMain
-_0807C76C: .4byte 0x0000043c
-_0807C770:
+_0807C32C: .4byte 0x0000ffff
+_0807C330: .4byte _0807C4FC
+_0807C334: .4byte gMain
+_0807C338: .4byte 0x0000043c
+_0807C33C:
 	movs r2, 0x80
 	lsls r2, 1
 	movs r0, 0x78
 	movs r1, 0x50
 	movs r3, 0
 	bl sub_813CE30
-	ldr r1, _0807C808 @ =0x04000028
-	ldr r0, _0807C80C @ =0xffffe300
+	ldr r1, _0807C3D4 @ =0x04000028
+	ldr r0, _0807C3D8 @ =0xffffe300
 	str r0, [r1]
 	adds r1, 0x4
-	ldr r0, _0807C810 @ =0xffffdf00
+	ldr r0, _0807C3DC @ =0xffffdf00
 	str r0, [r1]
-	ldr r0, _0807C814 @ =0x04000040
+	ldr r0, _0807C3E0 @ =0x04000040
 	movs r4, 0
 	strh r4, [r0]
 	adds r0, 0x4
@@ -718,82 +718,82 @@ _0807C770:
 	adds r0, 0x4
 	strh r4, [r0]
 	adds r1, 0x1C
-	ldr r2, _0807C818 @ =0x00001f1f
+	ldr r2, _0807C3E4 @ =0x00001f1f
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r3, _0807C81C @ =0x00003f1f
+	ldr r3, _0807C3E8 @ =0x00003f1f
 	adds r0, r3, 0
 	strh r0, [r1]
 	adds r1, 0x6
 	movs r0, 0x84
 	strh r0, [r1]
-	ldr r0, _0807C820 @ =0x04000052
+	ldr r0, _0807C3EC @ =0x04000052
 	strh r4, [r0]
 	adds r0, 0x2
 	movs r5, 0x8
 	strh r5, [r0]
 	subs r1, 0x48
-	ldr r2, _0807C824 @ =0x0000180b
+	ldr r2, _0807C3F0 @ =0x0000180b
 	adds r0, r2, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r3, _0807C828 @ =0x0000190a
+	ldr r3, _0807C3F4 @ =0x0000190a
 	adds r0, r3, 0
 	strh r0, [r1]
 	adds r1, 0x2
-	ldr r2, _0807C82C @ =0x00004981
+	ldr r2, _0807C3F8 @ =0x00004981
 	adds r0, r2, 0
 	strh r0, [r1]
-	ldr r3, _0807C830 @ =0x04000208
+	ldr r3, _0807C3FC @ =0x04000208
 	ldrh r2, [r3]
 	strh r4, [r3]
-	ldr r4, _0807C834 @ =0x04000200
+	ldr r4, _0807C400 @ =0x04000200
 	ldrh r0, [r4]
 	movs r1, 0x1
 	orrs r0, r1
 	strh r0, [r4]
 	strh r2, [r3]
-	ldr r1, _0807C838 @ =0x04000004
+	ldr r1, _0807C404 @ =0x04000004
 	ldrh r0, [r1]
 	orrs r0, r5
 	strh r0, [r1]
 	subs r1, 0x4
-	ldr r3, _0807C83C @ =0x0000b441
+	ldr r3, _0807C408 @ =0x0000b441
 	adds r0, r3, 0
 	strh r0, [r1]
-	ldr r0, _0807C840 @ =0x0000019d
+	ldr r0, _0807C40C @ =0x0000019d
 	bl m4aSongNumStart
-	ldr r0, _0807C844 @ =gMain
-	ldr r1, _0807C848 @ =0x0000043c
+	ldr r0, _0807C410 @ =gMain
+	ldr r1, _0807C414 @ =0x0000043c
 	adds r0, r1
 	movs r1, 0x5
 	strb r1, [r0]
-	b _0807C87A
+	b _0807C446
 	.align 2, 0
-_0807C808: .4byte 0x04000028
-_0807C80C: .4byte 0xffffe300
-_0807C810: .4byte 0xffffdf00
-_0807C814: .4byte 0x04000040
-_0807C818: .4byte 0x00001f1f
-_0807C81C: .4byte 0x00003f1f
-_0807C820: .4byte 0x04000052
-_0807C824: .4byte 0x0000180b
-_0807C828: .4byte 0x0000190a
-_0807C82C: .4byte 0x00004981
-_0807C830: .4byte 0x04000208
-_0807C834: .4byte 0x04000200
-_0807C838: .4byte 0x04000004
-_0807C83C: .4byte 0x0000b441
-_0807C840: .4byte 0x0000019d
-_0807C844: .4byte gMain
-_0807C848: .4byte 0x0000043c
-_0807C84C:
+_0807C3D4: .4byte 0x04000028
+_0807C3D8: .4byte 0xffffe300
+_0807C3DC: .4byte 0xffffdf00
+_0807C3E0: .4byte 0x04000040
+_0807C3E4: .4byte 0x00001f1f
+_0807C3E8: .4byte 0x00003f1f
+_0807C3EC: .4byte 0x04000052
+_0807C3F0: .4byte 0x0000180b
+_0807C3F4: .4byte 0x0000190a
+_0807C3F8: .4byte 0x00004981
+_0807C3FC: .4byte 0x04000208
+_0807C400: .4byte 0x04000200
+_0807C404: .4byte 0x04000004
+_0807C408: .4byte 0x0000b441
+_0807C40C: .4byte 0x0000019d
+_0807C410: .4byte gMain
+_0807C414: .4byte 0x0000043c
+_0807C418:
 	bl UpdatePaletteFade
 	lsls r0, 24
 	lsrs r4, r0, 24
 	cmp r4, 0
-	bne _0807C87A
+	bne _0807C446
 	movs r0, 0
 	bl StartPokemonLogoShine
 	str r4, [sp]
@@ -806,16 +806,16 @@ _0807C84C:
 	movs r2, 0x4
 	movs r3, 0x4
 	bl sub_8089944
-	ldr r0, _0807C884 @ =_0807C888
+	ldr r0, _0807C450 @ =_0807C888
 	bl SetMainCallback2
-_0807C87A:
+_0807C446:
 	add sp, 0x14
 	pop {r4,r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C884: .4byte _0807C888
-_0807C888:
+_0807C450: .4byte _0807C888
+_0807C454:
 	push {lr}
 	bl RunTasks
 	bl AnimateSprites
