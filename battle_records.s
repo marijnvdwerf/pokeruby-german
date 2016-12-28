@@ -691,14 +691,14 @@ sub_8110494: @ 8110494
 	cmp r0, 0x6
 	bhi _081104E0
 	lsls r0, 2
-	ldr r1, _081104BC @ =_081108B8
+	ldr r1, _081104BC @ =_081104C0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _081104B4: .4byte 0x02024f4c
 _081104B8: .4byte 0x000004ae
-_081104BC: .4byte _081108B8
+_081104BC: .4byte _081104C0
 	.align 2, 0
 _081104C0:
 	.4byte _081104E0

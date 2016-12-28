@@ -480,13 +480,13 @@ sub_80BA00C: @ 80BA00C
 	cmp r0, 0x5
 	bhi _080BA09C
 	lsls r0, 2
-	ldr r1, _080BA034 @ =_080BA1CC
+	ldr r1, _080BA034 @ =_080BA038
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080BA030: .4byte gTasks
-_080BA034: .4byte _080BA1CC
+_080BA034: .4byte _080BA038
 	.align 2, 0
 _080BA038:
 	.4byte _080BA086

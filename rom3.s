@@ -1185,13 +1185,13 @@ sub_800C1A8: @ 800C1A8
 	b _0800C354
 _0800C1C4:
 	lsls r0, 2
-	ldr r1, _0800C1D4 @ =_0800C3AC
+	ldr r1, _0800C1D4 @ =_0800C1D8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0800C1D0: .4byte gTasks
-_0800C1D4: .4byte _0800C3AC
+_0800C1D4: .4byte _0800C1D8
 	.align 2, 0
 _0800C1D8:
 	.4byte _0800C1F0

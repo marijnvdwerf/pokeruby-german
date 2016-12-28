@@ -612,12 +612,12 @@ _0800D8D8:
 	b _0800DA9E
 _0800D8E6:
 	lsls r0, 2
-	ldr r1, _0800D8F0 @ =_0800DAC8
+	ldr r1, _0800D8F0 @ =_0800D8F4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0800D8F0: .4byte _0800DAC8
+_0800D8F0: .4byte _0800D8F4
 	.align 2, 0
 _0800D8F4:
 	.4byte _0800D918
@@ -1917,12 +1917,12 @@ sub_800E414: @ 800E414
 	b _0800E7BA
 _0800E422:
 	lsls r0, 2
-	ldr r1, _0800E42C @ =_0800E604
+	ldr r1, _0800E42C @ =_0800E430
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0800E42C: .4byte _0800E604
+_0800E42C: .4byte _0800E430
 	.align 2, 0
 _0800E430:
 	.4byte _0800E44C
@@ -2020,12 +2020,12 @@ _0800E4F0:
 	b _0800E7BC
 _0800E4FE:
 	lsls r0, 2
-	ldr r1, _0800E508 @ =_0800E6E0
+	ldr r1, _0800E508 @ =_0800E50C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0800E508: .4byte _0800E6E0
+_0800E508: .4byte _0800E50C
 	.align 2, 0
 _0800E50C:
 	.4byte _0800E530
@@ -2151,12 +2151,12 @@ _0800E5FC:
 	b _0800E7BC
 _0800E60A:
 	lsls r0, 2
-	ldr r1, _0800E614 @ =_0800E7EC
+	ldr r1, _0800E614 @ =_0800E618
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0800E614: .4byte _0800E7EC
+_0800E614: .4byte _0800E618
 	.align 2, 0
 _0800E618:
 	.4byte _0800E63C
@@ -2286,12 +2286,12 @@ _0800E710:
 	cmp r0, 0x8
 	bhi _0800E7BC
 	lsls r0, 2
-	ldr r1, _0800E728 @ =_0800E900
+	ldr r1, _0800E728 @ =_0800E72C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0800E728: .4byte _0800E900
+_0800E728: .4byte _0800E72C
 	.align 2, 0
 _0800E72C:
 	.4byte _0800E750
@@ -2974,7 +2974,7 @@ sub_800EC9C: @ 800EC9C
 	b _0800F008
 _0800ECCA:
 	lsls r0, 2
-	ldr r1, _0800ECE0 @ =_0800EEB8
+	ldr r1, _0800ECE0 @ =_0800ECE4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -2982,7 +2982,7 @@ _0800ECCA:
 _0800ECD4: .4byte 0x02000000
 _0800ECD8: .4byte 0x000160cb
 _0800ECDC: .4byte gUnknown_02024D1E
-_0800ECE0: .4byte _0800EEB8
+_0800ECE0: .4byte _0800ECE4
 	.align 2, 0
 _0800ECE4:
 	.4byte _0800ED0C
@@ -3674,7 +3674,7 @@ sub_800F298: @ 800F298
 	b _0800F7E0
 _0800F2C4:
 	lsls r0, 2
-	ldr r1, _0800F2DC @ =_0800F4B4
+	ldr r1, _0800F2DC @ =_0800F2E0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -3682,7 +3682,7 @@ _0800F2C4:
 _0800F2D0: .4byte 0x02000000
 _0800F2D4: .4byte 0x000160cb
 _0800F2D8: .4byte gUnknown_02024D1E
-_0800F2DC: .4byte _0800F4B4
+_0800F2DC: .4byte _0800F2E0
 	.align 2, 0
 _0800F2E0:
 	.4byte _0800F300
@@ -9802,14 +9802,14 @@ _0801234C:
 	bl _08012F66
 _08012368:
 	lsls r0, 2
-	ldr r1, _0801237C @ =_08012554
+	ldr r1, _0801237C @ =_08012380
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08012374: .4byte gUnknown_02024A60
 _08012378: .4byte gUnknown_02024D1E
-_0801237C: .4byte _08012554
+_0801237C: .4byte _08012380
 	.align 2, 0
 _08012380:
 	.4byte _0801239C
@@ -9997,7 +9997,7 @@ _080124F6:
 	b _08012968
 _08012514:
 	lsls r0, 2
-	ldr r1, _08012534 @ =_0801270C
+	ldr r1, _08012534 @ =_08012538
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -10007,7 +10007,7 @@ _08012524: .4byte gBitTable
 _08012528: .4byte gUnknown_02024A60
 _0801252C: .4byte gUnknown_02024C18
 _08012530: .4byte gUnknown_02024260
-_08012534: .4byte _0801270C
+_08012534: .4byte _08012538
 	.align 2, 0
 _08012538:
 	.4byte _0801256C
@@ -10611,7 +10611,7 @@ _08012A54:
 	b _08012F66
 _08012A62:
 	lsls r0, 2
-	ldr r1, _08012A7C @ =_08012C54
+	ldr r1, _08012A7C @ =_08012A80
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -10620,7 +10620,7 @@ _08012A6C: .4byte gUnknown_02024A64
 _08012A70: .4byte gBitTable
 _08012A74: .4byte gUnknown_02024A60
 _08012A78: .4byte gUnknown_02024C18
-_08012A7C: .4byte _08012C54
+_08012A7C: .4byte _08012A80
 	.align 2, 0
 _08012A80:
 	.4byte _08012AA8
@@ -12569,7 +12569,7 @@ _08013A0E:
 	b _08013B38
 _08013A30:
 	lsls r0, 2
-	ldr r1, _08013A4C @ =_08013C24
+	ldr r1, _08013A4C @ =_08013A50
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -12578,7 +12578,7 @@ _08013A3C: .4byte gUnknown_02024C10
 _08013A40: .4byte gUnknown_081D8DBE
 _08013A44: .4byte gTrainers
 _08013A48: .4byte gTrainerBattleOpponent
-_08013A4C: .4byte _08013C24
+_08013A4C: .4byte _08013A50
 	.align 2, 0
 _08013A50:
 	.4byte _08013B24
@@ -14247,7 +14247,7 @@ _0801486C:
 	b _08014A74
 _08014896:
 	lsls r0, 2
-	ldr r1, _080148B4 @ =_08014A8C
+	ldr r1, _080148B4 @ =_080148B8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -14257,7 +14257,7 @@ _080148A4: .4byte 0x00016003
 _080148A8: .4byte 0x000160d8
 _080148AC: .4byte gUnknown_02024C10
 _080148B0: .4byte gUnknown_081D9E7C
-_080148B4: .4byte _08014A8C
+_080148B4: .4byte _080148B8
 	.align 2, 0
 _080148B8:
 	.4byte _08014A74
@@ -15299,12 +15299,12 @@ sub_8015150: @ 8015150
 	cmp r0, 0xA
 	bhi _080151C8
 	lsls r0, 2
-	ldr r1, _08015168 @ =_08015340
+	ldr r1, _08015168 @ =_0801516C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08015168: .4byte _08015340
+_08015168: .4byte _0801516C
 	.align 2, 0
 _0801516C:
 	.4byte _08015198
@@ -17020,7 +17020,7 @@ _08015E8A:
 	b _0801652A
 _08015E96:
 	lsls r0, 2
-	ldr r1, _08015EBC @ =_08016094
+	ldr r1, _08015EBC @ =_08015EC0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -17032,7 +17032,7 @@ _08015EAC: .4byte 0x02000000
 _08015EB0: .4byte gUnknown_02024C0C
 _08015EB4: .4byte gBitTable
 _08015EB8: .4byte 0x0001600e
-_08015EBC: .4byte _08016094
+_08015EBC: .4byte _08015EC0
 	.align 2, 0
 _08015EC0:
 	.4byte _08015EEC
@@ -17899,12 +17899,12 @@ _080165C8:
 	bl _08017078
 _080165D8:
 	lsls r0, 2
-	ldr r1, _080165E4 @ =_080167BC
+	ldr r1, _080165E4 @ =_080165E8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080165E4: .4byte _080167BC
+_080165E4: .4byte _080165E8
 	.align 2, 0
 _080165E8:
 	.4byte _08016638
@@ -19635,14 +19635,14 @@ _080173FC:
 	b _080176A0
 _08017408:
 	lsls r0, 2
-	ldr r1, _0801741C @ =_080175F4
+	ldr r1, _0801741C @ =_08017420
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08017414: .4byte 0x02000000
 _08017418: .4byte 0x00016059
-_0801741C: .4byte _080175F4
+_0801741C: .4byte _08017420
 	.align 2, 0
 _08017420:
 	.4byte _08017440
@@ -20044,13 +20044,13 @@ _08017746:
 	bl _08017F9E
 _08017754:
 	lsls r0, 2
-	ldr r1, _08017764 @ =_0801793C
+	ldr r1, _08017764 @ =_08017768
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08017760: .4byte 0x000160e7
-_08017764: .4byte _0801793C
+_08017764: .4byte _08017768
 	.align 2, 0
 _08017768:
 	.4byte _080177A4
@@ -21647,13 +21647,13 @@ _080184AC:
 	bl _08019F76
 _080184B6:
 	lsls r0, r5, 2
-	ldr r1, _080184C4 @ =_0801869C
+	ldr r1, _080184C4 @ =_080184C8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080184C0: .4byte gBattleMoves
-_080184C4: .4byte _0801869C
+_080184C4: .4byte _080184C8
 	.align 2, 0
 _080184C8:
 	.4byte _08018518
@@ -21747,12 +21747,12 @@ _08018586:
 	cmp r0, 0xA
 	bhi _0801864C
 	lsls r0, 2
-	ldr r1, _080185A0 @ =_08018778
+	ldr r1, _080185A0 @ =_080185A4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080185A0: .4byte _08018778
+_080185A0: .4byte _080185A4
 	.align 2, 0
 _080185A4:
 	.4byte _080185D0
@@ -22617,12 +22617,12 @@ _08018CF0:
 	bl _08019F76
 _08018CFE:
 	lsls r0, 2
-	ldr r1, _08018D08 @ =_08018EE0
+	ldr r1, _08018D08 @ =_08018D0C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08018D08: .4byte _08018EE0
+_08018D08: .4byte _08018D0C
 	.align 2, 0
 _08018D0C:
 	.4byte _08019128
@@ -23442,14 +23442,14 @@ _08019458:
 	b _080196D6
 _08019472:
 	lsls r0, 2
-	ldr r1, _08019484 @ =_0801965C
+	ldr r1, _08019484 @ =_08019488
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0801947C: .4byte gUnknown_02024A68
 _08019480: .4byte gBattleMons
-_08019484: .4byte _0801965C
+_08019484: .4byte _08019488
 	.align 2, 0
 _08019488:
 	.4byte _080195EC
@@ -24966,14 +24966,14 @@ _0801A102:
 	bl _0801B3CA
 _0801A10C:
 	lsls r0, r4, 2
-	ldr r1, _0801A120 @ =_0801A2F8
+	ldr r1, _0801A120 @ =_0801A124
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0801A118: .4byte gBattleMons
 _0801A11C: .4byte gUnknown_02024C08
-_0801A120: .4byte _0801A2F8
+_0801A120: .4byte _0801A124
 	.align 2, 0
 _0801A124:
 	.4byte _0801A138
@@ -25068,13 +25068,13 @@ _0801A1E8:
 	bl _0801AD5A
 _0801A1F2:
 	lsls r0, 2
-	ldr r1, _0801A200 @ =_0801A3D8
+	ldr r1, _0801A200 @ =_0801A204
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0801A1FC: .4byte gBattleMons
-_0801A200: .4byte _0801A3D8
+_0801A200: .4byte _0801A204
 	.align 2, 0
 _0801A204:
 	.4byte _0801A2B0
@@ -26591,12 +26591,12 @@ _0801AE5C:
 	b _0801B208
 _0801AE64:
 	lsls r0, 2
-	ldr r1, _0801AE70 @ =_0801B048
+	ldr r1, _0801AE70 @ =_0801AE74
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0801AE70: .4byte _0801B048
+_0801AE70: .4byte _0801AE74
 	.align 2, 0
 _0801AE74:
 	.4byte _0801AEE0
@@ -27488,13 +27488,13 @@ _0801B5EA:
 	b _0801B900
 _0801B5F0:
 	lsls r0, r6, 2
-	ldr r1, _0801B600 @ =_0801B7D8
+	ldr r1, _0801B600 @ =_0801B604
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0801B5FC: .4byte gBattleMoves
-_0801B600: .4byte _0801B7D8
+_0801B600: .4byte _0801B604
 	.align 2, 0
 _0801B604:
 	.4byte _0801B708
@@ -34139,13 +34139,13 @@ _0801EB6E:
 	bl _0801F5FA
 _0801EB78:
 	lsls r0, 2
-	ldr r1, _0801EB88 @ =_0801ED60
+	ldr r1, _0801EB88 @ =_0801EB8C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0801EB84: .4byte gUnknown_081FAB5C
-_0801EB88: .4byte _0801ED60
+_0801EB88: .4byte _0801EB8C
 	.align 2, 0
 _0801EB8C:
 	.4byte _0801EC60
@@ -36362,14 +36362,14 @@ sub_801FE2C: @ 801FE2C
 	cmp r0, 0x5
 	bhi _0801FEEA
 	lsls r0, 2
-	ldr r1, _0801FE68 @ =_08020040
+	ldr r1, _0801FE68 @ =_0801FE6C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0801FE60: .4byte gUnknown_02024C10
 _0801FE64: .4byte gBattleMons
-_0801FE68: .4byte _08020040
+_0801FE68: .4byte _0801FE6C
 	.align 2, 0
 _0801FE6C:
 	.4byte _0801FE84
@@ -36619,7 +36619,7 @@ sub_8020004: @ 8020004
 	bl _08020996
 _08020040:
 	lsls r0, 2
-	ldr r1, _0802005C @ =_08020234
+	ldr r1, _0802005C @ =_08020060
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -36628,7 +36628,7 @@ _0802004C: .4byte 0x0201605c
 _08020050: .4byte gUnknown_02024C10
 _08020054: .4byte gUnknown_02024C09
 _08020058: .4byte gUnknown_02024DEA
-_0802005C: .4byte _08020234
+_0802005C: .4byte _08020060
 	.align 2, 0
 _08020060:
 	.4byte _0802007C
@@ -38083,13 +38083,13 @@ atk29_jumpifbyte: @ 8020C34
 	cmp r6, 0x5
 	bhi _08020CCC
 	lsls r0, r6, 2
-	ldr r1, _08020C7C @ =_08020E54
+	ldr r1, _08020C7C @ =_08020C80
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08020C78: .4byte gUnknown_02024C10
-_08020C7C: .4byte _08020E54
+_08020C7C: .4byte _08020C80
 	.align 2, 0
 _08020C80:
 	.4byte _08020C98
@@ -38172,13 +38172,13 @@ sub_8020CD4: @ 8020CD4
 	cmp r6, 0x5
 	bhi _08020D74
 	lsls r0, r6, 2
-	ldr r1, _08020D24 @ =_08020EFC
+	ldr r1, _08020D24 @ =_08020D28
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08020D20: .4byte gUnknown_02024C10
-_08020D24: .4byte _08020EFC
+_08020D24: .4byte _08020D28
 	.align 2, 0
 _08020D28:
 	.4byte _08020D40
@@ -38267,13 +38267,13 @@ sub_8020D7C: @ 8020D7C
 	cmp r6, 0x5
 	bhi _08020E28
 	lsls r0, r6, 2
-	ldr r1, _08020DD8 @ =_08020FB0
+	ldr r1, _08020DD8 @ =_08020DDC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08020DD4: .4byte gUnknown_02024C10
-_08020DD8: .4byte _08020FB0
+_08020DD8: .4byte _08020DDC
 	.align 2, 0
 _08020DDC:
 	.4byte _08020DF4
@@ -39794,13 +39794,13 @@ _080218EE:
 	bl _0802224E
 _080218FC:
 	lsls r0, 2
-	ldr r1, _0802190C @ =_08021AE4
+	ldr r1, _0802190C @ =_08021910
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08021908: .4byte 0x0001600c
-_0802190C: .4byte _08021AE4
+_0802190C: .4byte _08021910
 	.align 2, 0
 _08021910:
 	.4byte _08021958
@@ -43938,7 +43938,7 @@ sub_8023AF8: @ 8023AF8
 	b _08023E5C
 _08023B18:
 	lsls r0, 2
-	ldr r1, _08023B30 @ =_08023D08
+	ldr r1, _08023B30 @ =_08023B34
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -43946,7 +43946,7 @@ _08023B18:
 _08023B24: .4byte gUnknown_02024A60
 _08023B28: .4byte 0x02000000
 _08023B2C: .4byte 0x0001601a
-_08023B30: .4byte _08023D08
+_08023B30: .4byte _08023B34
 	.align 2, 0
 _08023B34:
 	.4byte _08023B4C
@@ -45718,7 +45718,7 @@ _0802495A:
 	mov r0, r8
 	cmp r0, 0x5
 	bhi _08024A1A
-	ldr r0, _080249B8 @ =_08024B90
+	ldr r0, _080249B8 @ =_080249BC
 	adds r0, r4, r0
 	ldr r0, [r0]
 	mov pc, r0
@@ -45730,7 +45730,7 @@ _080249A8: .4byte 0x02000000
 _080249AC: .4byte 0x00016018
 _080249B0: .4byte gPlayerParty
 _080249B4: .4byte gLevelUpStatBoxStats
-_080249B8: .4byte _08024B90
+_080249B8: .4byte _080249BC
 	.align 2, 0
 _080249BC:
 	.4byte _080249D4
@@ -46443,14 +46443,14 @@ sub_8024F40: @ 8024F40
 	b _08025112
 _08024F5A:
 	lsls r0, 2
-	ldr r1, _08024F6C @ =_08025144
+	ldr r1, _08024F6C @ =_08024F70
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08024F64: .4byte gUnknown_02024C10
 _08024F68: .4byte gUnknown_02024A60
-_08024F6C: .4byte _08025144
+_08024F6C: .4byte _08024F70
 	.align 2, 0
 _08024F70:
 	.4byte _08024F8C
@@ -58476,13 +58476,13 @@ sub_802AEB0: @ 802AEB0
 	cmp r0, 0x7
 	bhi _0802AF4C
 	lsls r0, 2
-	ldr r1, _0802AEC8 @ =_0802B0A0
+	ldr r1, _0802AEC8 @ =_0802AECC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0802AEC4: .4byte gUnknown_0300428C
-_0802AEC8: .4byte _0802B0A0
+_0802AEC8: .4byte _0802AECC
 	.align 2, 0
 _0802AECC:
 	.4byte _0802AEEC
@@ -59450,7 +59450,7 @@ _0802B68E:
 	b _0802B78E
 _0802B696:
 	lsls r0, 2
-	ldr r1, _0802B6AC @ =_0802B884
+	ldr r1, _0802B6AC @ =_0802B6B0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -59458,7 +59458,7 @@ _0802B696:
 _0802B6A0: .4byte gBaseStats
 _0802B6A4: .4byte gBattleMons
 _0802B6A8: .4byte gUnknown_02024C04
-_0802B6AC: .4byte _0802B884
+_0802B6AC: .4byte _0802B6B0
 	.align 2, 0
 _0802B6B0:
 	.4byte _0802B6CC
@@ -60206,13 +60206,13 @@ atkF3_receive_new_pokemon_maybe: @ 802BC90
 	b _0802BEDA
 _0802BCA8:
 	lsls r0, r1, 2
-	ldr r1, _0802BCB8 @ =_0802BE90
+	ldr r1, _0802BCB8 @ =_0802BCBC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0802BCB4: .4byte gUnknown_02024D1E
-_0802BCB8: .4byte _0802BE90
+_0802BCB8: .4byte _0802BCBC
 	.align 2, 0
 _0802BCBC:
 	.4byte _0802BCD0
@@ -65208,14 +65208,14 @@ dp01_getattr_by_ch1_for_player_pokemon_: @ 802E544
 	bl _0802ECDA
 _0802E56E:
 	lsls r0, 2
-	ldr r1, _0802E580 @ =_0802E758
+	ldr r1, _0802E580 @ =_0802E584
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0802E578: .4byte gUnknown_02023A60
 _0802E57C: .4byte gUnknown_02024A60
-_0802E580: .4byte _0802E758
+_0802E580: .4byte _0802E584
 	.align 2, 0
 _0802E584:
 	.4byte _0802E674
@@ -66257,14 +66257,14 @@ dp01_setattr_by_ch1_for_player_pokemon: @ 802EDD0
 	bl _0802F796
 _0802EDFC:
 	lsls r0, 2
-	ldr r1, _0802EE10 @ =_0802EFE8
+	ldr r1, _0802EE10 @ =_0802EE14
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0802EE08: .4byte gUnknown_02024A60
 _0802EE0C: .4byte gUnknown_02023A63
-_0802EE10: .4byte _0802EFE8
+_0802EE10: .4byte _0802EE14
 	.align 2, 0
 _0802EE14:
 	.4byte _0802EF04
@@ -70040,7 +70040,7 @@ sub_8030CC0: @ 8030CC0
 	ands r0, r2
 	orrs r0, r4
 	strb r0, [r1, 0x5]
-	ldr r0, _08030E1C @ =task05_08033660
+	ldr r0, _08030E1C @ =task05_0803348C
 	movs r1, 0x5
 	bl CreateTask
 	lsls r0, 24
@@ -70097,7 +70097,7 @@ _08030E0C: .4byte sub_8030E38
 _08030E10: .4byte 0x0000d6f8
 _08030E14: .4byte gTrainerBackPicPaletteTable
 _08030E18: .4byte gSaveBlock2
-_08030E1C: .4byte task05_08033660
+_08030E1C: .4byte task05_0803348C
 _08030E20: .4byte gTasks
 _08030E24: .4byte 0x02017810
 _08030E28: .4byte gUnknown_02024E68
@@ -70152,8 +70152,8 @@ _08030E98: .4byte gUnknown_02024BE0
 _08030E9C: .4byte gSprites
 	thumb_func_end sub_8030E38
 
-	thumb_func_start task05_08033660
-task05_0803348C: @ 8031074
+	thumb_func_start task05_0803348C
+task05_08033660: @ 8030EA0
 	push {r4-r7,lr}
 	mov r7, r9
 	mov r6, r8
@@ -70278,7 +70278,7 @@ _08030F9C: .4byte gPlayerParty
 _08030FA0: .4byte gUnknown_03004330
 _08030FA4: .4byte gUnknown_02024A60
 _08030FA8: .4byte sub_802D500
-	thumb_func_end task05_08033660
+	thumb_func_end task05_0803348C
 
 	thumb_func_start sub_8030FAC
 sub_8030FAC: @ 8030FAC
@@ -72036,12 +72036,12 @@ battle_load_something: @ 8031D70
 	b _08031EDE
 _08031D80:
 	lsls r0, 2
-	ldr r1, _08031D8C @ =_08031F64
+	ldr r1, _08031D8C @ =_08031D90
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08031D8C: .4byte _08031F64
+_08031D8C: .4byte _08031D90
 	.align 2, 0
 _08031D90:
 	.4byte _08031DAC
@@ -75061,14 +75061,14 @@ sub_8033598: @ 8033598
 	bl _08033D2E
 _080335C2:
 	lsls r0, 2
-	ldr r1, _080335D4 @ =_080337AC
+	ldr r1, _080335D4 @ =_080335D8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080335CC: .4byte gUnknown_02023A60
 _080335D0: .4byte gUnknown_02024A60
-_080335D4: .4byte _080337AC
+_080335D4: .4byte _080335D8
 	.align 2, 0
 _080335D8:
 	.4byte _080336C8
@@ -76111,14 +76111,14 @@ sub_8033E24: @ 8033E24
 	bl _08034730
 _08033E52:
 	lsls r0, 2
-	ldr r1, _08033E64 @ =_0803403C
+	ldr r1, _08033E64 @ =_08033E68
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08033E5C: .4byte gUnknown_02024A60
 _08033E60: .4byte gUnknown_02023A63
-_08033E64: .4byte _0803403C
+_08033E64: .4byte _08033E68
 	.align 2, 0
 _08033E68:
 	.4byte _08033F58
@@ -82385,7 +82385,7 @@ _08037136:
 	b _080374A8
 _08037166:
 	lsls r0, 2
-	ldr r1, _0803718C @ =_08037364
+	ldr r1, _0803718C @ =_08037190
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -82397,7 +82397,7 @@ _0803717C: .4byte 0x02028daa
 _08037180: .4byte 0xfffe9600
 _08037184: .4byte gUnknown_02024A60
 _08037188: .4byte 0x000160d8
-_0803718C: .4byte _08037364
+_0803718C: .4byte _08037190
 	.align 2, 0
 _08037190:
 	.4byte _080371A8
@@ -84345,14 +84345,14 @@ dp01_getattr_by_ch1_for_player_pokemon__: @ 80380F0
 	bl _08038886
 _0803811A:
 	lsls r0, 2
-	ldr r1, _0803812C @ =_08038304
+	ldr r1, _0803812C @ =_08038130
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08038124: .4byte gUnknown_02023A60
 _08038128: .4byte gUnknown_02024A60
-_0803812C: .4byte _08038304
+_0803812C: .4byte _08038130
 	.align 2, 0
 _08038130:
 	.4byte _08038220
@@ -85335,14 +85335,14 @@ sub_8038900: @ 8038900
 	bl _0803920C
 _0803892E:
 	lsls r0, 2
-	ldr r1, _08038940 @ =_08038B18
+	ldr r1, _08038940 @ =_08038944
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08038938: .4byte gUnknown_02024A60
 _0803893C: .4byte gUnknown_02023A63
-_08038940: .4byte _08038B18
+_08038940: .4byte _08038944
 	.align 2, 0
 _08038944:
 	.4byte _08038A34

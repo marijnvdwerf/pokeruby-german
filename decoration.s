@@ -2307,13 +2307,13 @@ sub_80FF394: @ 80FF394
 	cmp r0, 0x9
 	bhi _080FF46C
 	lsls r0, 2
-	ldr r1, _080FF3C0 @ =_080FF794
+	ldr r1, _080FF3C0 @ =_080FF3C4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080FF3BC: .4byte gDecorations
-_080FF3C0: .4byte _080FF794
+_080FF3C0: .4byte _080FF3C4
 	.align 2, 0
 _080FF3C4:
 	.4byte _080FF3EC
@@ -3012,7 +3012,7 @@ sub_80FF960: @ 80FF960
 	b _080FFAA6
 _080FF980:
 	lsls r0, 2
-	ldr r1, _080FF998 @ =_080FFD6C
+	ldr r1, _080FF998 @ =_080FF99C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -3020,7 +3020,7 @@ _080FF980:
 _080FF98C: .4byte gDecorations
 _080FF990: .4byte gUnknown_020388F5
 _080FF994: .4byte gUnknown_020388D0
-_080FF998: .4byte _080FFD6C
+_080FF998: .4byte _080FF99C
 	.align 2, 0
 _080FF99C:
 	.4byte _080FF9C4
@@ -3383,13 +3383,13 @@ sub_80FFC24: @ 80FFC24
 	b _08100024
 _080FFC56:
 	lsls r0, 2
-	ldr r1, _080FFC64 @ =_08100038
+	ldr r1, _080FFC64 @ =_080FFC68
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080FFC60: .4byte gTasks
-_080FFC64: .4byte _08100038
+_080FFC64: .4byte _080FFC68
 	.align 2, 0
 _080FFC68:
 	.4byte _080FFC7C

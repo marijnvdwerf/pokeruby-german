@@ -5266,12 +5266,12 @@ sub_80CCF70: @ 80CCF70
 	b _080CD0C0
 _080CCF7E:
 	lsls r0, 2
-	ldr r1, _080CCF88 @ =_080CD2C8
+	ldr r1, _080CCF88 @ =_080CCF8C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080CCF88: .4byte _080CD2C8
+_080CCF88: .4byte _080CCF8C
 	.align 2, 0
 _080CCF8C:
 	.4byte _080CCFA0
@@ -6859,13 +6859,13 @@ sub_80CDB60: @ 80CDB60
 	b _080CDD1A
 _080CDB7A:
 	lsls r0, 2
-	ldr r1, _080CDB88 @ =_080CDEC8
+	ldr r1, _080CDB88 @ =_080CDB8C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080CDB84: .4byte gTasks
-_080CDB88: .4byte _080CDEC8
+_080CDB88: .4byte _080CDB8C
 	.align 2, 0
 _080CDB8C:
 	.4byte _080CDBA0
@@ -12272,13 +12272,13 @@ sub_80D04E0: @ 80D04E0
 	b _080D060A
 _080D04FA:
 	lsls r0, 2
-	ldr r1, _080D0508 @ =_080D0848
+	ldr r1, _080D0508 @ =_080D050C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080D0504: .4byte gTasks
-_080D0508: .4byte _080D0848
+_080D0508: .4byte _080D050C
 	.align 2, 0
 _080D050C:
 	.4byte _080D0524
@@ -16048,13 +16048,13 @@ sub_80D21F0: @ 80D21F0
 	b _080D238C
 _080D2216:
 	lsls r0, 2
-	ldr r1, _080D2224 @ =_080D2564
+	ldr r1, _080D2224 @ =_080D2228
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080D2220: .4byte gTasks
-_080D2224: .4byte _080D2564
+_080D2224: .4byte _080D2228
 	.align 2, 0
 _080D2228:
 	.4byte _080D223C
@@ -16412,13 +16412,13 @@ sub_80D24E0: @ 80D24E0
 	b _080D267C
 _080D2506:
 	lsls r0, 2
-	ldr r1, _080D2514 @ =_080D2854
+	ldr r1, _080D2514 @ =_080D2518
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080D2510: .4byte gTasks
-_080D2514: .4byte _080D2854
+_080D2514: .4byte _080D2518
 	.align 2, 0
 _080D2518:
 	.4byte _080D252C
@@ -20099,13 +20099,13 @@ sub_80D4150: @ 80D4150
 	b _080D438A
 _080D416C:
 	lsls r0, 2
-	ldr r1, _080D417C @ =_080D44BC
+	ldr r1, _080D417C @ =_080D4180
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080D4178: .4byte gTasks
-_080D417C: .4byte _080D44BC
+_080D417C: .4byte _080D4180
 	.align 2, 0
 _080D4180:
 	.4byte _080D41A0
@@ -21158,13 +21158,13 @@ sub_80D4988: @ 80D4988
 	b _080D4AC2
 _080D49A2:
 	lsls r0, 2
-	ldr r1, _080D49B0 @ =_080D4CF0
+	ldr r1, _080D49B0 @ =_080D49B4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080D49AC: .4byte gTasks
-_080D49B0: .4byte _080D4CF0
+_080D49B0: .4byte _080D49B4
 	.align 2, 0
 _080D49B4:
 	.4byte _080D49D0
@@ -22637,13 +22637,13 @@ sub_80D54E0: @ 80D54E0
 	b _080D57BA
 _080D54FC:
 	lsls r0, 2
-	ldr r1, _080D550C @ =_080D584C
+	ldr r1, _080D550C @ =_080D5510
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080D5508: .4byte gTasks
-_080D550C: .4byte _080D584C
+_080D550C: .4byte _080D5510
 	.align 2, 0
 _080D5510:
 	.4byte _080D552C
@@ -25232,12 +25232,12 @@ _080D68C2:
 	cmp r0, 0xA
 	bhi _080D69B8
 	lsls r0, 2
-	ldr r1, _080D68E0 @ =_080D6C20
+	ldr r1, _080D68E0 @ =_080D68E4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080D68E0: .4byte _080D6C20
+_080D68E0: .4byte _080D68E4
 	.align 2, 0
 _080D68E4:
 	.4byte _080D6910
@@ -26561,13 +26561,13 @@ sub_80D72DC: @ 80D72DC
 	b _080D7468
 _080D72F6:
 	lsls r0, 2
-	ldr r1, _080D7304 @ =_080D7644
+	ldr r1, _080D7304 @ =_080D7308
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080D7300: .4byte gTasks
-_080D7304: .4byte _080D7644
+_080D7304: .4byte _080D7308
 	.align 2, 0
 _080D7308:
 	.4byte _080D731C
@@ -28517,7 +28517,7 @@ sub_80D81E0: @ 80D81E0
 	b _080D83B0
 _080D8214:
 	lsls r0, 2
-	ldr r1, _080D8230 @ =_080D8570
+	ldr r1, _080D8230 @ =_080D8234
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -28526,7 +28526,7 @@ _080D8220: .4byte gUnknown_030042C0
 _080D8224: .4byte 0x0000ffff
 _080D8228: .4byte gUnknown_030041B4
 _080D822C: .4byte gTasks
-_080D8230: .4byte _080D8570
+_080D8230: .4byte _080D8234
 	.align 2, 0
 _080D8234:
 	.4byte _080D8248
@@ -28910,7 +28910,7 @@ sub_80D851C: @ 80D851C
 	b _080D86D0
 _080D854C:
 	lsls r0, 2
-	ldr r1, _080D8564 @ =_080D88A4
+	ldr r1, _080D8564 @ =_080D8568
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -28918,7 +28918,7 @@ _080D854C:
 _080D8558: .4byte gUnknown_030042C0
 _080D855C: .4byte gTasks
 _080D8560: .4byte gUnknown_030041B4
-_080D8564: .4byte _080D88A4
+_080D8564: .4byte _080D8568
 	.align 2, 0
 _080D8568:
 	.4byte _080D857C
@@ -38820,7 +38820,7 @@ _080DD1D2:
 	b _080DD37C
 _080DD1F8:
 	lsls r0, 2
-	ldr r1, _080DD210 @ =_080DD550
+	ldr r1, _080DD210 @ =_080DD214
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -38828,7 +38828,7 @@ _080DD1F8:
 _080DD204: .4byte gUnknown_030042C0
 _080DD208: .4byte gUnknown_030041B4
 _080DD20C: .4byte 0x0000ffff
-_080DD210: .4byte _080DD550
+_080DD210: .4byte _080DD214
 	.align 2, 0
 _080DD214:
 	.4byte _080DD228
@@ -39342,13 +39342,13 @@ sub_80DD604: @ 80DD604
 	b _080DD76C
 _080DD61E:
 	lsls r0, 2
-	ldr r1, _080DD62C @ =_080DD96C
+	ldr r1, _080DD62C @ =_080DD630
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080DD628: .4byte gTasks
-_080DD62C: .4byte _080DD96C
+_080DD62C: .4byte _080DD630
 	.align 2, 0
 _080DD630:
 	.4byte _080DD644
@@ -39525,12 +39525,12 @@ sub_80DD774: @ 80DD774
 	cmp r0, 0x4
 	bhi _080DD864
 	lsls r0, 2
-	ldr r1, _080DD790 @ =_080DDAD0
+	ldr r1, _080DD790 @ =_080DD794
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080DD790: .4byte _080DDAD0
+_080DD790: .4byte _080DD794
 	.align 2, 0
 _080DD794:
 	.4byte _080DD7A8
@@ -41168,14 +41168,14 @@ sub_80DE3D4: @ 80DE3D4
 	b _080DE604
 _080DE400:
 	lsls r0, 2
-	ldr r1, _080DE414 @ =_080DE754
+	ldr r1, _080DE414 @ =_080DE418
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080DE40C: .4byte gTasks
 _080DE410: .4byte gUnknown_0202F7C9
-_080DE414: .4byte _080DE754
+_080DE414: .4byte _080DE418
 	.align 2, 0
 _080DE418:
 	.4byte _080DE42C
@@ -42987,13 +42987,13 @@ sub_80DF24C: @ 80DF24C
 	b _080DF3CC
 _080DF266:
 	lsls r0, 2
-	ldr r1, _080DF274 @ =_080DF5B4
+	ldr r1, _080DF274 @ =_080DF278
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080DF270: .4byte gTasks
-_080DF274: .4byte _080DF5B4
+_080DF274: .4byte _080DF278
 	.align 2, 0
 _080DF278:
 	.4byte _080DF290
@@ -43968,13 +43968,13 @@ sub_80DF9F4: @ 80DF9F4
 	cmp r0, 0x4
 	bhi _080DFAAA
 	lsls r0, 2
-	ldr r1, _080DFA1C @ =_080DFD5C
+	ldr r1, _080DFA1C @ =_080DFA20
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080DFA18: .4byte gTasks
-_080DFA1C: .4byte _080DFD5C
+_080DFA1C: .4byte _080DFA20
 	.align 2, 0
 _080DFA20:
 	.4byte _080DFA34
@@ -45073,13 +45073,13 @@ sub_80E02A4: @ 80E02A4
 	b _080E03B6
 _080E02BE:
 	lsls r0, 2
-	ldr r1, _080E02CC @ =_080E060C
+	ldr r1, _080E02CC @ =_080E02D0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E02C8: .4byte gTasks
-_080E02CC: .4byte _080E060C
+_080E02CC: .4byte _080E02D0
 	.align 2, 0
 _080E02D0:
 	.4byte _080E02E4
@@ -45220,13 +45220,13 @@ sub_80E03BC: @ 80E03BC
 	b _080E05F2
 _080E03D8:
 	lsls r0, 2
-	ldr r1, _080E03E8 @ =_080E0728
+	ldr r1, _080E03E8 @ =_080E03EC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E03E4: .4byte gTasks
-_080E03E8: .4byte _080E0728
+_080E03E8: .4byte _080E03EC
 	.align 2, 0
 _080E03EC:
 	.4byte _080E0400
@@ -45507,13 +45507,13 @@ sub_80E0620: @ 80E0620
 	b _080E0784
 _080E063A:
 	lsls r0, 2
-	ldr r1, _080E0648 @ =_080E0988
+	ldr r1, _080E0648 @ =_080E064C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E0644: .4byte gTasks
-_080E0648: .4byte _080E0988
+_080E0648: .4byte _080E064C
 	.align 2, 0
 _080E064C:
 	.4byte _080E0660
@@ -46505,13 +46505,13 @@ sub_80E0E24: @ 80E0E24
 	cmp r1, 0x7
 	bhi _080E0E88
 	lsls r0, r1, 2
-	ldr r1, _080E0E48 @ =_080E1188
+	ldr r1, _080E0E48 @ =_080E0E4C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E0E44: .4byte gUnknown_03004B00
-_080E0E48: .4byte _080E1188
+_080E0E48: .4byte _080E0E4C
 	.align 2, 0
 _080E0E4C:
 	.4byte _080E0E6C
@@ -47070,13 +47070,13 @@ sub_80E1284: @ 80E1284
 	b _080E1432
 _080E129E:
 	lsls r0, 2
-	ldr r1, _080E12AC @ =_080E15EC
+	ldr r1, _080E12AC @ =_080E12B0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E12A8: .4byte gTasks
-_080E12AC: .4byte _080E15EC
+_080E12AC: .4byte _080E12B0
 	.align 2, 0
 _080E12B0:
 	.4byte _080E12C4
@@ -47443,13 +47443,13 @@ sub_80E1560: @ 80E1560
 	cmp r0, 0x4
 	bhi _080E1662
 	lsls r0, 2
-	ldr r1, _080E1588 @ =_080E18C8
+	ldr r1, _080E1588 @ =_080E158C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E1584: .4byte gTasks
-_080E1588: .4byte _080E18C8
+_080E1588: .4byte _080E158C
 	.align 2, 0
 _080E158C:
 	.4byte _080E15A0
@@ -50226,13 +50226,13 @@ sub_80E2A7C: @ 80E2A7C
 	cmp r0, 0x7
 	bhi _080E2B26
 	lsls r0, 2
-	ldr r1, _080E2AAC @ =_080E2DEC
+	ldr r1, _080E2AAC @ =_080E2AB0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E2AA8: .4byte gUnknown_03004B00
-_080E2AAC: .4byte _080E2DEC
+_080E2AAC: .4byte _080E2AB0
 	.align 2, 0
 _080E2AB0:
 	.4byte _080E2AD2
@@ -50350,14 +50350,14 @@ sub_80E2B74: @ 80E2B74
 	cmp r0, 0x9
 	bhi _080E2C4A
 	lsls r0, 2
-	ldr r1, _080E2BA0 @ =_080E2EE0
+	ldr r1, _080E2BA0 @ =_080E2BA4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E2B98: .4byte gUnknown_03004B00
 _080E2B9C: .4byte gUnknown_0300428C
-_080E2BA0: .4byte _080E2EE0
+_080E2BA0: .4byte _080E2BA4
 	.align 2, 0
 _080E2BA4:
 	.4byte _080E2BCC
@@ -53544,14 +53544,14 @@ task_battle_intro_80BC47C: @ 80E448C
 	b _080E46BE
 _080E44B8:
 	lsls r0, 2
-	ldr r1, _080E44CC @ =_080E480C
+	ldr r1, _080E44CC @ =_080E44D0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E44C4: .4byte gUnknown_030042C0
 _080E44C8: .4byte gTasks
-_080E44CC: .4byte _080E480C
+_080E44CC: .4byte _080E44D0
 	.align 2, 0
 _080E44D0:
 	.4byte _080E44E4
@@ -53908,13 +53908,13 @@ _080E4778:
 	b _080E4996
 _080E4788:
 	lsls r0, 2
-	ldr r1, _080E4798 @ =_080E4AD8
+	ldr r1, _080E4798 @ =_080E479C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E4794: .4byte gTasks
-_080E4798: .4byte _080E4AD8
+_080E4798: .4byte _080E479C
 	.align 2, 0
 _080E479C:
 	.4byte _080E47B0
@@ -54213,14 +54213,14 @@ task_battle_intro_anim: @ 80E49C0
 	b _080E4C06
 _080E49EA:
 	lsls r0, 2
-	ldr r1, _080E49FC @ =_080E4D3C
+	ldr r1, _080E49FC @ =_080E4A00
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080E49F4: .4byte gUnknown_030042C0
 _080E49F8: .4byte gTasks
-_080E49FC: .4byte _080E4D3C
+_080E49FC: .4byte _080E4A00
 	.align 2, 0
 _080E4A00:
 	.4byte _080E4A14
@@ -54571,7 +54571,7 @@ _080E4CAA:
 	b _080E4EBA
 _080E4CC2:
 	lsls r0, r1, 2
-	ldr r1, _080E4CDC @ =_080E501C
+	ldr r1, _080E4CDC @ =_080E4CE0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -54580,7 +54580,7 @@ _080E4CCC: .4byte 0x0600e000
 _080E4CD0: .4byte 0x05000200
 _080E4CD4: .4byte 0x0600f000
 _080E4CD8: .4byte gTasks
-_080E4CDC: .4byte _080E501C
+_080E4CDC: .4byte _080E4CE0
 	.align 2, 0
 _080E4CE0:
 	.4byte _080E4CF4

@@ -1375,12 +1375,12 @@ sub_8125C3C: @ 8125C3C
 	cmp r0, 0x5
 	bhi _08125CB6
 	lsls r0, 2
-	ldr r1, _08125C50 @ =_08125FD4
+	ldr r1, _08125C50 @ =_08125C54
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08125C50: .4byte _08125FD4
+_08125C50: .4byte _08125C54
 	.align 2, 0
 _08125C54:
 	.4byte _08125CB6

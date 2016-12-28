@@ -117,12 +117,12 @@ _08002A72:
 	cmp r0, 0x6
 	bhi _08002ACE
 	lsls r0, 2
-	ldr r1, _08002A84 @ =_08002BBC
+	ldr r1, _08002A84 @ =_08002A88
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08002A84: .4byte _08002BBC
+_08002A84: .4byte _08002A88
 	.align 2, 0
 _08002A88:
 	.4byte _08002AA4
@@ -4732,12 +4732,12 @@ _08004C22:
 	cmp r0, 0x10
 	bhi _08004CB8
 	lsls r0, 2
-	ldr r1, _08004C38 @ =_08004D70
+	ldr r1, _08004C38 @ =_08004C3C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08004C38: .4byte _08004D70
+_08004C38: .4byte _08004C3C
 	.align 2, 0
 _08004C3C:
 	.4byte _08004C80

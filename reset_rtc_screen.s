@@ -28,13 +28,13 @@ SpriteCB_ResetRtcCusor0: @ 806A480
 	cmp r0, 0x5
 	bhi _0806A596
 	lsls r0, 2
-	ldr r1, _0806A4B4 @ =_0806A7F8
+	ldr r1, _0806A4B4 @ =_0806A4B8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0806A4B0: .4byte gTasks
-_0806A4B4: .4byte _0806A7F8
+_0806A4B4: .4byte _0806A4B8
 	.align 2, 0
 _0806A4B8:
 	.4byte _0806A4D0
@@ -175,13 +175,13 @@ SpriteCB_ResetRtcCusor1: @ 806A59C
 	cmp r0, 0x5
 	bhi _0806A696
 	lsls r0, 2
-	ldr r1, _0806A5D0 @ =_0806A914
+	ldr r1, _0806A5D0 @ =_0806A5D4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0806A5CC: .4byte gTasks
-_0806A5D0: .4byte _0806A914
+_0806A5D0: .4byte _0806A5D4
 	.align 2, 0
 _0806A5D4:
 	.4byte _0806A5EC
@@ -1074,13 +1074,13 @@ Task_ResetRtcScreen: @ 806ACCC
 	b _0806AEC4
 _0806ACE8:
 	lsls r0, 2
-	ldr r1, _0806ACF8 @ =_0806B03C
+	ldr r1, _0806ACF8 @ =_0806ACFC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0806ACF4: .4byte 0x03004b38
-_0806ACF8: .4byte _0806B03C
+_0806ACF8: .4byte _0806ACFC
 	.align 2, 0
 _0806ACFC:
 	.4byte _0806AD18

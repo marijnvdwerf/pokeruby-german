@@ -93,13 +93,13 @@ sub_80C4C78: @ 80C4C78
 	cmp r0, 0x4
 	bhi _080C4CB8
 	lsls r0, 2
-	ldr r1, _080C4C90 @ =_080C4EC4
+	ldr r1, _080C4C90 @ =_080C4C94
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C4C8C: .4byte gScriptContestCategory
-_080C4C90: .4byte _080C4EC4
+_080C4C90: .4byte _080C4C94
 	.align 2, 0
 _080C4C94:
 	.4byte _080C4CA8

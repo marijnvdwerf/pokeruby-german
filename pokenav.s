@@ -16,14 +16,14 @@ sub_80EBA5C: @ 80EBA5C
 	cmp r0, 0xE
 	bhi _080EBABC
 	lsls r0, 2
-	ldr r1, _080EBA7C @ =_080EBE34
+	ldr r1, _080EBA7C @ =_080EBA80
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EBA74: .4byte gMain
 _080EBA78: .4byte 0x0000043c
-_080EBA7C: .4byte _080EBE34
+_080EBA7C: .4byte _080EBA80
 	.align 2, 0
 _080EBA80:
 	.4byte _080EBAC0
@@ -430,13 +430,13 @@ sub_80EBDD8: @ 80EBDD8
 	b _080EC000
 _080EBDEE:
 	lsls r0, 2
-	ldr r1, _080EBDFC @ =_080EC1B4
+	ldr r1, _080EBDFC @ =_080EBE00
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EBDF8: .4byte 0x02000000
-_080EBDFC: .4byte _080EC1B4
+_080EBDFC: .4byte _080EBE00
 	.align 2, 0
 _080EBE00:
 	.4byte _080EBE48
@@ -697,13 +697,13 @@ sub_80EC00C: @ 80EC00C
 	b _080EC1FA
 _080EC022:
 	lsls r0, 2
-	ldr r1, _080EC030 @ =_080EC3E8
+	ldr r1, _080EC030 @ =_080EC034
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EC02C: .4byte 0x02000000
-_080EC030: .4byte _080EC3E8
+_080EC030: .4byte _080EC034
 	.align 2, 0
 _080EC034:
 	.4byte _080EC06C
@@ -1056,14 +1056,14 @@ _080EC2D4:
 	b _080EC492
 _080EC304:
 	lsls r0, 2
-	ldr r1, _080EC318 @ =_080EC6D0
+	ldr r1, _080EC318 @ =_080EC31C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EC310: .4byte gMain
 _080EC314: .4byte 0x00006dad
-_080EC318: .4byte _080EC6D0
+_080EC318: .4byte _080EC31C
 	.align 2, 0
 _080EC31C:
 	.4byte _080EC330
@@ -1259,13 +1259,13 @@ sub_80EC4A0: @ 80EC4A0
 	b _080EC66A
 _080EC4B6:
 	lsls r0, 2
-	ldr r1, _080EC4C4 @ =_080EC87C
+	ldr r1, _080EC4C4 @ =_080EC4C8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EC4C0: .4byte 0x02000000
-_080EC4C4: .4byte _080EC87C
+_080EC4C4: .4byte _080EC4C8
 	.align 2, 0
 _080EC4C8:
 	.4byte _080EC504
@@ -1482,13 +1482,13 @@ sub_80EC67C: @ 80EC67C
 	b _080EC800
 _080EC692:
 	lsls r0, 2
-	ldr r1, _080EC6A0 @ =_080ECA58
+	ldr r1, _080EC6A0 @ =_080EC6A4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EC69C: .4byte 0x02000000
-_080EC6A0: .4byte _080ECA58
+_080EC6A0: .4byte _080EC6A4
 	.align 2, 0
 _080EC6A4:
 	.4byte _080EC6BC
@@ -1931,13 +1931,13 @@ sub_80ECA10: @ 80ECA10
 	b _080ECBF2
 _080ECA26:
 	lsls r0, 2
-	ldr r1, _080ECA34 @ =_080ECDEC
+	ldr r1, _080ECA34 @ =_080ECA38
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080ECA30: .4byte 0x02000000
-_080ECA34: .4byte _080ECDEC
+_080ECA34: .4byte _080ECA38
 	.align 2, 0
 _080ECA38:
 	.4byte _080ECA70
@@ -2201,14 +2201,14 @@ _080ECC5A:
 	cmp r0, 0x5
 	bhi _080ECD0C
 	lsls r0, 2
-	ldr r1, _080ECC80 @ =_080ED038
+	ldr r1, _080ECC80 @ =_080ECC84
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080ECC78: .4byte gMain
 _080ECC7C: .4byte 0x00006dad
-_080ECC80: .4byte _080ED038
+_080ECC80: .4byte _080ECC84
 	.align 2, 0
 _080ECC84:
 	.4byte _080ECC9C
@@ -2341,13 +2341,13 @@ sub_80ECD80: @ 80ECD80
 	b _080ED006
 _080ECD96:
 	lsls r0, 2
-	ldr r1, _080ECDA4 @ =_080ED15C
+	ldr r1, _080ECDA4 @ =_080ECDA8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080ECDA0: .4byte 0x02000000
-_080ECDA4: .4byte _080ED15C
+_080ECDA4: .4byte _080ECDA8
 	.align 2, 0
 _080ECDA8:
 	.4byte _080ECDFC
@@ -2655,13 +2655,13 @@ sub_80ED01C: @ 80ED01C
 	b _080ED308
 _080ED032:
 	lsls r0, 2
-	ldr r1, _080ED040 @ =_080ED3F8
+	ldr r1, _080ED040 @ =_080ED044
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080ED03C: .4byte 0x02000000
-_080ED040: .4byte _080ED3F8
+_080ED040: .4byte _080ED044
 	.align 2, 0
 _080ED044:
 	.4byte _080ED094
@@ -3100,13 +3100,13 @@ sub_80ED3D0: @ 80ED3D0
 	cmp r0, 0x8
 	bhi _080ED4C6
 	lsls r0, 2
-	ldr r1, _080ED3F0 @ =_080ED7A8
+	ldr r1, _080ED3F0 @ =_080ED3F4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080ED3EC: .4byte 0x02000000
-_080ED3F0: .4byte _080ED7A8
+_080ED3F0: .4byte _080ED3F4
 	.align 2, 0
 _080ED3F4:
 	.4byte _080ED418
@@ -3226,13 +3226,13 @@ sub_80ED4D8: @ 80ED4D8
 	b _080ED60E
 _080ED4EE:
 	lsls r0, 2
-	ldr r1, _080ED4FC @ =_080ED8B4
+	ldr r1, _080ED4FC @ =_080ED500
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080ED4F8: .4byte 0x02000000
-_080ED4FC: .4byte _080ED8B4
+_080ED4FC: .4byte _080ED500
 	.align 2, 0
 _080ED500:
 	.4byte _080ED524
@@ -3378,13 +3378,13 @@ sub_80ED620: @ 80ED620
 	b _080ED846
 _080ED636:
 	lsls r0, 2
-	ldr r1, _080ED644 @ =_080ED9FC
+	ldr r1, _080ED644 @ =_080ED648
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080ED640: .4byte 0x02000000
-_080ED644: .4byte _080ED9FC
+_080ED644: .4byte _080ED648
 	.align 2, 0
 _080ED648:
 	.4byte _080ED68C
@@ -3642,13 +3642,13 @@ sub_80ED858: @ 80ED858
 	b _080EDB7A
 _080ED86E:
 	lsls r0, 2
-	ldr r1, _080ED87C @ =_080EDC34
+	ldr r1, _080ED87C @ =_080ED880
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080ED878: .4byte 0x02000000
-_080ED87C: .4byte _080EDC34
+_080ED87C: .4byte _080ED880
 	.align 2, 0
 _080ED880:
 	.4byte _080ED8B0
@@ -4014,13 +4014,13 @@ sub_80EDB88: @ 80EDB88
 	b _080EDDAA
 _080EDB9E:
 	lsls r0, 2
-	ldr r1, _080EDBAC @ =_080EDF64
+	ldr r1, _080EDBAC @ =_080EDBB0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EDBA8: .4byte 0x02000000
-_080EDBAC: .4byte _080EDF64
+_080EDBAC: .4byte _080EDBB0
 	.align 2, 0
 _080EDBB0:
 	.4byte _080EDBF8
@@ -4427,13 +4427,13 @@ sub_80EDEE4: @ 80EDEE4
 	b _080EE060
 _080EDEFA:
 	lsls r0, 2
-	ldr r1, _080EDF08 @ =_080EE2C0
+	ldr r1, _080EDF08 @ =_080EDF0C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EDF04: .4byte 0x02000000
-_080EDF08: .4byte _080EE2C0
+_080EDF08: .4byte _080EDF0C
 	.align 2, 0
 _080EDF0C:
 	.4byte _080EDF38
@@ -4611,13 +4611,13 @@ sub_80EE06C: @ 80EE06C
 	b _080EE288
 _080EE080:
 	lsls r0, 2
-	ldr r1, _080EE090 @ =_080EE448
+	ldr r1, _080EE090 @ =_080EE094
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EE08C: .4byte 0x02000000
-_080EE090: .4byte _080EE448
+_080EE090: .4byte _080EE094
 	.align 2, 0
 _080EE094:
 	.4byte _080EE0B8
@@ -4870,13 +4870,13 @@ sub_80EE294: @ 80EE294
 	b _080EE3C6
 _080EE2AA:
 	lsls r0, 2
-	ldr r1, _080EE2B8 @ =_080EE670
+	ldr r1, _080EE2B8 @ =_080EE2BC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EE2B4: .4byte 0x02000000
-_080EE2B8: .4byte _080EE670
+_080EE2B8: .4byte _080EE2BC
 	.align 2, 0
 _080EE2BC:
 	.4byte _080EE2E0
@@ -5021,13 +5021,13 @@ sub_80EE3D8: @ 80EE3D8
 	b _080EE57A
 _080EE3EC:
 	lsls r0, 2
-	ldr r1, _080EE3FC @ =_080EE7B4
+	ldr r1, _080EE3FC @ =_080EE400
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EE3F8: .4byte 0x02000000
-_080EE3FC: .4byte _080EE7B4
+_080EE3FC: .4byte _080EE400
 	.align 2, 0
 _080EE400:
 	.4byte _080EE438
@@ -5317,13 +5317,13 @@ sub_80EE658: @ 80EE658
 	b _080EE8E8
 _080EE66C:
 	lsls r0, 2
-	ldr r1, _080EE67C @ =_080EEA34
+	ldr r1, _080EE67C @ =_080EE680
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EE678: .4byte 0x02000000
-_080EE67C: .4byte _080EEA34
+_080EE67C: .4byte _080EE680
 	.align 2, 0
 _080EE680:
 	.4byte _080EE6C8
@@ -5764,14 +5764,14 @@ sub_80EEA0C: @ 80EEA0C
 	b _080EEBFA
 _080EEA1E:
 	lsls r0, 2
-	ldr r1, _080EEA30 @ =_080EEDE8
+	ldr r1, _080EEA30 @ =_080EEA34
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EEA28: .4byte 0x02000000
 _080EEA2C: .4byte 0x00006e16
-_080EEA30: .4byte _080EEDE8
+_080EEA30: .4byte _080EEA34
 	.align 2, 0
 _080EEA34:
 	.4byte _080EEA58
@@ -6162,12 +6162,12 @@ sub_80EED2C: @ 80EED2C
 	cmp r0, 0x5
 	bhi _080EED98
 	lsls r0, 2
-	ldr r1, _080EED40 @ =_080EF0F8
+	ldr r1, _080EED40 @ =_080EED44
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080EED40: .4byte _080EF0F8
+_080EED40: .4byte _080EED44
 	.align 2, 0
 _080EED44:
 	.4byte _080EED5C
@@ -6331,14 +6331,14 @@ sub_80EEE54: @ 80EEE54
 	cmp r0, 0x4
 	bhi _080EEF02
 	lsls r0, 2
-	ldr r1, _080EEE78 @ =_080EF230
+	ldr r1, _080EEE78 @ =_080EEE7C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EEE70: .4byte gUnknown_083DFEC4
 _080EEE74: .4byte 0x0000d160
-_080EEE78: .4byte _080EF230
+_080EEE78: .4byte _080EEE7C
 	.align 2, 0
 _080EEE7C:
 	.4byte _080EEE90
@@ -6529,14 +6529,14 @@ sub_80EEFBC: @ 80EEFBC
 	b _080EF234
 _080EEFE8:
 	lsls r0, r4, 2
-	ldr r1, _080EEFFC @ =_080EF3B4
+	ldr r1, _080EEFFC @ =_080EF000
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EEFF4: .4byte 0x0600d800
 _080EEFF8: .4byte gUnknown_08E9A100
-_080EEFFC: .4byte _080EF3B4
+_080EEFFC: .4byte _080EF000
 	.align 2, 0
 _080EF000:
 	.4byte _080EF030
@@ -6859,14 +6859,14 @@ sub_80EF284: @ 80EF284
 	b _080EF3F6
 _080EF29C:
 	lsls r0, 2
-	ldr r1, _080EF2B0 @ =_080EF668
+	ldr r1, _080EF2B0 @ =_080EF2B4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EF2A8: .4byte gUnknown_083DFEC4
 _080EF2AC: .4byte 0x0000d160
-_080EF2B0: .4byte _080EF668
+_080EF2B0: .4byte _080EF2B4
 	.align 2, 0
 _080EF2B4:
 	.4byte _080EF2E4
@@ -7613,14 +7613,14 @@ sub_80EF874: @ 80EF874
 	b _080EF9D8
 _080EF886:
 	lsls r0, 2
-	ldr r1, _080EF898 @ =_080EFC50
+	ldr r1, _080EF898 @ =_080EF89C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EF890: .4byte gUnknown_083DFEC4
 _080EF894: .4byte 0x0000d160
-_080EF898: .4byte _080EFC50
+_080EF898: .4byte _080EF89C
 	.align 2, 0
 _080EF89C:
 	.4byte _080EF8CC
@@ -7793,14 +7793,14 @@ sub_80EF9F8: @ 80EF9F8
 	b _080EFB6A
 _080EFA0E:
 	lsls r0, 2
-	ldr r1, _080EFA20 @ =_080EFDD8
+	ldr r1, _080EFA20 @ =_080EFA24
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EFA18: .4byte gUnknown_083DFEC4
 _080EFA1C: .4byte 0x00006e2e
-_080EFA20: .4byte _080EFDD8
+_080EFA20: .4byte _080EFA24
 	.align 2, 0
 _080EFA24:
 	.4byte _080EFB6A
@@ -8492,14 +8492,14 @@ sub_80EFF68: @ 80EFF68
 	b _080F0150
 _080EFF7C:
 	lsls r0, 2
-	ldr r1, _080EFF90 @ =_080F0348
+	ldr r1, _080EFF90 @ =_080EFF94
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080EFF88: .4byte gUnknown_083DFEC4
 _080EFF8C: .4byte 0x0000d160
-_080EFF90: .4byte _080F0348
+_080EFF90: .4byte _080EFF94
 	.align 2, 0
 _080EFF94:
 	.4byte _080EFFCC
@@ -8879,14 +8879,14 @@ sub_80F02A0: @ 80F02A0
 	b _080F05FA
 _080F02BA:
 	lsls r0, 2
-	ldr r1, _080F02CC @ =_080F0684
+	ldr r1, _080F02CC @ =_080F02D0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F02C4: .4byte gUnknown_083DFEC4
 _080F02C8: .4byte 0x00000306
-_080F02CC: .4byte _080F0684
+_080F02CC: .4byte _080F02D0
 	.align 2, 0
 _080F02D0:
 	.4byte _080F030C
@@ -9521,13 +9521,13 @@ sub_80F081C: @ 80F081C
 	cmp r5, 0x4
 	bhi _080F08C6
 	lsls r0, r5, 2
-	ldr r1, _080F083C @ =_080F0BF4
+	ldr r1, _080F083C @ =_080F0840
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F0838: .4byte gWindowConfig_81E710C
-_080F083C: .4byte _080F0BF4
+_080F083C: .4byte _080F0840
 	.align 2, 0
 _080F0840:
 	.4byte _080F0854
@@ -10220,7 +10220,7 @@ _080F0D8C:
 	cmp r3, 0x6
 	bhi _080F0D6C
 	lsls r0, r3, 2
-	ldr r1, _080F0DC4 @ =_080F117C
+	ldr r1, _080F0DC4 @ =_080F0DC8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -10228,7 +10228,7 @@ _080F0D8C:
 _080F0DB8: .4byte 0x00000306
 _080F0DBC: .4byte gWindowConfig_81E70D4
 _080F0DC0: .4byte 0x00008778
-_080F0DC4: .4byte _080F117C
+_080F0DC4: .4byte _080F0DC8
 	.align 2, 0
 _080F0DC8:
 	.4byte _080F0DE4
@@ -10583,14 +10583,14 @@ sub_80F1080: @ 80F1080
 	b _080F1204
 _080F1094:
 	lsls r0, 2
-	ldr r1, _080F10A8 @ =_080F1460
+	ldr r1, _080F10A8 @ =_080F10AC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F10A0: .4byte gUnknown_083DFEC4
 _080F10A4: .4byte 0x0000d160
-_080F10A8: .4byte _080F1460
+_080F10A8: .4byte _080F10AC
 	.align 2, 0
 _080F10AC:
 	.4byte _080F10E8
@@ -11437,14 +11437,14 @@ sub_80F1778: @ 80F1778
 	b _080F1910
 _080F178C:
 	lsls r0, 2
-	ldr r1, _080F17A0 @ =_080F1B58
+	ldr r1, _080F17A0 @ =_080F17A4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F1798: .4byte gUnknown_083DFEC4
 _080F179C: .4byte 0x0000d160
-_080F17A0: .4byte _080F1B58
+_080F17A0: .4byte _080F17A4
 	.align 2, 0
 _080F17A4:
 	.4byte _080F17CC
@@ -13441,14 +13441,14 @@ sub_80F26BC: @ 80F26BC
 	b _080F27BC
 _080F26CE:
 	lsls r0, 2
-	ldr r1, _080F26E0 @ =_080F2A98
+	ldr r1, _080F26E0 @ =_080F26E4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F26D8: .4byte gUnknown_083DFEC4
 _080F26DC: .4byte 0x00000306
-_080F26E0: .4byte _080F2A98
+_080F26E0: .4byte _080F26E4
 	.align 2, 0
 _080F26E4:
 	.4byte _080F2704
@@ -13569,12 +13569,12 @@ sub_80F27DC: @ 80F27DC
 	b _080F29A0
 _080F27EA:
 	lsls r0, 2
-	ldr r1, _080F27F4 @ =_080F2BAC
+	ldr r1, _080F27F4 @ =_080F27F8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080F27F4: .4byte _080F2BAC
+_080F27F4: .4byte _080F27F8
 	.align 2, 0
 _080F27F8:
 	.4byte _080F2828
@@ -13792,12 +13792,12 @@ sub_80F29B8: @ 80F29B8
 	b _080F2BA6
 _080F29D2:
 	lsls r0, r7, 2
-	ldr r1, _080F29DC @ =_080F2D94
+	ldr r1, _080F29DC @ =_080F29E0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080F29DC: .4byte _080F2D94
+_080F29DC: .4byte _080F29E0
 	.align 2, 0
 _080F29E0:
 	.4byte _080F2A10
@@ -22219,14 +22219,14 @@ sub_80F6AF0: @ 80F6AF0
 	b _080F6C08
 _080F6B04:
 	lsls r0, 2
-	ldr r1, _080F6B18 @ =_080F6ED0
+	ldr r1, _080F6B18 @ =_080F6B1C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F6B10: .4byte gUnknown_083DFEC4
 _080F6B14: .4byte 0x000087de
-_080F6B18: .4byte _080F6ED0
+_080F6B18: .4byte _080F6B1C
 	.align 2, 0
 _080F6B1C:
 	.4byte _080F6B38
@@ -22980,14 +22980,14 @@ sub_80F70FC: @ 80F70FC
 	b _080F7218
 _080F7110:
 	lsls r0, 2
-	ldr r1, _080F7124 @ =_080F74D8
+	ldr r1, _080F7124 @ =_080F7128
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F711C: .4byte gUnknown_083DFEC4
 _080F7120: .4byte 0x000087de
-_080F7124: .4byte _080F74D8
+_080F7124: .4byte _080F7128
 	.align 2, 0
 _080F7128:
 	.4byte _080F7144

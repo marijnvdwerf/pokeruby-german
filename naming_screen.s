@@ -41,14 +41,14 @@ C2_NamingScreen: @ 80B59FC
 	cmp r0, 0x7
 	bhi _080B5A96
 	lsls r0, 2
-	ldr r1, _080B5A1C @ =_080B5BC8
+	ldr r1, _080B5A1C @ =_080B5A20
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080B5A14: .4byte gMain
 _080B5A18: .4byte 0x0000043c
-_080B5A1C: .4byte _080B5BC8
+_080B5A1C: .4byte _080B5A20
 	.align 2, 0
 _080B5A20:
 	.4byte _080B5A40

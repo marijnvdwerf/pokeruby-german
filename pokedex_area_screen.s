@@ -35,14 +35,14 @@ CB2_UnusedPokedexAreaScreen: @ 8110680
 	b _081107C0
 _08110692:
 	lsls r0, 2
-	ldr r1, _081106A4 @ =_08110AA0
+	ldr r1, _081106A4 @ =_081106A8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0811069C: .4byte gMain
 _081106A0: .4byte 0x0000043c
-_081106A4: .4byte _08110AA0
+_081106A4: .4byte _081106A8
 	.align 2, 0
 _081106A8:
 	.4byte _081106C8
@@ -238,13 +238,13 @@ DrawAreaGlow: @ 8110838
 	cmp r0, 0x5
 	bhi _081108E4
 	lsls r0, 2
-	ldr r1, _08110858 @ =_08110C54
+	ldr r1, _08110858 @ =_0811085C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08110854: .4byte 0x02000000
-_08110858: .4byte _08110C54
+_08110858: .4byte _0811085C
 	.align 2, 0
 _0811085C:
 	.4byte _08110874
@@ -1152,7 +1152,7 @@ _08110F0A:
 	b _0811105E
 _08110F1E:
 	lsls r0, 2
-	ldr r1, _08110F40 @ =_0811133C
+	ldr r1, _08110F40 @ =_08110F44
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1163,7 +1163,7 @@ _08110F30: .4byte 0x0000ffaf
 _08110F34: .4byte 0x0000ff5f
 _08110F38: .4byte gUnknown_02039268
 _08110F3C: .4byte gUnknown_0203926A
-_08110F40: .4byte _0811133C
+_08110F40: .4byte _08110F44
 	.align 2, 0
 _08110F44:
 	.4byte _08110F70
@@ -1793,13 +1793,13 @@ Task_PokedexAreaScreen_0: @ 81113EC
 	b _08111540
 _0811140A:
 	lsls r0, 2
-	ldr r1, _08111418 @ =_08111814
+	ldr r1, _08111418 @ =_0811141C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08111414: .4byte gTasks
-_08111418: .4byte _08111814
+_08111418: .4byte _0811141C
 	.align 2, 0
 _0811141C:
 	.4byte _0811144C

@@ -68,13 +68,13 @@ sub_80FA940: @ 80FA940
 	b _080FAAE2
 _080FA952:
 	lsls r0, 2
-	ldr r1, _080FA960 @ =_080FAD14
+	ldr r1, _080FA960 @ =_080FA964
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080FA95C: .4byte gUnknown_020388CC
-_080FA960: .4byte _080FAD14
+_080FA960: .4byte _080FA964
 	.align 2, 0
 _080FA964:
 	.4byte _080FA984
@@ -1413,12 +1413,12 @@ _080FB35C:
 	cmp r0, 0x8
 	bhi _080FB3A4
 	lsls r0, 2
-	ldr r1, _080FB37C @ =_080FB730
+	ldr r1, _080FB37C @ =_080FB380
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080FB37C: .4byte _080FB730
+_080FB37C: .4byte _080FB380
 	.align 2, 0
 _080FB380:
 	.4byte _080FB3A4
@@ -1766,12 +1766,12 @@ sub_80FB600: @ 80FB600
 	cmp r0, 0x4
 	bhi _080FB694
 	lsls r0, 2
-	ldr r1, _080FB63C @ =_080FB9F0
+	ldr r1, _080FB63C @ =_080FB640
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080FB63C: .4byte _080FB9F0
+_080FB63C: .4byte _080FB640
 	.align 2, 0
 _080FB640:
 	.4byte _080FB694
@@ -1919,12 +1919,12 @@ sub_80FB758: @ 80FB758
 	b _080FB9A0
 _080FB764:
 	lsls r0, 2
-	ldr r1, _080FB770 @ =_080FBB24
+	ldr r1, _080FB770 @ =_080FB774
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080FB770: .4byte _080FBB24
+_080FB770: .4byte _080FB774
 	.align 2, 0
 _080FB774:
 	.4byte _080FB8DC
@@ -3088,14 +3088,14 @@ sub_80FC074: @ 80FC074
 	b _080FC1F2
 _080FC084:
 	lsls r0, 2
-	ldr r1, _080FC098 @ =_080FC44C
+	ldr r1, _080FC098 @ =_080FC09C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080FC090: .4byte gMain
 _080FC094: .4byte 0x0000043c
-_080FC098: .4byte _080FC44C
+_080FC098: .4byte _080FC09C
 	.align 2, 0
 _080FC09C:
 	.4byte _080FC0C4
@@ -3778,13 +3778,13 @@ sub_80FC600: @ 80FC600
 	cmp r0, 0x5
 	bhi _080FC68A
 	lsls r0, 2
-	ldr r1, _080FC624 @ =_080FC9D8
+	ldr r1, _080FC624 @ =_080FC628
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080FC620: .4byte 0x02000000
-_080FC624: .4byte _080FC9D8
+_080FC624: .4byte _080FC628
 	.align 2, 0
 _080FC628:
 	.4byte _080FC68A

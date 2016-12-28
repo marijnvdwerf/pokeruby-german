@@ -436,13 +436,13 @@ sub_8080B9C: @ 8080B9C
 	cmp r0, 0x4
 	bhi _08080CAE
 	lsls r0, 2
-	ldr r1, _08080BCC @ =_08081004
+	ldr r1, _08080BCC @ =_08080BD0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08080BC8: .4byte gTasks
-_08080BCC: .4byte _08081004
+_08080BCC: .4byte _08080BD0
 	.align 2, 0
 _08080BD0:
 	.4byte _08080BE4
@@ -1168,13 +1168,13 @@ sub_808115C: @ 808115C
 	b _080812BC
 _08081180:
 	lsls r0, r1, 2
-	ldr r1, _08081190 @ =_080815C8
+	ldr r1, _08081190 @ =_08081194
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0808118C: .4byte gTasks
-_08081190: .4byte _080815C8
+_08081190: .4byte _08081194
 	.align 2, 0
 _08081194:
 	.4byte _080811A8
@@ -1861,13 +1861,13 @@ sub_80816A8: @ 80816A8
 	b _08081892
 _080816C4:
 	lsls r0, 2
-	ldr r1, _080816D4 @ =_08081B0C
+	ldr r1, _080816D4 @ =_080816D8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080816D0: .4byte 0x03004b38
-_080816D4: .4byte _08081B0C
+_080816D4: .4byte _080816D8
 	.align 2, 0
 _080816D8:
 	.4byte _080816F8

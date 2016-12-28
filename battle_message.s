@@ -106,7 +106,7 @@ _08120B30:
 	b _08120F78
 _08120B64:
 	lsls r0, r7, 2
-	ldr r1, _08120BAC @ =_08120FA4
+	ldr r1, _08120BAC @ =_08120BB0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -126,7 +126,7 @@ _08120B9C: .4byte gUnknown_030041C0
 _08120BA0: .4byte gUnknown_0203926C
 _08120BA4: .4byte gUnknown_03004290
 _08120BA8: .4byte gUnknown_030042B0
-_08120BAC: .4byte _08120FA4
+_08120BAC: .4byte _08120BB0
 	.align 2, 0
 _08120BB0:
 	.4byte _08120BC8
@@ -732,12 +732,12 @@ _08121026:
 	bl _0812191E
 _08121036:
 	lsls r0, 2
-	ldr r1, _08121040 @ =_0812146C
+	ldr r1, _08121040 @ =_08121044
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08121040: .4byte _0812146C
+_08121040: .4byte _08121044
 	.align 2, 0
 _08121044:
 	.4byte _081210F0
@@ -1881,12 +1881,12 @@ _08121A82:
 	b _08121D1C
 _08121A8E:
 	lsls r0, r1, 2
-	ldr r1, _08121A98 @ =_08121E04
+	ldr r1, _08121A98 @ =_08121A9C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08121A98: .4byte _08121E04
+_08121A98: .4byte _08121A9C
 	.align 2, 0
 _08121A9C:
 	.4byte _08121AC8
@@ -2290,14 +2290,14 @@ _08121D9A:
 	bhi _08121E04
 _08121DA8:
 	lsls r0, r4, 2
-	ldr r1, _08121DBC @ =_08122140
+	ldr r1, _08121DBC @ =_08121DC0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08121DB4: .4byte gUnknown_084016BC
 _08121DB8: .4byte gUnknown_02039270
-_08121DBC: .4byte _08122140
+_08121DBC: .4byte _08121DC0
 	.align 2, 0
 _08121DC0:
 	.4byte _08121DD4

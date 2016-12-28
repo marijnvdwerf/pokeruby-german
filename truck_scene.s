@@ -362,13 +362,13 @@ Task_HandleTruckSequence: @ 80C752C
 	b _080C7698
 _080C7546:
 	lsls r0, 2
-	ldr r1, _080C7554 @ =_080C7754
+	ldr r1, _080C7554 @ =_080C7558
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C7550: .4byte 0x03004b38
-_080C7554: .4byte _080C7754
+_080C7554: .4byte _080C7558
 	.align 2, 0
 _080C7558:
 	.4byte _080C7570

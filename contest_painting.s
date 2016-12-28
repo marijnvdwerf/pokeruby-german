@@ -58,14 +58,14 @@ ShowContestPainting: @ 8106674
 	b _081067E0
 _08106688:
 	lsls r0, 2
-	ldr r1, _0810669C @ =_08106A88
+	ldr r1, _0810669C @ =_081066A0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08106694: .4byte gMain
 _08106698: .4byte 0x0000043c
-_0810669C: .4byte _08106A88
+_0810669C: .4byte _081066A0
 	.align 2, 0
 _081066A0:
 	.4byte _081066B4
@@ -792,14 +792,14 @@ _08106C5E:
 	cmp r0, 0x4
 	bhi _08106D1C
 	lsls r0, 2
-	ldr r1, _08106C84 @ =_08107070
+	ldr r1, _08106C84 @ =_08106C88
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08106C7C: .4byte gPictureFramePalettes
 _08106C80: .4byte gUnknown_03005E8C
-_08106C84: .4byte _08107070
+_08106C84: .4byte _08106C88
 	.align 2, 0
 _08106C88:
 	.4byte _08106C9C
@@ -960,13 +960,13 @@ _08106DD0:
 	cmp r0, 0x4
 	bhi _08106E86
 	lsls r0, 2
-	ldr r1, _08106DF4 @ =_081071E0
+	ldr r1, _08106DF4 @ =_08106DF8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08106DF0: .4byte gUnknown_03005E8C
-_08106DF4: .4byte _081071E0
+_08106DF4: .4byte _08106DF8
 	.align 2, 0
 _08106DF8:
 	.4byte _08106E0C
@@ -1098,13 +1098,13 @@ _08106F08:
 	cmp r0, 0x4
 	bhi _08106F46
 	lsls r0, 2
-	ldr r1, _08106F1C @ =_08107308
+	ldr r1, _08106F1C @ =_08106F20
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08106F18: .4byte gUnknown_03005E8C
-_08106F1C: .4byte _08107308
+_08106F1C: .4byte _08106F20
 	.align 2, 0
 _08106F20:
 	.4byte _08106F34
@@ -1178,7 +1178,7 @@ sub_8106F6C: @ 8106F6C
 	cmp r0, 0x22
 	bhi _08107050
 	lsls r0, 2
-	ldr r1, _08106FBC @ =_081073A8
+	ldr r1, _08106FBC @ =_08106FC0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1187,7 +1187,7 @@ _08106FAC: .4byte gUnknown_03005E20
 _08106FB0: .4byte gUnknown_03005E10
 _08106FB4: .4byte gUnknown_03005E90
 _08106FB8: .4byte gUnknown_03005E8C
-_08106FBC: .4byte _081073A8
+_08106FBC: .4byte _08106FC0
 	.align 2, 0
 _08106FC0:
 	.4byte _08107050

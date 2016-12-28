@@ -59,14 +59,14 @@ sub_807ADA8: @ 807ADA8
 	b _0807B010
 _0807ADBA:
 	lsls r0, 2
-	ldr r1, _0807ADCC @ =_0807B190
+	ldr r1, _0807ADCC @ =_0807ADD0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0807ADC4: .4byte 0x02000000
 _0807ADC8: .4byte 0x0001ffff
-_0807ADCC: .4byte _0807B190
+_0807ADCC: .4byte _0807ADD0
 	.align 2, 0
 _0807ADD0:
 	.4byte _0807AE20
@@ -1745,13 +1745,13 @@ sub_807BB88: @ 807BB88
 	b _0807BD20
 _0807BB9C:
 	lsls r0, 2
-	ldr r1, _0807BBAC @ =_0807BF70
+	ldr r1, _0807BBAC @ =_0807BBB0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0807BBA8: .4byte 0x02017840
-_0807BBAC: .4byte _0807BF70
+_0807BBAC: .4byte _0807BBB0
 	.align 2, 0
 _0807BBB0:
 	.4byte _0807BC60

@@ -8002,13 +8002,13 @@ _08089764:
 	cmp r0, 0xE
 	bhi _08089810
 	lsls r0, 2
-	ldr r1, _08089794 @ =_08089BEC
+	ldr r1, _08089794 @ =_08089798
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08089790: .4byte gTasks
-_08089794: .4byte _08089BEC
+_08089794: .4byte _08089798
 	.align 2, 0
 _08089798:
 	.4byte _080897D4

@@ -28,13 +28,13 @@ MapMusicMain: @ 8074BC0
 	cmp r1, 0x7
 	bhi _08074CA2
 	lsls r0, r1, 2
-	ldr r1, _08074BDC @ =_08074FA0
+	ldr r1, _08074BDC @ =_08074BE0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08074BD8: .4byte 0x030006d8
-_08074BDC: .4byte _08074FA0
+_08074BDC: .4byte _08074BE0
 	.align 2, 0
 _08074BE0:
 	.4byte _08074CA2

@@ -24,13 +24,13 @@ sub_8090750: @ 8090750
 	cmp r0, 0x6
 	bhi _0809079C
 	lsls r0, 2
-	ldr r1, _0809077C @ =_08090B84
+	ldr r1, _0809077C @ =_08090780
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08090778: .4byte gTasks
-_0809077C: .4byte _08090B84
+_0809077C: .4byte _08090780
 	.align 2, 0
 _08090780:
 	.4byte _0809079C
@@ -2638,14 +2638,14 @@ sub_8091E54: @ 8091E54
 	cmp r0, 0x4
 	bhi _08091E98
 	lsls r0, 2
-	ldr r1, _08091E80 @ =_08091FD4
+	ldr r1, _08091E80 @ =_08091E84
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08091E78: .4byte gMain
 _08091E7C: .4byte 0x0000043c
-_08091E80: .4byte _08091FD4
+_08091E80: .4byte _08091E84
 	.align 2, 0
 _08091E84:
 	.4byte _08091E98
@@ -3870,12 +3870,12 @@ sub_809286C: @ 809286C
 	cmp r4, 0xA
 	bhi _08092958
 	lsls r0, r4, 2
-	ldr r1, _08092894 @ =_080929E8
+	ldr r1, _08092894 @ =_08092898
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08092894: .4byte _080929E8
+_08092894: .4byte _08092898
 	.align 2, 0
 _08092898:
 	.4byte _080928C4
@@ -4152,12 +4152,12 @@ sub_8092AD4: @ 8092AD4
 	cmp r4, 0x6
 	bhi _08092B4E
 	lsls r0, r4, 2
-	ldr r1, _08092AF0 @ =_08092C44
+	ldr r1, _08092AF0 @ =_08092AF4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08092AF0: .4byte _08092C44
+_08092AF0: .4byte _08092AF4
 	.align 2, 0
 _08092AF4:
 	.4byte _08092B10
@@ -4574,14 +4574,14 @@ sub_8092E10: @ 8092E10
 	cmp r3, 0x5
 	bhi _08092E74
 	lsls r0, r3, 2
-	ldr r1, _08092E58 @ =_08092FAC
+	ldr r1, _08092E58 @ =_08092E5C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08092E50: .4byte 0x03004b38
 _08092E54: .4byte gUnknown_083B5A7C
-_08092E58: .4byte _08092FAC
+_08092E58: .4byte _08092E5C
 	.align 2, 0
 _08092E5C:
 	.4byte _08092E88
@@ -4671,13 +4671,13 @@ _08092EDA:
 	cmp r0, 0x5
 	bhi _08092F20
 	lsls r0, 2
-	ldr r1, _08092F04 @ =_08093058
+	ldr r1, _08092F04 @ =_08092F08
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08092F00: .4byte gTasks
-_08092F04: .4byte _08093058
+_08092F04: .4byte _08092F08
 	.align 2, 0
 _08092F08:
 	.4byte _08092F20

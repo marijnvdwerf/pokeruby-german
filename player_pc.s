@@ -867,13 +867,13 @@ _0813AC34:
 	cmp r0, 0x4
 	bhi _0813ACBA
 	lsls r0, 2
-	ldr r1, _0813AC60 @ =_0813B040
+	ldr r1, _0813AC60 @ =_0813AC64
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0813AC5C: .4byte gSaveBlock1
-_0813AC60: .4byte _0813B040
+_0813AC60: .4byte _0813AC64
 	.align 2, 0
 _0813AC64:
 	.4byte _0813AC78
@@ -1007,13 +1007,13 @@ sub_813AD58: @ 813AD58
 	cmp r0, 0x8
 	bhi _0813ADE8
 	lsls r0, 2
-	ldr r1, _0813AD78 @ =_0813B158
+	ldr r1, _0813AD78 @ =_0813AD7C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0813AD74: .4byte 0xffff0009
-_0813AD78: .4byte _0813B158
+_0813AD78: .4byte _0813AD7C
 	.align 2, 0
 _0813AD7C:
 	.4byte _0813ADE0

@@ -2842,12 +2842,12 @@ sub_812C450: @ 812C450
 	cmp r0, 0x6
 	bhi _0812C4A8
 	lsls r0, 2
-	ldr r1, _0812C468 @ =_0812C7E8
+	ldr r1, _0812C468 @ =_0812C46C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0812C468: .4byte _0812C7E8
+_0812C468: .4byte _0812C46C
 	.align 2, 0
 _0812C46C:
 	.4byte _0812C488
@@ -3594,12 +3594,12 @@ sub_812CA04: @ 812CA04
 	cmp r0, 0x5
 	bhi _0812CAC4
 	lsls r0, 2
-	ldr r1, _0812CA1C @ =_0812CD9C
+	ldr r1, _0812CA1C @ =_0812CA20
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0812CA1C: .4byte _0812CD9C
+_0812CA1C: .4byte _0812CA20
 	.align 2, 0
 _0812CA20:
 	.4byte _0812CA38
@@ -4447,13 +4447,13 @@ sub_812D06C: @ 812D06C
 	b _0812D246
 _0812D08C:
 	lsls r0, 2
-	ldr r1, _0812D09C @ =_0812D41C
+	ldr r1, _0812D09C @ =_0812D0A0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0812D098: .4byte gTasks
-_0812D09C: .4byte _0812D41C
+_0812D09C: .4byte _0812D0A0
 	.align 2, 0
 _0812D0A0:
 	.4byte _0812D0B8
@@ -5443,13 +5443,13 @@ sub_812D7E8: @ 812D7E8
 	b _0812DAFA
 _0812D80E:
 	lsls r0, 2
-	ldr r1, _0812D81C @ =_0812DB9C
+	ldr r1, _0812D81C @ =_0812D820
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0812D818: .4byte gTasks
-_0812D81C: .4byte _0812DB9C
+_0812D81C: .4byte _0812D820
 	.align 2, 0
 _0812D820:
 	.4byte _0812D834
@@ -5888,13 +5888,13 @@ sub_812DB84: @ 812DB84
 	b _0812DE80
 _0812DBA8:
 	lsls r0, 2
-	ldr r1, _0812DBB8 @ =_0812DF38
+	ldr r1, _0812DBB8 @ =_0812DBBC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0812DBB4: .4byte gTasks
-_0812DBB8: .4byte _0812DF38
+_0812DBB8: .4byte _0812DBBC
 	.align 2, 0
 _0812DBBC:
 	.4byte _0812DBD0
@@ -6607,13 +6607,13 @@ sub_812E14C: @ 812E14C
 	b _0812E476
 _0812E16A:
 	lsls r0, 2
-	ldr r1, _0812E178 @ =_0812E4F8
+	ldr r1, _0812E178 @ =_0812E17C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0812E174: .4byte gTasks
-_0812E178: .4byte _0812E4F8
+_0812E178: .4byte _0812E17C
 	.align 2, 0
 _0812E17C:
 	.4byte _0812E194
@@ -12023,12 +12023,12 @@ sub_8130B38: @ 8130B38
 	b _08130D18
 _08130B46:
 	lsls r0, 2
-	ldr r1, _08130B50 @ =_08130ED0
+	ldr r1, _08130B50 @ =_08130B54
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08130B50: .4byte _08130ED0
+_08130B50: .4byte _08130B54
 	.align 2, 0
 _08130B54:
 	.4byte _08130B78
@@ -12358,13 +12358,13 @@ sub_8130DBC: @ 8130DBC
 	b _08130F50
 _08130DD6:
 	lsls r0, 2
-	ldr r1, _08130DE4 @ =_08131164
+	ldr r1, _08130DE4 @ =_08130DE8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08130DE0: .4byte gTasks
-_08130DE4: .4byte _08131164
+_08130DE4: .4byte _08130DE8
 	.align 2, 0
 _08130DE8:
 	.4byte _08130E0C
@@ -12636,12 +12636,12 @@ sub_8130FE0: @ 8130FE0
 	b _081311DE
 _08130FEE:
 	lsls r0, 2
-	ldr r1, _08130FF8 @ =_08131378
+	ldr r1, _08130FF8 @ =_08130FFC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08130FF8: .4byte _08131378
+_08130FF8: .4byte _08130FFC
 	.align 2, 0
 _08130FFC:
 	.4byte _08131010
@@ -12655,12 +12655,12 @@ _08131010:
 	cmp r0, 0x5
 	bhi _08131040
 	lsls r0, 2
-	ldr r1, _08131024 @ =_081313A4
+	ldr r1, _08131024 @ =_08131028
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08131024: .4byte _081313A4
+_08131024: .4byte _08131028
 	.align 2, 0
 _08131028:
 	.4byte _08131044
@@ -13405,12 +13405,12 @@ sub_81315C8: @ 81315C8
 	b _081316F2
 _081315D6:
 	lsls r0, 2
-	ldr r1, _081315E0 @ =_08131960
+	ldr r1, _081315E0 @ =_081315E4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_081315E0: .4byte _08131960
+_081315E0: .4byte _081315E4
 	.align 2, 0
 _081315E4:
 	.4byte _081315F8
@@ -13875,13 +13875,13 @@ sub_8131944: @ 8131944
 	b _08131EA0
 _0813196A:
 	lsls r0, 2
-	ldr r1, _08131978 @ =_08131CF8
+	ldr r1, _08131978 @ =_0813197C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08131974: .4byte gTasks
-_08131978: .4byte _08131CF8
+_08131978: .4byte _0813197C
 	.align 2, 0
 _0813197C:
 	.4byte _08131990
@@ -14692,13 +14692,13 @@ sub_8131FFC: @ 8131FFC
 	b _0813216A
 _08132018:
 	lsls r0, 2
-	ldr r1, _08132028 @ =_081323A8
+	ldr r1, _08132028 @ =_0813202C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08132024: .4byte gTasks
-_08132028: .4byte _081323A8
+_08132028: .4byte _0813202C
 	.align 2, 0
 _0813202C:
 	.4byte _08132040
@@ -15813,13 +15813,13 @@ sub_8132908: @ 8132908
 	b _08132FD6
 _08132920:
 	lsls r0, 2
-	ldr r1, _08132930 @ =_08132CB0
+	ldr r1, _08132930 @ =_08132934
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0813292C: .4byte gUnknown_030007B0
-_08132930: .4byte _08132CB0
+_08132930: .4byte _08132934
 	.align 2, 0
 _08132934:
 	.4byte _081329BC
@@ -17810,13 +17810,13 @@ sub_8133940: @ 8133940
 	b _08133AE2
 _0813395C:
 	lsls r0, 2
-	ldr r1, _0813396C @ =_08133CEC
+	ldr r1, _0813396C @ =_08133970
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08133968: .4byte gExpandedPlaceholder_Empty
-_0813396C: .4byte _08133CEC
+_0813396C: .4byte _08133970
 	.align 2, 0
 _08133970:
 	.4byte _08133AE2
@@ -19390,14 +19390,14 @@ _0813454E:
 	cmp r0, 0x6
 	bhi _08134590
 	lsls r0, 2
-	ldr r1, _08134570 @ =_081348F0
+	ldr r1, _08134570 @ =_08134574
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08134568: .4byte gSaveBlock2
 _0813456C: .4byte 0x00000556
-_08134570: .4byte _081348F0
+_08134570: .4byte _08134574
 	.align 2, 0
 _08134574:
 	.4byte _08134590
@@ -20936,12 +20936,12 @@ AppendBattleTowerBannedSpeciesName: @ 81350E0
 	cmp r0, 0xA
 	bhi _081351B0
 	lsls r0, 2
-	ldr r1, _08135118 @ =_08135498
+	ldr r1, _08135118 @ =_0813511C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08135118: .4byte _08135498
+_08135118: .4byte _0813511C
 	.align 2, 0
 _0813511C:
 	.4byte _08135148
@@ -21605,7 +21605,7 @@ sub_8135668: @ 8135668
 	b _0813589A
 _08135682:
 	lsls r0, 2
-	ldr r1, _08135698 @ =_08135A18
+	ldr r1, _08135698 @ =_0813569C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -21613,7 +21613,7 @@ _08135682:
 _0813568C: .4byte gSaveBlock2
 _08135690: .4byte 0x00000554
 _08135694: .4byte gSpecialVar_0x8004
-_08135698: .4byte _08135A18
+_08135698: .4byte _0813569C
 	.align 2, 0
 _0813569C:
 	.4byte _081356D8
@@ -21875,7 +21875,7 @@ sub_81358A4: @ 81358A4
 	b _08135A0A
 _081358BE:
 	lsls r0, 2
-	ldr r1, _081358D4 @ =_08135C54
+	ldr r1, _081358D4 @ =_081358D8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -21883,7 +21883,7 @@ _081358BE:
 _081358C8: .4byte gSaveBlock2
 _081358CC: .4byte 0x00000554
 _081358D0: .4byte gSpecialVar_0x8004
-_081358D4: .4byte _08135C54
+_081358D4: .4byte _081358D8
 	.align 2, 0
 _081358D8:
 	.4byte _08135914
@@ -23210,13 +23210,13 @@ sub_8136294: @ 8136294
 	b _0813657A
 _081362A8:
 	lsls r0, 2
-	ldr r1, _081362B8 @ =_08136698
+	ldr r1, _081362B8 @ =_081362BC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _081362B4: .4byte gUnknown_02039304
-_081362B8: .4byte _08136698
+_081362B8: .4byte _081362BC
 	.align 2, 0
 _081362BC:
 	.4byte _08136318
@@ -23632,13 +23632,13 @@ sub_8136638: @ 8136638
 	b _081367FA
 _08136648:
 	lsls r0, 2
-	ldr r1, _08136658 @ =_08136A38
+	ldr r1, _08136658 @ =_0813665C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08136654: .4byte gUnknown_02039304
-_08136658: .4byte _08136A38
+_08136658: .4byte _0813665C
 	.align 2, 0
 _0813665C:
 	.4byte _0813667C
@@ -23927,13 +23927,13 @@ sub_81368A4: @ 81368A4
 	b _081369B8
 _081368B8:
 	lsls r0, 2
-	ldr r1, _081368C8 @ =_08136CA8
+	ldr r1, _081368C8 @ =_081368CC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _081368C4: .4byte gUnknown_02039304
-_081368C8: .4byte _08136CA8
+_081368C8: .4byte _081368CC
 	.align 2, 0
 _081368CC:
 	.4byte _081368E8
@@ -24065,13 +24065,13 @@ sub_81369CC: @ 81369CC
 	b _08136B32
 _081369DE:
 	lsls r0, 2
-	ldr r1, _081369EC @ =_08136DCC
+	ldr r1, _081369EC @ =_081369F0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _081369E8: .4byte gUnknown_02039304
-_081369EC: .4byte _08136DCC
+_081369EC: .4byte _081369F0
 	.align 2, 0
 _081369F0:
 	.4byte _08136A08
@@ -25224,14 +25224,14 @@ sub_81372BC: @ 81372BC
 	b _08137410
 _081372CE:
 	lsls r0, 2
-	ldr r1, _081372E0 @ =_081376C0
+	ldr r1, _081372E0 @ =_081372E4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _081372D8: .4byte 0x02000000
 _081372DC: .4byte 0x000160a8
-_081372E0: .4byte _081376C0
+_081372E0: .4byte _081372E4
 	.align 2, 0
 _081372E4:
 	.4byte _081372FC
@@ -26200,14 +26200,14 @@ sub_8137A84: @ 8137A84
 	bl _0813821A
 _08137AAE:
 	lsls r0, 2
-	ldr r1, _08137AC0 @ =_08137EA0
+	ldr r1, _08137AC0 @ =_08137AC4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08137AB8: .4byte gUnknown_02023A60
 _08137ABC: .4byte gUnknown_02024A60
-_08137AC0: .4byte _08137EA0
+_08137AC0: .4byte _08137AC4
 	.align 2, 0
 _08137AC4:
 	.4byte _08137BB4
@@ -27189,14 +27189,14 @@ sub_8138294: @ 8138294
 	bl _08138C5A
 _081382C0:
 	lsls r0, 2
-	ldr r1, _081382D4 @ =_081386B4
+	ldr r1, _081382D4 @ =_081382D8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _081382CC: .4byte gUnknown_02024A60
 _081382D0: .4byte gUnknown_02023A63
-_081382D4: .4byte _081386B4
+_081382D4: .4byte _081382D8
 	.align 2, 0
 _081382D8:
 	.4byte _081383C8

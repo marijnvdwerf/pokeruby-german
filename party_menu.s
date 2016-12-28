@@ -148,13 +148,13 @@ sub_806AFD0: @ 806AFD0
 	b _0806B11A
 _0806AFE6:
 	lsls r0, 2
-	ldr r1, _0806AFF4 @ =_0806B338
+	ldr r1, _0806AFF4 @ =_0806AFF8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0806AFF0: .4byte 0x0201b000
-_0806AFF4: .4byte _0806B338
+_0806AFF4: .4byte _0806AFF8
 	.align 2, 0
 _0806AFF8:
 	.4byte _0806B020
@@ -316,14 +316,14 @@ sub_806B124: @ 806B124
 	b _0806B450
 _0806B13A:
 	lsls r0, 2
-	ldr r1, _0806B14C @ =_0806B490
+	ldr r1, _0806B14C @ =_0806B150
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0806B144: .4byte gMain
 _0806B148: .4byte 0x0000043c
-_0806B14C: .4byte _0806B490
+_0806B14C: .4byte _0806B150
 	.align 2, 0
 _0806B150:
 	.4byte _0806B198
@@ -872,14 +872,14 @@ _0806B5C8:
 	b _0806B900
 _0806B5DA:
 	lsls r0, r5, 2
-	ldr r1, _0806B5EC @ =_0806B930
+	ldr r1, _0806B5EC @ =_0806B5F0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0806B5E4: .4byte gUnknown_0202E8FA
 _0806B5E8: .4byte gUnknown_083769A8
-_0806B5EC: .4byte _0806B930
+_0806B5EC: .4byte _0806B5F0
 	.align 2, 0
 _0806B5F0:
 	.4byte _0806B614
@@ -2475,12 +2475,12 @@ sub_806C1E4: @ 806C1E4
 	b _0806C306
 _0806C200:
 	lsls r0, 2
-	ldr r1, _0806C20C @ =_0806C550
+	ldr r1, _0806C20C @ =_0806C210
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806C20C: .4byte _0806C550
+_0806C20C: .4byte _0806C210
 	.align 2, 0
 _0806C210:
 	.4byte _0806C2EC
@@ -2633,12 +2633,12 @@ sub_806C310: @ 806C310
 	b _0806C486
 _0806C32C:
 	lsls r0, 2
-	ldr r1, _0806C338 @ =_0806C67C
+	ldr r1, _0806C338 @ =_0806C33C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806C338: .4byte _0806C67C
+_0806C338: .4byte _0806C33C
 	.align 2, 0
 _0806C33C:
 	.4byte _0806C44E
@@ -2836,12 +2836,12 @@ sub_806C490: @ 806C490
 	b _0806C64E
 _0806C4AA:
 	lsls r0, 2
-	ldr r1, _0806C4B4 @ =_0806C7F8
+	ldr r1, _0806C4B4 @ =_0806C4B8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806C4B4: .4byte _0806C7F8
+_0806C4B4: .4byte _0806C4B8
 	.align 2, 0
 _0806C4B8:
 	.4byte _0806C618
@@ -3118,12 +3118,12 @@ _0806C6BA:
 	b _0806C7EA
 _0806C6CE:
 	lsls r0, 2
-	ldr r1, _0806C6D8 @ =_0806CA1C
+	ldr r1, _0806C6D8 @ =_0806C6DC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806C6D8: .4byte _0806CA1C
+_0806C6D8: .4byte _0806C6DC
 	.align 2, 0
 _0806C6DC:
 	.4byte _0806C7D0

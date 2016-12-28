@@ -336,12 +336,12 @@ _080B4ACE:
 	cmp r0, 0x5
 	bhi _080B4B58
 	lsls r0, 2
-	ldr r1, _080B4AE0 @ =_080B4C34
+	ldr r1, _080B4AE0 @ =_080B4AE4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080B4AE0: .4byte _080B4C34
+_080B4AE0: .4byte _080B4AE4
 	.align 2, 0
 _080B4AE4:
 	.4byte _080B4ACA

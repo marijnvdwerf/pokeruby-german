@@ -148,13 +148,13 @@ sub_80F9ACC: @ 80F9ACC
 	b _080F9BF6
 _080F9AE2:
 	lsls r0, 2
-	ldr r1, _080F9AF0 @ =_080F9EA4
+	ldr r1, _080F9AF0 @ =_080F9AF4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F9AEC: .4byte 0x0201b000
-_080F9AF0: .4byte _080F9EA4
+_080F9AF0: .4byte _080F9AF4
 	.align 2, 0
 _080F9AF4:
 	.4byte _080F9B14
@@ -303,13 +303,13 @@ _080F9C06:
 	cmp r0, 0x4
 	bhi _080F9C52
 	lsls r0, 2
-	ldr r1, _080F9C28 @ =_080F9FDC
+	ldr r1, _080F9C28 @ =_080F9C2C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F9C24: .4byte gPlayerParty
-_080F9C28: .4byte _080F9FDC
+_080F9C28: .4byte _080F9C2C
 	.align 2, 0
 _080F9C2C:
 	.4byte _080F9C40
@@ -415,13 +415,13 @@ sub_80F9CE8: @ 80F9CE8
 	b _080F9E12
 _080F9CFE:
 	lsls r0, 2
-	ldr r1, _080F9D0C @ =_080FA0C0
+	ldr r1, _080F9D0C @ =_080F9D10
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F9D08: .4byte 0x0201b000
-_080F9D0C: .4byte _080FA0C0
+_080F9D0C: .4byte _080F9D10
 	.align 2, 0
 _080F9D10:
 	.4byte _080F9D30

@@ -1861,12 +1861,12 @@ unref_sub_807DCB4: @ 807DCB4
 	cmp r0, 0x9
 	bhi _0807DD46
 	lsls r0, 2
-	ldr r1, _0807DCCC @ =_0807E104
+	ldr r1, _0807DCCC @ =_0807DCD0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0807DCCC: .4byte _0807E104
+_0807DCCC: .4byte _0807DCD0
 	.align 2, 0
 _0807DCD0:
 	.4byte _0807DCF8
@@ -2517,14 +2517,14 @@ sub_807E174: @ 807E174
 	cmp r0, 0x4
 	bhi _0807E250
 	lsls r0, 2
-	ldr r1, _0807E198 @ =_0807E5D0
+	ldr r1, _0807E198 @ =_0807E19C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0807E190: .4byte gUnknown_08396FC4
 _0807E194: .4byte 0x000006cc
-_0807E198: .4byte _0807E5D0
+_0807E198: .4byte _0807E19C
 	.align 2, 0
 _0807E19C:
 	.4byte _0807E1B0
@@ -2644,13 +2644,13 @@ task50_0807B6D4: @ 807E270
 	cmp r0, 0x4
 	bhi _0807E35E
 	lsls r0, 2
-	ldr r1, _0807E298 @ =_0807E6D0
+	ldr r1, _0807E298 @ =_0807E29C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0807E294: .4byte gTasks
-_0807E298: .4byte _0807E6D0
+_0807E298: .4byte _0807E29C
 	.align 2, 0
 _0807E29C:
 	.4byte _0807E2B0
@@ -4384,14 +4384,14 @@ sub_807EFC0: @ 807EFC0
 	b _0807F336
 _0807EFD6:
 	lsls r0, 2
-	ldr r1, _0807EFE8 @ =_0807F420
+	ldr r1, _0807EFE8 @ =_0807EFEC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0807EFE0: .4byte gUnknown_08396FC4
 _0807EFE4: .4byte 0x000006cc
-_0807EFE8: .4byte _0807F420
+_0807EFE8: .4byte _0807EFEC
 	.align 2, 0
 _0807EFEC:
 	.4byte _0807F028
@@ -7284,8 +7284,8 @@ _0808064C: .4byte gSpriteTemplate_839ACBC
 _08080650: .4byte 0x00001205
 	thumb_func_end sub_8080610
 
-	thumb_func_start unc_0807DAB4
-unc_0807D680: @ 8080A88
+	thumb_func_start unc_0807D680
+unc_0807DAB4: @ 8080654
 	push {lr}
 	adds r1, r0, 0
 	ldrh r0, [r1, 0x2E]
@@ -7335,7 +7335,7 @@ _08080694:
 _080806AE:
 	pop {r0}
 	bx r0
-	thumb_func_end unc_0807DAB4
+	thumb_func_end unc_0807D680
 
 	thumb_func_start SetSav1Weather
 SetSav1Weather: @ 80806B4
@@ -7442,12 +7442,12 @@ TranslateWeatherNum: @ 8080764
 	cmp r0, 0x15
 	bhi _0808082C
 	lsls r0, 2
-	ldr r1, _08080778 @ =_08080BB0
+	ldr r1, _08080778 @ =_0808077C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08080778: .4byte _08080BB0
+_08080778: .4byte _0808077C
 	.align 2, 0
 _0808077C:
 	.4byte _0808082C

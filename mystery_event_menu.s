@@ -126,14 +126,14 @@ sub_81469E4: @ 81469E4
 	b _08146DA4
 _081469F8:
 	lsls r0, 2
-	ldr r1, _08146A0C @ =_08146DC0
+	ldr r1, _08146A0C @ =_08146A10
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08146A04: .4byte gMain
 _08146A08: .4byte 0x0000043c
-_08146A0C: .4byte _08146DC0
+_08146A0C: .4byte _08146A10
 	.align 2, 0
 _08146A10:
 	.4byte _08146A54

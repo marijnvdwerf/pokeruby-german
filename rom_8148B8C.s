@@ -143,7 +143,7 @@ sub_8148CB0: @ 8148CB0
 	cmp r4, 0x4
 	bhi _08148CFC
 	lsls r0, r4, 2
-	ldr r1, _08148CE4 @ =_081490A4
+	ldr r1, _08148CE4 @ =_08148CE8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -152,7 +152,7 @@ _08148CD4: .4byte gUnknown_0841225C
 _08148CD8: .4byte 0x06004000
 _08148CDC: .4byte gUnknown_084126DC
 _08148CE0: .4byte 0x06007800
-_08148CE4: .4byte _081490A4
+_08148CE4: .4byte _08148CE8
 	.align 2, 0
 _08148CE8:
 	.4byte _08148CFC

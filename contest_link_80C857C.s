@@ -791,13 +791,13 @@ sub_80C8AD0: @ 80C8AD0
 	b _080C8C70
 _080C8AEC:
 	lsls r0, 2
-	ldr r1, _080C8AFC @ =_080C8D78
+	ldr r1, _080C8AFC @ =_080C8B00
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C8AF8: .4byte gTasks
-_080C8AFC: .4byte _080C8D78
+_080C8AFC: .4byte _080C8B00
 	.align 2, 0
 _080C8B00:
 	.4byte _080C8B30
@@ -989,13 +989,13 @@ sub_80C8C80: @ 80C8C80
 	b _080C8E0C
 _080C8C9C:
 	lsls r0, 2
-	ldr r1, _080C8CAC @ =_080C8F28
+	ldr r1, _080C8CAC @ =_080C8CB0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C8CA8: .4byte gTasks
-_080C8CAC: .4byte _080C8F28
+_080C8CAC: .4byte _080C8CB0
 	.align 2, 0
 _080C8CB0:
 	.4byte _080C8CE0

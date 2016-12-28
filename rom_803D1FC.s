@@ -252,12 +252,12 @@ _0803E378:
 	bl _0803F14C
 _0803E382:
 	lsls r0, r4, 2
-	ldr r1, _0803E38C @ =_0803E564
+	ldr r1, _0803E38C @ =_0803E390
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803E38C: .4byte _0803E564
+_0803E38C: .4byte _0803E390
 	.align 2, 0
 _0803E390:
 	.4byte _0803E3A8
@@ -868,14 +868,14 @@ _0803E86E:
 	b _0803EE0A
 _0803E876:
 	lsls r0, r2, 2
-	ldr r1, _0803E888 @ =_0803EA60
+	ldr r1, _0803E888 @ =_0803E88C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0803E880: .4byte gUnknown_08208238
 _0803E884: .4byte gUnknown_08208240
-_0803E888: .4byte _0803EA60
+_0803E888: .4byte _0803E88C
 	.align 2, 0
 _0803E88C:
 	.4byte _0803E8AC
@@ -1575,12 +1575,12 @@ _0803EE3E:
 	b _0803F13A
 _0803EE46:
 	lsls r0, r2, 2
-	ldr r1, _0803EE50 @ =_0803F028
+	ldr r1, _0803EE50 @ =_0803EE54
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803EE50: .4byte _0803F028
+_0803EE50: .4byte _0803EE54
 	.align 2, 0
 _0803EE54:
 	.4byte _0803EE74
@@ -2101,12 +2101,12 @@ _0803F254:
 	cmp r6, 0x7
 	bhi _0803F2B4
 	lsls r0, r6, 2
-	ldr r1, _0803F26C @ =_0803F444
+	ldr r1, _0803F26C @ =_0803F270
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803F26C: .4byte _0803F444
+_0803F26C: .4byte _0803F270
 	.align 2, 0
 _0803F270:
 	.4byte _0803F29C
@@ -2503,13 +2503,13 @@ _0803F55E:
 	b _0803F726
 _0803F57A:
 	lsls r0, 2
-	ldr r1, _0803F588 @ =_0803F760
+	ldr r1, _0803F588 @ =_0803F58C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0803F584: .4byte gEvolutionTable
-_0803F588: .4byte _0803F760
+_0803F588: .4byte _0803F58C
 	.align 2, 0
 _0803F58C:
 	.4byte _0803F5C8
@@ -3796,12 +3796,12 @@ _0803FEBA:
 	cmp r6, 0x5
 	bhi _0803FF5C
 	lsls r0, r6, 2
-	ldr r1, _0803FEC8 @ =_080400C0
+	ldr r1, _0803FEC8 @ =_0803FECC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803FEC8: .4byte _080400C0
+_0803FEC8: .4byte _0803FECC
 	.align 2, 0
 _0803FECC:
 	.4byte _0803FEE4
@@ -4979,14 +4979,14 @@ _08040768:
 	b _080408A8
 _08040780:
 	lsls r0, 2
-	ldr r1, _08040794 @ =_0804098C
+	ldr r1, _08040794 @ =_08040798
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0804078C: .4byte gTrainers
 _08040790: .4byte gTrainerBattleOpponent
-_08040794: .4byte _0804098C
+_08040794: .4byte _08040798
 	.align 2, 0
 _08040798:
 	.4byte _08040860

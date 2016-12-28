@@ -518,14 +518,14 @@ sub_810B6C0: @ 810B6C0
 	b _0810B960
 _0810B6D2:
 	lsls r0, 2
-	ldr r1, _0810B6E4 @ =_0810BADC
+	ldr r1, _0810B6E4 @ =_0810B6E8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0810B6DC: .4byte gMain
 _0810B6E0: .4byte 0x0000043c
-_0810B6E4: .4byte _0810BADC
+_0810B6E4: .4byte _0810B6E8
 	.align 2, 0
 _0810B6E8:
 	.4byte _0810B734
@@ -837,14 +837,14 @@ sub_810B998: @ 810B998
 	cmp r0, 0x4
 	bhi _0810BA48
 	lsls r0, 2
-	ldr r1, _0810B9B8 @ =_0810BDB0
+	ldr r1, _0810B9B8 @ =_0810B9BC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0810B9B0: .4byte 0x02000000
 _0810B9B4: .4byte 0x0001ffff
-_0810B9B8: .4byte _0810BDB0
+_0810B9B8: .4byte _0810B9BC
 	.align 2, 0
 _0810B9BC:
 	.4byte _0810B9D0
@@ -5014,14 +5014,14 @@ sub_810D9EC: @ 810D9EC
 	cmp r0, 0x9
 	bhi _0810DAB2
 	lsls r0, 2
-	ldr r1, _0810DA24 @ =_0810DE1C
+	ldr r1, _0810DA24 @ =_0810DA28
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0810DA1C: .4byte 0x0000404a
 _0810DA20: .4byte 0x000040b4
-_0810DA24: .4byte _0810DE1C
+_0810DA24: .4byte _0810DA28
 	.align 2, 0
 _0810DA28:
 	.4byte _0810DA50
@@ -5393,13 +5393,13 @@ _0810DCD4:
 	b _0810DEC0
 _0810DCE6:
 	lsls r0, 2
-	ldr r1, _0810DCF4 @ =_0810E0EC
+	ldr r1, _0810DCF4 @ =_0810DCF8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0810DCF0: .4byte 0xfffffde6
-_0810DCF4: .4byte _0810E0EC
+_0810DCF4: .4byte _0810DCF8
 	.align 2, 0
 _0810DCF8:
 	.4byte _0810DE7E
@@ -5641,7 +5641,7 @@ _0810DEFA:
 	b _0810E056
 _0810DF0C:
 	lsls r0, 2
-	ldr r1, _0810DF24 @ =_0810E31C
+	ldr r1, _0810DF24 @ =_0810DF28
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -5649,7 +5649,7 @@ _0810DF0C:
 _0810DF18: .4byte gUnknown_083F8364
 _0810DF1C: .4byte 0x00000206
 _0810DF20: .4byte 0xfffffde0
-_0810DF24: .4byte _0810E31C
+_0810DF24: .4byte _0810DF28
 	.align 2, 0
 _0810DF28:
 	.4byte _0810DFEC
@@ -5867,12 +5867,12 @@ sub_810E104: @ 810E104
 	cmp r0, 0x7
 	bhi _0810E1CC
 	lsls r0, 2
-	ldr r1, _0810E128 @ =_0810E520
+	ldr r1, _0810E128 @ =_0810E12C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0810E128: .4byte _0810E520
+_0810E128: .4byte _0810E12C
 	.align 2, 0
 _0810E12C:
 	.4byte _0810E14C
@@ -6733,13 +6733,13 @@ SetDepartmentStoreFloorVar: @ 810E74C
 	cmp r0, 0x5
 	bhi _0810E79C
 	lsls r0, 2
-	ldr r1, _0810E76C @ =_0810EB64
+	ldr r1, _0810E76C @ =_0810E770
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0810E768: .4byte gSaveBlock1
-_0810E76C: .4byte _0810EB64
+_0810E76C: .4byte _0810E770
 	.align 2, 0
 _0810E770:
 	.4byte _0810E79C
@@ -9644,13 +9644,13 @@ sub_810FDAC: @ 810FDAC
 	cmp r0, 0x7
 	bhi _0810FE0C
 	lsls r0, 2
-	ldr r1, _0810FDCC @ =_081101C4
+	ldr r1, _0810FDCC @ =_0810FDD0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0810FDC8: .4byte gSpecialVar_0x8004
-_0810FDCC: .4byte _081101C4
+_0810FDCC: .4byte _0810FDD0
 	.align 2, 0
 _0810FDD0:
 	.4byte _0810FE0C
@@ -9704,12 +9704,12 @@ sub_810FE1C: @ 810FE1C
 	cmp r2, 0x5
 	bhi _0810FEBC
 	lsls r0, r2, 2
-	ldr r1, _0810FE3C @ =_08110234
+	ldr r1, _0810FE3C @ =_0810FE40
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0810FE3C: .4byte _08110234
+_0810FE3C: .4byte _0810FE40
 	.align 2, 0
 _0810FE40:
 	.4byte _0810FEBC

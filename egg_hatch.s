@@ -535,14 +535,14 @@ CB2_EggHatch_0: @ 8042CE8
 	b _08042F6E
 _08042CF8:
 	lsls r0, 2
-	ldr r1, _08042D0C @ =_08043034
+	ldr r1, _08042D0C @ =_08042D10
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08042D04: .4byte gMain
 _08042D08: .4byte 0x0000043c
-_08042D0C: .4byte _08043034
+_08042D0C: .4byte _08042D10
 	.align 2, 0
 _08042D10:
 	.4byte _08042D34
@@ -890,13 +890,13 @@ CB2_EggHatch_1: @ 804300C
 	b _080432BA
 _08043026:
 	lsls r0, 2
-	ldr r1, _08043034 @ =_0804335C
+	ldr r1, _08043034 @ =_08043038
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08043030: .4byte gUnknown_0300481C
-_08043034: .4byte _0804335C
+_08043034: .4byte _08043038
 	.align 2, 0
 _08043038:
 	.4byte _08043068

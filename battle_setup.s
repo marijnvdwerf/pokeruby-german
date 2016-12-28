@@ -510,13 +510,13 @@ _08081D82:
 	cmp r0, 0x8
 	bhi _08081E08
 	lsls r0, 2
-	ldr r1, _08081DA8 @ =_080821E0
+	ldr r1, _08081DA8 @ =_08081DAC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08081DA4: .4byte gMapHeader
-_08081DA8: .4byte _080821E0
+_08081DA8: .4byte _08081DAC
 	.align 2, 0
 _08081DAC:
 	.4byte _08081E08
@@ -1172,12 +1172,12 @@ battle_exit_is_player_defeat: @ 808227C
 	cmp r0, 0x6
 	bhi _080822B4
 	lsls r0, 2
-	ldr r1, _08082290 @ =_080826C8
+	ldr r1, _08082290 @ =_08082294
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08082290: .4byte _080826C8
+_08082290: .4byte _08082294
 	.align 2, 0
 _08082294:
 	.4byte _080822B4
@@ -1242,12 +1242,12 @@ _08082312:
 	cmp r0, 0x6
 	bhi _08082384
 	lsls r0, 2
-	ldr r1, _08082324 @ =_0808275C
+	ldr r1, _08082324 @ =_08082328
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08082324: .4byte _0808275C
+_08082324: .4byte _08082328
 	.align 2, 0
 _08082328:
 	.4byte _08082344
@@ -1346,13 +1346,13 @@ TrainerBattleConfigure: @ 80823C8
 	cmp r0, 0x7
 	bhi _080824A4
 	lsls r0, 2
-	ldr r1, _080823F4 @ =_0808282C
+	ldr r1, _080823F4 @ =_080823F8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080823F0: .4byte gTrainerBattleMode
-_080823F4: .4byte _0808282C
+_080823F4: .4byte _080823F8
 	.align 2, 0
 _080823F8:
 	.4byte _08082434
@@ -1781,14 +1781,14 @@ PlayTrainerEncounterMusic: @ 8082728
 	cmp r0, 0xD
 	bhi _080827FC
 	lsls r0, 2
-	ldr r1, _08082758 @ =_08082B90
+	ldr r1, _08082758 @ =_0808275C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08082750: .4byte gTrainerBattleMode
 _08082754: .4byte gTrainerBattleOpponent
-_08082758: .4byte _08082B90
+_08082758: .4byte _0808275C
 	.align 2, 0
 _0808275C:
 	.4byte _08082794

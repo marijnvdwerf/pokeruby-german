@@ -26,12 +26,12 @@ _08077ADA:
 	cmp r4, 0x4
 	bhi _08077B50
 	lsls r0, r4, 2
-	ldr r1, _08077AE8 @ =_08077EAC
+	ldr r1, _08077AE8 @ =_08077AEC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08077AE8: .4byte _08077EAC
+_08077AE8: .4byte _08077AEC
 	.align 2, 0
 _08077AEC:
 	.4byte _08077B00
@@ -5470,13 +5470,13 @@ _0807A33E:
 	cmp r0, 0x6
 	bhi _0807A3EE
 	lsls r0, 2
-	ldr r1, _0807A354 @ =_0807A718
+	ldr r1, _0807A354 @ =_0807A358
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0807A350: .4byte gMonFrontPicCoords
-_0807A354: .4byte _0807A718
+_0807A354: .4byte _0807A358
 	.align 2, 0
 _0807A358:
 	.4byte _0807A374

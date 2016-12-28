@@ -3243,13 +3243,13 @@ sub_80B4710: @ 80B4710
 	cmp r0, 0x6
 	bhi _080B47AA
 	lsls r0, 2
-	ldr r1, _080B473C @ =_080B4890
+	ldr r1, _080B473C @ =_080B4740
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080B4738: .4byte 0x03004b38
-_080B473C: .4byte _080B4890
+_080B473C: .4byte _080B4740
 	.align 2, 0
 _080B4740:
 	.4byte _080B475C

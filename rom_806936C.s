@@ -1210,12 +1210,12 @@ _08069C14:
 	cmp r0, 0x7
 	bhi _08069C9A
 	lsls r0, 2
-	ldr r1, _08069C40 @ =_08069F84
+	ldr r1, _08069C40 @ =_08069C44
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08069C40: .4byte _08069F84
+_08069C40: .4byte _08069C44
 	.align 2, 0
 _08069C44:
 	.4byte _08069C64

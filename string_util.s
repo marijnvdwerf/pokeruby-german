@@ -675,12 +675,12 @@ _08006E4A:
 	cmp r0, 0x5
 	bhi _08006EB0
 	lsls r0, 2
-	ldr r1, _08006E60 @ =_08006FC4
+	ldr r1, _08006E60 @ =_08006E64
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08006E60: .4byte _08006FC4
+_08006E60: .4byte _08006E64
 	.align 2, 0
 _08006E64:
 	.4byte _08006EB0

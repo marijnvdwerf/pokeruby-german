@@ -669,12 +669,12 @@ sub_80AB70C: @ 80AB70C
 	b _080AB93C
 _080AB722:
 	lsls r0, 2
-	ldr r1, _080AB72C @ =_080AB880
+	ldr r1, _080AB72C @ =_080AB730
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080AB72C: .4byte _080AB880
+_080AB72C: .4byte _080AB730
 	.align 2, 0
 _080AB730:
 	.4byte _080AB74C
@@ -970,13 +970,13 @@ sub_80AB9A0: @ 80AB9A0
 	cmp r0, 0x4
 	bhi _080ABA7C
 	lsls r0, 2
-	ldr r1, _080AB9C8 @ =_080ABB1C
+	ldr r1, _080AB9C8 @ =_080AB9CC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080AB9C4: .4byte gTasks
-_080AB9C8: .4byte _080ABB1C
+_080AB9C8: .4byte _080AB9CC
 	.align 2, 0
 _080AB9CC:
 	.4byte _080AB9E0
@@ -2078,14 +2078,14 @@ sub_80AC2CC: @ 80AC2CC
 	bl _080AD8CA
 _080AC2FC:
 	lsls r0, 2
-	ldr r1, _080AC310 @ =_080AC464
+	ldr r1, _080AC310 @ =_080AC314
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080AC308: .4byte 0x02019204
 _080AC30C: .4byte gTasks
-_080AC310: .4byte _080AC464
+_080AC310: .4byte _080AC314
 	.align 2, 0
 _080AC314:
 	.4byte _080AC404
@@ -4063,12 +4063,12 @@ _080AD3D0:
 	b _080AD8CA
 _080AD3E6:
 	lsls r0, 2
-	ldr r1, _080AD3F0 @ =_080AD544
+	ldr r1, _080AD3F0 @ =_080AD3F4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080AD3F0: .4byte _080AD544
+_080AD3F0: .4byte _080AD3F4
 	.align 2, 0
 _080AD3F4:
 	.4byte _080AD408
@@ -6192,13 +6192,13 @@ _080AE49E:
 	cmp r0, 0x4
 	bhi _080AE4F2
 	lsls r0, 2
-	ldr r1, _080AE4B4 @ =_080AE608
+	ldr r1, _080AE4B4 @ =_080AE4B8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080AE4B0: .4byte gScriptContestCategory
-_080AE4B4: .4byte _080AE608
+_080AE4B4: .4byte _080AE4B8
 	.align 2, 0
 _080AE4B8:
 	.4byte _080AE4CC
@@ -6557,12 +6557,12 @@ sub_80AE770: @ 80AE770
 	cmp r0, 0x4
 	bhi _080AE7FC
 	lsls r0, 2
-	ldr r1, _080AE788 @ =_080AE8DC
+	ldr r1, _080AE788 @ =_080AE78C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080AE788: .4byte _080AE8DC
+_080AE788: .4byte _080AE78C
 	.align 2, 0
 _080AE78C:
 	.4byte _080AE7A0
@@ -7067,14 +7067,14 @@ sub_80AEB68: @ 80AEB68
 	cmp r0, 0x8
 	bhi _080AEBD0
 	lsls r0, 2
-	ldr r1, _080AEB98 @ =_080AECEC
+	ldr r1, _080AEB98 @ =_080AEB9C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080AEB90: .4byte gContestEffects
 _080AEB94: .4byte gContestMoves
-_080AEB98: .4byte _080AECEC
+_080AEB98: .4byte _080AEB9C
 	.align 2, 0
 _080AEB9C:
 	.4byte _080AEBC0
@@ -7651,12 +7651,12 @@ sub_80AEFE8: @ 80AEFE8
 	cmp r1, 0x4
 	bhi _080AF02A
 	lsls r0, r1, 2
-	ldr r1, _080AF000 @ =_080AF154
+	ldr r1, _080AF000 @ =_080AF004
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080AF000: .4byte _080AF154
+_080AF000: .4byte _080AF004
 	.align 2, 0
 _080AF004:
 	.4byte _080AF018
@@ -12894,13 +12894,13 @@ sub_80B1710: @ 80B1710
 	b _080B18C0
 _080B1720:
 	lsls r0, r1, 2
-	ldr r1, _080B1730 @ =_080B1884
+	ldr r1, _080B1730 @ =_080B1734
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080B172C: .4byte 0x02019204
-_080B1730: .4byte _080B1884
+_080B1730: .4byte _080B1734
 	.align 2, 0
 _080B1734:
 	.4byte _080B1758
@@ -15298,13 +15298,13 @@ sub_80B29B4: @ 80B29B4
 	cmp r0, 0x20
 	bhi _080B2A6C
 	lsls r0, 2
-	ldr r1, _080B29D8 @ =_080B2B2C
+	ldr r1, _080B29D8 @ =_080B29DC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080B29D4: .4byte gBattleMoves
-_080B29D8: .4byte _080B2B2C
+_080B29D8: .4byte _080B29DC
 	.align 2, 0
 _080B29DC:
 	.4byte _080B2A6C
@@ -15406,13 +15406,13 @@ _080B2AD0:
 	cmp r0, 0x4
 	bhi _080B2B16
 	lsls r0, 2
-	ldr r1, _080B2AE8 @ =_080B2C3C
+	ldr r1, _080B2AE8 @ =_080B2AEC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080B2AE4: .4byte gScriptContestCategory
-_080B2AE8: .4byte _080B2C3C
+_080B2AE8: .4byte _080B2AEC
 	.align 2, 0
 _080B2AEC:
 	.4byte _080B2B16
@@ -15664,13 +15664,13 @@ _080B2CD4:
 	cmp r0, 0x4
 	bhi _080B2D14
 	lsls r0, 2
-	ldr r1, _080B2CEC @ =_080B2E40
+	ldr r1, _080B2CEC @ =_080B2CF0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080B2CE8: .4byte gScriptContestCategory
-_080B2CEC: .4byte _080B2E40
+_080B2CEC: .4byte _080B2CF0
 	.align 2, 0
 _080B2CF0:
 	.4byte _080B2D04

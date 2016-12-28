@@ -463,12 +463,12 @@ GetSubstruct: @ 803C638
 	b _0803CB4E
 _0803C692:
 	lsls r0, 2
-	ldr r1, _0803C69C @ =_0803C874
+	ldr r1, _0803C69C @ =_0803C6A0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803C69C: .4byte _0803C874
+_0803C69C: .4byte _0803C6A0
 	.align 2, 0
 _0803C6A0:
 	.4byte _0803C700
@@ -1211,12 +1211,12 @@ GetMonData: @ 803CB60
 	cmp r0, 0x9
 	bhi _0803CBF0
 	lsls r0, 2
-	ldr r1, _0803CB78 @ =_0803CD50
+	ldr r1, _0803CB78 @ =_0803CB7C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803CB78: .4byte _0803CD50
+_0803CB78: .4byte _0803CB7C
 	.align 2, 0
 _0803CB7C:
 	.4byte _0803CBA4
@@ -1351,12 +1351,12 @@ _0803CC7A:
 	b _0803D1DC
 _0803CC82:
 	lsls r0, 2
-	ldr r1, _0803CC8C @ =_0803CE64
+	ldr r1, _0803CC8C @ =_0803CC90
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803CC8C: .4byte _0803CE64
+_0803CC8C: .4byte _0803CC90
 	.align 2, 0
 _0803CC90:
 	.4byte _0803CDDC
@@ -2063,12 +2063,12 @@ SetMonData: @ 803D1FC
 	cmp r0, 0xA
 	bhi _0803D2E0
 	lsls r0, 2
-	ldr r1, _0803D214 @ =_0803D3EC
+	ldr r1, _0803D214 @ =_0803D218
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803D214: .4byte _0803D3EC
+_0803D214: .4byte _0803D218
 	.align 2, 0
 _0803D218:
 	.4byte _0803D244
@@ -2244,12 +2244,12 @@ _0803D36C:
 	b _0803D8E2
 _0803D374:
 	lsls r0, 2
-	ldr r1, _0803D380 @ =_0803D558
+	ldr r1, _0803D380 @ =_0803D384
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0803D380: .4byte _0803D558
+_0803D380: .4byte _0803D384
 	.align 2, 0
 _0803D384:
 	.4byte _0803D4C4

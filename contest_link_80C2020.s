@@ -1024,13 +1024,13 @@ sub_80C2878: @ 80C2878
 	b _080C2A80
 _080C2896:
 	lsls r0, 2
-	ldr r1, _080C28A4 @ =_080C2A6C
+	ldr r1, _080C28A4 @ =_080C28A8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C28A0: .4byte gTasks
-_080C28A4: .4byte _080C2A6C
+_080C28A4: .4byte _080C28A8
 	.align 2, 0
 _080C28A8:
 	.4byte _080C28C0
@@ -1287,13 +1287,13 @@ sub_80C2A8C: @ 80C2A8C
 	b _080C2D04
 _080C2AB2:
 	lsls r0, 2
-	ldr r1, _080C2AC0 @ =_080C2C88
+	ldr r1, _080C2AC0 @ =_080C2AC4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C2ABC: .4byte gTasks
-_080C2AC0: .4byte _080C2C88
+_080C2AC0: .4byte _080C2AC4
 	.align 2, 0
 _080C2AC4:
 	.4byte _080C2ADC
@@ -4641,7 +4641,7 @@ sub_80C4440: @ 80C4440
 	cmp r0, 0x4
 	bhi _080C44B2
 	lsls r0, 2
-	ldr r1, _080C4470 @ =_080C46A4
+	ldr r1, _080C4470 @ =_080C4474
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -4649,7 +4649,7 @@ sub_80C4440: @ 80C4440
 _080C4464: .4byte gUnknown_02038694
 _080C4468: .4byte gPlayerParty
 _080C446C: .4byte gScriptContestCategory
-_080C4470: .4byte _080C46A4
+_080C4470: .4byte _080C4474
 	.align 2, 0
 _080C4474:
 	.4byte _080C4488
@@ -4712,7 +4712,7 @@ _080C44D4:
 	b _080C465E
 _080C44DE:
 	lsls r0, 2
-	ldr r1, _080C44F4 @ =_080C4728
+	ldr r1, _080C44F4 @ =_080C44F8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -4720,7 +4720,7 @@ _080C44DE:
 _080C44E8: .4byte gUnknown_02038690
 _080C44EC: .4byte gContestPlayerMonIndex
 _080C44F0: .4byte gScriptContestCategory
-_080C44F4: .4byte _080C4728
+_080C44F4: .4byte _080C44F8
 	.align 2, 0
 _080C44F8:
 	.4byte _080C450C

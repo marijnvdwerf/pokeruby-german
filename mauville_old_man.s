@@ -92,13 +92,13 @@ sub_80F7AA4: @ 80F7AA4
 	cmp r0, 0x4
 	bhi _080F7B00
 	lsls r0, 2
-	ldr r1, _080F7ACC @ =_080F7E80
+	ldr r1, _080F7ACC @ =_080F7AD0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F7AC8: .4byte gSaveBlock2
-_080F7ACC: .4byte _080F7E80
+_080F7ACC: .4byte _080F7AD0
 	.align 2, 0
 _080F7AD0:
 	.4byte _080F7AE4
@@ -707,12 +707,12 @@ sub_80F7F30: @ 80F7F30
 	cmp r0, 0x4
 	bhi _080F7F76
 	lsls r0, 2
-	ldr r1, _080F7F48 @ =_080F82FC
+	ldr r1, _080F7F48 @ =_080F7F4C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080F7F48: .4byte _080F82FC
+_080F7F48: .4byte _080F7F4C
 	.align 2, 0
 _080F7F4C:
 	.4byte _080F7F60
@@ -773,12 +773,12 @@ sub_80F7FB0: @ 80F7FB0
 	b _080F817A
 _080F7FBE:
 	lsls r0, 2
-	ldr r1, _080F7FC8 @ =_080F837C
+	ldr r1, _080F7FC8 @ =_080F7FCC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080F7FC8: .4byte _080F837C
+_080F7FC8: .4byte _080F7FCC
 	.align 2, 0
 _080F7FCC:
 	.4byte _080F7FE4
@@ -1024,14 +1024,14 @@ sub_80F8184: @ 80F8184
 	b _080F83C8
 _080F81A8:
 	lsls r0, 2
-	ldr r1, _080F81BC @ =_080F8570
+	ldr r1, _080F81BC @ =_080F81C0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080F81B4: .4byte gTasks
 _080F81B8: .4byte gUnknown_03005DA0
-_080F81BC: .4byte _080F8570
+_080F81BC: .4byte _080F81C0
 	.align 2, 0
 _080F81C0:
 	.4byte _080F81D8

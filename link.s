@@ -3213,13 +3213,13 @@ LinkMain1: @ 8008848
 	cmp r0, 0x4
 	bhi _080088FA
 	lsls r0, 2
-	ldr r1, _08008868 @ =_08008A38
+	ldr r1, _08008868 @ =_0800886C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08008864: .4byte gLink
-_08008868: .4byte _08008A38
+_08008868: .4byte _0800886C
 	.align 2, 0
 _0800886C:
 	.4byte _08008880

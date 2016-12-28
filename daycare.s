@@ -999,12 +999,12 @@ _08041A1A:
 	cmp r0, 0x5
 	bhi _08041B02
 	lsls r0, 2
-	ldr r1, _08041A30 @ =_08041D58
+	ldr r1, _08041A30 @ =_08041A34
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08041A30: .4byte _08041D58
+_08041A30: .4byte _08041A34
 	.align 2, 0
 _08041A34:
 	.4byte _08041A4C

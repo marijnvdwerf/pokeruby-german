@@ -787,12 +787,12 @@ GabbyAndTySetScriptVarsToFieldObjectLocalIds: @ 80BDD64
 	cmp r0, 0x7
 	bhi _080BDE3C
 	lsls r0, 2
-	ldr r1, _080BDD80 @ =_080BDF18
+	ldr r1, _080BDD80 @ =_080BDD84
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080BDD80: .4byte _080BDF18
+_080BDD80: .4byte _080BDD84
 	.align 2, 0
 _080BDD84:
 	.4byte _080BDDA4
@@ -898,13 +898,13 @@ sub_80BDE48: @ 80BDE48
 	cmp r0, 0x6
 	bhi _080BDEA6
 	lsls r0, 2
-	ldr r1, _080BDE64 @ =_080BDFFC
+	ldr r1, _080BDE64 @ =_080BDE68
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080BDE60: .4byte gSpecialVar_0x8005
-_080BDE64: .4byte _080BDFFC
+_080BDE64: .4byte _080BDE68
 	.align 2, 0
 _080BDE68:
 	.4byte _080BDE84
@@ -3109,12 +3109,12 @@ CopyContestCategoryToStringVar: @ 80BEFA4
 	cmp r0, 0x4
 	bhi _080BF054
 	lsls r0, 2
-	ldr r1, _080BEFBC @ =_080BF168
+	ldr r1, _080BEFBC @ =_080BEFC0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080BEFBC: .4byte _080BF168
+_080BEFBC: .4byte _080BEFC0
 	.align 2, 0
 _080BEFC0:
 	.4byte _080BEFD4
@@ -3528,14 +3528,14 @@ sub_80BF2C4: @ 80BF2C4
 	cmp r0, 0x6
 	bhi _080BF330
 	lsls r0, 2
-	ldr r1, _080BF2E8 @ =_080BF494
+	ldr r1, _080BF2E8 @ =_080BF2EC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080BF2E0: .4byte gScriptResult
 _080BF2E4: .4byte gSpecialVar_0x8005
-_080BF2E8: .4byte _080BF494
+_080BF2E8: .4byte _080BF2EC
 	.align 2, 0
 _080BF2EC:
 	.4byte _080BF308
@@ -5555,14 +5555,14 @@ _080C01D8:
 	b _080C038C
 _080C01EE:
 	lsls r0, 2
-	ldr r1, _080C0200 @ =_080C03C8
+	ldr r1, _080C0200 @ =_080C0204
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C01F8: .4byte gSaveBlock1
 _080C01FC: .4byte 0x00002738
-_080C0200: .4byte _080C03C8
+_080C0200: .4byte _080C0204
 	.align 2, 0
 _080C0204:
 	.4byte _080C0394
@@ -6331,7 +6331,7 @@ _080C07E0:
 	b _080C08F8
 _080C07EE:
 	lsls r0, 2
-	ldr r1, _080C0804 @ =_080C09CC
+	ldr r1, _080C0804 @ =_080C0808
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -6339,7 +6339,7 @@ _080C07EE:
 _080C07F8: .4byte gSaveBlock1
 _080C07FC: .4byte gSpecialVar_0x8004
 _080C0800: .4byte 0x00002739
-_080C0804: .4byte _080C09CC
+_080C0804: .4byte _080C0808
 	.align 2, 0
 _080C0808:
 	.4byte _080C08AC
@@ -6464,7 +6464,7 @@ DoTVShowBravoTrainerPokemonProfile: @ 80C091C
 	b _080C0B7A
 _080C093C:
 	lsls r0, r5, 2
-	ldr r1, _080C0958 @ =_080C0B20
+	ldr r1, _080C0958 @ =_080C095C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -6473,7 +6473,7 @@ _080C0948: .4byte gSpecialVar_0x8004
 _080C094C: .4byte 0x02027e6c
 _080C0950: .4byte gScriptResult
 _080C0954: .4byte gUnknown_020387E8
-_080C0958: .4byte _080C0B20
+_080C0958: .4byte _080C095C
 	.align 2, 0
 _080C095C:
 	.4byte _080C0980
@@ -6741,7 +6741,7 @@ DoTVShowBravoTrainerBattleTowerProfile: @ 80C0B9C
 	b _080C0DDE
 _080C0BBE:
 	lsls r0, r5, 2
-	ldr r1, _080C0BD8 @ =_080C0DA0
+	ldr r1, _080C0BD8 @ =_080C0BDC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -6750,7 +6750,7 @@ _080C0BC8: .4byte gSpecialVar_0x8004
 _080C0BCC: .4byte 0x02027e6c
 _080C0BD0: .4byte gScriptResult
 _080C0BD4: .4byte gUnknown_020387E8
-_080C0BD8: .4byte _080C0DA0
+_080C0BD8: .4byte _080C0BDC
 	.align 2, 0
 _080C0BDC:
 	.4byte _080C0C18
@@ -7014,7 +7014,7 @@ DoTVShowTodaysSmartShopper: @ 80C0E00
 	b _080C1014
 _080C0E22:
 	lsls r0, r6, 2
-	ldr r1, _080C0E3C @ =_080C1004
+	ldr r1, _080C0E3C @ =_080C0E40
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -7023,7 +7023,7 @@ _080C0E2C: .4byte gSpecialVar_0x8004
 _080C0E30: .4byte 0x02027e6c
 _080C0E34: .4byte gScriptResult
 _080C0E38: .4byte gUnknown_020387E8
-_080C0E3C: .4byte _080C1004
+_080C0E3C: .4byte _080C0E40
 	.align 2, 0
 _080C0E40:
 	.4byte _080C0E74
@@ -7268,7 +7268,7 @@ DoTVShowTheNameRaterShow: @ 80C1030
 	b _080C138A
 _080C1054:
 	lsls r0, r7, 2
-	ldr r1, _080C1070 @ =_080C1238
+	ldr r1, _080C1070 @ =_080C1074
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -7277,7 +7277,7 @@ _080C1060: .4byte gSpecialVar_0x8004
 _080C1064: .4byte 0x02027e6c
 _080C1068: .4byte gScriptResult
 _080C106C: .4byte gUnknown_020387E8
-_080C1070: .4byte _080C1238
+_080C1070: .4byte _080C1074
 	.align 2, 0
 _080C1074:
 	.4byte _080C10C0
@@ -7653,7 +7653,7 @@ DoTVShowPokemonTodaySuccessfulCapture: @ 80C13AC
 	b _080C15DC
 _080C13CE:
 	lsls r0, r6, 2
-	ldr r1, _080C13E8 @ =_080C15B0
+	ldr r1, _080C13E8 @ =_080C13EC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -7662,7 +7662,7 @@ _080C13D8: .4byte gSpecialVar_0x8004
 _080C13DC: .4byte 0x02027e6c
 _080C13E0: .4byte gScriptResult
 _080C13E4: .4byte gUnknown_020387E8
-_080C13E8: .4byte _080C15B0
+_080C13E8: .4byte _080C13EC
 	.align 2, 0
 _080C13EC:
 	.4byte _080C141C
@@ -7905,7 +7905,7 @@ DoTVShowPokemonTodayFailedCapture: @ 80C15F4
 	b _080C173C
 _080C1614:
 	lsls r0, r5, 2
-	ldr r1, _080C1630 @ =_080C17F8
+	ldr r1, _080C1630 @ =_080C1634
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -7914,7 +7914,7 @@ _080C1620: .4byte gSpecialVar_0x8004
 _080C1624: .4byte 0x02027e6c
 _080C1628: .4byte gScriptResult
 _080C162C: .4byte gUnknown_020387E8
-_080C1630: .4byte _080C17F8
+_080C1630: .4byte _080C1634
 	.align 2, 0
 _080C1634:
 	.4byte _080C1650
@@ -8063,7 +8063,7 @@ DoTVShowPokemonFanClubLetter: @ 80C1754
 	b _080C1960
 _080C1776:
 	lsls r0, r7, 2
-	ldr r1, _080C1790 @ =_080C1958
+	ldr r1, _080C1790 @ =_080C1794
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -8072,7 +8072,7 @@ _080C1780: .4byte gSpecialVar_0x8004
 _080C1784: .4byte 0x02027e6c
 _080C1788: .4byte gScriptResult
 _080C178C: .4byte gUnknown_020387E8
-_080C1790: .4byte _080C1958
+_080C1790: .4byte _080C1794
 	.align 2, 0
 _080C1794:
 	.4byte _080C1864
@@ -8276,7 +8276,7 @@ DoTVShowRecentHappenings: @ 80C1978
 	b _080C1AF0
 _080C199A:
 	lsls r0, r6, 2
-	ldr r1, _080C19B4 @ =_080C1B7C
+	ldr r1, _080C19B4 @ =_080C19B8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -8285,7 +8285,7 @@ _080C19A4: .4byte gSpecialVar_0x8004
 _080C19A8: .4byte 0x02027e6c
 _080C19AC: .4byte gScriptResult
 _080C19B0: .4byte gUnknown_020387E8
-_080C19B4: .4byte _080C1B7C
+_080C19B4: .4byte _080C19B8
 	.align 2, 0
 _080C19B8:
 	.4byte _080C1A84
@@ -8569,14 +8569,14 @@ DoTVShowInSearchOfTrainers: @ 80C1C5C
 	b _080C1DF8
 _080C1C70:
 	lsls r0, r7, 2
-	ldr r1, _080C1C84 @ =_080C1E4C
+	ldr r1, _080C1C84 @ =_080C1C88
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C1C7C: .4byte gScriptResult
 _080C1C80: .4byte gUnknown_020387E8
-_080C1C84: .4byte _080C1E4C
+_080C1C84: .4byte _080C1C88
 	.align 2, 0
 _080C1C88:
 	.4byte _080C1CAC

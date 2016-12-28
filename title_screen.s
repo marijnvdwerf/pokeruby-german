@@ -468,14 +468,14 @@ CB2_InitTitleScreen: @ 807C0F0
 	cmp r0, 0x5
 	bhi _0807C130
 	lsls r0, 2
-	ldr r1, _0807C114 @ =_0807C54C
+	ldr r1, _0807C114 @ =_0807C118
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0807C10C: .4byte gMain
 _0807C110: .4byte 0x0000043c
-_0807C114: .4byte _0807C54C
+_0807C114: .4byte _0807C118
 	.align 2, 0
 _0807C118:
 	.4byte _0807C130
@@ -806,7 +806,7 @@ _0807C418:
 	movs r2, 0x4
 	movs r3, 0x4
 	bl sub_8089944
-	ldr r0, _0807C450 @ =_0807C888
+	ldr r0, _0807C450 @ =_0807C454
 	bl SetMainCallback2
 _0807C446:
 	add sp, 0x14
@@ -814,7 +814,7 @@ _0807C446:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C450: .4byte _0807C888
+_0807C450: .4byte _0807C454
 _0807C454:
 	push {lr}
 	bl RunTasks

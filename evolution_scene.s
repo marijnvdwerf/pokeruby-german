@@ -688,7 +688,7 @@ CB2_TradeEvolutionSceneLoadGraphics: @ 8111E80
 	b _081120D6
 _08111EAE:
 	lsls r0, 2
-	ldr r1, _08111ECC @ =_081122C8
+	ldr r1, _08111ECC @ =_08111ED0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -698,7 +698,7 @@ _08111EBC: .4byte 0x02014800
 _08111EC0: .4byte gPlayerParty
 _08111EC4: .4byte gMain
 _08111EC8: .4byte 0x0000043c
-_08111ECC: .4byte _081122C8
+_08111ECC: .4byte _08111ED0
 	.align 2, 0
 _08111ED0:
 	.4byte _08111EEC
@@ -1344,7 +1344,7 @@ _0811246E:
 	bl _08112FD0
 _08112484:
 	lsls r0, 2
-	ldr r1, _0811249C @ =_08112898
+	ldr r1, _0811249C @ =_081124A0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -1352,7 +1352,7 @@ _08112484:
 _08112490: .4byte gTasks
 _08112494: .4byte gMain
 _08112498: .4byte gUnknown_02024D1E
-_0811249C: .4byte _08112898
+_0811249C: .4byte _081124A0
 	.align 2, 0
 _081124A0:
 	.4byte _081124F8
@@ -2039,12 +2039,12 @@ _08112A88:
 	b _08112FD0
 _08112A9A:
 	lsls r0, 2
-	ldr r1, _08112AA4 @ =_08112EA0
+	ldr r1, _08112AA4 @ =_08112AA8
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08112AA4: .4byte _08112EA0
+_08112AA4: .4byte _08112AA8
 	.align 2, 0
 _08112AA8:
 	.4byte _08112AD8
@@ -2671,13 +2671,13 @@ Task_TradeEvolutionScene: @ 8112FE8
 	bl _08113B3A
 _08113020:
 	lsls r0, 2
-	ldr r1, _08113030 @ =_0811342C
+	ldr r1, _08113030 @ =_08113034
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0811302C: .4byte gTasks
-_08113030: .4byte _0811342C
+_08113030: .4byte _08113034
 	.align 2, 0
 _08113034:
 	.4byte _0811307C
@@ -3266,12 +3266,12 @@ _08113538:
 	b _08113B3A
 _0811354C:
 	lsls r0, 2
-	ldr r1, _08113558 @ =_08113954
+	ldr r1, _08113558 @ =_0811355C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08113558: .4byte _08113954
+_08113558: .4byte _0811355C
 	.align 2, 0
 _0811355C:
 	.4byte _0811358C
@@ -5104,12 +5104,12 @@ _08114410:
 	b _081148D2
 _08114428:
 	lsls r0, r2, 2
-	ldr r1, _08114434 @ =_08114830
+	ldr r1, _08114434 @ =_08114438
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08114434: .4byte _08114830
+_08114434: .4byte _08114438
 	.align 2, 0
 _08114438:
 	.4byte _081148D2
@@ -5697,14 +5697,14 @@ _081148D2:
 	b _08114D76
 _081148E8:
 	lsls r0, r1, 2
-	ldr r1, _081148FC @ =_08114CF8
+	ldr r1, _081148FC @ =_08114900
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _081148F4: .4byte 0x02014800
 _081148F8: .4byte 0x000008c4
-_081148FC: .4byte _08114CF8
+_081148FC: .4byte _08114900
 	.align 2, 0
 _08114900:
 	.4byte _08114D76

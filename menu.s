@@ -80,13 +80,13 @@ MultistepInitMenuWindowContinue: @ 8071C94
 	cmp r1, 0x4
 	bhi _08071D40
 	lsls r0, r1, 2
-	ldr r1, _08071CB0 @ =_08071FD0
+	ldr r1, _08071CB0 @ =_08071CB4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08071CAC: .4byte gMenuMultistepInitState
-_08071CB0: .4byte _08071FD0
+_08071CB0: .4byte _08071CB4
 	.align 2, 0
 _08071CB4:
 	.4byte _08071CC8

@@ -720,12 +720,12 @@ sub_8046984: @ 8046984
 	cmp r1, 0x4
 	bhi _08046A84
 	lsls r0, r1, 2
-	ldr r1, _0804699C @ =_08046CC4
+	ldr r1, _0804699C @ =_080469A0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0804699C: .4byte _08046CC4
+_0804699C: .4byte _080469A0
 	.align 2, 0
 _080469A0:
 	.4byte _080469B4
@@ -901,13 +901,13 @@ sub_8046AD0: @ 8046AD0
 	cmp r0, 0x20
 	bhi _08046B88
 	lsls r0, 2
-	ldr r1, _08046B00 @ =_08046E28
+	ldr r1, _08046B00 @ =_08046B04
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _08046AFC: .4byte gTasks
-_08046B00: .4byte _08046E28
+_08046B00: .4byte _08046B04
 	.align 2, 0
 _08046B04:
 	.4byte _08046B88

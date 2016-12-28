@@ -19,14 +19,14 @@ CB2_InitOptionMenu: @ 808B63C
 	cmp r0, 0x9
 	bhi _0808B690
 	lsls r0, 2
-	ldr r1, _0808B664 @ =_0808BABC
+	ldr r1, _0808B664 @ =_0808B668
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0808B65C: .4byte gMain
 _0808B660: .4byte 0x0000043c
-_0808B664: .4byte _0808BABC
+_0808B664: .4byte _0808B668
 	.align 2, 0
 _0808B668:
 	.4byte _0808B690

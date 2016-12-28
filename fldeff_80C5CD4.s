@@ -1407,13 +1407,13 @@ sub_80C6760: @ 80C6760
 	cmp r0, 0x10
 	bhi _080C682E
 	lsls r0, 2
-	ldr r1, _080C678C @ =_080C698C
+	ldr r1, _080C678C @ =_080C6790
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C6788: .4byte 0x03004b38
-_080C678C: .4byte _080C698C
+_080C678C: .4byte _080C6790
 	.align 2, 0
 _080C6790:
 	.4byte _080C67D4
@@ -1842,14 +1842,14 @@ _080C6AC8:
 	b _080C6C1E
 _080C6ADA:
 	lsls r0, 2
-	ldr r1, _080C6AEC @ =_080C6CEC
+	ldr r1, _080C6AEC @ =_080C6AF0
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080C6AE4: .4byte gTasks
 _080C6AE8: .4byte 0xfffffd88
-_080C6AEC: .4byte _080C6CEC
+_080C6AEC: .4byte _080C6AF0
 	.align 2, 0
 _080C6AF0:
 	.4byte _080C6BE0

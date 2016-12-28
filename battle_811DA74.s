@@ -1254,14 +1254,14 @@ dp01_getattr_by_ch1_for_player_pokemon: @ 811E458
 	bl _0811EBEE
 _0811E482:
 	lsls r0, 2
-	ldr r1, _0811E494 @ =_0811E88C
+	ldr r1, _0811E494 @ =_0811E498
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0811E48C: .4byte gUnknown_02023A60
 _0811E490: .4byte gUnknown_02024A60
-_0811E494: .4byte _0811E88C
+_0811E494: .4byte _0811E498
 	.align 2, 0
 _0811E498:
 	.4byte _0811E588
@@ -2243,14 +2243,14 @@ sub_811EC68: @ 811EC68
 	bl _0811F62E
 _0811EC94:
 	lsls r0, 2
-	ldr r1, _0811ECA8 @ =_0811F0A0
+	ldr r1, _0811ECA8 @ =_0811ECAC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _0811ECA0: .4byte gUnknown_02024A60
 _0811ECA4: .4byte gUnknown_02023A63
-_0811ECA8: .4byte _0811F0A0
+_0811ECA8: .4byte _0811ECAC
 	.align 2, 0
 _0811ECAC:
 	.4byte _0811ED9C

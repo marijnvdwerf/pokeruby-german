@@ -2889,13 +2889,13 @@ ItemUseOutOfBattle_EnigmaBerry: @ 80CA520
 	b _080CA62C
 _080CA53A:
 	lsls r0, 2
-	ldr r1, _080CA548 @ =_080CA888
+	ldr r1, _080CA548 @ =_080CA54C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080CA544: .4byte gScriptItemId
-_080CA548: .4byte _080CA888
+_080CA548: .4byte _080CA54C
 	.align 2, 0
 _080CA54C:
 	.4byte _080CA5D8
@@ -3015,13 +3015,13 @@ ItemUseInBattle_EnigmaBerry: @ 80CA64C
 	cmp r0, 0x15
 	bhi _080CA6E4
 	lsls r0, 2
-	ldr r1, _080CA670 @ =_080CA9B0
+	ldr r1, _080CA670 @ =_080CA674
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _080CA66C: .4byte gScriptItemId
-_080CA670: .4byte _080CA9B0
+_080CA670: .4byte _080CA674
 	.align 2, 0
 _080CA674:
 	.4byte _080CA6CC

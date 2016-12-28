@@ -40,7 +40,7 @@ sub_80FC7A0: @ 80FC7A0
 	b _080FC928
 _080FC7DC:
 	lsls r0, 2
-	ldr r1, _080FC808 @ =_080FCBBC
+	ldr r1, _080FC808 @ =_080FC80C
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -53,7 +53,7 @@ _080FC7F8: .4byte gUnknown_03005DF8
 _080FC7FC: .4byte gUnknown_03005DF0
 _080FC800: .4byte gUnknown_03005E04
 _080FC804: .4byte gUnknown_03005DF4
-_080FC808: .4byte _080FCBBC
+_080FC808: .4byte _080FC80C
 	.align 2, 0
 _080FC80C:
 	.4byte _080FC898
@@ -1640,12 +1640,12 @@ sub_80FD40C: @ 80FD40C
 	cmp r0, 0x5
 	bhi _080FD4C4
 	lsls r0, 2
-	ldr r1, _080FD450 @ =_080FD804
+	ldr r1, _080FD450 @ =_080FD454
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080FD450: .4byte _080FD804
+_080FD450: .4byte _080FD454
 	.align 2, 0
 _080FD454:
 	.4byte _080FD46C
@@ -2484,7 +2484,7 @@ sub_80FDA18: @ 80FDA18
 	cmp r0, 0x5
 	bhi _080FDADE
 	lsls r0, 2
-	ldr r1, _080FDA8C @ =_080FDE40
+	ldr r1, _080FDA8C @ =_080FDA90
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
@@ -2498,7 +2498,7 @@ _080FDA7C: .4byte gUnknown_03005DF8
 _080FDA80: .4byte gUnknown_03005DF0
 _080FDA84: .4byte gUnknown_03005E04
 _080FDA88: .4byte gUnknown_03005DF4
-_080FDA8C: .4byte _080FDE40
+_080FDA8C: .4byte _080FDA90
 	.align 2, 0
 _080FDA90:
 	.4byte _080FDAA8

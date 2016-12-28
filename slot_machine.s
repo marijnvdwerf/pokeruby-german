@@ -30,14 +30,14 @@ sub_81018B8: @ 81018B8
 	cmp r0, 0x6
 	bhi _0810194A
 	lsls r0, 2
-	ldr r1, _081018D8 @ =_08101CAC
+	ldr r1, _081018D8 @ =_081018DC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
 _081018D0: .4byte gMain
 _081018D4: .4byte 0x0000043c
-_081018D8: .4byte _08101CAC
+_081018D8: .4byte _081018DC
 	.align 2, 0
 _081018DC:
 	.4byte _081018F8
@@ -9383,12 +9383,12 @@ sub_8105E08: @ 8105E08
 	cmp r0, 0x5
 	bhi _08105EAE
 	lsls r0, 2
-	ldr r1, _08105E20 @ =_0810620C
+	ldr r1, _08105E20 @ =_08105E24
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08105E20: .4byte _0810620C
+_08105E20: .4byte _08105E24
 	.align 2, 0
 _08105E24:
 	.4byte _08105E3C

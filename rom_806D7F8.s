@@ -767,12 +767,12 @@ sub_806DDA0: @ 806DDA0
 	cmp r0, 0x5
 	bhi _0806DE38
 	lsls r0, 2
-	ldr r1, _0806DDB8 @ =_0806E0FC
+	ldr r1, _0806DDB8 @ =_0806DDBC
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806DDB8: .4byte _0806E0FC
+_0806DDB8: .4byte _0806DDBC
 	.align 2, 0
 _0806DDBC:
 	.4byte _0806DE38
@@ -859,12 +859,12 @@ sub_806DE50: @ 806DE50
 	cmp r0, 0x5
 	bhi _0806DF24
 	lsls r0, 2
-	ldr r1, _0806DE6C @ =_0806E1B0
+	ldr r1, _0806DE6C @ =_0806DE70
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806DE6C: .4byte _0806E1B0
+_0806DE6C: .4byte _0806DE70
 	.align 2, 0
 _0806DE70:
 	.4byte _0806DE88
@@ -4548,12 +4548,12 @@ GetMedicineItemEffectMessage: @ 806FBD0
 	b _0806FD7C
 _0806FBE6:
 	lsls r0, 2
-	ldr r1, _0806FBF0 @ =_0806FF34
+	ldr r1, _0806FBF0 @ =_0806FBF4
 	adds r0, r1
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806FBF0: .4byte _0806FF34
+_0806FBF0: .4byte _0806FBF4
 	.align 2, 0
 _0806FBF4:
 	.4byte _0806FC40
